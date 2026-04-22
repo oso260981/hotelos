@@ -62,6 +62,7 @@ public function listar_formas_pago()
 
 
 
+
     /* =====================================================
        GUARDAR REGISTRO (CHECK-IN NUEVO / UPDATE)
        ===================================================== */
@@ -432,7 +433,7 @@ public function guardarCargo()
         ]);
     }
 
-    recalcularTotalesRegistro($registro_id);
+    $this->recalcularTotalesRegistro($registro_id);
 }
 
 /* =====================================================
@@ -611,7 +612,7 @@ public function ticket($id)
 }
 
 
-public function cambiarHabitacion()
+/* public function cambiarHabitacion()
 {
     try {
 
@@ -729,8 +730,187 @@ public function cambiarHabitacion()
         ]);
     }
 
-    recalcularTotalesRegistro($registro_id);
+    $this->recalcularTotalesRegistro($registro_id);
+} */
+
+public function cambiarHabitacion()
+{
+    try {
+
+        $json = $this->request->getJSON(true);
+
+        if (empty($json['registro_id']) || empty($json['habitacion_id'])) {
+            throw new \Exception("Datos incompletos");
+        }
+
+        $db = \Config\Database::connect();
+
+        // =========================
+        // 🔎 REGISTRO ACTUAL
+        // =========================
+        $registro = $db->table('registros')
+            ->where('id', $json['registro_id'])
+            ->get()
+            ->getRowArray();
+
+        if (!$registro) {
+            throw new \Exception("Registro no encontrado");
+        }
+
+        // =========================
+        // 🔎 HABITACIÓN NUEVA
+        // =========================
+        $habNueva = $db->table('habitaciones')
+            ->where('id', $json['habitacion_id'])
+            ->get()->getRowArray();
+
+        if (!$habNueva) {
+            throw new \Exception("Habitación nueva no encontrada");
+        }
+
+        // =========================
+        // 🔎 VALIDAR DISPONIBILIDAD (A través del registro)
+        // =========================
+        $registroLibre = $db->table('registros')
+            ->where('habitacion_id', $habNueva['id'])
+            ->where('estado_registro', 'DISPONIBLE')
+            ->orderBy('id', 'DESC')
+            ->get()->getRowArray();
+
+        if (!$registroLibre) {
+            throw new \Exception("La habitación seleccionada no está disponible (No tiene registro DISPONIBLE).");
+        }
+
+        // 2. No debe tener un registro activo (CHECKIN)
+        $ocupada = $db->table('registros')
+            ->where('habitacion_id', $habNueva['id'])
+            ->where('estado_registro', 'CHECKIN')
+            ->get()->getRowArray();
+
+        if ($ocupada) {
+            throw new \Exception("La habitación seleccionada ya tiene un huésped activo");
+        }
+
+        // 3. Limpiar registros previos no válidos (Ej: DISPONIBLE)
+        // =========================
+        // 🔎 HABITACIÓN ACTUAL (desde el registro)
+        // =========================
+        $habActual = $db->table('habitaciones')
+            ->where('id', $registro['habitacion_id'])
+            ->get()->getRowArray();
+
+        // =========================
+        // 💰 VALIDACIÓN PRECIO
+        // =========================
+        $tipoActual = $db->table('habitaciones_tipos')
+            ->where('id', $habActual['tipo_habitacion_id'])
+            ->get()->getRowArray();
+
+        $tipoNueva = $db->table('habitaciones_tipos')
+            ->where('id', $habNueva['tipo_habitacion_id'])
+            ->get()->getRowArray();
+
+        $diferencia = $tipoNueva['precio_base'] - $tipoActual['precio_base'];
+
+        if ($diferencia > 0 && !($json['confirmar_upgrade'] ?? false)) {
+            return $this->response->setJSON([
+                "ok" => false,
+                "requiere_confirmacion" => true,
+                "tipo" => "UPGRADE",
+                "diferencia" => $diferencia
+            ]);
+        }
+
+        // =========================
+        // 🚀 TRANSACCIÓN
+        // =========================
+        $db->transStart();
+
+        // 1. CERRAR REGISTRO ACTUAL (Habitación 101)
+        $db->table('registros')
+            ->where('id', $registro['id'])
+            ->update([
+                'estado_registro' => 'CHECKOUT',
+                'estado_servicio' => 'CERRADO',
+                'hora_salida_real'=> date('Y-m-d H:i:s')
+            ]);
+
+        // 2. MARCAR HABITACIÓN ANTERIOR COMO SUCIA (Estado 2)
+        $db->table('habitaciones')
+            ->where('id', $habActual['id'])
+            ->update(['estado_id' => 2]);
+
+        // 3. BUSCAR REGISTRO "LIBRE" EN HABITACIÓN NUEVA (Habitación 102)
+        $registroLibre = $db->table('registros')
+            ->where('habitacion_id', $habNueva['id'])
+            ->where('estado_registro', 'DISPONIBLE')
+            ->orderBy('id', 'DESC')
+            ->get()->getRowArray();
+
+        if (!$registroLibre) {
+            throw new \Exception("No se encontró un registro 'DISPONIBLE' en la habitación destino para reutilizar.");
+        }
+
+        // 4. REUTILIZAR Y COPIAR DATOS DEL HUÉSPED
+        $db->table('registros')
+            ->where('id', $registroLibre['id'])
+            ->update([
+                'huesped_id'       => $registro['huesped_id'],
+                'turno_id'         => $registro['turno_id'],
+                'tipo_estadia_id'  => $registro['tipo_estadia_id'],
+                'forma_pago_id'    => $registro['forma_pago_id'],
+                
+                'hora_entrada'     => date('Y-m-d H:i:s'),
+                'hora_salida'      => $registro['hora_salida'],
+                'fecha_estadia'    => date('Y-m-d'),
+                'noches'           => $registro['noches'],
+                'estado_registro'  => 'CHECKIN',
+                'estado_servicio'  => 'ACTIVO',
+                
+                'adultos'          => $registro['adultos'],
+                'niños'            => $registro['niños'],
+                'num_personas_ext' => $registro['num_personas_ext'],
+                
+                'precio_base'      => $tipoNueva['precio_base'],
+                'precio'           => $tipoNueva['precio_base'],
+                'total'            => 0,
+                'iva'              => 0,
+                'ish'              => 0,
+                'updated_at'       => date('Y-m-d H:i:s')
+            ]);
+
+        $nuevoRegistroId = $registroLibre['id'];
+
+        // 5. LOG DE MOVIMIENTO
+        $db->table('registro_movimientos')->insert([
+            'registro_id'         => $registro['id'],
+            'registro_nuevo_id'   => $nuevoRegistroId,
+            'habitacion_anterior' => $habActual['id'],
+            'habitacion_nueva'    => $habNueva['id'],
+            'motivo'              => $json['motivo'] ?? 'REASIGNACION',
+            'fecha'               => date('Y-m-d H:i:s')
+        ]);
+
+        $db->transComplete();
+
+        // 6. RECALCULAR
+        $this->recalcularTotalesRegistro($nuevoRegistroId);
+
+        return $this->response->setJSON([
+            "ok" => true,
+            "nuevo_registro_id" => $nuevoRegistroId
+        ]);
+
+    } catch (\Throwable $e) {
+
+        return $this->response->setJSON([
+            "ok" => false,
+            "msg" => $e->getMessage()
+        ]);
+    }
 }
+
+
 
 private function obtenerTurnoActual()
 {
@@ -946,7 +1126,7 @@ public function modificarEstadia()
         ]);
     }
 
-    recalcularTotalesRegistro($registro_id);
+    $this->recalcularTotalesRegistro($registro_id);
 }
 
 
@@ -2370,6 +2550,57 @@ public function estadosHabitacion()
             ->getResultArray();
 
         return $this->response->setJSON($data);
+    }
+
+    public function obtenerFiscal($registroId)
+    {
+        $db = \Config\Database::connect();
+        $data = $db->table('registros_fiscal')
+            ->where('registro_id', $registroId)
+            ->get()
+            ->getRowArray();
+
+        return $this->response->setJSON([
+            'ok' => true,
+            'data' => $data
+        ]);
+    }
+
+    public function guardarFiscal()
+    {
+        try {
+            $json = $this->request->getJSON(true);
+            $db = \Config\Database::connect();
+
+            $registroId = $json['registro_id'];
+            
+            $data = [
+                'registro_id'   => $registroId,
+                'rfc'           => $json['rfc'],
+                'id_perfil'     => (!empty($json['id_perfil']) && $json['id_perfil'] !== 'null') ? $json['id_perfil'] : null,
+                'observaciones' => $json['observaciones'],
+                'precio'        => $json['precio'],
+                'iva'           => $json['iva'],
+                'ish'           => $json['ish'],
+                'total'         => $json['total'],
+                'fecha'         => $json['fecha'],
+                'usuario_id'    => session()->get('user_id'),
+                'created_at'    => date('Y-m-d H:i:s')
+            ];
+
+            $exists = $db->table('registros_fiscal')->where('registro_id', $registroId)->get()->getRow();
+
+            if ($exists) {
+                unset($data['created_at']); // No sobreescribir created_at
+                $db->table('registros_fiscal')->where('registro_id', $registroId)->update($data);
+            } else {
+                $db->table('registros_fiscal')->insert($data);
+            }
+
+            return $this->response->setJSON(['ok' => true]);
+        } catch (\Exception $e) {
+            return $this->response->setJSON(['ok' => false, 'msg' => $e->getMessage()]);
+        }
     }
 
 }

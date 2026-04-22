@@ -1418,16 +1418,8 @@ VALUES
 ('SRV021', 'Transporte Aeropuerto', 'Traslado privado', 'SERVICIO', 600.00, 0, 'fa-shuttle-van', 1, NOW());
 
 
-CREATE TABLE registro_movimientos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    motivo VARCHAR(100),
-    registro_id INT,
-    habitacion_anterior INT,
-    habitacion_nueva INT,
-    fecha DATETIME
-);
 
-SELECT * FROM registro_movimientos;
+
 
 
 
@@ -1876,3 +1868,76 @@ CREATE TABLE salidas_clientes (
   
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE  TABLE registro_movimientos (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+
+    registro_id BIGINT UNSIGNED NOT NULL,
+    registro_nuevo_id BIGINT UNSIGNED NULL,
+
+    habitacion_anterior BIGINT UNSIGNED NOT NULL,
+    habitacion_nueva BIGINT UNSIGNED NOT NULL,
+
+    tipo_movimiento ENUM('REASIGNACION','CHECKOUT','AJUSTE') 
+        NOT NULL DEFAULT 'REASIGNACION',
+
+    motivo VARCHAR(255) NULL,
+
+    usuario_id BIGINT UNSIGNED NULL,
+
+    fecha DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+
+   
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+-- ============================================================
+-- 1. TABLA: configuracion_turnos
+-- Guarda la definición de los turnos operativos del hotel.
+-- ============================================================
+CREATE TABLE IF NOT EXISTS configuracion_turnos (
+    id INTEGER PRIMARY KEY,           -- 1, 2 o 3 (fijo para HotelOS)
+    nombre TEXT NOT NULL,             -- Ej: 'Matutino', 'Vespertino', 'Nocturno'
+    hora_inicio TEXT NOT NULL,         -- Formato HH:MM (ej: '07:00')
+    hora_fin TEXT NOT NULL,           -- Formato HH:MM (ej: '15:00')
+    responsable_defecto TEXT          -- Nombre del recepcionista habitual (opcional)
+);
+
+-- Insertar la configuración por defecto para HotelOS (3 turnos de 8 horas)
+INSERT OR IGNORE INTO configuracion_turnos (id, nombre, hora_inicio, hora_fin) VALUES 
+(1, 'Turno 1 - Matutino', '07:00', '15:00'),
+(2, 'Turno 2 - Vespertino', '15:00', '23:00'),
+(3, 'Turno 3 - Nocturno', '23:00', '07:00');
+
+-- ============================================================
+-- 2. TABLA: historial_turnos
+-- Registra la actividad real de cada turno operado.
+-- ============================================================
+CREATE TABLE IF NOT EXISTS historial_turnos (
+    id INTEGER PRIMARY KEY AUTOINCREMENT, -- Identificador único de la operación
+    configuracion_turno_id INTEGER NOT NULL, -- FK a configuracion_turnos(id)
+    fecha_operativa TEXT NOT NULL,        -- Fecha de negocio (YYYY-MM-DD)
+    empleado_apertura TEXT NOT NULL,      -- Nombre o PIN del empleado que abre
+    empleado_cierre TEXT,                -- Nombre o PIN del empleado que cierra
+    hora_apertura TEXT NOT NULL,          -- Timestamp real (ISO8601 YYYY-MM-DD HH:MM:SS)
+    hora_cierre TEXT,                    -- Timestamp real (ISO8601)
+    
+    -- Control de Efectivo (Corte de Caja)
+    fondo_fijo_inicial REAL NOT NULL DEFAULT 0.0, -- Dinero base al empezar
+    ingresos_efectivo REAL NOT NULL DEFAULT 0.0,   -- Suma de pagos en efectivo
+    egresos_efectivo REAL NOT NULL DEFAULT 0.0,    -- Suma de gastos/salidas
+    efectivo_calculado REAL NOT NULL DEFAULT 0.0, -- (Fondo + Ingresos - Egresos)
+    efectivo_real_entregado REAL,                  -- Lo que el empleado cuenta físicamente
+    diferencia_arqueo REAL,                        -- (Real - Calculado)
+    
+    -- Estado del Turno
+    estado TEXT CHECK(estado IN ('ABIERTO', 'CERRADO')) NOT NULL DEFAULT 'ABIERTO',
+    notas_cierre TEXT,                             -- Comentarios sobre diferencias o novedades
+    
+    FOREIGN KEY (configuracion_turno_id) REFERENCES configuracion_turnos(id)
+);
+
+-- Crear un índice para búsquedas rápidas de turnos abiertos
+CREATE INDEX IF NOT EXISTS idx_turnos_estado ON historial_turnos(estado);

@@ -2946,6 +2946,7 @@ async function cargarImpuestos() {
     const data = await res.json();
 
     let ish = data.find(i => i.nombre === 'ISH');
+    let iva = data.find(i => i.nombre === 'IVA');
 
     if (ish) {
         // Actualiza el label
@@ -2954,6 +2955,10 @@ async function cargarImpuestos() {
 
         // Guarda global si lo necesitas para cálculos
         window.TASA_ISH = parseFloat(ish.tasa);
+    }
+
+    if (iva) {
+        window.TASA_IVA = parseFloat(iva.tasa);
     }
 }
 

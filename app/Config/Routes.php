@@ -60,6 +60,8 @@ $routes->get('roles/get/(:num)','Roles::get/$1');
 $routes->post('turno/abierto','TurnoOperacion::turnoAbierto');
 $routes->post('turno/abrir','TurnoOperacion::abrir');
 $routes->post('turno/cerrar','TurnoOperacion::cerrar');
+$routes->get('turno/pdf/(:num)', 'TurnoOperacion::pdf/$1');
+$routes->get('turno/excel/(:num)', 'TurnoOperacion::excel/$1');
 $routes->post('turnos/list','Turnos::list');
 $routes->post('turnos/save','Turnos::save');
 $routes->post('turnos/delete','Turnos::delete');
@@ -196,12 +198,13 @@ $routes->get('catalogos/formas-pago', 'Reservacion::listar_formas_pago');
 $routes->post('reservacion/guardar-acompanantes', 'Reservacion::guardarAcompanantes');
 
 $routes->post('reservacion/guardar-pago', 'Reservacion::guardarPago');
-
 $routes->post('reservacion/guardar-cargo', 'Reservacion::guardarCargo');
+$routes->post('reservacion/actualizar-campo', 'Reservacion::actualizarCampoRegistro');
 
-
-
-$routes->get('reservacion/resumen/(:num)', 'Reservacion::resumen/$1');
+// DATOS FISCALES
+$routes->get('reservacion/obtener-fiscal/(:num)', 'Reservacion::obtenerFiscal/$1');
+$routes->post('reservacion/guardar-fiscal', 'Reservacion::guardarFiscal');
+$routes->get('reservacion/obtenerImpuestos', 'Reservacion::obtenerImpuestos');
 
 $routes->post('reservacion/guardar-vehiculo', 'Reservacion::guardarVehiculo');
 

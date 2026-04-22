@@ -389,13 +389,9 @@
     <!-- VISTA TRABAJO -->
     <section id="view-work" class="flex-1 flex flex-col bg-slate-200 overflow-hidden">
         <div class="bg-[#0f172a] p-3 flex items-center px-6 border-b border-white/5 overflow-x-auto no-scrollbar">
-            <!-- ACCIONES LADO IZQUIERDO -->
+            <!-- 1. BOTONES DE ACCIÓN (CAMBIO/ROOM SERVICE) -->
             <div class="flex items-center space-x-3 pr-6 border-r border-slate-700/50 shrink-0">
                 <span class="text-[9px] text-slate-500 font-black uppercase tracking-widest mr-2">Acciones:</span>
-                <button onclick="resetFilters()"
-                    class="bg-slate-800 hover:bg-slate-700 text-white px-5 py-2 rounded-xl text-[10px] font-black uppercase transition-all active:scale-95 shadow-lg border border-slate-700">
-                    LIMPIAR
-                </button>
                 <button onclick="openSubModal('modal-cambio')"
                     class="bg-blue-600 hover:bg-blue-500 text-white px-5 py-2 rounded-xl text-[10px] font-black uppercase transition-all active:scale-95 shadow-lg shadow-blue-900/40 border border-blue-400/20">
                     <i class="fas fa-exchange-alt mr-2 text-[8px]"></i>CAMBIO
@@ -405,16 +401,8 @@
                     <i class="fas fa-utensils mr-2 text-[8px]"></i>ROOM SERVICE
                 </button>
             </div>
-            
-            <!-- BUSCADOR GLOBAL -->
-            <div class="relative w-80 px-6 border-r border-slate-700/50 shrink-0">
-                <input type="text" id="global-search" oninput="applyGlobalSearch()"
-                    placeholder="Búsqueda Global..."
-                    class="bg-slate-800/50 text-white border border-slate-700 rounded-xl px-10 py-2 text-[10px] w-full outline-none focus:border-blue-500 transition-all shadow-inner">
-                <i class="fas fa-search absolute left-10 top-1/2 -translate-y-1/2 text-slate-500 text-[9px]"></i>
-            </div>
 
-            <!-- PISOS -->
+            <!-- 2. PISOS -->
             <div class="flex items-center space-x-4 px-6 border-r border-slate-700/50 shrink-0">
                 <span class="text-[9px] text-slate-500 font-black uppercase tracking-widest">Piso:</span>
                 <div id="floor-tabs" class="flex bg-slate-800/30 p-1.5 rounded-xl space-x-1 border border-slate-700/50">
@@ -422,12 +410,28 @@
                 </div>
             </div>
 
-            <!-- TIPO HABITACIÓN -->
-            <div class="flex items-center space-x-4 px-6 shrink-0">
-                <span class="text-[9px] text-slate-500 font-black uppercase tracking-widest">Tipo Habitación:</span>
+            <!-- 3. TIPO HABITACIÓN -->
+            <div class="flex items-center space-x-4 px-6 border-r border-slate-700/50 shrink-0">
+                <span class="text-[9px] text-slate-500 font-black uppercase tracking-widest">Tipo:</span>
                 <select id="filter-tipo-hab" onchange="applyTipoFilter()" class="bg-slate-800/50 text-white border border-slate-700 rounded-xl px-4 py-2 text-[10px] outline-none focus:border-blue-500 transition-all font-bold">
                     <option value="">Todos</option>
                 </select>
+            </div>
+
+            <!-- 4. BUSCADOR GLOBAL -->
+            <div class="relative w-80 px-6 border-r border-slate-700/50 shrink-0">
+                <input type="text" id="global-search" oninput="applyGlobalSearch()"
+                    placeholder="Búsqueda Global..."
+                    class="bg-slate-800/50 text-white border border-slate-700 rounded-xl px-10 py-2 text-[10px] w-full outline-none focus:border-blue-500 transition-all shadow-inner">
+                <i class="fas fa-search absolute left-10 top-1/2 -translate-y-1/2 text-slate-500 text-[9px]"></i>
+            </div>
+            
+            <!-- 5. BOTÓN RESET (LIMPIAR) -->
+            <div class="px-6 shrink-0">
+                <button onclick="resetFilters()"
+                    class="bg-slate-800 hover:bg-slate-700 text-white px-5 py-2 rounded-xl text-[10px] font-black uppercase transition-all active:scale-95 shadow-lg border border-slate-700">
+                    LIMPIAR FILTROS
+                </button>
             </div>
             
             <div class="flex-1 min-w-[50px]"></div>
@@ -806,6 +810,13 @@
                         <p class="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">Ver bitácora de entradas y salidas</p>
                     </div>
                 </button>
+                <button onclick="abrirModalFiscal()" class="btn-menu-opt">
+                    <i class="fas fa-file-invoice text-2xl text-purple-600"></i>
+                    <div class="text-left">
+                        <p class="font-black text-slate-800 uppercase">Datos Fiscales</p>
+                        <p class="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">Administrar RFC y facturación</p>
+                    </div>
+                </button>
             </div>
             <div class="mt-8 pt-8 border-t">
                 <label class="form-label">Bitácora de Observaciones</label>
@@ -1006,6 +1017,75 @@
             </div>
         </div>
     </div>
+
+    <!-- MODAL DATOS FISCALES -->
+    <div id="modal-fiscal" class="fixed inset-0 bg-slate-900/95 hidden z-[140] items-center justify-center p-6 backdrop-blur-md">
+        <div class="bg-white w-full max-w-2xl rounded-[3.5rem] shadow-2xl p-10 flex flex-col max-h-[90vh]">
+            <div class="flex justify-between items-center mb-8 border-b pb-6">
+                <div>
+                    <h3 class="text-4xl font-black italic uppercase text-purple-600">Datos Fiscales</h3>
+                    <p class="text-[10px] font-black text-slate-400 uppercase" id="fiscal-hab-label">HABITACIÓN --</p>
+                </div>
+                <button onclick="closeModal('modal-fiscal')" class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="flex-1 overflow-y-auto space-y-6 px-2">
+                <div class="grid grid-cols-2 gap-5">
+                    <div class="form-input-group">
+                        <label class="form-label">RFC</label>
+                        <input type="text" id="fiscal-rfc" class="form-input uppercase font-mono" placeholder="XAXX010101000">
+                    </div>
+                    <div class="form-input-group">
+                        <label class="form-label">Perfil Asociado</label>
+                        <select id="fiscal-perfil" class="form-input font-bold">
+                            <option value="">Seleccione Huésped...</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-input-group">
+                    <label class="form-label">Razón Social / Observaciones</label>
+                    <input type="text" id="fiscal-obs" class="form-input" placeholder="Nombre completo o Razón Social">
+                </div>
+
+                <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200">
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div class="form-input-group">
+                            <label class="form-label">Precio (Subtotal)</label>
+                            <input type="number" id="fiscal-precio" step="0.01" class="form-input text-xl" oninput="recalcularFiscal()">
+                        </div>
+                        <div class="form-input-group">
+                            <label class="form-label">IVA (16%)</label>
+                            <input type="number" id="fiscal-iva" step="0.01" class="form-input text-xl" oninput="recalcularFiscalTotal()">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="form-input-group">
+                            <label class="form-label">ISH (3%)</label>
+                            <input type="number" id="fiscal-ish" step="0.01" class="form-input text-xl" oninput="recalcularFiscalTotal()">
+                        </div>
+                        <div class="form-input-group">
+                            <label class="form-label">Total</label>
+                            <input type="number" id="fiscal-total" step="0.01" class="form-input text-2xl font-black text-purple-700 bg-purple-50" readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-input-group">
+                    <label class="form-label">Fecha de Comprobante</label>
+                    <input type="date" id="fiscal-fecha" class="form-input">
+                </div>
+            </div>
+
+            <div class="mt-8 pt-8 border-t flex space-x-4">
+                <button onclick="closeModal('modal-fiscal')" class="flex-1 px-8 py-4 rounded-2xl bg-slate-100 text-slate-500 font-black uppercase text-xs">Cancelar</button>
+                <button onclick="guardarDatosFiscales()" class="flex-[2] px-8 py-4 rounded-2xl bg-purple-600 text-white font-black uppercase text-xs shadow-xl shadow-purple-100 active:scale-95 transition-all">
+                    <i class="fas fa-save mr-2"></i>Guardar Información Fiscal
+                </button>
+            </div>
+        </div>
+    </div>
+
     <div id="modal-roomservice" class="fixed inset-0 bg-slate-900/90 hidden z-[200] items-center justify-center p-6 backdrop-blur-sm transition-all duration-300">
         <div class="bg-white w-full max-w-6xl rounded-[3rem] p-10 flex flex-col shadow-2xl relative max-h-[95vh]">
             <button onclick="closeModal('modal-roomservice')" class="absolute right-8 top-8 w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center text-slate-400 hover:text-slate-900 transition-all shadow-sm border border-slate-100"><i class="fas fa-times"></i></button>
@@ -1147,8 +1227,39 @@
         ];
 
         const activeFilters = {};
+        let currentSort = { col: 'id', order: 'asc' };
 
+        function toggleSort(colId) {
+            // No ordenar columnas de acciones
+            if (['btn_e', 'btn_s', 'opt', 'ticket'].includes(colId)) return;
 
+            if (currentSort.col === colId) {
+                currentSort.order = currentSort.order === 'asc' ? 'desc' : 'asc';
+            } else {
+                currentSort.col = colId;
+                currentSort.order = 'asc';
+            }
+            renderGrid();
+            updateSortUI();
+        }
+
+        function updateSortUI() {
+            const ths = document.querySelectorAll('#grid-header-row th');
+            gridCols.forEach((col, i) => {
+                const th = ths[i];
+                if (!th) return;
+                const iconCont = th.querySelector('.sort-icon-container');
+                if (iconCont) {
+                    if (currentSort.col === col.id) {
+                        iconCont.innerHTML = currentSort.order === 'asc' ? '<i class="fas fa-sort-up text-blue-500"></i>' : '<i class="fas fa-sort-down text-blue-500"></i>';
+                        th.classList.add('bg-blue-50/30');
+                    } else {
+                        iconCont.innerHTML = '<i class="fas fa-sort opacity-10"></i>';
+                        th.classList.remove('bg-blue-50/30');
+                    }
+                }
+            });
+        }
         async function initData() {
             console.log("🚀 Iniciando carga de datos... URL:", base_url);
             try {
@@ -1204,6 +1315,8 @@
                         fechaEntrada: f_ent,
                         horaSalida: h_sal,
                         fechaSalida: f_sal,
+                        rawEntrada: item.hora_entrada_1 ? new Date(item.hora_entrada_1).getTime() : 0,
+                        rawSalida: item.hora_salida_1 ? new Date(item.hora_salida_1).getTime() : 0,
                         shaded: !!item.sombreado,
                         adultos: parseInt(item.adultos) || 0,
                         ninos: parseInt(item.ninos) || 0,
@@ -1244,17 +1357,30 @@
             headerRow.innerHTML = '';
             gridCols.forEach(col => {
                 const th = document.createElement('th');
-                th.className = `w-[${col.w}] header-filter text-center font-black uppercase text-[10px] px-4 py-4 ${col.hidden ? 'hidden' : ''}`;
+                th.className = `w-[${col.w}] header-filter text-center font-black uppercase text-[10px] px-4 py-4 transition-colors hover:bg-slate-50 ${col.hidden ? 'hidden' : ''}`;
                 th.tabIndex = 0;
+                
                 let filterHtml = '';
                 if (col.filter === 'text') {
                     filterHtml = `<div class="filter-dropdown"><p class="text-[9px] font-black uppercase mb-2 text-blue-600">Buscar en ${col.label}</p><input type="text" class="bg-slate-100 p-2 rounded text-xs w-full font-bold" oninput="updateFilter('${col.id}', this.value)" placeholder="..." onclick="event.stopPropagation()"></div>`;
                 } else if (col.filter === 'select') {
                     filterHtml = `<div class="filter-dropdown"><p class="text-[9px] font-black uppercase mb-2 text-blue-600">Categoría</p><select class="bg-slate-100 p-2 rounded text-xs w-full font-bold" onchange="updateFilter('${col.id}', this.value)" onclick="event.stopPropagation()"><option value="">Todos</option>${getOptionsFor(col.id)}</select></div>`;
                 }
-                th.innerHTML = `<div class="flex items-center justify-center space-x-2"><span>${col.label}</span>${col.filter !== 'none' ? '<i class="fas fa-filter text-[8px] opacity-40"></i>' : ''}</div>${filterHtml}`;
+
+                // Header content with Sort icon
+                th.innerHTML = `
+                    <div class="flex items-center justify-center space-x-2 cursor-pointer" onclick="toggleSort('${col.id}')">
+                        <span class="sort-icon-container">
+                            <i class="fas fa-sort opacity-10"></i>
+                        </span>
+                        <span>${col.label}</span>
+                        ${col.filter !== 'none' ? '<i class="fas fa-filter text-[8px] opacity-40 ml-1"></i>' : ''}
+                    </div>
+                    ${filterHtml}
+                `;
                 headerRow.appendChild(th);
             });
+            updateSortUI();
         }
 
         function getOptionsFor(colId) {
@@ -1352,6 +1478,47 @@
                 const tipoFiltro = document.getElementById('filter-tipo-hab').value;
                 if (tipoFiltro && r.tipoHab !== tipoFiltro) return false;
                 return true;
+            });
+
+            // 🔥 Aplicar Ordenamiento
+            filtered.sort((a, b) => {
+                let valA, valB;
+                
+                switch(currentSort.col) {
+                    case 'id': valA = a.id; valB = b.id; break;
+                    case 'status': valA = a.status; valB = b.status; break;
+                    case 'stay': valA = a.tipoEstadia; valB = b.tipoEstadia; break;
+                    case 'days': valA = a.dias; valB = b.dias; break;
+                    case 'people': valA = a.ocupacion_total; valB = b.ocupacion_total; break;
+                    case 'reg': 
+                        const isCheckoutA = (a.estado_registro || '').toUpperCase().trim() === 'CHECKOUT';
+                        const isCheckinA = (a.estado_registro || '').toUpperCase().trim() === 'CHECKIN';
+                        valA = isCheckoutA ? 'CHECKOUT' : (isCheckinA ? 'VER REGISTRO' : 'REGISTRAR');
+                        
+                        const isCheckoutB = (b.estado_registro || '').toUpperCase().trim() === 'CHECKOUT';
+                        const isCheckinB = (b.estado_registro || '').toUpperCase().trim() === 'CHECKIN';
+                        valB = isCheckoutB ? 'CHECKOUT' : (isCheckinB ? 'VER REGISTRO' : 'REGISTRAR');
+                        break;
+                    case 'payment': valA = a.formaPago; valB = b.formaPago; break;
+                    case 'price': valA = a.precio; valB = b.precio; break;
+                    case 'h_ent': valA = a.rawEntrada; valB = b.rawEntrada; break;
+                    case 'h_sal': valA = a.rawSalida; valB = b.rawSalida; break;
+                    case 'titular': 
+                        const titA = a.huespedes.find(h => h.isTitular) || { nombre: '', apellido: '', apellidos: '' };
+                        valA = (titA.nombre + ' ' + (titA.apellido || titA.apellidos || '')).trim();
+                        const titB = b.huespedes.find(h => h.isTitular) || { nombre: '', apellido: '', apellidos: '' };
+                        valB = (titB.nombre + ' ' + (titB.apellido || titB.apellidos || '')).trim();
+                        break;
+                    case 'extra': valA = a.extra; valB = b.extra; break;
+                    default: valA = a[currentSort.col]; valB = b[currentSort.col];
+                }
+
+                if (typeof valA === 'string') valA = valA.toLowerCase();
+                if (typeof valB === 'string') valB = valB.toLowerCase();
+
+                if (valA < valB) return currentSort.order === 'asc' ? -1 : 1;
+                if (valA > valB) return currentSort.order === 'asc' ? 1 : -1;
+                return 0;
             });
 
             filtered.forEach(r => {
@@ -2737,15 +2904,15 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 const isSource = selectedMoveSourceIdx !== null && selectedMoveSourceIdx == idx;
                 const matchesSearch = !searchQuery || r.id.toLowerCase().includes(searchQuery) || r.tipoHab.toLowerCase().includes(searchQuery);
                 
-                const s = (r.status || '').toUpperCase().trim();
-                const isClean = s === 'X' || s === 'L' || s === 'DISPONIBLE' || s === 'LIMPIA';
+                // El estado de disponibilidad ahora viene del registro
+                const estadoReg = (r.estado_registro || '').toUpperCase().trim();
+                const isAvailable = estadoReg === 'DISPONIBLE';
                 
                 // CRÍTICO: Una habitación está ocupada SOLO si tiene huéspedes activos
-                // El registro_id en este sistema parece duplicar el habitacion_id cuando está vacía
                 const isOcupied = r.huespedes && Array.isArray(r.huespedes) && r.huespedes.length > 0;
 
-                // Solo mostrar si es el origen (para feedback) o si cumple el filtro de limpia y vacía
-                if (!isSource && matchesSearch && isClean && !isOcupied) {
+                // Solo mostrar si es el origen (para feedback) o si cumple el filtro de disponible y vacía
+                if (!isSource && matchesSearch && isAvailable && !isOcupied) {
                     _destRooms.push({ idx, r });
 
                     const isSelected = selectedMoveTargetIdx == idx;
@@ -2764,7 +2931,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                         <span class="text-2xl font-black text-slate-800 italic">${r.id}</span>
                         <div class="flex items-center space-x-1">
                             <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                            <span class="text-[9px] font-black uppercase text-emerald-600">Limpia / Disponible</span>
+                            <span class="text-[9px] font-black uppercase text-emerald-600">Disponible</span>
                         </div>
                         ${isSelected ? '<div class="absolute -top-2 -right-2 bg-emerald-500 text-white w-6 h-6 rounded-full flex items-center justify-center shadow-lg animate-bounce"><i class="fas fa-check text-[10px]"></i></div>' : ''}
                     `;
@@ -3052,6 +3219,106 @@ window.handleClientDBSearch = function(q, mode = 'form') {
 
         /* --- AUXILIARES --- */
         function openOptionsMenu(idx) { selectedRoomIdx = idx; document.getElementById('menu-opt-hab').textContent = `HABITACIÓN ${rooms[idx].id}`; document.getElementById('opt-obs-input').value = rooms[idx].obs || ''; document.getElementById('modal-options-menu').classList.add('modal-active'); }
+        
+        /* --- DATOS FISCALES --- */
+        async function abrirModalFiscal() {
+            closeModal('modal-options-menu');
+            const r = rooms[selectedRoomIdx];
+            if (!r || !r.registro_id) return showToast("SE REQUIERE UN REGISTRO ACTIVO");
+
+            document.getElementById('fiscal-hab-label').textContent = `HABITACIÓN ${r.id}`;
+            document.getElementById('fiscal-rfc').value = '';
+            document.getElementById('fiscal-obs').value = '';
+            document.getElementById('fiscal-precio').value = r.precio_reg || r.precio_base;
+            document.getElementById('fiscal-iva').value = r.iva_reg || (parseFloat(r.precio_reg || r.precio_base) * (window.TASA_IVA / 100)).toFixed(2);
+            document.getElementById('fiscal-ish').value = r.ish_reg || (parseFloat(r.precio_reg || r.precio_base) * (window.TASA_ISH / 100)).toFixed(2);
+            
+            recalcularFiscalTotal();
+
+            document.getElementById('fiscal-fecha').value = new Date().toISOString().split('T')[0];
+
+            // Cargar perfiles (huespedes actuales)
+            const selectPerfil = document.getElementById('fiscal-perfil');
+            selectPerfil.innerHTML = '<option value="">Seleccione Huésped...</option>';
+            if (r.huespedes) {
+                r.huespedes.forEach(h => {
+                    selectPerfil.innerHTML += `<option value="${h.id}">${h.nombre} ${h.apellido || h.apellidos || ''}</option>`;
+                });
+            }
+
+            try {
+                const response = await fetch(base_url + "reservacion/obtener-fiscal/" + r.registro_id);
+                const res = await response.json();
+                if (res.ok && res.data) {
+                    const d = res.data;
+                    document.getElementById('fiscal-rfc').value = d.rfc || '';
+                    document.getElementById('fiscal-perfil').value = d.id_perfil || '';
+                    document.getElementById('fiscal-obs').value = d.observaciones || '';
+                    document.getElementById('fiscal-precio').value = d.precio;
+                    document.getElementById('fiscal-iva').value = d.iva;
+                    document.getElementById('fiscal-ish').value = d.ish;
+                    document.getElementById('fiscal-total').value = d.total;
+                    document.getElementById('fiscal-fecha').value = d.fecha;
+                }
+            } catch (e) { console.error("Error cargando datos fiscales", e); }
+
+            document.getElementById('modal-fiscal').classList.remove('hidden');
+            document.getElementById('modal-fiscal').classList.add('flex');
+        }
+
+        function recalcularFiscal() {
+            const precio = parseFloat(document.getElementById('fiscal-precio').value) || 0;
+            const iva = precio * (window.TASA_IVA / 100);
+            const ish = precio * (window.TASA_ISH / 100);
+            document.getElementById('fiscal-iva').value = iva.toFixed(2);
+            document.getElementById('fiscal-ish').value = ish.toFixed(2);
+            recalcularFiscalTotal();
+        }
+
+        function recalcularFiscalTotal() {
+            const precio = parseFloat(document.getElementById('fiscal-precio').value) || 0;
+            const iva = parseFloat(document.getElementById('fiscal-iva').value) || 0;
+            const ish = parseFloat(document.getElementById('fiscal-ish').value) || 0;
+            document.getElementById('fiscal-total').value = (precio + iva + ish).toFixed(2);
+        }
+
+        async function guardarDatosFiscales() {
+            const r = rooms[selectedRoomIdx];
+            const payload = {
+                registro_id: r.registro_id,
+                rfc: document.getElementById('fiscal-rfc').value.toUpperCase(),
+                id_perfil: document.getElementById('fiscal-perfil').value,
+                observaciones: document.getElementById('fiscal-obs').value,
+                precio: document.getElementById('fiscal-precio').value,
+                iva: document.getElementById('fiscal-iva').value,
+                ish: document.getElementById('fiscal-ish').value,
+                total: document.getElementById('fiscal-total').value,
+                fecha: document.getElementById('fiscal-fecha').value
+            };
+
+            if (!payload.rfc) return showToast("RFC REQUERIDO");
+
+            try {
+                showToast("Guardando datos fiscales...");
+                const response = await fetch(base_url + "reservacion/guardar-fiscal", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                });
+                const res = await response.json();
+                if (res.ok) {
+                    showToast("DATOS FISCALES GUARDADOS");
+                    closeModal('modal-fiscal');
+                    initData();
+                } else {
+                    showToast("Error: " + res.msg);
+                }
+            } catch (e) {
+                console.error(e);
+                showToast("Error de conexión");
+            }
+        }
+
         function updateRoomObs(v) { rooms[selectedRoomIdx].obs = v; }
         function showView(v) { 
             const viewWork = document.getElementById('view-work');
@@ -3429,11 +3696,34 @@ function renderSelectEstadia(valorActual, realIdx, isBlocked = false) {
                 cargarTiposEstadia(),
                 cargarTiposID(),
                 cargarPisos(),
-                cargarTiposHabitacion()
+                cargarTiposHabitacion(),
+                cargarImpuestos()
             ]);
             initData();
             setInterval(() => document.getElementById('clock').textContent = new Date().toLocaleTimeString(), 1000);
         };
+
+        async function cargarImpuestos() {
+            try {
+                const res = await fetch(base_url + 'reservacion/obtenerImpuestos');
+                const data = await res.json();
+
+                window.TASA_IVA = 16; // Default
+                window.TASA_ISH = 3;  // Default
+
+                let iva = data.find(i => i.nombre === 'IVA');
+                if (iva) window.TASA_IVA = parseFloat(iva.tasa);
+
+                let ish = data.find(i => i.nombre === 'ISH');
+                if (ish) window.TASA_ISH = parseFloat(ish.tasa);
+                
+                console.log("💎 Tasas cargadas:", window.TASA_IVA, window.TASA_ISH);
+            } catch (e) {
+                console.error("Error cargando impuestos:", e);
+                window.TASA_IVA = 16;
+                window.TASA_ISH = 3;
+            }
+        }
 
         async function cargarTiposHabitacion() {
             try {

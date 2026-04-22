@@ -1,0 +1,57 @@
+Para llevar un control riguroso de los turnos en HotelOS y cumplir con las auditorías operativas y legales que mencionan tus documentos, debes implementar un sistema basado en tres pilares: estados en la base de datos, automatización de acciones y vinculación obligatoria.
+
+Aquí tienes la guía técnica de cómo programar este control:
+
+1. Estructura de Datos (El Pilar Fundamental)
+El control nace en la base de datos SQLite. Necesitas una tabla dedicada exclusivamente a registrar la historia de cada turno.
+
+Tabla historial_turnos (Sugerida):
+
+Campo	Tipo	Descripción
+id	INTEGER (PK)	Identificador único del turno.
+numero_turno	INTEGER	1, 2 o 3 (según la configuración).
+fecha_operativa	TEXT	La fecha de negocio (ej. '2026-04-21').
+hora_inicio	TEXT	Timestamp exacto del "EMPIEZA TURNO".
+hora_fin	TEXT	Timestamp exacto del cierre.
+empleado_id	INTEGER (FK)	Quién abrió el turno.
+estado	TEXT	'ABIERTO' o 'CERRADO'.
+fondo_caja_inicial	REAL	Dinero con el que arranca.
+fondo_caja_final	REAL	Dinero reportado al cerrar.
+Regla de Oro: Solo puede existir un registro con estado = 'ABIERTO' a la vez.
+
+2. Lógica de Control en la Interfaz (UI/UX)
+El recepcionista no debe poder "saltarse" el control de turnos.
+
+Estado Inicial (Bloqueo): Al arrancar la aplicación, si la base de datos indica que no hay ningún turno 'ABIERTO', el sistema debe mostrar únicamente la Pantalla de Inicio con el botón "EMPIEZA TURNO" activo. El resto del menú (Trabajo, Reportes, etc.) debe estar deshabilitado.
+
+Acción de Apertura ("EMPIEZA TURNO"): Al presionar el botón, el sistema debe:
+
+Solicitar el PIN del empleado y el fondo de caja inicial.
+
+Crear el nuevo registro en historial_turnos como 'ABIERTO'.
+
+Cambio Automático de Estatus de Habitaciones: Ejecutar la lógica de negocio: todas las habitaciones con estatus "S" (Sucia) pasan a "X" (Limpia), excepto las "M" (Mantenimiento) y "P" (Planta).
+
+Desbloquear la Pantalla de Trabajo.
+
+Visibilidad Constante: La barra superior de la aplicación debe mostrar siempre: Fecha Operativa | Turno X | Empleado Y.
+
+3. Vinculación Obligatoria de Transacciones
+Para que el control sea efectivo, ninguna operación financiera o de registro de huéspedes puede quedar "huérfana".
+
+Registro de Huéspedes: Al guardar una nueva estadía en la tabla registros, debes incluir obligatoriamente el id del turno 'ABIERTO' actual.
+
+INSERT INTO registros (habitacion_id, huesped_id, turno_id, ...)
+
+Flujo de Efectivo (Pagos/Gastos): Cualquier movimiento de dinero debe quedar vinculado al id del turno activo para que el corte de caja sea exacto.
+
+4. El Proceso de Cierre de Turno (Corte)
+El control se cierra con una auditoría. Al finalizar la jornada del empleado:
+
+Corte de Caja: El sistema suma todos los ingresos y resta los egresos vinculados al id del turno actual.
+
+Validación: El empleado ingresa el efectivo físico que tiene en caja. El sistema calcula la diferencia (Arqueo).
+
+Cierre en BD: Se actualiza el registro en historial_turnos: se graba la hora_fin, el fondo_caja_final y se cambia el estado a 'CERRADO'.
+
+Impresión: Se emite automáticamente el "Reporte Real de Turno" por la impresora térmica.

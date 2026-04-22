@@ -1,0 +1,84 @@
+Esta es la fase culminante de la integración de datos. Como Ingeniero de Software, sabes que tener tablas perfectas (registros y registro_room_service) con el campo turno_id es inútil si no sabemos explotar esa información.
+
+Aquí tienes la guía técnica completa para generar el "Reporte Real de Turno" (Ticket Térmico) exigido en la documentación de HotelOS, incluyendo el proceso lógico, las consultas SQL y el prompt para que la IA te escriba el código final.
+
+Fase 1: Pasos Lógicos para Generar el Reporte
+El reporte no se genera "mágicamente"; requiere un flujo de trabajo en tu backend de Node.js (Electron) antes de enviarlo a la impresora térmica.
+
+Identificar el Turno a Cerrar: Obtener el id del turno que tiene estado = 'ABIERTO'.
+
+Ejecutar Consultas de Sumarización (Queries): Lanzar las consultas SQL (ver Fase 2) para calcular ocupación, ingresos por hospedaje, ingresos por room service (pagado en efectivo) y egresos.
+
+Calcular el Arqueo de Caja:
+
+Efectivo_Calculado = Fondo_Fijo_Inicial + Ingresos_Hospedaje_Efectivo + Ingresos_RS_Efectivo - Egresos_Efectivo.
+
+Solicitar Efectivo Real: Pedir al recepcionista que ingrese cuánto dinero físico tiene.
+
+Actualizar Base de Datos (Cierre): Guardar hora_cierre, efectivo_real, diferencia_arqueo y cambiar estado a 'CERRADO'.
+
+Formatear e Imprimir (ESC/POS): Tomar todos los datos calculados, armar el diseño del ticket y enviarlo a la impresora térmica.
+
+Fase 2: Queries SQL (El Motor del Reporte)
+Estas son las consultas críticas que debes ejecutar en SQLite para obtener los números precisos del turno.
+
+1. Resumen de Ocupación del Turno
+SQL
+SELECT 
+    COUNT(CASE WHEN estado_registro = 'CHECKIN' THEN 1 END) as total_checkins,
+    COUNT(CASE WHEN estado_registro = 'CHECKOUT' THEN 1 END) as total_checkouts,
+    SUM(adultos + niños) as total_personas_registradas
+FROM registros
+WHERE turno_id = ? AND incluir_en_reporte = 1;
+2. Ingresos por Hospedaje desglosados (Crucial para Arqueo)
+SQL
+SELECT 
+    forma_pago_id, -- Necesitas mapear esto (1=Efectivo, 2=Tarjeta, etc.)
+    SUM(total) as total_ingresado,
+    SUM(iva) as total_iva,
+    SUM(ish) as total_ish
+FROM registros
+WHERE turno_id = ? AND incluir_en_reporte = 1 AND estado_registro != 'CANCELADO'
+GROUP BY forma_pago_id;
+(Nota: Para el arqueo de efectivo, solo usas la suma donde forma_pago_id sea el de 'Efectivo').
+
+3. Ingresos por Room Service (Detalle de Línea)
+(Asumiendo que observaciones indica si se pagó en efectivo o se cargó a la cuenta)
+
+SQL
+SELECT 
+    SUM(subtotal) as total_rs_efectivo
+FROM registro_room_service
+WHERE turno_id = ? AND estado_cargo = 'ENTREGADO' AND observaciones LIKE '%PAGO EFECTIVO%';
+Fase 3: El Prompt Structural para la IA
+Usa este prompt en el chat de Antigravity (o en tu chat de IA preferido) para que escriba la función de JavaScript que unifique todo lo anterior.
+
+Copia y pega esto:
+
+"Actúa como un Senior backend developer experto en Node.js, Electron y SQLite. Estoy desarrollando HotelOS (un PMS portátil).
+
+Necesito que crees una función en JavaScript (generarReporteCierreTurno) que calcule los datos para el 'Reporte Real de Turno' (ticket térmico) y cierre el turno en la base de datos SQLite (usando la librería better-sqlite3).
+
+Contexto y Requerimientos Técnicos:
+
+Tablas de Input: Tengo las tablas historial_turnos (para saber el fondo inicial y estado), registros (para hospedaje) y registro_room_service (para cargos extra). Las dos últimas tienen el campo turno_id perfectamente vinculado.
+
+Lógica del Reporte (Output): La función debe calcular:
+
+Ocupación: Total Check-ins y Check-outs del turno.
+
+Finanzas: Total Ingresos Hospedaje (separando Efectivo y Tarjeta), Total IVA, Total ISH.
+
+Room Service: Total RS pagado en efectivo.
+
+Arqueo: Calcular efectivo_esperado (Fondo + Ingresos_Efectivo_Hospedaje + RS_Efectivo - Egresos).
+
+Acciones en BD (Transaccional): La función debe recibir el id del turno a cerrar y el efectivo_real contado por el empleado. Debe actualizar historial_turnos grabando la hora_cierre, efectivo_real_entregado, diferencia_arqueo y cambiar estado a 'CERRADO'.
+
+Formato de Salida: No necesito el diseño ESC/POS todavía. Necesito que la función devuelva un objeto JSON limpio y estructurado con todos los datos calculados, listo para ser enviado a una función de impresión térmica.
+
+Dame un código limpio, modular y con manejo de errores (try/catch) robusto."
+
+el reporte debe se excel y tambien pdf con un diseño elegante y profesional.
+
+asimismo quiero que generes el diseño de un ticket termico

@@ -256,6 +256,12 @@
     $rol = $session->get('rol');
     $username = $session->get('username');
     $fullName = $session->get('nombre') . ' ' . $session->get('apellido');
+
+    // Comprobar si el turno está abierto
+    $db = \Config\Database::connect();
+    $turnoAbierto = $db->table('turnos_operacion')->where('estado', 'ABIERTO')->get()->getRowArray();
+    $isLocked = !$turnoAbierto;
+    $lockStyle = $isLocked ? 'style="pointer-events: none; opacity: 0.4;"' : '';
     ?>
 
     <div class="tabs">
@@ -268,32 +274,32 @@
         <?php endif; ?>
 
         <?php if ($rol == 1 || $rol == 2): ?>
-        <a href="<?= base_url('trabajo') ?>" class="tab <?= $uri->getSegment(1)=='trabajo' ? 'active':'' ?>">
+        <a <?= $lockStyle ?> href="<?= base_url('trabajo') ?>" class="tab <?= $uri->getSegment(1)=='trabajo' ? 'active':'' ?>">
             📋 Trabajo
         </a>
         <?php endif; ?>
 
         <?php if ($rol == 1 || $rol == 3): ?>
-        <a href="<?= base_url('reportes') ?>" class="tab <?= $uri->getSegment(1)=='reportes' ? 'active':'' ?>">
+        <a <?= $lockStyle ?> href="<?= base_url('reportes') ?>" class="tab <?= $uri->getSegment(1)=='reportes' ? 'active':'' ?>">
             📊 Reportes
         </a>
         <?php endif; ?>
 
         <?php if ($rol == 1): ?>
-        <a href="<?= base_url('sistema') ?>" class="tab <?= $uri->getSegment(1)=='sistema' ? 'active':'' ?>">
+        <a <?= $lockStyle ?> href="<?= base_url('sistema') ?>" class="tab <?= $uri->getSegment(1)=='sistema' ? 'active':'' ?>">
             ⚙️ Editar Sistema
         </a>
         <?php endif; ?>
 
         <?php if ($rol == 1 || $rol == 2): ?>
         <!-- LISTA OPERATIVA -->
-        <a href="<?= base_url('pasajeros') ?>"
+        <a <?= $lockStyle ?> href="<?= base_url('pasajeros') ?>"
             class="tab <?= $uri->getSegment(1)=='pasajeros' && $uri->getSegment(2)=='' ? 'active':'' ?>">
             🛂 Lista de Pasajeros
         </a>
 
         <!-- CATALOGO -->
-        <a href="<?= base_url('pasajeros/catalogo') ?>"
+        <a <?= $lockStyle ?> href="<?= base_url('pasajeros/catalogo') ?>"
             class="tab <?= $uri->getSegment(1)=='pasajeros' && $uri->getSegment(2)=='catalogo' ? 'active':'' ?>">
             👥 Catálogo de Clientes
         </a>

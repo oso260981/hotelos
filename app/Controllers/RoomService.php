@@ -148,6 +148,14 @@ class RoomService extends ResourceController
 
             $totalPedido = 0;
 
+            // 🔥 Obtener el turno actual abierto
+            $turno = $db->table('turnos_operacion')
+                ->where('estado', 'ABIERTO')
+                ->get()
+                ->getRowArray();
+            
+            $turnoIdReal = $turno ? $turno['id'] : null;
+
             foreach ($items as $item) {
                 $precio = floatval($item['precio'] ?? 0);
                 $cantidad = intval($item['cantidad'] ?? 1);
@@ -165,6 +173,7 @@ class RoomService extends ResourceController
                     'hora_cargo'       => date('Y-m-d H:i:s'),
                     'hora_entrega'     => date('Y-m-d H:i:s'),
                     'usuario_id'       => $usuarioId,
+                    'turno_id'         => $turnoIdReal,
                     'observaciones'    => $item['observaciones'] ?? ($isVentaIndependiente ? 'VENTA INDEPENDIENTE' : 'CARGO A HABITACIÓN'),
                     'created_at'       => date('Y-m-d H:i:s')
                 ]);
