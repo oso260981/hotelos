@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrontDesk Elite PMS | Gestión Administrativa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #0f172a; 
+            color: #f8fafc; 
+            height: 100vh; 
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dashboard-bg {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at top left, #1e293b, #0f172a);
+            z-index: -1;
+        }
+
+        /* MASTER LAYOUT */
+        .admin-modal {
+            width: 98vw;
+            height: 95vh;
+            max-width: 1500px;
+            background: #ffffff;
+            border-radius: 28px;
+            display: grid;
+            grid-template-columns: 280px 1fr 380px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+            color: #0f172a;
+        }
+
+        /* SIDEBAR NAV */
+        .admin-sidebar {
+            background-color: #f8fafc;
+            border-right: 1px solid #e2e8f0;
+            padding: 32px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .nav-tab {
+            padding: 14px 18px;
+            border-radius: 14px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .nav-tab.active { background: #4f46e5; color: #ffffff; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3); }
+        .nav-tab:hover:not(.active) { background: #f1f5f9; color: #4f46e5; }
+
+        /* CONTENT */
+        .admin-content { padding: 32px; overflow-y: auto; background: #ffffff; }
+        
+        /* SUMMARY SIDEBAR (AUDIT) */
+        .admin-audit {
+            background-color: #0f172a;
+            color: white;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid #1e293b;
+        }
+
+        /* REUSABLE COMPONENTS */
+        .pms-label { font-size: 9px; font-weight: 800; color: #64748b; text-transform: uppercase; margin-bottom: 5px; display: block; letter-spacing: 0.05em; }
+        .pms-badge { font-size: 9px; font-weight: 900; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; }
+        .badge-success { background: #ecfdf5; color: #059669; }
+        .badge-warning { background: #fffbeb; color: #d97706; }
+        .badge-danger { background: #fef2f2; color: #dc2626; }
+
+        .data-card { background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 18px; padding: 20px; transition: all 0.2s; }
+        .data-card:hover { border-color: #4f46e5; }
+
+        .pms-input { width: 100%; padding: 10px 14px; background-color: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 10px; outline: none; font-size: 12px; font-weight: 600; color: #1e293b; transition: all 0.2s; }
+        .pms-input:focus { border-color: #4f46e5; background-color: white; box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1); }
+
+        /* TABLES */
+        table { width: 100%; font-size: 12px; }
+        th { text-align: left; padding: 12px; color: #64748b; font-weight: 800; text-transform: uppercase; font-size: 10px; border-bottom: 2px solid #f1f5f9; }
+        td { padding: 14px 12px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
+
+        .btn-action { padding: 8px 12px; border-radius: 8px; font-size: 10px; font-weight: 800; text-transform: uppercase; transition: all 0.2s; cursor: pointer; }
+        .btn-primary { background: #4f46e5; color: white; border: none; }
+        .btn-secondary { background: #f1f5f9; color: #64748b; border: none; }
+
+        .custom-scroll::-webkit-scrollbar { width: 4px; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+
+        /* MODALS */
+        .modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(4px); z-index: 100; display: flex; align-items: center; justify-content: center; visibility: hidden; opacity: 0; transition: all 0.3s; }
+        .modal-overlay.active { visibility: visible; opacity: 1; }
+        .modal-box { background: white; width: 90%; max-width: 700px; border-radius: 24px; overflow: hidden; transform: translateY(20px); transition: all 0.3s; }
+        .modal-overlay.active .modal-box { transform: translateY(0); }
+
+        /* PAX PHOTOS */
+        .pax-photo { width: 45px; height: 45px; border-radius: 12px; object-fit: cover; border: 2px solid white; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+
+        /* MENU ROOM SERVICE */
+        .menu-item { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 12px; transition: all 0.2s; display: flex; align-items: center; gap: 12px; cursor: pointer; }
+        .menu-item:hover { border-color: #4f46e5; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .menu-icon { width: 40px; height: 40px; border-radius: 12px; background: #f5f3ff; color: #4f46e5; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+        .fade-in { animation: fadeIn 0.3s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        .pay-method { border: 2px solid #f1f5f9; padding: 16px; border-radius: 16px; cursor: pointer; text-align: center; transition: all 0.2s; }
+        .pay-method:hover { border-color: #4f46e5; background: #f5f3ff; }
+        .pay-method.selected { border-color: #4f46e5; background: #4f46e5; color: white; }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-bg"></div>
+
+    <div class="admin-modal animate-fade-in">
+        
+        <!-- SIDEBAR DE NAVEGACIÓN -->
+        <aside class="admin-sidebar">
+            <div class="mb-8 px-2">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-indigo-600 text-white w-10 h-10 rounded-xl flex items-center justify-center text-lg shadow-lg"><i class="fas fa-id-card-alt"></i></div>
+                    <div>
+                        <p class="pms-label mb-0">Habitación</p>
+                        <h2 class="font-black text-xl tracking-tighter" id="sidebar-room">Suite #204</h2>
+                    </div>
+                </div>
+                <span class="pms-badge badge-success"><i class="fas fa-check-circle mr-1"></i> Check-in Activo</span>
+            </div>
+
+            <nav class="flex-1 overflow-y-auto custom-scroll pr-1">
+                <div class="nav-tab active" id="tab-resumen" onclick="switchSection('resumen')"><i class="fas fa-th-large"></i> Resumen de Folio</div>
+                <div class="nav-tab" id="tab-cargos" onclick="switchSection('cargos')"><i class="fas fa-plus-circle"></i> Cargos & Consumos</div>
+                <div class="nav-tab" id="tab-pagos" onclick="switchSection('pagos')"><i class="fas fa-wallet"></i> Pagos & Abonos</div>
+                <div class="nav-tab" id="tab-room_move" onclick="switchSection('room_move')"><i class="fas fa-exchange-alt"></i> Cambio de Unidad</div>
+                <div class="nav-tab" id="tab-room_service" onclick="switchSection('room_service')"><i class="fas fa-utensils"></i> Room Service</div>
+                <div class="nav-tab" id="tab-bitacora" onclick="switchSection('bitacora')"><i class="fas fa-history"></i> Bitácora de Cambios</div>
+            </nav>
+
+            <div class="mt-auto space-y-3 pt-4 border-t">
+                <button class="w-full py-4 bg-slate-900 text-white rounded-2xl font-black uppercase text-[10px] tracking-widest hover:bg-black transition-all">
+                    <i class="fas fa-sign-out-alt mr-2 text-red-400"></i> Procesar Check-out
+                </button>
+            </div>
+        </aside>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="admin-content custom-scroll">
+            
+            <!-- SECCIÓN: RESUMEN -->
+            <div id="sec-resumen" class="space-y-8 fade-in">
+                <div class="flex justify-between items-end">
+                    <div class="flex items-center gap-6">
+                        <div class="relative group cursor-pointer" onclick="toggleModal('modal-edit-profile', true)">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop" id="main-guest-img" class="w-20 h-20 rounded-2xl object-cover border-4 border-slate-50 shadow-xl">
+                            <div class="absolute inset-0 bg-indigo-600/20 opacity-0 group-hover:opacity-100 rounded-2xl flex items-center justify-center transition-all">
+                                <i class="fas fa-camera text-white"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h1 class="text-3xl font-black tracking-tighter" id="display-name">Israel de los Santos</h1>
+                            <p class="text-slate-400 font-medium">Folio: <span class="text-indigo-600 font-bold">ADM-992210</span> | Registro: 21 Mar 2026</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="toggleModal('modal-edit-profile', true)" class="btn-action btn-secondary"><i class="fas fa-edit mr-1"></i> Editar Perfil</button>
+                        <button class="btn-action btn-secondary"><i class="fas fa-print mr-1"></i> Estado de Cuenta</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-6">
+                    <div class="data-card">
+                        <p class="pms-label">Estancia Actual</p>
+                        <div class="flex justify-between items-center mt-2">
+                            <div><p class="text-xs font-bold text-slate-400">Entrada</p><p class="font-black text-sm">21/03/26</p></div>
+                            <div class="text-indigo-200"><i class="fas fa-arrow-right"></i></div>
+                            <div class="text-right"><p class="text-xs font-bold text-slate-400">Salida</p><p class="font-black text-sm">24/03/26</p></div>
+                        </div>
+                    </div>
+                    <!-- INFO DE PAX CON FOTOS -->
+                    <div class="data-card group cursor-pointer" onclick="toggleModal('modal-pax-details', true)">
+                        <div class="flex justify-between items-center">
+                            <p class="pms-label">Información de Pax</p>
+                            <i class="fas fa-chevron-right text-[10px] text-slate-300 group-hover:text-indigo-600 transition-all"></i>
+                        </div>
+                        <div class="flex items-center gap-3 mt-2">
+                            <div class="flex -space-x-3">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" class="pax-photo">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" class="pax-photo">
+                                <img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=100&h=100&fit=crop" class="pax-photo">
+                            </div>
+                            <p class="text-xs font-bold ml-2">2 Adultos, 1 Niño</p>
+                        </div>
+                    </div>
+                    <div class="data-card">
+                        <p class="pms-label">Vehículo & Acceso</p>
+                        <div class="mt-2 flex items-center gap-3">
+                            <i class="fas fa-car text-slate-300 text-lg"></i>
+                            <div><p class="text-xs font-black" id="display-plates">PLACA: ABC-123-X</p><p class="text-[9px] text-slate-400 uppercase font-bold">Lote: B-04</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-black text-lg uppercase tracking-tight">Últimos Consumos Registrados</h3>
+                        <button onclick="switchSection('cargos')" class="text-indigo-600 font-black text-[10px] uppercase hover:underline">+ Añadir Cargo Manual</button>
+                    </div>
+                    <div class="border rounded-2xl overflow-hidden shadow-sm">
+                        <table id="table-consumos">
+                            <thead>
+                                <tr>
+                                    <th>Fecha / Hora</th>
+                                    <th>Concepto / Descripción</th>
+                                    <th>Cajero / Usuario</th>
+                                    <th>Estado</th>
+                                    <th class="text-right">Monto</th>
+                                </tr>
+                            </thead>
+                            <tbody><!-- Dinámico --></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN: ALTA DE CARGOS -->
+            <div id="sec-cargos" class="hidden space-y-8 fade-in">
+                <h3 class="font-black text-lg uppercase tracking-tight border-b pb-4">Alta de Cargos Manuales</h3>
+                <div class="grid grid-cols-12 gap-6 bg-slate-50 p-8 rounded-2xl border border-slate-100">
+                    <div class="col-span-6">
+                        <label class="pms-label">Concepto de Cargo</label>
+                        <input type="text" id="cargo-concepto" class="pms-input" placeholder="Ej: Lavandería Express, Daños en mobiliario">
+                    </div>
+                    <div class="col-span-3">
+                        <label class="pms-label">Departamento</label>
+                        <select id="cargo-depto" class="pms-input">
+                            <option>RECEPCIÓN</option>
+                            <option>LAVANDERÍA</option>
+                            <option>MINIBAR</option>
+                            <option>ESTACIONAMIENTO</option>
+                        </select>
+                    </div>
+                    <div class="col-span-3">
+                        <label class="pms-label">Monto ($)</label>
+                        <input type="number" id="cargo-monto" class="pms-input" placeholder="0.00">
+                    </div>
+                    <div class="col-span-12 flex justify-end">
+                        <button onclick="altaCargoManual()" class="btn-action btn-primary px-8 py-3">Aplicar Cargo al Folio</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN: ROOM SERVICE -->
+            <div id="sec-room_service" class="hidden space-y-8 fade-in">
+                <div class="flex justify-between items-center border-b pb-4">
+                    <h3 class="font-black text-lg uppercase tracking-tight">Menú de Room Service</h3>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="menu-item" onclick="addRoomService('Hamburguesa Elite', 320)">
+                        <div class="menu-icon"><i class="fas fa-hamburger"></i></div>
+                        <div class="flex-1">
+                            <p class="text-sm font-black">Hamburguesa Elite</p>
+                            <p class="text-[10px] text-slate-400 uppercase font-bold">Res Angus + Papas Trufadas</p>
+                        </div>
+                        <p class="font-black text-indigo-600 text-sm">$320.00</p>
+                    </div>
+                    <div class="menu-item" onclick="addRoomService('Pizza Margarita Pro', 280)">
+                        <div class="menu-icon"><i class="fas fa-pizza-slice"></i></div>
+                        <div class="flex-1">
+                            <p class="text-sm font-black">Pizza Margarita Pro</p>
+                            <p class="text-[10px] text-slate-400 uppercase font-bold">Horno de leña</p>
+                        </div>
+                        <p class="font-black text-indigo-600 text-sm">$280.00</p>
+                    </div>
+                    <div class="menu-item" onclick="addRoomService('Vino Tinto Casa', 420)">
+                        <div class="menu-icon"><i class="fas fa-wine-bottle"></i></div>
+                        <div class="flex-1">
+                            <p class="text-sm font-black">Vino Tinto Casa</p>
+                            <p class="text-[10px] text-slate-400 uppercase font-bold">Copa selección</p>
+                        </div>
+                        <p class="font-black text-indigo-600 text-sm">$420.00</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN: ROOM MOVE -->
+            <div id="sec-room_move" class="hidden space-y-8 fade-in">
+                <div class="bg-amber-50 border border-amber-200 p-6 rounded-2xl">
+                    <h4 class="font-black text-amber-900 text-sm uppercase">Proceso de Room Move</h4>
+                    <p class="text-xs text-amber-700">Seleccione la nueva unidad disponible para transferir folio.</p>
+                </div>
+                <div class="grid grid-cols-3 gap-3">
+                    <button class="data-card text-center hover:bg-white active:scale-95" onclick="processRoomMove('105')"><p class="font-black">#105</p><p class="text-[8px] uppercase">Doble</p></button>
+                    <button class="data-card text-center border-indigo-600 bg-indigo-50" onclick="processRoomMove('210')"><p class="font-black">#210</p><p class="text-[8px] uppercase">Master</p></button>
+                </div>
+            </div>
+        </main>
+
+        <!-- SIDEBAR DE AUDITORÍA (DERECHA) -->
+        <aside class="admin-audit">
+            <div class="text-center mb-8 border-b border-slate-800 pb-6">
+                <p class="text-[9px] font-black text-slate-500 uppercase tracking-[0.5em] mb-2 italic">Estado de Cuenta Actual</p>
+                <h4 class="text-indigo-400 font-mono text-base font-bold tracking-widest uppercase" id="audit-guest-name">Israel de los Santos</h4>
+            </div>
+
+            <div class="flex-1 space-y-6 overflow-y-auto custom-scroll pr-2">
+                <div class="flex justify-between items-center text-xs"><span class="text-slate-500 font-bold">Hospedaje</span><span class="font-mono" id="audit-hospedaje">$0.00</span></div>
+                <div class="flex justify-between items-center text-xs"><span class="text-slate-500 font-bold">Consumos</span><span class="font-mono" id="audit-extras">$0.00</span></div>
+                <div class="flex justify-between items-center text-xs"><span class="text-slate-500 font-bold">Impuestos (19%)</span><span class="font-mono" id="audit-taxes">$0.00</span></div>
+                <div class="border-t border-slate-700 pt-8 mt-4 flex flex-col items-end">
+                    <span class="text-[10px] font-black text-slate-500 uppercase mb-2">Total Bruto</span>
+                    <span class="text-4xl font-black text-white font-mono tracking-tighter" id="total_acumulado">$0.00</span>
+                </div>
+                <div class="pt-8 space-y-4">
+                    <div class="flex justify-between items-center p-4 bg-emerald-500/10 rounded-2xl border border-emerald-500/20">
+                        <span class="text-[10px] font-black uppercase text-emerald-500">Pagos</span>
+                        <span class="font-mono font-black text-emerald-400 text-lg" id="sidebar-total-pagos">-$0.00</span>
+                    </div>
+                    <div class="flex flex-col p-8 bg-indigo-500/10 rounded-[40px] border-2 border-indigo-500/20 text-center shadow-inner">
+                        <span class="text-[10px] font-black uppercase text-indigo-300 mb-2">Neto x Liquidar</span>
+                        <span class="text-5xl font-black text-emerald-400 font-mono tracking-tighter" id="saldo_final">$0.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-6"><p class="text-[8px] text-center text-slate-500 uppercase font-bold">PMS Sync: <span id="sync-time">---</span></p></div>
+        </aside>
+    </div>
+
+    <!-- MODAL: EDITAR PERFIL -->
+    <div id="modal-edit-profile" class="modal-overlay" onclick="toggleModal('modal-edit-profile', false)">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <div class="p-8 border-b flex justify-between items-center">
+                <h3 class="text-xl font-black tracking-tighter uppercase">Editar Perfil de Huésped</h3>
+                <button onclick="toggleModal('modal-edit-profile', false)" class="text-slate-400 hover:text-red-500"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="p-8 grid grid-cols-2 gap-6 bg-slate-50/50">
+                <div class="col-span-2">
+                    <label class="pms-label">Nombre del Titular</label>
+                    <input type="text" id="edit-name" class="pms-input">
+                </div>
+                <div>
+                    <label class="pms-label">Placas de Vehículo</label>
+                    <input type="text" id="edit-plates" class="pms-input">
+                </div>
+                <div>
+                    <label class="pms-label">Email Corporativo</label>
+                    <input type="email" id="edit-email" class="pms-input">
+                </div>
+            </div>
+            <div class="p-8 flex justify-end gap-3">
+                <button onclick="toggleModal('modal-edit-profile', false)" class="btn-action btn-secondary px-6">Descartar</button>
+                <button onclick="saveGuestProfile()" class="btn-action btn-primary px-8">Guardar Cambios</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: DETALLE DE PAX -->
+    <div id="modal-pax-details" class="modal-overlay" onclick="toggleModal('modal-pax-details', false)">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <div class="p-8 border-b flex justify-between items-center">
+                <h3 class="text-xl font-black tracking-tighter uppercase">Listado de Ocupantes</h3>
+                <button onclick="toggleModal('modal-pax-details', false)" class="text-slate-400 hover:text-red-500"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="p-8 space-y-4 bg-slate-50/50 max-h-[400px] overflow-y-auto custom-scroll">
+                <!-- Titular -->
+                <div class="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" class="w-16 h-16 rounded-xl object-cover">
+                    <div class="flex-1">
+                        <p class="text-[9px] font-black text-indigo-600 uppercase">Titular</p>
+                        <h4 class="font-black text-sm" id="pax-titular-name">Israel de los Santos</h4>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">ID: INE-992288 | MX</p>
+                    </div>
+                    <span class="pms-badge badge-success">Validado</span>
+                </div>
+                <!-- Esposa -->
+                <div class="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" class="w-16 h-16 rounded-xl object-cover">
+                    <div class="flex-1">
+                        <p class="text-[9px] font-black text-emerald-600 uppercase">Acompañante: Esposa</p>
+                        <h4 class="font-black text-sm">María Fernanda Ruiz</h4>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">ID: PAS-009911 | MX</p>
+                    </div>
+                    <button class="p-2 text-slate-300 hover:text-indigo-600"><i class="fas fa-id-card"></i></button>
+                </div>
+                <!-- Hijo -->
+                <div class="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=100&h=100&fit=crop" class="w-16 h-16 rounded-xl object-cover">
+                        <div class="absolute -top-1 -right-1 bg-amber-400 text-white w-5 h-5 rounded-full border-2 border-white flex items-center justify-center text-[8px]"><i class="fas fa-child"></i></div>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-[9px] font-black text-amber-600 uppercase">Acompañante: Hijo (M)</p>
+                        <h4 class="font-black text-sm">Israel Jr. de los Santos</h4>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Edad: 8 Años | Auditoría Escolar</p>
+                    </div>
+                    <span class="pms-badge badge-warning">Auditado</span>
+                </div>
+            </div>
+            <div class="p-6 bg-slate-900 flex justify-between items-center">
+                <p class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Capacidad ocupada: 3/4 Pax</p>
+                <button class="bg-indigo-600 text-white px-6 py-2 rounded-xl text-[10px] font-black uppercase"><i class="fas fa-plus mr-2"></i> Añadir Pax</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- MOTOR DE DATOS SIMULADO ---
+        let GUEST_DATA = {
+            name: "Israel de los Santos",
+            plates: "ABC-123-X",
+            email: "israel@elitepms.com",
+            room: "Suite #204"
+        };
+
+        const CONSUMOS = [
+            { fecha: '21/03 - 14:20', concepto: 'Hospedaje - Noche 1', depto: 'SISTEMA', estado: 'Cargado', monto: 2500 },
+            { fecha: '21/03 - 18:45', concepto: 'Cena: Hamburguesa Elite', depto: 'RESTAURANTE', estado: 'Cargado', monto: 320 },
+            { fecha: '21/03 - 19:00', concepto: 'Minibar: Refrescos', depto: 'MINIBAR', estado: 'Cargado', monto: 120 }
+        ];
+
+        const PAGOS = [
+            { fecha: '21/03 - 14:15', metodo: 'Efectivo', referencia: 'Depósito Garantía', monto: 1000 }
+        ];
+
+        // Función de seguridad para actualizar elementos del DOM
+        const safeSet = (id, val, attr = 'innerText') => {
+            const el = document.getElementById(id);
+            if (el) el[attr] = val;
+        };
+
+        window.onload = () => {
+            initEditForm();
+            updateUI();
+            updateTime();
+        };
+
+        function initEditForm() {
+            safeSet('edit-name', GUEST_DATA.name, 'value');
+            safeSet('edit-plates', GUEST_DATA.plates, 'value');
+            safeSet('edit-email', GUEST_DATA.email, 'value');
+        }
+
+        function toggleModal(id, show) {
+            const el = document.getElementById(id);
+            if (show) el.classList.add('active');
+            else el.classList.remove('active');
+        }
+
+        function saveGuestProfile() {
+            const nameEl = document.getElementById('edit-name');
+            const platesEl = document.getElementById('edit-plates');
+            const emailEl = document.getElementById('edit-email');
+
+            if (nameEl) GUEST_DATA.name = nameEl.value;
+            if (platesEl) GUEST_DATA.plates = platesEl.value;
+            if (emailEl) GUEST_DATA.email = emailEl.value;
+
+            updateUI();
+            toggleModal('modal-edit-profile', false);
+        }
+
+        function processRoomMove(num) {
+            GUEST_DATA.room = "Suite #" + num;
+            updateUI();
+            switchSection('resumen');
+        }
+
+        function updateTime() {
+            const now = new Date();
+            const timeStr = now.getHours() + ":" + now.getMinutes().toString().padStart(2, '0') + ":" + now.getSeconds().toString().padStart(2, '0');
+            safeSet('sync-time', timeStr);
+        }
+
+        function switchSection(sectionId) {
+            document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
+            const tabEl = document.getElementById('tab-' + sectionId);
+            if (tabEl) tabEl.classList.add('active');
+
+            ['resumen', 'cargos', 'pagos', 'room_move', 'room_service', 'bitacora'].forEach(id => {
+                const el = document.getElementById('sec-' + id);
+                if (el) el.classList.add('hidden');
+            });
+
+            const activeSec = document.getElementById('sec-' + sectionId);
+            if (activeSec) activeSec.classList.remove('hidden');
+        }
+
+        function altaCargoManual() {
+            const conceptoEl = document.getElementById('cargo-concepto');
+            const deptoEl = document.getElementById('cargo-depto');
+            const montoEl = document.getElementById('cargo-monto');
+
+            if (!conceptoEl || !montoEl) return;
+
+            const concepto = conceptoEl.value;
+            const depto = deptoEl ? deptoEl.value : 'OTROS';
+            const monto = parseFloat(montoEl.value);
+
+            if (!concepto || isNaN(monto)) return;
+            CONSUMOS.push({ fecha: 'Ahora', concepto, depto, estado: 'Cargado', monto });
+            updateUI();
+            switchSection('resumen');
+        }
+
+        function addRoomService(item, precio) {
+            CONSUMOS.push({ fecha: 'Ahora', concepto: 'RS: ' + item, depto: 'REST', estado: 'Cargado', monto: precio });
+            updateUI();
+        }
+
+        function updateUI() {
+            // Actualización de etiquetas de texto segura
+            safeSet('display-name', GUEST_DATA.name);
+            safeSet('audit-guest-name', GUEST_DATA.name);
+            safeSet('pax-titular-name', GUEST_DATA.name);
+            safeSet('display-plates', "PLACA: " + GUEST_DATA.plates);
+            safeSet('sidebar-room', GUEST_DATA.room);
+            
+            if (GUEST_DATA.room.includes('#')) {
+                safeSet('display-room-card', "#" + GUEST_DATA.room.split('#')[1]);
+            } else {
+                safeSet('display-room-card', GUEST_DATA.room);
+            }
+
+            // Tablas
+            const tbodyConsumos = document.querySelector('#table-consumos tbody');
+            if (tbodyConsumos) {
+                tbodyConsumos.innerHTML = '';
+                let subHospedaje = 0, subExtras = 0;
+                CONSUMOS.forEach(item => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `<td>${item.fecha}</td><td class="font-bold">${item.concepto}</td><td>${item.depto}</td><td><span class="pms-badge badge-success">${item.estado}</span></td><td class="text-right font-black">$${item.monto.toLocaleString()}</td>`;
+                    tbodyConsumos.appendChild(tr);
+                    if (item.concepto.includes('Hospedaje')) subHospedaje += item.monto;
+                    else subExtras += item.monto;
+                });
+
+                const totalPagos = PAGOS.reduce((acc, p) => acc + p.monto, 0);
+                const subtotal = subHospedaje + subExtras;
+                const impuestos = subtotal * 0.19;
+                const totalBruto = subtotal + impuestos;
+                const saldoFinal = totalBruto - totalPagos;
+
+                safeSet('audit-hospedaje', "$" + subHospedaje.toLocaleString());
+                safeSet('audit-extras', "$" + subExtras.toLocaleString());
+                safeSet('audit-taxes', "$" + impuestos.toLocaleString(undefined, {minimumFractionDigits: 2}));
+                safeSet('total_acumulado', "$" + totalBruto.toLocaleString(undefined, {minimumFractionDigits: 2}));
+                safeSet('sidebar-total-pagos', "-$" + totalPagos.toLocaleString());
+                safeSet('saldo_final', "$" + saldoFinal.toLocaleString(undefined, {minimumFractionDigits: 2}));
+            }
+        }
+    </script>
+</body>
+</html>

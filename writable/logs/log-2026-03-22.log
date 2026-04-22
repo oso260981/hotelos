@@ -1,0 +1,1203 @@
+DEBUG - 2026-03-22 00:15:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-03-22 00:15:09 --> View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 00:15:09 --> CodeIgniter\Database\Exceptions\DatabaseException: View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+[Method: GET, Route: trabajo/listar]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 2 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 00:15:09 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 4 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 00:15:09 --> [Caused by] mysqli_sql_exception: View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-03-22 00:17:33 --> View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 00:17:33 --> CodeIgniter\Database\Exceptions\DatabaseException: View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+[Method: GET, Route: trabajo/listar]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 2 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 00:17:33 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 4 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 00:17:33 --> [Caused by] mysqli_sql_exception: View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-03-22 00:17:46 --> View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 00:17:46 --> CodeIgniter\Database\Exceptions\DatabaseException: View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+[Method: GET, Route: trabajo/listar]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 2 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 00:17:46 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 4 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 00:17:46 --> [Caused by] mysqli_sql_exception: View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-22 00:21:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-03-22 00:21:15 --> View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 00:21:15 --> CodeIgniter\Database\Exceptions\DatabaseException: View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+[Method: GET, Route: trabajo/listar]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 2 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 00:21:15 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 4 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 00:21:15 --> [Caused by] mysqli_sql_exception: View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-03-22 00:21:23 --> View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 00:21:23 --> CodeIgniter\Database\Exceptions\DatabaseException: View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+[Method: GET, Route: trabajo/listar]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 2 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 00:21:23 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 4 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 00:21:23 --> [Caused by] mysqli_sql_exception: View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-03-22 00:21:56 --> View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 00:21:56 --> CodeIgniter\Database\Exceptions\DatabaseException: View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+[Method: GET, Route: trabajo/listar]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 2 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 00:21:56 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 4 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 00:21:56 --> [Caused by] mysqli_sql_exception: View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-03-22 00:22:06 --> View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 00:22:06 --> CodeIgniter\Database\Exceptions\DatabaseException: View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+[Method: GET, Route: trabajo/listar]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 2 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 00:22:06 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 4 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 00:22:06 --> [Caused by] mysqli_sql_exception: View 'u653032309_hotel_pms.vw_trabajo' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN (\'PB\')
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` IN :piso:
+ORDER BY CAST(Numero_Habitacion AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(28): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-22 00:29:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 01:00:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 02:35:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-22 02:38:58 --> Error: Class "App\Models\HuespedExtraModel" not found
+[Method: POST, Route: pasajeros/guardar_cliente]
+in APPPATH\Controllers\Reservacion.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(921): App\Controllers\Reservacion->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(488): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-22 02:41:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-22 02:42:13 --> Error: Class "App\Models\HuespedExtraModel" not found
+[Method: POST, Route: pasajeros/guardar_cliente]
+in APPPATH\Controllers\Reservacion.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(921): App\Controllers\Reservacion->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(488): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 02:42:40 --> Error: Class "App\Models\HuespedExtraModel" not found
+[Method: POST, Route: pasajeros/guardar_cliente]
+in APPPATH\Controllers\Reservacion.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(921): App\Controllers\Reservacion->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(488): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-22 02:44:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 02:45:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-22 02:47:10 --> Error: Class "App\Models\HuespedExtraModel" not found
+[Method: POST, Route: reservacion/guardar]
+in APPPATH\Controllers\Reservacion.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(921): App\Controllers\Reservacion->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(488): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 02:48:41 --> Error: Class "App\Models\HuespedExtraModel" not found
+[Method: POST, Route: reservacion/guardar]
+in APPPATH\Controllers\Reservacion.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(921): App\Controllers\Reservacion->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(488): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 02:48:42 --> Error: Class "App\Models\HuespedExtraModel" not found
+[Method: POST, Route: reservacion/guardar]
+in APPPATH\Controllers\Reservacion.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(921): App\Controllers\Reservacion->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(488): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 02:48:43 --> Error: Class "App\Models\HuespedExtraModel" not found
+[Method: POST, Route: reservacion/guardar]
+in APPPATH\Controllers\Reservacion.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(921): App\Controllers\Reservacion->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(488): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 02:52:45 --> Error: Class "App\Models\HuespedExtraModel" not found
+[Method: POST, Route: reservacion/guardar]
+in APPPATH\Controllers\Reservacion.php on line 21.
+ 1 SYSTEMPATH\CodeIgniter.php(921): App\Controllers\Reservacion->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(488): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 02:53:14 --> ErrorException: Trying to access array offset on value of type null
+[Method: POST, Route: reservacion/guardar]
+in APPPATH\Controllers\Reservacion.php on line 34.
+ 1 APPPATH\Controllers\Reservacion.php(34): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reservacion.php', 34)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarRegistro()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-03-22 02:54:16 --> Unknown column 'dias_pagados' in 'INSERT INTO'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registros` (`habitacion_id`, `turno_id`, `dias_pagados`, `num_personas`, `forma_pago`, `observaciones`, `updated_at`, `created_at`) VALUES (NULL, NULL, 1, 1, NULL, NULL, \'2026-03-22 02:54:16\', \'2026-03-22 02:54:16\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registros` (`habitacion_id`, `turno_id`, `dias_pagados`, `num_personas`, `forma_pago`, `observaciones`, `updated_at`, `created_at`) VALUES (NULL, NULL, 1, 1, NULL, NULL, \'2026-03-22 02:54:16\', \'2026-03-22 02:54:16\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registros` (`habitacion_id`, `turno_id`, `dias_pagados`, `num_personas`, `forma_pago`, `observaciones`, `updated_at`, `created_at`) VALUES (NULL, NULL, 1, 1, NULL, NULL, \'2026-03-22 02:54:16\', \'2026-03-22 02:54:16\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registros` (`habitacion_id`, `turno_id`, `dias_pagados`, `num_personas`, `forma_pago`, `observaciones`, `updated_at`, `created_at`) VALUES (:habitacion_id:, :turno_id:, :dias_pagados:, :num_personas:, :forma_pago:, :observaciones:, :updated_at:, :created_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(356): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(898): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(665): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Reservacion.php(49): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarRegistro()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-22 02:56:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 03:07:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 03:09:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 03:12:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 03:35:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 03:41:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 03:45:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 03:48:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 03:49:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 00:09:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 00:15:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 09:00:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 09:00:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 09:00:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 09:00:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 09:00:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 09:02:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 09:03:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 09:03:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 09:20:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 09:23:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 09:24:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 09:24:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 09:38:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 09:41:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-22 09:44:18 --> ErrorException: Trying to access array offset on value of type null
+[Method: POST, Route: reservacion/guardar-acompanantes]
+in APPPATH\Controllers\Reservacion.php on line 174.
+ 1 APPPATH\Controllers\Reservacion.php(174): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reservacion.php', 174)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarAcompanantes()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 09:45:10 --> ErrorException: Undefined array key "orden_llegada"
+[Method: POST, Route: reservacion/guardar-acompanantes]
+in APPPATH\Controllers\Reservacion.php on line 192.
+ 1 APPPATH\Controllers\Reservacion.php(192): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "orden_llegada"', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reservacion.php', 192)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarAcompanantes()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-22 14:14:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 14:14:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 14:50:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 14:50:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 14:55:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 14:55:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 14:55:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 15:06:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 15:07:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 15:16:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 15:17:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 15:33:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 15:35:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 15:38:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 15:42:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 15:44:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 15:46:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 15:55:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:00:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:03:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:07:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:08:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:11:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:11:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:14:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:15:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:18:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:20:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:33:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:36:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:37:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-22 16:37:14 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "trabajo/admnistracion.php"
+[Method: GET, Route: trabajo]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('trabajo/admnistracion.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('trabajo/admnistracion', [], true)
+ 3 APPPATH\Views\trabajo\index.php(114): view('trabajo/admnistracion')
+ 4 SYSTEMPATH\View\View.php(238): include('C:\\xampp\\htdocs\\hotelos\\app\\Views\\trabajo\\index.php')
+ 5 SYSTEMPATH\View\View.php(241): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('trabajo/index', [], true)
+ 7 APPPATH\Controllers\Trabajo.php(12): view('trabajo/index')
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->index()
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-22 16:37:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:38:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:40:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:41:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:42:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:42:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:46:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:47:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:47:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:48:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:48:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:50:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:51:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:51:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:51:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:57:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:59:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:00:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:01:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:02:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:02:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:03:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:05:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:05:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:06:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:07:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:09:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:10:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:10:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:14:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:15:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:15:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:16:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:16:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:17:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:22:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:22:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:22:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:27:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:28:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:30:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:31:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:31:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:33:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:35:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:37:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:38:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:39:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:39:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:40:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:40:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:45:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:48:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:49:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:49:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:49:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:50:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:51:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:51:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:54:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:54:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 17:59:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 18:00:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 18:01:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 18:07:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 18:08:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 18:09:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 18:09:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 18:09:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 18:10:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 18:17:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 18:17:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 18:19:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 18:24:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 18:30:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 18:30:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 18:33:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 18:48:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 19:01:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-03-22 19:01:57 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_reg...' at line 2
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `r`.`id`, CONCAT(\'ADM-\', LPAD(r.id, 6, \'0\')) AS folio, DATE_FORMAT(r.hora_entrada, \'%d %b %Y\') AS admin_fecha_registro
+    r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_registro`, `h`.`numero` AS `habitacion`, `hu`.`nombre`, `hu`.`apellido`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `r`.`habitacion_id` = `h`.`id`
+JOIN `huespedes` `hu` ON `r`.`huesped_id` = `hu`.`id`
+WHERE `r`.`id` = \'12\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `r`.`id`, CONCAT(\'ADM-\', LPAD(r.id, 6, \'0\')) AS folio, DATE_FORMAT(r.hora_entrada, \'%d %b %Y\') AS admin_fecha_registro
+    r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_registro`, `h`.`numero` AS `habitacion`, `hu`.`nombre`, `hu`.`apellido`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `r`.`habitacion_id` = `h`.`id`
+JOIN `huespedes` `hu` ON `r`.`huesped_id` = `hu`.`id`
+WHERE `r`.`id` = \'12\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `r`.`id`, CONCAT(\'ADM-\', LPAD(r.id, 6, \'0\')) AS folio, DATE_FORMAT(r.hora_entrada, \'%d %b %Y\') AS admin_fecha_registro
+    r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_registro`, `h`.`numero` AS `habitacion`, `hu`.`nombre`, `hu`.`apellido`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `r`.`habitacion_id` = `h`.`id`
+JOIN `huespedes` `hu` ON `r`.`huesped_id` = `hu`.`id`
+WHERE `r`.`id` = \'12\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `r`.`id`, CONCAT(\'ADM-\', LPAD(r.id, 6, \'0\')) AS folio, DATE_FORMAT(r.hora_entrada, \'%d %b %Y\') AS admin_fecha_registro
+    r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_registro`, `h`.`numero` AS `habitacion`, `hu`.`nombre`, `hu`.`apellido`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `r`.`habitacion_id` = `h`.`id`
+JOIN `huespedes` `hu` ON `r`.`huesped_id` = `hu`.`id`
+WHERE `r`.`id` = :r.id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(268): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->resumen('12')
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 19:01:57 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_reg...' at line 2
+[Method: GET, Route: reservacion/resumen/12]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `r`.`id`, CONCAT(\'ADM-\', LPAD(r.id, 6, \'0\')) AS folio, DATE_FORMAT(r.hora_entrada, \'%d %b %Y\') AS admin_fecha_registro
+    r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_registro`, `h`.`numero` AS `habitacion`, `hu`.`nombre`, `hu`.`apellido`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `r`.`habitacion_id` = `h`.`id`
+JOIN `huespedes` `hu` ON `r`.`huesped_id` = `hu`.`id`
+WHERE `r`.`id` = :r.id:', [...], false)
+ 2 APPPATH\Controllers\Reservacion.php(268): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->resumen('12')
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 19:01:57 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_reg...' at line 2
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `r`.`id`, CONCAT(\'ADM-\', LPAD(r.id, 6, \'0\')) AS folio, DATE_FORMAT(r.hora_entrada, \'%d %b %Y\') AS admin_fecha_registro
+    r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_registro`, `h`.`numero` AS `habitacion`, `hu`.`nombre`, `hu`.`apellido`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `r`.`habitacion_id` = `h`.`id`
+JOIN `huespedes` `hu` ON `r`.`huesped_id` = `hu`.`id`
+WHERE `r`.`id` = \'12\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `r`.`id`, CONCAT(\'ADM-\', LPAD(r.id, 6, \'0\')) AS folio, DATE_FORMAT(r.hora_entrada, \'%d %b %Y\') AS admin_fecha_registro
+    r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_registro`, `h`.`numero` AS `habitacion`, `hu`.`nombre`, `hu`.`apellido`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `r`.`habitacion_id` = `h`.`id`
+JOIN `huespedes` `hu` ON `r`.`huesped_id` = `hu`.`id`
+WHERE `r`.`id` = \'12\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `r`.`id`, CONCAT(\'ADM-\', LPAD(r.id, 6, \'0\')) AS folio, DATE_FORMAT(r.hora_entrada, \'%d %b %Y\') AS admin_fecha_registro
+    r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_registro`, `h`.`numero` AS `habitacion`, `hu`.`nombre`, `hu`.`apellido`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `r`.`habitacion_id` = `h`.`id`
+JOIN `huespedes` `hu` ON `r`.`huesped_id` = `hu`.`id`
+WHERE `r`.`id` = :r.id:', [...], false)
+ 4 APPPATH\Controllers\Reservacion.php(268): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->resumen('12')
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 19:01:57 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_reg...' at line 2
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `r`.`id`, CONCAT(\'ADM-\', LPAD(r.id, 6, \'0\')) AS folio, DATE_FORMAT(r.hora_entrada, \'%d %b %Y\') AS admin_fecha_registro
+    r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_registro`, `h`.`numero` AS `habitacion`, `hu`.`nombre`, `hu`.`apellido`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `r`.`habitacion_id` = `h`.`id`
+JOIN `huespedes` `hu` ON `r`.`huesped_id` = `hu`.`id`
+WHERE `r`.`id` = \'12\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `r`.`id`, CONCAT(\'ADM-\', LPAD(r.id, 6, \'0\')) AS folio, DATE_FORMAT(r.hora_entrada, \'%d %b %Y\') AS admin_fecha_registro
+    r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_registro`, `h`.`numero` AS `habitacion`, `hu`.`nombre`, `hu`.`apellido`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `r`.`habitacion_id` = `h`.`id`
+JOIN `huespedes` `hu` ON `r`.`huesped_id` = `hu`.`id`
+WHERE `r`.`id` = \'12\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `r`.`id`, CONCAT(\'ADM-\', LPAD(r.id, 6, \'0\')) AS folio, DATE_FORMAT(r.hora_entrada, \'%d %b %Y\') AS admin_fecha_registro
+    r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_registro`, `h`.`numero` AS `habitacion`, `hu`.`nombre`, `hu`.`apellido`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `r`.`habitacion_id` = `h`.`id`
+JOIN `huespedes` `hu` ON `r`.`huesped_id` = `hu`.`id`
+WHERE `r`.`id` = \'12\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `r`.`id`, CONCAT(\'ADM-\', LPAD(r.id, 6, \'0\')) AS folio, DATE_FORMAT(r.hora_entrada, \'%d %b %Y\') AS admin_fecha_registro
+    r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_registro`, `h`.`numero` AS `habitacion`, `hu`.`nombre`, `hu`.`apellido`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `r`.`habitacion_id` = `h`.`id`
+JOIN `huespedes` `hu` ON `r`.`huesped_id` = `hu`.`id`
+WHERE `r`.`id` = :r.id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(268): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->resumen('12')
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-22 19:02:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-03-22 19:02:27 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_reg...' at line 2
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `r`.`id`, CONCAT(\'ADM-\', LPAD(r.id, 6, \'0\')) AS folio, DATE_FORMAT(r.hora_entrada, \'%d %b %Y\') AS admin_fecha_registro
+    r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_registro`, `h`.`numero` AS `habitacion`, `hu`.`nombre`, `hu`.`apellido`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `r`.`habitacion_id` = `h`.`id`
+JOIN `huespedes` `hu` ON `r`.`huesped_id` = `hu`.`id`
+WHERE `r`.`id` = \'3\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `r`.`id`, CONCAT(\'ADM-\', LPAD(r.id, 6, \'0\')) AS folio, DATE_FORMAT(r.hora_entrada, \'%d %b %Y\') AS admin_fecha_registro
+    r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_registro`, `h`.`numero` AS `habitacion`, `hu`.`nombre`, `hu`.`apellido`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `r`.`habitacion_id` = `h`.`id`
+JOIN `huespedes` `hu` ON `r`.`huesped_id` = `hu`.`id`
+WHERE `r`.`id` = \'3\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `r`.`id`, CONCAT(\'ADM-\', LPAD(r.id, 6, \'0\')) AS folio, DATE_FORMAT(r.hora_entrada, \'%d %b %Y\') AS admin_fecha_registro
+    r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_registro`, `h`.`numero` AS `habitacion`, `hu`.`nombre`, `hu`.`apellido`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `r`.`habitacion_id` = `h`.`id`
+JOIN `huespedes` `hu` ON `r`.`huesped_id` = `hu`.`id`
+WHERE `r`.`id` = \'3\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `r`.`id`, CONCAT(\'ADM-\', LPAD(r.id, 6, \'0\')) AS folio, DATE_FORMAT(r.hora_entrada, \'%d %b %Y\') AS admin_fecha_registro
+    r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_registro`, `h`.`numero` AS `habitacion`, `hu`.`nombre`, `hu`.`apellido`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `r`.`habitacion_id` = `h`.`id`
+JOIN `huespedes` `hu` ON `r`.`huesped_id` = `hu`.`id`
+WHERE `r`.`id` = :r.id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(268): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->resumen('3')
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 19:02:27 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_reg...' at line 2
+[Method: GET, Route: reservacion/resumen/3]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `r`.`id`, CONCAT(\'ADM-\', LPAD(r.id, 6, \'0\')) AS folio, DATE_FORMAT(r.hora_entrada, \'%d %b %Y\') AS admin_fecha_registro
+    r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_registro`, `h`.`numero` AS `habitacion`, `hu`.`nombre`, `hu`.`apellido`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `r`.`habitacion_id` = `h`.`id`
+JOIN `huespedes` `hu` ON `r`.`huesped_id` = `hu`.`id`
+WHERE `r`.`id` = :r.id:', [...], false)
+ 2 APPPATH\Controllers\Reservacion.php(268): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->resumen('3')
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 19:02:27 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_reg...' at line 2
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `r`.`id`, CONCAT(\'ADM-\', LPAD(r.id, 6, \'0\')) AS folio, DATE_FORMAT(r.hora_entrada, \'%d %b %Y\') AS admin_fecha_registro
+    r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_registro`, `h`.`numero` AS `habitacion`, `hu`.`nombre`, `hu`.`apellido`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `r`.`habitacion_id` = `h`.`id`
+JOIN `huespedes` `hu` ON `r`.`huesped_id` = `hu`.`id`
+WHERE `r`.`id` = \'3\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `r`.`id`, CONCAT(\'ADM-\', LPAD(r.id, 6, \'0\')) AS folio, DATE_FORMAT(r.hora_entrada, \'%d %b %Y\') AS admin_fecha_registro
+    r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_registro`, `h`.`numero` AS `habitacion`, `hu`.`nombre`, `hu`.`apellido`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `r`.`habitacion_id` = `h`.`id`
+JOIN `huespedes` `hu` ON `r`.`huesped_id` = `hu`.`id`
+WHERE `r`.`id` = \'3\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `r`.`id`, CONCAT(\'ADM-\', LPAD(r.id, 6, \'0\')) AS folio, DATE_FORMAT(r.hora_entrada, \'%d %b %Y\') AS admin_fecha_registro
+    r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_registro`, `h`.`numero` AS `habitacion`, `hu`.`nombre`, `hu`.`apellido`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `r`.`habitacion_id` = `h`.`id`
+JOIN `huespedes` `hu` ON `r`.`huesped_id` = `hu`.`id`
+WHERE `r`.`id` = :r.id:', [...], false)
+ 4 APPPATH\Controllers\Reservacion.php(268): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->resumen('3')
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 19:02:27 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_reg...' at line 2
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `r`.`id`, CONCAT(\'ADM-\', LPAD(r.id, 6, \'0\')) AS folio, DATE_FORMAT(r.hora_entrada, \'%d %b %Y\') AS admin_fecha_registro
+    r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_registro`, `h`.`numero` AS `habitacion`, `hu`.`nombre`, `hu`.`apellido`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `r`.`habitacion_id` = `h`.`id`
+JOIN `huespedes` `hu` ON `r`.`huesped_id` = `hu`.`id`
+WHERE `r`.`id` = \'3\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `r`.`id`, CONCAT(\'ADM-\', LPAD(r.id, 6, \'0\')) AS folio, DATE_FORMAT(r.hora_entrada, \'%d %b %Y\') AS admin_fecha_registro
+    r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_registro`, `h`.`numero` AS `habitacion`, `hu`.`nombre`, `hu`.`apellido`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `r`.`habitacion_id` = `h`.`id`
+JOIN `huespedes` `hu` ON `r`.`huesped_id` = `hu`.`id`
+WHERE `r`.`id` = \'3\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `r`.`id`, CONCAT(\'ADM-\', LPAD(r.id, 6, \'0\')) AS folio, DATE_FORMAT(r.hora_entrada, \'%d %b %Y\') AS admin_fecha_registro
+    r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_registro`, `h`.`numero` AS `habitacion`, `hu`.`nombre`, `hu`.`apellido`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `r`.`habitacion_id` = `h`.`id`
+JOIN `huespedes` `hu` ON `r`.`huesped_id` = `hu`.`id`
+WHERE `r`.`id` = \'3\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `r`.`id`, CONCAT(\'ADM-\', LPAD(r.id, 6, \'0\')) AS folio, DATE_FORMAT(r.hora_entrada, \'%d %b %Y\') AS admin_fecha_registro
+    r.hora_entrada, `r`.`hora_salida`, `r`.`noches`, `r`.`total`, `r`.`estado_registro`, `h`.`numero` AS `habitacion`, `hu`.`nombre`, `hu`.`apellido`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `r`.`habitacion_id` = `h`.`id`
+JOIN `huespedes` `hu` ON `r`.`huesped_id` = `hu`.`id`
+WHERE `r`.`id` = :r.id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(268): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->resumen('3')
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-22 19:02:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 19:09:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 19:18:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 19:18:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 19:23:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 19:28:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-22 19:28:38 --> ErrorException: Undefined array key "total"
+[Method: GET, Route: reservacion/resumen/12]
+in APPPATH\Controllers\Reservacion.php on line 264.
+ 1 APPPATH\Controllers\Reservacion.php(264): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "total"', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reservacion.php', 264)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->resumen('12')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 19:30:15 --> ErrorException: Undefined array key "total"
+[Method: GET, Route: reservacion/resumen/1]
+in APPPATH\Controllers\Reservacion.php on line 266.
+ 1 APPPATH\Controllers\Reservacion.php(266): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "total"', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reservacion.php', 266)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->resumen('1')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 19:32:26 --> ErrorException: Undefined array key "total"
+[Method: GET, Route: reservacion/resumen/1]
+in APPPATH\Controllers\Reservacion.php on line 266.
+ 1 APPPATH\Controllers\Reservacion.php(266): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "total"', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reservacion.php', 266)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->resumen('1')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 19:32:52 --> ErrorException: Undefined array key "total"
+[Method: GET, Route: reservacion/resumen/1]
+in APPPATH\Controllers\Reservacion.php on line 266.
+ 1 APPPATH\Controllers\Reservacion.php(266): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "total"', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reservacion.php', 266)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->resumen('1')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 19:35:19 --> ErrorException: Undefined array key "total"
+[Method: POST, Route: reservacion/resumen/1]
+in APPPATH\Controllers\Reservacion.php on line 266.
+ 1 APPPATH\Controllers\Reservacion.php(266): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "total"', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reservacion.php', 266)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->resumen('1')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 19:35:31 --> ErrorException: Undefined array key "total"
+[Method: GET, Route: reservacion/resumen/1]
+in APPPATH\Controllers\Reservacion.php on line 266.
+ 1 APPPATH\Controllers\Reservacion.php(266): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "total"', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reservacion.php', 266)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->resumen('1')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 19:35:34 --> ErrorException: Undefined array key "total"
+[Method: GET, Route: reservacion/resumen/1]
+in APPPATH\Controllers\Reservacion.php on line 266.
+ 1 APPPATH\Controllers\Reservacion.php(266): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "total"', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reservacion.php', 266)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->resumen('1')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-22 19:37:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 19:38:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 19:39:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 19:40:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 19:44:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 19:46:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 19:46:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 19:47:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

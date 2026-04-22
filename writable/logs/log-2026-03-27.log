@@ -1,0 +1,684 @@
+DEBUG - 2026-03-27 00:00:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 00:02:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 00:07:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:01:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:01:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:01:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:01:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:02:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:21:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:21:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:31:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:33:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:34:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:35:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:35:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:36:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:39:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:40:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:43:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:45:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:46:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:47:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:48:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:50:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:50:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:51:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:51:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:52:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:52:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:52:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:53:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:56:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 10:57:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 11:01:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 11:01:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 11:09:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 11:09:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 11:30:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 11:31:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 11:32:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 11:37:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 11:38:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 11:42:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 11:45:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 11:47:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 11:49:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 11:50:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 11:51:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 11:52:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 11:53:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 12:10:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 12:39:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 12:43:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 12:46:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 12:53:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 12:54:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 12:57:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 12:59:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 13:00:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 13:01:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 13:02:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 13:02:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 13:09:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 15:08:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 15:08:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-27 15:08:24 --> ErrorException: Undefined variable $totalTime
+[Method: GET, Route: /]
+in SYSTEMPATH\Debug\Toolbar\Views\toolbar.tpl.php on line 49.
+ 1 SYSTEMPATH\Debug\Toolbar\Views\toolbar.tpl.php(49): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalTime', 'C:\\xampp\\htdocs\\hotelos\\system\\Debug\\Toolbar\\Views\\toolbar.tpl.php', 49)
+ 2 SYSTEMPATH\Debug\Toolbar.php(533): include('C:\\xampp\\htdocs\\hotelos\\system\\Debug\\Toolbar\\Views\\toolbar.tpl.php')
+ 3 SYSTEMPATH\Debug\Toolbar.php(496): CodeIgniter\Debug\Toolbar->format([...], 'html')
+ 4 APPPATH\Config\Events.php(47): CodeIgniter\Debug\Toolbar->respond()
+ 5 SYSTEMPATH\Events\Events.php(152): CodeIgniter\Events\Events::Config\{closure}()
+ 6 SYSTEMPATH\CodeIgniter.php(325): CodeIgniter\Events\Events::trigger('pre_system')
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-27 17:36:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 17:36:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 18:20:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 18:20:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 18:20:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 18:22:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 18:23:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 18:23:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 18:23:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 18:23:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 18:34:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 18:40:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 18:41:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 19:56:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 20:00:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 20:03:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 20:03:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 20:09:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-27 20:09:42 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "reportes.php"
+[Method: GET, Route: reportes]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('reportes.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('reportes', [], true)
+ 3 APPPATH\Controllers\Reportes.php(16): view('reportes', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->index()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-27 20:09:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 20:09:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-27 20:09:49 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-27 20:10:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-03-27 20:10:40 --> Unknown column 'r.num_personas' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            fp.codigo forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada,
+            r.hora_salida,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+         INNER JOIN formas_pago fp on r.forma_pago_id=fp.id   
+
+        WHERE r.hora_salida IS NULL
+    ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            fp.codigo forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada,
+            r.hora_salida,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+         INNER JOIN formas_pago fp on r.forma_pago_id=fp.id   
+
+        WHERE r.hora_salida IS NULL
+    ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            fp.codigo forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada,
+            r.hora_salida,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+         INNER JOIN formas_pago fp on r.forma_pago_id=fp.id   
+
+        WHERE r.hora_salida IS NULL
+    ')
+ 4 APPPATH\Controllers\Pasajeros.php(96): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            fp.codigo forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada,
+            r.hora_salida,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+         INNER JOIN formas_pago fp on r.forma_pago_id=fp.id   
+
+        WHERE r.hora_salida IS NULL
+    ')
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-27 20:10:41 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.num_personas' in 'SELECT'
+[Method: GET, Route: pasajeros/listado_operativo]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 APPPATH\Controllers\Pasajeros.php(96): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            fp.codigo forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada,
+            r.hora_salida,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+         INNER JOIN formas_pago fp on r.forma_pago_id=fp.id   
+
+        WHERE r.hora_salida IS NULL
+    ')
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-27 20:10:41 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.num_personas' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            fp.codigo forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada,
+            r.hora_salida,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+         INNER JOIN formas_pago fp on r.forma_pago_id=fp.id   
+
+        WHERE r.hora_salida IS NULL
+    ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            fp.codigo forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada,
+            r.hora_salida,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+         INNER JOIN formas_pago fp on r.forma_pago_id=fp.id   
+
+        WHERE r.hora_salida IS NULL
+    ')
+ 3 APPPATH\Controllers\Pasajeros.php(96): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            fp.codigo forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada,
+            r.hora_salida,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+         INNER JOIN formas_pago fp on r.forma_pago_id=fp.id   
+
+        WHERE r.hora_salida IS NULL
+    ')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-27 20:10:41 --> [Caused by] mysqli_sql_exception: Unknown column 'r.num_personas' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            fp.codigo forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada,
+            r.hora_salida,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+         INNER JOIN formas_pago fp on r.forma_pago_id=fp.id   
+
+        WHERE r.hora_salida IS NULL
+    ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            fp.codigo forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada,
+            r.hora_salida,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+         INNER JOIN formas_pago fp on r.forma_pago_id=fp.id   
+
+        WHERE r.hora_salida IS NULL
+    ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            fp.codigo forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada,
+            r.hora_salida,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+         INNER JOIN formas_pago fp on r.forma_pago_id=fp.id   
+
+        WHERE r.hora_salida IS NULL
+    ')
+ 4 APPPATH\Controllers\Pasajeros.php(96): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            fp.codigo forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada,
+            r.hora_salida,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+         INNER JOIN formas_pago fp on r.forma_pago_id=fp.id   
+
+        WHERE r.hora_salida IS NULL
+    ')
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-27 20:12:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 20:12:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-27 20:12:46 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "reportes.php"
+[Method: GET, Route: reportes]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('reportes.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('reportes', [], true)
+ 3 APPPATH\Controllers\Reportes.php(16): view('reportes', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->index()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-27 20:12:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 20:19:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 20:29:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 20:30:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 20:30:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 20:31:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 20:32:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 20:32:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 20:33:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 20:33:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 20:35:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 20:35:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 20:36:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 20:40:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 20:43:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 20:44:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 20:45:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 20:48:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 20:53:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 20:53:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 20:53:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:04:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:05:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:07:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:08:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:14:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:14:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:14:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:16:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:16:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:16:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:16:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:18:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:18:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:18:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:18:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:18:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:19:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:19:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:19:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:20:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:21:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:21:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:22:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:23:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:28:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:34:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:40:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:56:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 21:57:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 22:03:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 22:07:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 22:08:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 22:17:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 22:18:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 22:20:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 22:22:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 22:27:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 22:27:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 22:28:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 22:29:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 22:30:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 22:31:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 22:34:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 22:36:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 22:57:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 23:04:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-27 23:05:14 --> ErrorException: Undefined property: stdClass::$numero
+[Method: GET, Route: reservacion/ticket/1]
+in APPPATH\Controllers\Reservacion.php on line 347.
+ 1 APPPATH\Controllers\Reservacion.php(347): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$numero', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reservacion.php', 347)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->ticket('1')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-27 23:05:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 23:29:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 23:38:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 23:39:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 23:40:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-27 23:40:01 --> ErrorException: Undefined property: stdClass::$numero
+[Method: GET, Route: reservacion/ticket/2]
+in APPPATH\Controllers\Reservacion.php on line 347.
+ 1 APPPATH\Controllers\Reservacion.php(347): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$numero', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reservacion.php', 347)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->ticket('2')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-27 23:41:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 23:48:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 23:49:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 23:49:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 23:50:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 23:51:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-27 23:57:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

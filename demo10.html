@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite FrontDesk PMS | Executive Dashboard</title>
+    <!-- Tailwind CSS y FontAwesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        
+        :root {
+            --pms-primary: #4f46e5;
+            --pms-secondary: #0f172a;
+            --pms-accent: #10b981;
+            --pms-bg: #f8fafc;
+        }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--pms-secondary); 
+            height: 100vh; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Estructura Principal Pro */
+        .glass-container {
+            width: 99vw;
+            height: 97vh;
+            max-width: 1700px;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 32px;
+            display: grid;
+            grid-template-columns: 240px 1fr 360px;
+            overflow: hidden;
+            box-shadow: 0 40px 100px -20px rgba(0,0,0,0.4);
+        }
+
+        /* Sidebar Navegación */
+        .sidebar-nav {
+            background: #ffffff;
+            border-right: 1px solid #f1f5f9;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-link {
+            padding: 12px 16px;
+            border-radius: 14px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            margin-bottom: 4px;
+        }
+
+        .nav-link.active {
+            background: var(--pms-primary);
+            color: #ffffff;
+            box-shadow: 0 8px 16px -4px rgba(79, 70, 229, 0.3);
+        }
+
+        .nav-link i { font-size: 14px; width: 20px; text-align: center; }
+
+        /* Área de Contenido Principal */
+        .main-stage {
+            padding: 24px 32px;
+            overflow-y: auto;
+            background: #ffffff;
+        }
+
+        /* Sidebar de Auditoría (Derecha) */
+        .audit-panel {
+            background: var(--pms-secondary);
+            color: #ffffff;
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Componentes de PAX */
+        .pax-card {
+            background: #f8fafc;
+            border: 1px solid #f1f5f9;
+            border-radius: 24px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .pax-card:hover { border-color: var(--pms-primary); background: white; }
+
+        .avatar-circle {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 10px;
+            margin-right: -10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .bg-adult { background: #e0e7ff; color: #4338ca; }
+        .bg-child { background: #dcfce7; color: #166534; }
+
+        /* TERMINAL POS */
+        .pos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
+            gap: 10px;
+        }
+        .pos-item-card {
+            background: #ffffff;
+            border: 1.5px solid #f1f5f9;
+            border-radius: 18px;
+            padding: 12px 10px;
+            text-align: left;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 85px;
+        }
+        .pos-item-card:hover {
+            border-color: var(--pms-primary);
+            background: #f5f3ff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.08);
+        }
+        .pos-item-card i {
+            font-size: 12px;
+            color: #4f46e5;
+            background: #f1f5f9;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+        .pos-item-card:hover i { background: var(--pms-primary); color: white; }
+        .pos-item-card .label { font-size: 9px; font-weight: 800; text-transform: uppercase; color: #1e293b; line-height: 1.1; }
+        .pos-item-card .price { font-size: 12px; font-weight: 800; color: #6366f1; margin-top: 2px; }
+
+        /* Barras de Registro */
+        .quick-charge-bar {
+            background: #f8fafc;
+            border: 1px solid #f1f5f9;
+            border-radius: 20px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .pms-input {
+            background: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 10px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            outline: none;
+            transition: all 0.2s;
+        }
+        .pms-input:focus { border-color: var(--pms-primary); box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1); }
+
+        .pms-label { font-size: 9px; font-weight: 800; color: #94a3b8; text-transform: uppercase; margin-bottom: 4px; display: block; letter-spacing: 0.5px; }
+
+        /* Historial Estilo Timeline / Tabla */
+        .history-row {
+            display: grid;
+            grid-template-columns: 80px 40px 1fr 80px 100px 50px;
+            align-items: center;
+            padding: 12px 16px;
+            border-bottom: 1px solid #f8fafc;
+            transition: all 0.2s;
+        }
+        .history-row:hover { background: #f8fafc; }
+        .history-icon { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+
+        .custom-scroll::-webkit-scrollbar { width: 4px; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+
+        .fade-in { animation: fadeIn 0.3s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* PAGOS STYLES */
+        .payment-card {
+            border: 1.5px solid #f1f5f9;
+            border-radius: 20px;
+            padding: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: white;
+        }
+        .payment-card:hover { border-color: #10b981; background: #f0fdf4; transform: translateY(-2px); }
+        .payment-card.active { border-color: #10b981; background: #10b981; color: white; }
+
+        /* ROOM SERVICE MENU */
+        .menu-item-card {
+            background: #ffffff;
+            border: 1px solid #f1f5f9;
+            border-radius: 24px;
+            padding: 16px;
+            display: flex;
+            gap: 16px;
+            transition: all 0.2s;
+            cursor: pointer;
+            position: relative;
+        }
+        .menu-item-card:hover { border-color: var(--pms-primary); box-shadow: 0 10px 20px rgba(0,0,0,0.03); }
+        
+        .category-chip {
+            padding: 6px 14px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: #f1f5f9;
+            color: #64748b;
+        }
+        .category-chip.active { background: var(--pms-primary); color: white; }
+
+        /* ROOM MOVE STYLES */
+        .room-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
+        }
+        .room-card {
+            background: #ffffff;
+            border: 2px solid #f1f5f9;
+            border-radius: 24px;
+            padding: 20px;
+            transition: all 0.2s;
+            cursor: pointer;
+            text-align: center;
+        }
+        .room-card:hover { border-color: var(--pms-primary); transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+
+        /* CHECK-OUT STYLES */
+        .rating-star { font-size: 24px; color: #e2e8f0; cursor: pointer; transition: color 0.2s; }
+        .rating-star.active { color: #fbbf24; }
+
+        /* Modales */
+        .pms-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(6px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s;
+        }
+        .pms-modal-overlay.active { opacity: 1; visibility: visible; }
+        .pms-modal-content {
+            background: #ffffff;
+            width: 95%;
+            max-width: 900px;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+        }
+
+        /* Status Tags */
+        .status-pill { padding: 4px 10px; border-radius: 8px; font-size: 8px; font-weight: 900; text-transform: uppercase; }
+        .status-ready { background: #dcfce7; color: #166534; }
+        .status-dirty { background: #fee2e2; color: #991b1b; }
+
+        /* Final State Style */
+        .pms-locked { pointer-events: none; opacity: 0.6; grayscale: 1; }
+    </style>
+</head>
+<body>
+
+    <div class="glass-container" id="main-app-container">
+        
+        <!-- COLUMNA 1: NAVEGACIÓN -->
+        <aside class="sidebar-nav">
+            <div class="mb-10 px-1">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white text-lg shadow-lg">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-extrabold text-base tracking-tight">Elite PMS</h2>
+                        <p class="text-[8px] font-bold text-slate-400 uppercase tracking-widest">FrontDesk v2.5 Pro</p>
+                    </div>
+                </div>
+                <div class="bg-indigo-50 p-4 rounded-2xl border border-indigo-100 flex justify-between items-center">
+                    <div>
+                        <p class="pms-label text-indigo-400 mb-0">Unidad</p>
+                        <p class="text-xl font-black text-indigo-900 tracking-tighter" id="sidebar-room-number">#204</p>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-indigo-200/50 flex items-center justify-center text-indigo-600">
+                        <i class="fas fa-door-open text-xs"></i>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="flex-1" id="main-nav">
+                <div class="nav-link active" onclick="switchTab('resumen', this)"><i class="fas fa-chart-pie"></i> Resumen General</div>
+                <div class="nav-link" onclick="switchTab('cargos', this)"><i class="fas fa-cash-register"></i> Cargos & POS</div>
+                <div class="nav-link" onclick="switchTab('room_service', this)"><i class="fas fa-utensils"></i> Room Service</div>
+                <div class="nav-link" onclick="switchTab('room_move', this)"><i class="fas fa-exchange-alt"></i> Cambio de Unidad</div>
+                <div class="nav-link" onclick="switchTab('pagos', this)"><i class="fas fa-wallet-barcode"></i> Pagos & Abonos</div>
+            </nav>
+
+            <div class="mt-auto space-y-2">
+                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100 mb-4">
+                    <p class="pms-label">Estado Sistema</p>
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 bg-emerald-500 rounded-full"></div>
+                        <span class="text-[10px] font-bold text-slate-600 uppercase">Sincronizado</span>
+                    </div>
+                </div>
+                <button onclick="handleCheckOutFlow()" id="btn-finalizar-folio" class="w-full py-4 bg-slate-900 text-white rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-black transition-all shadow-xl">
+                    Finalizar Check-Out
+                </button>
+            </div>
+        </aside>
+
+        <!-- COLUMNA 2: CONTENIDO CENTRAL -->
+        <main class="main-stage custom-scroll">
+            
+            <!-- SECCIÓN: RESUMEN -->
+            <div id="tab-resumen" class="space-y-8 fade-in">
+                <!-- Header Perfil -->
+                <div class="flex justify-between items-center bg-white p-6 rounded-[32px] border border-slate-100 shadow-sm">
+                    <div class="flex items-center gap-6">
+                        <div class="relative group cursor-pointer" onclick="openTitularEdit()">
+                            <img src="" id="img-titular" class="w-20 h-20 rounded-[28px] object-cover border-4 border-white shadow-xl bg-slate-100">
+                            <div class="absolute -bottom-1 -right-1 bg-indigo-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-[9px] border-2 border-white shadow-lg"><i class="fas fa-pen"></i></div>
+                        </div>
+                        <div>
+                            <span class="px-2 py-0.5 bg-indigo-50 text-indigo-600 rounded-md text-[8px] font-black uppercase mb-1 inline-block tracking-wider">Huésped Titular</span>
+                            <h1 class="text-3xl font-black tracking-tighter text-slate-900 leading-tight" id="name-titular">---</h1>
+                            <div class="flex gap-4 mt-1">
+                                <p class="text-slate-400 font-bold text-[10px]" id="id-titular">ID: ---</p>
+                                <span class="text-emerald-500 font-bold text-[10px] uppercase"><i class="fas fa-check-circle mr-1"></i> Verificado</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-8 items-center border-l border-slate-100 pl-8">
+                        <div class="text-right">
+                            <p class="pms-label">Noches</p>
+                            <p class="text-2xl font-black text-slate-900">3</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="pms-label">Habitación</p>
+                            <p class="text-2xl font-black text-indigo-600" id="header-room-number">#204</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta PAX -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="pax-card" onclick="openCompanionsList()">
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="pms-label text-indigo-500">Composición de PAX</h3>
+                                <p class="text-xl font-extrabold text-slate-800 mt-1" id="pax-text-summary">Cargando...</p>
+                            </div>
+                            <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shadow-inner">
+                                <i class="fas fa-users-cog text-sm"></i>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="pax-avatar-stack flex items-center" id="pax-visual-stack"></div>
+                            <div class="text-right">
+                                <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest">Período Estancia</p>
+                                <p class="text-xs font-bold text-slate-700">21 - 24 Mar, 2026</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-600 rounded-[32px] p-6 text-white flex flex-col justify-center relative overflow-hidden group cursor-pointer shadow-xl shadow-indigo-100">
+                        <i class="fas fa-file-invoice-dollar absolute -right-6 -bottom-6 text-white/10 text-8xl group-hover:scale-110 transition-transform duration-500"></i>
+                        <p class="text-[9px] font-black uppercase tracking-[0.2em] opacity-60">Acción Rápida</p>
+                        <h4 class="text-xl font-black mt-1">Imprimir Folio Fiscal</h4>
+                        <p class="text-[10px] mt-2 font-medium opacity-80 max-w-[180px]">Genera el comprobante detallado con desglose de impuestos.</p>
+                    </div>
+                </div>
+
+                <!-- Movimientos Recientes -->
+                <div class="space-y-4 pt-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-black text-base text-slate-900 uppercase tracking-tight">Movimientos del Folio</h3>
+                    </div>
+                    <div class="bg-white rounded-[24px] border border-slate-100 shadow-sm overflow-hidden">
+                        <table class="w-full">
+                            <thead class="bg-slate-50">
+                                <tr>
+                                    <th class="px-6 py-3">Fecha</th>
+                                    <th class="py-3">Concepto</th>
+                                    <th class="py-3">Departamento</th>
+                                    <th class="text-right px-6 py-3">Monto</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-resumen-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIONES OCULTAS (Mantenidas del historial) -->
+            <div id="tab-cargos" class="hidden space-y-6 fade-in">
+                <!-- Header Terminal -->
+                <div class="flex justify-between items-end border-b pb-4">
+                    <h2 class="text-3xl font-black tracking-tighter text-slate-900">Terminal de Cargos</h2>
+                </div>
+                <!-- ... grid y pos cards ... -->
+                <div id="pos-grid-container" class="pos-grid">
+                    <div class="pos-item-card" onclick="quickAdd('Botella Agua 1L', 'MINI', 45)">
+                        <i class="fas fa-tint"></i>
+                        <div><span class="label">Agua 1L</span><span class="price">$45.00</span></div>
+                    </div>
+                    <div class="pos-item-card" onclick="quickAdd('Servicio Lavandería', 'AMA', 280)">
+                        <i class="fas fa-tshirt"></i>
+                        <div><span class="label">Lavandería</span><span class="price">$280.00</span></div>
+                    </div>
+                </div>
+                <div id="timeline-charges-container" class="mt-8 space-y-2"></div>
+            </div>
+
+            <!-- ... OTRAS SECCIONES ... -->
+            <div id="tab-pagos" class="hidden space-y-6 fade-in">
+                 <h2 class="text-3xl font-black tracking-tighter text-slate-900">Pagos & Abonos</h2>
+                 <div class="quick-charge-bar">
+                    <input type="number" id="payment-amount" class="pms-input" placeholder="Monto a pagar">
+                    <button onclick="processPayment()" class="px-8 py-3 bg-emerald-600 text-white rounded-xl font-bold uppercase text-[10px]">Registrar Pago</button>
+                 </div>
+                 <div id="payment-history-table-body" class="mt-4"></div>
+            </div>
+
+            <div id="tab-room_service" class="hidden space-y-6 fade-in">
+                <h2 class="text-3xl font-black tracking-tighter text-slate-900">Room Service</h2>
+                <div id="menu-container" class="grid grid-cols-2 gap-4"></div>
+            </div>
+
+            <div id="tab-room_move" class="hidden space-y-6 fade-in">
+                <h2 class="text-3xl font-black tracking-tighter text-slate-900">Cambio de Unidad</h2>
+                <div id="available-rooms-grid" class="room-grid"></div>
+            </div>
+
+        </main>
+
+        <!-- COLUMNA 3: AUDITORÍA -->
+        <aside class="audit-panel">
+            <div class="flex flex-col items-center mb-8 pb-6 border-b border-slate-800">
+                <div class="relative mb-4">
+                    <img src="" id="audit-avatar" class="w-20 h-20 rounded-full object-cover border-2 border-indigo-500/50 p-1 bg-slate-800 shadow-xl">
+                    <div class="absolute bottom-0 right-0 w-5 h-5 bg-emerald-500 rounded-full border-2 border-slate-900 flex items-center justify-center text-[8px]"><i class="fas fa-sync"></i></div>
+                </div>
+                <p class="pms-label text-indigo-400 tracking-[0.3em] mb-1">Folio Auditoría</p>
+                <h4 class="text-lg font-bold text-white truncate w-full text-center" id="audit-name">---</h4>
+            </div>
+
+            <div class="flex-1 space-y-6 overflow-y-auto custom-scroll pr-2">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center text-[11px]"><span class="text-slate-500 font-bold tracking-wider">Hospedaje</span><span class="font-mono" id="stat-hospedaje">$0.00</span></div>
+                    <div class="flex justify-between items-center text-[11px]"><span class="text-slate-500 font-bold tracking-wider">Consumos</span><span class="font-mono" id="stat-extras">$0.00</span></div>
+                    <div class="flex justify-between items-center text-[11px]"><span class="text-slate-500 font-bold tracking-wider">Impuestos (19%)</span><span class="font-mono" id="stat-taxes">$0.00</span></div>
+                    <div class="flex justify-between items-center text-[11px] pt-2 border-t border-slate-800"><span class="text-emerald-500 font-bold tracking-wider">Abonos</span><span class="font-mono text-emerald-400" id="stat-payments">-$0.00</span></div>
+                </div>
+
+                <div class="pt-6 border-t border-slate-800 text-center">
+                    <p class="pms-label text-slate-500 mb-2">Saldo Neto</p>
+                    <div class="text-5xl font-black text-white tracking-tighter" id="saldo-neto">$0.00</div>
+                </div>
+
+                <div class="bg-indigo-600/10 rounded-[35px] border-2 border-indigo-500/20 p-6 text-center mt-6">
+                    <div class="flex justify-between items-end mb-2">
+                        <span class="text-[9px] font-black uppercase text-indigo-400">Progreso de Pago</span>
+                        <span class="text-[10px] font-bold text-slate-400" id="payment-percent">0%</span>
+                    </div>
+                    <div class="h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                        <div id="payment-bar" class="h-full bg-indigo-500 transition-all duration-700" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- MODAL: CHECK-OUT (NUEVO) -->
+    <div id="modal-checkout" class="pms-modal-overlay">
+        <div class="pms-modal-content" style="max-width: 650px;">
+            <header class="p-8 border-b bg-slate-900 text-white flex justify-between items-center">
+                <div>
+                    <h3 class="text-xl font-black uppercase tracking-tighter">Proceso de Salida</h3>
+                    <p class="text-[10px] font-bold opacity-60">CIERRE DE FOLIO ADM-992210</p>
+                </div>
+                <button onclick="closeModal('modal-checkout')" class="text-slate-400 hover:text-white transition-colors"><i class="fas fa-times"></i></button>
+            </header>
+            
+            <div class="p-8 space-y-8">
+                <!-- Resumen Financiero Final -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-6 bg-slate-50 rounded-3xl border border-slate-100">
+                        <p class="pms-label">Total Acumulado</p>
+                        <p class="text-2xl font-black text-slate-900" id="co-total-bruto">$0.00</p>
+                    </div>
+                    <div class="p-6 bg-emerald-50 rounded-3xl border border-emerald-100">
+                        <p class="pms-label text-emerald-600">Saldo Pendiente</p>
+                        <p class="text-2xl font-black text-emerald-600" id="co-saldo-pendiente">$0.00</p>
+                    </div>
+                </div>
+
+                <!-- Encuesta de Satisfacción -->
+                <div class="text-center space-y-4">
+                    <h4 class="text-sm font-black text-slate-900 uppercase">¿Cómo fue la experiencia del huésped?</h4>
+                    <div class="flex justify-center gap-4" id="checkout-rating">
+                        <i class="fas fa-star rating-star" data-value="1" onclick="setRating(1)"></i>
+                        <i class="fas fa-star rating-star" data-value="2" onclick="setRating(2)"></i>
+                        <i class="fas fa-star rating-star" data-value="3" onclick="setRating(3)"></i>
+                        <i class="fas fa-star rating-star" data-value="4" onclick="setRating(4)"></i>
+                        <i class="fas fa-star rating-star" data-value="5" onclick="setRating(5)"></i>
+                    </div>
+                    <textarea id="co-feedback" class="pms-input w-full h-24 resize-none" placeholder="Comentarios adicionales del cliente..."></textarea>
+                </div>
+
+                <!-- Opciones de Salida -->
+                <div class="space-y-4">
+                    <label class="flex items-center gap-3 cursor-pointer group">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition-all shadow-sm">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-xs font-black text-slate-900">Enviar Folio por Correo</p>
+                            <p class="text-[10px] text-slate-400">israel@pmssystems.com</p>
+                        </div>
+                        <input type="checkbox" checked class="w-5 h-5 accent-indigo-600">
+                    </label>
+                </div>
+            </div>
+
+            <footer class="p-8 border-t bg-slate-50 flex justify-between items-center">
+                <button onclick="closeModal('modal-checkout')" class="px-6 py-4 text-slate-400 font-black text-[10px] uppercase">Atrás</button>
+                <button onclick="confirmFinalCheckOut()" id="btn-confirm-checkout" class="px-10 py-4 bg-slate-900 text-white rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-xl shadow-slate-200">
+                    Confirmar Salida y Cerrar Folio
+                </button>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // --- DATA MODEL ---
+        let DATA = {
+            titular: { nombre: "Israel", apellido: "de los Santos", id: "INE-992210", fotografia: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200" },
+            acompanantes: [{ id: 1, nombre: "María F.", es_menor: 0, fotografia: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200" }],
+            consumos: [{ id: 1, fecha: '21/03 14:15', concepto: 'Hospedaje Suite Presidencial', depto: 'SISTEMA', monto: 2500, qty: 1, tipo: 'hospedaje' }],
+            pagos_realizados: [],
+            currentRoom: '204',
+            isLocked: false,
+            rating: 0,
+            availableRooms: [
+                { id: 1, num: '102', type: 'Estándar', price: 850, status: 'ready' },
+                { id: 2, num: '204', type: 'Suite Presidencial', price: 2500, status: 'ready' }
+            ],
+            roomServiceMenu: [
+                { id: 1, cat: 'COMIDA', label: 'Hamburguesa Casa', price: 320, icon: 'fa-hamburger' }
+            ]
+        };
+
+        const ui = {
+            set: (id, text) => { const el = document.getElementById(id); if (el) el.innerText = text; },
+            html: (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; },
+            style: (id, prop, val) => { const el = document.getElementById(id); if (el) el.style[prop] = val; }
+        };
+
+        // --- FLOWS ---
+        function switchTab(tabId, el) {
+            if(DATA.isLocked) return;
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            el.classList.add('active');
+            ['resumen', 'cargos', 'pagos', 'room_service', 'room_move'].forEach(id => {
+                const target = document.getElementById('tab-' + id);
+                if(target) target.classList.add('hidden');
+            });
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            if(tabId === 'cargos') renderCargos();
+        }
+
+        // Check-Out Logic
+        function handleCheckOutFlow() {
+            const totals = calculateTotals();
+            if (totals.saldo > 0) {
+                alert(`IMPOSIBLE CERRAR FOLIO:\nEl huésped presenta un saldo pendiente de $${totals.saldo.toLocaleString()}.\nPor favor, registre el pago antes de proceder.`);
+                switchTab('pagos', document.querySelector('.nav-link:nth-child(5)'));
+                return;
+            }
+
+            // Abrir Modal de Check-out
+            ui.set('co-total-bruto', '$' + totals.bruto.toLocaleString());
+            ui.set('co-saldo-pendiente', '$' + totals.saldo.toLocaleString());
+            document.getElementById('modal-checkout').classList.add('active');
+        }
+
+        function setRating(val) {
+            DATA.rating = val;
+            const stars = document.querySelectorAll('.rating-star');
+            stars.forEach((s, idx) => {
+                if (idx < val) s.classList.add('active');
+                else s.classList.remove('active');
+            });
+        }
+
+        function confirmFinalCheckOut() {
+            if (DATA.rating === 0) {
+                alert("Por favor, califique el servicio antes de finalizar.");
+                return;
+            }
+
+            DATA.isLocked = true;
+            closeModal('modal-checkout');
+            
+            // Simular cambio de estado de habitación
+            DATA.availableRooms.find(r => r.num === DATA.currentRoom).status = 'dirty';
+            
+            // Efecto Visual de Bloqueo
+            document.getElementById('main-app-container').classList.add('pms-locked');
+            document.getElementById('btn-finalizar-folio').innerText = "FOLIO CERRADO Y ARCHIVADO";
+            document.getElementById('btn-finalizar-folio').disabled = true;
+            document.getElementById('btn-finalizar-folio').classList.replace('bg-slate-900', 'bg-emerald-600');
+
+            alert(`✓ CHECK-OUT EXITOSO\n\n- Habitación #${DATA.currentRoom} marcada como SUCIA.\n- Factura enviada al correo del huésped.\n- Satisfacción registrada: ${DATA.rating} estrellas.`);
+        }
+
+        function calculateTotals() {
+            let hosp = 0, extras = 0;
+            DATA.consumos.forEach(c => {
+                if(c.tipo === 'hospedaje') hosp += (c.monto * c.qty);
+                else extras += (c.monto * c.qty);
+            });
+            const payments = DATA.pagos_realizados.reduce((acc, p) => acc + p.monto, 0);
+            const taxes = (hosp + extras) * 0.19;
+            const bruto = hosp + extras + taxes;
+            return { bruto, saldo: bruto - payments, taxes, hosp, extras, payments };
+        }
+
+        function updateUI() {
+            const t = calculateTotals();
+            ui.set('name-titular', DATA.titular.nombre + " " + DATA.titular.apellido);
+            ui.set('id-titular', "ID: " + DATA.titular.id);
+            document.getElementById('img-titular').src = DATA.titular.fotografia;
+            document.getElementById('audit-avatar').src = DATA.titular.fotografia;
+            ui.set('audit-name', DATA.titular.nombre);
+            ui.set('stat-hospedaje', "$" + t.hosp.toLocaleString());
+            ui.set('stat-extras', "$" + t.extras.toLocaleString());
+            ui.set('stat-taxes', "$" + t.taxes.toLocaleString(undefined, {minimumFractionDigits: 2}));
+            ui.set('stat-payments', "-$" + t.payments.toLocaleString());
+            ui.set('saldo-neto', "$" + Math.max(0, t.saldo).toLocaleString(undefined, {minimumFractionDigits: 2}));
+            
+            const percent = t.bruto > 0 ? (t.payments / t.bruto * 100) : 0;
+            ui.style('payment-bar', 'width', Math.min(100, percent) + '%');
+            ui.set('payment-percent', Math.round(percent) + '%');
+
+            // Historial rápido
+            const resBody = document.getElementById('table-resumen-body');
+            resBody.innerHTML = '';
+            DATA.consumos.slice(-5).reverse().forEach(c => {
+                resBody.innerHTML += `<tr><td class="px-6 py-2 text-[10px] font-mono text-slate-400">${c.fecha}</td><td class="py-2 text-xs font-bold text-slate-700">${c.concepto}</td><td class="py-2"><span class="status-pill status-ready">${c.depto}</span></td><td class="text-right px-6 py-2 font-black text-indigo-600 text-xs">$${(c.monto * c.qty).toLocaleString()}</td></tr>`;
+            });
+        }
+
+        function quickAdd(label, depto, price) {
+            const now = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            DATA.consumos.push({ id: Date.now(), fecha: now, concepto: label, depto, monto: price, qty: 1, tipo: 'extra' });
+            updateUI();
+            renderCargos();
+        }
+
+        function renderCargos() {
+            const container = document.getElementById('timeline-charges-container');
+            container.innerHTML = '<h3 class="pms-label mb-4">Cargos de esta sesión</h3>';
+            DATA.consumos.filter(c => c.tipo !== 'hospedaje').reverse().forEach(c => {
+                container.innerHTML += `<div class="history-row"><span class="text-[10px] font-mono text-slate-400">${c.fecha}</span><div class="history-icon bg-indigo-50 text-indigo-600"><i class="fas fa-tag"></i></div><div class="px-4"><p class="font-bold text-xs">${c.concepto}</p></div><span class="text-right font-black text-indigo-600">$${c.monto.toLocaleString()}</span></div>`;
+            });
+        }
+
+        function processPayment() {
+            const amt = parseFloat(document.getElementById('payment-amount').value);
+            if(isNaN(amt) || amt <= 0) return;
+            DATA.pagos_realizados.push({ id: Date.now(), monto: amt, fecha: 'Hoy', metodo: 'Efectivo' });
+            document.getElementById('payment-amount').value = '';
+            updateUI();
+            alert("✓ Pago registrado correctamente.");
+        }
+
+        function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+        window.onload = updateUI;
+    </script>
+</body>
+</html>

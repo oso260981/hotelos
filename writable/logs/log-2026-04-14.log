@@ -1,0 +1,629 @@
+DEBUG - 2026-04-14 00:05:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 00:05:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 00:05:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 00:07:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 00:08:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 00:09:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 00:14:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 00:17:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 07:22:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 07:22:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 07:22:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 07:22:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 07:22:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 07:24:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 07:25:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 07:26:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 07:27:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 07:27:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 07:30:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 07:31:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 07:32:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 07:53:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 07:54:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-14 08:10:23 --> ErrorException: Undefined variable $subtotal
+[Method: POST, Route: reservacion/recalcular-totales/151]
+in APPPATH\Controllers\Reservacion.php on line 1240.
+ 1 APPPATH\Controllers\Reservacion.php(1240): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $subtotal', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reservacion.php', 1240)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->recalcularTotalesRegistro('151')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-14 08:23:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-14 08:24:04 --> Error: Class "App\Libraries\RegistroService" not found
+[Method: GET, Route: registro-cargos/listar/151]
+in APPPATH\Controllers\RegistroCargo.php on line 10.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(315): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\RegistroCargo.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\RegistroCargo')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\RegistroCargo')
+ 5 SYSTEMPATH\Router\Router.php(792): class_exists('\\App\\Controllers\\RegistroCargo')
+ 6 SYSTEMPATH\Router\Router.php(230): CodeIgniter\Router\Router->processRouteAttributes()
+ 7 SYSTEMPATH\CodeIgniter.php(829): CodeIgniter\Router\Router->handle('registro-cargos/listar/151')
+ 8 SYSTEMPATH\CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-14 08:24:04 --> Error: Class "App\Libraries\RegistroService" not found
+[Method: GET, Route: registro-cargos/listar/151]
+in APPPATH\Controllers\RegistroCargo.php on line 10.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(315): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\RegistroCargo.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\RegistroCargo')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\RegistroCargo')
+ 5 SYSTEMPATH\Router\Router.php(792): class_exists('\\App\\Controllers\\RegistroCargo')
+ 6 SYSTEMPATH\Router\Router.php(230): CodeIgniter\Router\Router->processRouteAttributes()
+ 7 SYSTEMPATH\CodeIgniter.php(829): CodeIgniter\Router\Router->handle('registro-cargos/listar/151')
+ 8 SYSTEMPATH\CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-14 08:25:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 08:31:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 08:37:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 08:46:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 18:56:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 18:56:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 18:57:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 18:57:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 18:57:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 19:00:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 19:01:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 19:01:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 19:02:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 19:06:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 19:15:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 19:17:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 19:18:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 19:18:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 19:37:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 19:41:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 20:01:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 20:04:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 20:49:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 21:03:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 21:11:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 21:17:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-14 21:23:38 --> Unknown column 'firma_path' in 'WHERE'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `Reporte_datos`
+WHERE `firma_path` IS NOT NULL
+AND `firma_path` != \'\'
+AND `OBSERVACIONES` IS NOT NULL
+AND `OBSERVACIONES` != \'\'
+AND  `LISTA` LIKE \'%NEGRA%\' ESCAPE \'!\'
+ORDER BY `HAB` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `Reporte_datos`
+WHERE `firma_path` IS NOT NULL
+AND `firma_path` != \'\'
+AND `OBSERVACIONES` IS NOT NULL
+AND `OBSERVACIONES` != \'\'
+AND  `LISTA` LIKE \'%NEGRA%\' ESCAPE \'!\'
+ORDER BY `HAB` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `Reporte_datos`
+WHERE `firma_path` IS NOT NULL
+AND `firma_path` != \'\'
+AND `OBSERVACIONES` IS NOT NULL
+AND `OBSERVACIONES` != \'\'
+AND  `LISTA` LIKE \'%NEGRA%\' ESCAPE \'!\'
+ORDER BY `HAB` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `Reporte_datos`
+WHERE `firma_path` IS NOT NULL
+AND `firma_path` != :firma_path:
+AND `OBSERVACIONES` IS NOT NULL
+AND `OBSERVACIONES` != :OBSERVACIONES:
+AND  `LISTA` LIKE :LISTA: ESCAPE \'!\'
+ORDER BY `HAB` ASC', [...], false)
+ 5 APPPATH\Controllers\Reportes.php(183): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->datosHuespedes()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-14 21:23:38 --> Unknown column 'firma_path' in 'WHERE'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `Reporte_datos`
+WHERE `DOC` IS NOT NULL
+AND `DOC` != \'\'
+AND `firma_path` IS NOT NULL
+AND `firma_path` != \'\'
+AND `OBSERVACIONES` IS NOT NULL
+AND `OBSERVACIONES` != \'\'
+AND  `LISTA` LIKE \'%NEGRA%\' ESCAPE \'!\'
+ORDER BY `HAB` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `Reporte_datos`
+WHERE `DOC` IS NOT NULL
+AND `DOC` != \'\'
+AND `firma_path` IS NOT NULL
+AND `firma_path` != \'\'
+AND `OBSERVACIONES` IS NOT NULL
+AND `OBSERVACIONES` != \'\'
+AND  `LISTA` LIKE \'%NEGRA%\' ESCAPE \'!\'
+ORDER BY `HAB` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `Reporte_datos`
+WHERE `DOC` IS NOT NULL
+AND `DOC` != \'\'
+AND `firma_path` IS NOT NULL
+AND `firma_path` != \'\'
+AND `OBSERVACIONES` IS NOT NULL
+AND `OBSERVACIONES` != \'\'
+AND  `LISTA` LIKE \'%NEGRA%\' ESCAPE \'!\'
+ORDER BY `HAB` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `Reporte_datos`
+WHERE `DOC` IS NOT NULL
+AND `DOC` != :DOC:
+AND `firma_path` IS NOT NULL
+AND `firma_path` != :firma_path:
+AND `OBSERVACIONES` IS NOT NULL
+AND `OBSERVACIONES` != :OBSERVACIONES:
+AND  `LISTA` LIKE :LISTA: ESCAPE \'!\'
+ORDER BY `HAB` ASC', [...], false)
+ 5 APPPATH\Controllers\Reportes.php(183): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->datosHuespedes()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-14 21:29:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-14 21:30:01 --> ErrorException: Undefined array key -1
+[Method: GET, Route: factura/pdf/151]
+in VENDORPATH\mpdf\mpdf\src\Mpdf.php on line 8352.
+ 1 VENDORPATH\mpdf\mpdf\src\Mpdf.php(8352): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key -1', 'C:\\xampp\\htdocs\\hotelos\\vendor\\mpdf\\mpdf\\src\\Mpdf.php', 8352)
+ 2 VENDORPATH\mpdf\mpdf\src\Mpdf.php(16511): Mpdf\Mpdf->WriteFlowingBlock('ESTADO DE CUENTA OFICIAL', [...])
+ 3 VENDORPATH\mpdf\mpdf\src\Mpdf.php(20455): Mpdf\Mpdf->printbuffer([...], '', true, true)
+ 4 VENDORPATH\mpdf\mpdf\src\Tag\Table.php(865): Mpdf\Mpdf->_tableHeight([...])
+ 5 VENDORPATH\mpdf\mpdf\src\Tag.php(247): Mpdf\Tag\Table->close([...], 47)
+ 6 VENDORPATH\mpdf\mpdf\src\Mpdf.php(13761): Mpdf\Tag->CloseTag('TABLE', [...], 47)
+ 7 APPPATH\Controllers\Facturas.php(81): Mpdf\Mpdf->WriteHTML(' <div class="container"> <table class="header-table"> <tr> <td width="60%"> <div class="hotel-name">HOLELOS LUXURY</div> <div class="hotel-sub">HOSPITALITY MANAGEMENT SYSTEM</div> <p style="margin-top: 5px; font-size: 9px; color: #64748b;"> Av. Paseo de la Reforma 405, CDMX<br />RFC: HOL-001215-E12 | Tel: (55) 5555-0123 </p></td> <td width="40%" align="right"> <div class="folio-box"> <div class="folio-label">Estado de Cuenta Oficial</div> <div class="folio-number">#ADM-000151</div> <div style="font-size: 9px; color: #64748b; margin-top: 5px;"> Generado: 14/04/2026 21:30 </div> </div></td> </tr> </table> <div class="guest-card"> <table class="info-grid"> <tr> <td width="50%"> <div class="info-label">Huésped Titular</div> <div class="info-value">israel de DE LOS SANTOS MENDOZA</div></td> <td width="50%"> <div class="info-label">Unidad y Categoría</div> <div class="info-value">Doble — Hab. #204</div></td> </tr> <tr> <td> <div class="info-label">Check-In (Entrada)</div> <div class="info-value">12/04/2026 20:21</div></td> <td> <div class="info-label">Check-Out (Salida)</div> <div class="info-value">30/04/2026 00:00</div></td> </tr> </table> </div> <div class="section-title">Detalle de Consumos y Servicios</div> <table class="data-table"> <thead> <tr> <th width="15%">Fecha</th> <th width="50%">Descripción del Concepto</th> <th width="15%">Depto.</th> <th width="20%" style="text-align:right">Importe</th> </tr></thead> <tbody> <tr> <td style="color: #64748b;">12/04 20:21</td> <td style="font-weight: bold;">Habitación</td> <td><span class="badge">SISTEMA</span></td> <td style="text-align:right; font-weight: bold;">$7,559.97</td> </tr> <tr> <td style="color: #64748b;">12/04 20:21</td> <td style="font-weight: bold;">Persona adicional</td> <td><span class="badge">SISTEMA</span></td> <td style="text-align:right; font-weight: bold;">$3,213.00</td> </tr> <tr> <td style="color: #64748b;">13/04 17:31</td> <td style="font-weight: bold;">Estacionamiento</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$174.00</td> </tr> <tr> <td style="color: #64748b;">13/04 17:31</td> <td style="font-weight: bold;">Masaje 50 min</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$1,392.00</td> </tr> <tr> <td style="color: #64748b;">13/04 17:31</td> <td style="font-weight: bold;">Servicio Lavandería</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$324.80</td> </tr> <tr> <td style="color: #64748b;">14/04 07:53</td> <td style="font-weight: bold;">Servicio Lavandería</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$324.80</td> </tr> <tr> <td style="color: #64748b;">14/04 08:14</td> <td style="font-weight: bold;">Masaje 50 min</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$1,392.00</td> </tr> <tr> <td style="color: #64748b;">14/04 08:26</td> <td style="font-weight: bold;">Estacionamiento</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$174.00</td> </tr> <tr> <td style="color: #64748b;">14/04 08:27</td> <td style="font-weight: bold;">Masaje 50 min</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$1,392.00</td> </tr> <tr> <td style="color: #64748b;">14/04 08:32</td> <td style="font-weight: bold;">Refresco Lata</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$40.60</td> </tr> <tr> <td style="color: #64748b;">14/04 08:32</td> <td style="font-weight: bold;">Masaje 50 min</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$1,392.00</td> </tr> <tr> <td style="color: #64748b;">14/04 08:32</td> <td style="font-weight: bold;">Estacionamiento</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$174.00</td> </tr> <tr> <td style="color: #64748b;">14/04 08:37</td> <td style="font-weight: bold;">Masaje 50 min</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$1,392.00</td> </tr> <tr> <td style="color: #64748b;">14/04 08:37</td> <td style="font-weight: bold;">Estacionamiento</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$174.00</td> </tr> <tr> <td style="color: #64748b;">14/04 08:37</td> <td style="font-weight: bold;">Estacionamiento</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$174.00</td> </tr> <tr> <td style="color: #64748b;">14/04 08:37</td> <td style="font-weight: bold;">Estacionamiento</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$174.00</td> </tr> <tr> <td style="color: #64748b;">14/04 08:37</td> <td style="font-weight: bold;">Estacionamiento</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$174.00</td> </tr> <tr> <td style="color: #64748b;">14/04 08:37</td> <td style="font-weight: bold;">Estacionamiento</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$174.00</td> </tr> <tr> <td style="color: #64748b;">14/04 08:37</td> <td style="font-weight: bold;">Estacionamiento</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$174.00</td> </tr> <tr> <td style="color: #64748b;">14/04 08:47</td> <td style="font-weight: bold;">Refresco Lata</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$40.60</td> </tr> <tr> <td style="color: #64748b;">14/04 08:50</td> <td style="font-weight: bold;">Servicio Lavandería</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$324.80</td> </tr> <tr> <td style="color: #64748b;">14/04 08:51</td> <td style="font-weight: bold;">Masaje 50 min</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$1,392.00</td> </tr> <tr> <td style="color: #64748b;">14/04 08:53</td> <td style="font-weight: bold;">Masaje 50 min</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$1,392.00</td> </tr> <tr> <td style="color: #64748b;">14/04 20:50</td> <td style="font-weight: bold;">Persona adicional</td> <td><span class="badge">SISTEMA</span></td> <td style="text-align:right; font-weight: bold;">$361,099.97</td> </tr> </tbody> </table> <div class="section-title">Historial de Pagos y Abonos</div> <table class="data-table"> <thead> <tr> <th width="20%">Fecha</th> <th width="60%">Método / Referencia de Pago</th> <th width="20%" style="text-align:right">Monto</th> </tr></thead> <tbody> <tr> <td style="color: #64748b;">12/04/2026</td> <td>Hospedaje (1)</td> <td style="text-align:right; font-weight: bold; color: #10b981;">-$300.00</td> </tr> <tr> <td style="color: #64748b;">13/04/2026</td> <td>Pago (1)</td> <td style="text-align:right; font-weight: bold; color: #10b981;">-$10,000.00</td> </tr> </tbody> </table> <div class="footer-container"> <table width="100%"> <tr> <td width="60%" valign="bottom"> <table class="signature-box"> <tr> <td> <div class="sig-line">Firma del Huésped</div></td> <td> <div class="sig-line">Auditoría / Recepción</div></td> </tr> </table></td> <td width="40%"> <table class="totals-wrapper"> <tr class="total-row"> <td>Subtotal</td> <td class="val">$384,238.54</td> </tr> <tr class="total-row"> <td>IVA (16%)</td> <td class="val">$61,478.17</td> </tr> <tr class="total-row"> <td>ISH (3%)</td> <td class="val">$11,527.16</td> </tr> <tr class="total-row"> <td style="color: #10b981;">Abonos realizados</td> <td class="val" style="color: #10b981;">-$10,300.00</td> </tr> <tr class="grand-total"> <td>SALDO FINAL</td> <td class="val">$446,943.86</td> </tr> </table></td> </tr> </table> </div> <div class="disclaimer"> Este documento es un comprobante de estado de cuenta interno y no representa una factura fiscal electrónica (CFDI) </div> </div> ')
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Facturas->pdf('151')
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Facturas))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-14 21:33:06 --> ErrorException: Undefined array key -1
+[Method: GET, Route: factura/pdf/151]
+in VENDORPATH\mpdf\mpdf\src\Mpdf.php on line 8352.
+ 1 VENDORPATH\mpdf\mpdf\src\Mpdf.php(8352): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key -1', 'C:\\xampp\\htdocs\\hotelos\\vendor\\mpdf\\mpdf\\src\\Mpdf.php', 8352)
+ 2 VENDORPATH\mpdf\mpdf\src\Mpdf.php(16511): Mpdf\Mpdf->WriteFlowingBlock('ESTADO DE CUENTA OFICIAL', [...])
+ 3 VENDORPATH\mpdf\mpdf\src\Mpdf.php(20455): Mpdf\Mpdf->printbuffer([...], '', true, true)
+ 4 VENDORPATH\mpdf\mpdf\src\Tag\Table.php(865): Mpdf\Mpdf->_tableHeight([...])
+ 5 VENDORPATH\mpdf\mpdf\src\Tag.php(247): Mpdf\Tag\Table->close([...], 47)
+ 6 VENDORPATH\mpdf\mpdf\src\Mpdf.php(13761): Mpdf\Tag->CloseTag('TABLE', [...], 47)
+ 7 APPPATH\Controllers\Facturas.php(81): Mpdf\Mpdf->WriteHTML(' <div class="container"> <table class="header-table"> <tr> <td width="60%"> <div class="hotel-name">HOLELOS LUXURY</div> <div class="hotel-sub">HOSPITALITY MANAGEMENT SYSTEM</div> <p style="margin-top: 5px; font-size: 9px; color: #64748b;"> Av. Paseo de la Reforma 405, CDMX<br />RFC: HOL-001215-E12 | Tel: (55) 5555-0123 </p></td> <td width="40%" align="right"> <div class="folio-box"> <div class="folio-label">Estado de Cuenta Oficial</div> <div class="folio-number">#ADM-000151</div> <div style="font-size: 9px; color: #64748b; margin-top: 5px;"> Generado: 14/04/2026 21:33 </div> </div></td> </tr> </table> </div> ')
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Facturas->pdf('151')
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Facturas))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-14 21:34:16 --> ErrorException: Undefined array key -1
+[Method: GET, Route: factura/pdf/151]
+in VENDORPATH\mpdf\mpdf\src\Mpdf.php on line 8352.
+ 1 VENDORPATH\mpdf\mpdf\src\Mpdf.php(8352): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key -1', 'C:\\xampp\\htdocs\\hotelos\\vendor\\mpdf\\mpdf\\src\\Mpdf.php', 8352)
+ 2 VENDORPATH\mpdf\mpdf\src\Mpdf.php(16511): Mpdf\Mpdf->WriteFlowingBlock('ESTADO DE CUENTA OFICIAL', [...])
+ 3 VENDORPATH\mpdf\mpdf\src\Mpdf.php(20455): Mpdf\Mpdf->printbuffer([...], '', true, true)
+ 4 VENDORPATH\mpdf\mpdf\src\Tag\Table.php(865): Mpdf\Mpdf->_tableHeight([...])
+ 5 VENDORPATH\mpdf\mpdf\src\Tag.php(247): Mpdf\Tag\Table->close([...], 47)
+ 6 VENDORPATH\mpdf\mpdf\src\Mpdf.php(13761): Mpdf\Tag->CloseTag('TABLE', [...], 47)
+ 7 APPPATH\Controllers\Facturas.php(81): Mpdf\Mpdf->WriteHTML(' <div class="container"> <table class="header-table"> <tr> <td width="60%"> <div class="hotel-name">HOLELOS LUXURY</div> <div class="hotel-sub">HOSPITALITY MANAGEMENT SYSTEM</div> <p style="margin-top: 5px; font-size: 9px; color: #64748b;"> Av. Paseo de la Reforma 405, CDMX<br />RFC: HOL-001215-E12 | Tel: (55) 5555-0123 </p></td> <td width="40%" align="right"> <div class="folio-box"> <div class="folio-label">Estado de Cuenta Oficial</div> <div class="folio-number">#ADM-000151</div> <div style="font-size: 9px; color: #64748b; margin-top: 5px;"> Generado: 14/04/2026 21:34 </div> </div></td> </tr> </table> </div> ')
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Facturas->pdf('151')
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Facturas))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-14 21:45:06 --> ErrorException: Undefined array key -1
+[Method: GET, Route: factura/pdf/151]
+in VENDORPATH\mpdf\mpdf\src\Mpdf.php on line 8352.
+ 1 VENDORPATH\mpdf\mpdf\src\Mpdf.php(8352): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key -1', 'C:\\xampp\\htdocs\\hotelos\\vendor\\mpdf\\mpdf\\src\\Mpdf.php', 8352)
+ 2 VENDORPATH\mpdf\mpdf\src\Mpdf.php(16511): Mpdf\Mpdf->WriteFlowingBlock('ESTADO DE CUENTA OFICIAL', [...])
+ 3 VENDORPATH\mpdf\mpdf\src\Mpdf.php(20455): Mpdf\Mpdf->printbuffer([...], '', true, true)
+ 4 VENDORPATH\mpdf\mpdf\src\Tag\Table.php(865): Mpdf\Mpdf->_tableHeight([...])
+ 5 VENDORPATH\mpdf\mpdf\src\Tag.php(247): Mpdf\Tag\Table->close([...], 47)
+ 6 VENDORPATH\mpdf\mpdf\src\Mpdf.php(13761): Mpdf\Tag->CloseTag('TABLE', [...], 47)
+ 7 APPPATH\Controllers\Facturas.php(105): Mpdf\Mpdf->WriteHTML(' <div class="container"> <table class="header-table"> <tr> <td width="60%"> <div class="hotel-name">HOLELOS LUXURY</div> <div class="hotel-sub">HOSPITALITY MANAGEMENT SYSTEM</div> <p style="margin-top: 5px; font-size: 9px; color: #64748b;"> Av. Paseo de la Reforma 405, CDMX<br />RFC: HOL-001215-E12 | Tel: (55) 5555-0123 </p></td> <td width="40%" align="right"> <div class="folio-box"> <div class="folio-label">Estado de Cuenta Oficial</div> <div class="folio-number">#ADM-000151</div> <div style="font-size: 9px; color: #64748b; margin-top: 5px;"> Generado: 14/04/2026 21:45 </div> </div></td> </tr> </table> <div class="guest-card"> <table class="info-grid"> <tr> <td width="50%"> <div class="info-label">Huésped Titular</div> <div class="info-value">israel de DE LOS SANTOS MENDOZA</div></td> <td width="50%"> <div class="info-label">Unidad y Categoría</div> <div class="info-value">Doble — Hab. #204</div></td> </tr> <tr> <td> <div class="info-label">Check-In (Entrada)</div> <div class="info-value">12/04/2026 20:21</div></td> <td> <div class="info-label">Check-Out (Salida)</div> <div class="info-value">30/04/2026 00:00</div></td> </tr> </table> </div> <div class="section-title">Detalle de Consumos y Servicios</div> <table class="data-table"> <thead> <tr> <th width="15%">Fecha</th> <th width="50%">Descripción del Concepto</th> <th width="15%">Depto.</th> <th width="20%" style="text-align:right">Importe</th> </tr></thead> <tbody> <tr> <td style="color: #64748b;">12/04 20:21</td> <td style="font-weight: bold;">Habitación</td> <td><span class="badge">SISTEMA</span></td> <td style="text-align:right; font-weight: bold;">$7,559.97</td> </tr> <tr> <td style="color: #64748b;">12/04 20:21</td> <td style="font-weight: bold;">Persona adicional</td> <td><span class="badge">SISTEMA</span></td> <td style="text-align:right; font-weight: bold;">$3,213.00</td> </tr> <tr> <td style="color: #64748b;">13/04 17:31</td> <td style="font-weight: bold;">Estacionamiento</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$174.00</td> </tr> <tr> <td style="color: #64748b;">13/04 17:31</td> <td style="font-weight: bold;">Masaje 50 min</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$1,392.00</td> </tr> <tr> <td style="color: #64748b;">13/04 17:31</td> <td style="font-weight: bold;">Servicio Lavandería</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$324.80</td> </tr> <tr> <td style="color: #64748b;">14/04 07:53</td> <td style="font-weight: bold;">Servicio Lavandería</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$324.80</td> </tr> <tr> <td style="color: #64748b;">14/04 08:14</td> <td style="font-weight: bold;">Masaje 50 min</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$1,392.00</td> </tr> <tr> <td style="color: #64748b;">14/04 08:26</td> <td style="font-weight: bold;">Estacionamiento</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$174.00</td> </tr> <tr> <td style="color: #64748b;">14/04 08:27</td> <td style="font-weight: bold;">Masaje 50 min</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$1,392.00</td> </tr> <tr> <td style="color: #64748b;">14/04 08:32</td> <td style="font-weight: bold;">Refresco Lata</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$40.60</td> </tr> <tr> <td style="color: #64748b;">14/04 08:32</td> <td style="font-weight: bold;">Masaje 50 min</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$1,392.00</td> </tr> <tr> <td style="color: #64748b;">14/04 08:32</td> <td style="font-weight: bold;">Estacionamiento</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$174.00</td> </tr> <tr> <td style="color: #64748b;">14/04 08:37</td> <td style="font-weight: bold;">Masaje 50 min</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$1,392.00</td> </tr> <tr> <td style="color: #64748b;">14/04 08:37</td> <td style="font-weight: bold;">Estacionamiento</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$174.00</td> </tr> <tr> <td style="color: #64748b;">14/04 08:37</td> <td style="font-weight: bold;">Estacionamiento</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$174.00</td> </tr> <tr> <td style="color: #64748b;">14/04 08:37</td> <td style="font-weight: bold;">Estacionamiento</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$174.00</td> </tr> <tr> <td style="color: #64748b;">14/04 08:37</td> <td style="font-weight: bold;">Estacionamiento</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$174.00</td> </tr> <tr> <td style="color: #64748b;">14/04 08:37</td> <td style="font-weight: bold;">Estacionamiento</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$174.00</td> </tr> <tr> <td style="color: #64748b;">14/04 08:37</td> <td style="font-weight: bold;">Estacionamiento</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$174.00</td> </tr> <tr> <td style="color: #64748b;">14/04 08:47</td> <td style="font-weight: bold;">Refresco Lata</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$40.60</td> </tr> <tr> <td style="color: #64748b;">14/04 08:50</td> <td style="font-weight: bold;">Servicio Lavandería</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$324.80</td> </tr> <tr> <td style="color: #64748b;">14/04 08:51</td> <td style="font-weight: bold;">Masaje 50 min</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$1,392.00</td> </tr> <tr> <td style="color: #64748b;">14/04 08:53</td> <td style="font-weight: bold;">Masaje 50 min</td> <td><span class="badge">SERVICIO</span></td> <td style="text-align:right; font-weight: bold;">$1,392.00</td> </tr> <tr> <td style="color: #64748b;">14/04 20:50</td> <td style="font-weight: bold;">Persona adicional</td> <td><span class="badge">SISTEMA</span></td> <td style="text-align:right; font-weight: bold;">$361,099.97</td> </tr> </tbody> </table> <div class="section-title">Historial de Pagos y Abonos</div> <table class="data-table"> <thead> <tr> <th width="20%">Fecha</th> <th width="60%">Método / Referencia de Pago</th> <th width="20%" style="text-align:right">Monto</th> </tr></thead> <tbody> <tr> <td style="color: #64748b;">12/04/2026</td> <td>Hospedaje (1)</td> <td style="text-align:right; font-weight: bold; color: #10b981;">-$300.00</td> </tr> <tr> <td style="color: #64748b;">13/04/2026</td> <td>Pago (1)</td> <td style="text-align:right; font-weight: bold; color: #10b981;">-$10,000.00</td> </tr> </tbody> </table> <div class="footer-container"> <table width="100%"> <tr> <td width="60%" valign="bottom"> <table class="signature-box"> <tr> <td> <div class="sig-line">Firma del Huésped</div></td> <td> <div class="sig-line">Auditoría / Recepción</div></td> </tr> </table></td> <td width="40%"> <table class="totals-wrapper"> <tr class="total-row"> <td>Subtotal</td> <td class="val">$384,238.54</td> </tr> <tr class="total-row"> <td>IVA (16%)</td> <td class="val">$61,478.17</td> </tr> <tr class="total-row"> <td>ISH (3%)</td> <td class="val">$11,527.16</td> </tr> <tr class="total-row"> <td style="color: #10b981;">Abonos realizados</td> <td class="val" style="color: #10b981;">-$10,300.00</td> </tr> <tr class="grand-total"> <td>SALDO FINAL</td> <td class="val">$446,943.86</td> </tr> </table></td> </tr> </table> </div> <div class="disclaimer"> Este documento es un comprobante de estado de cuenta interno y no representa una factura fiscal electrónica (CFDI) </div> </div> ')
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Facturas->pdf('151')
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Facturas))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-14 22:03:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 22:05:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 22:06:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 22:07:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 22:08:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 22:08:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 22:08:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 22:09:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 22:10:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 22:15:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 22:15:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 22:15:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 22:15:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 22:15:54 --> DATA HUESPED: {"id":"62","nombre":"israel de","apellido":"DE LOS SANTOS MENDOZA","email":"oso260981@gmail.com","genero":"M","telefono":"5564747411","direccion":"sta fe 2300","ciudad":"mexico","tipo_identificacion_id":"1","numero_identificacion":"SAMI810926AEAHDF","notas":"","fotografia":"guest_20260414_221551_6280.jpeg"}
+DEBUG - 2026-04-14 22:15:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 22:16:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 22:17:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 22:47:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 22:50:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 22:54:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 22:55:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 22:59:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 23:01:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 23:16:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 23:16:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 23:19:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 23:19:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 23:22:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 23:22:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-14 23:32:55 --> Table 'u653032309_hotel_pms.registro' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `registro`
+WHERE `id` = 151', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `registro`
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1374): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-14 23:33:01 --> Table 'u653032309_hotel_pms.registro' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `registro`
+WHERE `id` = 151', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `registro`
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1374): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-14 23:33:49 --> Table 'u653032309_hotel_pms.registro' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `registro`
+WHERE `id` = 151', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `registro`
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1374): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-14 23:38:49 --> Table 'u653032309_hotel_pms.registro' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `registro`
+WHERE `id` = 151', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `registro`
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1374): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-14 23:38:54 --> Table 'u653032309_hotel_pms.registro' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `registro`
+WHERE `id` = 151', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `registro`
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1374): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-14 23:39:22 --> Table 'u653032309_hotel_pms.registro' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `registro`
+WHERE `id` = 151', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `registro`
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1374): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-14 23:39:52 --> Table 'u653032309_hotel_pms.registro' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `registro`
+WHERE `id` = 151', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `registro`
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1374): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-14 23:42:45 --> Table 'u653032309_hotel_pms.registro' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `registro`
+WHERE `id` = 151', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `registro`
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1374): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-14 23:42:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-14 23:43:35 --> Table 'u653032309_hotel_pms.registro' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `registro`
+WHERE `id` = 151', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `registro`
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1374): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-14 23:44:58 --> Table 'u653032309_hotel_pms.registro' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `registro`
+WHERE `id` = 151', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `registro`
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1374): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-14 23:44:58 --> ErrorException: Undefined variable $registro
+[Method: POST, Route: registro/cancelar-inteligente]
+in APPPATH\Controllers\Reservacion.php on line 1496.
+ 1 APPPATH\Controllers\Reservacion.php(1496): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $registro', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reservacion.php', 1496)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-14 23:46:20 --> Table 'u653032309_hotel_pms.registro' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `registro`
+WHERE `id` = 151', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `registro`
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1376): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-14 23:47:30 --> Table 'u653032309_hotel_pms.registro' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `registro`
+WHERE `id` = 151', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `registro`
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1376): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-14 23:49:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-14 23:50:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-14 23:51:02 --> Table 'u653032309_hotel_pms.registro' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `registro`
+WHERE `id` = 151', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `registro`
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1376): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-14 23:52:55 --> Table 'u653032309_hotel_pms.registro' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `registro`
+WHERE `id` = 151', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `registro`
+WHERE `id` = 151')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `registro`
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1376): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-14 23:53:33 --> Unknown column 'observaciones' in 'INSERT INTO'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (151, \'Reverso cancelación (TOTAL)\', 1, -10772.97, -10772.97, \'Ajuste\', \'SISTEMA\', \'2026-04-14 23:53:33\', \'Cancelación desde UI\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (151, \'Reverso cancelación (TOTAL)\', 1, -10772.97, -10772.97, \'Ajuste\', \'SISTEMA\', \'2026-04-14 23:53:33\', \'Cancelación desde UI\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (151, \'Reverso cancelación (TOTAL)\', 1, -10772.97, -10772.97, \'Ajuste\', \'SISTEMA\', \'2026-04-14 23:53:33\', \'Cancelación desde UI\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (:registro_id:, :concepto:, :cantidad:, :precio_unitario:, :total:, :tipo:, :departamento:, :created_at:, :observaciones:)', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1433): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-14 23:53:33 --> Unknown column 'estado' in 'SET'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `habitaciones` SET `estado` = \'DISPONIBLE\'
+WHERE `id` = \'15\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `habitaciones` SET `estado` = \'DISPONIBLE\'
+WHERE `id` = \'15\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `habitaciones` SET `estado` = \'DISPONIBLE\'
+WHERE `id` = \'15\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `habitaciones` SET `estado` = :estado:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1470): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-14 23:53:33 --> Table 'u653032309_hotel_pms.registro' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `registro` SET `estado` = \'CANCELADO\', `fecha_cancelacion` = \'2026-04-14 23:53:33\', `motivo_cancelacion` = \'Cancelación desde UI\', `tipo_cancelacion` = \'TOTAL\'
+WHERE `id` = 151', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `registro` SET `estado` = \'CANCELADO\', `fecha_cancelacion` = \'2026-04-14 23:53:33\', `motivo_cancelacion` = \'Cancelación desde UI\', `tipo_cancelacion` = \'TOTAL\'
+WHERE `id` = 151')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `registro` SET `estado` = \'CANCELADO\', `fecha_cancelacion` = \'2026-04-14 23:53:33\', `motivo_cancelacion` = \'Cancelación desde UI\', `tipo_cancelacion` = \'TOTAL\'
+WHERE `id` = 151')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `registro` SET `estado` = :estado:, `fecha_cancelacion` = :fecha_cancelacion:, `motivo_cancelacion` = :motivo_cancelacion:, `tipo_cancelacion` = :tipo_cancelacion:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1478): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-14 23:53:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

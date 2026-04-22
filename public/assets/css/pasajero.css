@@ -1,0 +1,424 @@
+/* =========================================
+   PANEL
+========================================= */
+.pas-panel{
+    background:#f3f6fb;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+}
+
+/* =========================================
+   TOOLBAR
+========================================= */
+.pas-toolbar{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 15px;
+    background:#e9eef5;
+    border-bottom:1px solid #cfd8e3;
+}
+
+.pas-title{ font-size:18px; font-weight:700; }
+.pas-sub{ font-size:12px; color:#666; margin-left:6px; }
+.pas-spacer{ flex:1; }
+
+.pas-toolbar button{
+    background:#1976d2;
+    color:#fff;
+    border:none;
+    padding:6px 12px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+/* =========================================
+   FILTROS
+========================================= */
+.pas-filtros{
+    padding:8px 15px;
+    background:#fff;
+    border-bottom:1px solid #ddd;
+}
+
+.pas-chip{
+    display:inline-block;
+    padding:5px 12px;
+    border-radius:15px;
+    font-size:12px;
+    margin-right:6px;
+    cursor:pointer;
+    background:#eee;
+}
+
+.pas-chip.active{ background:#1976d2; color:#fff; }
+.pas-chip.ok{ background:#4caf50; color:#fff; }
+.pas-chip.warn{ background:#ff9800; color:#fff; }
+.pas-chip.bad{ background:#e53935; color:#fff; }
+.pas-chip.vip{ background:#8e24aa; color:#fff; }
+
+/* =========================================
+   LISTADO
+========================================= */
+.pas-scroll{
+    flex:1;
+    overflow:auto;
+    padding:15px;
+}
+
+/* =========================================
+   SECCIÓN HABITACIÓN
+========================================= */
+.pas-section{
+    margin-top:20px;
+    font-weight:700;
+    color:#546e7a;
+    border-bottom:1px solid #cfd8dc;
+    padding-bottom:4px;
+}
+
+/* =========================================
+   AVATAR BASE
+========================================= */
+.pas-avatar{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#e3f2fd,#bbdefb);
+    border:2px solid #90caf9;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+    color:#1565c0;
+    margin-right:14px;
+}
+
+/* avatar acompañante */
+.pas-card-acomp .pas-avatar{
+    width:38px;
+    height:38px;
+    font-size:14px;
+    background:linear-gradient(135deg,#f3e5f5,#e1bee7);
+    border:2px solid #ce93d8;
+    color:#6a1b9a;
+}
+
+/* =========================================
+   CARD TITULAR
+========================================= */
+.pas-card-main{
+    display:flex;
+    align-items:center;
+    background:#fff;
+    border-radius:10px;
+    border:1px solid #dcdcdc;
+    padding:14px;
+    margin-top:8px;
+}
+
+.pas-main-content{ flex:1; }
+
+.pas-main-title{
+    font-weight:700;
+    font-size:14px;
+    letter-spacing:.3px;
+}
+
+.pas-main-meta{
+    font-size:12px;
+    color:#607d8b;
+    margin-top:3px;
+}
+
+.pas-main-status{
+    text-align:right;
+    font-size:11px;
+    color:#2e7d32;
+    min-width:150px;
+}
+
+/* =========================================
+   CARD ACOMPAÑANTE
+========================================= */
+.pas-card-acomp{
+    margin-left:30px;
+    border:2px dashed #d7e3f3;
+    background:#f8fbff;
+    border-radius:10px;
+    padding:12px;
+    display:flex;
+    align-items:center;
+    margin-top:6px;
+}
+
+.pas-acomp-content{
+    font-size:13px;
+    font-weight:600;
+}
+
+.pas-acomp-meta{
+    font-size:11px;
+    color:#78909c;
+    font-weight:400;
+}
+
+/* =========================================
+   BADGES
+========================================= */
+.pas-badge{
+    font-size:10px;
+    padding:2px 6px;
+    border-radius:4px;
+    margin-left:6px;
+}
+
+.pas-badge.vip{ background:#f3e5f5; color:#6a1b9a; }
+.pas-badge.bl{ background:#ffebee; color:#c62828; }
+.pas-badge.men{ background:#fff3e0; color:#ef6c00; }
+.pas-badge.acomp{ background:#e3f2fd; color:#1565c0; }
+
+/* =========================================
+   BOTONES ACCIONES
+========================================= */
+.pas-actions{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.pas-btn-icon{
+    width:34px;
+    height:34px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+    background:#f4f7fb;
+    box-shadow:0 1px 2px rgba(0,0,0,.08);
+    transition:.15s;
+}
+
+.pas-btn-icon:hover{
+    transform:translateY(-1px);
+    box-shadow:0 3px 6px rgba(0,0,0,.15);
+}
+
+.pas-btn-icon.edit{ color:#1976d2; }
+.pas-btn-icon.scan{ color:#7b1fa2; }
+.pas-btn-icon.delete{ color:#e53935; }
+
+/* =========================================
+   MODAL
+========================================= */
+.pas-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.5);
+    display:none;
+    align-items:center;
+    justify-content:center;
+}
+
+.pas-modal-content{
+    background:#fff;
+    width:750px;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+.pas-modal-header{
+    background:#1976d2;
+    color:#fff;
+    padding:10px;
+    font-weight:700;
+    display:flex;
+    justify-content:space-between;
+}
+
+.pas-modal-body{ padding:15px; }
+
+.pas-form-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+
+.pas-input{
+    padding:8px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:13px;
+}
+
+.col-3{ grid-column:span 3; }
+
+.pas-modal-footer{
+    padding:10px;
+    border-top:1px solid #ddd;
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+}
+
+.pas-btn-save{
+    background:#4caf50;
+    color:#fff;
+    border:none;
+    padding:7px 14px;
+    border-radius:6px;
+}
+
+.pas-btn-cancel{
+    background:#999;
+    color:#fff;
+    border:none;
+    padding:7px 14px;
+    border-radius:6px;
+}
+
+
+
+.modal-reserva{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.4);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:999;
+}
+
+.modal-box{
+    background:white;
+    width:420px;
+    border-radius:10px;
+    padding:20px;
+    box-shadow:0 20px 40px rgba(0,0,0,.3);
+}
+
+.modal-header{
+    font-weight:bold;
+    font-size:18px;
+    margin-bottom:15px;
+}
+
+.modal-body label{
+    font-size:12px;
+    margin-top:10px;
+    display:block;
+}
+
+.modal-body input,
+.modal-body textarea{
+    width:100%;
+    padding:6px;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+.modal-footer{
+    margin-top:15px;
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+}
+
+/* =====================================================
+ MODAL GENERAL HOTEL OS
+===================================================== */
+.modal{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.45);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+}
+
+.modal-dialog{
+    width:500px;
+}
+
+.modal-content{
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 20px 40px rgba(0,0,0,.3);
+}
+
+.modal-header{
+    padding:10px 15px;
+    font-weight:bold;
+}
+
+.modal-body{
+    padding:15px;
+}
+
+.modal-footer{
+    padding:10px;
+    text-align:right;
+    border-top:1px solid #eee;
+}
+
+/* =========================================
+   MODAL HOTEL OS (FLotante real)
+========================================= */
+.modal-hotel{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background: rgba(0,0,0,.55);
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 99999;
+}
+
+/* caja del modal */
+.modal-hotel-box{
+    width: 480px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 30px 60px rgba(0,0,0,.35);
+    animation: modalIn .18s ease;
+}
+
+@keyframes modalIn{
+    from{ transform:scale(.85); opacity:.3 }
+    to{ transform:scale(1); opacity:1 }
+}
+
+.modal-hotel-header{
+    background:#1e4fa3;
+    color:white;
+    padding:12px 15px;
+    font-weight:bold;
+    border-radius:12px 12px 0 0;
+}
+
+.modal-hotel-body{
+    padding:15px;
+}
+
+.modal-hotel-footer{
+    padding:10px;
+    border-top:1px solid #eee;
+    text-align:right;
+}
+

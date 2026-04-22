@@ -1,0 +1,686 @@
+/* ======================================================
+   PANEL TRABAJO PMS
+====================================================== */
+.work-panel{
+    background:#0f2747;
+    padding:10px;
+    height:calc(100vh - 110px);
+    display:flex;
+    flex-direction:column;
+}
+
+/* ======================================================
+   TOOLBAR
+====================================================== */
+.work-toolbar{
+    display:flex;
+    justify-content:space-between;
+    color:white;
+    margin-bottom:6px;
+}
+
+.legend .badge{
+    margin-right:6px;
+    padding:4px 8px;
+    border-radius:8px;
+    font-size:12px;
+}
+
+.estado-disponible{ background:#26c6da; color:white }
+.estado-sucia{ background:#e57373 }
+.estado-limpia{ background:#81c784 }
+.estado-manto{ background:#ffb74d }
+.estado-planta{ background:#ba68c8 }
+
+/* ======================================================
+   GRID SCROLL
+====================================================== */
+.work-grid{
+    flex:1;
+    overflow:auto;
+    background:white;
+    border-radius:10px;
+}
+
+/* ======================================================
+   TABLA PMS
+====================================================== */
+.pms-table{
+    width:100%;
+    min-width:1400px;
+    border-collapse:collapse;
+    font-size:12px;
+}
+
+/* HEADER LETRAS */
+.pms-head-1 th{
+    background:#1f5aa6;
+    color:white;
+    font-size:11px;
+    padding:4px;
+}
+
+/* HEADER DESCRIPCION */
+.pms-head-2 th{
+    background:#2d3fa3;
+    color:white;
+    font-size:10px;
+    padding:4px;
+}
+
+/* HEADER STICKY */
+.pms-table thead th{
+    position:sticky;
+    top:0;
+    z-index:5;
+}
+
+/* FILAS */
+.pms-table tbody tr:nth-child(even){
+    background:#f3f6fa;
+}
+
+.pms-table tbody tr:hover{
+    background:#dbeafe;
+    cursor:pointer;
+}
+
+/* CELDAS */
+.pms-table td{
+    padding:4px 6px;
+    border-bottom:1px solid #cfd8e3;
+    text-align:center;
+    vertical-align:middle;
+}
+
+/* COLUMNA NOMBRE */
+.pms-table td.col-nombre{
+    text-align:left;
+    padding-left:10px;
+}
+
+/* ======================================================
+   STATUS CIRCLE
+====================================================== */
+.status-circle{
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:auto;
+    color:white;
+    font-weight:700;
+}
+
+/* ======================================================
+   BOTONES MINI
+====================================================== */
+.btn-mini{
+    background:#dbeafe;
+    border:none;
+    width:22px;
+    height:20px;
+    border-radius:4px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* ======================================================
+   FOOTER PISOS
+====================================================== */
+.work-footer{
+    height:50px;
+    background:#0f2b52;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    color:white;
+    padding:0 10px;
+}
+
+.btn-floor{
+    background:#1e4f8f;
+    border:none;
+    padding:6px 10px;
+    border-radius:6px;
+    color:white;
+}
+
+.btn-floor.active{
+    background:#28a745;
+}
+
+/* ===== FORZAR HEADER PMS ===== */
+
+.pms-table thead tr.pms-head-1 th{
+    background:#1f5aa6 !important;
+    color:white !important;
+}
+
+.pms-table thead tr.pms-head-2 th{
+    background:#2d3fa3 !important;
+    color:white !important;
+}
+
+/* evitar que bootstrap lo pise */
+.pms-table thead th{
+    border:none !important;
+}
+
+/* ===== BADGE ESTATUS PMS ===== */
+
+.st-badge{
+    display:inline-block;
+    padding:2px 8px;
+    border-radius:10px;
+    font-size:11px;
+    font-weight:600;
+    white-space:nowrap;
+}
+
+.st-clean{
+    background:#66bb6a;   /* verde PMS más elegante */
+    color:white;          /* ⭐ texto blanco */
+}
+
+.st-dirty{
+    background:#e57373;
+    color:#5c0000;
+}
+
+.st-manto{
+    background:#ffb74d;
+    color:#663c00;
+}
+
+.st-plant{
+    background:#ba68c8;
+    color:#3a0042;
+}
+
+.st-disp{
+    background:#26c6da;
+    color:#003f44;
+}
+
+/* ===== BADGE FORMA PAGO GRID ===== */
+
+.fp-badge{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:22px;
+    height:18px;
+    padding:0 4px;
+    border-radius:4px;
+    font-size:11px;
+    font-weight:700;
+    border:1px solid transparent;
+}
+
+/* colores PMS */
+.fp-E{
+    background:#e8f5e9;
+    color:#2e7d32;
+    border-color:#a5d6a7;
+}
+
+.fp-TC{
+    background:#e3f2fd;
+    color:#1565c0;
+    border-color:#90caf9;
+}
+
+.fp-TD{
+    background:#f3e5f5;
+    color:#6a1b9a;
+    border-color:#ce93d8;
+}
+
+.fp-EF{
+    background:#fff3e0;
+    color:#e65100;
+    border-color:#ffcc80;
+}
+
+.fp-TCF{
+    background:#ede7f6;
+    color:#4527a0;
+    border-color:#b39ddb;
+}
+
+.fp-TDF{
+    background:#fce4ec;
+    color:#ad1457;
+    border-color:#f48fb1;
+}
+
+
+.modal-core{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.55);
+display:none;
+z-index:9999;
+}
+
+.modal-core-box{
+background:white;
+width:95%;
+height:90%;
+margin:2% auto;
+border-radius:12px;
+display:flex;
+flex-direction:column;
+overflow:hidden;
+}
+
+.core-header{
+background:#0d47a1;
+color:white;
+padding:12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.core-body{
+flex:1;
+display:flex;
+gap:20px;
+padding:20px;
+}
+
+.core-col{
+flex:1;
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.core-col input,
+.core-col select{
+padding:8px;
+border:1px solid #ccc;
+border-radius:6px;
+}
+
+.btn-core{
+padding:10px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.btn-core.green{ background:#2e7d32;color:white }
+.btn-core.red{ background:#c62828;color:white }
+.btn-core.blue{ background:#1565c0;color:white }
+.btn-core.orange{ background:#ef6c00;color:white }
+.btn-core.purple{ background:#6a1b9a;color:white }
+
+.core-close{
+background:transparent;
+border:none;
+font-size:20px;
+color:white;
+cursor:pointer;
+}
+
+
+
+.modal-pms{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.55);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:99999;
+}
+
+.modal-pms-box{
+width:95%;
+max-width:1300px;
+background:white;
+border-radius:10px;
+box-shadow:0 30px 80px rgba(0,0,0,.5);
+overflow:hidden;
+}
+
+.modal-pms-header{
+background:#1f4fa3;
+color:white;
+padding:12px 20px;
+font-weight:600;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.modal-pms-body{
+padding:25px;
+}
+
+.pms-row{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:18px;
+margin-bottom:18px;
+}
+
+.pms-field{
+display:flex;
+flex-direction:column;
+}
+
+.pms-field label{
+font-size:12px;
+color:#666;
+margin-bottom:4px;
+}
+
+.pms-field input,
+.pms-field select{
+padding:10px;
+border:1px solid #ddd;
+border-radius:6px;
+font-size:14px;
+width:100%;
+background:white;
+}
+
+.pms-actions{
+margin-top:10px;
+display:flex;
+gap:10px;
+}
+
+.btn-pms{
+padding:10px 18px;
+border:none;
+border-radius:6px;
+font-weight:600;
+cursor:pointer;
+}
+
+.btn-pms.verde{ background:#2e7d32;color:white }
+.btn-pms.naranja{ background:#ef6c00;color:white }
+.btn-pms.morado{ background:#6a1b9a;color:white }
+
+.pms-room-box{
+margin-top:18px;
+padding:15px;
+border:1px solid #e5e5e5;
+border-radius:8px;
+background:#fafafa;
+}
+
+.pms-room-title{
+font-weight:600;
+margin-bottom:10px;
+color:#333;
+}
+
+.pms-room-grid{
+display:grid;
+grid-template-columns:repeat(6,1fr);
+gap:15px;
+}
+
+
+.pms-client-box{
+margin-top:15px;
+border:1px solid #e5e5e5;
+border-radius:8px;
+padding:10px;
+background:#fafafa;
+}
+
+.pms-client-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:10px;
+}
+
+.pms-table{
+width:100%;
+border-collapse:collapse;
+font-size:16px;
+}
+
+.pms-table th,
+.pms-table td{
+border-bottom:1px solid #eee;
+padding:8px;
+text-align:left;
+}
+
+/* ======================================================
+   TABLA CLIENTES HABITACIÓN (AISLADA)
+====================================================== */
+.pms-client-box .pms-table{
+width:100%;
+border-collapse:collapse;
+font-size:13px;
+background:white;
+}
+
+.pms-client-box .pms-table th{
+background:#f5f6fa;
+font-weight:600;
+padding:8px;
+border-bottom:1px solid #ddd;
+}
+
+.pms-client-box .pms-table td{
+padding:8px;
+border-bottom:1px solid #eee;
+}
+
+.pms-client-box{
+margin-top:15px;
+border:1px solid #e5e5e5;
+border-radius:8px;
+padding:12px;
+background:#fafafa;
+}
+
+.pms-client-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:8px;
+}
+
+.btn-sm{
+padding:4px 10px;
+font-size:14px;
+}
+
+
+/* ======================================================
+   TABLA MINI MODAL PMS (CLIENTES)
+====================================================== */
+.pms-table-mini{
+width:100%;
+border-collapse:collapse;
+font-size:13px;
+background:white;
+}
+
+.pms-table-mini thead{
+background:#f4f6fb;
+}
+
+.pms-table-mini th{
+padding:8px;
+text-align:left;
+border-bottom:1px solid #ddd;
+font-weight:600;
+}
+
+.pms-table-mini td{
+padding:8px;
+border-bottom:1px solid #eee;
+}
+
+.pms-table-mini tr:hover{
+background:#fafcff;
+}
+
+.pms-client-box{
+margin-top:20px;
+padding:15px;
+border:1px solid #e5e5e5;
+border-radius:10px;
+background:#fbfbfb;
+}
+
+
+.pms-mini-menu{
+position:absolute;
+background:white;
+border-radius:6px;
+box-shadow:0 10px 30px rgba(0,0,0,.25);
+display:none;
+z-index:999999;
+}
+
+.pms-mini-menu div{
+padding:10px 15px;
+cursor:pointer;
+}
+
+.pms-mini-menu div:hover{
+background:#f2f2f2;
+}
+
+.pms-btn-menu{
+position:relative;
+display:inline-block;
+}
+
+.pms-menu-cliente{
+position:absolute;
+top:35px;
+right:0;
+background:white;
+border-radius:8px;
+box-shadow:0 15px 40px rgba(0,0,0,.25);
+display:none;
+z-index:999999;
+min-width:160px;
+}
+
+.pms-menu-cliente div{
+padding:10px 14px;
+cursor:pointer;
+font-size:13px;
+}
+
+.pms-menu-cliente div:hover{
+background:#f5f7fb;
+}
+
+.fila-cliente{
+padding:10px;
+border-bottom:1px solid #eee;
+cursor:pointer;
+}
+
+.fila-cliente:hover{
+background:#f4f7ff;
+}
+
+
+.tabla-buscar-cliente{
+width:100%;
+border-collapse:collapse;
+margin-top:10px;
+font-size:13px;
+}
+
+.tabla-buscar-cliente th{
+background:#f1f4fb;
+padding:8px;
+text-align:left;
+border-bottom:1px solid #ddd;
+}
+
+.tabla-buscar-cliente td{
+padding:8px;
+border-bottom:1px solid #eee;
+cursor:pointer;
+}
+
+.tabla-buscar-cliente tr:hover{
+background:#eef3ff;
+}
+
+.hour-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2;
+}
+
+.hour-time {
+    font-weight: 700;
+    font-size: 12px;
+    color: #1a237e;
+}
+
+.hour-date {
+    font-size: 9px;
+    color: #9e9e9e;
+}
+
+.hour-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;      /* 🔥 centra horizontal */
+    justify-content: center;  /* 🔥 centra vertical */
+    text-align: center;       /* 🔥 centra texto */
+    width: 100%;
+}
+
+.td-price {
+    font-weight: 700;
+    color: #1b5e20; /* verde dinero */
+    font-family: 'Roboto Mono', monospace;
+}
+
+
+
+
+.legend .badge.estado-sucia.active {
+    background:#b71c1c;
+}
+
+.legend .badge.estado-limpia.active {
+    background:#1b5e20;
+}
+
+.legend .badge.estado-manto.active {
+    background:#e65100;
+}
+
+.legend .badge.estado-planta.active {
+    background:#6a1b9a;
+}
+
+
+.legend .badge{
+    cursor:pointer;
+    transition: all .2s ease;
+}
+

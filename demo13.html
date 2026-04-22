@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite FrontDesk PMS | Executive Dashboard</title>
+    
+    <!-- Libraries: Tailwind for UI and FontAwesome for icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Typography and design variables */
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        
+        :root {
+            --pms-primary: #4f46e5;
+            --pms-secondary: #0f172a;
+            --pms-accent: #10b981;
+            --pms-bg: #f8fafc;
+        }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--pms-secondary); 
+            height: 100vh; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Master Layout */
+        .glass-container {
+            width: 99vw;
+            height: 97vh;
+            max-width: 1700px;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 32px;
+            display: grid;
+            grid-template-columns: 240px 1fr 360px;
+            overflow: hidden;
+            box-shadow: 0 40px 100px -20px rgba(0,0,0,0.4);
+        }
+
+        /* Sidebar Navigation */
+        .sidebar-nav {
+            background: #ffffff;
+            border-right: 1px solid #f1f5f9;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-link {
+            padding: 12px 16px;
+            border-radius: 14px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            margin-bottom: 4px;
+        }
+
+        .nav-link.active {
+            background: var(--pms-primary);
+            color: #ffffff;
+            box-shadow: 0 8px 16px -4px rgba(79, 70, 229, 0.3);
+        }
+
+        /* Main Content Area */
+        .main-stage {
+            padding: 24px 32px;
+            overflow-y: auto;
+            background: #ffffff;
+        }
+
+        /* Audit Panel (Right) */
+        .audit-panel {
+            background: var(--pms-secondary);
+            color: #ffffff;
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Generic UI Components */
+        .pms-label { font-size: 9px; font-weight: 800; color: #94a3b8; text-transform: uppercase; margin-bottom: 4px; display: block; letter-spacing: 0.5px; }
+        
+        .pms-input {
+            background: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 10px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            outline: none;
+            transition: all 0.2s;
+        }
+        .pms-input:focus { border-color: var(--pms-primary); box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1); }
+
+        .btn-action { padding: 8px 16px; border-radius: 10px; font-size: 10px; font-weight: 800; text-transform: uppercase; transition: all 0.2s; cursor: pointer; }
+        .btn-indigo { background: #4f46e5; color: white; }
+        .btn-slate { background: #f1f5f9; color: #64748b; }
+
+        table { width: 100%; border-collapse: collapse; }
+        th { text-align: left; font-size: 9px; color: #94a3b8; font-weight: 800; text-transform: uppercase; padding: 12px 16px; border-bottom: 1px solid #f1f5f9; }
+        td { padding: 12px 16px; font-size: 12px; border-bottom: 1px solid #f8fafc; }
+
+        .fade-in { animation: fadeIn 0.3s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Modals */
+        .pms-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(6px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s;
+        }
+        .pms-modal-overlay.active { opacity: 1; visibility: visible; }
+        .pms-modal-content { background: #ffffff; width: 90%; max-width: 800px; border-radius: 32px; overflow: hidden; box-shadow: 0 50px 100px -20px rgba(0,0,0,0.5); }
+
+        .item-row {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s;
+            margin-bottom: 8px;
+        }
+
+        .avatar-circle {
+            width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 10px; font-weight: 800; margin-right: -8px; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .pms-locked { pointer-events: none; opacity: 0.6; filter: grayscale(1); }
+
+        .plate-badge {
+            background: #1e293b;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-weight: 900;
+            font-size: 14px;
+            letter-spacing: 1px;
+            border: 2px solid #94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glass-container" id="main-app-container">
+        
+        <!-- SIDEBAR -->
+        <aside class="sidebar-nav">
+            <div class="mb-10 px-1">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="bg-indigo-600 text-white w-10 h-10 rounded-xl flex items-center justify-center text-lg shadow-lg"><i class="fas fa-hotel"></i></div>
+                    <div>
+                        <h2 class="font-extrabold text-base tracking-tight">Elite PMS</h2>
+                        <p class="text-[8px] font-bold text-slate-400 uppercase tracking-widest">v2.5 Pro</p>
+                    </div>
+                </div>
+                <div class="bg-indigo-50 p-4 rounded-2xl border border-indigo-100">
+                    <p class="pms-label text-indigo-400 mb-0">Unidad</p>
+                    <p class="text-xl font-black text-indigo-900 tracking-tighter" id="sidebar-room-number">#204</p>
+                </div>
+            </div>
+
+            <nav class="flex-1 space-y-1">
+                <div class="nav-link active" onclick="switchTab('resumen', this)"><i class="fas fa-chart-pie"></i> Resumen</div>
+                <div class="nav-link" onclick="switchTab('cargos', this)"><i class="fas fa-cash-register"></i> Cargos & POS</div>
+                <div class="nav-link" onclick="switchTab('pagos', this)"><i class="fas fa-wallet-barcode"></i> Pagos</div>
+            </nav>
+
+            <div class="mt-auto space-y-3">
+                <button onclick="openVehiclesModal()" class="w-full py-3 bg-slate-50 border border-slate-200 text-slate-600 rounded-xl font-black text-[10px] uppercase tracking-widest">Vehículos</button>
+                <button onclick="handleCheckOutFlow()" id="btn-finalizar-folio" class="w-full py-4 bg-slate-900 text-white rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-xl">Finalizar Check-out</button>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-stage custom-scroll">
+            
+            <!-- VIEW: RESUMEN -->
+            <div id="tab-resumen" class="space-y-8 fade-in">
+                <div class="flex justify-between items-center bg-white p-6 rounded-[32px] border border-slate-100 shadow-sm">
+                    <div class="flex items-center gap-6">
+                        <img src="" id="img-titular" class="w-20 h-20 rounded-[28px] object-cover border-4 border-white shadow-xl bg-slate-100">
+                        <div>
+                            <span class="px-2 py-0.5 bg-indigo-50 text-indigo-600 rounded-md text-[8px] font-black uppercase mb-1 inline-block tracking-wider">Huésped Titular</span>
+                            <h1 class="text-3xl font-black tracking-tighter text-slate-900 leading-tight" id="name-titular">---</h1>
+                            <div class="flex gap-4 items-center">
+                                <p class="text-slate-400 font-bold text-[10px]" id="id-titular">ID: ---</p>
+                                <button onclick="toggleModal('modal-modify-stay', true)" class="text-[9px] font-black text-indigo-600 uppercase border-b border-indigo-200 hover:border-indigo-600 transition-all">Modificar Estancia</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right border-l border-slate-100 pl-8">
+                        <p class="pms-label">Habitación Actual</p>
+                        <p class="text-2xl font-black text-indigo-600" id="header-room-number">#204</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-6">
+                    <div class="p-6 bg-slate-50 border rounded-3xl cursor-pointer" onclick="openCompanionsList()">
+                        <p class="pms-label">Ocupantes</p>
+                        <p class="text-sm font-black text-slate-900" id="pax-text-summary">1 Adulto</p>
+                        <div id="pax-visual-stack" class="flex mt-3"></div>
+                    </div>
+                    <div class="p-6 bg-slate-50 border rounded-3xl">
+                        <p class="pms-label">Período de Estancia</p>
+                        <p class="text-sm font-black text-slate-900" id="stay-period-summary">---</p>
+                        <p class="text-[10px] font-bold text-slate-400 mt-1 uppercase" id="nights-summary">0 Noches</p>
+                    </div>
+                    <div class="p-6 bg-indigo-50 border border-indigo-100 rounded-3xl">
+                        <p class="pms-label text-indigo-500">Tarifa Promedio</p>
+                        <p class="text-xl font-black text-indigo-900" id="avg-rate-summary">$0.00</p>
+                        <p class="text-[9px] font-bold text-indigo-400 uppercase mt-1">Sujeta a cambios</p>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="font-black text-base text-slate-900 uppercase">Estado de Cuenta</h3>
+                    <div class="bg-white rounded-3xl border overflow-hidden shadow-sm">
+                        <table>
+                            <thead class="bg-slate-50">
+                                <tr>
+                                    <th class="px-6 py-3">Fecha</th>
+                                    <th class="py-3">Concepto</th>
+                                    <th class="py-3">Depto</th>
+                                    <th class="text-right px-6 py-3">Monto</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-resumen-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OTHER VIEWS -->
+            <div id="tab-cargos" class="hidden space-y-6 fade-in">
+                <h2 class="text-3xl font-black tracking-tighter text-slate-900 border-b pb-4">Terminal de Cargos</h2>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="p-4 border rounded-2xl cursor-pointer hover:bg-indigo-50 transition-all" onclick="quickAdd('Minibar - Refresco', 'MINI', 55)">Refresco ($55)</div>
+                    <div class="p-4 border rounded-2xl cursor-pointer hover:bg-indigo-50 transition-all" onclick="quickAdd('Lavandería Express', 'AMA', 350)">Lavandería ($350)</div>
+                </div>
+            </div>
+
+            <div id="tab-pagos" class="hidden space-y-6 fade-in">
+                <h2 class="text-3xl font-black tracking-tighter text-slate-900 border-b pb-4">Registrar Abono</h2>
+                <div class="bg-slate-50 p-8 rounded-3xl border flex gap-4">
+                    <input type="number" id="payment-amount" class="pms-input flex-1 h-[54px]" placeholder="0.00">
+                    <button onclick="processPayment()" class="px-10 bg-emerald-600 text-white rounded-2xl font-black uppercase text-[10px]">Confirmar Pago</button>
+                </div>
+                <div class="bg-white rounded-3xl border overflow-hidden">
+                    <table id="payment-history-table">
+                        <thead class="bg-slate-50"><tr><th class="px-6 py-3">Fecha</th><th>Método</th><th class="text-right px-6 py-3">Monto</th></tr></thead>
+                        <tbody id="payment-history-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+
+        <!-- AUDIT PANEL -->
+        <aside class="audit-panel">
+            <div class="flex flex-col items-center mb-8 pb-6 border-b border-slate-800">
+                <img src="" id="audit-avatar" class="w-20 h-20 rounded-full object-cover border-2 border-indigo-500/50 p-1 bg-slate-800 shadow-xl mb-4">
+                <h4 class="text-lg font-bold text-white truncate w-full text-center" id="audit-name">---</h4>
+                <p class="pms-label text-indigo-400 tracking-[0.3em] mt-2">Folio Activo</p>
+            </div>
+
+            <div class="flex-1 space-y-6">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center text-[11px]"><span class="text-slate-500 font-bold uppercase">Hospedaje</span><span class="font-mono" id="stat-hospedaje">$0.00</span></div>
+                    <div class="flex justify-between items-center text-[11px]"><span class="text-slate-500 font-bold uppercase">Consumos</span><span class="font-mono" id="stat-extras">$0.00</span></div>
+                    <div class="flex justify-between items-center text-[11px]"><span class="text-slate-500 font-bold uppercase">IVA/ISH (19%)</span><span class="font-mono" id="stat-taxes">$0.00</span></div>
+                    <div class="flex justify-between items-center text-[11px] pt-2 border-t border-slate-800"><span class="text-emerald-500 font-bold uppercase">Abonos</span><span class="font-mono text-emerald-400" id="stat-payments">-$0.00</span></div>
+                </div>
+
+                <div class="pt-6 border-t border-slate-800 text-center">
+                    <p class="pms-label text-slate-500 mb-1">Saldo Neto Pendiente</p>
+                    <div class="text-5xl font-black text-white tracking-tighter" id="saldo-neto">$0.00</div>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- MODAL: MODIFY STAY -->
+    <div id="modal-modify-stay" class="pms-modal-overlay">
+        <div class="pms-modal-content">
+            <header class="p-8 border-b bg-indigo-600 text-white flex justify-between items-center">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center text-white"><i class="fas fa-calendar-alt text-xl"></i></div>
+                    <div>
+                        <h3 class="text-xl font-black uppercase tracking-tighter">Modificar Instancia</h3>
+                        <p class="text-[10px] font-bold opacity-70">AJUSTE DE FECHAS Y TARIFAS DEL FOLIO</p>
+                    </div>
+                </div>
+                <button onclick="toggleModal('modal-modify-stay', false)" class="text-white hover:opacity-50 transition-opacity"><i class="fas fa-times"></i></button>
+            </header>
+            
+            <div class="p-8 grid grid-cols-2 gap-8 bg-slate-50/50">
+                <div class="space-y-4">
+                    <div>
+                        <label class="pms-label">Fecha de Llegada (Check-in)</label>
+                        <input type="date" id="modify-arrival" class="pms-input w-full bg-slate-100 cursor-not-allowed" readonly>
+                        <p class="text-[8px] text-slate-400 mt-1 font-bold uppercase">La llegada no puede modificarse post-ingreso</p>
+                    </div>
+                    <div>
+                        <label class="pms-label">Fecha de Salida (Check-out)</label>
+                        <input type="date" id="modify-departure" class="pms-input w-full">
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="pms-label">Tarifa Diaria Base ($)</label>
+                        <input type="number" id="modify-rate" class="pms-input w-full" placeholder="0.00">
+                    </div>
+                    <div class="p-6 bg-white border border-slate-200 rounded-3xl text-center">
+                        <p class="pms-label">Recálculo Estimado</p>
+                        <div class="flex justify-center items-end gap-2">
+                            <span class="text-3xl font-black text-slate-900" id="modify-nights-calc">0</span>
+                            <span class="text-xs font-bold text-slate-400 mb-1 uppercase">Noches</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="p-8 border-t bg-white flex justify-between items-center">
+                <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest max-w-[300px]">Al guardar, el cargo por hospedaje se actualizará en el historial del folio.</p>
+                <div class="flex gap-3">
+                    <button onclick="toggleModal('modal-modify-stay', false)" class="btn-action btn-slate px-6 py-4">Cancelar</button>
+                    <button onclick="saveStayModification()" class="btn-action btn-indigo px-8 py-4 shadow-lg shadow-indigo-100">Guardar Cambios</button>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- MODAL: COMPANIONS -->
+    <div id="modal-companions" class="pms-modal-overlay">
+        <div class="pms-modal-content">
+            <header class="p-8 border-b bg-indigo-600 text-white flex justify-between items-center">
+                <h3 class="text-xl font-black uppercase tracking-tighter">Ocupantes</h3>
+                <button onclick="toggleModal('modal-companions', false)" class="text-white"><i class="fas fa-times"></i></button>
+            </header>
+            <div class="p-8 space-y-4">
+                <div class="flex gap-2">
+                    <input type="text" id="pax-name" class="pms-input flex-1" placeholder="Nombre Acompañante">
+                    <button onclick="addCompanion()" class="btn-action btn-indigo px-6">Añadir</button>
+                </div>
+                <div id="companions-list-box" class="space-y-2 max-h-[400px] overflow-y-auto pr-2 custom-scroll">
+                    <!-- Dynamic List -->
+                </div>
+            </div>
+            <footer class="p-6 border-t bg-slate-50 flex justify-end">
+                <button onclick="toggleModal('modal-companions', false)" class="btn-action btn-slate px-6 py-3">Cerrar</button>
+            </footer>
+        </div>
+    </div>
+
+    <!-- MODAL: VEHICLES -->
+    <div id="modal-vehicles" class="pms-modal-overlay">
+        <div class="pms-modal-content" style="max-width: 800px;">
+            <header class="p-8 border-b bg-slate-900 text-white flex justify-between items-center">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center text-white"><i class="fas fa-car-side text-xl"></i></div>
+                    <div>
+                        <h3 class="text-xl font-black uppercase tracking-tighter">Inventario de Vehículos</h3>
+                        <p class="text-[10px] font-bold opacity-70">CONTROL DE ACCESO A ESTACIONAMIENTO</p>
+                    </div>
+                </div>
+                <button onclick="toggleModal('modal-vehicles', false)" class="text-white hover:opacity-50 transition-opacity"><i class="fas fa-times"></i></button>
+            </header>
+            <div class="p-8 space-y-6">
+                <div class="bg-slate-50 p-6 rounded-[32px] border border-slate-200">
+                    <h4 class="pms-label text-indigo-600 mb-4">Registrar Nuevo Vehículo</h4>
+                    <div class="grid grid-cols-12 gap-4">
+                        <div class="col-span-12 md:col-span-5">
+                            <label class="pms-label">Propietario</label>
+                            <select id="vehicle-owner" class="pms-input w-full h-[48px]"></select>
+                        </div>
+                        <div class="col-span-12 md:col-span-4">
+                            <label class="pms-label">Placas</label>
+                            <input type="text" id="vehicle-plates" class="pms-input w-full h-[48px]" placeholder="Ej: ABC-1234">
+                        </div>
+                        <div class="col-span-12 md:col-span-3">
+                            <label class="pms-label">Modelo / Color</label>
+                            <input type="text" id="vehicle-model" class="pms-input w-full h-[48px]" placeholder="Mazda 3 Rojo">
+                        </div>
+                        <div class="col-span-12">
+                            <button onclick="registerVehicle()" class="w-full py-4 bg-indigo-600 text-white rounded-2xl font-black text-[10px] uppercase shadow-lg">Guardar Vehículo</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="vehicles-list" class="space-y-2 max-h-[300px] overflow-y-auto pr-2 custom-scroll">
+                    <!-- Dynamic List -->
+                </div>
+            </div>
+            <footer class="p-6 bg-slate-50 border-t flex justify-end">
+                <button onclick="toggleModal('modal-vehicles', false)" class="btn-action btn-slate px-6 py-3">Cerrar</button>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // --- DATA MODEL ---
+        let DATA = {
+            titular: { nombre: "Israel", apellido: "de los Santos", id: "INE-992210", fotografía: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200" },
+            stay: {
+                arrival: '2026-03-21',
+                departure: '2026-03-24',
+                dailyRate: 2500
+            },
+            acompanantes: [{ id: 1, nombre: "María Fernanda", es_menor: false }],
+            vehiculos: [],
+            consumos: [], 
+            pagos_realizados: [],
+            currentRoom: '204',
+            isLocked: false
+        };
+
+        const ui = {
+            set: (id, text) => { const el = document.getElementById(id); if (el) el.innerText = text; },
+            html: (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; },
+            style: (id, prop, val) => { const el = document.getElementById(id); if (el) el.style[prop] = val; }
+        };
+
+        // --- NAVIGATION ---
+        function switchTab(tabId, el) {
+            if (DATA.isLocked) return;
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            el.classList.add('active');
+            ['resumen', 'cargos', 'pagos'].forEach(id => {
+                const target = document.getElementById('tab-' + id);
+                if (target) target.classList.add('hidden');
+            });
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+        }
+
+        // --- MODAL WRAPPERS (Fixing the ReferenceErrors) ---
+        function openCompanionsList() {
+            toggleModal('modal-companions', true);
+        }
+
+        function openVehiclesModal() {
+            toggleModal('modal-vehicles', true);
+        }
+
+        function toggleModal(id, show) {
+            const el = document.getElementById(id);
+            if (show) {
+                el.classList.add('active');
+                if (id === 'modal-modify-stay') initModifyModal();
+                if (id === 'modal-companions') renderCompanionsList();
+                if (id === 'modal-vehicles') {
+                    renderVehicleOwners();
+                    renderVehiclesList();
+                }
+            } else {
+                el.classList.remove('active');
+            }
+        }
+
+        // --- MODIFY STAY ---
+        function initModifyModal() {
+            document.getElementById('modify-arrival').value = DATA.stay.arrival;
+            document.getElementById('modify-departure').value = DATA.stay.departure;
+            document.getElementById('modify-rate').value = DATA.stay.dailyRate;
+            updateNightsCalc();
+            
+            document.getElementById('modify-departure').onchange = updateNightsCalc;
+            document.getElementById('modify-rate').onkeyup = updateNightsCalc;
+        }
+
+        function updateNightsCalc() {
+            const arr = new Date(document.getElementById('modify-arrival').value);
+            const dep = new Date(document.getElementById('modify-departure').value);
+            const diff = Math.ceil((dep - arr) / (1000 * 60 * 60 * 24));
+            ui.set('modify-nights-calc', Math.max(1, diff));
+        }
+
+        function saveStayModification() {
+            const newDep = document.getElementById('modify-departure').value;
+            const newRate = parseFloat(document.getElementById('modify-rate').value);
+            
+            if (new Date(newDep) <= new Date(DATA.stay.arrival)) {
+                return alert("La fecha de salida debe ser posterior a la de llegada.");
+            }
+
+            DATA.stay.departure = newDep;
+            DATA.stay.dailyRate = newRate;
+
+            const arr = new Date(DATA.stay.arrival);
+            const dep = new Date(DATA.stay.departure);
+            const nights = Math.ceil((dep - arr) / (1000 * 60 * 60 * 24));
+
+            const hospIdx = DATA.consumos.findIndex(c => c.tipo === 'hospedaje');
+            if (hospIdx !== -1) {
+                DATA.consumos[hospIdx].monto = DATA.stay.dailyRate;
+                DATA.consumos[hospIdx].qty = nights;
+                DATA.consumos[hospIdx].concepto = `Hospedaje (${nights} Noches)`;
+            } else {
+                DATA.consumos.push({ 
+                    id: 'HOSP', fecha: 'SISTEMA', concepto: `Hospedaje (${nights} Noches)`, 
+                    depto: 'SISTEMA', monto: DATA.stay.dailyRate, qty: nights, tipo: 'hospedaje' 
+                });
+            }
+
+            updateUI();
+            toggleModal('modal-modify-stay', false);
+            alert("✓ Estancia modificada.");
+        }
+
+        // --- COMPANIONS ---
+        function renderCompanionsList() {
+            const box = document.getElementById('companions-list-box');
+            box.innerHTML = '';
+            DATA.acompanantes.forEach(c => {
+                box.innerHTML += `
+                <div class="item-row">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-[10px] font-bold">AD</div>
+                        <span class="text-sm font-semibold">${c.nombre}</span>
+                    </div>
+                    <button onclick="removeCompanion(${c.id})" class="text-red-400 hover:text-red-600 transition-colors"><i class="fas fa-trash"></i></button>
+                </div>`;
+            });
+        }
+
+        function addCompanion() {
+            const name = document.getElementById('pax-name').value;
+            if (!name) return;
+            DATA.acompanantes.push({ id: Date.now(), nombre: name, es_menor: false });
+            document.getElementById('pax-name').value = '';
+            renderCompanionsList();
+            updateUI();
+        }
+
+        function removeCompanion(id) {
+            DATA.acompanantes = DATA.acompanantes.filter(c => c.id !== id);
+            renderCompanionsList();
+            updateUI();
+        }
+
+        // --- VEHICLES ---
+        function renderVehicleOwners() {
+            const sel = document.getElementById('vehicle-owner');
+            sel.innerHTML = `<option value="${DATA.titular.nombre}">${DATA.titular.nombre} (Titular)</option>`;
+            DATA.acompanantes.forEach(c => {
+                sel.innerHTML += `<option value="${c.nombre}">${c.nombre} (Acomp.)</option>`;
+            });
+        }
+
+        function registerVehicle() {
+            const plates = document.getElementById('vehicle-plates').value;
+            const model = document.getElementById('vehicle-model').value;
+            const owner = document.getElementById('vehicle-owner').value;
+            if (!plates || !model) return alert("Por favor, ingrese placas y modelo.");
+            
+            DATA.vehiculos.push({ id: Date.now(), plates: plates.toUpperCase(), model, owner });
+            document.getElementById('vehicle-plates').value = '';
+            document.getElementById('vehicle-model').value = '';
+            renderVehiclesList();
+        }
+
+        function renderVehiclesList() {
+            const box = document.getElementById('vehicles-list');
+            if (DATA.vehiculos.length === 0) {
+                box.innerHTML = '<div class="text-center py-10 text-slate-400 italic text-xs">No hay vehículos registrados.</div>';
+                return;
+            }
+            box.innerHTML = '';
+            DATA.vehiculos.forEach(v => {
+                box.innerHTML += `
+                <div class="item-row">
+                    <div class="flex items-center gap-4">
+                        <div class="plate-badge">${v.plates}</div>
+                        <div>
+                            <p class="text-xs font-black text-slate-900">${v.model}</p>
+                            <p class="text-[9px] font-bold text-slate-400 uppercase">Prop: ${v.owner}</p>
+                        </div>
+                    </div>
+                    <button onclick="deleteVehicle(${v.id})" class="text-red-400 hover:text-red-600 transition-colors"><i class="fas fa-trash"></i></button>
+                </div>`;
+            });
+        }
+
+        function deleteVehicle(id) {
+            DATA.vehiculos = DATA.vehiculos.filter(v => v.id !== id);
+            renderVehiclesList();
+        }
+
+        // --- CHARGES & PAYMENTS ---
+        function quickAdd(l, d, p) {
+            DATA.consumos.push({ id: Date.now(), fecha: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), concepto: l, depto: d, monto: p, qty: 1, tipo: 'extra' });
+            updateUI();
+        }
+
+        function processPayment() {
+            const amt = parseFloat(document.getElementById('payment-amount').value);
+            if (isNaN(amt) || amt <= 0) return;
+            DATA.pagos_realizados.push({ id: Date.now(), fecha: new Date().toLocaleDateString(), metodo: 'Efectivo', monto: amt });
+            document.getElementById('payment-amount').value = '';
+            updateUI();
+            renderPaymentsUI();
+        }
+
+        function renderPaymentsUI() {
+            const tbody = document.getElementById('payment-history-table-body');
+            tbody.innerHTML = '';
+            [...DATA.pagos_realizados].reverse().forEach(p => {
+                tbody.innerHTML += `<tr><td class="px-6 py-4 font-mono text-[10px]">${p.fecha}</td><td>${p.metodo}</td><td class="text-right font-black text-emerald-600">$${p.monto.toLocaleString()}</td></tr>`;
+            });
+        }
+
+        // --- AUDIT & UI REFRESH ---
+        function calculateTotals() {
+            let h = 0, e = 0;
+            DATA.consumos.forEach(c => { if (c.tipo === 'hospedaje') h += (c.monto * c.qty); else e += (c.monto * c.qty); });
+            const p = DATA.pagos_realizados.reduce((acc, pay) => acc + pay.monto, 0);
+            const taxes = (h + e) * 0.19;
+            const bruto = h + e + taxes;
+            return { bruto, saldo: bruto - p, taxes, h, e, p };
+        }
+
+        function updateUI() {
+            const t = calculateTotals();
+            ui.set('name-titular', DATA.titular.nombre + " " + DATA.titular.apellido);
+            document.getElementById('img-titular').src = DATA.titular.fotografía;
+            document.getElementById('audit-avatar').src = DATA.titular.fotografía;
+            ui.set('audit-name', DATA.titular.nombre);
+
+            const arr = new Date(DATA.stay.arrival);
+            const dep = new Date(DATA.stay.departure);
+            const nights = Math.ceil((dep - arr) / (1000 * 60 * 60 * 24));
+            ui.set('stay-period-summary', `${arr.toLocaleDateString()} - ${dep.toLocaleDateString()}`);
+            ui.set('nights-summary', `${nights} Noches`);
+            ui.set('avg-rate-summary', "$" + DATA.stay.dailyRate.toLocaleString());
+
+            ui.set('stat-hospedaje', "$" + t.h.toLocaleString());
+            ui.set('stat-extras', "$" + t.e.toLocaleString());
+            ui.set('stat-taxes', "$" + t.taxes.toLocaleString(undefined, {minimumFractionDigits: 2}));
+            ui.set('stat-payments', "-$" + t.p.toLocaleString());
+            ui.set('saldo-neto', "$" + Math.max(0, t.saldo).toLocaleString(undefined, {minimumFractionDigits: 2}));
+
+            ui.set('pax-text-summary', `${1 + DATA.acompanantes.length} Ocupantes`);
+            const stack = document.getElementById('pax-visual-stack');
+            stack.innerHTML = '<div class="avatar-circle bg-indigo-600 text-white">AD</div>';
+            DATA.acompanantes.forEach(() => { stack.innerHTML += '<div class="avatar-circle bg-slate-700 text-white">AD</div>'; });
+
+            const resBody = document.getElementById('table-resumen-body');
+            resBody.innerHTML = '';
+            DATA.consumos.slice(-5).reverse().forEach(c => {
+                resBody.innerHTML += `<tr><td class="px-6 py-2 text-[10px] font-mono">${c.fecha}</td><td class="font-bold">${c.concepto}</td><td class="text-[9px] uppercase font-black text-slate-400">${c.depto}</td><td class="text-right font-black text-indigo-600">$${(c.monto * c.qty).toLocaleString()}</td></tr>`;
+            });
+        }
+
+        function handleCheckOutFlow() { 
+            if (calculateTotals().saldo > 1) return alert("Liquidación pendiente."); 
+            if (confirm("¿Confirmar check-out?")) {
+                DATA.isLocked = true; document.getElementById('main-app-container').classList.add('pms-locked');
+                alert("✓ Check-out completado.");
+            }
+        }
+
+        window.onload = () => {
+            if (DATA.consumos.length === 0) {
+                const arr = new Date(DATA.stay.arrival);
+                const dep = new Date(DATA.stay.departure);
+                const nights = Math.ceil((dep - arr) / (1000 * 60 * 60 * 24));
+                DATA.consumos.push({ id: 'HOSP', fecha: 'SISTEMA', concepto: `Hospedaje (${nights} Noches)`, depto: 'SISTEMA', monto: DATA.stay.dailyRate, qty: nights, tipo: 'hospedaje' });
+            }
+            updateUI();
+            renderPaymentsUI();
+        };
+    </script>
+</body>
+</html>

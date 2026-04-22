@@ -1,0 +1,3080 @@
+DEBUG - 2026-03-17 00:06:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:07:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:07:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:08:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:08:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:09:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:09:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:10:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:11:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:14:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:14:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:15:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:15:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:21:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-17 00:21:12 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-17 00:21:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:21:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-17 00:21:33 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-17 00:22:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:22:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-17 00:22:26 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-17 00:24:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:24:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:25:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:26:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:32:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-17 00:32:29 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-17 00:39:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:42:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:43:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:43:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:46:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:46:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-17 00:46:40 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "reportes.php"
+[Method: GET, Route: reportes]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('reportes.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('reportes', [], true)
+ 3 APPPATH\Controllers\Reportes.php(16): view('reportes', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->index()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-17 00:46:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:46:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-17 00:46:47 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-17 00:48:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:49:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:49:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-17 00:49:54 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-17 00:50:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 00:50:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-17 00:50:23 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-17 01:07:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-17 01:07:19 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-17 01:08:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 01:08:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 01:08:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-17 01:08:22 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "reportes.php"
+[Method: GET, Route: reportes]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('reportes.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('reportes', [], true)
+ 3 APPPATH\Controllers\Reportes.php(16): view('reportes', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->index()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-17 01:08:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-17 01:08:28 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-17 01:09:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-17 01:09:04 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-17 01:09:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 01:56:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 01:56:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 01:56:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-17 01:56:50 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "reportes.php"
+[Method: GET, Route: reportes]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('reportes.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('reportes', [], true)
+ 3 APPPATH\Controllers\Reportes.php(16): view('reportes', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->index()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-17 01:56:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-17 01:56:56 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-17 01:56:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 02:38:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 02:39:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 02:39:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 02:39:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 02:39:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 02:42:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 02:42:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 02:42:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 02:46:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 02:46:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 02:46:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 02:47:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 02:48:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 02:48:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 02:49:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 02:52:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 02:52:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-17 02:52:58 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "reportes.php"
+[Method: GET, Route: reportes]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('reportes.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('reportes', [], true)
+ 3 APPPATH\Controllers\Reportes.php(16): view('reportes', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->index()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-17 02:53:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 02:53:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-17 02:53:03 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-17 02:53:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 02:53:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 02:55:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 02:55:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 02:57:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 03:00:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 03:00:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 03:02:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 03:02:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 03:03:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 03:04:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 03:09:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 03:09:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 03:09:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 03:11:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 03:12:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 03:13:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 03:16:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 03:16:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 03:16:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 03:16:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 03:19:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 03:19:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 03:21:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-17 03:21:55 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-17 03:24:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-17 03:24:43 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-17 03:25:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 03:25:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 04:10:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-03-17 04:10:33 --> Unknown column 'r.hora_entrada_1' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 4 APPPATH\Controllers\Pasajeros.php(93): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 04:10:33 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.hora_entrada_1' in 'SELECT'
+[Method: GET, Route: pasajeros/listado_operativo]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 APPPATH\Controllers\Pasajeros.php(93): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 04:10:33 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.hora_entrada_1' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 3 APPPATH\Controllers\Pasajeros.php(93): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 04:10:33 --> [Caused by] mysqli_sql_exception: Unknown column 'r.hora_entrada_1' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 4 APPPATH\Controllers\Pasajeros.php(93): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-17 04:11:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-03-17 04:11:34 --> Unknown column 'r.hora_entrada_1' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 4 APPPATH\Controllers\Pasajeros.php(93): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 04:11:34 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.hora_entrada_1' in 'SELECT'
+[Method: GET, Route: pasajeros/listado_operativo]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 APPPATH\Controllers\Pasajeros.php(93): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 04:11:34 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.hora_entrada_1' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 3 APPPATH\Controllers\Pasajeros.php(93): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 04:11:34 --> [Caused by] mysqli_sql_exception: Unknown column 'r.hora_entrada_1' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 4 APPPATH\Controllers\Pasajeros.php(93): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-17 04:15:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-03-17 04:15:08 --> Unknown column 'r.hora_entrada_1' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 4 APPPATH\Controllers\Pasajeros.php(93): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 04:15:08 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.hora_entrada_1' in 'SELECT'
+[Method: GET, Route: pasajeros/listado_operativo]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 APPPATH\Controllers\Pasajeros.php(93): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 04:15:08 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.hora_entrada_1' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 3 APPPATH\Controllers\Pasajeros.php(93): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 04:15:08 --> [Caused by] mysqli_sql_exception: Unknown column 'r.hora_entrada_1' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 4 APPPATH\Controllers\Pasajeros.php(93): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-03-17 04:16:16 --> Unknown column 'r.hora_entrada_1' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 4 APPPATH\Controllers\Pasajeros.php(93): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 04:16:16 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.hora_entrada_1' in 'SELECT'
+[Method: GET, Route: pasajeros/listado_operativo]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 APPPATH\Controllers\Pasajeros.php(93): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 04:16:16 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.hora_entrada_1' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 3 APPPATH\Controllers\Pasajeros.php(93): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 04:16:16 --> [Caused by] mysqli_sql_exception: Unknown column 'r.hora_entrada_1' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 4 APPPATH\Controllers\Pasajeros.php(93): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            r.forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada_1,
+            r.hora_salida_1,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-03-17 04:17:06 --> Unknown column 'r.hora_salida_1' in 'WHERE'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('
+        SELECT
+            ra.registro_id,
+            \'ACOMP\' AS tipo,
+
+            0 AS huesped_id,
+            ra.nombre,
+            \'\' AS apellido,
+            ra.numero_identificacion,
+            ra.tipo_identificacion,
+
+            hab.numero,
+            0 AS total,
+            \'\' AS forma_pago,
+            0 AS num_personas,
+
+            0 AS lista_negra,
+            0 AS cliente_frecuente,
+            NULL AS hora_entrada_1,
+            NULL AS hora_salida_1,
+
+            ra.es_menor,
+            ra.parentesco
+
+        FROM registro_acompanantes ra
+        JOIN registros r 
+            ON r.id = ra.registro_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            ra.registro_id,
+            \'ACOMP\' AS tipo,
+
+            0 AS huesped_id,
+            ra.nombre,
+            \'\' AS apellido,
+            ra.numero_identificacion,
+            ra.tipo_identificacion,
+
+            hab.numero,
+            0 AS total,
+            \'\' AS forma_pago,
+            0 AS num_personas,
+
+            0 AS lista_negra,
+            0 AS cliente_frecuente,
+            NULL AS hora_entrada_1,
+            NULL AS hora_salida_1,
+
+            ra.es_menor,
+            ra.parentesco
+
+        FROM registro_acompanantes ra
+        JOIN registros r 
+            ON r.id = ra.registro_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            ra.registro_id,
+            \'ACOMP\' AS tipo,
+
+            0 AS huesped_id,
+            ra.nombre,
+            \'\' AS apellido,
+            ra.numero_identificacion,
+            ra.tipo_identificacion,
+
+            hab.numero,
+            0 AS total,
+            \'\' AS forma_pago,
+            0 AS num_personas,
+
+            0 AS lista_negra,
+            0 AS cliente_frecuente,
+            NULL AS hora_entrada_1,
+            NULL AS hora_salida_1,
+
+            ra.es_menor,
+            ra.parentesco
+
+        FROM registro_acompanantes ra
+        JOIN registros r 
+            ON r.id = ra.registro_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 4 APPPATH\Controllers\Pasajeros.php(94): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            ra.registro_id,
+            \'ACOMP\' AS tipo,
+
+            0 AS huesped_id,
+            ra.nombre,
+            \'\' AS apellido,
+            ra.numero_identificacion,
+            ra.tipo_identificacion,
+
+            hab.numero,
+            0 AS total,
+            \'\' AS forma_pago,
+            0 AS num_personas,
+
+            0 AS lista_negra,
+            0 AS cliente_frecuente,
+            NULL AS hora_entrada_1,
+            NULL AS hora_salida_1,
+
+            ra.es_menor,
+            ra.parentesco
+
+        FROM registro_acompanantes ra
+        JOIN registros r 
+            ON r.id = ra.registro_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 04:17:06 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.hora_salida_1' in 'WHERE'
+[Method: GET, Route: pasajeros/listado_operativo]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 APPPATH\Controllers\Pasajeros.php(94): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            ra.registro_id,
+            \'ACOMP\' AS tipo,
+
+            0 AS huesped_id,
+            ra.nombre,
+            \'\' AS apellido,
+            ra.numero_identificacion,
+            ra.tipo_identificacion,
+
+            hab.numero,
+            0 AS total,
+            \'\' AS forma_pago,
+            0 AS num_personas,
+
+            0 AS lista_negra,
+            0 AS cliente_frecuente,
+            NULL AS hora_entrada_1,
+            NULL AS hora_salida_1,
+
+            ra.es_menor,
+            ra.parentesco
+
+        FROM registro_acompanantes ra
+        JOIN registros r 
+            ON r.id = ra.registro_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 04:17:06 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.hora_salida_1' in 'WHERE'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            ra.registro_id,
+            \'ACOMP\' AS tipo,
+
+            0 AS huesped_id,
+            ra.nombre,
+            \'\' AS apellido,
+            ra.numero_identificacion,
+            ra.tipo_identificacion,
+
+            hab.numero,
+            0 AS total,
+            \'\' AS forma_pago,
+            0 AS num_personas,
+
+            0 AS lista_negra,
+            0 AS cliente_frecuente,
+            NULL AS hora_entrada_1,
+            NULL AS hora_salida_1,
+
+            ra.es_menor,
+            ra.parentesco
+
+        FROM registro_acompanantes ra
+        JOIN registros r 
+            ON r.id = ra.registro_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            ra.registro_id,
+            \'ACOMP\' AS tipo,
+
+            0 AS huesped_id,
+            ra.nombre,
+            \'\' AS apellido,
+            ra.numero_identificacion,
+            ra.tipo_identificacion,
+
+            hab.numero,
+            0 AS total,
+            \'\' AS forma_pago,
+            0 AS num_personas,
+
+            0 AS lista_negra,
+            0 AS cliente_frecuente,
+            NULL AS hora_entrada_1,
+            NULL AS hora_salida_1,
+
+            ra.es_menor,
+            ra.parentesco
+
+        FROM registro_acompanantes ra
+        JOIN registros r 
+            ON r.id = ra.registro_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 3 APPPATH\Controllers\Pasajeros.php(94): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            ra.registro_id,
+            \'ACOMP\' AS tipo,
+
+            0 AS huesped_id,
+            ra.nombre,
+            \'\' AS apellido,
+            ra.numero_identificacion,
+            ra.tipo_identificacion,
+
+            hab.numero,
+            0 AS total,
+            \'\' AS forma_pago,
+            0 AS num_personas,
+
+            0 AS lista_negra,
+            0 AS cliente_frecuente,
+            NULL AS hora_entrada_1,
+            NULL AS hora_salida_1,
+
+            ra.es_menor,
+            ra.parentesco
+
+        FROM registro_acompanantes ra
+        JOIN registros r 
+            ON r.id = ra.registro_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 04:17:06 --> [Caused by] mysqli_sql_exception: Unknown column 'r.hora_salida_1' in 'WHERE'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('
+        SELECT
+            ra.registro_id,
+            \'ACOMP\' AS tipo,
+
+            0 AS huesped_id,
+            ra.nombre,
+            \'\' AS apellido,
+            ra.numero_identificacion,
+            ra.tipo_identificacion,
+
+            hab.numero,
+            0 AS total,
+            \'\' AS forma_pago,
+            0 AS num_personas,
+
+            0 AS lista_negra,
+            0 AS cliente_frecuente,
+            NULL AS hora_entrada_1,
+            NULL AS hora_salida_1,
+
+            ra.es_menor,
+            ra.parentesco
+
+        FROM registro_acompanantes ra
+        JOIN registros r 
+            ON r.id = ra.registro_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            ra.registro_id,
+            \'ACOMP\' AS tipo,
+
+            0 AS huesped_id,
+            ra.nombre,
+            \'\' AS apellido,
+            ra.numero_identificacion,
+            ra.tipo_identificacion,
+
+            hab.numero,
+            0 AS total,
+            \'\' AS forma_pago,
+            0 AS num_personas,
+
+            0 AS lista_negra,
+            0 AS cliente_frecuente,
+            NULL AS hora_entrada_1,
+            NULL AS hora_salida_1,
+
+            ra.es_menor,
+            ra.parentesco
+
+        FROM registro_acompanantes ra
+        JOIN registros r 
+            ON r.id = ra.registro_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            ra.registro_id,
+            \'ACOMP\' AS tipo,
+
+            0 AS huesped_id,
+            ra.nombre,
+            \'\' AS apellido,
+            ra.numero_identificacion,
+            ra.tipo_identificacion,
+
+            hab.numero,
+            0 AS total,
+            \'\' AS forma_pago,
+            0 AS num_personas,
+
+            0 AS lista_negra,
+            0 AS cliente_frecuente,
+            NULL AS hora_entrada_1,
+            NULL AS hora_salida_1,
+
+            ra.es_menor,
+            ra.parentesco
+
+        FROM registro_acompanantes ra
+        JOIN registros r 
+            ON r.id = ra.registro_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 4 APPPATH\Controllers\Pasajeros.php(94): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            ra.registro_id,
+            \'ACOMP\' AS tipo,
+
+            0 AS huesped_id,
+            ra.nombre,
+            \'\' AS apellido,
+            ra.numero_identificacion,
+            ra.tipo_identificacion,
+
+            hab.numero,
+            0 AS total,
+            \'\' AS forma_pago,
+            0 AS num_personas,
+
+            0 AS lista_negra,
+            0 AS cliente_frecuente,
+            NULL AS hora_entrada_1,
+            NULL AS hora_salida_1,
+
+            ra.es_menor,
+            ra.parentesco
+
+        FROM registro_acompanantes ra
+        JOIN registros r 
+            ON r.id = ra.registro_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+
+        WHERE r.hora_salida_1 IS NULL
+    ')
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-17 04:17:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 04:36:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 04:36:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 04:42:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 04:48:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 04:51:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 04:51:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 04:56:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 04:57:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 05:21:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 05:21:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 05:28:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 18:18:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 18:18:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 19:14:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 19:14:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 23:23:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 23:23:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-17 23:28:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-03-17 23:28:12 --> Illegal parameter data types varchar and row for operation '='
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'PB\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'PB\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'PB\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 23:28:12 --> CodeIgniter\Database\Exceptions\DatabaseException: Illegal parameter data types varchar and row for operation '='
+[Method: GET, Route: trabajo/listar]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 2 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 23:28:12 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Illegal parameter data types varchar and row for operation '='
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'PB\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'PB\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 4 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 23:28:12 --> [Caused by] mysqli_sql_exception: Illegal parameter data types varchar and row for operation '='
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'PB\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'PB\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'PB\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-03-17 23:28:15 --> Illegal parameter data types varchar and row for operation '='
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'1\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'1\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'1\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 23:28:15 --> CodeIgniter\Database\Exceptions\DatabaseException: Illegal parameter data types varchar and row for operation '='
+[Method: GET, Route: trabajo/listar]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 2 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 23:28:15 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Illegal parameter data types varchar and row for operation '='
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'1\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'1\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 4 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 23:28:15 --> [Caused by] mysqli_sql_exception: Illegal parameter data types varchar and row for operation '='
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'1\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'1\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'1\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-03-17 23:28:19 --> Illegal parameter data types varchar and row for operation '='
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'2\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'2\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'2\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 23:28:19 --> CodeIgniter\Database\Exceptions\DatabaseException: Illegal parameter data types varchar and row for operation '='
+[Method: GET, Route: trabajo/listar]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 2 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 23:28:19 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Illegal parameter data types varchar and row for operation '='
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'2\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'2\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 4 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 23:28:19 --> [Caused by] mysqli_sql_exception: Illegal parameter data types varchar and row for operation '='
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'2\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'2\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'2\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-03-17 23:28:20 --> Illegal parameter data types varchar and row for operation '='
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'1\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'1\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'1\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 23:28:20 --> CodeIgniter\Database\Exceptions\DatabaseException: Illegal parameter data types varchar and row for operation '='
+[Method: GET, Route: trabajo/listar]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 2 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 23:28:20 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Illegal parameter data types varchar and row for operation '='
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'1\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'1\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 4 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 23:28:20 --> [Caused by] mysqli_sql_exception: Illegal parameter data types varchar and row for operation '='
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'1\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'1\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'1\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-03-17 23:28:21 --> Illegal parameter data types varchar and row for operation '='
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'2\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'2\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'2\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 23:28:21 --> CodeIgniter\Database\Exceptions\DatabaseException: Illegal parameter data types varchar and row for operation '='
+[Method: GET, Route: trabajo/listar]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 2 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 23:28:21 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Illegal parameter data types varchar and row for operation '='
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'2\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'2\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 4 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 23:28:21 --> [Caused by] mysqli_sql_exception: Illegal parameter data types varchar and row for operation '='
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'2\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'2\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'2\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-03-17 23:28:22 --> Illegal parameter data types varchar and row for operation '='
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'3\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'3\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'3\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 23:28:22 --> CodeIgniter\Database\Exceptions\DatabaseException: Illegal parameter data types varchar and row for operation '='
+[Method: GET, Route: trabajo/listar]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 2 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 23:28:22 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Illegal parameter data types varchar and row for operation '='
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'3\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'3\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 4 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 23:28:22 --> [Caused by] mysqli_sql_exception: Illegal parameter data types varchar and row for operation '='
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'3\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'3\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'3\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-03-17 23:28:23 --> Illegal parameter data types varchar and row for operation '='
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'1\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'1\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'1\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 23:28:23 --> CodeIgniter\Database\Exceptions\DatabaseException: Illegal parameter data types varchar and row for operation '='
+[Method: GET, Route: trabajo/listar]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 2 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 23:28:23 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Illegal parameter data types varchar and row for operation '='
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'1\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'1\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 4 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-17 23:28:23 --> [Caused by] mysqli_sql_exception: Illegal parameter data types varchar and row for operation '='
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'1\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'1\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = (\'1\',10)
+ORDER BY CAST(numero AS UNSIGNED) ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `vw_trabajo`
+WHERE `piso` = :piso:
+ORDER BY CAST(numero AS UNSIGNED) ASC', [...], false)
+ 5 APPPATH\Models\TrabajoModel.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Trabajo.php(30): App\Models\TrabajoModel->listar([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

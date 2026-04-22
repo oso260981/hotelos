@@ -1,0 +1,1144 @@
+
+/* ========================= */
+/* 🎨 RESET */
+/* ========================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ========================= */
+/* 🎨 VARIABLES */
+/* ========================= */
+:root {
+    --bg: #1a1a2e;
+    --blue: #1565c0;
+    --green: #2e7d32;
+    --orange: #e65100;
+    --red: #c62828;
+    --gray: #546e7a;
+    --border: #90a4ae;
+    --col-header: #1565c0;
+}
+
+/* ========================= */
+/* 🎨 BODY */
+/* ========================= */
+body {
+    background: var(--bg);
+    font-family: Arial, sans-serif;
+}
+
+/* ========================= */
+/* 🧱 CONTENEDOR PRINCIPAL */
+/* ========================= */
+.screen-wrap {
+    max-width: 1280px;
+    margin: 20px auto;
+    background: #f0f4f8;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+/* ========================= */
+/* 🔝 TOPBAR */
+/* ========================= */
+.topbar {
+    background: #0d47a1;
+    color: white;
+    padding: 10px 20px;
+}
+
+.topbar-logo {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* ========================= */
+/* 🧭 HEADER INTERNO */
+/* ========================= */
+.inner-topbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.inner-title {
+    font-weight: bold;
+    color: var(--blue);
+}
+
+.inner-subtitle {
+    font-size: 12px;
+    color: var(--gray);
+}
+
+/* ========================= */
+/* 🔘 BOTONES */
+/* ========================= */
+.btn-primary {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.btn-green {
+    background: var(--green);
+}
+
+.btn-gray {
+    background: var(--gray);
+}
+
+.btn-back {
+    padding: 6px 10px;
+    background: #e3f2fd;
+    border: 1px solid #90caf9;
+    cursor: pointer;
+}
+
+/* ========================= */
+/* 🧭 TABS */
+/* ========================= */
+.rtab-bar {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.rtab {
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px 5px 0 0;
+}
+
+.rtab.active {
+    background: white;
+    border: 1px solid var(--border);
+    color: var(--blue);
+}
+
+.rtab.inactive {
+    color: var(--gray);
+}
+
+/* ========================= */
+/* 📊 CARDS */
+/* ========================= */
+.summary-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.sum-card {
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 4px solid;
+}
+
+
+/* ========================= */
+/* 📋 TABLA */
+/* ========================= */
+.g-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.g-table th {
+    background: var(--col-header);
+    color: white;
+    padding: 8px;
+    font-size: 12px;
+}
+
+.g-table td {
+    padding: 6px;
+    border-bottom: 1px solid #ddd;
+    font-size: 12px;
+}
+
+.g-table tbody tr:nth-child(even) {
+    background: #f5f5f5;
+}
+
+.g-table tbody tr:hover {
+    background: #e3f2fd;
+}
+
+/* ========================= */
+/* 🔲 FILA SOMBREADA */
+/* ========================= */
+.shaded td {
+    background: #fff8e1 !important;
+}
+
+/* ========================= */
+/* 🧮 TOTALES */
+/* ========================= */
+.total-row td {
+    background: #e8f5e9 !important;
+    font-weight: bold;
+    color: var(--green);
+}
+
+/* ========================= */
+/* 📜 SCROLL */
+/* ========================= */
+
+
+/* visual extra */
+tr td:first-child {
+    font-weight: bold;
+}
+
+/* ========================= */
+/* 🎛 FILTROS */
+/* ========================= */
+.btn-filter {
+    padding: 6px 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    background: #f5f5f5;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.btn-filter.active {
+    background: #e3f2fd;
+    border-color: #1565c0;
+}
+
+.btn-filter.danger {
+    background: #ffebee;
+    border-color: #c62828;
+}
+
+/* ========================= */
+/* 🎯 STATUS */
+/* ========================= */
+.ok {
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.warn {
+    color: #ef6c00;
+    font-weight: bold;
+}
+
+.danger {
+    color: #c62828;
+    font-weight: bold;
+}
+
+.vip {
+    color: #f9a825;
+    font-weight: bold;
+}
+
+.inp {
+    width: 90px;
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.reporte-header {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 6px;
+}
+
+/* 🔥 estilo compacto tipo barra */
+.turno {
+    background: #f1f5f9;
+    border-radius: 6px;
+    padding: 6px 10px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 11px;
+    border: 1px solid #e2e8f0;
+}
+
+.turno span {
+    color: #64748b;
+    font-weight: 500;
+}
+
+.turno b {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* COLORES EXACTOS */
+.t1 b {
+    color: #2563eb;
+}
+
+.t2 b {
+    color: #16a34a;
+}
+
+.t3 b {
+    color: #ea580c;
+}
+
+.total b {
+    color: #dc2626;
+}
+
+.sum-card.blue {
+    border-left: 4px solid #2563eb;
+}
+
+.sum-card.green {
+    border-left: 4px solid #16a34a;
+}
+
+.sum-card.orange {
+    border-left: 4px solid #ea580c;
+}
+
+.sum-card.red {
+    border-left: 4px solid #dc2626;
+}
+
+
+
+.tabla-turnos {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+/* HEADER GENERAL */
+.tabla-turnos thead th {
+    padding: 6px;
+    color: white;
+    text-align: center;
+}
+
+/* COLORES POR BLOQUE */
+.tabla-turnos th.hab {
+    background: #2b6cb0;
+}
+
+.tabla-turnos th.t1 {
+    background: #2563eb;
+}
+
+.tabla-turnos th.t2 {
+    background: #2e7d32;
+}
+
+.tabla-turnos th.t3 {
+    background: #455a64;
+}
+
+/* CELDAS */
+.tabla-turnos td {
+    padding: 6px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* 🔥 SOMBREADO POR TURNO */
+.tabla-turnos td.t1 {
+    background: #eef4ff;
+}
+
+.tabla-turnos td.t2 {
+    background: #edf7ed;
+}
+
+.tabla-turnos td.t3 {
+    background: #f3f6f7;
+}
+
+/* HAB */
+.tabla-turnos td.hab {
+    font-weight: bold;
+}
+
+/* HOVER */
+.tabla-turnos tbody tr:hover {
+    background: #e8f0fe;
+}
+
+/* TOTAL */
+.tabla-turnos tfoot td {
+    background: #e6f4ea;
+    font-weight: bold;
+}
+
+.total-label {
+    text-align: left;
+}
+
+.chip {
+    padding: 5px 12px;
+    border-radius: 16px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid;
+    transition: all 0.2s;
+}
+
+.chip-blue {
+    background: #e3f2fd;
+    color: #1565c0;
+    border-color: #90caf9;
+}
+
+.chip-green {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border-color: #a5d6a7;
+}
+
+.chip-orange {
+    background: #fff3e0;
+    color: #e65100;
+    border-color: #ffcc80;
+}
+
+.chip-red {
+    background: #ffebee;
+    color: #c62828;
+    border-color: #ef9a9a;
+}
+
+.chip.active {
+    opacity: 0.4;
+}
+
+
+.rep-container {
+    padding: 15px;
+}
+
+.print-bar {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.filtro-label {
+    font-size: 11px;
+    color: #546e7a;
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+.tabla-wrapper {
+    overflow-x: auto;
+    background: white;
+    border-radius: 8px;
+}
+
+/* 🔹 TABLA GENERAL */
+.g-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    background: #ffffff;
+}
+
+/* 🔹 HEADER */
+.g-table thead th {
+    background: #1e3a5f;
+    /* azul oscuro */
+    color: #fff;
+    padding: 8px;
+    font-weight: 600;
+    text-align: center;
+    border-right: 1px solid #2c4d73;
+}
+
+/* 🔹 FILAS */
+.g-table tbody td {
+    padding: 6px 8px;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: center;
+}
+
+/* 🔹 ZEBRA */
+.g-table tbody tr:nth-child(even) {
+    background: #f7f9fc;
+}
+
+/* 🔹 HOVER */
+.g-table tbody tr:hover {
+    background: #e3f2fd;
+}
+
+/* 🔹 FIRMA (imagen) */
+.g-table td img {
+    width: 55px;
+    height: 35px;
+    object-fit: contain;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+}
+
+/* 🔹 BADGES */
+.badge-ok {
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.badge-pend {
+    color: #ef6c00;
+    font-weight: bold;
+}
+
+.badge-danger {
+    color: #c62828;
+    font-weight: bold;
+}
+
+.badge-vip {
+    color: #6a1b9a;
+    font-weight: bold;
+}
+
+/* 🔹 OBSERVACIONES */
+.obs-alert {
+    color: #d84315;
+    font-weight: 500;
+}
+
+/* 🔹 LISTA NEGRA */
+.row-negra {
+    background: #ffebee !important;
+}
+
+/* 🔹 VIP */
+.row-vip {
+    background: #f3e5f5 !important;
+}
+
+/* 🔹 CHIPS (filtros) */
+.chip {
+    padding: 5px 12px;
+    border-radius: 14px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid;
+}
+
+.chip-blue {
+    background: #e3f2fd;
+    color: #1565c0;
+    border-color: #90caf9;
+}
+
+.chip-green {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border-color: #a5d6a7;
+}
+
+.chip-orange {
+    background: #fff3e0;
+    color: #ef6c00;
+    border-color: #ffcc80;
+}
+
+.chip-red {
+    background: #ffebee;
+    color: #c62828;
+    border-color: #ef9a9a;
+}
+
+.chip.active {
+    opacity: 0.4;
+}
+
+/* ALERTA */
+.alert-dia {
+    background: #fff3e0;
+    padding: 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+/* KPIs */
+.kpi-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.kpi-box {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    background: #f5f5f5;
+}
+
+.kpi-box span {
+    font-size: 11px;
+    color: #666;
+}
+
+.kpi-box b {
+    display: block;
+    font-size: 18px;
+}
+
+/* COLORES */
+.kpi-blue {
+    border-left: 4px solid #1976d2;
+}
+
+.kpi-green {
+    border-left: 4px solid #2e7d32;
+}
+
+.kpi-orange {
+    border-left: 4px solid #ef6c00;
+}
+
+.kpi-red {
+    border-left: 4px solid #c62828;
+}
+
+/* 🔹 CONTENEDOR */
+.filtro-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0 15px 0;
+}
+
+/* 🔹 LABEL */
+.filtro-bar label {
+    font-size: 12px;
+    color: #546e7a;
+    font-weight: 600;
+}
+
+/* 🔹 INPUT DATE */
+.filtro-bar input[type="date"] {
+    padding: 6px 10px;
+    border: 1px solid #cfd8dc;
+    border-radius: 6px;
+    font-size: 12px;
+    background: #fff;
+    transition: all 0.2s;
+}
+
+.filtro-bar input[type="date"]:focus {
+    border-color: #1565c0;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(21, 101, 192, 0.1);
+}
+
+/* 🔹 BOTÓN */
+.btn-buscar {
+    background: #1565c0;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+/* hover */
+.btn-buscar:hover {
+    background: #0d47a1;
+}
+
+/* click */
+.btn-buscar:active {
+    transform: scale(0.96);
+}
+
+/* 🔹 HEADER VERDE */
+.fiscal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #e8f5e9;
+    border: 1px solid #a5d6a7;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.fiscal-text {
+    font-size: 12px;
+    color: #2e7d32;
+}
+
+/* 🔹 BOTÓN GUARDAR */
+.btn-save {
+    background: #2e7d32;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-save:hover {
+    background: #1b5e20;
+}
+
+/* 🔹 INPUTS EN TABLA */
+.input-edit {
+    width: 90px;
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 12px;
+    text-align: right;
+}
+
+/* 🔹 CELDAS EDITABLES */
+.editable {
+    background: #fffde7;
+}
+
+
+/* 🔹 input modificado */
+.input-edit.editado {
+    border: 2px solid #f9a825;
+    background: #fffde7;
+}
+
+/* 🔹 fila modificada */
+.fila-editada {
+    background: #fff8e1 !important;
+}
+
+/* 🔹 badge opcional */
+.badge-edit {
+    font-size: 10px;
+    color: #ef6c00;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.input-edit.editado {
+    border: 2px solid #f9a825;
+    background: #fffde7;
+}
+
+.fila-editada {
+    background: #fff8e1 !important;
+}
+
+tr.selected {
+    background: #e3f2fd !important;
+}
+
+
+
+.tabla-turnos th {
+    background: #2f5fd0;
+    color: white;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.5);
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 9999; /* 🔥 clave */
+}
+
+.modal-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 70%;
+    max-height: 80%;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+
+
+
+/* =========================
+   🧭 TABS (SUAVES PRO)
+========================= */
+
+.rtab-bar {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    border-bottom: 2px solid #d0d7de;
+    margin-bottom: 15px;
+}
+
+/* TAB BASE */
+.rtab {
+    padding: 8px 14px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 6px 6px 0 0;
+    color: #6c757d;
+    background: transparent;
+    transition: all 0.2s ease;
+}
+
+/* HOVER */
+.rtab.inactive:hover {
+    background: #f1f3f5;
+    color: #495057;
+}
+
+/* TAB ACTIVO (SUAVE) */
+.rtab.active {
+    background: #ffffff;
+    color: #2f6fc1; /* 👈 azul más suave */
+    border: 1px solid #d0d7de; /* 👈 gris, no azul */
+    border-bottom: 2px solid #ffffff;
+    font-weight: 600;
+    position: relative;
+    top: 2px;
+}
+
+/* INACTIVO */
+.rtab.inactive {
+    border: 1px solid transparent;
+}
+
+
+/* =========================
+   TAB 1 CONTENEDOR
+========================= */
+#rep1 {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 180px); /* 👈 ajusta según header */
+}
+
+/* =========================
+   KPI FIJOS
+========================= */
+#rep1 .summary-row {
+    flex: 0 0 auto;
+}
+
+/* =========================
+   WRAPPER TABLA (SCROLL REAL)
+========================= */
+#rep1 .tabla-wrapper {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    border-radius: 10px;
+    background: white;
+}
+
+/* =========================
+   TABLA
+========================= */
+#rep1 .g-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* HEADER STICKY */
+#rep1 .g-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: #1565c0;
+    color: white;
+}
+
+/* FILAS */
+#rep1 .g-table td {
+    padding: 7px;
+    border-bottom: 1px solid #eee;
+}
+
+/* ZEBRA */
+#rep1 .g-table tbody tr:nth-child(even) {
+    background: #f9fbfd;
+}
+
+/* HOVER */
+#rep1 .g-table tbody tr:hover {
+    background: #e3f2fd;
+}
+
+/* ========================= */
+/* 📊 CARDS */
+/* ========================= */
+.summary-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.sum-card {
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 4px solid;
+}
+
+.sum-card.blue {
+    border-color: var(--blue);
+}
+
+.sum-card.green {
+    border-color: var(--green);
+}
+
+.sum-card.orange {
+    border-color: var(--orange);
+}
+
+.sum-card.red {
+    border-color: var(--red);
+}
+
+.sum-label {
+    font-size: 11px;
+    color: var(--gray);
+}
+
+.sum-value {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* =========================
+   KPI - BASE VISUAL
+========================= */
+
+.sum-card {
+    background: #ffffff;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border-left: 6px solid;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    transition: all 0.2s ease;
+}
+
+/* =========================
+   COLORES NUEVOS (MÁS SUAVES PRO)
+========================= */
+
+.sum-card.blue {
+    border-color: #3b82f6; /* azul moderno */
+}
+.sum-card.green {
+    border-color: #22c55e; /* verde moderno */
+}
+.sum-card.orange {
+    border-color: #f59e0b; /* naranja moderno */
+}
+.sum-card.red {
+    border-color: #ef4444; /* rojo moderno */
+}
+
+/* =========================
+   VALORES (COLOREADOS)
+========================= */
+
+.sum-card.blue .sum-value { color: #2563eb; }
+.sum-card.green .sum-value { color: #16a34a; }
+.sum-card.orange .sum-value { color: #d97706; }
+.sum-card.red .sum-value { color: #dc2626; }
+
+/* =========================
+   TIPOGRAFÍA
+========================= */
+
+/* label (arriba) */
+.sum-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #64748b; /* gris moderno */
+    margin-bottom: 4px;
+}
+
+/* valor principal */
+.sum-value {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* subtexto */
+.sum-sub {
+    font-size: 11px;
+    color: #94a3b8;
+    margin-top: 2px;
+}
+
+/* =========================
+   HOVER SUAVE (PRO)
+========================= */
+
+.sum-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   CONTENEDOR MÁS AMPLIO
+========================= */
+
+.app-container {
+    max-width: 1900px;   /* 👈 antes 1700 */
+    margin: 0 auto;
+    padding: 20px 30px;  /* 👈 menos padding lateral */
+    width: 100%;
+}
+
+/* =========================
+   TABLA FULL WIDTH REAL
+========================= */
+.tabla-wrapper {
+    width: 100%;
+}
+
+/* MUY IMPORTANTE */
+.g-table {
+    width: 100%;
+    table-layout: auto; /* 👈 evita columnas comprimidas */
+}
+
+/* =========================
+   KPI CONSISTENTES
+========================= */
+.summary-row {
+    width: 100%;
+}
+
+/* =========================
+   EVITAR CONTENEDORES CHICOS
+========================= */
+.inner-body {
+    width: 100%;
+    max-width: none; /* 👈 evita doble contenedor */
+    padding: 0;
+}
+
+
+/* =========================
+   CONTENEDOR TABLA
+========================= */
+.tabla-wrapper {
+    width: 100%;
+    max-height: 420px;
+    overflow-y: auto;
+
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* =========================
+   TABLA BASE
+========================= */
+.g-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+/* =========================
+   HEADER (COMO TU IMAGEN)
+========================= */
+.g-table thead th {
+    background: #3b639c; /* 👈 EXACTO estilo imagen */
+    color: #ffffff;
+    padding: 10px 8px;
+    font-weight: 600;
+    text-align: left;
+
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+/* bordes redondeados arriba */
+.g-table thead th:first-child {
+    border-top-left-radius: 10px;
+}
+.g-table thead th:last-child {
+    border-top-right-radius: 10px;
+}
+
+/* =========================
+   BODY
+========================= */
+.g-table td {
+    padding: 7px 8px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* zebra SUAVE (como imagen) */
+.g-table tbody tr:nth-child(even) {
+    background: #f1f3f6;
+}
+
+/* hover muy ligero */
+.g-table tbody tr:hover {
+    background: #e7edf7;
+}
+
+/* =========================
+   ÚLTIMA FILA REDONDEADA
+========================= */
+.g-table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+.g-table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+
+
+

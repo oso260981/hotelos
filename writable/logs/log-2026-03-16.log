@@ -1,0 +1,1816 @@
+DEBUG - 2026-03-16 00:06:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:09:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:10:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:11:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:13:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:13:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:13:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:14:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:14:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:15:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:16:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:19:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:19:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:22:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:22:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:23:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:24:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:24:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:25:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:29:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:31:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:31:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:33:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:35:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:37:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:40:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:41:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:42:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:44:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:45:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:47:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:47:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:48:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:50:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:52:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:53:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:54:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:55:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 00:58:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:01:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:01:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:01:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:02:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:03:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:05:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-16 01:05:29 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pasajeros.php"
+[Method: GET, Route: pasajeros]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pasajeros.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pasajeros', [], true)
+ 3 APPPATH\Controllers\Pasajeros.php(16): view('pasajeros', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->index()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 01:05:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:05:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-16 01:05:43 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "reportes.php"
+[Method: GET, Route: reportes]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('reportes.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('reportes', [], true)
+ 3 APPPATH\Controllers\Reportes.php(16): view('reportes', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->index()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 01:05:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:05:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-16 01:05:46 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "trabajo.php"
+[Method: GET, Route: trabajo]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('trabajo.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('trabajo', [], true)
+ 3 APPPATH\Controllers\Trabajo.php(19): view('trabajo', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->index()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 01:05:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:05:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:06:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:06:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:08:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:10:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:12:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:20:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-16 01:20:23 --> Error: Call to undefined function id_cfg()
+[Method: GET, Route: sistema]
+in APPPATH\Views\sistema.php on line 508.
+ 1 SYSTEMPATH\View\View.php(238): include()
+ 2 SYSTEMPATH\View\View.php(241): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('sistema', [], true)
+ 4 APPPATH\Controllers\Sistema.php(36): view('sistema', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sistema->index()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sistema))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 01:22:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-16 01:22:19 --> Error: Call to undefined function id_cfg()
+[Method: GET, Route: sistema]
+in APPPATH\Views\sistema.php on line 508.
+ 1 SYSTEMPATH\View\View.php(238): include()
+ 2 SYSTEMPATH\View\View.php(241): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('sistema', [], true)
+ 4 APPPATH\Controllers\Sistema.php(36): view('sistema', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sistema->index()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sistema))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 01:25:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:25:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:27:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:28:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:31:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:32:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:35:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:35:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:35:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:41:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:42:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:43:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:46:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:47:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:48:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 01:51:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 02:01:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 02:01:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 02:02:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 02:02:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 02:05:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 02:07:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 02:10:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 02:11:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 02:12:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 02:14:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 02:17:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 02:19:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 02:22:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 02:25:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 02:28:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 02:28:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 02:37:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 02:37:55 --> [DEPRECATED] explode(): Passing null to parameter #2 ($string) of type string is deprecated in APPPATH\Controllers\ConfigImpresoras.php on line 21.
+ 1 APPPATH\Controllers\ConfigImpresoras.php(21): explode('
+', null)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigImpresoras->detectarImpresoras()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigImpresoras))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 02:42:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 02:42:02 --> [DEPRECATED] explode(): Passing null to parameter #2 ($string) of type string is deprecated in APPPATH\Controllers\ConfigImpresoras.php on line 17.
+ 1 APPPATH\Controllers\ConfigImpresoras.php(17): explode('
+', null)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigImpresoras->listarImpresoras()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigImpresoras))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 02:53:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 02:59:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 03:04:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 03:05:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 03:08:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 03:11:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 03:14:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 03:15:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 03:16:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 03:16:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 03:18:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 03:19:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 03:20:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 03:20:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-16 03:20:11 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "trabajo.php"
+[Method: GET, Route: trabajo]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('trabajo.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('trabajo', [], true)
+ 3 APPPATH\Controllers\Trabajo.php(19): view('trabajo', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->index()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 03:20:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-16 03:20:14 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "reportes.php"
+[Method: GET, Route: reportes]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('reportes.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('reportes', [], true)
+ 3 APPPATH\Controllers\Reportes.php(16): view('reportes', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->index()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 03:20:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 03:25:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 03:25:55 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 38.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(38): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 03:27:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 03:28:12 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 38.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(38): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 03:28:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 03:28:26 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 38.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(38): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 03:37:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 03:37:13 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 03:41:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 03:41:23 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 03:41:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 03:41:45 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 03:42:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-16 03:42:30 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "reportes.php"
+[Method: GET, Route: reportes]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('reportes.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('reportes', [], true)
+ 3 APPPATH\Controllers\Reportes.php(16): view('reportes', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->index()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 03:42:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 03:42:34 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 03:52:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 03:52:51 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 04:01:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 04:01:52 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 04:06:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 04:06:20 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-03-16 04:06:29 --> Unknown column 'h.estado_id' in 'ON'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = :h.piso_id:
+ORDER BY `h`.`numero` ASC', [...], false)
+ 5 APPPATH\Controllers\Sistema.php(114): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sistema->habitacionesPorPiso('1')
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sistema))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 04:06:29 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'h.estado_id' in 'ON'
+[Method: GET, Route: ajax/habitaciones/1]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = :h.piso_id:
+ORDER BY `h`.`numero` ASC', [...], false)
+ 2 APPPATH\Controllers\Sistema.php(114): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sistema->habitacionesPorPiso('1')
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sistema))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 04:06:29 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'h.estado_id' in 'ON'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = :h.piso_id:
+ORDER BY `h`.`numero` ASC', [...], false)
+ 4 APPPATH\Controllers\Sistema.php(114): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sistema->habitacionesPorPiso('1')
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sistema))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 04:06:29 --> [Caused by] mysqli_sql_exception: Unknown column 'h.estado_id' in 'ON'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = :h.piso_id:
+ORDER BY `h`.`numero` ASC', [...], false)
+ 5 APPPATH\Controllers\Sistema.php(114): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sistema->habitacionesPorPiso('1')
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sistema))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 04:07:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 04:07:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 04:07:05 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 04:07:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 04:07:36 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 04:07:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 04:07:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 04:07:47 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-03-16 04:14:45 --> Unknown column 'h.estado_id' in 'ON'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = :h.piso_id:
+ORDER BY `h`.`numero` ASC', [...], false)
+ 5 APPPATH\Controllers\Sistema.php(114): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sistema->habitacionesPorPiso('1')
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sistema))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 04:14:45 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'h.estado_id' in 'ON'
+[Method: GET, Route: ajax/habitaciones/1]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = :h.piso_id:
+ORDER BY `h`.`numero` ASC', [...], false)
+ 2 APPPATH\Controllers\Sistema.php(114): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sistema->habitacionesPorPiso('1')
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sistema))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 04:14:45 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'h.estado_id' in 'ON'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = :h.piso_id:
+ORDER BY `h`.`numero` ASC', [...], false)
+ 4 APPPATH\Controllers\Sistema.php(114): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sistema->habitacionesPorPiso('1')
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sistema))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 04:14:45 --> [Caused by] mysqli_sql_exception: Unknown column 'h.estado_id' in 'ON'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = :h.piso_id:
+ORDER BY `h`.`numero` ASC', [...], false)
+ 5 APPPATH\Controllers\Sistema.php(114): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sistema->habitacionesPorPiso('1')
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sistema))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-03-16 04:14:54 --> Unknown column 'h.estado_id' in 'ON'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'2\'
+ORDER BY `h`.`numero` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'2\'
+ORDER BY `h`.`numero` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'2\'
+ORDER BY `h`.`numero` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = :h.piso_id:
+ORDER BY `h`.`numero` ASC', [...], false)
+ 5 APPPATH\Controllers\Sistema.php(114): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sistema->habitacionesPorPiso('2')
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sistema))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 04:14:54 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'h.estado_id' in 'ON'
+[Method: GET, Route: ajax/habitaciones/2]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = :h.piso_id:
+ORDER BY `h`.`numero` ASC', [...], false)
+ 2 APPPATH\Controllers\Sistema.php(114): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sistema->habitacionesPorPiso('2')
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sistema))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 04:14:54 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'h.estado_id' in 'ON'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'2\'
+ORDER BY `h`.`numero` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'2\'
+ORDER BY `h`.`numero` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = :h.piso_id:
+ORDER BY `h`.`numero` ASC', [...], false)
+ 4 APPPATH\Controllers\Sistema.php(114): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sistema->habitacionesPorPiso('2')
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sistema))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 04:14:54 --> [Caused by] mysqli_sql_exception: Unknown column 'h.estado_id' in 'ON'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'2\'
+ORDER BY `h`.`numero` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'2\'
+ORDER BY `h`.`numero` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'2\'
+ORDER BY `h`.`numero` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = :h.piso_id:
+ORDER BY `h`.`numero` ASC', [...], false)
+ 5 APPPATH\Controllers\Sistema.php(114): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sistema->habitacionesPorPiso('2')
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sistema))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-03-16 04:14:56 --> Unknown column 'h.estado_id' in 'ON'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = :h.piso_id:
+ORDER BY `h`.`numero` ASC', [...], false)
+ 5 APPPATH\Controllers\Sistema.php(114): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sistema->habitacionesPorPiso('1')
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sistema))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 04:14:56 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'h.estado_id' in 'ON'
+[Method: GET, Route: ajax/habitaciones/1]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = :h.piso_id:
+ORDER BY `h`.`numero` ASC', [...], false)
+ 2 APPPATH\Controllers\Sistema.php(114): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sistema->habitacionesPorPiso('1')
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sistema))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 04:14:56 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'h.estado_id' in 'ON'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = :h.piso_id:
+ORDER BY `h`.`numero` ASC', [...], false)
+ 4 APPPATH\Controllers\Sistema.php(114): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sistema->habitacionesPorPiso('1')
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sistema))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 04:14:56 --> [Caused by] mysqli_sql_exception: Unknown column 'h.estado_id' in 'ON'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = :h.piso_id:
+ORDER BY `h`.`numero` ASC', [...], false)
+ 5 APPPATH\Controllers\Sistema.php(114): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sistema->habitacionesPorPiso('1')
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sistema))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 04:15:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 04:15:40 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-03-16 04:15:44 --> Unknown column 'h.estado_id' in 'ON'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = :h.piso_id:
+ORDER BY `h`.`numero` ASC', [...], false)
+ 5 APPPATH\Controllers\Sistema.php(114): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sistema->habitacionesPorPiso('1')
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sistema))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 04:15:44 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'h.estado_id' in 'ON'
+[Method: GET, Route: ajax/habitaciones/1]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = :h.piso_id:
+ORDER BY `h`.`numero` ASC', [...], false)
+ 2 APPPATH\Controllers\Sistema.php(114): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sistema->habitacionesPorPiso('1')
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sistema))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 04:15:44 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'h.estado_id' in 'ON'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = :h.piso_id:
+ORDER BY `h`.`numero` ASC', [...], false)
+ 4 APPPATH\Controllers\Sistema.php(114): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sistema->habitacionesPorPiso('1')
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sistema))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 04:15:44 --> [Caused by] mysqli_sql_exception: Unknown column 'h.estado_id' in 'ON'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = :h.piso_id:
+ORDER BY `h`.`numero` ASC', [...], false)
+ 5 APPPATH\Controllers\Sistema.php(114): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sistema->habitacionesPorPiso('1')
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sistema))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-03-16 04:16:59 --> Unknown column 'h.estado_id' in 'ON'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = :h.piso_id:
+ORDER BY `h`.`numero` ASC', [...], false)
+ 5 APPPATH\Controllers\Sistema.php(114): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sistema->habitacionesPorPiso('1')
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sistema))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 04:16:59 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'h.estado_id' in 'ON'
+[Method: GET, Route: ajax/habitaciones/1]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = :h.piso_id:
+ORDER BY `h`.`numero` ASC', [...], false)
+ 2 APPPATH\Controllers\Sistema.php(114): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sistema->habitacionesPorPiso('1')
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sistema))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 04:16:59 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'h.estado_id' in 'ON'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = :h.piso_id:
+ORDER BY `h`.`numero` ASC', [...], false)
+ 4 APPPATH\Controllers\Sistema.php(114): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sistema->habitacionesPorPiso('1')
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sistema))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 04:16:59 --> [Caused by] mysqli_sql_exception: Unknown column 'h.estado_id' in 'ON'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = \'1\'
+ORDER BY `h`.`numero` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`id`, `h`.`numero`, `h`.`activa`, `e`.`codigo`, `e`.`nombre`, `e`.`icono`, `e`.`color`
+FROM `habitaciones` `h`
+LEFT JOIN `estados_habitacion` `e` ON `e`.`id` = `h`.`estado_id`
+WHERE `h`.`piso_id` = :h.piso_id:
+ORDER BY `h`.`numero` ASC', [...], false)
+ 5 APPPATH\Controllers\Sistema.php(114): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sistema->habitacionesPorPiso('1')
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sistema))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 04:21:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 04:21:53 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 04:22:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 04:22:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 04:22:07 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 04:25:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 04:25:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 04:25:40 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 04:44:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 04:44:48 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 04:47:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 04:47:20 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 04:48:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-16 04:48:28 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "trabajo.php"
+[Method: GET, Route: trabajo]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('trabajo.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('trabajo', [], true)
+ 3 APPPATH\Controllers\Trabajo.php(19): view('trabajo', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->index()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 04:50:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-16 04:50:21 --> ErrorException: Undefined variable $data
+[Method: GET, Route: trabajo]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->index()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 04:50:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 04:51:02 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 04:52:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 04:52:41 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 04:52:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-16 04:52:42 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "trabajo.php"
+[Method: GET, Route: trabajo]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('trabajo.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('trabajo', [], true)
+ 3 APPPATH\Controllers\Trabajo.php(15): view('trabajo')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->index()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 04:53:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 04:53:39 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 04:53:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-16 04:53:40 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pasajeros.php"
+[Method: GET, Route: pasajeros]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pasajeros.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pasajeros', [], true)
+ 3 APPPATH\Controllers\Pasajeros.php(16): view('pasajeros', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->index()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 05:03:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:03:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 05:03:07 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 05:03:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-16 05:03:10 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "trabajo.php"
+[Method: GET, Route: trabajo]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('trabajo.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('trabajo', [], true)
+ 3 APPPATH\Controllers\Trabajo.php(15): view('trabajo')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->index()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 05:03:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-16 05:03:15 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "trabajo.php"
+[Method: GET, Route: trabajo]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('trabajo.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('trabajo', [], true)
+ 3 APPPATH\Controllers\Trabajo.php(15): view('trabajo')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->index()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 05:19:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-16 05:19:35 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "layouts/main.php"
+[Method: GET, Route: trabajo]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('layouts/main.php')
+ 2 SYSTEMPATH\View\View.php(254): CodeIgniter\View\View->render('layouts/main', [], true)
+ 3 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('trabajo/index', [], true)
+ 4 APPPATH\Controllers\Trabajo.php(10): view('trabajo/index')
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->index()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 05:19:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-16 05:19:36 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "layouts/main.php"
+[Method: GET, Route: trabajo]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('layouts/main.php')
+ 2 SYSTEMPATH\View\View.php(254): CodeIgniter\View\View->render('layouts/main', [], true)
+ 3 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('trabajo/index', [], true)
+ 4 APPPATH\Controllers\Trabajo.php(10): view('trabajo/index')
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->index()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 05:19:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-16 05:19:38 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "layouts/main.php"
+[Method: GET, Route: trabajo]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('layouts/main.php')
+ 2 SYSTEMPATH\View\View.php(254): CodeIgniter\View\View->render('layouts/main', [], true)
+ 3 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('trabajo/index', [], true)
+ 4 APPPATH\Controllers\Trabajo.php(10): view('trabajo/index')
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->index()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 05:19:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:19:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:22:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:22:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 05:22:10 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 05:22:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:23:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:24:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:29:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:29:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:29:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:34:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:39:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:40:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:40:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-16 05:40:24 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "reportes.php"
+[Method: GET, Route: reportes]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('reportes.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('reportes', [], true)
+ 3 APPPATH\Controllers\Reportes.php(16): view('reportes', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->index()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 05:40:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:40:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 05:40:29 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 05:40:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:41:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:41:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:41:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:41:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:43:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:44:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:45:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:46:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:47:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:49:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:50:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:51:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:53:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:54:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 05:59:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 06:01:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 06:03:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 06:04:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 06:05:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 06:05:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 06:07:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 06:07:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 06:08:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 06:08:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 06:09:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 06:10:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 06:10:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 06:11:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 15:52:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 15:52:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 15:53:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 15:53:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 15:53:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 15:57:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 16:00:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 16:02:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 16:02:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 16:04:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 16:05:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 16:28:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 16:28:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 16:36:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 16:39:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 16:44:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 16:49:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 16:50:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 16:52:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 16:55:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 16:58:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 17:15:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 17:17:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 17:20:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 17:23:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 17:28:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 17:31:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 17:33:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 17:33:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 17:40:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 17:43:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 17:44:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 17:46:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 17:46:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 17:49:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-16 17:49:16 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "reportes.php"
+[Method: GET, Route: reportes]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('reportes.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('reportes', [], true)
+ 3 APPPATH\Controllers\Reportes.php(16): view('reportes', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->index()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 17:49:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 17:49:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 17:49:24 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 17:49:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 17:53:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 17:53:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 17:59:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 18:00:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 18:01:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 18:10:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 18:14:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-16 18:19:09 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pasajeros_catalogo.php"
+[Method: GET, Route: pasajeros/catalogo]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pasajeros_catalogo.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pasajeros_catalogo', [], true)
+ 3 APPPATH\Controllers\Pasajeros.php(145): view('pasajeros_catalogo')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->catalogo()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 18:32:58 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pasajeros_catalogo.php"
+[Method: GET, Route: pasajeros/catalogo]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pasajeros_catalogo.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pasajeros_catalogo', [], true)
+ 3 APPPATH\Controllers\Pasajeros.php(145): view('pasajeros_catalogo')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->catalogo()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 18:32:59 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pasajeros_catalogo.php"
+[Method: GET, Route: pasajeros/catalogo]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pasajeros_catalogo.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pasajeros_catalogo', [], true)
+ 3 APPPATH\Controllers\Pasajeros.php(145): view('pasajeros_catalogo')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->catalogo()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 18:34:42 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pasajeros_catalogo.php"
+[Method: GET, Route: pasajeros/catalogo]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pasajeros_catalogo.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pasajeros_catalogo', [], true)
+ 3 APPPATH\Controllers\Pasajeros.php(145): view('pasajeros_catalogo')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->catalogo()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 18:36:00 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pasajeros_catalogo.php"
+[Method: GET, Route: pasajeros/catalogo]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pasajeros_catalogo.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pasajeros_catalogo', [], true)
+ 3 APPPATH\Controllers\Pasajeros.php(145): view('pasajeros_catalogo')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->catalogo()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 18:36:02 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pasajeros_catalogo.php"
+[Method: GET, Route: pasajeros/catalogo]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pasajeros_catalogo.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('pasajeros_catalogo', [], true)
+ 3 APPPATH\Controllers\Pasajeros.php(145): view('pasajeros_catalogo')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->catalogo()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 18:37:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 18:38:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 18:38:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 18:38:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 18:38:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-16 18:38:48 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "reportes.php"
+[Method: GET, Route: reportes]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(226): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('reportes.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('reportes', [], true)
+ 3 APPPATH\Controllers\Reportes.php(16): view('reportes', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->index()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 18:38:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 18:38:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 18:38:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 18:38:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 18:38:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 18:38:57 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 18:39:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 18:39:52 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 18:40:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 18:40:12 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 18:40:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 18:42:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 18:42:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 18:42:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 18:42:36 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 18:42:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 19:20:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 19:20:55 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 19:22:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 19:22:33 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 19:24:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 19:24:39 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 19:45:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-03-16 19:45:42 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 22:21:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 22:21:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 22:22:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 22:22:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 22:22:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 22:26:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 22:27:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 22:28:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 22:29:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 22:31:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 22:39:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 22:41:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 22:42:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 22:49:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 22:49:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 22:49:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 23:10:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 23:15:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-16 23:15:34 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:15:34 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:15:37 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:15:38 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:15:39 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:15:39 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:15:40 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 23:20:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-16 23:20:20 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:20:20 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:20:28 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:20:28 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:20:29 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:20:30 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:20:30 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:20:31 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:20:31 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:22:21 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:22:22 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:22:23 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:22:23 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:22:24 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:22:24 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:22:24 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:22:24 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:22:25 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:22:25 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:22:25 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 23:22:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-16 23:22:48 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:22:48 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:23:37 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:23:44 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:24:08 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-16 23:24:47 --> ErrorException: Undefined property: App\Controllers\Trabajo::$db
+[Method: GET, Route: trabajo/listar]
+in APPPATH\Controllers\Trabajo.php on line 15.
+ 1 APPPATH\Controllers\Trabajo.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Trabajo::$db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Trabajo.php', 15)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Trabajo->listar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Trabajo))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-16 23:27:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 23:31:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 23:32:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 23:35:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 23:36:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 23:37:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 23:37:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 23:41:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 23:44:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 23:46:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 23:47:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 23:47:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 23:48:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 23:48:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 23:49:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 23:49:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 23:51:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 23:52:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 23:52:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 23:53:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 23:55:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-16 23:58:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

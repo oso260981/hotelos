@@ -1,0 +1,1375 @@
+DEBUG - 2026-04-19 00:41:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 08:05:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 08:05:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 08:06:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 08:06:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 08:06:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 08:15:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 09:21:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 09:22:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 09:37:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 09:37:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 09:38:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 09:39:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 09:40:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 09:41:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 09:41:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 09:41:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 09:41:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 09:47:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 09:48:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 14:38:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 14:38:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 14:38:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 14:38:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 14:39:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 14:41:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 15:04:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 15:29:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 15:30:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 15:30:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 15:33:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 15:46:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 15:48:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 15:54:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 15:55:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 15:59:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 16:08:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 16:09:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 16:23:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 16:25:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 16:25:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-19 16:27:42 --> Cannot add or update a child row: a foreign key constraint fails (`u653032309_hotel_pms`.`huespedes`, CONSTRAINT `fk_huesped_tipo_identificacion` FOREIGN KEY (`tipo_identificacion_id`) REFERENCES `huesped_identificaciones_tipos` (`id`))
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `huespedes` (`nombre`, `apellido`, `fotografia`, `tipo_identificacion_id`, `numero_identificacion`, `telefono`, `email`, `direccion`, `ciudad`, `estado`, `codigo_postal`, `nacionalidad`, `fecha_nacimiento`, `genero`) VALUES (\'ISRAEL\', \'DE LOS SANTOS\', NULL, \'INE\', \'000009\', \'5566532268\', \'OSO260981\', \'AVENIDA ERMITA IZTAPALAPA 2435, 2\', \'mexico\', \'Distrito Federal\', \'09260\', \'MEXICANA\', \'1981-09-26\', \'M\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `huespedes` (`nombre`, `apellido`, `fotografia`, `tipo_identificacion_id`, `numero_identificacion`, `telefono`, `email`, `direccion`, `ciudad`, `estado`, `codigo_postal`, `nacionalidad`, `fecha_nacimiento`, `genero`) VALUES (\'ISRAEL\', \'DE LOS SANTOS\', NULL, \'INE\', \'000009\', \'5566532268\', \'OSO260981\', \'AVENIDA ERMITA IZTAPALAPA 2435, 2\', \'mexico\', \'Distrito Federal\', \'09260\', \'MEXICANA\', \'1981-09-26\', \'M\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `huespedes` (`nombre`, `apellido`, `fotografia`, `tipo_identificacion_id`, `numero_identificacion`, `telefono`, `email`, `direccion`, `ciudad`, `estado`, `codigo_postal`, `nacionalidad`, `fecha_nacimiento`, `genero`) VALUES (\'ISRAEL\', \'DE LOS SANTOS\', NULL, \'INE\', \'000009\', \'5566532268\', \'OSO260981\', \'AVENIDA ERMITA IZTAPALAPA 2435, 2\', \'mexico\', \'Distrito Federal\', \'09260\', \'MEXICANA\', \'1981-09-26\', \'M\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `huespedes` (`nombre`, `apellido`, `fotografia`, `tipo_identificacion_id`, `numero_identificacion`, `telefono`, `email`, `direccion`, `ciudad`, `estado`, `codigo_postal`, `nacionalidad`, `fecha_nacimiento`, `genero`) VALUES (:nombre:, :apellido:, :fotografia:, :tipo_identificacion_id:, :numero_identificacion:, :telefono:, :email:, :direccion:, :ciudad:, :estado:, :codigo_postal:, :nacionalidad:, :fecha_nacimiento:, :genero:)', [...], false)
+ 5 APPPATH\Controllers\Pasajeros.php(543): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->guardar_cliente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-19 16:27:42 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`u653032309_hotel_pms`.`huespedes`, CONSTRAINT `fk_huesped_tipo_identificacion` FOREIGN KEY (`tipo_identificacion_id`) REFERENCES `huesped_identificaciones_tipos` (`id`))
+[Method: POST, Route: pasajeros/guardar_cliente]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `huespedes` (`nombre`, `apellido`, `fotografia`, `tipo_identificacion_id`, `numero_identificacion`, `telefono`, `email`, `direccion`, `ciudad`, `estado`, `codigo_postal`, `nacionalidad`, `fecha_nacimiento`, `genero`) VALUES (:nombre:, :apellido:, :fotografia:, :tipo_identificacion_id:, :numero_identificacion:, :telefono:, :email:, :direccion:, :ciudad:, :estado:, :codigo_postal:, :nacionalidad:, :fecha_nacimiento:, :genero:)', [...], false)
+ 2 APPPATH\Controllers\Pasajeros.php(543): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->guardar_cliente()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-19 16:27:42 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`u653032309_hotel_pms`.`huespedes`, CONSTRAINT `fk_huesped_tipo_identificacion` FOREIGN KEY (`tipo_identificacion_id`) REFERENCES `huesped_identificaciones_tipos` (`id`))
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `huespedes` (`nombre`, `apellido`, `fotografia`, `tipo_identificacion_id`, `numero_identificacion`, `telefono`, `email`, `direccion`, `ciudad`, `estado`, `codigo_postal`, `nacionalidad`, `fecha_nacimiento`, `genero`) VALUES (\'ISRAEL\', \'DE LOS SANTOS\', NULL, \'INE\', \'000009\', \'5566532268\', \'OSO260981\', \'AVENIDA ERMITA IZTAPALAPA 2435, 2\', \'mexico\', \'Distrito Federal\', \'09260\', \'MEXICANA\', \'1981-09-26\', \'M\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `huespedes` (`nombre`, `apellido`, `fotografia`, `tipo_identificacion_id`, `numero_identificacion`, `telefono`, `email`, `direccion`, `ciudad`, `estado`, `codigo_postal`, `nacionalidad`, `fecha_nacimiento`, `genero`) VALUES (\'ISRAEL\', \'DE LOS SANTOS\', NULL, \'INE\', \'000009\', \'5566532268\', \'OSO260981\', \'AVENIDA ERMITA IZTAPALAPA 2435, 2\', \'mexico\', \'Distrito Federal\', \'09260\', \'MEXICANA\', \'1981-09-26\', \'M\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `huespedes` (`nombre`, `apellido`, `fotografia`, `tipo_identificacion_id`, `numero_identificacion`, `telefono`, `email`, `direccion`, `ciudad`, `estado`, `codigo_postal`, `nacionalidad`, `fecha_nacimiento`, `genero`) VALUES (:nombre:, :apellido:, :fotografia:, :tipo_identificacion_id:, :numero_identificacion:, :telefono:, :email:, :direccion:, :ciudad:, :estado:, :codigo_postal:, :nacionalidad:, :fecha_nacimiento:, :genero:)', [...], false)
+ 4 APPPATH\Controllers\Pasajeros.php(543): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->guardar_cliente()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-19 16:27:42 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`u653032309_hotel_pms`.`huespedes`, CONSTRAINT `fk_huesped_tipo_identificacion` FOREIGN KEY (`tipo_identificacion_id`) REFERENCES `huesped_identificaciones_tipos` (`id`))
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `huespedes` (`nombre`, `apellido`, `fotografia`, `tipo_identificacion_id`, `numero_identificacion`, `telefono`, `email`, `direccion`, `ciudad`, `estado`, `codigo_postal`, `nacionalidad`, `fecha_nacimiento`, `genero`) VALUES (\'ISRAEL\', \'DE LOS SANTOS\', NULL, \'INE\', \'000009\', \'5566532268\', \'OSO260981\', \'AVENIDA ERMITA IZTAPALAPA 2435, 2\', \'mexico\', \'Distrito Federal\', \'09260\', \'MEXICANA\', \'1981-09-26\', \'M\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `huespedes` (`nombre`, `apellido`, `fotografia`, `tipo_identificacion_id`, `numero_identificacion`, `telefono`, `email`, `direccion`, `ciudad`, `estado`, `codigo_postal`, `nacionalidad`, `fecha_nacimiento`, `genero`) VALUES (\'ISRAEL\', \'DE LOS SANTOS\', NULL, \'INE\', \'000009\', \'5566532268\', \'OSO260981\', \'AVENIDA ERMITA IZTAPALAPA 2435, 2\', \'mexico\', \'Distrito Federal\', \'09260\', \'MEXICANA\', \'1981-09-26\', \'M\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `huespedes` (`nombre`, `apellido`, `fotografia`, `tipo_identificacion_id`, `numero_identificacion`, `telefono`, `email`, `direccion`, `ciudad`, `estado`, `codigo_postal`, `nacionalidad`, `fecha_nacimiento`, `genero`) VALUES (\'ISRAEL\', \'DE LOS SANTOS\', NULL, \'INE\', \'000009\', \'5566532268\', \'OSO260981\', \'AVENIDA ERMITA IZTAPALAPA 2435, 2\', \'mexico\', \'Distrito Federal\', \'09260\', \'MEXICANA\', \'1981-09-26\', \'M\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `huespedes` (`nombre`, `apellido`, `fotografia`, `tipo_identificacion_id`, `numero_identificacion`, `telefono`, `email`, `direccion`, `ciudad`, `estado`, `codigo_postal`, `nacionalidad`, `fecha_nacimiento`, `genero`) VALUES (:nombre:, :apellido:, :fotografia:, :tipo_identificacion_id:, :numero_identificacion:, :telefono:, :email:, :direccion:, :ciudad:, :estado:, :codigo_postal:, :nacionalidad:, :fecha_nacimiento:, :genero:)', [...], false)
+ 5 APPPATH\Controllers\Pasajeros.php(543): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->guardar_cliente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-19 16:28:01 --> Cannot add or update a child row: a foreign key constraint fails (`u653032309_hotel_pms`.`huespedes`, CONSTRAINT `fk_huesped_tipo_identificacion` FOREIGN KEY (`tipo_identificacion_id`) REFERENCES `huesped_identificaciones_tipos` (`id`))
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `huespedes` (`nombre`, `apellido`, `fotografia`, `tipo_identificacion_id`, `numero_identificacion`, `telefono`, `email`, `direccion`, `ciudad`, `estado`, `codigo_postal`, `nacionalidad`, `fecha_nacimiento`, `genero`) VALUES (\'ISRAEL\', \'DE LOS SANTOS\', NULL, \'INE\', \'000009\', \'5566532268\', \'OSO260981\', \'AVENIDA ERMITA IZTAPALAPA 2435, 2\', \'mexico\', \'Distrito Federal\', \'09260\', \'MEXICANA\', \'1981-09-26\', \'M\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `huespedes` (`nombre`, `apellido`, `fotografia`, `tipo_identificacion_id`, `numero_identificacion`, `telefono`, `email`, `direccion`, `ciudad`, `estado`, `codigo_postal`, `nacionalidad`, `fecha_nacimiento`, `genero`) VALUES (\'ISRAEL\', \'DE LOS SANTOS\', NULL, \'INE\', \'000009\', \'5566532268\', \'OSO260981\', \'AVENIDA ERMITA IZTAPALAPA 2435, 2\', \'mexico\', \'Distrito Federal\', \'09260\', \'MEXICANA\', \'1981-09-26\', \'M\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `huespedes` (`nombre`, `apellido`, `fotografia`, `tipo_identificacion_id`, `numero_identificacion`, `telefono`, `email`, `direccion`, `ciudad`, `estado`, `codigo_postal`, `nacionalidad`, `fecha_nacimiento`, `genero`) VALUES (\'ISRAEL\', \'DE LOS SANTOS\', NULL, \'INE\', \'000009\', \'5566532268\', \'OSO260981\', \'AVENIDA ERMITA IZTAPALAPA 2435, 2\', \'mexico\', \'Distrito Federal\', \'09260\', \'MEXICANA\', \'1981-09-26\', \'M\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `huespedes` (`nombre`, `apellido`, `fotografia`, `tipo_identificacion_id`, `numero_identificacion`, `telefono`, `email`, `direccion`, `ciudad`, `estado`, `codigo_postal`, `nacionalidad`, `fecha_nacimiento`, `genero`) VALUES (:nombre:, :apellido:, :fotografia:, :tipo_identificacion_id:, :numero_identificacion:, :telefono:, :email:, :direccion:, :ciudad:, :estado:, :codigo_postal:, :nacionalidad:, :fecha_nacimiento:, :genero:)', [...], false)
+ 5 APPPATH\Controllers\Pasajeros.php(543): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->guardar_cliente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-19 16:28:01 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`u653032309_hotel_pms`.`huespedes`, CONSTRAINT `fk_huesped_tipo_identificacion` FOREIGN KEY (`tipo_identificacion_id`) REFERENCES `huesped_identificaciones_tipos` (`id`))
+[Method: POST, Route: pasajeros/guardar_cliente]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `huespedes` (`nombre`, `apellido`, `fotografia`, `tipo_identificacion_id`, `numero_identificacion`, `telefono`, `email`, `direccion`, `ciudad`, `estado`, `codigo_postal`, `nacionalidad`, `fecha_nacimiento`, `genero`) VALUES (:nombre:, :apellido:, :fotografia:, :tipo_identificacion_id:, :numero_identificacion:, :telefono:, :email:, :direccion:, :ciudad:, :estado:, :codigo_postal:, :nacionalidad:, :fecha_nacimiento:, :genero:)', [...], false)
+ 2 APPPATH\Controllers\Pasajeros.php(543): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->guardar_cliente()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-19 16:28:01 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`u653032309_hotel_pms`.`huespedes`, CONSTRAINT `fk_huesped_tipo_identificacion` FOREIGN KEY (`tipo_identificacion_id`) REFERENCES `huesped_identificaciones_tipos` (`id`))
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `huespedes` (`nombre`, `apellido`, `fotografia`, `tipo_identificacion_id`, `numero_identificacion`, `telefono`, `email`, `direccion`, `ciudad`, `estado`, `codigo_postal`, `nacionalidad`, `fecha_nacimiento`, `genero`) VALUES (\'ISRAEL\', \'DE LOS SANTOS\', NULL, \'INE\', \'000009\', \'5566532268\', \'OSO260981\', \'AVENIDA ERMITA IZTAPALAPA 2435, 2\', \'mexico\', \'Distrito Federal\', \'09260\', \'MEXICANA\', \'1981-09-26\', \'M\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `huespedes` (`nombre`, `apellido`, `fotografia`, `tipo_identificacion_id`, `numero_identificacion`, `telefono`, `email`, `direccion`, `ciudad`, `estado`, `codigo_postal`, `nacionalidad`, `fecha_nacimiento`, `genero`) VALUES (\'ISRAEL\', \'DE LOS SANTOS\', NULL, \'INE\', \'000009\', \'5566532268\', \'OSO260981\', \'AVENIDA ERMITA IZTAPALAPA 2435, 2\', \'mexico\', \'Distrito Federal\', \'09260\', \'MEXICANA\', \'1981-09-26\', \'M\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `huespedes` (`nombre`, `apellido`, `fotografia`, `tipo_identificacion_id`, `numero_identificacion`, `telefono`, `email`, `direccion`, `ciudad`, `estado`, `codigo_postal`, `nacionalidad`, `fecha_nacimiento`, `genero`) VALUES (:nombre:, :apellido:, :fotografia:, :tipo_identificacion_id:, :numero_identificacion:, :telefono:, :email:, :direccion:, :ciudad:, :estado:, :codigo_postal:, :nacionalidad:, :fecha_nacimiento:, :genero:)', [...], false)
+ 4 APPPATH\Controllers\Pasajeros.php(543): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->guardar_cliente()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-19 16:28:01 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`u653032309_hotel_pms`.`huespedes`, CONSTRAINT `fk_huesped_tipo_identificacion` FOREIGN KEY (`tipo_identificacion_id`) REFERENCES `huesped_identificaciones_tipos` (`id`))
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `huespedes` (`nombre`, `apellido`, `fotografia`, `tipo_identificacion_id`, `numero_identificacion`, `telefono`, `email`, `direccion`, `ciudad`, `estado`, `codigo_postal`, `nacionalidad`, `fecha_nacimiento`, `genero`) VALUES (\'ISRAEL\', \'DE LOS SANTOS\', NULL, \'INE\', \'000009\', \'5566532268\', \'OSO260981\', \'AVENIDA ERMITA IZTAPALAPA 2435, 2\', \'mexico\', \'Distrito Federal\', \'09260\', \'MEXICANA\', \'1981-09-26\', \'M\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `huespedes` (`nombre`, `apellido`, `fotografia`, `tipo_identificacion_id`, `numero_identificacion`, `telefono`, `email`, `direccion`, `ciudad`, `estado`, `codigo_postal`, `nacionalidad`, `fecha_nacimiento`, `genero`) VALUES (\'ISRAEL\', \'DE LOS SANTOS\', NULL, \'INE\', \'000009\', \'5566532268\', \'OSO260981\', \'AVENIDA ERMITA IZTAPALAPA 2435, 2\', \'mexico\', \'Distrito Federal\', \'09260\', \'MEXICANA\', \'1981-09-26\', \'M\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `huespedes` (`nombre`, `apellido`, `fotografia`, `tipo_identificacion_id`, `numero_identificacion`, `telefono`, `email`, `direccion`, `ciudad`, `estado`, `codigo_postal`, `nacionalidad`, `fecha_nacimiento`, `genero`) VALUES (\'ISRAEL\', \'DE LOS SANTOS\', NULL, \'INE\', \'000009\', \'5566532268\', \'OSO260981\', \'AVENIDA ERMITA IZTAPALAPA 2435, 2\', \'mexico\', \'Distrito Federal\', \'09260\', \'MEXICANA\', \'1981-09-26\', \'M\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `huespedes` (`nombre`, `apellido`, `fotografia`, `tipo_identificacion_id`, `numero_identificacion`, `telefono`, `email`, `direccion`, `ciudad`, `estado`, `codigo_postal`, `nacionalidad`, `fecha_nacimiento`, `genero`) VALUES (:nombre:, :apellido:, :fotografia:, :tipo_identificacion_id:, :numero_identificacion:, :telefono:, :email:, :direccion:, :ciudad:, :estado:, :codigo_postal:, :nacionalidad:, :fecha_nacimiento:, :genero:)', [...], false)
+ 5 APPPATH\Controllers\Pasajeros.php(543): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->guardar_cliente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 16:35:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 16:43:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 16:47:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 16:54:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 16:55:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-19 16:55:08 --> Column 'huesped_id' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'001\', NULL, \'2\', \'2\', 1, \'1\', \'2026-04-19 16:55:07\', \'2026-04-20 13:00:00\', \'2026-04-19\', 1, \'CHECKIN\', 0, 1, 0, 500, 500, 0, 80, 15, 595, NULL, \'2026-04-19 16:55:07\', \'2026-04-19 16:55:07\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'001\', NULL, \'2\', \'2\', 1, \'1\', \'2026-04-19 16:55:07\', \'2026-04-20 13:00:00\', \'2026-04-19\', 1, \'CHECKIN\', 0, 1, 0, 500, 500, 0, 80, 15, 595, NULL, \'2026-04-19 16:55:07\', \'2026-04-19 16:55:07\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'001\', NULL, \'2\', \'2\', 1, \'1\', \'2026-04-19 16:55:07\', \'2026-04-20 13:00:00\', \'2026-04-19\', 1, \'CHECKIN\', 0, 1, 0, 500, 500, 0, 80, 15, 595, NULL, \'2026-04-19 16:55:07\', \'2026-04-19 16:55:07\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (:habitacion_id:, :huesped_id:, :tipo_estadia_id:, :turno_id:, :forma_pago_id:, :usuario_id:, :hora_entrada:, :hora_salida:, :fecha_estadia:, :noches:, :estado_registro:, :num_personas_ext:, :adultos:, :niños:, :precio:, :precio_base:, :pago_adicional:, :iva:, :ish:, :total:, :observaciones:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(356): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(898): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(665): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Reservacion.php(123): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarRegistro()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 16:55:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-19 16:55:10 --> Column 'huesped_id' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'001\', NULL, \'2\', \'2\', 1, \'1\', \'2026-04-19 16:55:09\', \'2026-04-21 13:00:00\', \'2026-04-19\', 2, \'CHECKIN\', 0, 1, 0, 1000, 500, 0, 160, 30, 1190, NULL, \'2026-04-19 16:55:09\', \'2026-04-19 16:55:09\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'001\', NULL, \'2\', \'2\', 1, \'1\', \'2026-04-19 16:55:09\', \'2026-04-21 13:00:00\', \'2026-04-19\', 2, \'CHECKIN\', 0, 1, 0, 1000, 500, 0, 160, 30, 1190, NULL, \'2026-04-19 16:55:09\', \'2026-04-19 16:55:09\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'001\', NULL, \'2\', \'2\', 1, \'1\', \'2026-04-19 16:55:09\', \'2026-04-21 13:00:00\', \'2026-04-19\', 2, \'CHECKIN\', 0, 1, 0, 1000, 500, 0, 160, 30, 1190, NULL, \'2026-04-19 16:55:09\', \'2026-04-19 16:55:09\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (:habitacion_id:, :huesped_id:, :tipo_estadia_id:, :turno_id:, :forma_pago_id:, :usuario_id:, :hora_entrada:, :hora_salida:, :fecha_estadia:, :noches:, :estado_registro:, :num_personas_ext:, :adultos:, :niños:, :precio:, :precio_base:, :pago_adicional:, :iva:, :ish:, :total:, :observaciones:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(356): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(898): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(665): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Reservacion.php(123): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarRegistro()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 16:55:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-19 16:55:13 --> Column 'huesped_id' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'001\', NULL, \'2\', \'2\', \'2\', \'1\', \'2026-04-19 16:55:12\', \'2026-04-21 13:00:00\', \'2026-04-19\', 2, \'CHECKIN\', 0, 1, 0, 1000, 500, 0, 160, 30, 1190, NULL, \'2026-04-19 16:55:12\', \'2026-04-19 16:55:12\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'001\', NULL, \'2\', \'2\', \'2\', \'1\', \'2026-04-19 16:55:12\', \'2026-04-21 13:00:00\', \'2026-04-19\', 2, \'CHECKIN\', 0, 1, 0, 1000, 500, 0, 160, 30, 1190, NULL, \'2026-04-19 16:55:12\', \'2026-04-19 16:55:12\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'001\', NULL, \'2\', \'2\', \'2\', \'1\', \'2026-04-19 16:55:12\', \'2026-04-21 13:00:00\', \'2026-04-19\', 2, \'CHECKIN\', 0, 1, 0, 1000, 500, 0, 160, 30, 1190, NULL, \'2026-04-19 16:55:12\', \'2026-04-19 16:55:12\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (:habitacion_id:, :huesped_id:, :tipo_estadia_id:, :turno_id:, :forma_pago_id:, :usuario_id:, :hora_entrada:, :hora_salida:, :fecha_estadia:, :noches:, :estado_registro:, :num_personas_ext:, :adultos:, :niños:, :precio:, :precio_base:, :pago_adicional:, :iva:, :ish:, :total:, :observaciones:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(356): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(898): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(665): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Reservacion.php(123): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarRegistro()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 16:56:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 16:58:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 16:59:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 17:18:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 17:18:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 17:19:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 17:19:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 17:20:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 17:22:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 17:22:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 17:32:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-19 17:32:54 --> Column 'huesped_id' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'002\', NULL, \'2\', \'2\', 1, \'1\', \'2026-04-19 17:32:54\', \'2026-04-20 13:00:00\', \'2026-04-19\', 1, \'CHECKIN\', 0, 1, 0, 500, 500, 0, 80, 15, 595, NULL, \'2026-04-19 17:32:54\', \'2026-04-19 17:32:54\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'002\', NULL, \'2\', \'2\', 1, \'1\', \'2026-04-19 17:32:54\', \'2026-04-20 13:00:00\', \'2026-04-19\', 1, \'CHECKIN\', 0, 1, 0, 500, 500, 0, 80, 15, 595, NULL, \'2026-04-19 17:32:54\', \'2026-04-19 17:32:54\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'002\', NULL, \'2\', \'2\', 1, \'1\', \'2026-04-19 17:32:54\', \'2026-04-20 13:00:00\', \'2026-04-19\', 1, \'CHECKIN\', 0, 1, 0, 500, 500, 0, 80, 15, 595, NULL, \'2026-04-19 17:32:54\', \'2026-04-19 17:32:54\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (:habitacion_id:, :huesped_id:, :tipo_estadia_id:, :turno_id:, :forma_pago_id:, :usuario_id:, :hora_entrada:, :hora_salida:, :fecha_estadia:, :noches:, :estado_registro:, :num_personas_ext:, :adultos:, :niños:, :precio:, :precio_base:, :pago_adicional:, :iva:, :ish:, :total:, :observaciones:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(356): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(898): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(665): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Reservacion.php(123): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarRegistro()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 17:36:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 17:36:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-19 17:36:50 --> Column 'huesped_id' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'003\', NULL, \'1\', \'2\', 1, \'1\', \'2026-04-19 17:36:50\', \'2026-04-20 13:00:00\', \'2026-04-19\', 1, \'CHECKIN\', 0, 1, 0, 500, 500, 0, 80, 15, 595, NULL, \'2026-04-19 17:36:50\', \'2026-04-19 17:36:50\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'003\', NULL, \'1\', \'2\', 1, \'1\', \'2026-04-19 17:36:50\', \'2026-04-20 13:00:00\', \'2026-04-19\', 1, \'CHECKIN\', 0, 1, 0, 500, 500, 0, 80, 15, 595, NULL, \'2026-04-19 17:36:50\', \'2026-04-19 17:36:50\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'003\', NULL, \'1\', \'2\', 1, \'1\', \'2026-04-19 17:36:50\', \'2026-04-20 13:00:00\', \'2026-04-19\', 1, \'CHECKIN\', 0, 1, 0, 500, 500, 0, 80, 15, 595, NULL, \'2026-04-19 17:36:50\', \'2026-04-19 17:36:50\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (:habitacion_id:, :huesped_id:, :tipo_estadia_id:, :turno_id:, :forma_pago_id:, :usuario_id:, :hora_entrada:, :hora_salida:, :fecha_estadia:, :noches:, :estado_registro:, :num_personas_ext:, :adultos:, :niños:, :precio:, :precio_base:, :pago_adicional:, :iva:, :ish:, :total:, :observaciones:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(356): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(898): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(665): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Reservacion.php(123): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarRegistro()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 17:36:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-19 17:36:53 --> Column 'huesped_id' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'003\', NULL, \'1\', \'2\', 1, \'1\', \'2026-04-19 17:36:53\', \'2026-04-21 13:00:00\', \'2026-04-19\', 2, \'CHECKIN\', 0, 1, 0, 1000, 500, 0, 160, 30, 1190, NULL, \'2026-04-19 17:36:53\', \'2026-04-19 17:36:53\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'003\', NULL, \'1\', \'2\', 1, \'1\', \'2026-04-19 17:36:53\', \'2026-04-21 13:00:00\', \'2026-04-19\', 2, \'CHECKIN\', 0, 1, 0, 1000, 500, 0, 160, 30, 1190, NULL, \'2026-04-19 17:36:53\', \'2026-04-19 17:36:53\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'003\', NULL, \'1\', \'2\', 1, \'1\', \'2026-04-19 17:36:53\', \'2026-04-21 13:00:00\', \'2026-04-19\', 2, \'CHECKIN\', 0, 1, 0, 1000, 500, 0, 160, 30, 1190, NULL, \'2026-04-19 17:36:53\', \'2026-04-19 17:36:53\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (:habitacion_id:, :huesped_id:, :tipo_estadia_id:, :turno_id:, :forma_pago_id:, :usuario_id:, :hora_entrada:, :hora_salida:, :fecha_estadia:, :noches:, :estado_registro:, :num_personas_ext:, :adultos:, :niños:, :precio:, :precio_base:, :pago_adicional:, :iva:, :ish:, :total:, :observaciones:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(356): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(898): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(665): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Reservacion.php(123): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarRegistro()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 17:36:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-19 17:36:57 --> Column 'huesped_id' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'003\', NULL, \'1\', \'2\', \'3\', \'1\', \'2026-04-19 17:36:57\', \'2026-04-21 13:00:00\', \'2026-04-19\', 2, \'CHECKIN\', 0, 1, 0, 1000, 500, 0, 160, 30, 1190, NULL, \'2026-04-19 17:36:57\', \'2026-04-19 17:36:57\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'003\', NULL, \'1\', \'2\', \'3\', \'1\', \'2026-04-19 17:36:57\', \'2026-04-21 13:00:00\', \'2026-04-19\', 2, \'CHECKIN\', 0, 1, 0, 1000, 500, 0, 160, 30, 1190, NULL, \'2026-04-19 17:36:57\', \'2026-04-19 17:36:57\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'003\', NULL, \'1\', \'2\', \'3\', \'1\', \'2026-04-19 17:36:57\', \'2026-04-21 13:00:00\', \'2026-04-19\', 2, \'CHECKIN\', 0, 1, 0, 1000, 500, 0, 160, 30, 1190, NULL, \'2026-04-19 17:36:57\', \'2026-04-19 17:36:57\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (:habitacion_id:, :huesped_id:, :tipo_estadia_id:, :turno_id:, :forma_pago_id:, :usuario_id:, :hora_entrada:, :hora_salida:, :fecha_estadia:, :noches:, :estado_registro:, :num_personas_ext:, :adultos:, :niños:, :precio:, :precio_base:, :pago_adicional:, :iva:, :ish:, :total:, :observaciones:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(356): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(898): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(665): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Reservacion.php(123): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarRegistro()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 17:37:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 17:43:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 17:44:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-19 17:44:05 --> Column 'huesped_id' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'004\', NULL, \'1\', \'2\', 1, \'1\', \'2026-04-19 17:44:04\', \'2026-04-20 13:00:00\', \'2026-04-19\', 1, \'CHECKIN\', 0, 1, 0, 500, 500, 0, 80, 15, 595, NULL, \'2026-04-19 17:44:04\', \'2026-04-19 17:44:04\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'004\', NULL, \'1\', \'2\', 1, \'1\', \'2026-04-19 17:44:04\', \'2026-04-20 13:00:00\', \'2026-04-19\', 1, \'CHECKIN\', 0, 1, 0, 500, 500, 0, 80, 15, 595, NULL, \'2026-04-19 17:44:04\', \'2026-04-19 17:44:04\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'004\', NULL, \'1\', \'2\', 1, \'1\', \'2026-04-19 17:44:04\', \'2026-04-20 13:00:00\', \'2026-04-19\', 1, \'CHECKIN\', 0, 1, 0, 500, 500, 0, 80, 15, 595, NULL, \'2026-04-19 17:44:04\', \'2026-04-19 17:44:04\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (:habitacion_id:, :huesped_id:, :tipo_estadia_id:, :turno_id:, :forma_pago_id:, :usuario_id:, :hora_entrada:, :hora_salida:, :fecha_estadia:, :noches:, :estado_registro:, :num_personas_ext:, :adultos:, :niños:, :precio:, :precio_base:, :pago_adicional:, :iva:, :ish:, :total:, :observaciones:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(356): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(898): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(665): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Reservacion.php(123): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarRegistro()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 17:44:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-19 17:44:06 --> Column 'huesped_id' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'004\', NULL, \'1\', \'2\', 1, \'1\', \'2026-04-19 17:44:06\', \'2026-04-21 13:00:00\', \'2026-04-19\', 2, \'CHECKIN\', 0, 1, 0, 1000, 500, 0, 160, 30, 1190, NULL, \'2026-04-19 17:44:06\', \'2026-04-19 17:44:06\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'004\', NULL, \'1\', \'2\', 1, \'1\', \'2026-04-19 17:44:06\', \'2026-04-21 13:00:00\', \'2026-04-19\', 2, \'CHECKIN\', 0, 1, 0, 1000, 500, 0, 160, 30, 1190, NULL, \'2026-04-19 17:44:06\', \'2026-04-19 17:44:06\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'004\', NULL, \'1\', \'2\', 1, \'1\', \'2026-04-19 17:44:06\', \'2026-04-21 13:00:00\', \'2026-04-19\', 2, \'CHECKIN\', 0, 1, 0, 1000, 500, 0, 160, 30, 1190, NULL, \'2026-04-19 17:44:06\', \'2026-04-19 17:44:06\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (:habitacion_id:, :huesped_id:, :tipo_estadia_id:, :turno_id:, :forma_pago_id:, :usuario_id:, :hora_entrada:, :hora_salida:, :fecha_estadia:, :noches:, :estado_registro:, :num_personas_ext:, :adultos:, :niños:, :precio:, :precio_base:, :pago_adicional:, :iva:, :ish:, :total:, :observaciones:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(356): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(898): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(665): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Reservacion.php(123): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarRegistro()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 17:44:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-19 17:44:13 --> Column 'huesped_id' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'004\', NULL, \'1\', \'2\', \'3\', \'1\', \'2026-04-19 17:44:13\', \'2026-04-21 13:00:00\', \'2026-04-19\', 2, \'CHECKIN\', 0, 1, 0, 1000, 500, 0, 160, 30, 1190, NULL, \'2026-04-19 17:44:13\', \'2026-04-19 17:44:13\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'004\', NULL, \'1\', \'2\', \'3\', \'1\', \'2026-04-19 17:44:13\', \'2026-04-21 13:00:00\', \'2026-04-19\', 2, \'CHECKIN\', 0, 1, 0, 1000, 500, 0, 160, 30, 1190, NULL, \'2026-04-19 17:44:13\', \'2026-04-19 17:44:13\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'004\', NULL, \'1\', \'2\', \'3\', \'1\', \'2026-04-19 17:44:13\', \'2026-04-21 13:00:00\', \'2026-04-19\', 2, \'CHECKIN\', 0, 1, 0, 1000, 500, 0, 160, 30, 1190, NULL, \'2026-04-19 17:44:13\', \'2026-04-19 17:44:13\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (:habitacion_id:, :huesped_id:, :tipo_estadia_id:, :turno_id:, :forma_pago_id:, :usuario_id:, :hora_entrada:, :hora_salida:, :fecha_estadia:, :noches:, :estado_registro:, :num_personas_ext:, :adultos:, :niños:, :precio:, :precio_base:, :pago_adicional:, :iva:, :ish:, :total:, :observaciones:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(356): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(898): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(665): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Reservacion.php(123): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarRegistro()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 17:44:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 17:56:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 17:56:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-19 17:56:45 --> Column 'huesped_id' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'002\', NULL, \'2\', \'2\', 1, \'1\', \'2026-04-19 17:56:44\', \'2026-04-20 13:00:00\', \'2026-04-19\', 1, \'CHECKIN\', 0, 1, 0, 500, 500, 0, 80, 15, 595, NULL, \'2026-04-19 17:56:44\', \'2026-04-19 17:56:44\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'002\', NULL, \'2\', \'2\', 1, \'1\', \'2026-04-19 17:56:44\', \'2026-04-20 13:00:00\', \'2026-04-19\', 1, \'CHECKIN\', 0, 1, 0, 500, 500, 0, 80, 15, 595, NULL, \'2026-04-19 17:56:44\', \'2026-04-19 17:56:44\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'002\', NULL, \'2\', \'2\', 1, \'1\', \'2026-04-19 17:56:44\', \'2026-04-20 13:00:00\', \'2026-04-19\', 1, \'CHECKIN\', 0, 1, 0, 500, 500, 0, 80, 15, 595, NULL, \'2026-04-19 17:56:44\', \'2026-04-19 17:56:44\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (:habitacion_id:, :huesped_id:, :tipo_estadia_id:, :turno_id:, :forma_pago_id:, :usuario_id:, :hora_entrada:, :hora_salida:, :fecha_estadia:, :noches:, :estado_registro:, :num_personas_ext:, :adultos:, :niños:, :precio:, :precio_base:, :pago_adicional:, :iva:, :ish:, :total:, :observaciones:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(356): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(898): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(665): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Reservacion.php(123): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarRegistro()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 17:56:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-19 17:56:45 --> Column 'huesped_id' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'002\', NULL, \'2\', \'2\', 1, \'1\', \'2026-04-19 17:56:45\', \'2026-04-21 13:00:00\', \'2026-04-19\', 2, \'CHECKIN\', 0, 1, 0, 1000, 500, 0, 160, 30, 1190, NULL, \'2026-04-19 17:56:45\', \'2026-04-19 17:56:45\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'002\', NULL, \'2\', \'2\', 1, \'1\', \'2026-04-19 17:56:45\', \'2026-04-21 13:00:00\', \'2026-04-19\', 2, \'CHECKIN\', 0, 1, 0, 1000, 500, 0, 160, 30, 1190, NULL, \'2026-04-19 17:56:45\', \'2026-04-19 17:56:45\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'002\', NULL, \'2\', \'2\', 1, \'1\', \'2026-04-19 17:56:45\', \'2026-04-21 13:00:00\', \'2026-04-19\', 2, \'CHECKIN\', 0, 1, 0, 1000, 500, 0, 160, 30, 1190, NULL, \'2026-04-19 17:56:45\', \'2026-04-19 17:56:45\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (:habitacion_id:, :huesped_id:, :tipo_estadia_id:, :turno_id:, :forma_pago_id:, :usuario_id:, :hora_entrada:, :hora_salida:, :fecha_estadia:, :noches:, :estado_registro:, :num_personas_ext:, :adultos:, :niños:, :precio:, :precio_base:, :pago_adicional:, :iva:, :ish:, :total:, :observaciones:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(356): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(898): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(665): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Reservacion.php(123): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarRegistro()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 17:56:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-19 17:56:47 --> Column 'huesped_id' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'002\', NULL, \'2\', \'2\', \'3\', \'1\', \'2026-04-19 17:56:47\', \'2026-04-21 13:00:00\', \'2026-04-19\', 2, \'CHECKIN\', 0, 1, 0, 1000, 500, 0, 160, 30, 1190, NULL, \'2026-04-19 17:56:47\', \'2026-04-19 17:56:47\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'002\', NULL, \'2\', \'2\', \'3\', \'1\', \'2026-04-19 17:56:47\', \'2026-04-21 13:00:00\', \'2026-04-19\', 2, \'CHECKIN\', 0, 1, 0, 1000, 500, 0, 160, 30, 1190, NULL, \'2026-04-19 17:56:47\', \'2026-04-19 17:56:47\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (\'002\', NULL, \'2\', \'2\', \'3\', \'1\', \'2026-04-19 17:56:47\', \'2026-04-21 13:00:00\', \'2026-04-19\', 2, \'CHECKIN\', 0, 1, 0, 1000, 500, 0, 160, 30, 1190, NULL, \'2026-04-19 17:56:47\', \'2026-04-19 17:56:47\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registros` (`habitacion_id`, `huesped_id`, `tipo_estadia_id`, `turno_id`, `forma_pago_id`, `usuario_id`, `hora_entrada`, `hora_salida`, `fecha_estadia`, `noches`, `estado_registro`, `num_personas_ext`, `adultos`, `niños`, `precio`, `precio_base`, `pago_adicional`, `iva`, `ish`, `total`, `observaciones`, `created_at`, `updated_at`) VALUES (:habitacion_id:, :huesped_id:, :tipo_estadia_id:, :turno_id:, :forma_pago_id:, :usuario_id:, :hora_entrada:, :hora_salida:, :fecha_estadia:, :noches:, :estado_registro:, :num_personas_ext:, :adultos:, :niños:, :precio:, :precio_base:, :pago_adicional:, :iva:, :ish:, :total:, :observaciones:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(356): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(898): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(665): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Reservacion.php(123): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarRegistro()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 17:57:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 17:58:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 18:00:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 18:00:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 18:01:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 18:02:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 18:04:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 18:14:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 18:16:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 18:18:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 18:21:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 18:23:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 18:29:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 18:32:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 18:41:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 18:42:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 18:42:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-19 18:44:22 --> ErrorException: Undefined array key "registro_id"
+[Method: POST, Route: reservacion/guardar-acompanantes]
+in APPPATH\Controllers\Reservacion.php on line 177.
+ 1 APPPATH\Controllers\Reservacion.php(177): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "registro_id"', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reservacion.php', 177)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarAcompanantes()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-19 18:45:35 --> ErrorException: Undefined array key "registro_id"
+[Method: POST, Route: reservacion/guardar-acompanantes]
+in APPPATH\Controllers\Reservacion.php on line 177.
+ 1 APPPATH\Controllers\Reservacion.php(177): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "registro_id"', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reservacion.php', 177)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarAcompanantes()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-19 18:47:07 --> ErrorException: Trying to access array offset on value of type null
+[Method: POST, Route: reservacion/guardar-acompanantes]
+in APPPATH\Controllers\Reservacion.php on line 177.
+ 1 APPPATH\Controllers\Reservacion.php(177): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reservacion.php', 177)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarAcompanantes()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 18:51:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-19 18:58:24 --> ErrorException: Trying to access array offset on value of type null
+[Method: POST, Route: reservacion/guardar-acompanantes]
+in APPPATH\Controllers\Reservacion.php on line 177.
+ 1 APPPATH\Controllers\Reservacion.php(177): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reservacion.php', 177)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarAcompanantes()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 19:02:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 19:04:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 19:06:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 19:06:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 19:11:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-04-19 19:11:47 --> [DEPRECATED] explode(): Passing null to parameter #2 ($string) of type string is deprecated in APPPATH\Controllers\Reservacion.php on line 1983.
+ 1 APPPATH\Controllers\Reservacion.php(1983): explode(' ', null, 2)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->getHabitaciones()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 19:14:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-04-19 19:14:07 --> [DEPRECATED] explode(): Passing null to parameter #2 ($string) of type string is deprecated in APPPATH\Controllers\Reservacion.php on line 1985.
+ 1 APPPATH\Controllers\Reservacion.php(1985): explode(' ', null, 2)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->getHabitaciones()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 19:14:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 19:14:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 19:14:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-04-19 19:14:49 --> [DEPRECATED] explode(): Passing null to parameter #2 ($string) of type string is deprecated in APPPATH\Controllers\Reservacion.php on line 1985.
+ 1 APPPATH\Controllers\Reservacion.php(1985): explode(' ', null, 2)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->getHabitaciones()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 19:17:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-04-19 19:17:07 --> [DEPRECATED] explode(): Passing null to parameter #2 ($string) of type string is deprecated in APPPATH\Controllers\Reservacion.php on line 1985.
+ 1 APPPATH\Controllers\Reservacion.php(1985): explode(' ', null, 2)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->getHabitaciones()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 19:17:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-04-19 19:17:48 --> [DEPRECATED] explode(): Passing null to parameter #2 ($string) of type string is deprecated in APPPATH\Controllers\Reservacion.php on line 1985.
+ 1 APPPATH\Controllers\Reservacion.php(1985): explode(' ', null, 2)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->getHabitaciones()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 19:22:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-04-19 19:22:31 --> [DEPRECATED] explode(): Passing null to parameter #2 ($string) of type string is deprecated in APPPATH\Controllers\Reservacion.php on line 1985.
+ 1 APPPATH\Controllers\Reservacion.php(1985): explode(' ', null, 2)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->getHabitaciones()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 19:22:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-04-19 19:22:51 --> [DEPRECATED] explode(): Passing null to parameter #2 ($string) of type string is deprecated in APPPATH\Controllers\Reservacion.php on line 1985.
+ 1 APPPATH\Controllers\Reservacion.php(1985): explode(' ', null, 2)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->getHabitaciones()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 19:23:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 19:27:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-04-19 19:27:45 --> [DEPRECATED] explode(): Passing null to parameter #2 ($string) of type string is deprecated in APPPATH\Controllers\Reservacion.php on line 1985.
+ 1 APPPATH\Controllers\Reservacion.php(1985): explode(' ', null, 2)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->getHabitaciones()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-04-19 19:27:45 --> [DEPRECATED] explode(): Passing null to parameter #2 ($string) of type string is deprecated in APPPATH\Controllers\Reservacion.php on line 1985.
+ 1 APPPATH\Controllers\Reservacion.php(1985): explode(' ', null, 2)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->getHabitaciones()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 19:28:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 19:29:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-04-19 19:29:15 --> [DEPRECATED] explode(): Passing null to parameter #2 ($string) of type string is deprecated in APPPATH\Controllers\Reservacion.php on line 1985.
+ 1 APPPATH\Controllers\Reservacion.php(1985): explode(' ', null, 2)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->getHabitaciones()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-04-19 19:29:15 --> [DEPRECATED] explode(): Passing null to parameter #2 ($string) of type string is deprecated in APPPATH\Controllers\Reservacion.php on line 1985.
+ 1 APPPATH\Controllers\Reservacion.php(1985): explode(' ', null, 2)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->getHabitaciones()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-04-19 19:29:15 --> [DEPRECATED] explode(): Passing null to parameter #2 ($string) of type string is deprecated in APPPATH\Controllers\Reservacion.php on line 1985.
+ 1 APPPATH\Controllers\Reservacion.php(1985): explode(' ', null, 2)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->getHabitaciones()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 19:29:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-04-19 19:29:42 --> [DEPRECATED] explode(): Passing null to parameter #2 ($string) of type string is deprecated in APPPATH\Controllers\Reservacion.php on line 1985.
+ 1 APPPATH\Controllers\Reservacion.php(1985): explode(' ', null, 2)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->getHabitaciones()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-04-19 19:29:42 --> [DEPRECATED] explode(): Passing null to parameter #2 ($string) of type string is deprecated in APPPATH\Controllers\Reservacion.php on line 1985.
+ 1 APPPATH\Controllers\Reservacion.php(1985): explode(' ', null, 2)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->getHabitaciones()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-04-19 19:29:42 --> [DEPRECATED] explode(): Passing null to parameter #2 ($string) of type string is deprecated in APPPATH\Controllers\Reservacion.php on line 1985.
+ 1 APPPATH\Controllers\Reservacion.php(1985): explode(' ', null, 2)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->getHabitaciones()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 19:30:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 19:31:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 19:31:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 19:31:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 19:31:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 19:32:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 19:32:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 19:39:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 19:40:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 19:42:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 19:42:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 19:42:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-04-19 19:42:18 --> [DEPRECATED] explode(): Passing null to parameter #2 ($string) of type string is deprecated in APPPATH\Controllers\Reservacion.php on line 1986.
+ 1 APPPATH\Controllers\Reservacion.php(1986): explode(' ', null, 2)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->getHabitaciones()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 19:46:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 19:47:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 19:56:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 20:10:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 20:11:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 20:11:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 20:13:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 20:14:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 20:16:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 20:22:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 20:44:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 20:46:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 20:46:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 20:46:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 20:49:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 20:49:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 20:50:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 20:50:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 20:50:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 21:01:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 21:05:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 21:17:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 21:24:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-19 21:25:03 --> ErrorException: Undefined array key "piso"
+[Method: GET, Route: reservacion/habitaciones]
+in APPPATH\Controllers\Reservacion.php on line 2014.
+ 1 APPPATH\Controllers\Reservacion.php(2014): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "piso"', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reservacion.php', 2014)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->getHabitaciones()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 21:26:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-19 21:26:25 --> ErrorException: Undefined array key "piso"
+[Method: GET, Route: reservacion/habitaciones]
+in APPPATH\Controllers\Reservacion.php on line 2014.
+ 1 APPPATH\Controllers\Reservacion.php(2014): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "piso"', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reservacion.php', 2014)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->getHabitaciones()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 21:26:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 21:27:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-19 21:27:16 --> Unknown column 'piso' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('
+        SELECT 
+            h.id                AS habitacion_id,
+            h.numero            AS numero,
+            piso                AS piso,
+            eh.codigo            AS status,
+
+            r.id                AS registro_id,
+            r.tipo_estadia_id   AS tipo_estadia,
+            r.noches            AS dias_pagados,
+            (r.adultos + r.niños) AS num_personas,
+
+            r.forma_pago_id     AS forma_pago,
+            r.total             AS total,
+
+            r.hora_entrada      AS hora_entrada_1,
+            r.hora_salida       AS hora_salida_1,
+
+            CONCAT(hu.nombre, \' \', hu.apellido) AS nombre_huesped,
+            r.observaciones     AS observaciones,
+
+            hu.id               AS huesped_id,
+            hu.fotografia       AS fotografia,
+            hu.identificacion   AS identificacion,
+            hu.firma_path       AS firma_path,
+            h.estado_id         AS estado_id
+
+        FROM habitaciones h
+        
+        LEFT JOIN estados_habitacion eh on eh.id=h.estado_id
+
+        LEFT JOIN registros r 
+            ON r.habitacion_id = h.id 
+            AND r.estado_registro = \'CHECKIN\'
+
+        LEFT JOIN huespedes hu 
+            ON hu.id = r.huesped_id
+
+        WHERE h.activa = 1
+    ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT 
+            h.id                AS habitacion_id,
+            h.numero            AS numero,
+            piso                AS piso,
+            eh.codigo            AS status,
+
+            r.id                AS registro_id,
+            r.tipo_estadia_id   AS tipo_estadia,
+            r.noches            AS dias_pagados,
+            (r.adultos + r.niños) AS num_personas,
+
+            r.forma_pago_id     AS forma_pago,
+            r.total             AS total,
+
+            r.hora_entrada      AS hora_entrada_1,
+            r.hora_salida       AS hora_salida_1,
+
+            CONCAT(hu.nombre, \' \', hu.apellido) AS nombre_huesped,
+            r.observaciones     AS observaciones,
+
+            hu.id               AS huesped_id,
+            hu.fotografia       AS fotografia,
+            hu.identificacion   AS identificacion,
+            hu.firma_path       AS firma_path,
+            h.estado_id         AS estado_id
+
+        FROM habitaciones h
+        
+        LEFT JOIN estados_habitacion eh on eh.id=h.estado_id
+
+        LEFT JOIN registros r 
+            ON r.habitacion_id = h.id 
+            AND r.estado_registro = \'CHECKIN\'
+
+        LEFT JOIN huespedes hu 
+            ON hu.id = r.huesped_id
+
+        WHERE h.activa = 1
+    ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT 
+            h.id                AS habitacion_id,
+            h.numero            AS numero,
+            piso                AS piso,
+            eh.codigo            AS status,
+
+            r.id                AS registro_id,
+            r.tipo_estadia_id   AS tipo_estadia,
+            r.noches            AS dias_pagados,
+            (r.adultos + r.niños) AS num_personas,
+
+            r.forma_pago_id     AS forma_pago,
+            r.total             AS total,
+
+            r.hora_entrada      AS hora_entrada_1,
+            r.hora_salida       AS hora_salida_1,
+
+            CONCAT(hu.nombre, \' \', hu.apellido) AS nombre_huesped,
+            r.observaciones     AS observaciones,
+
+            hu.id               AS huesped_id,
+            hu.fotografia       AS fotografia,
+            hu.identificacion   AS identificacion,
+            hu.firma_path       AS firma_path,
+            h.estado_id         AS estado_id
+
+        FROM habitaciones h
+        
+        LEFT JOIN estados_habitacion eh on eh.id=h.estado_id
+
+        LEFT JOIN registros r 
+            ON r.habitacion_id = h.id 
+            AND r.estado_registro = \'CHECKIN\'
+
+        LEFT JOIN huespedes hu 
+            ON hu.id = r.huesped_id
+
+        WHERE h.activa = 1
+    ')
+ 4 APPPATH\Controllers\Reservacion.php(1918): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            h.id                AS habitacion_id,
+            h.numero            AS numero,
+            piso                AS piso,
+            eh.codigo            AS status,
+
+            r.id                AS registro_id,
+            r.tipo_estadia_id   AS tipo_estadia,
+            r.noches            AS dias_pagados,
+            (r.adultos + r.niños) AS num_personas,
+
+            r.forma_pago_id     AS forma_pago,
+            r.total             AS total,
+
+            r.hora_entrada      AS hora_entrada_1,
+            r.hora_salida       AS hora_salida_1,
+
+            CONCAT(hu.nombre, \' \', hu.apellido) AS nombre_huesped,
+            r.observaciones     AS observaciones,
+
+            hu.id               AS huesped_id,
+            hu.fotografia       AS fotografia,
+            hu.identificacion   AS identificacion,
+            hu.firma_path       AS firma_path,
+            h.estado_id         AS estado_id
+
+        FROM habitaciones h
+        
+        LEFT JOIN estados_habitacion eh on eh.id=h.estado_id
+
+        LEFT JOIN registros r 
+            ON r.habitacion_id = h.id 
+            AND r.estado_registro = \'CHECKIN\'
+
+        LEFT JOIN huespedes hu 
+            ON hu.id = r.huesped_id
+
+        WHERE h.activa = 1
+    ')
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->getHabitaciones()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-19 21:27:16 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'piso' in 'SELECT'
+[Method: GET, Route: reservacion/habitaciones]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 APPPATH\Controllers\Reservacion.php(1918): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            h.id                AS habitacion_id,
+            h.numero            AS numero,
+            piso                AS piso,
+            eh.codigo            AS status,
+
+            r.id                AS registro_id,
+            r.tipo_estadia_id   AS tipo_estadia,
+            r.noches            AS dias_pagados,
+            (r.adultos + r.niños) AS num_personas,
+
+            r.forma_pago_id     AS forma_pago,
+            r.total             AS total,
+
+            r.hora_entrada      AS hora_entrada_1,
+            r.hora_salida       AS hora_salida_1,
+
+            CONCAT(hu.nombre, \' \', hu.apellido) AS nombre_huesped,
+            r.observaciones     AS observaciones,
+
+            hu.id               AS huesped_id,
+            hu.fotografia       AS fotografia,
+            hu.identificacion   AS identificacion,
+            hu.firma_path       AS firma_path,
+            h.estado_id         AS estado_id
+
+        FROM habitaciones h
+        
+        LEFT JOIN estados_habitacion eh on eh.id=h.estado_id
+
+        LEFT JOIN registros r 
+            ON r.habitacion_id = h.id 
+            AND r.estado_registro = \'CHECKIN\'
+
+        LEFT JOIN huespedes hu 
+            ON hu.id = r.huesped_id
+
+        WHERE h.activa = 1
+    ')
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->getHabitaciones()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-19 21:27:16 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'piso' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT 
+            h.id                AS habitacion_id,
+            h.numero            AS numero,
+            piso                AS piso,
+            eh.codigo            AS status,
+
+            r.id                AS registro_id,
+            r.tipo_estadia_id   AS tipo_estadia,
+            r.noches            AS dias_pagados,
+            (r.adultos + r.niños) AS num_personas,
+
+            r.forma_pago_id     AS forma_pago,
+            r.total             AS total,
+
+            r.hora_entrada      AS hora_entrada_1,
+            r.hora_salida       AS hora_salida_1,
+
+            CONCAT(hu.nombre, \' \', hu.apellido) AS nombre_huesped,
+            r.observaciones     AS observaciones,
+
+            hu.id               AS huesped_id,
+            hu.fotografia       AS fotografia,
+            hu.identificacion   AS identificacion,
+            hu.firma_path       AS firma_path,
+            h.estado_id         AS estado_id
+
+        FROM habitaciones h
+        
+        LEFT JOIN estados_habitacion eh on eh.id=h.estado_id
+
+        LEFT JOIN registros r 
+            ON r.habitacion_id = h.id 
+            AND r.estado_registro = \'CHECKIN\'
+
+        LEFT JOIN huespedes hu 
+            ON hu.id = r.huesped_id
+
+        WHERE h.activa = 1
+    ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT 
+            h.id                AS habitacion_id,
+            h.numero            AS numero,
+            piso                AS piso,
+            eh.codigo            AS status,
+
+            r.id                AS registro_id,
+            r.tipo_estadia_id   AS tipo_estadia,
+            r.noches            AS dias_pagados,
+            (r.adultos + r.niños) AS num_personas,
+
+            r.forma_pago_id     AS forma_pago,
+            r.total             AS total,
+
+            r.hora_entrada      AS hora_entrada_1,
+            r.hora_salida       AS hora_salida_1,
+
+            CONCAT(hu.nombre, \' \', hu.apellido) AS nombre_huesped,
+            r.observaciones     AS observaciones,
+
+            hu.id               AS huesped_id,
+            hu.fotografia       AS fotografia,
+            hu.identificacion   AS identificacion,
+            hu.firma_path       AS firma_path,
+            h.estado_id         AS estado_id
+
+        FROM habitaciones h
+        
+        LEFT JOIN estados_habitacion eh on eh.id=h.estado_id
+
+        LEFT JOIN registros r 
+            ON r.habitacion_id = h.id 
+            AND r.estado_registro = \'CHECKIN\'
+
+        LEFT JOIN huespedes hu 
+            ON hu.id = r.huesped_id
+
+        WHERE h.activa = 1
+    ')
+ 3 APPPATH\Controllers\Reservacion.php(1918): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            h.id                AS habitacion_id,
+            h.numero            AS numero,
+            piso                AS piso,
+            eh.codigo            AS status,
+
+            r.id                AS registro_id,
+            r.tipo_estadia_id   AS tipo_estadia,
+            r.noches            AS dias_pagados,
+            (r.adultos + r.niños) AS num_personas,
+
+            r.forma_pago_id     AS forma_pago,
+            r.total             AS total,
+
+            r.hora_entrada      AS hora_entrada_1,
+            r.hora_salida       AS hora_salida_1,
+
+            CONCAT(hu.nombre, \' \', hu.apellido) AS nombre_huesped,
+            r.observaciones     AS observaciones,
+
+            hu.id               AS huesped_id,
+            hu.fotografia       AS fotografia,
+            hu.identificacion   AS identificacion,
+            hu.firma_path       AS firma_path,
+            h.estado_id         AS estado_id
+
+        FROM habitaciones h
+        
+        LEFT JOIN estados_habitacion eh on eh.id=h.estado_id
+
+        LEFT JOIN registros r 
+            ON r.habitacion_id = h.id 
+            AND r.estado_registro = \'CHECKIN\'
+
+        LEFT JOIN huespedes hu 
+            ON hu.id = r.huesped_id
+
+        WHERE h.activa = 1
+    ')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->getHabitaciones()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-19 21:27:16 --> [Caused by] mysqli_sql_exception: Unknown column 'piso' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('
+        SELECT 
+            h.id                AS habitacion_id,
+            h.numero            AS numero,
+            piso                AS piso,
+            eh.codigo            AS status,
+
+            r.id                AS registro_id,
+            r.tipo_estadia_id   AS tipo_estadia,
+            r.noches            AS dias_pagados,
+            (r.adultos + r.niños) AS num_personas,
+
+            r.forma_pago_id     AS forma_pago,
+            r.total             AS total,
+
+            r.hora_entrada      AS hora_entrada_1,
+            r.hora_salida       AS hora_salida_1,
+
+            CONCAT(hu.nombre, \' \', hu.apellido) AS nombre_huesped,
+            r.observaciones     AS observaciones,
+
+            hu.id               AS huesped_id,
+            hu.fotografia       AS fotografia,
+            hu.identificacion   AS identificacion,
+            hu.firma_path       AS firma_path,
+            h.estado_id         AS estado_id
+
+        FROM habitaciones h
+        
+        LEFT JOIN estados_habitacion eh on eh.id=h.estado_id
+
+        LEFT JOIN registros r 
+            ON r.habitacion_id = h.id 
+            AND r.estado_registro = \'CHECKIN\'
+
+        LEFT JOIN huespedes hu 
+            ON hu.id = r.huesped_id
+
+        WHERE h.activa = 1
+    ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT 
+            h.id                AS habitacion_id,
+            h.numero            AS numero,
+            piso                AS piso,
+            eh.codigo            AS status,
+
+            r.id                AS registro_id,
+            r.tipo_estadia_id   AS tipo_estadia,
+            r.noches            AS dias_pagados,
+            (r.adultos + r.niños) AS num_personas,
+
+            r.forma_pago_id     AS forma_pago,
+            r.total             AS total,
+
+            r.hora_entrada      AS hora_entrada_1,
+            r.hora_salida       AS hora_salida_1,
+
+            CONCAT(hu.nombre, \' \', hu.apellido) AS nombre_huesped,
+            r.observaciones     AS observaciones,
+
+            hu.id               AS huesped_id,
+            hu.fotografia       AS fotografia,
+            hu.identificacion   AS identificacion,
+            hu.firma_path       AS firma_path,
+            h.estado_id         AS estado_id
+
+        FROM habitaciones h
+        
+        LEFT JOIN estados_habitacion eh on eh.id=h.estado_id
+
+        LEFT JOIN registros r 
+            ON r.habitacion_id = h.id 
+            AND r.estado_registro = \'CHECKIN\'
+
+        LEFT JOIN huespedes hu 
+            ON hu.id = r.huesped_id
+
+        WHERE h.activa = 1
+    ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT 
+            h.id                AS habitacion_id,
+            h.numero            AS numero,
+            piso                AS piso,
+            eh.codigo            AS status,
+
+            r.id                AS registro_id,
+            r.tipo_estadia_id   AS tipo_estadia,
+            r.noches            AS dias_pagados,
+            (r.adultos + r.niños) AS num_personas,
+
+            r.forma_pago_id     AS forma_pago,
+            r.total             AS total,
+
+            r.hora_entrada      AS hora_entrada_1,
+            r.hora_salida       AS hora_salida_1,
+
+            CONCAT(hu.nombre, \' \', hu.apellido) AS nombre_huesped,
+            r.observaciones     AS observaciones,
+
+            hu.id               AS huesped_id,
+            hu.fotografia       AS fotografia,
+            hu.identificacion   AS identificacion,
+            hu.firma_path       AS firma_path,
+            h.estado_id         AS estado_id
+
+        FROM habitaciones h
+        
+        LEFT JOIN estados_habitacion eh on eh.id=h.estado_id
+
+        LEFT JOIN registros r 
+            ON r.habitacion_id = h.id 
+            AND r.estado_registro = \'CHECKIN\'
+
+        LEFT JOIN huespedes hu 
+            ON hu.id = r.huesped_id
+
+        WHERE h.activa = 1
+    ')
+ 4 APPPATH\Controllers\Reservacion.php(1918): CodeIgniter\Database\BaseConnection->query('
+        SELECT 
+            h.id                AS habitacion_id,
+            h.numero            AS numero,
+            piso                AS piso,
+            eh.codigo            AS status,
+
+            r.id                AS registro_id,
+            r.tipo_estadia_id   AS tipo_estadia,
+            r.noches            AS dias_pagados,
+            (r.adultos + r.niños) AS num_personas,
+
+            r.forma_pago_id     AS forma_pago,
+            r.total             AS total,
+
+            r.hora_entrada      AS hora_entrada_1,
+            r.hora_salida       AS hora_salida_1,
+
+            CONCAT(hu.nombre, \' \', hu.apellido) AS nombre_huesped,
+            r.observaciones     AS observaciones,
+
+            hu.id               AS huesped_id,
+            hu.fotografia       AS fotografia,
+            hu.identificacion   AS identificacion,
+            hu.firma_path       AS firma_path,
+            h.estado_id         AS estado_id
+
+        FROM habitaciones h
+        
+        LEFT JOIN estados_habitacion eh on eh.id=h.estado_id
+
+        LEFT JOIN registros r 
+            ON r.habitacion_id = h.id 
+            AND r.estado_registro = \'CHECKIN\'
+
+        LEFT JOIN huespedes hu 
+            ON hu.id = r.huesped_id
+
+        WHERE h.activa = 1
+    ')
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->getHabitaciones()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-19 21:28:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 21:44:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 21:45:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 21:50:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 21:50:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 22:00:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 22:01:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 22:01:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 22:01:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 22:54:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 22:54:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 22:54:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 22:54:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 22:54:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 22:54:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 22:54:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 22:54:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 22:55:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 22:56:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 22:56:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 22:56:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 22:56:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 22:58:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:00:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:00:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:05:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:05:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:05:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:06:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:06:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:06:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:06:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:09:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:09:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:16:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:16:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:17:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:18:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:19:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:20:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:20:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:20:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:20:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:20:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:20:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:20:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:20:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:20:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:22:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-19 23:22:58 --> Error: Call to undefined function App\Controllers\shell_exec()
+[Method: GET, Route: config/impresoras]
+in APPPATH/Controllers/ConfigImpresoras.php on line 17.
+ 1 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\ConfigImpresoras->listarImpresoras()
+ 2 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-19 23:22:58 --> Error: Call to undefined function App\Controllers\shell_exec()
+[Method: GET, Route: perifericos/camaras]
+in APPPATH/Controllers/ConfigPerifericos.php on line 56.
+ 1 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarCamaras()
+ 2 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-19 23:22:58 --> Error: Call to undefined function App\Controllers\shell_exec()
+[Method: GET, Route: perifericos/usb]
+in APPPATH/Controllers/ConfigPerifericos.php on line 45.
+ 1 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarUsb()
+ 2 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-19 23:22:58 --> Error: Call to undefined function App\Controllers\shell_exec()
+[Method: GET, Route: perifericos/discos]
+in APPPATH/Controllers/ConfigPerifericos.php on line 67.
+ 1 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 2 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+DEBUG - 2026-04-19 23:23:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:27:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-19 23:27:14 --> Error: Call to undefined function App\Controllers\shell_exec()
+[Method: GET, Route: config/impresoras]
+in APPPATH/Controllers/ConfigImpresoras.php on line 17.
+ 1 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\ConfigImpresoras->listarImpresoras()
+ 2 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-19 23:27:14 --> Error: Call to undefined function App\Controllers\shell_exec()
+[Method: GET, Route: perifericos/usb]
+in APPPATH/Controllers/ConfigPerifericos.php on line 45.
+ 1 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarUsb()
+ 2 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-19 23:27:14 --> Error: Call to undefined function App\Controllers\shell_exec()
+[Method: GET, Route: perifericos/camaras]
+in APPPATH/Controllers/ConfigPerifericos.php on line 56.
+ 1 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarCamaras()
+ 2 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-19 23:27:14 --> Error: Call to undefined function App\Controllers\shell_exec()
+[Method: GET, Route: perifericos/discos]
+in APPPATH/Controllers/ConfigPerifericos.php on line 67.
+ 1 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 2 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+DEBUG - 2026-04-19 23:27:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:36:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-19 23:36:46 --> Error: Call to undefined function App\Controllers\shell_exec()
+[Method: GET, Route: perifericos/usb]
+in APPPATH/Controllers/ConfigPerifericos.php on line 45.
+ 1 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarUsb()
+ 2 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-19 23:36:46 --> Error: Call to undefined function App\Controllers\shell_exec()
+[Method: GET, Route: config/impresoras]
+in APPPATH/Controllers/ConfigImpresoras.php on line 17.
+ 1 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\ConfigImpresoras->listarImpresoras()
+ 2 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-19 23:36:47 --> Error: Call to undefined function App\Controllers\shell_exec()
+[Method: GET, Route: perifericos/camaras]
+in APPPATH/Controllers/ConfigPerifericos.php on line 56.
+ 1 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarCamaras()
+ 2 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-19 23:36:47 --> Error: Call to undefined function App\Controllers\shell_exec()
+[Method: GET, Route: perifericos/discos]
+in APPPATH/Controllers/ConfigPerifericos.php on line 67.
+ 1 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 2 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+DEBUG - 2026-04-19 23:42:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:42:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:42:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:43:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-19 23:43:04 --> Error: Call to undefined function App\Controllers\shell_exec()
+[Method: GET, Route: perifericos/camaras]
+in APPPATH/Controllers/ConfigPerifericos.php on line 56.
+ 1 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarCamaras()
+ 2 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-19 23:43:04 --> Error: Call to undefined function App\Controllers\shell_exec()
+[Method: GET, Route: perifericos/discos]
+in APPPATH/Controllers/ConfigPerifericos.php on line 67.
+ 1 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 2 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-19 23:43:04 --> Error: Call to undefined function App\Controllers\shell_exec()
+[Method: GET, Route: config/impresoras]
+in APPPATH/Controllers/ConfigImpresoras.php on line 17.
+ 1 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\ConfigImpresoras->listarImpresoras()
+ 2 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+CRITICAL - 2026-04-19 23:43:04 --> Error: Call to undefined function App\Controllers\shell_exec()
+[Method: GET, Route: perifericos/usb]
+in APPPATH/Controllers/ConfigPerifericos.php on line 45.
+ 1 SYSTEMPATH/CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarUsb()
+ 2 SYSTEMPATH/CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 4 SYSTEMPATH/Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(68): CodeIgniter\Boot::runCodeIgniter()
+ 6 FCPATH/index.php(59): CodeIgniter\Boot::bootWeb()
+DEBUG - 2026-04-19 23:43:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:43:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:45:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:45:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:45:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:45:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:46:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:49:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:49:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:49:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:49:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:49:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:50:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:50:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:50:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:50:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:50:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:50:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:50:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-19 23:50:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

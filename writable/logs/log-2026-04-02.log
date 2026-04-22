@@ -1,0 +1,829 @@
+DEBUG - 2026-04-02 08:46:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 08:46:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:07:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:08:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:08:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-02 09:08:06 --> Unknown column 'r.num_personas' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `r`.`id`, `r`.`num_personas`, `r`.`forma_pago`, `r`.`precio_base`, `r`.`iva`, `r`.`ish`, `r`.`total`, `r`.`hora_entrada_1`, `r`.`hora_salida_1`, `r`.`nombre_huesped`, `r`.`sombreado`, `h`.`numero`, `h`.`status`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE `r`.`turno_id` = 1
+AND DATE(r.created_at) = \'2026-04-02\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `r`.`id`, `r`.`num_personas`, `r`.`forma_pago`, `r`.`precio_base`, `r`.`iva`, `r`.`ish`, `r`.`total`, `r`.`hora_entrada_1`, `r`.`hora_salida_1`, `r`.`nombre_huesped`, `r`.`sombreado`, `h`.`numero`, `h`.`status`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE `r`.`turno_id` = 1
+AND DATE(r.created_at) = \'2026-04-02\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `r`.`id`, `r`.`num_personas`, `r`.`forma_pago`, `r`.`precio_base`, `r`.`iva`, `r`.`ish`, `r`.`total`, `r`.`hora_entrada_1`, `r`.`hora_salida_1`, `r`.`nombre_huesped`, `r`.`sombreado`, `h`.`numero`, `h`.`status`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE `r`.`turno_id` = 1
+AND DATE(r.created_at) = \'2026-04-02\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `r`.`id`, `r`.`num_personas`, `r`.`forma_pago`, `r`.`precio_base`, `r`.`iva`, `r`.`ish`, `r`.`total`, `r`.`hora_entrada_1`, `r`.`hora_salida_1`, `r`.`nombre_huesped`, `r`.`sombreado`, `h`.`numero`, `h`.`status`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE `r`.`turno_id` = :r.turno_id:
+AND DATE(r.created_at) = :DATE(r.created_at):', [...], false)
+ 5 APPPATH\Controllers\Reportes.php(53): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-02 09:08:06 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.num_personas' in 'SELECT'
+[Method: GET, Route: reportes]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `r`.`id`, `r`.`num_personas`, `r`.`forma_pago`, `r`.`precio_base`, `r`.`iva`, `r`.`ish`, `r`.`total`, `r`.`hora_entrada_1`, `r`.`hora_salida_1`, `r`.`nombre_huesped`, `r`.`sombreado`, `h`.`numero`, `h`.`status`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE `r`.`turno_id` = :r.turno_id:
+AND DATE(r.created_at) = :DATE(r.created_at):', [...], false)
+ 2 APPPATH\Controllers\Reportes.php(53): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->index()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-02 09:08:06 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.num_personas' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `r`.`id`, `r`.`num_personas`, `r`.`forma_pago`, `r`.`precio_base`, `r`.`iva`, `r`.`ish`, `r`.`total`, `r`.`hora_entrada_1`, `r`.`hora_salida_1`, `r`.`nombre_huesped`, `r`.`sombreado`, `h`.`numero`, `h`.`status`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE `r`.`turno_id` = 1
+AND DATE(r.created_at) = \'2026-04-02\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `r`.`id`, `r`.`num_personas`, `r`.`forma_pago`, `r`.`precio_base`, `r`.`iva`, `r`.`ish`, `r`.`total`, `r`.`hora_entrada_1`, `r`.`hora_salida_1`, `r`.`nombre_huesped`, `r`.`sombreado`, `h`.`numero`, `h`.`status`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE `r`.`turno_id` = 1
+AND DATE(r.created_at) = \'2026-04-02\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `r`.`id`, `r`.`num_personas`, `r`.`forma_pago`, `r`.`precio_base`, `r`.`iva`, `r`.`ish`, `r`.`total`, `r`.`hora_entrada_1`, `r`.`hora_salida_1`, `r`.`nombre_huesped`, `r`.`sombreado`, `h`.`numero`, `h`.`status`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE `r`.`turno_id` = :r.turno_id:
+AND DATE(r.created_at) = :DATE(r.created_at):', [...], false)
+ 4 APPPATH\Controllers\Reportes.php(53): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->index()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-02 09:08:06 --> [Caused by] mysqli_sql_exception: Unknown column 'r.num_personas' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `r`.`id`, `r`.`num_personas`, `r`.`forma_pago`, `r`.`precio_base`, `r`.`iva`, `r`.`ish`, `r`.`total`, `r`.`hora_entrada_1`, `r`.`hora_salida_1`, `r`.`nombre_huesped`, `r`.`sombreado`, `h`.`numero`, `h`.`status`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE `r`.`turno_id` = 1
+AND DATE(r.created_at) = \'2026-04-02\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `r`.`id`, `r`.`num_personas`, `r`.`forma_pago`, `r`.`precio_base`, `r`.`iva`, `r`.`ish`, `r`.`total`, `r`.`hora_entrada_1`, `r`.`hora_salida_1`, `r`.`nombre_huesped`, `r`.`sombreado`, `h`.`numero`, `h`.`status`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE `r`.`turno_id` = 1
+AND DATE(r.created_at) = \'2026-04-02\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `r`.`id`, `r`.`num_personas`, `r`.`forma_pago`, `r`.`precio_base`, `r`.`iva`, `r`.`ish`, `r`.`total`, `r`.`hora_entrada_1`, `r`.`hora_salida_1`, `r`.`nombre_huesped`, `r`.`sombreado`, `h`.`numero`, `h`.`status`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE `r`.`turno_id` = 1
+AND DATE(r.created_at) = \'2026-04-02\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `r`.`id`, `r`.`num_personas`, `r`.`forma_pago`, `r`.`precio_base`, `r`.`iva`, `r`.`ish`, `r`.`total`, `r`.`hora_entrada_1`, `r`.`hora_salida_1`, `r`.`nombre_huesped`, `r`.`sombreado`, `h`.`numero`, `h`.`status`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE `r`.`turno_id` = :r.turno_id:
+AND DATE(r.created_at) = :DATE(r.created_at):', [...], false)
+ 5 APPPATH\Controllers\Reportes.php(53): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-02 09:11:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:23:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:24:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:24:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:24:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:24:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:24:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:24:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:24:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:24:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:24:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:24:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:24:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:24:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:24:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:24:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:24:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-04-02 09:24:46 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-02 09:24:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:35:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:49:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:49:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:50:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:50:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:52:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:53:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:55:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:56:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 09:59:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 10:00:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 10:00:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 10:15:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 10:43:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-02 10:43:30 --> ErrorException: Undefined variable $datos
+[Method: GET, Route: reportes]
+in APPPATH\Views\reportes\index.php on line 486.
+ 1 APPPATH\Views\reportes\index.php(486): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $datos', 'C:\\xampp\\htdocs\\hotelos\\app\\Views\\reportes\\index.php', 486)
+ 2 SYSTEMPATH\View\View.php(238): include('C:\\xampp\\htdocs\\hotelos\\app\\Views\\reportes\\index.php')
+ 3 SYSTEMPATH\View\View.php(241): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('reportes/index', [], true)
+ 5 APPPATH\Controllers\Reportes.php(76): view('reportes/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-02 11:43:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-02 11:43:47 --> Unknown column 'r.nombre_huesped' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `h`.`numero` AS `habitacion`, `r`.`nombre_huesped` AS `nombre`, `r`.`tipo_doc`, `r`.`numero_doc`, `r`.`firma`, `r`.`foto`, `r`.`observaciones`, `r`.`lista`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE DATE(r.created_at) = \'2026-04-02\'
+ORDER BY `h`.`numero` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `h`.`numero` AS `habitacion`, `r`.`nombre_huesped` AS `nombre`, `r`.`tipo_doc`, `r`.`numero_doc`, `r`.`firma`, `r`.`foto`, `r`.`observaciones`, `r`.`lista`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE DATE(r.created_at) = \'2026-04-02\'
+ORDER BY `h`.`numero` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `h`.`numero` AS `habitacion`, `r`.`nombre_huesped` AS `nombre`, `r`.`tipo_doc`, `r`.`numero_doc`, `r`.`firma`, `r`.`foto`, `r`.`observaciones`, `r`.`lista`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE DATE(r.created_at) = \'2026-04-02\'
+ORDER BY `h`.`numero` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`numero` AS `habitacion`, `r`.`nombre_huesped` AS `nombre`, `r`.`tipo_doc`, `r`.`numero_doc`, `r`.`firma`, `r`.`foto`, `r`.`observaciones`, `r`.`lista`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE DATE(r.created_at) = :DATE(r.created_at):
+ORDER BY `h`.`numero` ASC', [...], false)
+ 5 APPPATH\Controllers\Reportes.php(100): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-02 11:43:47 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.nombre_huesped' in 'SELECT'
+[Method: GET, Route: reportes]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`numero` AS `habitacion`, `r`.`nombre_huesped` AS `nombre`, `r`.`tipo_doc`, `r`.`numero_doc`, `r`.`firma`, `r`.`foto`, `r`.`observaciones`, `r`.`lista`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE DATE(r.created_at) = :DATE(r.created_at):
+ORDER BY `h`.`numero` ASC', [...], false)
+ 2 APPPATH\Controllers\Reportes.php(100): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->index()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-02 11:43:47 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.nombre_huesped' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `h`.`numero` AS `habitacion`, `r`.`nombre_huesped` AS `nombre`, `r`.`tipo_doc`, `r`.`numero_doc`, `r`.`firma`, `r`.`foto`, `r`.`observaciones`, `r`.`lista`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE DATE(r.created_at) = \'2026-04-02\'
+ORDER BY `h`.`numero` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `h`.`numero` AS `habitacion`, `r`.`nombre_huesped` AS `nombre`, `r`.`tipo_doc`, `r`.`numero_doc`, `r`.`firma`, `r`.`foto`, `r`.`observaciones`, `r`.`lista`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE DATE(r.created_at) = \'2026-04-02\'
+ORDER BY `h`.`numero` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`numero` AS `habitacion`, `r`.`nombre_huesped` AS `nombre`, `r`.`tipo_doc`, `r`.`numero_doc`, `r`.`firma`, `r`.`foto`, `r`.`observaciones`, `r`.`lista`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE DATE(r.created_at) = :DATE(r.created_at):
+ORDER BY `h`.`numero` ASC', [...], false)
+ 4 APPPATH\Controllers\Reportes.php(100): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->index()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-02 11:43:47 --> [Caused by] mysqli_sql_exception: Unknown column 'r.nombre_huesped' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `h`.`numero` AS `habitacion`, `r`.`nombre_huesped` AS `nombre`, `r`.`tipo_doc`, `r`.`numero_doc`, `r`.`firma`, `r`.`foto`, `r`.`observaciones`, `r`.`lista`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE DATE(r.created_at) = \'2026-04-02\'
+ORDER BY `h`.`numero` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `h`.`numero` AS `habitacion`, `r`.`nombre_huesped` AS `nombre`, `r`.`tipo_doc`, `r`.`numero_doc`, `r`.`firma`, `r`.`foto`, `r`.`observaciones`, `r`.`lista`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE DATE(r.created_at) = \'2026-04-02\'
+ORDER BY `h`.`numero` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `h`.`numero` AS `habitacion`, `r`.`nombre_huesped` AS `nombre`, `r`.`tipo_doc`, `r`.`numero_doc`, `r`.`firma`, `r`.`foto`, `r`.`observaciones`, `r`.`lista`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE DATE(r.created_at) = \'2026-04-02\'
+ORDER BY `h`.`numero` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `h`.`numero` AS `habitacion`, `r`.`nombre_huesped` AS `nombre`, `r`.`tipo_doc`, `r`.`numero_doc`, `r`.`firma`, `r`.`foto`, `r`.`observaciones`, `r`.`lista`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE DATE(r.created_at) = :DATE(r.created_at):
+ORDER BY `h`.`numero` ASC', [...], false)
+ 5 APPPATH\Controllers\Reportes.php(100): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-02 11:44:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 11:53:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 11:57:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-02 11:57:43 --> Unknown column 'r.nombre_huesped' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `r`.`turno_id`, `h`.`numero`, `r`.`nombre_huesped`, `r`.`forma_pago`, `r`.`precio_base`, `r`.`iva`, `r`.`ish`, `r`.`total`, `r`.`hora_entrada_1`, `r`.`hora_salida_1`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE DATE(r.created_at) = \'2026-04-02\'
+ORDER BY `r`.`turno_id` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `r`.`turno_id`, `h`.`numero`, `r`.`nombre_huesped`, `r`.`forma_pago`, `r`.`precio_base`, `r`.`iva`, `r`.`ish`, `r`.`total`, `r`.`hora_entrada_1`, `r`.`hora_salida_1`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE DATE(r.created_at) = \'2026-04-02\'
+ORDER BY `r`.`turno_id` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `r`.`turno_id`, `h`.`numero`, `r`.`nombre_huesped`, `r`.`forma_pago`, `r`.`precio_base`, `r`.`iva`, `r`.`ish`, `r`.`total`, `r`.`hora_entrada_1`, `r`.`hora_salida_1`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE DATE(r.created_at) = \'2026-04-02\'
+ORDER BY `r`.`turno_id` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `r`.`turno_id`, `h`.`numero`, `r`.`nombre_huesped`, `r`.`forma_pago`, `r`.`precio_base`, `r`.`iva`, `r`.`ish`, `r`.`total`, `r`.`hora_entrada_1`, `r`.`hora_salida_1`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE DATE(r.created_at) = :DATE(r.created_at):
+ORDER BY `r`.`turno_id` ASC', [...], false)
+ 5 APPPATH\Controllers\Reportes.php(118): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-02 11:57:43 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.nombre_huesped' in 'SELECT'
+[Method: GET, Route: reportes]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `r`.`turno_id`, `h`.`numero`, `r`.`nombre_huesped`, `r`.`forma_pago`, `r`.`precio_base`, `r`.`iva`, `r`.`ish`, `r`.`total`, `r`.`hora_entrada_1`, `r`.`hora_salida_1`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE DATE(r.created_at) = :DATE(r.created_at):
+ORDER BY `r`.`turno_id` ASC', [...], false)
+ 2 APPPATH\Controllers\Reportes.php(118): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->index()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-02 11:57:43 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.nombre_huesped' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `r`.`turno_id`, `h`.`numero`, `r`.`nombre_huesped`, `r`.`forma_pago`, `r`.`precio_base`, `r`.`iva`, `r`.`ish`, `r`.`total`, `r`.`hora_entrada_1`, `r`.`hora_salida_1`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE DATE(r.created_at) = \'2026-04-02\'
+ORDER BY `r`.`turno_id` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `r`.`turno_id`, `h`.`numero`, `r`.`nombre_huesped`, `r`.`forma_pago`, `r`.`precio_base`, `r`.`iva`, `r`.`ish`, `r`.`total`, `r`.`hora_entrada_1`, `r`.`hora_salida_1`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE DATE(r.created_at) = \'2026-04-02\'
+ORDER BY `r`.`turno_id` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `r`.`turno_id`, `h`.`numero`, `r`.`nombre_huesped`, `r`.`forma_pago`, `r`.`precio_base`, `r`.`iva`, `r`.`ish`, `r`.`total`, `r`.`hora_entrada_1`, `r`.`hora_salida_1`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE DATE(r.created_at) = :DATE(r.created_at):
+ORDER BY `r`.`turno_id` ASC', [...], false)
+ 4 APPPATH\Controllers\Reportes.php(118): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->index()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-02 11:57:43 --> [Caused by] mysqli_sql_exception: Unknown column 'r.nombre_huesped' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `r`.`turno_id`, `h`.`numero`, `r`.`nombre_huesped`, `r`.`forma_pago`, `r`.`precio_base`, `r`.`iva`, `r`.`ish`, `r`.`total`, `r`.`hora_entrada_1`, `r`.`hora_salida_1`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE DATE(r.created_at) = \'2026-04-02\'
+ORDER BY `r`.`turno_id` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `r`.`turno_id`, `h`.`numero`, `r`.`nombre_huesped`, `r`.`forma_pago`, `r`.`precio_base`, `r`.`iva`, `r`.`ish`, `r`.`total`, `r`.`hora_entrada_1`, `r`.`hora_salida_1`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE DATE(r.created_at) = \'2026-04-02\'
+ORDER BY `r`.`turno_id` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `r`.`turno_id`, `h`.`numero`, `r`.`nombre_huesped`, `r`.`forma_pago`, `r`.`precio_base`, `r`.`iva`, `r`.`ish`, `r`.`total`, `r`.`hora_entrada_1`, `r`.`hora_salida_1`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE DATE(r.created_at) = \'2026-04-02\'
+ORDER BY `r`.`turno_id` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `r`.`turno_id`, `h`.`numero`, `r`.`nombre_huesped`, `r`.`forma_pago`, `r`.`precio_base`, `r`.`iva`, `r`.`ish`, `r`.`total`, `r`.`hora_entrada_1`, `r`.`hora_salida_1`
+FROM `registros` `r`
+JOIN `habitaciones` `h` ON `h`.`id` = `r`.`habitacion_id`
+WHERE DATE(r.created_at) = :DATE(r.created_at):
+ORDER BY `r`.`turno_id` ASC', [...], false)
+ 5 APPPATH\Controllers\Reportes.php(118): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->index()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-02 11:58:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 12:04:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 12:04:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-04-02 12:04:55 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-02 12:05:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 12:05:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 12:05:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-02 12:05:33 --> Unknown column 'r.num_personas' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            fp.codigo forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada,
+            r.hora_salida,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+         INNER JOIN formas_pago fp on r.forma_pago_id=fp.id   
+
+        WHERE r.hora_salida IS NULL
+    ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            fp.codigo forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada,
+            r.hora_salida,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+         INNER JOIN formas_pago fp on r.forma_pago_id=fp.id   
+
+        WHERE r.hora_salida IS NULL
+    ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            fp.codigo forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada,
+            r.hora_salida,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+         INNER JOIN formas_pago fp on r.forma_pago_id=fp.id   
+
+        WHERE r.hora_salida IS NULL
+    ')
+ 4 APPPATH\Controllers\Pasajeros.php(96): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            fp.codigo forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada,
+            r.hora_salida,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+         INNER JOIN formas_pago fp on r.forma_pago_id=fp.id   
+
+        WHERE r.hora_salida IS NULL
+    ')
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-02 12:05:33 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.num_personas' in 'SELECT'
+[Method: GET, Route: pasajeros/listado_operativo]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 APPPATH\Controllers\Pasajeros.php(96): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            fp.codigo forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada,
+            r.hora_salida,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+         INNER JOIN formas_pago fp on r.forma_pago_id=fp.id   
+
+        WHERE r.hora_salida IS NULL
+    ')
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-02 12:05:33 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.num_personas' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            fp.codigo forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada,
+            r.hora_salida,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+         INNER JOIN formas_pago fp on r.forma_pago_id=fp.id   
+
+        WHERE r.hora_salida IS NULL
+    ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            fp.codigo forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada,
+            r.hora_salida,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+         INNER JOIN formas_pago fp on r.forma_pago_id=fp.id   
+
+        WHERE r.hora_salida IS NULL
+    ')
+ 3 APPPATH\Controllers\Pasajeros.php(96): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            fp.codigo forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada,
+            r.hora_salida,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+         INNER JOIN formas_pago fp on r.forma_pago_id=fp.id   
+
+        WHERE r.hora_salida IS NULL
+    ')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-02 12:05:33 --> [Caused by] mysqli_sql_exception: Unknown column 'r.num_personas' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            fp.codigo forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada,
+            r.hora_salida,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+         INNER JOIN formas_pago fp on r.forma_pago_id=fp.id   
+
+        WHERE r.hora_salida IS NULL
+    ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            fp.codigo forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada,
+            r.hora_salida,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+         INNER JOIN formas_pago fp on r.forma_pago_id=fp.id   
+
+        WHERE r.hora_salida IS NULL
+    ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            fp.codigo forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada,
+            r.hora_salida,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+         INNER JOIN formas_pago fp on r.forma_pago_id=fp.id   
+
+        WHERE r.hora_salida IS NULL
+    ')
+ 4 APPPATH\Controllers\Pasajeros.php(96): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            r.id AS registro_id,
+            \'TITULAR\' AS tipo,
+
+            h.id AS huesped_id,
+            h.nombre,
+            h.apellido,
+            h.numero_identificacion,
+            ht.nombre AS tipo_identificacion,
+
+            hab.numero,
+            r.total,
+            fp.codigo forma_pago,
+            r.num_personas,
+
+            r.lista_negra,
+            r.cliente_frecuente,
+            r.hora_entrada,
+            r.hora_salida,
+
+            0 AS es_menor,
+            \'\' AS parentesco
+
+        FROM registros r
+        JOIN huespedes h 
+            ON h.id = r.huesped_id
+        LEFT JOIN huesped_identificaciones_tipos ht
+            ON ht.id = h.tipo_identificacion_id
+        JOIN habitaciones hab 
+            ON hab.id = r.habitacion_id
+         INNER JOIN formas_pago fp on r.forma_pago_id=fp.id   
+
+        WHERE r.hora_salida IS NULL
+    ')
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->listado_operativo()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-04-02 12:05:36 --> [DEPRECATED] json_decode(): Passing null to parameter #1 ($json) of type string is deprecated in APPPATH\Controllers\ConfigPerifericos.php on line 69.
+ 1 APPPATH\Controllers\ConfigPerifericos.php(69): json_decode(null, true)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\ConfigPerifericos->detectarDiscos()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConfigPerifericos))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

@@ -1,0 +1,642 @@
+ERROR - 2026-04-15 07:41:01 --> Unknown column 'observaciones' in 'INSERT INTO'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (151, \'Reverso cancelación (TOTAL)\', 1, -10772.97, -10772.97, \'Ajuste\', \'SISTEMA\', \'2026-04-15 07:41:01\', \'Cancelación desde UI\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (151, \'Reverso cancelación (TOTAL)\', 1, -10772.97, -10772.97, \'Ajuste\', \'SISTEMA\', \'2026-04-15 07:41:01\', \'Cancelación desde UI\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (151, \'Reverso cancelación (TOTAL)\', 1, -10772.97, -10772.97, \'Ajuste\', \'SISTEMA\', \'2026-04-15 07:41:01\', \'Cancelación desde UI\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (:registro_id:, :concepto:, :cantidad:, :precio_unitario:, :total:, :tipo:, :departamento:, :created_at:, :observaciones:)', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1433): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-15 07:41:02 --> Unknown column 'estado' in 'SET'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `habitaciones` SET `estado` = \'DISPONIBLE\'
+WHERE `id` = \'15\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `habitaciones` SET `estado` = \'DISPONIBLE\'
+WHERE `id` = \'15\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `habitaciones` SET `estado` = \'DISPONIBLE\'
+WHERE `id` = \'15\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `habitaciones` SET `estado` = :estado:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1470): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-15 07:41:02 --> Table 'u653032309_hotel_pms.registro' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `registro` SET `estado` = \'CANCELADO\', `hora_salida_real` = \'2026-04-15 07:41:02\', `motivo_cancelacion` = \'Cancelación desde UI\', `tipo_cancelacion` = \'TOTAL\'
+WHERE `id` = 151', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `registro` SET `estado` = \'CANCELADO\', `hora_salida_real` = \'2026-04-15 07:41:02\', `motivo_cancelacion` = \'Cancelación desde UI\', `tipo_cancelacion` = \'TOTAL\'
+WHERE `id` = 151')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `registro` SET `estado` = \'CANCELADO\', `hora_salida_real` = \'2026-04-15 07:41:02\', `motivo_cancelacion` = \'Cancelación desde UI\', `tipo_cancelacion` = \'TOTAL\'
+WHERE `id` = 151')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `registro` SET `estado` = :estado:, `hora_salida_real` = :hora_salida_real:, `motivo_cancelacion` = :motivo_cancelacion:, `tipo_cancelacion` = :tipo_cancelacion:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1478): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-15 07:41:44 --> Unknown column 'observaciones' in 'INSERT INTO'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (151, \'Reverso cancelación (TOTAL)\', 1, -10772.97, -10772.97, \'Ajuste\', \'SISTEMA\', \'2026-04-15 07:41:44\', \'Cancelación desde UI\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (151, \'Reverso cancelación (TOTAL)\', 1, -10772.97, -10772.97, \'Ajuste\', \'SISTEMA\', \'2026-04-15 07:41:44\', \'Cancelación desde UI\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (151, \'Reverso cancelación (TOTAL)\', 1, -10772.97, -10772.97, \'Ajuste\', \'SISTEMA\', \'2026-04-15 07:41:44\', \'Cancelación desde UI\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (:registro_id:, :concepto:, :cantidad:, :precio_unitario:, :total:, :tipo:, :departamento:, :created_at:, :observaciones:)', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1433): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-15 07:41:44 --> Unknown column 'estado' in 'SET'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `habitaciones` SET `estado` = \'DISPONIBLE\'
+WHERE `id` = \'15\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `habitaciones` SET `estado` = \'DISPONIBLE\'
+WHERE `id` = \'15\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `habitaciones` SET `estado` = \'DISPONIBLE\'
+WHERE `id` = \'15\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `habitaciones` SET `estado` = :estado:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1470): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-15 07:41:44 --> Table 'u653032309_hotel_pms.registro' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `registro` SET `estado` = \'CANCELADO\', `hora_salida_real` = \'2026-04-15 07:41:44\', `motivo_cancelacion` = \'Cancelación desde UI\', `tipo_cancelacion` = \'TOTAL\'
+WHERE `id` = 151', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `registro` SET `estado` = \'CANCELADO\', `hora_salida_real` = \'2026-04-15 07:41:44\', `motivo_cancelacion` = \'Cancelación desde UI\', `tipo_cancelacion` = \'TOTAL\'
+WHERE `id` = 151')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `registro` SET `estado` = \'CANCELADO\', `hora_salida_real` = \'2026-04-15 07:41:44\', `motivo_cancelacion` = \'Cancelación desde UI\', `tipo_cancelacion` = \'TOTAL\'
+WHERE `id` = 151')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `registro` SET `estado` = :estado:, `hora_salida_real` = :hora_salida_real:, `motivo_cancelacion` = :motivo_cancelacion:, `tipo_cancelacion` = :tipo_cancelacion:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1478): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-15 07:41:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 07:41:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 07:42:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 07:42:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 07:42:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-15 07:42:52 --> Unknown column 'observaciones' in 'INSERT INTO'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (151, \'Reverso cancelación (TOTAL)\', 1, -10772.97, -10772.97, \'Ajuste\', \'SISTEMA\', \'2026-04-15 07:42:52\', \'Cancelación desde UI\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (151, \'Reverso cancelación (TOTAL)\', 1, -10772.97, -10772.97, \'Ajuste\', \'SISTEMA\', \'2026-04-15 07:42:52\', \'Cancelación desde UI\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (151, \'Reverso cancelación (TOTAL)\', 1, -10772.97, -10772.97, \'Ajuste\', \'SISTEMA\', \'2026-04-15 07:42:52\', \'Cancelación desde UI\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (:registro_id:, :concepto:, :cantidad:, :precio_unitario:, :total:, :tipo:, :departamento:, :created_at:, :observaciones:)', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1433): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-15 07:42:52 --> Unknown column 'estado' in 'SET'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `habitaciones` SET `estado` = \'DISPONIBLE\'
+WHERE `id` = \'15\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `habitaciones` SET `estado` = \'DISPONIBLE\'
+WHERE `id` = \'15\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `habitaciones` SET `estado` = \'DISPONIBLE\'
+WHERE `id` = \'15\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `habitaciones` SET `estado` = :estado:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1470): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-15 07:42:52 --> Table 'u653032309_hotel_pms.registro' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `registro` SET `estado` = \'CANCELADO\', `hora_salida_real` = \'2026-04-15 07:42:52\', `motivo_cancelacion` = \'Cancelación desde UI\', `tipo_cancelacion` = \'TOTAL\'
+WHERE `id` = 151', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `registro` SET `estado` = \'CANCELADO\', `hora_salida_real` = \'2026-04-15 07:42:52\', `motivo_cancelacion` = \'Cancelación desde UI\', `tipo_cancelacion` = \'TOTAL\'
+WHERE `id` = 151')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `registro` SET `estado` = \'CANCELADO\', `hora_salida_real` = \'2026-04-15 07:42:52\', `motivo_cancelacion` = \'Cancelación desde UI\', `tipo_cancelacion` = \'TOTAL\'
+WHERE `id` = 151')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `registro` SET `estado` = :estado:, `hora_salida_real` = :hora_salida_real:, `motivo_cancelacion` = :motivo_cancelacion:, `tipo_cancelacion` = :tipo_cancelacion:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1478): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-15 07:42:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-15 07:52:28 --> Unknown column 'observaciones' in 'INSERT INTO'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (151, \'Reverso cancelación (TOTAL)\', 1, -10772.97, -10772.97, \'Ajuste\', \'SISTEMA\', \'2026-04-15 07:52:28\', \'Cancelación desde UI\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (151, \'Reverso cancelación (TOTAL)\', 1, -10772.97, -10772.97, \'Ajuste\', \'SISTEMA\', \'2026-04-15 07:52:28\', \'Cancelación desde UI\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (151, \'Reverso cancelación (TOTAL)\', 1, -10772.97, -10772.97, \'Ajuste\', \'SISTEMA\', \'2026-04-15 07:52:28\', \'Cancelación desde UI\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (:registro_id:, :concepto:, :cantidad:, :precio_unitario:, :total:, :tipo:, :departamento:, :created_at:, :observaciones:)', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1433): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-15 07:52:28 --> Table 'u653032309_hotel_pms.registro' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `registro` SET `estado_registro` = \'CHECKOUT\', `estado_servicio` = \'CANCELADO\', `hora_salida_real` = \'2026-04-15 07:52:28\', `motivo_cancelacion` = \'Cancelación desde UI\', `tipo_cancelacion` = \'TOTAL\'
+WHERE `id` = 151', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `registro` SET `estado_registro` = \'CHECKOUT\', `estado_servicio` = \'CANCELADO\', `hora_salida_real` = \'2026-04-15 07:52:28\', `motivo_cancelacion` = \'Cancelación desde UI\', `tipo_cancelacion` = \'TOTAL\'
+WHERE `id` = 151')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `registro` SET `estado_registro` = \'CHECKOUT\', `estado_servicio` = \'CANCELADO\', `hora_salida_real` = \'2026-04-15 07:52:28\', `motivo_cancelacion` = \'Cancelación desde UI\', `tipo_cancelacion` = \'TOTAL\'
+WHERE `id` = 151')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `registro` SET `estado_registro` = :estado_registro:, `estado_servicio` = :estado_servicio:, `hora_salida_real` = :hora_salida_real:, `motivo_cancelacion` = :motivo_cancelacion:, `tipo_cancelacion` = :tipo_cancelacion:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1478): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-15 07:53:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-15 07:56:44 --> Unknown column 'observaciones' in 'INSERT INTO'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `Subtotal`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (151, \'Reverso cancelación (TOTAL)\', 1, -10772.97, -10772.97, -10772.97, \'Ajuste\', \'SISTEMA\', \'2026-04-15 07:56:44\', \'Cancelación desde UI\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `Subtotal`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (151, \'Reverso cancelación (TOTAL)\', 1, -10772.97, -10772.97, -10772.97, \'Ajuste\', \'SISTEMA\', \'2026-04-15 07:56:44\', \'Cancelación desde UI\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `Subtotal`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (151, \'Reverso cancelación (TOTAL)\', 1, -10772.97, -10772.97, -10772.97, \'Ajuste\', \'SISTEMA\', \'2026-04-15 07:56:44\', \'Cancelación desde UI\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `Subtotal`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (:registro_id:, :concepto:, :cantidad:, :precio_unitario:, :Subtotal:, :total:, :tipo:, :departamento:, :created_at:, :observaciones:)', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1433): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-15 07:56:44 --> Unknown column 'observaciones' in 'INSERT INTO'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `Subtotal`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (151, \'Penalización cancelación\', 1, 500, 500, 500, \'Penalización\', \'SISTEMA\', \'2026-04-15 07:56:44\', \'Cancelación desde UI\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `Subtotal`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (151, \'Penalización cancelación\', 1, 500, 500, 500, \'Penalización\', \'SISTEMA\', \'2026-04-15 07:56:44\', \'Cancelación desde UI\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `Subtotal`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (151, \'Penalización cancelación\', 1, 500, 500, 500, \'Penalización\', \'SISTEMA\', \'2026-04-15 07:56:44\', \'Cancelación desde UI\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `Subtotal`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (:registro_id:, :concepto:, :cantidad:, :precio_unitario:, :Subtotal:, :total:, :tipo:, :departamento:, :created_at:, :observaciones:)', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1452): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-15 07:56:44 --> Table 'u653032309_hotel_pms.registro' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `registro` SET `estado_registro` = \'CHECKOUT\', `estado_servicio` = \'CANCELADO\', `hora_salida_real` = \'2026-04-15 07:56:44\', `motivo_cancelacion` = \'Cancelación desde UI\', `tipo_cancelacion` = \'TOTAL\'
+WHERE `id` = 151', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `registro` SET `estado_registro` = \'CHECKOUT\', `estado_servicio` = \'CANCELADO\', `hora_salida_real` = \'2026-04-15 07:56:44\', `motivo_cancelacion` = \'Cancelación desde UI\', `tipo_cancelacion` = \'TOTAL\'
+WHERE `id` = 151')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `registro` SET `estado_registro` = \'CHECKOUT\', `estado_servicio` = \'CANCELADO\', `hora_salida_real` = \'2026-04-15 07:56:44\', `motivo_cancelacion` = \'Cancelación desde UI\', `tipo_cancelacion` = \'TOTAL\'
+WHERE `id` = 151')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `registro` SET `estado_registro` = :estado_registro:, `estado_servicio` = :estado_servicio:, `hora_salida_real` = :hora_salida_real:, `motivo_cancelacion` = :motivo_cancelacion:, `tipo_cancelacion` = :tipo_cancelacion:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1480): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-15 07:58:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-15 07:58:50 --> Table 'u653032309_hotel_pms.registro' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `registro` SET `estado_registro` = \'CHECKOUT\', `estado_servicio` = \'CANCELADO\', `hora_salida_real` = \'2026-04-15 07:58:50\', `motivo_cancelacion` = \'Cancelación desde UI\', `tipo_cancelacion` = \'TOTAL\'
+WHERE `id` = 151', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `registro` SET `estado_registro` = \'CHECKOUT\', `estado_servicio` = \'CANCELADO\', `hora_salida_real` = \'2026-04-15 07:58:50\', `motivo_cancelacion` = \'Cancelación desde UI\', `tipo_cancelacion` = \'TOTAL\'
+WHERE `id` = 151')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `registro` SET `estado_registro` = \'CHECKOUT\', `estado_servicio` = \'CANCELADO\', `hora_salida_real` = \'2026-04-15 07:58:50\', `motivo_cancelacion` = \'Cancelación desde UI\', `tipo_cancelacion` = \'TOTAL\'
+WHERE `id` = 151')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `registro` SET `estado_registro` = :estado_registro:, `estado_servicio` = :estado_servicio:, `hora_salida_real` = :hora_salida_real:, `motivo_cancelacion` = :motivo_cancelacion:, `tipo_cancelacion` = :tipo_cancelacion:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1480): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-15 07:58:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-15 07:59:51 --> Unknown column 'observaciones' in 'INSERT INTO'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `Subtotal`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (151, \'Reverso cancelación (TOTAL)\', 1, -10772.97, -10772.97, -10772.97, \'Ajuste\', \'SISTEMA\', \'2026-04-15 07:59:51\', \'Cancelación desde UI\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `Subtotal`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (151, \'Reverso cancelación (TOTAL)\', 1, -10772.97, -10772.97, -10772.97, \'Ajuste\', \'SISTEMA\', \'2026-04-15 07:59:51\', \'Cancelación desde UI\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `Subtotal`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (151, \'Reverso cancelación (TOTAL)\', 1, -10772.97, -10772.97, -10772.97, \'Ajuste\', \'SISTEMA\', \'2026-04-15 07:59:51\', \'Cancelación desde UI\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `Subtotal`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (:registro_id:, :concepto:, :cantidad:, :precio_unitario:, :Subtotal:, :total:, :tipo:, :departamento:, :created_at:, :observaciones:)', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1433): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-15 07:59:51 --> Table 'u653032309_hotel_pms.registro' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `registro` SET `estado_registro` = \'CHECKOUT\', `estado_servicio` = \'CANCELADO\', `hora_salida_real` = \'2026-04-15 07:59:51\', `motivo_cancelacion` = \'Cancelación desde UI\', `tipo_cancelacion` = \'TOTAL\'
+WHERE `id` = 151', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `registro` SET `estado_registro` = \'CHECKOUT\', `estado_servicio` = \'CANCELADO\', `hora_salida_real` = \'2026-04-15 07:59:51\', `motivo_cancelacion` = \'Cancelación desde UI\', `tipo_cancelacion` = \'TOTAL\'
+WHERE `id` = 151')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `registro` SET `estado_registro` = \'CHECKOUT\', `estado_servicio` = \'CANCELADO\', `hora_salida_real` = \'2026-04-15 07:59:51\', `motivo_cancelacion` = \'Cancelación desde UI\', `tipo_cancelacion` = \'TOTAL\'
+WHERE `id` = 151')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `registro` SET `estado_registro` = :estado_registro:, `estado_servicio` = :estado_servicio:, `hora_salida_real` = :hora_salida_real:, `motivo_cancelacion` = :motivo_cancelacion:, `tipo_cancelacion` = :tipo_cancelacion:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1480): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-15 07:59:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-15 08:02:22 --> Unknown column 'observaciones' in 'INSERT INTO'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `Subtotal`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (151, \'Reverso cancelación (TOTAL)\', 1, -10772.97, -10772.97, -10772.97, \'Ajuste\', \'SISTEMA\', \'2026-04-15 08:02:22\', \'Cancelación desde UI\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `Subtotal`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (151, \'Reverso cancelación (TOTAL)\', 1, -10772.97, -10772.97, -10772.97, \'Ajuste\', \'SISTEMA\', \'2026-04-15 08:02:22\', \'Cancelación desde UI\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `Subtotal`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (151, \'Reverso cancelación (TOTAL)\', 1, -10772.97, -10772.97, -10772.97, \'Ajuste\', \'SISTEMA\', \'2026-04-15 08:02:22\', \'Cancelación desde UI\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_cargos` (`registro_id`, `concepto`, `cantidad`, `precio_unitario`, `Subtotal`, `total`, `tipo`, `departamento`, `created_at`, `observaciones`) VALUES (:registro_id:, :concepto:, :cantidad:, :precio_unitario:, :Subtotal:, :total:, :tipo:, :departamento:, :created_at:, :observaciones:)', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(1433): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->cancelarInteligente()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-15 12:33:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 12:33:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 12:34:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 12:34:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 12:34:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 12:47:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 13:28:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 14:02:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 14:04:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 14:10:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 14:13:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 14:35:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 14:39:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 14:45:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 14:48:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 14:49:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 14:53:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 14:53:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 14:56:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 14:57:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 14:58:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 14:58:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 14:58:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 14:58:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-15 14:58:38 --> ErrorException: Undefined property: stdClass::$numero
+[Method: GET, Route: reservacion/ticket/2]
+in APPPATH\Controllers\Reservacion.php on line 575.
+ 1 APPPATH\Controllers\Reservacion.php(575): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$numero', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reservacion.php', 575)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->ticket('2')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-15 15:54:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 15:55:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 17:12:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 19:03:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 19:18:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 19:19:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 19:19:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-15 19:19:52 --> Unknown column 'estado_pago' in 'SET'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `registros` SET `estado_pago` = \'PAGADO\'
+WHERE `id` = 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `registros` SET `estado_pago` = \'PAGADO\'
+WHERE `id` = 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `registros` SET `estado_pago` = \'PAGADO\'
+WHERE `id` = 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `registros` SET `estado_pago` = :estado_pago:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(290): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarPago()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-15 19:19:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 19:27:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 19:27:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 19:27:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 19:27:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 19:28:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 19:29:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 19:29:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 19:29:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 19:49:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 19:49:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 19:49:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 19:52:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 19:52:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 19:52:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 20:06:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-15 20:09:04 --> Unknown column 'es_extra' in 'INSERT INTO'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `es_extra`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (5, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', 0, \'2026-04-15 20:09:04\', \'ACTIVO\', \'2026-04-15 20:09:04\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `es_extra`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (5, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', 0, \'2026-04-15 20:09:04\', \'ACTIVO\', \'2026-04-15 20:09:04\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `es_extra`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (5, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', 0, \'2026-04-15 20:09:04\', \'ACTIVO\', \'2026-04-15 20:09:04\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `es_extra`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (:registro_id:, :nombre:, :parentesco:, :es_menor:, :fotografia:, :es_extra:, :hora_entrada:, :estado_estancia:, :created_at:)', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(190): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarAcompanantes()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-15 20:09:04 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'es_extra' in 'INSERT INTO'
+[Method: POST, Route: reservacion/guardar-acompanantes]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `es_extra`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (:registro_id:, :nombre:, :parentesco:, :es_menor:, :fotografia:, :es_extra:, :hora_entrada:, :estado_estancia:, :created_at:)', [...], false)
+ 2 APPPATH\Controllers\Reservacion.php(190): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarAcompanantes()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-15 20:09:04 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'es_extra' in 'INSERT INTO'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `es_extra`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (5, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', 0, \'2026-04-15 20:09:04\', \'ACTIVO\', \'2026-04-15 20:09:04\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `es_extra`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (5, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', 0, \'2026-04-15 20:09:04\', \'ACTIVO\', \'2026-04-15 20:09:04\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `es_extra`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (:registro_id:, :nombre:, :parentesco:, :es_menor:, :fotografia:, :es_extra:, :hora_entrada:, :estado_estancia:, :created_at:)', [...], false)
+ 4 APPPATH\Controllers\Reservacion.php(190): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarAcompanantes()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-15 20:09:04 --> [Caused by] mysqli_sql_exception: Unknown column 'es_extra' in 'INSERT INTO'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `es_extra`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (5, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', 0, \'2026-04-15 20:09:04\', \'ACTIVO\', \'2026-04-15 20:09:04\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `es_extra`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (5, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', 0, \'2026-04-15 20:09:04\', \'ACTIVO\', \'2026-04-15 20:09:04\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `es_extra`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (5, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', 0, \'2026-04-15 20:09:04\', \'ACTIVO\', \'2026-04-15 20:09:04\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `es_extra`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (:registro_id:, :nombre:, :parentesco:, :es_menor:, :fotografia:, :es_extra:, :hora_entrada:, :estado_estancia:, :created_at:)', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(190): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarAcompanantes()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-15 20:09:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-15 20:10:00 --> Unknown column 'es_extra' in 'INSERT INTO'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `es_extra`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (5, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', 0, \'2026-04-15 20:10:00\', \'ACTIVO\', \'2026-04-15 20:10:00\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `es_extra`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (5, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', 0, \'2026-04-15 20:10:00\', \'ACTIVO\', \'2026-04-15 20:10:00\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `es_extra`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (5, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', 0, \'2026-04-15 20:10:00\', \'ACTIVO\', \'2026-04-15 20:10:00\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `es_extra`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (:registro_id:, :nombre:, :parentesco:, :es_menor:, :fotografia:, :es_extra:, :hora_entrada:, :estado_estancia:, :created_at:)', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(190): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarAcompanantes()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-15 20:10:00 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'es_extra' in 'INSERT INTO'
+[Method: POST, Route: reservacion/guardar-acompanantes]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `es_extra`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (:registro_id:, :nombre:, :parentesco:, :es_menor:, :fotografia:, :es_extra:, :hora_entrada:, :estado_estancia:, :created_at:)', [...], false)
+ 2 APPPATH\Controllers\Reservacion.php(190): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarAcompanantes()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-15 20:10:00 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'es_extra' in 'INSERT INTO'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `es_extra`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (5, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', 0, \'2026-04-15 20:10:00\', \'ACTIVO\', \'2026-04-15 20:10:00\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `es_extra`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (5, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', 0, \'2026-04-15 20:10:00\', \'ACTIVO\', \'2026-04-15 20:10:00\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `es_extra`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (:registro_id:, :nombre:, :parentesco:, :es_menor:, :fotografia:, :es_extra:, :hora_entrada:, :estado_estancia:, :created_at:)', [...], false)
+ 4 APPPATH\Controllers\Reservacion.php(190): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarAcompanantes()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-15 20:10:00 --> [Caused by] mysqli_sql_exception: Unknown column 'es_extra' in 'INSERT INTO'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `es_extra`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (5, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', 0, \'2026-04-15 20:10:00\', \'ACTIVO\', \'2026-04-15 20:10:00\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `es_extra`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (5, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', 0, \'2026-04-15 20:10:00\', \'ACTIVO\', \'2026-04-15 20:10:00\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `es_extra`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (5, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', 0, \'2026-04-15 20:10:00\', \'ACTIVO\', \'2026-04-15 20:10:00\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `es_extra`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (:registro_id:, :nombre:, :parentesco:, :es_menor:, :fotografia:, :es_extra:, :hora_entrada:, :estado_estancia:, :created_at:)', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(190): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarAcompanantes()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-15 20:10:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 20:10:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 20:46:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 20:46:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-15 20:46:16 --> Unknown column 'estado_pago' in 'SET'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `registros` SET `estado_pago` = \'PAGADO\'
+WHERE `id` = 6', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `registros` SET `estado_pago` = \'PAGADO\'
+WHERE `id` = 6')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `registros` SET `estado_pago` = \'PAGADO\'
+WHERE `id` = 6')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `registros` SET `estado_pago` = :estado_pago:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(290): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarPago()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-15 20:46:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 20:52:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 20:53:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 20:55:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 21:06:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 21:06:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 21:29:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 21:29:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 21:29:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 21:32:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 21:33:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 21:38:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 21:38:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 21:39:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 21:51:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 21:51:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-15 21:51:24 --> Unknown column 'estado_pago' in 'SET'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `registros` SET `estado_pago` = \'PAGADO\'
+WHERE `id` = 6', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `registros` SET `estado_pago` = \'PAGADO\'
+WHERE `id` = 6')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `registros` SET `estado_pago` = \'PAGADO\'
+WHERE `id` = 6')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `registros` SET `estado_pago` = :estado_pago:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(290): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarPago()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-15 21:51:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 22:12:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 22:12:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 22:12:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 22:21:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 22:21:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-15 22:21:12 --> Unknown column 'estado_pago' in 'SET'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `registros` SET `estado_pago` = \'PAGADO\'
+WHERE `id` = 7', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `registros` SET `estado_pago` = \'PAGADO\'
+WHERE `id` = 7')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `registros` SET `estado_pago` = \'PAGADO\'
+WHERE `id` = 7')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `registros` SET `estado_pago` = :estado_pago:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(290): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarPago()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-15 22:21:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 22:24:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 22:24:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 22:25:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 22:26:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 22:26:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-15 22:26:45 --> Unknown column 'estado_pago' in 'SET'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `registros` SET `estado_pago` = \'PAGADO\'
+WHERE `id` = 8', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `registros` SET `estado_pago` = \'PAGADO\'
+WHERE `id` = 8')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `registros` SET `estado_pago` = \'PAGADO\'
+WHERE `id` = 8')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `registros` SET `estado_pago` = :estado_pago:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(290): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarPago()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-15 22:26:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 22:30:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 22:31:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 22:36:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 22:39:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 22:47:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-15 22:47:38 --> Unknown column 'estado_pago' in 'SET'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `registros` SET `estado_pago` = \'PAGADO\'
+WHERE `id` = 9', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `registros` SET `estado_pago` = \'PAGADO\'
+WHERE `id` = 9')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `registros` SET `estado_pago` = \'PAGADO\'
+WHERE `id` = 9')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `registros` SET `estado_pago` = :estado_pago:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(290): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarPago()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-15 22:49:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 22:53:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 23:03:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 23:13:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 23:20:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-15 23:20:02 --> Unknown column 'estado_pago' in 'SET'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `registros` SET `estado_pago` = \'PAGADO\'
+WHERE `id` = 10', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `registros` SET `estado_pago` = \'PAGADO\'
+WHERE `id` = 10')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `registros` SET `estado_pago` = \'PAGADO\'
+WHERE `id` = 10')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `registros` SET `estado_pago` = :estado_pago:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(290): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarPago()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-15 23:20:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 23:21:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 23:22:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-15 23:22:25 --> Unknown column 'estado_pago' in 'SET'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `registros` SET `estado_pago` = \'PAGADO\'
+WHERE `id` = 11', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `registros` SET `estado_pago` = \'PAGADO\'
+WHERE `id` = 11')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `registros` SET `estado_pago` = \'PAGADO\'
+WHERE `id` = 11')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `registros` SET `estado_pago` = :estado_pago:
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(290): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarPago()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-15 23:22:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 23:23:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 23:28:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 23:34:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 23:36:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 23:44:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 23:47:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 23:48:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 23:48:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 23:49:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 23:49:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 23:49:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 23:49:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 23:51:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 23:51:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 23:53:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 23:53:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 23:53:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 23:53:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-15 23:57:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

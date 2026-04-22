@@ -1,0 +1,671 @@
+ERROR - 2026-03-26 07:29:26 --> Cannot add or update a child row: a foreign key constraint fails (`u653032309_hotel_pms`.`huespedes`, CONSTRAINT `fk_huesped_tipo_identificacion` FOREIGN KEY (`tipo_identificacion_id`) REFERENCES `huesped_identificaciones_tipos` (`id`))
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `huespedes` SET `nombre` = \'israel\', `apellido` = \'De los Santos\', `email` = \'oso260981@gmail.com\', `genero` = \'M\', `telefono` = \'5564747411\', `direccion` = \'Avenida Ermita Iztapalapa No 2435 Int. 2, Calle Amado Nervo, Col. La Era\', `ciudad` = \'Mexico\', `tipo_identificacion_id` = \'\', `numero_identificacion` = \'146516151515414\', `notas` = \'\', `fotografia` = NULL
+WHERE `huespedes`.`id` IN (\'22\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `huespedes` SET `nombre` = \'israel\', `apellido` = \'De los Santos\', `email` = \'oso260981@gmail.com\', `genero` = \'M\', `telefono` = \'5564747411\', `direccion` = \'Avenida Ermita Iztapalapa No 2435 Int. 2, Calle Amado Nervo, Col. La Era\', `ciudad` = \'Mexico\', `tipo_identificacion_id` = \'\', `numero_identificacion` = \'146516151515414\', `notas` = \'\', `fotografia` = NULL
+WHERE `huespedes`.`id` IN (\'22\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `huespedes` SET `nombre` = \'israel\', `apellido` = \'De los Santos\', `email` = \'oso260981@gmail.com\', `genero` = \'M\', `telefono` = \'5564747411\', `direccion` = \'Avenida Ermita Iztapalapa No 2435 Int. 2, Calle Amado Nervo, Col. La Era\', `ciudad` = \'Mexico\', `tipo_identificacion_id` = \'\', `numero_identificacion` = \'146516151515414\', `notas` = \'\', `fotografia` = NULL
+WHERE `huespedes`.`id` IN (\'22\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `huespedes` SET `nombre` = :nombre:, `apellido` = :apellido:, `email` = :email:, `genero` = :genero:, `telefono` = :telefono:, `direccion` = :direccion:, `ciudad` = :ciudad:, `tipo_identificacion_id` = :tipo_identificacion_id:, `numero_identificacion` = :numero_identificacion:, `notas` = :notas:, `fotografia` = :fotografia:
+WHERE `huespedes`.`id` IN :huespedes.id:', [...], false)
+ 5 SYSTEMPATH\Model.php(407): CodeIgniter\Database\BaseBuilder->update()
+ 6 SYSTEMPATH\BaseModel.php(1073): CodeIgniter\Model->doUpdate([...], [...])
+ 7 SYSTEMPATH\Model.php(706): CodeIgniter\BaseModel->update([...], [...])
+ 8 SYSTEMPATH\BaseModel.php(749): CodeIgniter\Model->update('22', [...])
+ 9 APPPATH\Controllers\Pasajeros.php(124): CodeIgniter\BaseModel->save([...])
+10 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->guardar_huesped()
+11 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+12 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-26 07:29:27 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`u653032309_hotel_pms`.`huespedes`, CONSTRAINT `fk_huesped_tipo_identificacion` FOREIGN KEY (`tipo_identificacion_id`) REFERENCES `huesped_identificaciones_tipos` (`id`))
+[Method: POST, Route: pasajeros/guardar_huesped]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `huespedes` SET `nombre` = :nombre:, `apellido` = :apellido:, `email` = :email:, `genero` = :genero:, `telefono` = :telefono:, `direccion` = :direccion:, `ciudad` = :ciudad:, `tipo_identificacion_id` = :tipo_identificacion_id:, `numero_identificacion` = :numero_identificacion:, `notas` = :notas:, `fotografia` = :fotografia:
+WHERE `huespedes`.`id` IN :huespedes.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(407): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(1073): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(706): CodeIgniter\BaseModel->update([...], [...])
+ 5 SYSTEMPATH\BaseModel.php(749): CodeIgniter\Model->update('22', [...])
+ 6 APPPATH\Controllers\Pasajeros.php(124): CodeIgniter\BaseModel->save([...])
+ 7 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->guardar_huesped()
+ 8 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+ 9 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-26 07:29:27 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`u653032309_hotel_pms`.`huespedes`, CONSTRAINT `fk_huesped_tipo_identificacion` FOREIGN KEY (`tipo_identificacion_id`) REFERENCES `huesped_identificaciones_tipos` (`id`))
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `huespedes` SET `nombre` = \'israel\', `apellido` = \'De los Santos\', `email` = \'oso260981@gmail.com\', `genero` = \'M\', `telefono` = \'5564747411\', `direccion` = \'Avenida Ermita Iztapalapa No 2435 Int. 2, Calle Amado Nervo, Col. La Era\', `ciudad` = \'Mexico\', `tipo_identificacion_id` = \'\', `numero_identificacion` = \'146516151515414\', `notas` = \'\', `fotografia` = NULL
+WHERE `huespedes`.`id` IN (\'22\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `huespedes` SET `nombre` = \'israel\', `apellido` = \'De los Santos\', `email` = \'oso260981@gmail.com\', `genero` = \'M\', `telefono` = \'5564747411\', `direccion` = \'Avenida Ermita Iztapalapa No 2435 Int. 2, Calle Amado Nervo, Col. La Era\', `ciudad` = \'Mexico\', `tipo_identificacion_id` = \'\', `numero_identificacion` = \'146516151515414\', `notas` = \'\', `fotografia` = NULL
+WHERE `huespedes`.`id` IN (\'22\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `huespedes` SET `nombre` = :nombre:, `apellido` = :apellido:, `email` = :email:, `genero` = :genero:, `telefono` = :telefono:, `direccion` = :direccion:, `ciudad` = :ciudad:, `tipo_identificacion_id` = :tipo_identificacion_id:, `numero_identificacion` = :numero_identificacion:, `notas` = :notas:, `fotografia` = :fotografia:
+WHERE `huespedes`.`id` IN :huespedes.id:', [...], false)
+ 4 SYSTEMPATH\Model.php(407): CodeIgniter\Database\BaseBuilder->update()
+ 5 SYSTEMPATH\BaseModel.php(1073): CodeIgniter\Model->doUpdate([...], [...])
+ 6 SYSTEMPATH\Model.php(706): CodeIgniter\BaseModel->update([...], [...])
+ 7 SYSTEMPATH\BaseModel.php(749): CodeIgniter\Model->update('22', [...])
+ 8 APPPATH\Controllers\Pasajeros.php(124): CodeIgniter\BaseModel->save([...])
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->guardar_huesped()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-26 07:29:27 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`u653032309_hotel_pms`.`huespedes`, CONSTRAINT `fk_huesped_tipo_identificacion` FOREIGN KEY (`tipo_identificacion_id`) REFERENCES `huesped_identificaciones_tipos` (`id`))
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('UPDATE `huespedes` SET `nombre` = \'israel\', `apellido` = \'De los Santos\', `email` = \'oso260981@gmail.com\', `genero` = \'M\', `telefono` = \'5564747411\', `direccion` = \'Avenida Ermita Iztapalapa No 2435 Int. 2, Calle Amado Nervo, Col. La Era\', `ciudad` = \'Mexico\', `tipo_identificacion_id` = \'\', `numero_identificacion` = \'146516151515414\', `notas` = \'\', `fotografia` = NULL
+WHERE `huespedes`.`id` IN (\'22\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `huespedes` SET `nombre` = \'israel\', `apellido` = \'De los Santos\', `email` = \'oso260981@gmail.com\', `genero` = \'M\', `telefono` = \'5564747411\', `direccion` = \'Avenida Ermita Iztapalapa No 2435 Int. 2, Calle Amado Nervo, Col. La Era\', `ciudad` = \'Mexico\', `tipo_identificacion_id` = \'\', `numero_identificacion` = \'146516151515414\', `notas` = \'\', `fotografia` = NULL
+WHERE `huespedes`.`id` IN (\'22\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `huespedes` SET `nombre` = \'israel\', `apellido` = \'De los Santos\', `email` = \'oso260981@gmail.com\', `genero` = \'M\', `telefono` = \'5564747411\', `direccion` = \'Avenida Ermita Iztapalapa No 2435 Int. 2, Calle Amado Nervo, Col. La Era\', `ciudad` = \'Mexico\', `tipo_identificacion_id` = \'\', `numero_identificacion` = \'146516151515414\', `notas` = \'\', `fotografia` = NULL
+WHERE `huespedes`.`id` IN (\'22\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2521): CodeIgniter\Database\BaseConnection->query('UPDATE `huespedes` SET `nombre` = :nombre:, `apellido` = :apellido:, `email` = :email:, `genero` = :genero:, `telefono` = :telefono:, `direccion` = :direccion:, `ciudad` = :ciudad:, `tipo_identificacion_id` = :tipo_identificacion_id:, `numero_identificacion` = :numero_identificacion:, `notas` = :notas:, `fotografia` = :fotografia:
+WHERE `huespedes`.`id` IN :huespedes.id:', [...], false)
+ 5 SYSTEMPATH\Model.php(407): CodeIgniter\Database\BaseBuilder->update()
+ 6 SYSTEMPATH\BaseModel.php(1073): CodeIgniter\Model->doUpdate([...], [...])
+ 7 SYSTEMPATH\Model.php(706): CodeIgniter\BaseModel->update([...], [...])
+ 8 SYSTEMPATH\BaseModel.php(749): CodeIgniter\Model->update('22', [...])
+ 9 APPPATH\Controllers\Pasajeros.php(124): CodeIgniter\BaseModel->save([...])
+10 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Pasajeros->guardar_huesped()
+11 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pasajeros))
+12 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-26 07:30:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 07:30:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 07:30:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 07:30:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 07:30:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 07:32:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 07:37:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 07:37:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 07:37:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 07:38:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 07:40:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 07:40:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 07:41:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 07:44:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 07:53:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 07:56:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 07:57:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 08:07:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 08:11:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 08:14:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 08:15:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 08:16:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 08:23:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 08:24:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 08:25:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 08:26:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 08:28:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 08:29:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 08:29:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 08:31:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 08:38:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 08:46:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 08:47:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 08:50:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 08:51:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 10:20:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 10:39:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 10:41:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-03-26 10:41:25 --> Unknown column 'formas_pago.nombre' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = \'6\'
+ORDER BY `hora_pago` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = \'6\'
+ORDER BY `hora_pago` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = \'6\'
+ORDER BY `hora_pago` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = :registro_id:
+ORDER BY `hora_pago` ASC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\RegistroPagosModel.php(41): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\RegistroPagos.php(16): App\Models\RegistroPagosModel->getByRegistro('6')
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\RegistroPagos->porRegistro('6')
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RegistroPagos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-26 10:41:25 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'formas_pago.nombre' in 'SELECT'
+[Method: GET, Route: registropagos/registros/6/pagos]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = :registro_id:
+ORDER BY `hora_pago` ASC', [...], false)
+ 2 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\RegistroPagosModel.php(41): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\RegistroPagos.php(16): App\Models\RegistroPagosModel->getByRegistro('6')
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\RegistroPagos->porRegistro('6')
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RegistroPagos))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-26 10:41:25 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'formas_pago.nombre' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = \'6\'
+ORDER BY `hora_pago` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = \'6\'
+ORDER BY `hora_pago` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = :registro_id:
+ORDER BY `hora_pago` ASC', [...], false)
+ 4 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\RegistroPagosModel.php(41): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\RegistroPagos.php(16): App\Models\RegistroPagosModel->getByRegistro('6')
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\RegistroPagos->porRegistro('6')
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RegistroPagos))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-26 10:41:25 --> [Caused by] mysqli_sql_exception: Unknown column 'formas_pago.nombre' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = \'6\'
+ORDER BY `hora_pago` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = \'6\'
+ORDER BY `hora_pago` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = \'6\'
+ORDER BY `hora_pago` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = :registro_id:
+ORDER BY `hora_pago` ASC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\RegistroPagosModel.php(41): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\RegistroPagos.php(16): App\Models\RegistroPagosModel->getByRegistro('6')
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\RegistroPagos->porRegistro('6')
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RegistroPagos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-26 10:49:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-03-26 10:49:21 --> Unknown column 'formas_pago.nombre' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = \'6\'
+ORDER BY `hora_pago` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = \'6\'
+ORDER BY `hora_pago` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = \'6\'
+ORDER BY `hora_pago` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = :registro_id:
+ORDER BY `hora_pago` ASC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\RegistroPagosModel.php(41): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\RegistroPagos.php(16): App\Models\RegistroPagosModel->getByRegistro('6')
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\RegistroPagos->porRegistro('6')
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RegistroPagos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-26 10:49:21 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'formas_pago.nombre' in 'SELECT'
+[Method: GET, Route: registropagos/registros/6/pagos]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = :registro_id:
+ORDER BY `hora_pago` ASC', [...], false)
+ 2 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\RegistroPagosModel.php(41): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\RegistroPagos.php(16): App\Models\RegistroPagosModel->getByRegistro('6')
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\RegistroPagos->porRegistro('6')
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RegistroPagos))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-26 10:49:21 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'formas_pago.nombre' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = \'6\'
+ORDER BY `hora_pago` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = \'6\'
+ORDER BY `hora_pago` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = :registro_id:
+ORDER BY `hora_pago` ASC', [...], false)
+ 4 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\RegistroPagosModel.php(41): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\RegistroPagos.php(16): App\Models\RegistroPagosModel->getByRegistro('6')
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\RegistroPagos->porRegistro('6')
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RegistroPagos))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-26 10:49:21 --> [Caused by] mysqli_sql_exception: Unknown column 'formas_pago.nombre' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = \'6\'
+ORDER BY `hora_pago` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = \'6\'
+ORDER BY `hora_pago` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = \'6\'
+ORDER BY `hora_pago` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = :registro_id:
+ORDER BY `hora_pago` ASC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\RegistroPagosModel.php(41): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\RegistroPagos.php(16): App\Models\RegistroPagosModel->getByRegistro('6')
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\RegistroPagos->porRegistro('6')
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RegistroPagos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-03-26 10:49:59 --> Unknown column 'formas_pago.nombre' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = \'6\'
+ORDER BY `hora_pago` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = \'6\'
+ORDER BY `hora_pago` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = \'6\'
+ORDER BY `hora_pago` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = :registro_id:
+ORDER BY `hora_pago` ASC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\RegistroPagosModel.php(41): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\RegistroPagos.php(16): App\Models\RegistroPagosModel->getByRegistro('6')
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\RegistroPagos->porRegistro('6')
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RegistroPagos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-26 10:49:59 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'formas_pago.nombre' in 'SELECT'
+[Method: GET, Route: registropagos/registros/6/pagos]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = :registro_id:
+ORDER BY `hora_pago` ASC', [...], false)
+ 2 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\RegistroPagosModel.php(41): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\RegistroPagos.php(16): App\Models\RegistroPagosModel->getByRegistro('6')
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\RegistroPagos->porRegistro('6')
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RegistroPagos))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-26 10:49:59 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'formas_pago.nombre' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = \'6\'
+ORDER BY `hora_pago` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = \'6\'
+ORDER BY `hora_pago` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = :registro_id:
+ORDER BY `hora_pago` ASC', [...], false)
+ 4 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\RegistroPagosModel.php(41): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\RegistroPagos.php(16): App\Models\RegistroPagosModel->getByRegistro('6')
+ 8 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\RegistroPagos->porRegistro('6')
+ 9 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RegistroPagos))
+10 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-26 10:49:59 --> [Caused by] mysqli_sql_exception: Unknown column 'formas_pago.nombre' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = \'6\'
+ORDER BY `hora_pago` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = \'6\'
+ORDER BY `hora_pago` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = \'6\'
+ORDER BY `hora_pago` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `registro_pagos`.*, `formas_pago`.`nombre` AS `forma_pago`
+FROM `registro_pagos`
+LEFT JOIN `formas_pago` ON `formas_pago`.`id` = `registro_pagos`.`forma_pago_id`
+WHERE `registro_id` = :registro_id:
+ORDER BY `hora_pago` ASC', [...], false)
+ 5 SYSTEMPATH\Model.php(254): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\RegistroPagosModel.php(41): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\RegistroPagos.php(16): App\Models\RegistroPagosModel->getByRegistro('6')
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\RegistroPagos->porRegistro('6')
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RegistroPagos))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-26 10:58:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 11:03:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 11:13:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 11:20:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 11:21:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 11:24:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 11:28:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 11:29:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 11:29:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 13:18:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 13:19:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 13:38:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 14:05:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 14:05:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 15:39:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 16:00:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 16:02:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 16:11:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 16:11:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 16:13:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 16:13:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 16:17:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 16:18:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 16:20:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 16:21:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 16:26:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 16:28:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 16:31:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 16:37:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 16:39:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 16:41:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 16:42:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 16:43:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 18:34:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 18:34:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 18:37:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 18:39:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 18:41:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 18:43:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 18:46:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 18:46:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 18:47:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 18:48:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 18:48:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 18:48:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 18:48:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 18:59:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 19:01:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 19:02:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 19:06:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 19:17:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 19:20:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 19:23:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 19:29:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 19:34:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 19:51:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 20:00:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 20:01:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 20:04:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 20:06:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 20:07:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 20:09:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 20:10:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 20:14:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 20:21:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 20:22:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 20:23:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 20:26:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-26 20:26:01 --> CodeIgniter\HTTP\Exceptions\BadRequestException: The URI you submitted has disallowed characters: "${c.fotografia}"
+[Method: GET, Route: $%7Bc.fotografia%7D]
+in SYSTEMPATH\Router\Router.php on line 768.
+ 1 SYSTEMPATH\Router\Router.php(219): CodeIgniter\Router\Router->checkDisallowedChars('${c.fotografia}')
+ 2 SYSTEMPATH\CodeIgniter.php(829): CodeIgniter\Router\Router->handle('${c.fotografia}')
+ 3 SYSTEMPATH\CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-26 20:26:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-26 20:26:20 --> CodeIgniter\HTTP\Exceptions\BadRequestException: The URI you submitted has disallowed characters: "${c.fotografia}"
+[Method: GET, Route: $%7Bc.fotografia%7D]
+in SYSTEMPATH\Router\Router.php on line 768.
+ 1 SYSTEMPATH\Router\Router.php(219): CodeIgniter\Router\Router->checkDisallowedChars('${c.fotografia}')
+ 2 SYSTEMPATH\CodeIgniter.php(829): CodeIgniter\Router\Router->handle('${c.fotografia}')
+ 3 SYSTEMPATH\CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-26 20:26:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-26 20:26:24 --> CodeIgniter\HTTP\Exceptions\BadRequestException: The URI you submitted has disallowed characters: "${c.fotografia}"
+[Method: GET, Route: $%7Bc.fotografia%7D]
+in SYSTEMPATH\Router\Router.php on line 768.
+ 1 SYSTEMPATH\Router\Router.php(219): CodeIgniter\Router\Router->checkDisallowedChars('${c.fotografia}')
+ 2 SYSTEMPATH\CodeIgniter.php(829): CodeIgniter\Router\Router->handle('${c.fotografia}')
+ 3 SYSTEMPATH\CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-26 20:26:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-26 20:26:26 --> CodeIgniter\HTTP\Exceptions\BadRequestException: The URI you submitted has disallowed characters: "${c.fotografia}"
+[Method: GET, Route: $%7Bc.fotografia%7D]
+in SYSTEMPATH\Router\Router.php on line 768.
+ 1 SYSTEMPATH\Router\Router.php(219): CodeIgniter\Router\Router->checkDisallowedChars('${c.fotografia}')
+ 2 SYSTEMPATH\CodeIgniter.php(829): CodeIgniter\Router\Router->handle('${c.fotografia}')
+ 3 SYSTEMPATH\CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-26 20:26:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-26 20:26:30 --> CodeIgniter\HTTP\Exceptions\BadRequestException: The URI you submitted has disallowed characters: "${c.fotografia}"
+[Method: GET, Route: $%7Bc.fotografia%7D]
+in SYSTEMPATH\Router\Router.php on line 768.
+ 1 SYSTEMPATH\Router\Router.php(219): CodeIgniter\Router\Router->checkDisallowedChars('${c.fotografia}')
+ 2 SYSTEMPATH\CodeIgniter.php(829): CodeIgniter\Router\Router->handle('${c.fotografia}')
+ 3 SYSTEMPATH\CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-26 20:26:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-26 20:26:32 --> CodeIgniter\HTTP\Exceptions\BadRequestException: The URI you submitted has disallowed characters: "${c.fotografia}"
+[Method: GET, Route: $%7Bc.fotografia%7D]
+in SYSTEMPATH\Router\Router.php on line 768.
+ 1 SYSTEMPATH\Router\Router.php(219): CodeIgniter\Router\Router->checkDisallowedChars('${c.fotografia}')
+ 2 SYSTEMPATH\CodeIgniter.php(829): CodeIgniter\Router\Router->handle('${c.fotografia}')
+ 3 SYSTEMPATH\CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-26 20:26:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-26 20:26:34 --> CodeIgniter\HTTP\Exceptions\BadRequestException: The URI you submitted has disallowed characters: "${c.fotografia}"
+[Method: GET, Route: $%7Bc.fotografia%7D]
+in SYSTEMPATH\Router\Router.php on line 768.
+ 1 SYSTEMPATH\Router\Router.php(219): CodeIgniter\Router\Router->checkDisallowedChars('${c.fotografia}')
+ 2 SYSTEMPATH\CodeIgniter.php(829): CodeIgniter\Router\Router->handle('${c.fotografia}')
+ 3 SYSTEMPATH\CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-26 20:26:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-26 20:26:36 --> CodeIgniter\HTTP\Exceptions\BadRequestException: The URI you submitted has disallowed characters: "${c.fotografia}"
+[Method: GET, Route: $%7Bc.fotografia%7D]
+in SYSTEMPATH\Router\Router.php on line 768.
+ 1 SYSTEMPATH\Router\Router.php(219): CodeIgniter\Router\Router->checkDisallowedChars('${c.fotografia}')
+ 2 SYSTEMPATH\CodeIgniter.php(829): CodeIgniter\Router\Router->handle('${c.fotografia}')
+ 3 SYSTEMPATH\CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-26 20:26:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-26 20:26:38 --> CodeIgniter\HTTP\Exceptions\BadRequestException: The URI you submitted has disallowed characters: "${c.fotografia}"
+[Method: GET, Route: $%7Bc.fotografia%7D]
+in SYSTEMPATH\Router\Router.php on line 768.
+ 1 SYSTEMPATH\Router\Router.php(219): CodeIgniter\Router\Router->checkDisallowedChars('${c.fotografia}')
+ 2 SYSTEMPATH\CodeIgniter.php(829): CodeIgniter\Router\Router->handle('${c.fotografia}')
+ 3 SYSTEMPATH\CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-26 20:27:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 20:27:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 20:29:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 20:30:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 21:07:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 21:23:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 21:29:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 21:36:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 21:43:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 21:47:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 21:49:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 21:50:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 21:51:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 21:53:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 21:57:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 21:58:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:02:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:03:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:04:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:07:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:08:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:09:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:09:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:10:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:10:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:11:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:12:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:13:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:13:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:16:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:18:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:23:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:32:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:39:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:39:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:40:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:40:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:45:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:50:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:50:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:50:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:52:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:56:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:57:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 22:58:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 23:03:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 23:06:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 23:07:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 23:08:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 23:15:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 23:15:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 23:16:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 23:17:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 23:19:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 23:39:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 23:43:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 23:44:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 23:48:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 23:52:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 23:54:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 23:55:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-26 23:59:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

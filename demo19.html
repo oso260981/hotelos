@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HotelOS Enterprise - Gestión Avanzada</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap');
+        
+        body { font-family: 'Roboto', sans-serif; background-color: #f1f5f9; color: #0f172a; }
+        
+        /* Estatus de habitación */
+        .status-limpia { border-left: 10px solid #22c55e; }
+        .status-sucia { border-left: 10px solid #f97316; }
+        .status-mantenimiento { border-left: 10px solid #eab308; background-color: #fef9c3; }
+        .status-planta { border-left: 10px solid #6366f1; }
+        .status-vap { border-left: 10px solid #ef4444; }
+
+        .row-shaded { background-color: #e0f2fe !important; outline: 2px solid #0369a1; z-index: 5; }
+
+        .hotel-grid td {
+            border: 1px solid #cbd5e1;
+            padding: 2px 8px;
+            height: 48px;
+            vertical-align: middle;
+            background-color: white;
+            font-size: 13px;
+        }
+        
+        .hotel-grid th {
+            background-color: #0c4a6e;
+            color: white;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            padding: 10px 8px;
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            border: 1px solid #075985;
+        }
+
+        .header-filter {
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .header-filter:hover { background-color: #075985; }
+
+        .status-icon-limpia::before {
+            content: 'X';
+            display: inline-flex;
+            width: 18px; height: 18px;
+            background-color: #22c55e;
+            color: white;
+            border-radius: 50%;
+            font-size: 10px;
+            font-weight: bold;
+            align-items: center;
+            justify-content: center;
+            margin-right: 6px;
+        }
+
+        input, select, textarea {
+            background: transparent;
+            width: 100%;
+            outline: none;
+            border: none;
+        }
+
+        .no-spinner::-webkit-inner-spin-button, .no-spinner::-webkit-outer-spin-button {
+            -webkit-appearance: none; margin: 0;
+        }
+
+        .modal-active { display: flex !important; }
+        
+        /* Dropdown para filtros estilo Excel */
+        .filter-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            color: #334155;
+            min-width: 180px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+            border-radius: 0.5rem;
+            z-index: 50;
+            border: 1px solid #e2e8f0;
+            padding: 10px;
+        }
+        
+        .header-filter:focus-within .filter-dropdown { display: block; }
+
+        .guest-card {
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .guest-card:hover { border-color: #3b82f6; background-color: #eff6ff; }
+        .guest-card.active { border-color: #2563eb; background-color: #dbeafe; border-width: 2px; }
+        .guest-card.titular-active { border-left: 4px solid #1e3a8a; }
+    </style>
+</head>
+<body class="h-screen flex flex-col overflow-hidden">
+
+    <!-- HEADER DINÁMICO -->
+    <header class="bg-[#1e3a8a] text-white p-3 flex justify-between items-center shadow-lg z-30">
+        <div class="flex items-center space-x-6">
+            <span class="text-2xl font-black italic tracking-tighter">HotelOS</span>
+            <div id="clock" class="text-2xl font-mono font-bold bg-blue-950 px-4 py-1 rounded-lg border border-blue-800">00:00:00</div>
+            <div id="header-date" class="hidden md:block text-sm font-bold bg-blue-900 px-3 py-1 rounded-lg">--/--/----</div>
+            
+            <div class="flex items-center space-x-2 bg-blue-900 px-4 py-1 rounded-lg">
+                <span class="text-[10px] uppercase font-black opacity-60">Turno Activo:</span>
+                <span id="active-shift-num" class="bg-white text-blue-900 px-2 rounded font-bold">1</span>
+            </div>
+        </div>
+        
+        <div class="flex items-center space-x-5">
+            <div class="text-right border-r border-blue-700 pr-5">
+                <p class="text-[10px] uppercase font-bold opacity-50">Usuario Operativo</p>
+                <p class="font-bold text-lg" id="user-display">Recepcion_Alpha_1</p>
+            </div>
+            <button onclick="window.location.reload()" class="bg-red-500 hover:bg-red-600 w-10 h-10 rounded-full shadow-lg flex items-center justify-center transition-transform active:scale-90">
+                <i class="fas fa-power-off"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- TABS DE NAVEGACIÓN -->
+    <nav class="bg-slate-800 flex text-white text-xs font-bold uppercase z-20">
+        <button onclick="showView('home')" class="px-8 py-3 hover:bg-slate-700 border-r border-slate-700 transition-all"><i class="fas fa-home mr-2"></i>Dashboard</button>
+        <button onclick="showView('work')" class="px-8 py-3 bg-slate-900 border-b-2 border-blue-500 transition-all"><i class="fas fa-bed mr-2"></i>Panel de Trabajo</button>
+        <button onclick="showShiftReport()" class="px-8 py-3 hover:bg-slate-700 border-r border-slate-700 transition-all"><i class="fas fa-file-invoice mr-2"></i>Corte de Caja</button>
+        <button class="px-8 py-3 hover:bg-slate-700 transition-all"><i class="fas fa-users mr-2"></i>Lista Pasajeros</button>
+    </nav>
+
+    <!-- VISTA DASHBOARD -->
+    <section id="view-home" class="flex-1 overflow-y-auto p-10 bg-slate-100">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-3xl font-light text-slate-500 uppercase tracking-widest mb-12 text-center">Gestión Operativa</h1>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <button onclick="startShift()" class="group bg-white hover:bg-blue-600 p-8 rounded-3xl shadow-xl border-b-[12px] border-blue-500 transition-all text-left transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-500 transition-colors">
+                        <i class="fas fa-sign-in-alt text-3xl text-blue-600 group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-slate-800 group-hover:text-white uppercase mb-2">Empieza Turno</h3>
+                    <p class="text-slate-500 group-hover:text-blue-100 text-sm font-medium italic leading-relaxed">Genera reporte de apertura y sincroniza estados.</p>
+                </button>
+                <button class="group bg-white hover:bg-emerald-600 p-8 rounded-3xl shadow-xl border-b-[12px] border-emerald-500 transition-all text-left transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-emerald-500 transition-colors">
+                        <i class="fas fa-paste text-3xl text-emerald-600 group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-slate-800 group-hover:text-white uppercase mb-2">Sacar Reporte</h3>
+                    <p class="text-slate-500 group-hover:text-emerald-50 text-sm font-medium italic leading-relaxed">Ventas por pago y auditoría de sombreados.</p>
+                </button>
+                <button class="group bg-white hover:bg-rose-600 p-8 rounded-3xl shadow-xl border-b-[12px] border-rose-500 transition-all text-left transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-rose-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-rose-500 transition-colors">
+                        <i class="fas fa-id-badge text-3xl text-rose-600 group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-slate-800 group-hover:text-white uppercase mb-2">Lista Pasajeros</h3>
+                    <p class="text-slate-500 group-hover:text-rose-50 text-sm font-medium italic leading-relaxed">Base de datos histórica y Black List.</p>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISTA PANEL DE TRABAJO -->
+    <section id="view-work" class="hidden flex-1 flex flex-col bg-slate-200">
+        <div class="bg-slate-900 p-2 flex space-x-3 items-center px-4">
+            <div class="flex items-center space-x-2 border-r border-slate-700 pr-4">
+                <span class="text-[10px] text-slate-500 font-bold uppercase">Herramientas:</span>
+                <button onclick="resetFilters()" class="bg-slate-700 hover:bg-blue-600 text-white px-3 py-1 rounded text-[10px] font-bold transition-colors">RESETEAR FILTROS</button>
+            </div>
+            <div class="flex-1"></div>
+            <div class="text-[10px] font-bold text-slate-400 uppercase italic">Haz click en los encabezados para filtrar</div>
+        </div>
+
+        <div class="flex-1 overflow-auto bg-white">
+            <table class="w-full hotel-grid table-fixed min-w-[1900px]">
+                <thead>
+                    <tr id="grid-header-row">
+                        <!-- Generado por JS para incluir filtros en todos -->
+                    </tr>
+                </thead>
+                <tbody id="rooms-tbody"></tbody>
+            </table>
+        </div>
+
+        <footer class="bg-slate-900 text-white p-3 flex items-center justify-between border-t border-slate-700">
+            <div class="flex items-center space-x-4">
+                <span class="text-[11px] font-black uppercase text-blue-400">PISO ACTUAL:</span>
+                <div id="floor-tabs" class="flex bg-slate-800 p-1 rounded-xl">
+                    <button onclick="changeFloor('PB')" class="bg-blue-600 px-5 py-1.5 rounded-lg text-xs font-black shadow-lg">PB</button>
+                    <button onclick="changeFloor('1')" class="px-5 py-1.5 rounded-lg text-xs font-bold text-slate-400">PISO 1</button>
+                    <button onclick="changeFloor('2')" class="px-5 py-1.5 rounded-lg text-xs font-bold text-slate-400">PISO 2</button>
+                    <button onclick="changeFloor('3')" class="px-5 py-1.5 rounded-lg text-xs font-bold text-slate-400">PISO 3</button>
+                </div>
+            </div>
+        </footer>
+    </section>
+
+    <!-- MODAL DE PERSONAS - DETALLE Y CAPTURA -->
+    <div id="modal-register" class="fixed inset-0 bg-slate-900/95 hidden z-[100] items-center justify-center p-6 backdrop-blur-md">
+        <div class="bg-white w-full max-w-7xl rounded-[2.5rem] shadow-2xl flex overflow-hidden h-[90vh] border border-slate-200">
+            
+            <!-- Sidebar: Lista de Huéspedes Registrados -->
+            <div class="w-96 bg-slate-50 border-r flex flex-col">
+                <div class="p-8 border-b bg-white">
+                    <div class="flex justify-between items-center mb-6">
+                        <h4 class="text-xl font-black text-slate-800 uppercase tracking-tight">Huéspedes</h4>
+                        <span id="guest-count-badge" class="bg-blue-600 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase">0/0</span>
+                    </div>
+                    <div class="bg-slate-900 text-white p-4 rounded-2xl shadow-lg">
+                        <p class="text-[10px] opacity-60 uppercase font-black mb-1">Unidad</p>
+                        <h3 id="reg-hab-label" class="text-3xl font-black italic">--</h3>
+                    </div>
+                </div>
+
+                <div id="guest-sidebar-list" class="flex-1 overflow-y-auto p-4 space-y-3">
+                    <!-- Cards de huéspedes -->
+                </div>
+
+                <div class="p-8 bg-slate-100 space-y-3">
+                    <button onclick="addNewGuest()" class="w-full bg-slate-800 text-white py-4 rounded-2xl font-black uppercase text-xs flex items-center justify-center hover:bg-slate-700 transition-all">
+                        <i class="fas fa-user-plus mr-2"></i> Nuevo Acompañante
+                    </button>
+                    <button onclick="confirmRegistration()" class="w-full bg-emerald-500 text-white py-4 rounded-2xl font-black uppercase text-xs shadow-xl hover:bg-emerald-600 transition-all">
+                        Finalizar Registro
+                    </button>
+                    <button onclick="closeModal('modal-register')" class="w-full text-slate-400 font-bold text-[10px] uppercase tracking-widest py-2">Cancelar cambios</button>
+                </div>
+            </div>
+
+            <!-- Panel de Detalle / Captura -->
+            <div id="guest-capture-pane" class="flex-1 p-12 overflow-y-auto bg-white relative">
+                <div class="max-w-4xl mx-auto">
+                    <!-- Alerta de Titular -->
+                    <div id="titular-alert" class="hidden absolute top-4 right-12 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-xs font-black uppercase flex items-center space-x-2 border border-blue-200 shadow-sm animate-pulse">
+                        <i class="fas fa-crown"></i>
+                        <span>Titular de la Habitación</span>
+                    </div>
+
+                    <div class="flex justify-between items-start mb-10">
+                        <div>
+                            <h2 class="text-3xl font-black text-slate-800 uppercase italic leading-none mb-2">Detalle del Huésped</h2>
+                            <p class="text-slate-400 text-sm font-medium">Captura de información oficial y contacto.</p>
+                        </div>
+                        <div class="bg-slate-100 p-2 rounded-xl flex space-x-2">
+                             <button class="bg-white p-3 rounded-lg shadow-sm text-blue-600 hover:bg-blue-50 transition-all"><i class="fas fa-camera text-xl"></i></button>
+                             <button class="bg-white p-3 rounded-lg shadow-sm text-slate-600 hover:bg-slate-50 transition-all"><i class="fas fa-fingerprint text-xl"></i></button>
+                        </div>
+                    </div>
+
+                    <form id="guest-form" onsubmit="return false" class="grid grid-cols-2 gap-8">
+                        <!-- Sección Datos Personales -->
+                        <div class="col-span-2 grid grid-cols-3 gap-6">
+                            <div class="col-span-2 space-y-2">
+                                <label class="text-[10px] font-black text-slate-400 uppercase ml-2">Nombre Completo (como en ID)</label>
+                                <input id="f-name" type="text" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl font-bold text-lg focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-[10px] font-black text-slate-400 uppercase ml-2">Nacionalidad</label>
+                                <input id="f-nat" type="text" value="Mexicana" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl font-bold text-lg">
+                            </div>
+                        </div>
+
+                        <!-- Identificación -->
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black text-slate-400 uppercase ml-2">Tipo de Identificación</label>
+                            <select id="f-id-type" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl font-bold">
+                                <option value="INE">INE / IFE</option>
+                                <option value="PASAPORTE">Pasaporte</option>
+                                <option value="LICENCIA">Licencia de Conducir</option>
+                                <option value="OTRA">Otra identificación</option>
+                            </select>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black text-slate-400 uppercase ml-2">Número / Folio ID</label>
+                            <input id="f-id-num" type="text" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl font-bold font-mono text-blue-800">
+                        </div>
+
+                        <!-- Contacto -->
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black text-slate-400 uppercase ml-2">Teléfono de Contacto</label>
+                            <input id="f-tel" type="text" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl font-bold">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black text-slate-400 uppercase ml-2">Correo Electrónico</label>
+                            <input id="f-mail" type="email" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl font-bold">
+                        </div>
+
+                        <!-- Extra -->
+                        <div class="col-span-2 grid grid-cols-3 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-[10px] font-black text-slate-400 uppercase ml-2">Ciudad de Procedencia</label>
+                                <input id="f-from" type="text" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl font-bold">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-[10px] font-black text-slate-400 uppercase ml-2">Rol en Estancia</label>
+                                <select id="f-is-titular" onchange="handleTitularChange(this.value)" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl font-bold text-blue-700">
+                                    <option value="false">Acompañante</option>
+                                    <option value="true">TITULAR PRINCIPAL</option>
+                                </select>
+                            </div>
+                            <div class="flex items-center pt-6">
+                                <label class="flex items-center space-x-3 cursor-pointer bg-amber-50 p-4 rounded-2xl border border-amber-100 w-full">
+                                    <input type="checkbox" id="f-minor" class="w-6 h-6 rounded-lg text-amber-600 focus:ring-amber-400">
+                                    <span class="text-[10px] font-black text-amber-900 uppercase leading-none">Menor de Edad</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-span-2 space-y-2">
+                            <label class="text-[10px] font-black text-slate-400 uppercase ml-2">Observaciones Particulares</label>
+                            <textarea id="f-obs" class="w-full h-32 p-5 bg-slate-50 border border-slate-200 rounded-2xl font-medium text-sm focus:ring-4 focus:ring-blue-100 outline-none"></textarea>
+                        </div>
+                    </form>
+
+                    <div class="mt-12 flex space-x-4">
+                        <button onclick="saveCurrentGuestData()" class="flex-1 bg-blue-600 text-white py-5 rounded-2xl font-black uppercase text-sm shadow-xl hover:bg-blue-700 transition-all">Guardar Datos Huésped</button>
+                        <button onclick="deleteCurrentGuest()" class="px-8 bg-rose-50 text-rose-600 border border-rose-100 py-5 rounded-2xl font-black uppercase text-xs hover:bg-rose-100 transition-all"><i class="fas fa-trash-alt"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL OPCIONES -->
+    <div id="modal-options" class="fixed inset-0 bg-slate-900/90 hidden z-[100] items-center justify-center p-6 backdrop-blur-sm">
+        <div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden">
+            <div class="bg-slate-900 p-6 text-white flex justify-between items-center">
+                <h3 class="text-lg font-black uppercase tracking-widest" id="opt-hab-title">Opciones Habitación --</h3>
+                <button onclick="closeModal('modal-options')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="p-8 space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <button class="flex flex-col items-center p-6 bg-blue-50 hover:bg-blue-100 rounded-2xl border-2 border-blue-100 group transition-all">
+                        <i class="fas fa-exchange-alt text-2xl text-blue-600 mb-2 group-hover:scale-110 transition-transform"></i>
+                        <span class="text-xs font-black uppercase text-blue-900">Cambio Unidad</span>
+                    </button>
+                    <button class="flex flex-col items-center p-6 bg-orange-50 hover:bg-orange-100 rounded-2xl border-2 border-orange-100 group transition-all">
+                        <i class="fas fa-utensils text-2xl text-orange-600 mb-2"></i>
+                        <span class="text-xs font-black uppercase text-orange-900">Room Service</span>
+                    </button>
+                </div>
+                <div class="pt-4">
+                    <label class="text-[10px] font-black text-slate-400 uppercase mb-2 block">Notas de Estancia</label>
+                    <textarea id="opt-obs-global" class="w-full h-24 p-4 bg-slate-50 rounded-xl border border-slate-200 outline-none text-sm"></textarea>
+                </div>
+                <button onclick="saveGlobalOptions()" class="w-full bg-slate-900 text-white py-4 rounded-xl font-black uppercase shadow-lg">Guardar Cambios</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div id="toast" class="fixed bottom-10 right-10 bg-slate-900 text-white px-8 py-5 rounded-3xl shadow-2xl translate-y-48 transition-all duration-500 z-[200] border-l-8 border-blue-500 flex items-center space-x-6">
+        <i id="toast-icon" class="fas fa-info-circle text-blue-400 text-2xl"></i>
+        <p id="toast-message" class="font-black text-lg">Mensaje</p>
+    </div>
+
+    <script>
+        // CONFIGURACIÓN Y ESTADO
+        const rooms = [];
+        const basePrice = 500.00;
+        let selectedRoomIdx = null;
+        let selectedGuestIdx = 0;
+        let currentFloor = 'PB';
+        
+        let tempGuests = []; // Memoria temporal del modal
+
+        // Definición de Columnas para Filtros Globales
+        const gridCols = [
+            { id: 'status', label: 'Status', w: '120px', filter: 'select' },
+            { id: 'id', label: 'Hab', w: '80px', filter: 'text' },
+            { id: 'stay', label: 'Estadía', w: '120px', filter: 'select' },
+            { id: 'days', label: 'Días', w: '70px', filter: 'text' },
+            { id: 'people', label: 'Pers', w: '70px', filter: 'text' },
+            { id: 'reg', label: 'Registro', w: '140px', filter: 'none' },
+            { id: 'payment', label: 'Pago', w: '140px', filter: 'select' },
+            { id: 'price', label: 'Total', w: '110px', filter: 'text' },
+            { id: 'h_ent', label: 'Entrada', w: '120px', filter: 'none' },
+            { id: 'btn_e', label: 'E', w: '60px', filter: 'none' },
+            { id: 'h_sal', label: 'Salida', w: '120px', filter: 'none' },
+            { id: 'btn_s', label: 'S', w: '60px', filter: 'none' },
+            { id: 'titular', label: 'Titular Registrado', w: '250px', filter: 'text' },
+            { id: 'extra', label: 'H. Extra', w: '80px', filter: 'text' },
+            { id: 'opt', label: 'Opciones', w: '110px', filter: 'none' },
+            { id: 'ticket', label: 'Ticket', w: '100px', filter: 'none' }
+        ];
+
+        const activeFilters = {};
+
+        function initRooms() {
+            for (let i = 1; i <= 20; i++) {
+                rooms.push({
+                    id: (i).toString().padStart(3, '0'),
+                    floor: 'PB',
+                    status: i === 5 ? 'mantenimiento' : 'limpia',
+                    capacidad: i % 4 === 0 ? 4 : 2, 
+                    tipoEstadia: '',
+                    dias: 0,
+                    huespedes: [], // Objetos huésped detallados
+                    formaPago: '',
+                    shaded: false,
+                    precio: 0,
+                    horaEntrada: '', fechaEntrada: '',
+                    horaSalida: '', fechaSalida: '',
+                    obs: ''
+                });
+            }
+            buildHeader();
+            renderGrid();
+        }
+
+        // GENERACIÓN DE ENCABEZADO CON FILTROS
+        function buildHeader() {
+            const headerRow = document.getElementById('grid-header-row');
+            headerRow.innerHTML = '';
+            
+            gridCols.forEach(col => {
+                const th = document.createElement('th');
+                th.className = `w-[${col.w}] header-filter`;
+                th.tabIndex = 0;
+                
+                let filterHtml = '';
+                if (col.filter === 'text') {
+                    filterHtml = `
+                        <div class="filter-dropdown">
+                            <p class="text-[9px] font-black uppercase mb-2 text-blue-600">Buscar en ${col.label}</p>
+                            <input type="text" class="bg-slate-100 p-2 rounded text-xs w-full font-bold" 
+                                   oninput="updateFilter('${col.id}', this.value)" placeholder="...">
+                        </div>
+                    `;
+                } else if (col.filter === 'select') {
+                    filterHtml = `
+                        <div class="filter-dropdown">
+                            <p class="text-[9px] font-black uppercase mb-2 text-blue-600">Categoría</p>
+                            <select class="bg-slate-100 p-2 rounded text-xs w-full font-bold" 
+                                    onchange="updateFilter('${col.id}', this.value)">
+                                <option value="">Todos</option>
+                                ${getOptionsFor(col.id)}
+                            </select>
+                        </div>
+                    `;
+                }
+
+                th.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <span>${col.label}</span>
+                        ${col.filter !== 'none' ? '<i class="fas fa-filter text-[8px] opacity-40"></i>' : ''}
+                    </div>
+                    ${filterHtml}
+                `;
+                headerRow.appendChild(th);
+            });
+        }
+
+        function getOptionsFor(colId) {
+            if (colId === 'status') return `<option value="limpia">Limpia</option><option value="sucia">Sucia</option><option value="mantenimiento">Mant.</option>`;
+            if (colId === 'stay') return `<option value="S">S (Hoy)</option><option value="SQ">SQ (Se queda)</option><option value="P">P (Pasajero)</option>`;
+            if (colId === 'payment') return `<option value="E">Efectivo</option><option value="TC">Tarjeta</option>`;
+            return '';
+        }
+
+        function updateFilter(colId, val) {
+            activeFilters[colId] = val;
+            renderGrid();
+        }
+
+        function resetFilters() {
+            Object.keys(activeFilters).forEach(k => delete activeFilters[k]);
+            buildHeader();
+            renderGrid();
+            showToast("Filtros limpiados");
+        }
+
+        // RENDERIZADO DEL GRID CON FILTRADO COMPLEJO
+        function renderGrid() {
+            const tbody = document.getElementById('rooms-tbody');
+            tbody.innerHTML = '';
+
+            const filteredRooms = rooms.filter(room => {
+                const titular = room.huespedes.find(h => h.isTitular) || room.huespedes[0] || { nombre: '' };
+                
+                // Lógica de filtrado por columna
+                if (activeFilters.status && !room.status.includes(activeFilters.status)) return false;
+                if (activeFilters.id && !room.id.includes(activeFilters.id)) return false;
+                if (activeFilters.stay && room.tipoEstadia !== activeFilters.stay) return false;
+                if (activeFilters.titular && !titular.nombre.toLowerCase().includes(activeFilters.titular.toLowerCase())) return false;
+                if (activeFilters.payment && room.formaPago !== activeFilters.payment) return false;
+                
+                return true;
+            });
+
+            filteredRooms.forEach((room, realIdx) => {
+                const idx = rooms.indexOf(room); // Índice real en el array original
+                const isLimpia = room.status === 'limpia';
+                const hasGuests = room.huespedes.length > 0;
+                const isBlocked = (room.status === 'mantenimiento' || room.status === 'planta' || (room.status === 'sucia' && !hasGuests));
+                const titular = room.huespedes.find(h => h.isTitular) || room.huespedes[0] || { nombre: '' };
+                const extra = Math.max(0, room.huespedes.length - room.capacidad);
+
+                const tr = document.createElement('tr');
+                tr.className = `status-${room.status} ${room.shaded ? 'row-shaded' : ''}`;
+                
+                tr.innerHTML = `
+                    <td class="font-bold text-[11px] ${isLimpia ? 'status-icon-limpia' : ''}">
+                        <select onchange="updateStatus(${idx}, this.value)">
+                            <option value="limpia" ${room.status === 'limpia' ? 'selected' : ''}>X=LIMPIA</option>
+                            <option value="sucia" ${room.status === 'sucia' ? 'selected' : ''}>=SUCIA</option>
+                            <option value="mantenimiento" ${room.status === 'mantenimiento' ? 'selected' : ''}>M=MANT.</option>
+                            <option value="planta" ${room.status === 'planta' ? 'selected' : ''}>P=PLANTA</option>
+                            <option value="vap" ${room.status === 'vap' ? 'selected' : ''}>VAP</option>
+                        </select>
+                    </td>
+                    <td class="text-center font-black text-blue-900 text-sm">${room.id}</td>
+                    <td>
+                        <select onchange="updateStay(${idx}, this.value)" ${isBlocked ? 'disabled' : ''}>
+                            <option value="">-</option>
+                            <option value="S" ${room.tipoEstadia === 'S' ? 'selected' : ''}>S (Hoy)</option>
+                            <option value="SQ" ${room.tipoEstadia === 'SQ' ? 'selected' : ''}>SQ (Se queda)</option>
+                            <option value="P" ${room.tipoEstadia === 'P' ? 'selected' : ''}>P (Pasajero)</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="number" value="${room.dias}" onchange="updateDays(${idx}, this.value)" class="text-center font-bold no-spinner" ${(room.tipoEstadia === 'S' || room.tipoEstadia === '' || isBlocked) ? 'disabled' : ''}>
+                    </td>
+                    <td class="text-center font-black text-base">${room.huespedes.length}</td>
+                    <td class="text-center">
+                        <button onclick="openRegister(${idx})" class="bg-slate-700 text-white text-[9px] px-3 py-1.5 rounded-lg font-black hover:bg-blue-600 transition-all ${isBlocked ? 'opacity-20 pointer-events-none' : ''}">REGISTRAR +</button>
+                    </td>
+                    <td>
+                        <div class="flex items-center">
+                            <select onchange="updatePayment(${idx}, this.value)" class="text-[10px] font-bold" ${isBlocked ? 'disabled' : ''}>
+                                <option value="">-</option>
+                                <option value="E" ${room.formaPago === 'E' ? 'selected' : ''}>EFECTIVO</option>
+                                <option value="TC" ${room.formaPago === 'TC' ? 'selected' : ''}>TARJETA C.</option>
+                                <option value="TD" ${room.formaPago === 'TD' ? 'selected' : ''}>TARJETA D.</option>
+                            </select>
+                            <input type="checkbox" onchange="toggleShade(${idx}, this.checked)" ${room.shaded ? 'checked' : ''} class="w-3 h-3 ml-2" ${isBlocked ? 'disabled' : ''}>
+                        </div>
+                    </td>
+                    <td>
+                        <input type="text" value="$ ${room.precio.toFixed(2)}" class="text-right font-mono font-black text-blue-800" disabled>
+                    </td>
+                    <td class="text-[9px] font-bold leading-none text-slate-400">
+                        ${room.horaEntrada ? `<div>${room.horaEntrada}</div><div class="mt-1">${room.fechaEntrada}</div>` : '-'}
+                    </td>
+                    <td class="text-center">
+                        <button onclick="stampTime(${idx}, 'entrada')" class="text-blue-500 hover:scale-125 transition-transform ${isBlocked ? 'opacity-10 pointer-events-none' : ''}"><i class="fas fa-plus-circle"></i></button>
+                    </td>
+                    <td class="text-[9px] font-bold leading-none text-slate-400">
+                        ${room.horaSalida ? `<div>${room.horaSalida}</div><div class="mt-1">${room.fechaSalida}</div>` : '-'}
+                    </td>
+                    <td class="text-center">
+                        <button onclick="stampTime(${idx}, 'salida')" class="text-rose-500 hover:scale-125 transition-transform ${isBlocked ? 'opacity-10 pointer-events-none' : ''}"><i class="fas fa-plus-circle"></i></button>
+                    </td>
+                    <td class="font-black uppercase truncate text-[11px]">${titular.nombre || '-'}</td>
+                    <td class="text-center font-bold ${extra > 0 ? 'text-orange-600 bg-orange-50' : 'text-slate-300'}">${extra}</td>
+                    <td><button onclick="openOptions(${idx})" class="bg-slate-100 px-3 py-1 rounded-lg text-[9px] font-black uppercase ${!hasGuests ? 'opacity-10 pointer-events-none' : ''}">Opciones</button></td>
+                    <td><button onclick="doCheckout(${idx})" class="bg-blue-600 text-white px-3 py-1 rounded-lg text-[9px] font-black uppercase ${!hasGuests ? 'opacity-10 pointer-events-none' : ''}">Ticket</button></td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // MÓDULO DE PERSONAS AVANZADO (LÓGICA)
+        function openRegister(idx) {
+            selectedRoomIdx = idx;
+            const room = rooms[idx];
+            // Clonar para edición segura
+            tempGuests = room.huespedes.map(g => ({...g}));
+            
+            if (tempGuests.length === 0) {
+                addNewGuest();
+            } else {
+                selectGuest(0);
+            }
+            
+            document.getElementById('reg-hab-label').textContent = room.id;
+            updateGuestSidebar();
+            document.getElementById('modal-register').classList.add('modal-active');
+        }
+
+        function addNewGuest() {
+            const newGuest = {
+                nombre: '',
+                nacionalidad: 'Mexicana',
+                idType: 'INE',
+                idNum: '',
+                telefono: '',
+                email: '',
+                procedencia: '',
+                isTitular: tempGuests.length === 0, // El primero siempre es titular
+                isMinor: false,
+                obs: ''
+            };
+            tempGuests.push(newGuest);
+            selectGuest(tempGuests.length - 1);
+            updateGuestSidebar();
+        }
+
+        function selectGuest(idx) {
+            // Antes de cambiar, guardamos los datos del actual en el array temporal
+            saveCurrentGuestData(false);
+            
+            selectedGuestIdx = idx;
+            const guest = tempGuests[idx];
+            
+            document.getElementById('f-name').value = guest.nombre;
+            document.getElementById('f-nat').value = guest.nacionalidad;
+            document.getElementById('f-id-type').value = guest.idType;
+            document.getElementById('f-id-num').value = guest.idNum;
+            document.getElementById('f-tel').value = guest.telefono;
+            document.getElementById('f-mail').value = guest.email;
+            document.getElementById('f-from').value = guest.procedencia;
+            document.getElementById('f-is-titular').value = guest.isTitular.toString();
+            document.getElementById('f-minor').checked = guest.isMinor;
+            document.getElementById('f-obs').value = guest.obs;
+
+            // Mostrar u ocultar alerta visual de titular
+            document.getElementById('titular-alert').style.display = guest.isTitular ? 'flex' : 'none';
+
+            updateGuestSidebar();
+        }
+
+        function handleTitularChange(val) {
+            const isTitular = val === "true";
+            document.getElementById('titular-alert').style.display = isTitular ? 'flex' : 'none';
+        }
+
+        function saveCurrentGuestData(notify = true) {
+            if (tempGuests.length === 0) return;
+            
+            const guest = tempGuests[selectedGuestIdx];
+            guest.nombre = document.getElementById('f-name').value.toUpperCase();
+            guest.nacionalidad = document.getElementById('f-nat').value;
+            guest.idType = document.getElementById('f-id-type').value;
+            guest.idNum = document.getElementById('f-id-num').value;
+            guest.telefono = document.getElementById('f-tel').value;
+            guest.email = document.getElementById('f-mail').value;
+            guest.procedencia = document.getElementById('f-from').value;
+            guest.isTitular = document.getElementById('f-is-titular').value === "true";
+            guest.isMinor = document.getElementById('f-minor').checked;
+            guest.obs = document.getElementById('f-obs').value;
+
+            // Si se marca como titular, quitar a los otros
+            if (guest.isTitular) {
+                tempGuests.forEach((g, i) => { if(i !== selectedGuestIdx) g.isTitular = false; });
+            }
+
+            updateGuestSidebar();
+            if (notify) showToast("Datos de huésped actualizados");
+        }
+
+        function deleteCurrentGuest() {
+            if (tempGuests.length <= 1) {
+                showToast("Al menos debe existir un huésped en el registro", "fa-exclamation text-red-400");
+                return;
+            }
+            
+            const wasTitular = tempGuests[selectedGuestIdx].isTitular;
+            tempGuests.splice(selectedGuestIdx, 1);
+            
+            // Si borramos al titular, asignamos el rol al primero de la lista
+            if (wasTitular && tempGuests.length > 0) {
+                tempGuests[0].isTitular = true;
+            }
+            
+            selectGuest(0);
+        }
+
+        function updateGuestSidebar() {
+            const list = document.getElementById('guest-sidebar-list');
+            const countBadge = document.getElementById('guest-count-badge');
+            const capacity = rooms[selectedRoomIdx].capacidad;
+            list.innerHTML = '';
+            
+            tempGuests.forEach((g, i) => {
+                const card = document.createElement('div');
+                card.className = `guest-card p-4 rounded-2xl border bg-white shadow-sm flex items-center space-x-3 
+                                  ${selectedGuestIdx === i ? 'active' : ''} 
+                                  ${g.isTitular ? 'titular-active ring-1 ring-blue-100' : ''}`;
+                card.onclick = () => selectGuest(i);
+                
+                card.innerHTML = `
+                    <div class="w-10 h-10 rounded-xl ${g.isTitular ? 'bg-blue-600' : 'bg-slate-200'} flex items-center justify-center text-white text-xs font-black">
+                        ${g.isTitular ? '<i class="fas fa-crown"></i>' : (i+1)}
+                    </div>
+                    <div class="flex-1 overflow-hidden">
+                        <p class="text-xs font-black text-slate-800 truncate">${g.nombre || '(Sin Nombre)'}</p>
+                        <p class="text-[9px] font-bold text-slate-400 uppercase">${g.isTitular ? 'Titular Principal' : 'Acompañante'}</p>
+                    </div>
+                `;
+                list.appendChild(card);
+            });
+            countBadge.textContent = `${tempGuests.length} / ${capacity}`;
+        }
+
+        function confirmRegistration() {
+            saveCurrentGuestData(false);
+            
+            if (tempGuests.some(g => !g.nombre)) {
+                return showToast("Todos los huéspedes deben tener nombre", "fa-exclamation text-red-500");
+            }
+
+            // Asegurar que exista UN titular antes de salir
+            if (!tempGuests.some(g => g.isTitular)) {
+                tempGuests[0].isTitular = true;
+                showToast("Se asignó al primer huésped como Titular automáticamente");
+            }
+            
+            const room = rooms[selectedRoomIdx];
+            room.huespedes = [...tempGuests];
+            room.status = 'sucia';
+            if (room.precio === 0) room.precio = basePrice;
+            
+            closeModal('modal-register');
+            renderGrid();
+            showToast("Huéspedes guardados correctamente");
+        }
+
+        // ACCIONES BÁSICAS
+        function updateStatus(idx, val) { rooms[idx].status = val; renderGrid(); }
+        function updateStay(idx, val) { 
+            rooms[idx].tipoEstadia = val; 
+            rooms[idx].precio = basePrice * (val === 'SQ' || val === 'P' ? 1 : 1);
+            renderGrid();
+        }
+        function updateDays(idx, val) { 
+            rooms[idx].dias = parseInt(val) || 0; 
+            rooms[idx].precio = basePrice * (rooms[idx].dias || 1);
+            renderGrid(); 
+        }
+        function updatePayment(idx, val) { rooms[idx].formaPago = val; }
+        function toggleShade(idx, checked) { rooms[idx].shaded = checked; renderGrid(); }
+        
+        function stampTime(idx, type) {
+            const now = new Date();
+            const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
+            const date = now.toLocaleDateString();
+            if (type === 'entrada') { rooms[idx].horaEntrada = time; rooms[idx].fechaEntrada = date; }
+            else { rooms[idx].horaSalida = time; rooms[idx].fechaSalida = date; }
+            renderGrid();
+        }
+
+        function openOptions(idx) {
+            selectedRoomIdx = idx;
+            document.getElementById('opt-hab-title').textContent = `Opciones Habitación ${rooms[idx].id}`;
+            document.getElementById('opt-obs-global').value = rooms[idx].obs || '';
+            document.getElementById('modal-options').classList.add('modal-active');
+        }
+
+        function saveGlobalOptions() {
+            rooms[selectedRoomIdx].obs = document.getElementById('opt-obs-global').value;
+            showToast("Notas de estancia guardadas");
+            closeModal('modal-options');
+        }
+
+        function doCheckout(idx) {
+            showToast(`Generando Folio Final y Checkout Hab ${rooms[idx].id}...`, "fa-print");
+            setTimeout(() => {
+                rooms[idx].huespedes = [];
+                rooms[idx].status = 'sucia';
+                rooms[idx].tipoEstadia = '';
+                rooms[idx].dias = 0;
+                rooms[idx].precio = 0;
+                renderGrid();
+            }, 800);
+        }
+
+        function closeModal(id) { document.getElementById(id).classList.remove('modal-active'); }
+        
+        function showToast(msg, icon = "fa-info-circle") {
+            const t = document.getElementById('toast');
+            document.getElementById('toast-message').textContent = msg;
+            document.getElementById('toast-icon').className = `fas ${icon} text-blue-400 text-2xl`;
+            t.classList.remove('translate-y-48');
+            setTimeout(() => t.classList.add('translate-y-48'), 3000);
+        }
+
+        function startShift() {
+            showToast("Turno Iniciado Correctamente", "fa-play text-green-400");
+            setTimeout(() => showView('work'), 500);
+        }
+
+        function showView(view) {
+            document.getElementById('view-home').classList.add('hidden');
+            document.getElementById('view-work').classList.add('hidden');
+            document.getElementById(`view-${view}`).classList.remove('hidden');
+        }
+
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('clock').textContent = now.toLocaleTimeString();
+            document.getElementById('header-date').textContent = now.toLocaleDateString();
+        }
+
+        window.onload = () => {
+            initRooms();
+            setInterval(updateClock, 1000);
+        };
+    </script>
+</body>
+</html>

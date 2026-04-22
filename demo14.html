@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite FrontDesk PMS | Folio & Facturación Profesional</title>
+    
+    <!-- Librerías: Tailwind para UI y FontAwesome para iconos -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        
+        :root {
+            --pms-primary: #4f46e5;
+            --pms-secondary: #0f172a;
+            --pms-accent: #10b981;
+            --pms-bg: #f8fafc;
+            --print-border: #e2e8f0;
+        }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--pms-secondary); 
+            height: 100vh; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Layout Maestro */
+        .glass-container {
+            width: 99vw;
+            height: 97vh;
+            max-width: 1750px;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 32px;
+            display: grid;
+            grid-template-columns: 260px 1fr 380px;
+            overflow: hidden;
+            box-shadow: 0 40px 100px -20px rgba(0,0,0,0.4);
+        }
+
+        /* Sidebar Navegación */
+        .sidebar-nav {
+            background: #ffffff;
+            border-right: 1px solid #f1f5f9;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-link {
+            padding: 12px 16px;
+            border-radius: 14px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #64748b;
+            display: flex;
+            align-items: center; gap: 12px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            margin-bottom: 4px;
+        }
+
+        .nav-link.active {
+            background: var(--pms-primary);
+            color: #ffffff;
+            box-shadow: 0 8px 16px -4px rgba(79, 70, 229, 0.3);
+        }
+
+        .main-stage {
+            padding: 24px 32px;
+            overflow-y: auto;
+            background: #ffffff;
+        }
+
+        .audit-panel {
+            background: var(--pms-secondary);
+            color: #ffffff;
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .pms-label { font-size: 9px; font-weight: 800; color: #94a3b8; text-transform: uppercase; margin-bottom: 4px; display: block; letter-spacing: 0.5px; }
+        .pms-input { background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 10px 16px; font-size: 13px; font-weight: 600; outline: none; transition: all 0.2s; }
+
+        table { width: 100%; border-collapse: collapse; }
+        th { text-align: left; font-size: 9px; color: #94a3b8; font-weight: 800; text-transform: uppercase; padding: 14px 16px; border-bottom: 2px solid #f1f5f9; }
+        td { padding: 14px 16px; font-size: 12px; border-bottom: 1px solid #f8fafc; color: #1e293b; font-weight: 500; }
+
+        .pms-modal-overlay {
+            position: fixed; inset: 0; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(8px);
+            z-index: 1000; display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; transition: all 0.3s;
+        }
+        .pms-modal-overlay.active { opacity: 1; visibility: visible; }
+        .pms-modal-content { background: white; width: 90%; max-width: 850px; border-radius: 32px; overflow: hidden; box-shadow: 0 50px 100px -20px rgba(0,0,0,0.5); }
+
+        /* SELLO DE PAGADO */
+        .paid-stamp {
+            position: absolute;
+            top: 220px;
+            right: 80px;
+            border: 5px solid #10b981;
+            color: #10b981;
+            font-size: 38px;
+            font-weight: 900;
+            padding: 12px 36px;
+            text-transform: uppercase;
+            transform: rotate(-15deg);
+            border-radius: 12px;
+            opacity: 0.3;
+            z-index: 50;
+            display: none;
+            letter-spacing: 4px;
+        }
+
+        /* ESTILOS DE IMPRESIÓN MEJORADOS */
+        @media print {
+            @page {
+                size: A4;
+                margin: 1cm;
+            }
+            body { 
+                background: white !important; 
+                height: auto !important;
+                overflow: visible !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            .glass-container { 
+                display: block !important; 
+                width: 100% !important; 
+                height: auto !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                background: white !important;
+            }
+            .no-print, .sidebar-nav, .audit-panel, .pms-modal-overlay, button, .pms-header-nav { 
+                display: none !important; 
+            }
+            .main-stage { 
+                padding: 0 !important;
+                overflow: visible !important;
+                width: 100% !important;
+                display: block !important;
+            }
+            #tab-folio-preview {
+                display: block !important;
+                visibility: visible !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                width: 100% !important;
+            }
+            #folio-printable-area {
+                border: none !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+                width: 100% !important;
+                max-width: none !important;
+                margin: 0 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                min-height: 100vh !important;
+            }
+            
+            .paid-stamp {
+                display: block !important;
+                opacity: 0.2 !important;
+            }
+
+            /* Estructura de Factura */
+            .folio-header {
+                border-bottom: 2px solid #000 !important;
+                margin-bottom: 20px !important;
+                padding-bottom: 20px !important;
+            }
+
+            .folio-body {
+                flex-grow: 1 !important;
+            }
+
+            .folio-footer {
+                page-break-inside: avoid !important;
+                margin-top: auto !important;
+                padding-top: 20px !important;
+                border-top: 1px solid #eee !important;
+            }
+
+            table { 
+                width: 100% !important;
+                border: 1px solid #eee !important;
+            }
+            th {
+                background-color: #f9fafb !important;
+                border-bottom: 1px solid #000 !important;
+                color: #000 !important;
+            }
+            td {
+                border-bottom: 1px solid #eee !important;
+                color: #000 !important;
+            }
+            
+            p, h1, h2, h3, h4, span {
+                color: #000 !important;
+            }
+            
+            .bg-slate-900 {
+                background-color: transparent !important;
+                color: #000 !important;
+                border: 1px solid #000 !important;
+            }
+            .text-white { color: #000 !important; }
+        }
+
+        .item-row { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 20px; padding: 16px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .custom-scroll::-webkit-scrollbar { width: 5px; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+
+        .pos-card { background: white; border: 1.5px solid #f1f5f9; border-radius: 20px; padding: 16px; cursor: pointer; text-align: center; transition: all 0.2s; }
+        .pos-card:hover { border-color: var(--pms-primary); transform: translateY(-3px); }
+    </style>
+</head>
+<body>
+
+    <div class="glass-container" id="main-app-container">
+        
+        <!-- SIDEBAR -->
+        <aside class="sidebar-nav no-print">
+            <div class="mb-10 px-1">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="bg-indigo-600 text-white w-10 h-10 rounded-xl flex items-center justify-center text-lg shadow-lg"><i class="fas fa-layer-group"></i></div>
+                    <div>
+                        <h2 class="font-extrabold text-base tracking-tight text-slate-900">Elite PMS</h2>
+                        <p class="text-[8px] font-bold text-slate-400 uppercase tracking-widest">v2.5 Pro</p>
+                    </div>
+                </div>
+                <div class="bg-indigo-50 p-5 rounded-2xl border border-indigo-100">
+                    <p class="pms-label text-indigo-400 mb-0">Unidad Activa</p>
+                    <p class="text-2xl font-black text-indigo-900 tracking-tighter" id="sidebar-room-number">#204</p>
+                </div>
+            </div>
+
+            <nav class="flex-1 space-y-1">
+                <div class="nav-link active" onclick="switchTab('resumen', this)"><i class="fas fa-chart-pie"></i> Resumen General</div>
+                <div class="nav-link" onclick="switchTab('cargos', this)"><i class="fas fa-cash-register"></i> Cargos & POS</div>
+                <div class="nav-link" onclick="switchTab('pagos', this)"><i class="fas fa-wallet-barcode"></i> Pagos & Abonos</div>
+                <div class="nav-link" onclick="switchTab('folio-preview', this)"><i class="fas fa-file-invoice-dollar"></i> Generar Folio</div>
+            </nav>
+
+            <div class="mt-auto space-y-3">
+                <button onclick="handleCheckOutFlow()" id="btn-finalizar-folio" class="w-full py-4 bg-slate-900 text-white rounded-2xl font-black uppercase text-[10px] tracking-widest shadow-xl hover:bg-black transition-all">
+                    Finalizar Check-out
+                </button>
+            </div>
+        </aside>
+
+        <!-- CONTENIDO CENTRAL -->
+        <main class="main-stage custom-scroll">
+            
+            <!-- VISTA: RESUMEN (Dashboard) -->
+            <div id="tab-resumen" class="space-y-8 fade-in no-print">
+                <div class="flex justify-between items-center bg-white p-7 rounded-[32px] border border-slate-100 shadow-sm">
+                    <div class="flex items-center gap-7">
+                        <img src="" id="img-titular" class="w-20 h-20 rounded-[24px] object-cover border-4 border-white shadow-xl bg-slate-100">
+                        <div>
+                            <span class="px-2 py-0.5 bg-indigo-50 text-indigo-600 rounded-md text-[8px] font-black uppercase mb-1 inline-block">Huésped Titular</span>
+                            <h1 class="text-3xl font-black tracking-tighter text-slate-900 leading-tight" id="name-titular">---</h1>
+                            <p class="text-slate-400 font-bold text-[11px]" id="id-titular">ID: ---</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <button onclick="switchTab('folio-preview', null)" class="px-6 py-3 bg-indigo-50 text-indigo-600 rounded-xl font-black text-[10px] uppercase tracking-widest">
+                            <i class="fas fa-print mr-2"></i> Vista Previa Folio
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-6">
+                    <div class="p-6 bg-slate-50 border rounded-3xl cursor-pointer hover:border-indigo-400 transition-colors" onclick="openCompanionsList()">
+                        <p class="pms-label">Ocupantes</p>
+                        <p class="text-lg font-black text-slate-900" id="pax-text-summary">---</p>
+                        <div id="pax-visual-stack" class="flex mt-3"></div>
+                    </div>
+                    <div class="p-6 bg-slate-50 border rounded-3xl">
+                        <p class="pms-label">Período de Estancia</p>
+                        <p class="text-sm font-black text-slate-900" id="stay-period-summary">---</p>
+                        <p class="text-[10px] font-bold text-slate-400 mt-1 uppercase" id="nights-summary">0 Noches</p>
+                    </div>
+                    <div class="p-6 bg-indigo-600 text-white rounded-3xl shadow-xl shadow-indigo-100">
+                        <p class="pms-label text-indigo-300">Saldo Pendiente</p>
+                        <p class="text-3xl font-black" id="dashboard-saldo-neto">$0.00</p>
+                        <p class="text-[9px] font-bold opacity-60 mt-1 uppercase tracking-wider">Neto Incl. Impuestos</p>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="font-black text-base text-slate-900 uppercase tracking-tight">Historial del Folio</h3>
+                    <div class="bg-white rounded-[24px] border overflow-hidden shadow-sm">
+                        <table id="table-recent-moves">
+                            <thead class="bg-slate-50"><tr><th>Fecha</th><th>Concepto</th><th>Depto</th><th class="text-right">Monto</th></tr></thead>
+                            <tbody id="table-resumen-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VISTA: REPORTE DE FOLIO (OPTIMIZADO PARA PDF) -->
+            <div id="tab-folio-preview" class="hidden fade-in space-y-8">
+                <div class="no-print flex justify-between items-center border-b pb-6 px-4 pms-header-nav">
+                    <div>
+                        <h2 class="text-3xl font-black tracking-tighter text-slate-900">Estado de Cuenta Oficial</h2>
+                        <p class="text-xs text-slate-400 font-medium">Documento legal y administrativo para el huésped.</p>
+                    </div>
+                    <div class="flex gap-3">
+                        <button onclick="switchTab('resumen', null)" class="px-6 py-4 bg-slate-100 text-slate-600 rounded-2xl font-black uppercase text-[10px] tracking-widest">Regresar</button>
+                        <button onclick="window.print()" class="px-8 py-4 bg-indigo-600 text-white rounded-2xl font-black uppercase text-[10px] tracking-widest shadow-xl hover:bg-indigo-700">
+                            <i class="fas fa-file-pdf mr-2"></i> Imprimir / Guardar PDF
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ÁREA DE IMPRESIÓN ESTRUCTURADA -->
+                <div class="bg-white p-12 border border-slate-100 rounded-[32px] shadow-2xl max-w-5xl mx-auto relative flex flex-col" id="folio-printable-area">
+                    
+                    <!-- ENCABEZADO -->
+                    <div class="folio-header">
+                        <div id="paid-stamp-visual" class="paid-stamp">PAGADO</div>
+                        
+                        <div class="flex justify-between items-start">
+                            <div class="flex gap-6">
+                                <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="100" height="100" rx="20" fill="#0f172a"/>
+                                    <path d="M50 20L80 45V80H20V45L50 20Z" fill="white" fill-opacity="0.15"/>
+                                    <path d="M50 30L65 42V70H35V42L50 30Z" fill="white"/>
+                                    <rect x="47" y="55" width="6" height="15" fill="#0f172a"/>
+                                </svg>
+                                <div>
+                                    <h1 class="text-3xl font-black text-slate-900 tracking-tighter uppercase">Elite Suites <span class="text-indigo-600">Luxury</span></h1>
+                                    <p class="text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-4">International Resorts & Residences</p>
+                                    <div class="grid grid-cols-1 text-[9px] font-bold text-slate-400 uppercase leading-tight gap-1">
+                                        <p>Av. Paseo de la Reforma 405, CDMX, 11000</p>
+                                        <p>RFC: ESL-120515-HOT | ID Fiscal: 9988221</p>
+                                        <p>TEL: +52 (55) 9988-7766 | elite-suites.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="inline-block border-2 border-slate-900 p-6 rounded-2xl text-center min-w-[200px]">
+                                    <h2 class="text-[10px] font-black text-slate-400 uppercase mb-1">Estado de Cuenta</h2>
+                                    <p class="text-2xl font-black text-slate-900 mb-2" id="folio-number">#204-A99</p>
+                                    <div class="border-t pt-2 mt-2">
+                                        <p class="text-[8px] font-black text-indigo-500 uppercase">Fecha Emisión</p>
+                                        <p class="text-xs font-black text-slate-800" id="folio-print-date">---</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Info del Huésped en Grid -->
+                        <div class="grid grid-cols-4 gap-6 mt-12 bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                            <div class="col-span-2">
+                                <p class="pms-label text-indigo-600 mb-1">Huésped Titular</p>
+                                <h3 class="text-lg font-black text-slate-900" id="folio-guest-name">---</h3>
+                                <p class="text-[10px] font-bold text-slate-400" id="folio-guest-id">ID: ---</p>
+                            </div>
+                            <div>
+                                <p class="pms-label text-indigo-600 mb-1">Periodo</p>
+                                <p class="text-xs font-black text-slate-800" id="folio-dates-range">---</p>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase" id="folio-occupancy-summary">---</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="pms-label text-indigo-600 mb-1">Habitación</p>
+                                <p class="text-base font-black text-slate-900" id="folio-room-type">---</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CUERPO (TABLAS) -->
+                    <div class="folio-body space-y-10">
+                        <!-- Sección Cargos -->
+                        <div class="border border-slate-100 rounded-2xl overflow-hidden">
+                            <div class="bg-slate-50 px-6 py-3 border-b border-slate-100 flex justify-between items-center">
+                                <h4 class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Desglose de Cargos y Servicios</h4>
+                                <span class="text-[8px] font-bold text-slate-400 italic">Moneda: MXN</span>
+                            </div>
+                            <table class="w-full text-[11px]">
+                                <thead class="bg-white">
+                                    <tr>
+                                        <th class="py-4 px-6 border-b-2 border-slate-900">Fecha</th>
+                                        <th class="py-4 px-6 border-b-2 border-slate-900">Descripción del Servicio</th>
+                                        <th class="py-4 px-6 border-b-2 border-slate-900">Departamento</th>
+                                        <th class="py-4 px-6 border-b-2 border-slate-900 text-right">Monto Bruto</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="folio-charges-body" class="divide-y divide-slate-100">
+                                    <!-- Dinámico -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Sección Abonos -->
+                        <div class="border border-emerald-50 rounded-2xl overflow-hidden">
+                            <div class="bg-emerald-50 px-6 py-3 border-b border-emerald-100">
+                                <h4 class="text-[10px] font-black text-emerald-700 uppercase tracking-widest">Historial de Pagos y Abonos</h4>
+                            </div>
+                            <table class="w-full text-[11px]">
+                                <thead class="bg-white">
+                                    <tr>
+                                        <th class="py-4 px-6 border-b border-emerald-200">Fecha</th>
+                                        <th class="py-4 px-6 border-b border-emerald-200">Método de Pago / Concepto</th>
+                                        <th class="py-4 px-6 border-b border-emerald-200 text-right">Abono Aplicado</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="folio-payments-body" class="divide-y divide-emerald-50">
+                                    <!-- Dinámico -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- PIE DE PÁGINA -->
+                    <div class="folio-footer mt-12">
+                        <div class="flex justify-between items-start gap-12">
+                            <div class="flex-1 space-y-6">
+                                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                                    <p class="pms-label mb-2">Términos y Condiciones</p>
+                                    <p class="text-[8px] text-slate-400 font-bold uppercase leading-relaxed">
+                                        * Este documento no constituye una factura electrónica CFDI de acuerdo con las leyes vigentes.<br>
+                                        * Para solicitar su factura fiscal, favor de contactar a recepción antes de su salida.<br>
+                                        * Elite Suites Luxury se reserva el derecho de cobro posterior por daños o consumos no reportados.
+                                    </p>
+                                </div>
+                                <div class="grid grid-cols-2 gap-8 pt-6">
+                                    <div class="text-center">
+                                        <div class="h-px bg-slate-200 w-full mb-3"></div>
+                                        <p class="text-[8px] font-black text-slate-400 uppercase tracking-widest">Firma de Conformidad Huésped</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="h-px bg-slate-200 w-full mb-3"></div>
+                                        <p class="text-[8px] font-black text-slate-400 uppercase tracking-widest">Autorización Front Desk</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bloque de Totales -->
+                            <div class="w-80 bg-slate-900 p-8 rounded-[32px] text-white shadow-xl">
+                                <div class="space-y-3 mb-6 border-b border-white/10 pb-6">
+                                    <div class="flex justify-between text-[10px] font-bold opacity-60 uppercase tracking-widest"><span>Subtotal</span><span id="folio-subtotal">$0.00</span></div>
+                                    <div class="flex justify-between text-[10px] font-bold opacity-60 uppercase tracking-widest"><span>Impuestos (19%)</span><span id="folio-taxes">$0.00</span></div>
+                                    <div class="flex justify-between text-xs font-black pt-2"><span>TOTAL ACUMULADO</span><span id="folio-total">$0.00</span></div>
+                                    <div class="flex justify-between text-xs font-black text-emerald-400"><span>PAGOS RECIBIDOS</span><span id="folio-paid">-$0.00</span></div>
+                                </div>
+                                <div class="flex justify-between items-end">
+                                    <div>
+                                        <p class="pms-label text-indigo-400 mb-1">Saldo Final de Cuenta</p>
+                                        <h5 class="text-4xl font-black tracking-tighter" id="folio-balance">$0.00</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-12 text-center text-[8px] font-black text-slate-300 uppercase tracking-[0.5em]">
+                            Luxury Experience Delivered by Elite PMS
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARGOS Y PAGOS -->
+            <div id="tab-cargos" class="hidden fade-in space-y-6 no-print">
+                <h2 class="text-3xl font-black text-slate-900">Terminal de Cargos POS</h2>
+                <div class="grid grid-cols-4 gap-4" id="pos-grid">
+                    <div class="pos-card" onclick="quickAdd('Minibar: Agua 1L', 'MINI', 45)"><i class="fas fa-tint mb-3 text-2xl text-indigo-500"></i><p class="font-black text-sm">Agua ($45)</p></div>
+                    <div class="pos-card" onclick="quickAdd('Servicio Lavandería', 'AMA', 320)"><i class="fas fa-tshirt mb-3 text-2xl text-indigo-500"></i><p class="font-black text-sm">Lavandería ($320)</p></div>
+                    <div class="pos-card" onclick="quickAdd('Spa: Masaje Sueco', 'SPA', 1200)"><i class="fas fa-spa mb-3 text-2xl text-indigo-500"></i><p class="font-black text-sm">Masaje ($1200)</p></div>
+                </div>
+            </div>
+
+            <div id="tab-pagos" class="hidden fade-in space-y-6 no-print">
+                <h2 class="text-3xl font-black text-slate-900">Pagos & Abonos</h2>
+                <div class="bg-slate-50 p-8 rounded-3xl border flex gap-4">
+                    <input type="number" id="payment-amount" class="pms-input flex-1 h-[54px]" placeholder="Monto a abonar...">
+                    <button onclick="processPayment()" class="px-10 bg-emerald-600 text-white rounded-2xl font-black uppercase text-[10px]">Registrar Abono</button>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- PANEL DE AUDITORÍA (DASHBOARD) -->
+        <aside class="audit-panel no-print">
+            <div class="flex flex-col items-center mb-8 pb-8 border-b border-slate-800 text-center">
+                <img src="" id="audit-avatar" class="w-20 h-20 rounded-full object-cover border-2 border-indigo-500/50 p-1 bg-slate-800 shadow-xl mb-4">
+                <h4 class="text-lg font-bold text-white truncate w-full" id="audit-name">---</h4>
+                <p class="pms-label text-indigo-400 tracking-[0.3em] mt-2">Auditoría Financiera</p>
+            </div>
+
+            <div class="flex-1 space-y-6 overflow-y-auto custom-scroll pr-2">
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center text-[11px]"><span class="text-slate-500 font-bold uppercase">Hospedaje</span><span class="font-mono" id="stat-hospedaje">$0.00</span></div>
+                    <div class="flex justify-between items-center text-[11px]"><span class="text-slate-500 font-bold uppercase">Consumos</span><span class="font-mono" id="stat-extras">$0.00</span></div>
+                    <div class="flex justify-between items-center text-[11px]"><span class="text-slate-500 font-bold uppercase">Impuestos</span><span class="font-mono" id="stat-taxes">$0.00</span></div>
+                    <div class="flex justify-between items-center text-[11px] pt-4 border-t border-slate-800"><span class="text-emerald-500 font-bold uppercase">Total Abonos</span><span class="font-mono text-emerald-400" id="stat-payments">-$0.00</span></div>
+                </div>
+
+                <div class="pt-8 border-t border-slate-800 text-center">
+                    <p class="pms-label text-slate-500 mb-2">Neto Pendiente</p>
+                    <div class="text-5xl font-black text-white tracking-tighter" id="stat-saldo-neto">$0.00</div>
+                </div>
+
+                <div class="pt-8">
+                    <button onclick="switchTab('folio-preview', null)" class="w-full py-5 bg-indigo-600 text-white rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-xl hover:scale-[1.02] transition-all">
+                        <i class="fas fa-file-invoice mr-2"></i> Generar Folio PDF
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- MODAL ACOMPAÑANTES -->
+    <div id="modal-companions" class="pms-modal-overlay no-print">
+        <div class="pms-modal-content">
+            <div class="p-8">
+                <h3 class="text-2xl font-black uppercase tracking-tighter mb-6">Listado de Ocupantes</h3>
+                <div id="comp-list" class="space-y-3"></div>
+                <div class="mt-8 pt-6 border-t flex justify-end">
+                    <button onclick="toggleModal('modal-companions', false)" class="px-8 py-3 bg-slate-100 text-slate-600 rounded-xl font-bold uppercase text-[10px]">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- MODELO DE DATOS ---
+        let DATA = {
+            titular: { nombre: "Israel", apellido: "de los Santos", id: "INE-992210", foto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200" },
+            stay: { arrival: '21 Mar 2026', departure: '24 Mar 2026', dailyRate: 2500, room: '#204', roomType: 'Suite Presidencial' },
+            acompanantes: [
+                { id: 1, nombre: "María Fernanda", apellido: "Ruiz", tipo: "Esposa" },
+                { id: 2, nombre: "Israel Jr.", apellido: "de los Santos", tipo: "Hijo (Menor)" },
+                { id: 3, nombre: "Sofía", apellido: "de los Santos", tipo: "Hija (Menor)" }
+            ],
+            consumos: [
+                { id: 1, fecha: '21/03 14:15', concepto: 'Hospedaje (3 Noches)', depto: 'SISTEMA', monto: 2500, qty: 3, tipo: 'hospedaje' },
+                { id: 2, fecha: '21/03 19:30', concepto: 'Room Service: Cena Familiar', depto: 'REST', monto: 680, qty: 1, tipo: 'extra' },
+                { id: 3, fecha: '22/03 16:20', concepto: 'Spa: Masaje Relajante', depto: 'SPA', monto: 1200, qty: 1, tipo: 'extra' },
+                { id: 4, fecha: '23/03 09:10', concepto: 'Lavandería Express', depto: 'AMA', monto: 240, qty: 1, tipo: 'extra' }
+            ],
+            pagos: [
+                { id: 101, fecha: '21/03/2026', concepto: 'Depósito de Garantía', monto: 3000 },
+                { id: 102, fecha: '22/03/2026', concepto: 'Abono Parcial (Efectivo)', monto: 1500 }
+            ],
+            isLocked: false
+        };
+
+        const ui = {
+            set: (id, text) => { const el = document.getElementById(id); if (el) el.innerText = text; },
+            html: (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; }
+        };
+
+        // --- NAVEGACIÓN ---
+        function switchTab(tabId, el) {
+            if (DATA.isLocked) return;
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            if (el) el.classList.add('active');
+            ['resumen', 'cargos', 'pagos', 'folio-preview'].forEach(id => {
+                const target = document.getElementById('tab-' + id);
+                if (target) target.classList.add('hidden');
+            });
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            if(tabId === 'folio-preview') updateFolioReportUI();
+        }
+
+        function toggleModal(id, show) {
+            const el = document.getElementById(id);
+            if (show) el.classList.add('active');
+            else el.classList.remove('active');
+        }
+
+        function openCompanionsList() {
+            const box = document.getElementById('comp-list');
+            box.innerHTML = `<div class="item-row bg-indigo-50 border-indigo-200"><span>${DATA.titular.nombre} ${DATA.titular.apellido} (Titular)</span></div>`;
+            DATA.acompanantes.forEach(c => box.innerHTML += `<div class="item-row"><span>${c.nombre} ${c.apellido} (${c.tipo})</span></div>`);
+            toggleModal('modal-companions', true);
+        }
+
+        // --- ACCIONES ---
+        function quickAdd(l, d, p) {
+            DATA.consumos.push({ id: Date.now(), fecha: new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}), concepto: l, depto: d, monto: p, qty: 1, tipo: 'extra' });
+            updateUI();
+        }
+
+        function processPayment() {
+            const amt = parseFloat(document.getElementById('payment-amount').value);
+            if (isNaN(amt) || amt <= 0) return;
+            DATA.pagos.push({ id: Date.now(), fecha: new Date().toLocaleDateString(), concepto: 'Abono General', monto: amt });
+            document.getElementById('payment-amount').value = '';
+            updateUI();
+        }
+
+        // --- CÁLCULOS ---
+        function calculateTotals() {
+            let h = 0, e = 0;
+            DATA.consumos.forEach(c => { if (c.tipo === 'hospedaje') h += (c.monto * c.qty); else e += (c.monto * c.qty); });
+            const p = DATA.pagos.reduce((acc, pay) => acc + pay.monto, 0);
+            const sub = h + e;
+            const taxes = sub * 0.19;
+            const total = sub + taxes;
+            return { h, e, sub, taxes, total, p, saldo: total - p };
+        }
+
+        function updateUI() {
+            const t = calculateTotals();
+            ui.set('name-titular', DATA.titular.nombre + " " + DATA.titular.apellido);
+            document.getElementById('img-titular').src = DATA.titular.foto;
+            document.getElementById('audit-avatar').src = DATA.titular.foto;
+            ui.set('audit-name', DATA.titular.nombre);
+            ui.set('id-titular', "ID: " + DATA.titular.id);
+
+            ui.set('dashboard-saldo-neto', "$" + Math.max(0, t.saldo).toLocaleString(undefined, {minimumFractionDigits: 2}));
+            ui.set('stat-hospedaje', "$" + t.h.toLocaleString());
+            ui.set('stat-extras', "$" + t.e.toLocaleString());
+            ui.set('stat-taxes', "$" + t.taxes.toLocaleString(undefined, {minimumFractionDigits: 2}));
+            ui.set('stat-payments', "-$" + t.p.toLocaleString());
+            ui.set('stat-saldo-neto', "$" + Math.max(0, t.saldo).toLocaleString(undefined, {minimumFractionDigits: 2}));
+            ui.set('pax-text-summary', `${1 + DATA.acompanantes.length} Ocupantes`);
+
+            const stack = document.getElementById('pax-visual-stack');
+            stack.innerHTML = `<div class="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-[10px] border-2 border-white shadow-sm">IS</div>`;
+            DATA.acompanantes.forEach(c => stack.innerHTML += `<div class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-[10px] border-2 border-white shadow-sm -ml-2">${c.nombre.charAt(0)}</div>`);
+
+            const resBody = document.getElementById('table-resumen-body');
+            resBody.innerHTML = '';
+            [...DATA.consumos].reverse().slice(0, 5).forEach(c => {
+                resBody.innerHTML += `<tr><td>${c.fecha}</td><td class="font-bold">${c.concepto}</td><td><span class="px-2 py-1 bg-slate-100 rounded text-[9px] font-black uppercase">${c.depto}</span></td><td class="text-right font-black text-indigo-600">$${(c.monto * c.qty).toLocaleString()}</td></tr>`;
+            });
+            ui.set('stay-period-summary', DATA.stay.arrival + " - " + DATA.stay.departure);
+            ui.set('nights-summary', "3 Noches");
+        }
+
+        // --- REPORTE DE FOLIO (PDF) ---
+        function updateFolioReportUI() {
+            const t = calculateTotals();
+            ui.set('folio-guest-name', DATA.titular.nombre + " " + DATA.titular.apellido);
+            ui.set('folio-guest-id', "ID: " + DATA.titular.id);
+            ui.set('folio-dates-range', DATA.stay.arrival + " - " + DATA.stay.departure);
+            ui.set('folio-room-type', `${DATA.stay.roomType} (${DATA.stay.room})`);
+            ui.set('folio-print-date', new Date().toLocaleDateString('es-MX', {day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute:'2-digit'}));
+
+            ui.set('folio-occupancy-summary', `${1 + DATA.acompanantes.length} PAX (${1 + DATA.acompanantes.filter(c => c.tipo !== 'Hijo (Menor)').length} AD, ${DATA.acompanantes.filter(c => c.tipo === 'Hijo (Menor)').length} NI)`);
+
+            const cBody = document.getElementById('folio-charges-body');
+            cBody.innerHTML = '';
+            DATA.consumos.forEach(c => {
+                cBody.innerHTML += `<tr><td class="py-4 px-6 text-slate-400 font-mono text-[10px]">${c.fecha}</td><td class="py-4 px-6 font-bold text-slate-700">${c.concepto}</td><td class="py-4 px-6 uppercase text-[9px] font-black text-slate-400">${c.depto}</td><td class="py-4 px-6 text-right font-black">$${(c.monto * c.qty).toLocaleString()}</td></tr>`;
+            });
+
+            const pBody = document.getElementById('folio-payments-body');
+            pBody.innerHTML = '';
+            DATA.pagos.forEach(p => {
+                pBody.innerHTML += `<tr><td class="py-4 px-6 text-slate-400 font-mono text-[10px]">${p.fecha}</td><td class="py-4 px-6 font-bold text-slate-700">${p.concepto}</td><td class="py-4 px-6 text-right font-black text-emerald-600">-$${p.monto.toLocaleString()}</td></tr>`;
+            });
+
+            ui.set('folio-subtotal', "$" + t.sub.toLocaleString(undefined, {minimumFractionDigits: 2}));
+            ui.set('folio-taxes', "$" + t.taxes.toLocaleString(undefined, {minimumFractionDigits: 2}));
+            ui.set('folio-total', "$" + t.total.toLocaleString(undefined, {minimumFractionDigits: 2}));
+            ui.set('folio-paid', "-$" + t.p.toLocaleString(undefined, {minimumFractionDigits: 2}));
+            ui.set('folio-balance', "$" + Math.max(0, t.saldo).toLocaleString(undefined, {minimumFractionDigits: 2}));
+
+            document.getElementById('paid-stamp-visual').style.display = (t.saldo <= 1) ? 'block' : 'none';
+        }
+
+        function handleCheckOutFlow() {
+            if (calculateTotals().saldo > 1) return alert("Liquidación pendiente necesaria.");
+            alert("✓ Registro de salida completado.");
+        }
+
+        window.onload = () => { updateUI(); };
+    </script>
+</body>
+</html>

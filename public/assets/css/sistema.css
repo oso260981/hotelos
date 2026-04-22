@@ -1,0 +1,775 @@
+/* =====================================================
+   CONTENEDOR GENERAL MÓDULO
+=====================================================*/
+.inner-body{
+    padding:20px;
+    overflow:auto;
+}
+
+/* encabezado interno */
+.inner-topbar{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:12px;
+}
+
+.inner-title{
+    font-size:20px;
+    font-weight:700;
+    color:#2563eb;
+}
+
+.inner-subtitle{
+    font-size:12px;
+    color:#64748b;
+}
+
+.btn-back{
+    background:#e2e8f0;
+    border:1px solid #cbd5e1;
+    padding:6px 12px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+
+/* =====================================================
+   TABS CONFIGURACIÓN
+=====================================================*/
+.rtab-bar{
+    display:flex;
+    gap:8px;
+    border-bottom:2px solid #cbd5e1;
+    margin-bottom:15px;
+}
+
+.rtab{
+    padding:8px 14px;
+    font-size:13px;
+    border-radius:8px 8px 0 0;
+    cursor:pointer;
+    background:#e2e8f0;
+    color:#475569;
+}
+
+.rtab.active{
+    background:#fff;
+    border:1px solid #cbd5e1;
+    border-bottom:#fff;
+    color:#2563eb;
+    font-weight:700;
+}
+
+
+/* =====================================================
+   CONTENIDO GENERAL
+=====================================================*/
+.scroll-body{
+    background:#eef2f7;
+    padding:15px;
+    border-radius:10px;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+
+
+.form-section{
+    background:#fff;
+    border-radius:10px;
+    padding:15px;
+    margin-bottom:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.form-section-title{
+    font-weight:700;
+    color:#2563eb;
+    margin-bottom:10px;
+}
+
+
+/* =====================================================
+   TABLA PMS
+=====================================================*/
+.g-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:12px;
+}
+
+.g-table th{
+    background:#2563eb;
+    color:#fff;
+    padding:6px;
+    text-align:left;
+}
+
+.g-table td{
+    padding:6px;
+    border-bottom:1px solid #e2e8f0;
+}
+
+
+/* =====================================================
+   BOTONES
+=====================================================*/
+.btn-primary{
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    padding:6px 14px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.btn-danger{
+    background:#dc2626;
+    color:#fff;
+}
+
+.btn-gray{
+    background:#64748b;
+    color:#fff;
+    border:none;
+    padding:6px 12px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.btn-orange{
+    background:#ea580c;
+}
+
+
+/* =====================================================
+   INPUTS
+=====================================================*/
+.input{
+    width:100%;
+    padding:7px;
+    border:1px solid #cbd5e1;
+    border-radius:6px;
+    margin-bottom:10px;
+}
+
+
+/* =====================================================
+   MODALES PMS
+=====================================================*/
+.modal-overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.45);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+}
+
+.modal-window{
+    background:#fff;
+    width:340px;
+    border-radius:10px;
+    box-shadow:0 20px 40px rgba(0,0,0,.35);
+    animation:modalShow .15s ease;
+}
+
+@keyframes modalShow{
+    from{ transform:scale(.92); opacity:.3 }
+    to{ transform:scale(1); opacity:1 }
+}
+
+.modal-head{
+    padding:12px 15px;
+    border-bottom:1px solid #e5e7eb;
+    font-weight:700;
+    color:#2563eb;
+    display:flex;
+    justify-content:space-between;
+}
+
+.modal-body{
+    padding:15px;
+}
+
+.modal-foot{
+    padding:12px 15px;
+    border-top:1px solid #e5e7eb;
+    text-align:right;
+}
+
+
+/* =====================================================
+   PANEL CONFIGURACIÓN (TAB)
+=====================================================*/
+.cfg-panel{
+    display:none;
+    width:100%;
+}
+
+
+/* =====================================================
+   CARD (USADO EN ALGUNOS BLOQUES)
+=====================================================*/
+.card{
+    width:100%;
+    background:#fff;
+    border-radius:12px;
+    padding:16px;
+    box-shadow:0 6px 14px rgba(0,0,0,.08);
+    border:1px solid #dbe3ef;
+}
+
+
+/* =====================================================
+   SWITCH ÚNICO GLOBAL PMS (SE ELIMINARON DUPLICADOS)
+=====================================================*/
+label.switch{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:14px;
+    cursor:pointer;
+}
+
+label.switch input{
+    display:none;
+}
+
+label.switch span{
+    width:44px;
+    height:24px;
+    background:#cbd5e1;
+    border-radius:20px;
+    position:relative;
+    transition:.25s;
+}
+
+label.switch span:after{
+    content:'';
+    width:20px;
+    height:20px;
+    background:#fff;
+    border-radius:50%;
+    position:absolute;
+    top:2px;
+    left:2px;
+    transition:.25s;
+    box-shadow:0 1px 4px rgba(0,0,0,.3);
+}
+
+label.switch input:checked + span{
+    background:#2563eb;
+}
+
+label.switch input:checked + span:after{
+    left:22px;
+}
+
+.badge-role{
+    background:#e0edff;
+    color:#2563eb;
+    padding:3px 8px;
+    border-radius:6px;
+    font-size:11px;
+    font-weight:600;
+}
+
+
+/* ===== PANEL TURNOS PMS ===== */
+
+.turnos-panel{
+    background:#fff;
+    border-radius:12px;
+    padding:18px;
+    box-shadow:0 8px 18px rgba(0,0,0,.08);
+    border:1px solid #dbe3ef;
+}
+
+.turnos-header{
+    font-weight:700;
+    color:#2563eb;
+    margin-bottom:10px;
+}
+
+.turnos-toolbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:14px;
+}
+
+.turnos-timeline{
+    height:46px;
+    background:#edf2f7;
+    border-radius:10px;
+    position:relative;
+    overflow:hidden;
+    border:1px solid #cfd8e3;
+    margin-top:12px;
+}
+
+.turnos-save{
+    margin-top:14px;
+}
+
+
+/* ===== TURNOS PMS PRO ===== */
+
+.turnos-panel{
+    background:#ffffff;
+    border-radius:14px;
+    padding:20px;
+    box-shadow:0 10px 22px rgba(0,0,0,.08);
+    border:1px solid #e2e8f0;
+}
+
+.turnos-header{
+    font-weight:700;
+    color:#2563eb;
+    font-size:15px;
+    margin-bottom:12px;
+}
+
+.turnos-toolbar{
+    margin-bottom:12px;
+}
+
+.turnos-toolbar select{
+    width:220px;
+    margin-top:6px;
+}
+
+.turnos-panel .g-table th{
+    background:#2563eb;
+    font-size:12px;
+    padding:7px;
+}
+
+.turnos-panel .g-table td{
+    padding:7px;
+    vertical-align:middle;
+}
+
+.turnos-panel .input{
+    height:28px;
+    padding:4px 6px;
+    font-size:12px;
+    margin-bottom:0;
+}
+
+
+
+.turnos-save{
+    margin-top:12px;
+    background:#2e7d32;
+    border:none;
+    padding:8px 16px;
+    border-radius:8px;
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+}
+.turnos-save:hover{
+    background:#256c2a;
+}
+
+.turnos-timeline{
+    height:32px;
+    background:#eef2f7;
+    border-radius:8px;
+    position:relative;
+    overflow:hidden;
+    border:1px solid #dbe3ef;
+    margin-top:8px;
+}
+
+
+
+.modal-custom{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.35);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+}
+.modal-content-custom{
+    background:#fff;
+    width:420px;
+    border-radius:10px;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+.modal-header-custom{
+    padding:14px 18px;
+    font-weight:600;
+    border-bottom:1px solid #e5e7eb;
+    color:#1e40af;
+}
+.modal-body-custom{
+    padding:16px 18px;
+}
+.modal-footer-custom{
+    padding:12px 18px;
+    border-top:1px solid #e5e7eb;
+    text-align:right;
+}
+
+
+/* ===== MODAL PMS ===== */
+
+.modal-custom{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    background:rgba(0,0,0,.35);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:99999;
+}
+
+.modal-content-custom{
+    background:#ffffff;
+    width:420px;
+    border-radius:10px;
+    box-shadow:0 20px 40px rgba(0,0,0,.25);
+    animation:modalZoom .15s ease;
+}
+
+@keyframes modalZoom{
+    from{ transform:scale(.9); opacity:.5 }
+    to{ transform:scale(1); opacity:1 }
+}
+
+.modal-header-custom{
+    padding:14px 18px;
+    font-weight:600;
+    border-bottom:1px solid #e5e7eb;
+    color:#1e40af;
+}
+
+.modal-body-custom{
+    padding:16px 18px;
+}
+
+.modal-footer-custom{
+    padding:12px 18px;
+    border-top:1px solid #e5e7eb;
+    text-align:right;
+}
+
+
+
+/* ===== MODAL GRANDE SISTEMA ===== */
+
+.modal-big{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    background:rgba(0,0,0,.40);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:999999;
+}
+
+.modal-big.active{
+    display:flex;
+}
+
+.modal-big-window{
+    width:720px;
+    background:#ffffff;
+    border-radius:12px;
+    box-shadow:0 30px 70px rgba(0,0,0,.30);
+    animation:modalZoom .18s ease;
+}
+
+@keyframes modalZoom{
+    from{ transform:scale(.92); opacity:.6 }
+    to{ transform:scale(1); opacity:1 }
+}
+
+.modal-big-header{
+    padding:16px 22px;
+    font-weight:600;
+    border-bottom:1px solid #e5e7eb;
+    color:#2563eb;
+    font-size:16px;
+}
+
+.modal-big-body{
+    padding:18px 22px;
+}
+
+.modal-big-footer{
+    padding:14px 22px;
+    border-top:1px solid #e5e7eb;
+    text-align:right;
+}
+
+.modal-close{
+    float:right;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.modal-close-x{
+    float:right;
+    cursor:pointer;
+    font-size:18px;
+    color:#2563eb;
+}
+.modal-close-x:hover{
+    color:#dc2626;
+}
+
+/* ===== CARD TABLA ===== */
+.hos-card-table{
+    background:white;
+    border-radius:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+    overflow:hidden;
+}
+
+/* ===== TABLA ===== */
+.hos-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13px;
+}
+
+.hos-table thead{
+    background:#2f6fb6;
+    color:white;
+}
+
+.hos-table th{
+    text-align:left;
+    padding:8px 12px;
+    font-weight:600;
+    border:none;
+}
+
+.hos-table td{
+    padding:6px 12px;
+    border-top:1px solid #e6ebf1;
+}
+
+.hos-row-alt{
+    background:#eef3f8;
+}
+
+/* ===== INPUT ===== */
+.hos-input{
+    height:26px;
+    border:1px solid #bfc7d1;
+    border-radius:4px;
+    padding:2px 6px;
+    font-size:12px;
+    width:110px;
+}
+
+/* ===== ESTADO ===== */
+.hos-ok{
+    color:#2e7d32;
+    font-weight:600;
+}
+
+/* ===== BOTON ===== */
+.hos-btn{
+    background:#2f6fb6;
+    border:none;
+    color:white;
+    font-size:12px;
+    padding:4px 12px;
+    border-radius:6px;
+}
+
+.hos-btn:hover{
+    background:#255a96;
+}
+
+/* ===== CARD PERIFERICOS ===== */
+.hos-card{
+    background:#f4f6f9;
+    border-radius:12px;
+    padding:16px 18px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+/* ===== TITULO ===== */
+.hos-title{
+    color:#2f6fb6;
+    font-weight:600;
+    margin-bottom:10px;
+}
+
+/* ===== TOGGLE ROW ===== */
+.hos-toggle-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 0;
+    border-bottom:1px solid #e3e8ef;
+}
+
+.hos-toggle-row.last{
+    border-bottom:none;
+}
+
+/* ===== LABELS ===== */
+.hos-label{
+    font-weight:500;
+    font-size:14px;
+}
+
+.hos-sub{
+    font-size:12px;
+    color:#7b8a97;
+    margin-top:2px;
+}
+
+/* ===== SWITCH ===== */
+.hos-switch{
+    position:relative;
+    width:44px;
+    height:22px;
+}
+
+.hos-switch input{
+    display:none;
+}
+
+.hos-switch span{
+    position:absolute;
+    inset:0;
+    background:#2f6fb6;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+.hos-switch span:before{
+    content:"";
+    position:absolute;
+    width:16px;
+    height:16px;
+    background:white;
+    border-radius:50%;
+    top:3px;
+    left:24px;
+}
+
+.hos-switch.off span{
+    background:#cfd8dc;
+}
+
+.hos-switch.off span:before{
+    left:3px;
+}
+
+/* ===== BOTON GUARDAR ===== */
+.hos-btn-save{
+    margin-top:12px;
+    background:#2e7d32;
+    border:none;
+    color:white;
+    padding:6px 14px;
+    border-radius:6px;
+    font-size:13px;
+}
+
+/* ===== AJUSTE BLOQUE PERIFERICOS ===== */
+
+.hos-card-perifericos{
+    background:#ffffff;          /* fondo blanco */
+    border-radius:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+    padding:16px 18px;
+    margin-top:20px;             /* 🔥 baja el bloque */
+}
+
+/* título */
+.hos-card-perifericos .hos-title{
+    color:#2f6fb6;
+    font-weight:600;
+    margin-bottom:12px;
+}
+
+/* filas toggle */
+.hos-card-perifericos .hos-toggle-row{
+    padding:14px 0;
+    border-bottom:1px solid #e7edf3;
+}
+
+/* última fila sin borde */
+.hos-card-perifericos .hos-toggle-row.last{
+    border-bottom:none;
+}
+
+/* footer botón */
+.hos-perifericos-footer{
+    margin-top:14px;
+}
+
+/* ===== CORRECCION REAL PERIFERICOS ===== */
+
+.hos-card-perifericos{
+    background:#ffffff !important;     /* 🔥 fuerza fondo blanco */
+    margin-top:28px !important;        /* 🔥 baja más el bloque */
+    padding:18px 22px !important;
+    border-radius:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+/* separadores suaves */
+.hos-card-perifericos .hos-toggle-row{
+    border-bottom:1px solid #e9edf2;
+    padding:16px 0;
+}
+
+/* ultima sin linea */
+.hos-card-perifericos .hos-toggle-row.last{
+    border-bottom:none;
+}
+
+/* footer */
+.hos-perifericos-footer{
+    margin-top:16px;
+}
+
+.hos-section-gap{
+    height:18px;
+}
+
+/* ===== TOGGLES TICKET ===== */
+
+.ticket-toggle-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;   /* 🔥 esto los manda a la derecha */
+    padding:12px 0;
+    border-bottom:1px solid #e5eaf0;
+    font-size:14px;
+}
+
+.ticket-toggle-row.last{
+    border-bottom:none;
+}
+
+
+

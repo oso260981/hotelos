@@ -1,0 +1,923 @@
+DEBUG - 2026-04-10 08:19:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 08:19:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 09:56:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 09:56:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 10:00:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 10:00:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 10:01:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 10:06:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 10:07:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 10:10:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 10:15:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 10:26:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 10:30:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 10:34:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 10:35:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 10:36:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 10:36:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 10:54:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 10:55:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 10:58:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 11:01:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 11:02:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 11:02:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 11:03:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 11:04:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 11:12:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 12:24:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 12:24:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 12:25:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 12:25:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 12:25:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 12:30:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 12:30:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 12:30:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 12:30:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-10 14:41:59 --> ErrorException: Undefined variable $route
+[Method: GET, Route: reportes]
+in APPPATH\Config\Routes.php on line 259.
+ 1 APPPATH\Config\Routes.php(259): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $route', 'C:\\xampp\\htdocs\\hotelos\\app\\Config\\Routes.php', 259)
+ 2 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\hotelos\\app\\Config\\Routes.php')
+ 3 SYSTEMPATH\CodeIgniter.php(818): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 4 SYSTEMPATH\CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-10 14:42:01 --> ErrorException: Undefined variable $route
+[Method: GET, Route: reportes]
+in APPPATH\Config\Routes.php on line 259.
+ 1 APPPATH\Config\Routes.php(259): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $route', 'C:\\xampp\\htdocs\\hotelos\\app\\Config\\Routes.php', 259)
+ 2 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\hotelos\\app\\Config\\Routes.php')
+ 3 SYSTEMPATH\CodeIgniter.php(818): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 4 SYSTEMPATH\CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-10 14:48:34 --> ErrorException: Undefined variable $route
+[Method: GET, Route: reportes]
+in APPPATH\Config\Routes.php on line 259.
+ 1 APPPATH\Config\Routes.php(259): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $route', 'C:\\xampp\\htdocs\\hotelos\\app\\Config\\Routes.php', 259)
+ 2 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\hotelos\\app\\Config\\Routes.php')
+ 3 SYSTEMPATH\CodeIgniter.php(818): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 4 SYSTEMPATH\CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-10 14:48:50 --> ErrorException: Undefined variable $route
+[Method: GET, Route: reportes/huespedes]
+in APPPATH\Config\Routes.php on line 259.
+ 1 APPPATH\Config\Routes.php(259): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $route', 'C:\\xampp\\htdocs\\hotelos\\app\\Config\\Routes.php', 259)
+ 2 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\hotelos\\app\\Config\\Routes.php')
+ 3 SYSTEMPATH\CodeIgniter.php(818): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 4 SYSTEMPATH\CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-10 14:51:44 --> ErrorException: Undefined property: App\Controllers\Reportes::$model
+[Method: GET, Route: reportes/huespedes]
+in APPPATH\Controllers\Reportes.php on line 187.
+ 1 APPPATH\Controllers\Reportes.php(187): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Reportes::$model', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reportes.php', 187)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->datosHuespedes()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-10 15:41:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 15:41:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 15:41:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 15:41:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 15:41:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 15:41:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 15:43:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 15:43:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 15:43:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 15:44:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 15:46:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 15:47:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 15:48:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 15:49:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-10 15:52:50 --> ErrorException: Undefined property: App\Controllers\Reportes::$model
+[Method: GET, Route: reportes/huespedes]
+in APPPATH\Controllers\Reportes.php on line 183.
+ 1 APPPATH\Controllers\Reportes.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Reportes::$model', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reportes.php', 183)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->datosHuespedes()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-10 15:55:56 --> ErrorException: Undefined property: App\Controllers\Reportes::$model
+[Method: GET, Route: reportes/huespedes]
+in APPPATH\Controllers\Reportes.php on line 183.
+ 1 APPPATH\Controllers\Reportes.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Reportes::$model', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reportes.php', 183)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->datosHuespedes()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-10 15:57:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 16:01:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 16:02:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 16:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 16:09:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 16:09:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 16:11:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 16:13:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 16:13:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 16:14:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 16:16:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 16:16:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 16:16:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-10 16:30:04 --> ErrorException: Undefined variable $route
+[Method: GET, Route: reportes]
+in APPPATH\Config\Routes.php on line 260.
+ 1 APPPATH\Config\Routes.php(260): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $route', 'C:\\xampp\\htdocs\\hotelos\\app\\Config\\Routes.php', 260)
+ 2 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\hotelos\\app\\Config\\Routes.php')
+ 3 SYSTEMPATH\CodeIgniter.php(818): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 4 SYSTEMPATH\CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-10 16:30:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-10 16:30:22 --> Unknown column 'firma_path' in 'WHERE'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `Reporte_datos`
+WHERE `firma_path` IS NOT NULL
+AND `firma_path` != \'\'
+AND `OBSERVACIONES` IS NOT NULL
+AND `OBSERVACIONES` != \'\'
+ORDER BY `HAB` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `Reporte_datos`
+WHERE `firma_path` IS NOT NULL
+AND `firma_path` != \'\'
+AND `OBSERVACIONES` IS NOT NULL
+AND `OBSERVACIONES` != \'\'
+ORDER BY `HAB` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `Reporte_datos`
+WHERE `firma_path` IS NOT NULL
+AND `firma_path` != \'\'
+AND `OBSERVACIONES` IS NOT NULL
+AND `OBSERVACIONES` != \'\'
+ORDER BY `HAB` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `Reporte_datos`
+WHERE `firma_path` IS NOT NULL
+AND `firma_path` != :firma_path:
+AND `OBSERVACIONES` IS NOT NULL
+AND `OBSERVACIONES` != :OBSERVACIONES:
+ORDER BY `HAB` ASC', [...], false)
+ 5 APPPATH\Controllers\Reportes.php(182): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->datosHuespedes()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-10 16:30:27 --> Unknown column 'firma_path' in 'WHERE'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `Reporte_datos`
+WHERE `firma_path` IS NOT NULL
+AND `firma_path` != \'\'
+AND `OBSERVACIONES` IS NOT NULL
+AND `OBSERVACIONES` != \'\'
+AND  `LISTA` LIKE \'%NEGRA%\' ESCAPE \'!\'
+ORDER BY `HAB` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `Reporte_datos`
+WHERE `firma_path` IS NOT NULL
+AND `firma_path` != \'\'
+AND `OBSERVACIONES` IS NOT NULL
+AND `OBSERVACIONES` != \'\'
+AND  `LISTA` LIKE \'%NEGRA%\' ESCAPE \'!\'
+ORDER BY `HAB` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `Reporte_datos`
+WHERE `firma_path` IS NOT NULL
+AND `firma_path` != \'\'
+AND `OBSERVACIONES` IS NOT NULL
+AND `OBSERVACIONES` != \'\'
+AND  `LISTA` LIKE \'%NEGRA%\' ESCAPE \'!\'
+ORDER BY `HAB` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `Reporte_datos`
+WHERE `firma_path` IS NOT NULL
+AND `firma_path` != :firma_path:
+AND `OBSERVACIONES` IS NOT NULL
+AND `OBSERVACIONES` != :OBSERVACIONES:
+AND  `LISTA` LIKE :LISTA: ESCAPE \'!\'
+ORDER BY `HAB` ASC', [...], false)
+ 5 APPPATH\Controllers\Reportes.php(182): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->datosHuespedes()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-10 16:30:30 --> Unknown column 'firma_path' in 'WHERE'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT *
+FROM `Reporte_datos`
+WHERE `DOC` IS NOT NULL
+AND `DOC` != \'\'
+AND `firma_path` IS NOT NULL
+AND `firma_path` != \'\'
+AND `OBSERVACIONES` IS NOT NULL
+AND `OBSERVACIONES` != \'\'
+AND  `LISTA` LIKE \'%NEGRA%\' ESCAPE \'!\'
+ORDER BY `HAB` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `Reporte_datos`
+WHERE `DOC` IS NOT NULL
+AND `DOC` != \'\'
+AND `firma_path` IS NOT NULL
+AND `firma_path` != \'\'
+AND `OBSERVACIONES` IS NOT NULL
+AND `OBSERVACIONES` != \'\'
+AND  `LISTA` LIKE \'%NEGRA%\' ESCAPE \'!\'
+ORDER BY `HAB` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `Reporte_datos`
+WHERE `DOC` IS NOT NULL
+AND `DOC` != \'\'
+AND `firma_path` IS NOT NULL
+AND `firma_path` != \'\'
+AND `OBSERVACIONES` IS NOT NULL
+AND `OBSERVACIONES` != \'\'
+AND  `LISTA` LIKE \'%NEGRA%\' ESCAPE \'!\'
+ORDER BY `HAB` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `Reporte_datos`
+WHERE `DOC` IS NOT NULL
+AND `DOC` != :DOC:
+AND `firma_path` IS NOT NULL
+AND `firma_path` != :firma_path:
+AND `OBSERVACIONES` IS NOT NULL
+AND `OBSERVACIONES` != :OBSERVACIONES:
+AND  `LISTA` LIKE :LISTA: ESCAPE \'!\'
+ORDER BY `HAB` ASC', [...], false)
+ 5 APPPATH\Controllers\Reportes.php(182): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->datosHuespedes()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-10 16:30:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 16:31:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 16:31:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 16:32:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 16:33:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 16:33:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 16:37:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 16:42:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 16:43:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-10 16:52:25 --> ErrorException: Undefined variable $route
+[Method: GET, Route: reportes]
+in APPPATH\Config\Routes.php on line 262.
+ 1 APPPATH\Config\Routes.php(262): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $route', 'C:\\xampp\\htdocs\\hotelos\\app\\Config\\Routes.php', 262)
+ 2 SYSTEMPATH\Router\RouteCollection.php(339): require('C:\\xampp\\htdocs\\hotelos\\app\\Config\\Routes.php')
+ 3 SYSTEMPATH\CodeIgniter.php(818): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 4 SYSTEMPATH\CodeIgniter.php(441): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-10 16:52:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 16:54:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 17:03:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 17:13:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 17:15:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 17:15:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 17:20:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 17:23:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 17:23:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 17:26:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 17:30:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 17:30:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 17:33:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 17:33:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 17:34:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 17:37:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 17:38:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 17:39:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 17:39:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 17:39:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 17:39:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 17:40:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 17:40:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 17:41:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 17:47:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-10 17:47:05 --> Unknown column 'r.rfc' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('
+            SELECT 
+                r.id,
+                h.numero AS habitacion,
+                CONCAT(hu.apellido, \' \', hu.nombre) AS nombre,
+                fp.codigo AS pago,
+                COALESCE(r.rfc, \'\') AS rfc,
+                COALESCE(r.notas, \'\') AS notas,
+
+                r.precio AS subtotal,
+                r.iva,
+                r.ish,
+                r.total
+
+            FROM registros r
+            INNER JOIN habitaciones h ON h.id = r.habitacion_id
+            LEFT JOIN huespedes hu ON hu.id = r.huesped_id
+            LEFT JOIN formas_pago fp ON fp.id = r.forma_pago_id
+
+            WHERE r.fecha_estadia = \'\'
+
+            ORDER BY h.numero
+        ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('
+            SELECT 
+                r.id,
+                h.numero AS habitacion,
+                CONCAT(hu.apellido, \' \', hu.nombre) AS nombre,
+                fp.codigo AS pago,
+                COALESCE(r.rfc, \'\') AS rfc,
+                COALESCE(r.notas, \'\') AS notas,
+
+                r.precio AS subtotal,
+                r.iva,
+                r.ish,
+                r.total
+
+            FROM registros r
+            INNER JOIN habitaciones h ON h.id = r.habitacion_id
+            LEFT JOIN huespedes hu ON hu.id = r.huesped_id
+            LEFT JOIN formas_pago fp ON fp.id = r.forma_pago_id
+
+            WHERE r.fecha_estadia = \'\'
+
+            ORDER BY h.numero
+        ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('
+            SELECT 
+                r.id,
+                h.numero AS habitacion,
+                CONCAT(hu.apellido, \' \', hu.nombre) AS nombre,
+                fp.codigo AS pago,
+                COALESCE(r.rfc, \'\') AS rfc,
+                COALESCE(r.notas, \'\') AS notas,
+
+                r.precio AS subtotal,
+                r.iva,
+                r.ish,
+                r.total
+
+            FROM registros r
+            INNER JOIN habitaciones h ON h.id = r.habitacion_id
+            LEFT JOIN huespedes hu ON hu.id = r.huesped_id
+            LEFT JOIN formas_pago fp ON fp.id = r.forma_pago_id
+
+            WHERE r.fecha_estadia = \'\'
+
+            ORDER BY h.numero
+        ')
+ 4 APPPATH\Controllers\Reportes.php(291): CodeIgniter\Database\BaseConnection->query('
+            SELECT 
+                r.id,
+                h.numero AS habitacion,
+                CONCAT(hu.apellido, \' \', hu.nombre) AS nombre,
+                fp.codigo AS pago,
+                COALESCE(r.rfc, \'\') AS rfc,
+                COALESCE(r.notas, \'\') AS notas,
+
+                r.precio AS subtotal,
+                r.iva,
+                r.ish,
+                r.total
+
+            FROM registros r
+            INNER JOIN habitaciones h ON h.id = r.habitacion_id
+            LEFT JOIN huespedes hu ON hu.id = r.huesped_id
+            LEFT JOIN formas_pago fp ON fp.id = r.forma_pago_id
+
+            WHERE r.fecha_estadia = ?
+
+            ORDER BY h.numero
+        ', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->reporteFiscal()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-10 17:47:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-10 17:47:16 --> Unknown column 'r.rfc' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('
+            SELECT 
+                r.id,
+                h.numero AS habitacion,
+                CONCAT(hu.apellido, \' \', hu.nombre) AS nombre,
+                fp.codigo AS pago,
+                COALESCE(r.rfc, \'\') AS rfc,
+                COALESCE(r.notas, \'\') AS notas,
+
+                r.precio AS subtotal,
+                r.iva,
+                r.ish,
+                r.total
+
+            FROM registros r
+            INNER JOIN habitaciones h ON h.id = r.habitacion_id
+            LEFT JOIN huespedes hu ON hu.id = r.huesped_id
+            LEFT JOIN formas_pago fp ON fp.id = r.forma_pago_id
+
+            WHERE r.fecha_estadia = \'\'
+
+            ORDER BY h.numero
+        ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('
+            SELECT 
+                r.id,
+                h.numero AS habitacion,
+                CONCAT(hu.apellido, \' \', hu.nombre) AS nombre,
+                fp.codigo AS pago,
+                COALESCE(r.rfc, \'\') AS rfc,
+                COALESCE(r.notas, \'\') AS notas,
+
+                r.precio AS subtotal,
+                r.iva,
+                r.ish,
+                r.total
+
+            FROM registros r
+            INNER JOIN habitaciones h ON h.id = r.habitacion_id
+            LEFT JOIN huespedes hu ON hu.id = r.huesped_id
+            LEFT JOIN formas_pago fp ON fp.id = r.forma_pago_id
+
+            WHERE r.fecha_estadia = \'\'
+
+            ORDER BY h.numero
+        ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('
+            SELECT 
+                r.id,
+                h.numero AS habitacion,
+                CONCAT(hu.apellido, \' \', hu.nombre) AS nombre,
+                fp.codigo AS pago,
+                COALESCE(r.rfc, \'\') AS rfc,
+                COALESCE(r.notas, \'\') AS notas,
+
+                r.precio AS subtotal,
+                r.iva,
+                r.ish,
+                r.total
+
+            FROM registros r
+            INNER JOIN habitaciones h ON h.id = r.habitacion_id
+            LEFT JOIN huespedes hu ON hu.id = r.huesped_id
+            LEFT JOIN formas_pago fp ON fp.id = r.forma_pago_id
+
+            WHERE r.fecha_estadia = \'\'
+
+            ORDER BY h.numero
+        ')
+ 4 APPPATH\Controllers\Reportes.php(291): CodeIgniter\Database\BaseConnection->query('
+            SELECT 
+                r.id,
+                h.numero AS habitacion,
+                CONCAT(hu.apellido, \' \', hu.nombre) AS nombre,
+                fp.codigo AS pago,
+                COALESCE(r.rfc, \'\') AS rfc,
+                COALESCE(r.notas, \'\') AS notas,
+
+                r.precio AS subtotal,
+                r.iva,
+                r.ish,
+                r.total
+
+            FROM registros r
+            INNER JOIN habitaciones h ON h.id = r.habitacion_id
+            LEFT JOIN huespedes hu ON hu.id = r.huesped_id
+            LEFT JOIN formas_pago fp ON fp.id = r.forma_pago_id
+
+            WHERE r.fecha_estadia = ?
+
+            ORDER BY h.numero
+        ', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->reporteFiscal()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-10 17:47:29 --> Unknown column 'r.rfc' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('
+            SELECT 
+                r.id,
+                h.numero AS habitacion,
+                CONCAT(hu.apellido, \' \', hu.nombre) AS nombre,
+                fp.codigo AS pago,
+                COALESCE(r.rfc, \'\') AS rfc,
+                COALESCE(r.notas, \'\') AS notas,
+
+                r.precio AS subtotal,
+                r.iva,
+                r.ish,
+                r.total
+
+            FROM registros r
+            INNER JOIN habitaciones h ON h.id = r.habitacion_id
+            LEFT JOIN huespedes hu ON hu.id = r.huesped_id
+            LEFT JOIN formas_pago fp ON fp.id = r.forma_pago_id
+
+            WHERE r.fecha_estadia = \'2026-04-09\'
+
+            ORDER BY h.numero
+        ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('
+            SELECT 
+                r.id,
+                h.numero AS habitacion,
+                CONCAT(hu.apellido, \' \', hu.nombre) AS nombre,
+                fp.codigo AS pago,
+                COALESCE(r.rfc, \'\') AS rfc,
+                COALESCE(r.notas, \'\') AS notas,
+
+                r.precio AS subtotal,
+                r.iva,
+                r.ish,
+                r.total
+
+            FROM registros r
+            INNER JOIN habitaciones h ON h.id = r.habitacion_id
+            LEFT JOIN huespedes hu ON hu.id = r.huesped_id
+            LEFT JOIN formas_pago fp ON fp.id = r.forma_pago_id
+
+            WHERE r.fecha_estadia = \'2026-04-09\'
+
+            ORDER BY h.numero
+        ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('
+            SELECT 
+                r.id,
+                h.numero AS habitacion,
+                CONCAT(hu.apellido, \' \', hu.nombre) AS nombre,
+                fp.codigo AS pago,
+                COALESCE(r.rfc, \'\') AS rfc,
+                COALESCE(r.notas, \'\') AS notas,
+
+                r.precio AS subtotal,
+                r.iva,
+                r.ish,
+                r.total
+
+            FROM registros r
+            INNER JOIN habitaciones h ON h.id = r.habitacion_id
+            LEFT JOIN huespedes hu ON hu.id = r.huesped_id
+            LEFT JOIN formas_pago fp ON fp.id = r.forma_pago_id
+
+            WHERE r.fecha_estadia = \'2026-04-09\'
+
+            ORDER BY h.numero
+        ')
+ 4 APPPATH\Controllers\Reportes.php(291): CodeIgniter\Database\BaseConnection->query('
+            SELECT 
+                r.id,
+                h.numero AS habitacion,
+                CONCAT(hu.apellido, \' \', hu.nombre) AS nombre,
+                fp.codigo AS pago,
+                COALESCE(r.rfc, \'\') AS rfc,
+                COALESCE(r.notas, \'\') AS notas,
+
+                r.precio AS subtotal,
+                r.iva,
+                r.ish,
+                r.total
+
+            FROM registros r
+            INNER JOIN habitaciones h ON h.id = r.habitacion_id
+            LEFT JOIN huespedes hu ON hu.id = r.huesped_id
+            LEFT JOIN formas_pago fp ON fp.id = r.forma_pago_id
+
+            WHERE r.fecha_estadia = ?
+
+            ORDER BY h.numero
+        ', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->reporteFiscal()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-10 19:38:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 19:57:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 19:57:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 19:57:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-10 19:58:41 --> Unknown column 'observaciones' in 'INSERT INTO'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registros_fiscal` (`registro_id`, `id_perfil`, `rfc`, `precio`, `iva`, `ish`, `total`, `observaciones`, `usuario_id`, `fecha`) VALUES (1, \'1\', NULL, \'700.00\', \'112.00\', \'21.00\', \'833.00\', \'PRUEBA\', 1, \'2026-04-10\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registros_fiscal` (`registro_id`, `id_perfil`, `rfc`, `precio`, `iva`, `ish`, `total`, `observaciones`, `usuario_id`, `fecha`) VALUES (1, \'1\', NULL, \'700.00\', \'112.00\', \'21.00\', \'833.00\', \'PRUEBA\', 1, \'2026-04-10\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registros_fiscal` (`registro_id`, `id_perfil`, `rfc`, `precio`, `iva`, `ish`, `total`, `observaciones`, `usuario_id`, `fecha`) VALUES (1, \'1\', NULL, \'700.00\', \'112.00\', \'21.00\', \'833.00\', \'PRUEBA\', 1, \'2026-04-10\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registros_fiscal` (`registro_id`, `id_perfil`, `rfc`, `precio`, `iva`, `ish`, `total`, `observaciones`, `usuario_id`, `fecha`) VALUES (:registro_id:, :id_perfil:, :rfc:, :precio:, :iva:, :ish:, :total:, :observaciones:, :usuario_id:, :fecha:)', [...], false)
+ 5 APPPATH\Controllers\Reportes.php(364): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->guardarFiscal()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-10 20:00:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 20:10:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-10 20:10:46 --> Unknown column 'r.rfc_override' in 'SELECT'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('SELECT `r`.*, `pf`.`rfc` AS `rfc_perfil`, COALESCE(r.rfc_override, pf.rfc) AS rfc_actual
+FROM `registros` `r`
+LEFT JOIN `Perfiles_Fiscales` `pf` ON `pf`.`id_perfil` = `r`.`id_perfil`
+WHERE `r`.`id` = 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `r`.*, `pf`.`rfc` AS `rfc_perfil`, COALESCE(r.rfc_override, pf.rfc) AS rfc_actual
+FROM `registros` `r`
+LEFT JOIN `Perfiles_Fiscales` `pf` ON `pf`.`id_perfil` = `r`.`id_perfil`
+WHERE `r`.`id` = 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `r`.*, `pf`.`rfc` AS `rfc_perfil`, COALESCE(r.rfc_override, pf.rfc) AS rfc_actual
+FROM `registros` `r`
+LEFT JOIN `Perfiles_Fiscales` `pf` ON `pf`.`id_perfil` = `r`.`id_perfil`
+WHERE `r`.`id` = 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `r`.*, `pf`.`rfc` AS `rfc_perfil`, COALESCE(r.rfc_override, pf.rfc) AS rfc_actual
+FROM `registros` `r`
+LEFT JOIN `Perfiles_Fiscales` `pf` ON `pf`.`id_perfil` = `r`.`id_perfil`
+WHERE `r`.`id` = :r.id:', [...], false)
+ 5 APPPATH\Controllers\Reportes.php(364): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->guardarFiscal()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-10 20:14:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 20:27:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 20:28:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 20:37:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 21:06:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 21:07:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-10 21:07:12 --> CodeIgniter\Exceptions\InvalidArgumentException: whereIn() expects $values to be of type array or closure
+[Method: POST, Route: reportes/generar]
+in SYSTEMPATH\Database\BaseBuilder.php on line 964.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(850): CodeIgniter\Database\BaseBuilder->_whereIn('habitacion_id', '1,23,24,26,27,28', false, 'AND ', null)
+ 2 APPPATH\Models\ReportesModel.php(40): CodeIgniter\Database\BaseBuilder->whereIn('habitacion_id', '1,23,24,26,27,28')
+ 3 APPPATH\Controllers\Reportes.php(448): App\Models\ReportesModel->getFromView('1,23,24,26,27,28')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->generar()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-10 21:21:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 21:21:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-10 21:21:51 --> CodeIgniter\Exceptions\InvalidArgumentException: whereIn() expects $values to be of type array or closure
+[Method: POST, Route: reportes/generar]
+in SYSTEMPATH\Database\BaseBuilder.php on line 964.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(850): CodeIgniter\Database\BaseBuilder->_whereIn('habitacion_id', '21,23', false, 'AND ', null)
+ 2 APPPATH\Models\ReportesModel.php(40): CodeIgniter\Database\BaseBuilder->whereIn('habitacion_id', '21,23')
+ 3 APPPATH\Controllers\Reportes.php(448): App\Models\ReportesModel->getFromView('21,23')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->generar()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-10 21:29:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-10 21:29:42 --> CodeIgniter\Exceptions\InvalidArgumentException: whereIn() expects $values to be of type array or closure
+[Method: POST, Route: reportes/generar]
+in SYSTEMPATH\Database\BaseBuilder.php on line 964.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(850): CodeIgniter\Database\BaseBuilder->_whereIn('habitacion_id', '21,23', false, 'AND ', null)
+ 2 APPPATH\Models\ReportesModel.php(40): CodeIgniter\Database\BaseBuilder->whereIn('habitacion_id', '21,23')
+ 3 APPPATH\Controllers\Reportes.php(448): App\Models\ReportesModel->getFromView('21,23')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->generar()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-10 21:30:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 21:35:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 21:36:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-10 21:36:41 --> CodeIgniter\Exceptions\InvalidArgumentException: whereIn() expects $values to be of type array or closure
+[Method: POST, Route: reportes/generar]
+in SYSTEMPATH\Database\BaseBuilder.php on line 964.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(850): CodeIgniter\Database\BaseBuilder->_whereIn('habitacion_id', '1,21,23,24', false, 'AND ', null)
+ 2 APPPATH\Models\ReportesModel.php(40): CodeIgniter\Database\BaseBuilder->whereIn('habitacion_id', '1,21,23,24')
+ 3 APPPATH\Controllers\Reportes.php(448): App\Models\ReportesModel->getFromView('1,21,23,24')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->generar()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-10 21:39:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 21:40:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-10 21:40:34 --> CodeIgniter\Exceptions\InvalidArgumentException: whereIn() expects $values to be of type array or closure
+[Method: POST, Route: reportes/generar]
+in SYSTEMPATH\Database\BaseBuilder.php on line 964.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(850): CodeIgniter\Database\BaseBuilder->_whereIn('habitacion_id', '23,24,26', false, 'AND ', null)
+ 2 APPPATH\Models\ReportesModel.php(40): CodeIgniter\Database\BaseBuilder->whereIn('habitacion_id', '23,24,26')
+ 3 APPPATH\Controllers\Reportes.php(448): App\Models\ReportesModel->getFromView('23,24,26')
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->generar()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-10 21:42:48 --> ErrorException: Undefined variable $reporte_id
+[Method: POST, Route: reportes/generar]
+in APPPATH\Controllers\Reportes.php on line 430.
+ 1 APPPATH\Controllers\Reportes.php(430): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $reporte_id', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reportes.php', 430)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->generar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-10 21:43:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 21:44:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 21:44:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 21:52:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 21:56:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 21:58:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 22:01:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-10 22:01:23 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ReportesModel::getDetalle
+[Method: GET, Route: reportes/detalle/6]
+in SYSTEMPATH\Model.php on line 758.
+ 1 APPPATH\Controllers\Reportes.php(490): CodeIgniter\Model->__call('getDetalle', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->detalle('6')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-10 22:01:25 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ReportesModel::getDetalle
+[Method: GET, Route: reportes/detalle/5]
+in SYSTEMPATH\Model.php on line 758.
+ 1 APPPATH\Controllers\Reportes.php(490): CodeIgniter\Model->__call('getDetalle', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->detalle('5')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-10 22:01:26 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ReportesModel::getDetalle
+[Method: GET, Route: reportes/detalle/4]
+in SYSTEMPATH\Model.php on line 758.
+ 1 APPPATH\Controllers\Reportes.php(490): CodeIgniter\Model->__call('getDetalle', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->detalle('4')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-10 22:01:26 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ReportesModel::getDetalle
+[Method: GET, Route: reportes/detalle/3]
+in SYSTEMPATH\Model.php on line 758.
+ 1 APPPATH\Controllers\Reportes.php(490): CodeIgniter\Model->__call('getDetalle', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->detalle('3')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-10 22:01:28 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ReportesModel::getDetalle
+[Method: GET, Route: reportes/detalle/2]
+in SYSTEMPATH\Model.php on line 758.
+ 1 APPPATH\Controllers\Reportes.php(490): CodeIgniter\Model->__call('getDetalle', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->detalle('2')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-10 22:01:29 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ReportesModel::getDetalle
+[Method: GET, Route: reportes/detalle/1]
+in SYSTEMPATH\Model.php on line 758.
+ 1 APPPATH\Controllers\Reportes.php(490): CodeIgniter\Model->__call('getDetalle', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->detalle('1')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-10 22:05:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 22:05:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 22:06:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 22:06:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 22:08:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 22:10:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 22:10:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 22:24:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 22:25:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 22:26:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 22:28:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 22:29:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 22:29:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 22:30:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 22:31:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 22:31:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 22:32:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 22:33:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 22:35:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-10 22:35:49 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ReportesModel::getDetalle
+[Method: GET, Route: reportes/detalle/8]
+in SYSTEMPATH\Model.php on line 758.
+ 1 APPPATH\Controllers\Reportes.php(490): CodeIgniter\Model->__call('getDetalle', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->detalle('8')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-10 22:36:50 --> CodeIgniter\Exceptions\BadMethodCallException: Call to undefined method App\Models\ReportesModel::getDetalle
+[Method: GET, Route: reportes/detalle/8]
+in SYSTEMPATH\Model.php on line 758.
+ 1 APPPATH\Controllers\Reportes.php(490): CodeIgniter\Model->__call('getDetalle', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->detalle('8')
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-10 22:40:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 22:41:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 22:43:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 22:50:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 22:52:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 22:53:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 22:57:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:08:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-10 23:09:24 --> ErrorException: Undefined variable $db
+[Method: POST, Route: reportes/generar]
+in APPPATH\Controllers\Reportes.php on line 442.
+ 1 APPPATH\Controllers\Reportes.php(442): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reportes.php', 442)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->generar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-10 23:10:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-10 23:11:46 --> ErrorException: Undefined variable $db
+[Method: POST, Route: reportes/generar]
+in APPPATH\Controllers\Reportes.php on line 442.
+ 1 APPPATH\Controllers\Reportes.php(442): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reportes.php', 442)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->generar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-10 23:11:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:15:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-10 23:15:27 --> ErrorException: Undefined variable $db
+[Method: POST, Route: reportes/generar]
+in APPPATH\Controllers\Reportes.php on line 442.
+ 1 APPPATH\Controllers\Reportes.php(442): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $db', 'C:\\xampp\\htdocs\\hotelos\\app\\Controllers\\Reportes.php', 442)
+ 2 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reportes->generar()
+ 3 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reportes))
+ 4 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-10 23:17:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:18:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:21:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:34:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:37:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:38:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:38:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:38:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:38:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:38:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:40:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:40:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:40:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:40:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:40:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:40:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:40:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:40:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:42:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:45:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:47:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:48:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:50:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:53:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:55:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:55:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-10 23:59:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

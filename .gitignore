@@ -1,0 +1,19 @@
+/vendor/
+/writable/cache/*
+/writable/debugbar/*
+/writable/logs/*
+/writable/session/*
+/writable/uploads/*
+!.gitkeep
+.env
+.env copy
+.phpunit.result.cache
+php_errors.log
+tests/_support/_generated
+user_guide_src/build/*
+.vscode/
+*.docx
+*.sql
+demo*.html
+revervamejora.html
+roomservice.html

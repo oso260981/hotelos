@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrontDesk Elite PMS | Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #0f172a; 
+            color: #f8fafc; 
+            height: 100vh; 
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dashboard-bg {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at top left, #1e293b, #0f172a);
+            z-index: -1;
+        }
+
+        /* VISTA INICIAL: BOTÓN DE APERTURA */
+        .pms-welcome-screen {
+            text-align: center;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .room-access-card {
+            background: white;
+            padding: 40px;
+            border-radius: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            color: #0f172a;
+            width: 350px;
+            transition: transform 0.3s;
+        }
+
+        .room-access-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* EL CONTENEDOR MAESTRO (OCULTO POR DEFECTO) */
+        #master-modal-container {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #master-modal-container.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* INTERFAZ ADMINISTRATIVA DENTRO DEL MODAL */
+        .admin-modal {
+            width: 96vw;
+            height: 92vh;
+            max-width: 1500px;
+            background: #ffffff;
+            border-radius: 32px;
+            display: grid;
+            grid-template-columns: 280px 1fr 380px;
+            overflow: hidden;
+            color: #0f172a;
+            transform: scale(0.9);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        #master-modal-container.show .admin-modal {
+            transform: scale(1);
+        }
+
+        /* SIDEBAR NAV */
+        .admin-sidebar {
+            background-color: #f8fafc;
+            border-right: 1px solid #e2e8f0;
+            padding: 32px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .nav-tab {
+            padding: 14px 18px;
+            border-radius: 14px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .nav-tab.active { background: #4f46e5; color: #ffffff; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3); }
+        .nav-tab:hover:not(.active) { background: #f1f5f9; color: #4f46e5; }
+
+        /* CONTENT */
+        .admin-content { padding: 32px; overflow-y: auto; background: #ffffff; }
+        
+        .admin-audit {
+            background-color: #0f172a;
+            color: white;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid #1e293b;
+        }
+
+        /* REUSABLE */
+        .pms-label { font-size: 9px; font-weight: 800; color: #64748b; text-transform: uppercase; margin-bottom: 5px; display: block; letter-spacing: 0.05em; }
+        .pms-badge { font-size: 9px; font-weight: 900; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; }
+        .badge-success { background: #ecfdf5; color: #059669; }
+
+        .data-card { background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 18px; padding: 20px; transition: all 0.2s; }
+        
+        .pms-input { width: 100%; padding: 10px 14px; background-color: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 10px; outline: none; font-size: 12px; font-weight: 600; }
+
+        /* TABLES */
+        table { width: 100%; font-size: 11px; }
+        th { text-align: left; padding: 12px; color: #64748b; font-weight: 800; text-transform: uppercase; border-bottom: 2px solid #f1f5f9; }
+        td { padding: 12px; border-bottom: 1px solid #f1f5f9; }
+
+        .custom-scroll::-webkit-scrollbar { width: 4px; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+
+        /* ROOM SERVICE */
+        .menu-item { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 12px; transition: all 0.2s; display: flex; align-items: center; gap: 12px; cursor: pointer; }
+        .menu-item:hover { border-color: #4f46e5; transform: translateY(-2px); }
+        .menu-icon { width: 40px; height: 40px; border-radius: 12px; background: #f5f3ff; color: #4f46e5; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+        .fade-in { animation: fadeIn 0.3s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .pax-photo { width: 45px; height: 45px; border-radius: 12px; object-fit: cover; border: 2px solid white; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        
+        .modal-overlay-sub { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.7); z-index: 1100; display: flex; align-items: center; justify-content: center; visibility: hidden; opacity: 0; transition: 0.3s; }
+        .modal-overlay-sub.active { visibility: visible; opacity: 1; }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-bg"></div>
+
+    <!-- PANTALLA DE BIENVENIDA / DASHBOARD -->
+    <div class="pms-welcome-screen">
+        <h1 class="text-4xl font-black text-white mb-8 tracking-tighter">Elite PMS Dashboard</h1>
+        
+        <div class="room-access-card mx-auto">
+            <div class="bg-indigo-50 w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 text-indigo-600 text-3xl shadow-inner">
+                <i class="fas fa-key"></i>
+            </div>
+            <h2 class="text-2xl font-black mb-1 tracking-tight">Suite #204</h2>
+            <p class="text-slate-400 font-bold text-sm mb-8 uppercase tracking-widest">Israel de los Santos</p>
+            
+            <button onclick="abrirHabitacion()" class="w-full bg-indigo-600 text-white py-5 rounded-2xl font-black uppercase text-xs tracking-[0.2em] shadow-xl shadow-indigo-200 hover:bg-indigo-700 transition-all active:scale-95">
+                Gestionar Habitación
+            </button>
+        </div>
+    </div>
+
+    <!-- EL MODAL PRINCIPAL (MASTER CONTAINER) -->
+    <div id="master-modal-container">
+        <div class="admin-modal">
+            
+            <!-- SIDEBAR -->
+            <aside class="admin-sidebar">
+                <div class="mb-8 px-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-indigo-600 text-white w-10 h-10 rounded-xl flex items-center justify-center text-lg"><i class="fas fa-id-card-alt"></i></div>
+                        <div>
+                            <p class="pms-label mb-0">Huésped</p>
+                            <h2 class="font-black text-lg tracking-tighter" id="sidebar-room">Suite #204</h2>
+                        </div>
+                    </div>
+                    <span class="pms-badge badge-success"><i class="fas fa-check-circle mr-1"></i> Check-in Activo</span>
+                </div>
+
+                <nav class="flex-1 space-y-1">
+                    <div class="nav-tab active" id="tab-resumen" onclick="switchSection('resumen')"><i class="fas fa-th-large"></i> Resumen Folio</div>
+                    <div class="nav-tab" id="tab-cargos" onclick="switchSection('cargos')"><i class="fas fa-plus-circle"></i> Cargos Manuales</div>
+                    <div class="nav-tab" id="tab-pagos" onclick="switchSection('pagos')"><i class="fas fa-wallet"></i> Pagos / Abonos</div>
+                    <div class="nav-tab" id="tab-room_service" onclick="switchSection('room_service')"><i class="fas fa-utensils"></i> Room Service</div>
+                </nav>
+
+                <div class="mt-auto pt-4 border-t">
+                    <button onclick="abrirHabitacion(false)" class="w-full py-4 bg-slate-900 text-white rounded-2xl font-black uppercase text-[10px] tracking-widest">
+                        Cerrar Gestión
+                    </button>
+                </div>
+            </aside>
+
+            <!-- CONTENIDO -->
+            <main class="admin-content custom-scroll">
+                
+                <!-- SECCIÓN: RESUMEN -->
+                <div id="sec-resumen" class="space-y-8 fade-in">
+                    <div class="flex justify-between items-end">
+                        <div class="flex items-center gap-6">
+                            <div class="relative group cursor-pointer" onclick="toggleModalSub('modal-edit-profile', true)">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop" class="w-20 h-20 rounded-2xl object-cover border-4 border-slate-50 shadow-xl">
+                                <div class="absolute inset-0 bg-indigo-600/20 opacity-0 group-hover:opacity-100 rounded-2xl flex items-center justify-center transition-all">
+                                    <i class="fas fa-camera text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h1 class="text-3xl font-black tracking-tighter" id="display-name">Israel de los Santos</h1>
+                                <p class="text-slate-400 font-medium">Folio: <span class="text-indigo-600 font-bold">ADM-992210</span> | Ocupación: 21 Mar - 24 Mar</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="data-card group cursor-pointer" onclick="toggleModalSub('modal-pax-details', true)">
+                            <div class="flex justify-between items-center mb-2">
+                                <p class="pms-label">Huéspedes Registrados</p>
+                                <i class="fas fa-chevron-right text-[10px] text-slate-300"></i>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="flex -space-x-3">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" class="pax-photo">
+                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" class="pax-photo">
+                                    <img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=100&h=100&fit=crop" class="pax-photo">
+                                </div>
+                                <p class="text-xs font-bold">Familia de los Santos (3 Pax)</p>
+                            </div>
+                        </div>
+                        <div class="data-card">
+                            <p class="pms-label">Vehículo & Acceso</p>
+                            <div class="mt-2 flex items-center gap-3">
+                                <i class="fas fa-car text-slate-300 text-lg"></i>
+                                <div><p class="text-xs font-black" id="display-plates">PLACA: ABC-123-X</p><p class="text-[9px] text-slate-400 uppercase font-bold tracking-widest">Lote: B-04</p></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="font-black text-lg uppercase tracking-tight">Consumos Detallados del Folio</h3>
+                        <div class="border rounded-2xl overflow-hidden shadow-sm bg-white">
+                            <table id="table-consumos">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha / Hora</th>
+                                        <th>Concepto del Cargo</th>
+                                        <th>Departamento</th>
+                                        <th class="text-right">Monto</th>
+                                    </tr>
+                                </thead>
+                                <tbody><!-- Dinámico --></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN: ROOM SERVICE -->
+                <div id="sec-room_service" class="hidden space-y-8 fade-in">
+                    <div class="flex justify-between items-center border-b pb-4">
+                        <h3 class="font-black text-lg uppercase tracking-tight">Toma de Comandas: Room Service</h3>
+                    </div>
+                    
+                    <div class="grid grid-cols-12 gap-8">
+                        <div class="col-span-7 space-y-3">
+                            <div class="menu-item" onclick="addToOrder('Hamburguesa Angus', 320, 'fas fa-hamburger')">
+                                <div class="menu-icon"><i class="fas fa-hamburger"></i></div>
+                                <div class="flex-1"><p class="text-sm font-black">Hamburguesa Angus</p><p class="text-[9px] text-slate-400 font-bold uppercase">Con papas trufadas</p></div>
+                                <p class="font-black text-indigo-600">$320</p>
+                            </div>
+                            <div class="menu-item" onclick="addToOrder('Vino Tinto Casa', 420, 'fas fa-wine-bottle')">
+                                <div class="menu-icon"><i class="fas fa-wine-bottle"></i></div>
+                                <div class="flex-1"><p class="text-sm font-black">Vino Tinto Casa</p><p class="text-[9px] text-slate-400 font-bold uppercase">Reserva Especial</p></div>
+                                <p class="font-black text-indigo-600">$420</p>
+                            </div>
+                        </div>
+
+                        <div class="col-span-5 bg-slate-50 p-6 rounded-[32px] border flex flex-col min-h-[400px]">
+                            <h4 class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-6">Pedido Actual</h4>
+                            
+                            <div class="mb-5">
+                                <label class="pms-label">Solicitado por:</label>
+                                <select id="order-requested-by" class="pms-input bg-white border-none shadow-sm">
+                                    <option value="Israel de los Santos">Israel (Titular)</option>
+                                    <option value="María Fernanda Ruiz">María Fernanda (Esposa)</option>
+                                    <option value="Israel Jr.">Israel Jr. (Hijo)</option>
+                                </select>
+                            </div>
+
+                            <div id="order-cart-items" class="flex-1 space-y-2 overflow-y-auto custom-scroll pr-1 mb-4">
+                                <p class="text-xs text-slate-400 text-center italic mt-10">Seleccione productos...</p>
+                            </div>
+
+                            <div class="border-t pt-4">
+                                <div class="flex justify-between items-center mb-4"><span class="text-xs font-bold text-slate-500 uppercase">Total</span><span class="font-black text-xl" id="order-total">$0.00</span></div>
+                                <button onclick="confirmOrder()" class="w-full bg-indigo-600 text-white py-4 rounded-xl font-black uppercase text-[10px] tracking-widest shadow-xl">Finalizar Pedido</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-10">
+                        <h4 class="pms-label mb-4 italic">Historial de Comandas (Composición y Solicitante)</h4>
+                        <div class="border rounded-2xl overflow-hidden bg-white shadow-sm">
+                            <table id="table-rs-history">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Solicitante</th>
+                                        <th>Constitución del Pedido</th>
+                                        <th class="text-right">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN: PAGOS -->
+                <div id="sec-pagos" class="hidden space-y-8 fade-in">
+                    <h3 class="font-black text-lg uppercase tracking-tight">Gestión de Abonos y Pagos</h3>
+                    <div class="grid grid-cols-12 gap-8">
+                        <div class="col-span-5 bg-slate-50 p-8 rounded-[40px] border space-y-6">
+                            <div><label class="pms-label">Monto a Abonar ($)</label><input type="number" id="pago-monto" class="pms-input text-lg" placeholder="0.00"></div>
+                            <button onclick="registrarAbonoManual()" class="w-full bg-emerald-600 text-white py-4 rounded-xl font-black uppercase text-[10px] shadow-xl">Aplicar Abono</button>
+                        </div>
+                        <div class="col-span-7">
+                            <p class="pms-label mb-3">Historial de Pagos del Folio</p>
+                            <div class="border rounded-2xl overflow-hidden bg-white shadow-sm">
+                                <table id="table-pagos-historial">
+                                    <thead><tr><th>Fecha</th><th>Referencia</th><th class="text-right">Monto</th></tr></thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- SIDEBAR DERECHA (AUDITORÍA) -->
+            <aside class="admin-audit">
+                <div class="text-center mb-8 border-b border-slate-800 pb-8">
+                    <p class="text-[9px] font-black text-slate-500 uppercase tracking-[0.5em] mb-2 italic">Balance Financiero</p>
+                    <h4 class="text-white font-mono text-xl font-bold uppercase" id="audit-guest-name">Israel de los Santos</h4>
+                </div>
+
+                <div class="flex-1 space-y-6 overflow-y-auto custom-scroll pr-2">
+                    <div class="flex justify-between items-center text-xs"><span class="text-slate-500 font-bold uppercase">Hospedaje</span><span class="font-mono text-slate-300" id="audit-hospedaje">$0.00</span></div>
+                    <div class="flex justify-between items-center text-xs"><span class="text-slate-500 font-bold uppercase">Consumos</span><span class="font-mono text-slate-300" id="audit-extras">$0.00</span></div>
+                    <div class="flex justify-between items-center text-xs"><span class="text-slate-500 font-bold uppercase">Impuestos</span><span class="font-mono text-slate-300" id="audit-taxes">$0.00</span></div>
+
+                    <div class="border-t border-slate-700 pt-8 flex flex-col items-end">
+                        <span class="text-[10px] font-black text-slate-500 uppercase mb-2">Total Acumulado</span>
+                        <span class="text-5xl font-black text-white font-mono tracking-tighter" id="total_acumulado">$0.00</span>
+                    </div>
+
+                    <div class="pt-8 space-y-4">
+                        <div class="flex justify-between items-center p-4 bg-emerald-500/10 rounded-2xl border border-emerald-500/20">
+                            <span class="text-[10px] font-black uppercase text-emerald-500">Abonos</span>
+                            <span class="font-mono font-black text-emerald-400 text-lg" id="sidebar-total-pagos">-$0.00</span>
+                        </div>
+                        <div class="flex flex-col p-8 bg-indigo-500/10 rounded-[40px] border-2 border-indigo-500/20 text-center shadow-inner">
+                            <span class="text-[10px] font-black uppercase text-indigo-300 mb-2">Neto x Liquidar</span>
+                            <span class="text-5xl font-black text-emerald-400 font-mono tracking-tighter" id="saldo_final">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- MODAL EDITAR PERFIL -->
+    <div id="modal-edit-profile" class="modal-overlay-sub" onclick="toggleModalSub('modal-edit-profile', false)">
+        <div class="bg-white p-8 rounded-[32px] w-[400px]" onclick="event.stopPropagation()">
+            <h3 class="text-xl font-black mb-6 uppercase tracking-tight">Editar Huésped</h3>
+            <div class="space-y-4">
+                <input type="text" id="edit-name" class="pms-input" placeholder="Nombre completo">
+                <input type="text" id="edit-plates" class="pms-input" placeholder="Placas vehículo">
+            </div>
+            <button onclick="saveGuestProfile()" class="w-full bg-indigo-600 text-white py-4 rounded-xl font-black mt-8 text-[10px] uppercase">Guardar Cambios</button>
+        </div>
+    </div>
+
+    <!-- MODAL DETALLE PAX -->
+    <div id="modal-pax-details" class="modal-overlay-sub" onclick="toggleModalSub('modal-pax-details', false)">
+        <div class="bg-white p-8 rounded-[40px] w-[500px]" onclick="event.stopPropagation()">
+            <h3 class="text-xl font-black mb-6 uppercase tracking-tight">Detalle de PAX</h3>
+            <div class="space-y-3">
+                <div class="flex items-center gap-4 bg-slate-50 p-4 rounded-2xl border"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100" class="w-12 h-12 rounded-xl object-cover"><div class="flex-1"><b>Israel de los Santos</b><br><span class="text-[9px] uppercase font-bold text-indigo-600">Titular</span></div></div>
+                <div class="flex items-center gap-4 bg-slate-50 p-4 rounded-2xl border"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100" class="w-12 h-12 rounded-xl object-cover"><div class="flex-1"><b>María Fernanda Ruiz</b><br><span class="text-[9px] uppercase font-bold text-emerald-600">Esposa</span></div></div>
+                <div class="flex items-center gap-4 bg-slate-50 p-4 rounded-2xl border"><img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=100" class="w-12 h-12 rounded-xl object-cover"><div class="flex-1"><b>Israel Jr.</b><br><span class="text-[9px] uppercase font-bold text-amber-600">Hijo (Menor)</span></div></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- FUNCIÓN SOLICITADA POR EL USUARIO ---
+        function abrirHabitacion(show = true) {
+            const modal = document.getElementById("master-modal-container");
+            if(!modal){
+                console.error("No existe modal");
+                return;
+            }
+
+            if(show) {
+                modal.classList.add("show");
+                updateUI(); // Refrescar auditoría al abrir
+            } else {
+                modal.classList.remove("show");
+            }
+        }
+
+        // --- MOTOR DE DATOS ---
+        let GUEST_DATA = { name: "Israel de los Santos", plates: "ABC-123-X", room: "Suite #204" };
+        const CONSUMOS = [{ fecha: '21/03 - 14:20', concepto: 'Hospedaje - Noche 1', depto: 'RECEPCION', monto: 2500 }];
+        const PAGOS = [{ fecha: '21/03 - 14:15', ref: 'Depósito Inicial', monto: 1000 }];
+        const RS_HISTORY = [];
+        let currentOrder = [];
+
+        const safeSet = (id, val, attr = 'innerText') => {
+            const el = document.getElementById(id);
+            if (el) el[attr] = val;
+        };
+
+        window.onload = () => { initForms(); updateUI(); };
+
+        function initForms() {
+            safeSet('edit-name', GUEST_DATA.name, 'value');
+            safeSet('edit-plates', GUEST_DATA.plates, 'value');
+        }
+
+        function toggleModalSub(id, show) {
+            const el = document.getElementById(id);
+            if (show) el.classList.add('active');
+            else el.classList.remove('active');
+        }
+
+        function saveGuestProfile() {
+            GUEST_DATA.name = document.getElementById('edit-name').value;
+            GUEST_DATA.plates = document.getElementById('edit-plates').value;
+            updateUI(); toggleModalSub('modal-edit-profile', false);
+        }
+
+        // --- ROOM SERVICE ---
+        function addToOrder(name, price, icon) {
+            const exists = currentOrder.find(i => i.name === name);
+            if (exists) exists.qty++;
+            else currentOrder.push({ name, price, icon, qty: 1 });
+            renderOrderCart();
+        }
+
+        function updateOrderQty(name, step) {
+            const i = currentOrder.find(i => i.name === name);
+            if (i) {
+                i.qty += step;
+                if (i.qty <= 0) deleteItem(name);
+                else renderOrderCart();
+            }
+        }
+
+        function deleteItem(name) {
+            currentOrder = currentOrder.filter(i => i.name !== name);
+            renderOrderCart();
+        }
+
+        function renderOrderCart() {
+            const cart = document.getElementById('order-cart-items');
+            if (!cart) return;
+            if (currentOrder.length === 0) {
+                cart.innerHTML = `<p class="text-xs text-slate-400 text-center italic mt-10">Vacío...</p>`;
+                safeSet('order-total', "$0.00"); return;
+            }
+            let total = 0;
+            cart.innerHTML = currentOrder.map(item => {
+                total += (item.price * item.qty);
+                return `<div class="flex items-center justify-between bg-white p-3 rounded-2xl border text-[11px] shadow-sm">
+                    <div class="flex items-center gap-2"><b>${item.name}</b></div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="updateOrderQty('${item.name}', -1)" class="w-6 h-6">-</button>
+                        <span class="font-black">${item.qty}</span>
+                        <button onclick="updateOrderQty('${item.name}', 1)" class="w-6 h-6">+</button>
+                        <button onclick="deleteItem('${item.name}')" class="text-red-300 ml-2"><i class="fas fa-trash-alt"></i></button>
+                    </div>
+                </div>`;
+            }).join('');
+            safeSet('order-total', "$" + total.toLocaleString());
+        }
+
+        function confirmOrder() {
+            if (currentOrder.length === 0) return;
+            const who = document.getElementById('order-requested-by').value;
+            const orderId = "RS-" + Math.floor(1000 + Math.random() * 9000);
+            const total = currentOrder.reduce((acc, i) => acc + (i.price * i.qty), 0);
+            const composition = currentOrder.map(i => `${i.qty}x ${i.name}`).join(', ');
+
+            RS_HISTORY.unshift({ id: orderId, who, composition, total });
+            
+            currentOrder.forEach(item => {
+                CONSUMOS.push({ fecha: 'Ahora', concepto: `${orderId}: ${item.qty}x ${item.name} (${who})`, depto: 'RESTAURANTE', monto: item.price * item.qty });
+            });
+
+            currentOrder = []; renderOrderCart(); renderRSHistory(); updateUI(); switchSection('resumen');
+        }
+
+        function renderRSHistory() {
+            const tbody = document.querySelector('#table-rs-history tbody');
+            if (tbody) tbody.innerHTML = RS_HISTORY.map(h => `<tr><td class="font-black text-indigo-600">${h.id}</td><td class="font-bold">${h.who}</td><td class="text-slate-500">${h.composition}</td><td class="text-right font-black">$${h.total.toLocaleString()}</td></tr>`).join('');
+        }
+
+        // --- CORE ---
+        function switchSection(id) {
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById('tab-' + id).classList.add('active');
+            ['resumen', 'cargos', 'pagos', 'room_service'].forEach(s => {
+                const el = document.getElementById('sec-' + s);
+                if (el) el.classList.add('hidden');
+            });
+            document.getElementById('sec-' + id).classList.remove('hidden');
+        }
+
+        function registrarAbonoManual() {
+            const m = parseFloat(document.getElementById('pago-monto').value);
+            if (isNaN(m) || m <= 0) return;
+            PAGOS.unshift({ fecha: 'Hoy', ref: 'Abono Recepción', monto: m });
+            updateUI(); document.getElementById('pago-monto').value = "";
+            alert("✓ Abono aplicado.");
+        }
+
+        function updateUI() {
+            safeSet('display-name', GUEST_DATA.name);
+            safeSet('audit-guest-name', GUEST_DATA.name);
+            safeSet('display-plates', "PLACA: " + GUEST_DATA.plates);
+            
+            const tbodyC = document.querySelector('#table-consumos tbody');
+            if (tbodyC) {
+                tbodyC.innerHTML = '';
+                let sh = 0, se = 0;
+                CONSUMOS.forEach(item => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `<td>${item.fecha}</td><td class="font-bold">${item.concepto}</td><td>${item.depto}</td><td class="text-right font-black">$${item.monto.toLocaleString()}</td>`;
+                    tbodyC.appendChild(tr);
+                    if (item.concepto.includes('Hospedaje')) sh += item.monto; else se += item.monto;
+                });
+                const tp = PAGOS.reduce((acc, p) => acc + p.monto, 0);
+                const sub = sh + se;
+                const tax = sub * 0.19;
+                const tot = sub + tax;
+                const sf = tot - tp;
+                safeSet('audit-hospedaje', "$" + sh.toLocaleString());
+                safeSet('audit-extras', "$" + se.toLocaleString());
+                safeSet('audit-taxes', "$" + tax.toLocaleString(undefined, {minimumFractionDigits: 2}));
+                safeSet('total_acumulado', "$" + tot.toLocaleString(undefined, {minimumFractionDigits: 2}));
+                safeSet('sidebar-total-pagos', "-$" + tp.toLocaleString());
+                safeSet('saldo_final', "$" + sf.toLocaleString(undefined, {minimumFractionDigits: 2}));
+                const tbodyP = document.querySelector('#table-pagos-historial tbody');
+                if (tbodyP) tbodyP.innerHTML = PAGOS.map(p => `<tr><td>${p.fecha}</td><td>${p.ref}</td><td class="text-right font-black text-emerald-600">$${p.monto.toLocaleString()}</td></tr>`).join('');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+DEBUG - 2026-03-30 19:57:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 19:57:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 19:59:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 19:59:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 19:59:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 20:01:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 20:11:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 20:16:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 20:17:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 20:20:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 20:20:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 20:20:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 20:22:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 20:24:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 20:27:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 20:33:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 20:33:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 20:35:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 20:35:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 20:38:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 20:39:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 20:40:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 20:46:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 20:46:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 20:53:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 20:54:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 21:00:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 21:18:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 21:24:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 21:25:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 21:26:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 21:39:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 21:48:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 21:53:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 21:56:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-03-30 21:57:22 --> Column 'registro_id' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (NULL, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', \'2026-03-30 21:57:22\', \'ACTIVO\', \'2026-03-30 21:57:22\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (NULL, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', \'2026-03-30 21:57:22\', \'ACTIVO\', \'2026-03-30 21:57:22\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (NULL, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', \'2026-03-30 21:57:22\', \'ACTIVO\', \'2026-03-30 21:57:22\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (:registro_id:, :nombre:, :parentesco:, :es_menor:, :fotografia:, :hora_entrada:, :estado_estancia:, :created_at:)', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(187): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarAcompanantes()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-30 21:57:22 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'registro_id' cannot be null
+[Method: POST, Route: reservacion/guardar-acompanantes]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (:registro_id:, :nombre:, :parentesco:, :es_menor:, :fotografia:, :hora_entrada:, :estado_estancia:, :created_at:)', [...], false)
+ 2 APPPATH\Controllers\Reservacion.php(187): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarAcompanantes()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-30 21:57:22 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'registro_id' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (NULL, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', \'2026-03-30 21:57:22\', \'ACTIVO\', \'2026-03-30 21:57:22\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (NULL, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', \'2026-03-30 21:57:22\', \'ACTIVO\', \'2026-03-30 21:57:22\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (:registro_id:, :nombre:, :parentesco:, :es_menor:, :fotografia:, :hora_entrada:, :estado_estancia:, :created_at:)', [...], false)
+ 4 APPPATH\Controllers\Reservacion.php(187): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarAcompanantes()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-30 21:57:22 --> [Caused by] mysqli_sql_exception: Column 'registro_id' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (NULL, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', \'2026-03-30 21:57:22\', \'ACTIVO\', \'2026-03-30 21:57:22\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (NULL, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', \'2026-03-30 21:57:22\', \'ACTIVO\', \'2026-03-30 21:57:22\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (NULL, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', \'2026-03-30 21:57:22\', \'ACTIVO\', \'2026-03-30 21:57:22\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (:registro_id:, :nombre:, :parentesco:, :es_menor:, :fotografia:, :hora_entrada:, :estado_estancia:, :created_at:)', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(187): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarAcompanantes()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-30 21:59:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-03-30 21:59:54 --> Column 'registro_id' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (NULL, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', \'2026-03-30 21:59:54\', \'ACTIVO\', \'2026-03-30 21:59:54\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (NULL, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', \'2026-03-30 21:59:54\', \'ACTIVO\', \'2026-03-30 21:59:54\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (NULL, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', \'2026-03-30 21:59:54\', \'ACTIVO\', \'2026-03-30 21:59:54\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (:registro_id:, :nombre:, :parentesco:, :es_menor:, :fotografia:, :hora_entrada:, :estado_estancia:, :created_at:)', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(187): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarAcompanantes()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-30 21:59:54 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'registro_id' cannot be null
+[Method: POST, Route: reservacion/guardar-acompanantes]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (:registro_id:, :nombre:, :parentesco:, :es_menor:, :fotografia:, :hora_entrada:, :estado_estancia:, :created_at:)', [...], false)
+ 2 APPPATH\Controllers\Reservacion.php(187): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarAcompanantes()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-30 21:59:54 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'registro_id' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (NULL, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', \'2026-03-30 21:59:54\', \'ACTIVO\', \'2026-03-30 21:59:54\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (NULL, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', \'2026-03-30 21:59:54\', \'ACTIVO\', \'2026-03-30 21:59:54\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (:registro_id:, :nombre:, :parentesco:, :es_menor:, :fotografia:, :hora_entrada:, :estado_estancia:, :created_at:)', [...], false)
+ 4 APPPATH\Controllers\Reservacion.php(187): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarAcompanantes()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-30 21:59:54 --> [Caused by] mysqli_sql_exception: Column 'registro_id' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (NULL, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', \'2026-03-30 21:59:54\', \'ACTIVO\', \'2026-03-30 21:59:54\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (NULL, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', \'2026-03-30 21:59:54\', \'ACTIVO\', \'2026-03-30 21:59:54\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (NULL, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', \'2026-03-30 21:59:54\', \'ACTIVO\', \'2026-03-30 21:59:54\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (:registro_id:, :nombre:, :parentesco:, :es_menor:, :fotografia:, :hora_entrada:, :estado_estancia:, :created_at:)', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(187): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarAcompanantes()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-30 22:02:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 22:02:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-03-30 22:03:17 --> Column 'registro_id' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (NULL, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', \'2026-03-30 22:03:17\', \'ACTIVO\', \'2026-03-30 22:03:17\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (NULL, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', \'2026-03-30 22:03:17\', \'ACTIVO\', \'2026-03-30 22:03:17\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (NULL, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', \'2026-03-30 22:03:17\', \'ACTIVO\', \'2026-03-30 22:03:17\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (:registro_id:, :nombre:, :parentesco:, :es_menor:, :fotografia:, :hora_entrada:, :estado_estancia:, :created_at:)', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(187): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarAcompanantes()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-30 22:03:17 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'registro_id' cannot be null
+[Method: POST, Route: reservacion/guardar-acompanantes]
+in SYSTEMPATH\Database\BaseConnection.php on line 724.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (:registro_id:, :nombre:, :parentesco:, :es_menor:, :fotografia:, :hora_entrada:, :estado_estancia:, :created_at:)', [...], false)
+ 2 APPPATH\Controllers\Reservacion.php(187): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarAcompanantes()
+ 4 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 5 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-30 22:03:17 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'registro_id' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (NULL, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', \'2026-03-30 22:03:17\', \'ACTIVO\', \'2026-03-30 22:03:17\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (NULL, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', \'2026-03-30 22:03:17\', \'ACTIVO\', \'2026-03-30 22:03:17\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (:registro_id:, :nombre:, :parentesco:, :es_menor:, :fotografia:, :hora_entrada:, :estado_estancia:, :created_at:)', [...], false)
+ 4 APPPATH\Controllers\Reservacion.php(187): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarAcompanantes()
+ 6 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 7 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-30 22:03:17 --> [Caused by] mysqli_sql_exception: Column 'registro_id' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (NULL, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', \'2026-03-30 22:03:17\', \'ACTIVO\', \'2026-03-30 22:03:17\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(769): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (NULL, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', \'2026-03-30 22:03:17\', \'ACTIVO\', \'2026-03-30 22:03:17\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(686): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (NULL, \'Israel De Los\', \'Hermano\', 0, \'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=150\', \'2026-03-30 22:03:17\', \'ACTIVO\', \'2026-03-30 22:03:17\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `registro_acompanantes` (`registro_id`, `nombre`, `parentesco`, `es_menor`, `fotografia`, `hora_entrada`, `estado_estancia`, `created_at`) VALUES (:registro_id:, :nombre:, :parentesco:, :es_menor:, :fotografia:, :hora_entrada:, :estado_estancia:, :created_at:)', [...], false)
+ 5 APPPATH\Controllers\Reservacion.php(187): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reservacion->guardarAcompanantes()
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservacion))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-30 22:06:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 22:15:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 22:19:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 22:24:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 22:46:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 22:47:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

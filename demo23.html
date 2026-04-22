@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HotelOS Enterprise - Gestión Total</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+        
+        body { 
+            font-family: 'Roboto', sans-serif; 
+            background-color: #f1f5f9; 
+            color: #0f172a; 
+            touch-action: manipulation;
+        }
+
+        /* Colores de Estatus - Grid Principal */
+        .status-limpia { border-left: 10px solid #10b981 !important; }
+        .status-sucia { border-left: 10px solid #f59e0b !important; }
+        .status-mantenimiento { border-left: 10px solid #ef4444 !important; background-color: #fff1f2; }
+        .status-planta { border-left: 10px solid #6366f1 !important; }
+
+        .hotel-grid td {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 8px 12px;
+            height: 70px;
+            vertical-align: middle;
+            background-color: white;
+            font-size: 13px;
+        }
+        .hotel-grid th {
+            background-color: #1e293b;
+            color: white;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 10px;
+            padding: 14px;
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            letter-spacing: 0.05em;
+        }
+
+        .modal-active { display: flex !important; }
+
+        /* Estilos de Ticket / Estado de Cuenta */
+        .ticket-paper {
+            width: 350px;
+            background: white;
+            padding: 30px;
+            font-family: 'Courier New', Courier, monospace;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            color: black;
+            font-size: 12px;
+            border: 1px solid #eee;
+        }
+
+        /* Estilos del Expediente (Basado en imágenes) */
+        .expediente-card {
+            @apply bg-white rounded-[2rem] border border-slate-200 shadow-sm p-6 mb-6;
+        }
+        .expediente-title {
+            @apply text-[10px] font-black text-blue-700 uppercase tracking-widest flex items-center mb-4;
+        }
+        .expediente-title i { @apply mr-2 text-xs; }
+        
+        .form-label { @apply text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-1; }
+        .form-input { @apply w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl font-bold focus:border-blue-500 outline-none transition-all text-sm text-slate-700 placeholder:text-slate-300; }
+
+        .btn-action { @apply flex items-center justify-center space-x-2 px-4 py-2.5 rounded-lg font-black uppercase text-[10px] transition-all active:scale-95 text-white; }
+
+        .scan-line {
+            position: absolute; width: 100%; height: 2px; background: #3b82f6;
+            box-shadow: 0 0 15px #3b82f6; top: 0; left: 0;
+            animation: scanning 3s infinite linear; display: none; z-index: 10;
+        }
+        @keyframes scanning { 0% { top: 0%; } 50% { top: 100%; } 100% { top: 0%; } }
+
+        .btn-menu-opt { @apply flex items-center space-x-4 w-full p-5 bg-white border-2 border-slate-100 rounded-[2rem] hover:border-blue-500 hover:bg-blue-50 transition-all active:scale-95 shadow-sm; }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    </style>
+</head>
+<body class="h-screen flex flex-col overflow-hidden">
+
+    <!-- HEADER -->
+    <header class="bg-[#0f172a] text-white p-4 flex justify-between items-center z-50 shadow-xl border-b border-slate-800 shrink-0">
+        <div class="flex items-center space-x-6">
+            <span class="text-2xl font-black tracking-tighter text-blue-500 italic">HotelOS<span class="text-white not-italic ml-1">v2</span></span>
+            <div id="clock" class="text-2xl font-mono font-bold bg-slate-800 px-4 py-1.5 rounded-xl border border-slate-700 shadow-inner">00:00:00</div>
+        </div>
+        <div class="flex items-center space-x-6">
+            <div class="text-right hidden sm:block">
+                <p class="text-[10px] font-black opacity-40 uppercase tracking-widest">Recepcionista Firmado</p>
+                <p class="font-bold text-lg leading-none">Recepcion 1</p>
+            </div>
+            <button onclick="window.location.reload()" class="bg-rose-500 w-12 h-12 rounded-xl shadow-lg flex items-center justify-center active:scale-90 transition-transform">
+                <i class="fas fa-power-off"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- NAVEGACIÓN -->
+    <nav class="bg-slate-800 flex text-white text-[13px] font-bold uppercase z-40 shadow-md shrink-0">
+        <button onclick="showView('home')" class="px-8 py-5 hover:bg-slate-700 flex items-center border-r border-slate-700"><i class="fas fa-home mr-3 text-blue-400"></i>Inicio</button>
+        <button onclick="showView('work')" class="px-8 py-5 hover:bg-slate-700 flex items-center"><i class="fas fa-bed mr-3 text-blue-400"></i>Trabajo</button>
+    </nav>
+
+    <!-- VISTA INICIO -->
+    <section id="view-home" class="flex-1 flex flex-col items-center justify-center p-8 bg-slate-50 overflow-y-auto">
+        <div class="mb-12 text-center">
+            <h2 class="text-xs font-black text-slate-400 uppercase tracking-[0.5em] mb-4">Panel de Control de Recepción</h2>
+            <h1 class="text-5xl font-black text-slate-800 uppercase italic tracking-tighter">Selecciona una Opción</h1>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 w-full max-w-6xl">
+            <button onclick="startShift()" class="bg-white p-12 rounded-[3.5rem] shadow-xl border border-slate-200 text-left h-[450px] flex flex-col justify-between active:bg-blue-600 group transition-all transform hover:-translate-y-2">
+                <div class="w-20 h-20 bg-blue-50 rounded-2xl flex items-center justify-center group-active:bg-blue-400"><i class="fas fa-play text-3xl text-blue-600 group-active:text-white"></i></div>
+                <div>
+                    <h3 class="text-4xl font-black text-slate-800 uppercase italic leading-none mb-4 group-active:text-white">Empieza<br>Turno</h3>
+                    <p class="text-slate-400 font-bold group-active:text-blue-100 uppercase text-[10px] tracking-widest">Apertura de caja y sistema</p>
+                </div>
+            </button>
+            <button onclick="showToast('Generando reporte...')" class="bg-white p-12 rounded-[3.5rem] shadow-xl border border-slate-200 text-left h-[450px] flex flex-col justify-between active:bg-emerald-600 group transition-all transform hover:-translate-y-2">
+                <div class="w-20 h-20 bg-emerald-50 rounded-2xl flex items-center justify-center group-active:bg-emerald-400"><i class="fas fa-file-invoice text-3xl text-emerald-600 group-active:text-white"></i></div>
+                <div>
+                    <h3 class="text-4xl font-black text-slate-800 uppercase italic leading-none mb-4 group-active:text-white">Sacar<br>Reporte</h3>
+                    <p class="text-slate-400 font-bold group-active:text-emerald-50 uppercase text-[10px] tracking-widest">Auditoría y estado actual</p>
+                </div>
+            </button>
+            <button onclick="showToast('Abriendo lista de pasajeros...')" class="bg-white p-12 rounded-[3.5rem] shadow-xl border border-slate-200 text-left h-[450px] flex flex-col justify-between active:bg-rose-600 group transition-all transform hover:-translate-y-2">
+                <div class="w-20 h-20 bg-rose-50 rounded-2xl flex items-center justify-center group-active:bg-rose-400"><i class="fas fa-users-cog text-3xl text-rose-600 group-active:text-white"></i></div>
+                <div>
+                    <h3 class="text-4xl font-black text-slate-800 uppercase italic leading-none mb-4 group-active:text-white">Lista<br>Pasajeros</h3>
+                    <p class="text-slate-400 font-bold group-active:text-rose-50 uppercase text-[10px] tracking-widest">Búsqueda y registros históricos</p>
+                </div>
+            </button>
+        </div>
+    </section>
+
+    <!-- VISTA TRABAJO (GRID PROFESIONAL) -->
+    <section id="view-work" class="hidden flex-1 flex flex-col bg-slate-100">
+        <div class="bg-white p-3 flex items-center px-8 border-b border-slate-200 shrink-0">
+            <div class="flex space-x-6 text-[10px] font-black uppercase text-slate-400">
+                <div class="flex items-center space-x-2"><span class="w-3 h-3 rounded-full bg-emerald-500"></span><span>Limpia</span></div>
+                <div class="flex items-center space-x-2"><span class="w-3 h-3 rounded-full bg-amber-500"></span><span>Sucia</span></div>
+                <div class="flex items-center space-x-2"><span class="w-3 h-3 rounded-full bg-rose-500"></span><span>Mant.</span></div>
+                <div class="flex items-center space-x-2"><span class="w-3 h-3 rounded-full bg-indigo-500"></span><span>Planta</span></div>
+            </div>
+            <div class="flex-1"></div>
+            <div class="relative">
+                <input type="text" id="global-search" oninput="applyGlobalSearch()" placeholder="Filtro rápido (Hab, Huésped)..." class="bg-slate-100 rounded-xl px-12 py-3 text-sm w-[400px] border border-slate-200 outline-none">
+                <i class="fas fa-search absolute left-5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+            </div>
+        </div>
+        <div class="flex-1 overflow-auto bg-white">
+            <table class="w-full hotel-grid table-fixed min-w-[2300px]">
+                <thead><tr id="header-row"></tr></thead>
+                <tbody id="rooms-tbody"></tbody>
+            </table>
+        </div>
+        <footer class="bg-slate-900 text-white p-4 flex items-center justify-between shrink-0">
+            <div class="flex bg-slate-800 p-1 rounded-xl">
+                <button onclick="changeFloor('PB')" id="btn-floor-PB" class="bg-blue-600 px-8 py-2 rounded-lg text-xs font-black shadow-lg">P. BAJA</button>
+                <button onclick="changeFloor('1')" id="btn-floor-1" class="px-8 py-2 rounded-lg text-xs font-bold text-slate-400">PISO 1</button>
+            </div>
+            <div class="text-[10px] font-black opacity-30 tracking-widest italic uppercase">Registros activos: <span id="count-active">0</span> | HotelOS Terminal Pro</div>
+        </footer>
+    </section>
+
+    <!-- MODAL DE REGISTRO / EXPEDIENTE (DISEÑO FIEL A IMÁGENES) -->
+    <div id="modal-register" class="fixed inset-0 bg-slate-900/95 hidden z-[100] items-center justify-center p-6 backdrop-blur-md">
+        <div class="bg-[#f8fafc] w-full max-w-[1250px] rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden max-h-[96vh]">
+            
+            <!-- Header Oscuro del Expediente (Imagen 511a26) -->
+            <div class="bg-[#0f172a] p-6 text-white flex justify-between items-center shrink-0">
+                <div class="flex items-center space-x-5">
+                    <div class="bg-blue-600 w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg"><i class="fas fa-user-check text-xl"></i></div>
+                    <div>
+                        <p class="text-[9px] font-black uppercase opacity-50 tracking-widest mb-0.5">Módulo de Admisión</p>
+                        <h3 class="text-2xl font-black italic uppercase tracking-tighter" id="reg-room-id">HABITACIÓN ---</h3>
+                    </div>
+                </div>
+                <button onclick="closeModal('modal-register')" class="w-10 h-10 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 transition-all"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <!-- Vista de Lista -->
+            <div id="reg-view-list" class="flex-1 overflow-y-auto p-12 space-y-8">
+                <div class="flex justify-between items-center">
+                    <h4 class="text-3xl font-black text-slate-800 uppercase italic tracking-tighter">Huéspedes Registrados</h4>
+                    <button onclick="goToForm(-1)" class="bg-blue-600 text-white px-10 py-5 rounded-2xl font-black uppercase text-sm shadow-xl active:scale-95"><i class="fas fa-plus-circle mr-3"></i>Nuevo Expediente</button>
+                </div>
+                <div id="guests-list-container" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+                <div class="pt-8 border-t flex justify-end">
+                    <button onclick="confirmAllRegistration()" class="bg-emerald-500 text-white px-14 py-6 rounded-[2rem] font-black uppercase text-sm shadow-2xl active:scale-95">Sincronizar Unidad</button>
+                </div>
+            </div>
+
+            <!-- Vista de Expediente (Diseño 511a26 y 511a63) -->
+            <div id="reg-view-form" class="hidden flex-1 flex flex-col overflow-hidden">
+                <!-- Barra Superior con Búsqueda -->
+                <div class="px-8 py-4 bg-white border-b border-slate-100 flex items-center justify-between shrink-0">
+                    <div class="flex items-center space-x-6">
+                        <button onclick="backToGuestList()" class="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 text-slate-400 hover:text-blue-600 hover:bg-white flex items-center justify-center transition-all shadow-sm"><i class="fas fa-arrow-left"></i></button>
+                        <div>
+                            <h4 class="text-2xl font-black text-[#1e293b] uppercase italic tracking-tighter leading-none">EXPEDIENTE DE IDENTIDAD</h4>
+                            <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">CAPTURA MULTIMODAL</p>
+                        </div>
+                    </div>
+                    <div class="relative w-80">
+                        <input type="text" placeholder="BUSCAR CLIENTE HISTÓRICO..." class="w-full bg-slate-50 border border-slate-200 rounded-full pl-12 pr-6 py-3 text-[10px] font-black uppercase outline-none focus:border-blue-500 transition-all">
+                        <i class="fas fa-search absolute left-5 top-1/2 -translate-y-1/2 text-blue-500 text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- Contenido -->
+                <div class="flex-1 overflow-y-auto p-8 bg-[#f1f5f9]">
+                    <div class="grid grid-cols-12 gap-8">
+                        <div class="col-span-12 lg:col-span-4 space-y-6">
+                            <!-- Foto Cliente -->
+                            <div class="expediente-card">
+                                <div class="expediente-title"><i class="fas fa-user-circle"></i> FOTO CLIENTE</div>
+                                <div id="box-client" class="relative h-64 bg-[#eef2f7] border border-slate-200 rounded-3xl flex flex-col items-center justify-center overflow-hidden mb-4">
+                                    <i class="fas fa-user text-6xl text-slate-200"></i>
+                                    <p class="text-[9px] font-black text-slate-300 uppercase tracking-widest mt-4">VIDEO DE ROSTRO</p>
+                                </div>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <button class="btn-action bg-[#f97316] shadow-orange-200 shadow-md" onclick="simulateAction('Cámara Rostro')"><i class="fas fa-power-off text-xs mr-2"></i> Cámara</button>
+                                    <button class="btn-action bg-[#0f172a] shadow-slate-300 shadow-md" onclick="simulateAction('Captura Rostro')"><i class="fas fa-camera text-xs mr-2"></i> Capturar</button>
+                                </div>
+                            </div>
+                            <!-- Identificación -->
+                            <div class="expediente-card">
+                                <div class="expediente-title"><i class="fas fa-id-card"></i> IDENTIFICACIÓN</div>
+                                <div id="box-id" class="relative h-44 bg-[#eef2f7] border border-slate-200 rounded-3xl flex flex-col items-center justify-center overflow-hidden mb-4">
+                                    <div class="scan-line" id="scan-line"></div>
+                                    <i class="fas fa-id-badge text-5xl text-slate-200"></i>
+                                    <p class="text-[9px] font-black text-slate-300 uppercase tracking-widest mt-4">SCAN DOCUMENTO</p>
+                                </div>
+                                <div class="grid grid-cols-3 gap-2">
+                                    <button class="btn-action bg-[#f97316]" onclick="simulateAction('Cámara ID')"><i class="fas fa-power-off text-xs mr-1"></i> On</button>
+                                    <button class="btn-action bg-[#475569]" onclick="simulateAction('Captura ID')"><i class="fas fa-camera text-xs mr-1"></i> Capturar</button>
+                                    <button class="btn-action bg-[#2563eb] shadow-blue-200 shadow-md" onclick="runOCR()"><i class="fas fa-expand text-xs mr-1"></i> OCR</button>
+                                </div>
+                            </div>
+                            <!-- Firma -->
+                            <div class="expediente-card">
+                                <div class="expediente-title"><i class="fas fa-pen-nib"></i> FIRMA ELECTRÓNICA</div>
+                                <div class="relative h-40 bg-[#f8fafc] border border-slate-200 rounded-3xl flex items-center justify-center mb-4">
+                                    <p class="text-[9px] font-black text-slate-300 uppercase tracking-widest pointer-events-none absolute">HARDWARE EXTERNO</p>
+                                </div>
+                                <button class="w-full btn-action bg-[#f0fdf4] !text-emerald-700 border border-emerald-100" onclick="simulateAction('Activando Pad')"><i class="fas fa-mobile-alt text-xs mr-2"></i> Activar Pad</button>
+                            </div>
+                        </div>
+
+                        <div class="col-span-12 lg:col-span-8 space-y-6">
+                            <!-- Datos -->
+                            <div class="expediente-card">
+                                <div class="expediente-title"><i class="fas fa-info-circle"></i> DATOS GENERALES</div>
+                                <div class="grid grid-cols-2 gap-6 mb-6">
+                                    <div><label class="form-label">NOMBRE(S)</label><input type="text" id="f-name" class="form-input"></div>
+                                    <div><label class="form-label">APELLIDOS</label><input type="text" id="f-apellidos" class="form-input"></div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-6 mb-6">
+                                    <div><label class="form-label">TELÉFONO MÓVIL</label><input type="tel" id="f-tel" class="form-input"></div>
+                                    <div><label class="form-label">CORREO ELECTRÓNICO</label><input type="email" id="f-mail" class="form-input"></div>
+                                </div>
+                                <div class="grid grid-cols-3 gap-6">
+                                    <div><label class="form-label">NACIONALIDAD</label><input type="text" id="f-nat" class="form-input" value="MEXICANA"></div>
+                                    <div><label class="form-label">NACIMIENTO</label><input type="date" id="f-birth" class="form-input"></div>
+                                    <div><label class="form-label">GÉNERO</label><select id="f-gender" class="form-input"><option>Masculino</option><option>Femenino</option><option>Otro</option></select></div>
+                                </div>
+                            </div>
+                            <!-- Documentación -->
+                            <div class="expediente-card">
+                                <div class="expediente-title"><i class="fas fa-file-alt"></i> DOCUMENTACIÓN</div>
+                                <div class="grid grid-cols-2 gap-6">
+                                    <div><label class="form-label">TIPO DE IDENTIFICACIÓN</label><select id="f-id-type" class="form-input"><option>INE</option><option>PASAPORTE</option><option>LICENCIA</option></select></div>
+                                    <div><label class="form-label">NÚMERO DE FOLIO / ID</label><input type="text" id="f-id-num" class="form-input font-mono uppercase"></div>
+                                </div>
+                            </div>
+                            <!-- Ubicación -->
+                            <div class="expediente-card">
+                                <div class="expediente-title"><i class="fas fa-map-marked-alt"></i> UBICACIÓN & TRÁNSITO</div>
+                                <div class="grid grid-cols-12 gap-6 mb-6">
+                                    <div class="col-span-9"><label class="form-label">DIRECCIÓN FISCAL</label><input type="text" id="f-address" class="form-input"></div>
+                                    <div class="col-span-3"><label class="form-label">C.P.</label><input type="text" id="f-cp" class="form-input"></div>
+                                </div>
+                                <div class="grid grid-cols-3 gap-6">
+                                    <div><label class="form-label">CIUDAD</label><input type="text" id="f-city" class="form-input"></div>
+                                    <div><label class="form-label">ESTADO</label><input type="text" id="f-state" class="form-input"></div>
+                                    <div><label class="form-label">PLACAS VEHÍCULO</label><input type="text" id="f-placas" class="form-input font-mono uppercase"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Barra Inferior (Imagen 511a63) -->
+                <div class="bg-[#0f172a] p-8 flex items-center justify-between shrink-0 shadow-2xl">
+                    <div class="w-80">
+                        <label class="text-[9px] font-black text-blue-400 uppercase tracking-widest mb-2 block">ROL DEL HUÉSPED</label>
+                        <select id="f-is-titular" class="w-full bg-[#1e293b] border-none rounded-xl text-white font-black uppercase text-sm px-6 py-4 italic outline-none focus:ring-2 ring-blue-500">
+                            <option value="true">TITULAR PRINCIPAL</option>
+                            <option value="false">ACOMPAÑANTE</option>
+                        </select>
+                    </div>
+                    <div class="flex space-x-4">
+                        <button onclick="deleteGuestInForm()" class="w-16 h-16 bg-rose-900/40 text-rose-500 rounded-2xl flex items-center justify-center hover:bg-rose-600 hover:text-white transition-all"><i class="fas fa-trash-alt text-lg"></i></button>
+                        <button onclick="saveGuestAndReturn()" class="bg-[#2563eb] text-white px-16 py-5 rounded-2xl font-black uppercase text-sm shadow-xl shadow-blue-900/20 active:scale-95 transition-all flex items-center space-x-3">
+                            <i class="fas fa-save"></i><span>GUARDAR EXPEDIENTE</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL MENU OPCIONES -->
+    <div id="modal-options-menu" class="fixed inset-0 bg-slate-900/90 hidden z-[110] items-center justify-center p-6 backdrop-blur-sm">
+        <div class="bg-white w-full max-w-2xl rounded-[3.5rem] shadow-2xl overflow-hidden p-12">
+            <div class="flex justify-between items-center mb-10">
+                <div><p class="text-[10px] font-black text-blue-600 uppercase mb-2">Panel de Gestión</p><h3 class="text-4xl font-black italic uppercase" id="menu-opt-hab">--</h3></div>
+                <button onclick="closeModal('modal-options-menu')" class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="grid grid-cols-1 gap-4">
+                <button onclick="openModalCambio()" class="btn-menu-opt"><i class="fas fa-exchange-alt text-2xl text-blue-500"></i><div class="text-left"><p class="font-black text-slate-800 uppercase">Cambio de Unidad</p><p class="text-[9px] font-bold text-slate-400 uppercase">Mover a habitación limpia</p></div></button>
+                <button onclick="openModalRoomService()" class="btn-menu-opt"><i class="fas fa-utensils text-2xl text-orange-500"></i><div class="text-left"><p class="font-black text-slate-800 uppercase">Room Service</p><p class="text-[9px] font-bold text-slate-400 uppercase">Añadir/Borrar consumos</p></div></button>
+                <button onclick="openModalPagos()" class="btn-menu-opt"><i class="fas fa-cash-register text-2xl text-emerald-500"></i><div class="text-left"><p class="font-black text-slate-800 uppercase">Control de Pagos</p><p class="text-[9px] font-bold text-slate-400 uppercase">Registrar abonos</p></div></button>
+                <button onclick="showEstadoCuentaModal()" class="btn-menu-opt"><i class="fas fa-file-invoice-dollar text-2xl text-blue-700"></i><div class="text-left"><p class="font-black text-slate-800 uppercase">Estado de Cuenta</p><p class="text-[9px] font-bold text-slate-400 uppercase">Ver movimientos detallados</p></div></button>
+                <button onclick="openModalRegistry()" class="btn-menu-opt"><i class="fas fa-print text-2xl text-slate-500"></i><div class="text-left"><p class="font-black text-slate-800 uppercase">Imprimir Registro</p><p class="text-[9px] font-bold text-slate-400 uppercase">Formato oficial</p></div></button>
+            </div>
+            <div class="mt-8 pt-8 border-t">
+                <label class="form-label">Observaciones</label>
+                <textarea id="opt-obs-input" class="w-full h-24 p-5 bg-slate-50 rounded-2xl border-2 outline-none font-bold focus:border-blue-500" oninput="updateRoomObs(this.value)"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- NUEVO MODAL: ESTADO DE CUENTA (VER MOVIMIENTOS) -->
+    <div id="modal-estado-cuenta" class="fixed inset-0 bg-slate-900/95 hidden z-[120] items-center justify-center p-6 backdrop-blur-md">
+        <div class="bg-white w-full max-w-4xl rounded-[3rem] shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="bg-blue-700 p-6 text-white flex justify-between items-center shrink-0">
+                <div class="flex items-center space-x-4">
+                    <i class="fas fa-file-invoice-dollar text-2xl"></i>
+                    <div>
+                        <h3 class="text-xl font-black italic uppercase tracking-tighter">Estado de Cuenta Interactivo</h3>
+                        <p class="text-[10px] font-bold opacity-70 uppercase" id="account-room-label">HABITACIÓN ---</p>
+                    </div>
+                </div>
+                <button onclick="closeModal('modal-estado-cuenta')" class="w-10 h-10 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 transition-all"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="flex-1 overflow-y-auto p-8">
+                <div class="mb-6 grid grid-cols-3 gap-4">
+                    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                        <p class="text-[9px] font-black text-slate-400 uppercase mb-1">Total Cargos</p>
+                        <p class="text-2xl font-black text-slate-800" id="acc-total-cargos">$0.00</p>
+                    </div>
+                    <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100">
+                        <p class="text-[9px] font-black text-emerald-600 uppercase mb-1">Total Abonos</p>
+                        <p class="text-2xl font-black text-emerald-700" id="acc-total-abonos">$0.00</p>
+                    </div>
+                    <div class="bg-rose-50 p-4 rounded-2xl border border-rose-100">
+                        <p class="text-[9px] font-black text-rose-600 uppercase mb-1">Saldo Pendiente</p>
+                        <p class="text-2xl font-black text-rose-700" id="acc-saldo-final">$0.00</p>
+                    </div>
+                </div>
+                
+                <div class="border rounded-2xl overflow-hidden shadow-sm">
+                    <table class="w-full text-left">
+                        <thead class="bg-slate-100 border-b">
+                            <tr class="text-[10px] font-black uppercase text-slate-500">
+                                <th class="p-4">Fecha/Hora</th>
+                                <th class="p-4">Concepto</th>
+                                <th class="p-4 text-right">Cargo</th>
+                                <th class="p-4 text-right">Abono</th>
+                                <th class="p-4 text-right">Saldo Parcial</th>
+                            </tr>
+                        </thead>
+                        <tbody id="movements-tbody" class="text-sm font-bold text-slate-700">
+                            <!-- Filas dinámicas -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="p-6 bg-slate-50 border-t flex justify-end space-x-4">
+                <button onclick="closeModal('modal-estado-cuenta')" class="px-8 py-3 rounded-xl bg-slate-200 text-slate-600 font-black uppercase text-xs">Cerrar</button>
+                <button onclick="openEstadoCuenta()" class="px-8 py-3 rounded-xl bg-blue-600 text-white font-black uppercase text-xs shadow-lg shadow-blue-200">Generar PDF / Ticket</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: PAGOS -->
+    <div id="modal-pagos" class="fixed inset-0 bg-slate-900/95 hidden z-[120] items-center justify-center p-6 backdrop-blur-md">
+        <div class="bg-white w-full max-w-3xl rounded-[3.5rem] shadow-2xl p-10 flex flex-col max-h-[85vh]">
+            <div class="flex justify-between items-center mb-8"><h3 class="text-4xl font-black italic uppercase text-emerald-600">Abonar al Folio</h3><button onclick="closeModal('modal-pagos')" class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center"><i class="fas fa-times"></i></button></div>
+            <div class="grid grid-cols-3 gap-4 mb-8">
+                <div class="col-span-2"><label class="form-label">Monto</label><input type="number" id="pay-amount" class="form-input !text-2xl" placeholder="0.00"></div>
+                <div><label class="form-label">Método</label><select id="pay-method" class="form-input"><option>Efectivo</option><option>Tarjeta</option><option>Transferencia</option></select></div>
+            </div>
+            <button onclick="registerPayment()" class="w-full py-5 bg-emerald-600 text-white rounded-2xl font-black uppercase text-sm shadow-lg mb-8">Registrar Abono</button>
+            <div class="flex-1 overflow-y-auto bg-slate-50 rounded-3xl p-6 border"><div id="payments-history" class="space-y-2"></div></div>
+        </div>
+    </div>
+
+    <!-- MODAL: ROOM SERVICE -->
+    <div id="modal-roomservice" class="fixed inset-0 bg-slate-900/95 hidden z-[120] items-center justify-center p-6 backdrop-blur-md">
+        <div class="bg-white w-full max-w-4xl rounded-[3.5rem] shadow-2xl p-12 overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="flex justify-between items-center mb-8"><h3 class="text-4xl font-black italic uppercase text-orange-600">Room Service</h3><button onclick="closeModal('modal-roomservice')" class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center"><i class="fas fa-times"></i></button></div>
+            <div class="grid grid-cols-4 gap-4 mb-8 shrink-0">
+                <button onclick="addService('Agua 600ml', 25)" class="p-4 bg-white border-2 rounded-2xl text-left hover:border-orange-500 transition-all"><p class="font-black text-[10px] uppercase">Agua</p><p class="text-orange-600 font-bold">$25</p></button>
+                <button onclick="addService('Cerveza Lata', 55)" class="p-4 bg-white border-2 rounded-2xl text-left hover:border-orange-500 transition-all"><p class="font-black text-[10px] uppercase">Cerveza</p><p class="text-orange-600 font-bold">$55</p></button>
+                <button onclick="addService('Snack Pro', 45)" class="p-4 bg-white border-2 rounded-2xl text-left hover:border-orange-500 transition-all"><p class="font-black text-[10px] uppercase">Snack</p><p class="text-orange-600 font-bold">$45</p></button>
+            </div>
+            <div class="flex-1 bg-slate-50 rounded-3xl p-8 overflow-y-auto border"><div id="services-summary" class="space-y-3"></div></div>
+        </div>
+    </div>
+
+    <!-- MODAL: CAMBIO DE HABITACIÓN -->
+    <div id="modal-cambio" class="fixed inset-0 bg-slate-900/95 hidden z-[120] items-center justify-center p-6 backdrop-blur-md">
+        <div class="bg-white w-full max-w-5xl rounded-[3.5rem] shadow-2xl p-10 overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="flex justify-between items-center mb-8"><h3 class="text-4xl font-black italic uppercase text-blue-600">Mover Huéspedes</h3><button onclick="closeModal('modal-cambio')" class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center"><i class="fas fa-times"></i></button></div>
+            <div class="grid grid-cols-2 gap-4 mb-8">
+                <div><label class="form-label">Filtrar Piso</label><select id="cambio-filter-floor" onchange="renderAvailableRooms()" class="form-input"><option value="PB">Planta Baja</option><option value="1">Piso 1</option></select></div>
+                <div><label class="form-label">Filtrar Tipo</label><select id="cambio-filter-type" onchange="renderAvailableRooms()" class="form-input"><option value="Sencilla">Sencilla</option><option value="Doble">Doble</option><option value="Suite Pro">Suite Pro</option></select></div>
+            </div>
+            <div id="cambio-grid" class="flex-1 overflow-y-auto grid grid-cols-4 sm:grid-cols-6 gap-4 p-4 bg-slate-50 rounded-[2.5rem] border-2 border-dashed"></div>
+        </div>
+    </div>
+
+    <!-- MODAL: PREVIEW FINAL -->
+    <div id="modal-preview" class="fixed inset-0 bg-black/95 hidden z-[200] items-center justify-center p-12 backdrop-blur-md">
+        <div class="flex flex-col items-center space-y-8 max-h-full overflow-y-auto w-full">
+            <div id="preview-content"></div>
+            <div class="flex space-x-6">
+                <button onclick="executeFinalAction()" class="bg-emerald-500 text-white px-16 py-6 rounded-3xl font-black uppercase shadow-2xl active:scale-95 transition-all" id="btn-final-action">Confirmar Acción</button>
+                <button onclick="closeModal('modal-preview')" class="bg-white text-slate-900 px-16 py-6 rounded-3xl font-black uppercase shadow-2xl">Volver</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div id="toast" class="fixed bottom-10 right-10 bg-slate-900 text-white px-10 py-7 rounded-[2.5rem] shadow-2xl translate-y-72 transition-all duration-500 z-[300] border-l-[15px] border-blue-500 flex items-center space-x-10">
+        <i id="toast-icon" class="fas fa-info-circle text-blue-400 text-4xl"></i>
+        <div><p id="toast-message" class="font-black text-2xl italic uppercase">Mensaje</p><p class="text-[10px] font-bold opacity-40 uppercase tracking-[0.4em] mt-1">Terminal HotelOS</p></div>
+    </div>
+
+    <script>
+        const rooms = [];
+        const basePrice = 500.00;
+        let selectedRoomIdx = null;
+        let selectedGuestEditIdx = -1; 
+        let currentFloor = 'PB';
+        let tempGuests = [];
+        let activePreviewMode = ''; 
+
+        const customerHistory = [
+            { id: 1, nombre: "ROBERTO", apellidos: "SANCHEZ MENDOZA", idNum: "IDMX88992211", telefono: "5512345678", email: "roberto@mail.com", direccion: "AV. REFORMA 505", ciudad: "QUERETARO", estado: "QRO", cp: "76000", nacionalidad: "MEXICANA", gender: "Masculino", plates: "XYZ-1234" },
+            { id: 2, nombre: "MARIA", apellidos: "FERNANDEZ", idNum: "IDMX44556677", telefono: "5588990011", email: "maria.f@mail.com", direccion: "HIDALGO 20", ciudad: "CDMX", estado: "CDMX", cp: "06700", nacionalidad: "MEXICANA", gender: "Femenino", plates: "ABC-5678" }
+        ];
+
+        const cols = [
+            { id: 'status', label: 'Status', w: '130px' },
+            { id: 'id', label: 'Hab', w: '90px' },
+            { id: 'stay', label: 'Estadía', w: '130px' },
+            { id: 'days', label: 'Días', w: '85px' },
+            { id: 'people', label: 'Pers', w: '85px' },
+            { id: 'reg', label: 'Registro', w: '160px' },
+            { id: 'pay', label: 'Pago', w: '150px' },
+            { id: 'price', label: 'Precio', w: '140px' },
+            { id: 'h_ent', label: 'Entrada', w: '140px' },
+            { id: 'btn_e', label: 'E', w: '75px' },
+            { id: 'h_sal', label: 'Salida', w: '140px' },
+            { id: 'btn_s', label: 'S', w: '75px' },
+            { id: 'name', label: 'Huésped Principal Registrado', w: '350px' },
+            { id: 'extra', label: 'Extra', w: '95px' },
+            { id: 'opt', label: 'Opciones', w: '130px' },
+            { id: 'ticket', label: 'Ticket', w: '120px' }
+        ];
+
+        // --- DATA DUMMY (ESTADO ACTUALIZADO) ---
+        function initData() {
+            rooms.length = 0; 
+            const statuses = ['limpia', 'sucia', 'mantenimiento', 'planta'];
+            const types = ['Sencilla', 'Doble', 'Suite Pro'];
+            
+            for(let i = 1; i <= 50; i++) {
+                const roomNum = (100 + i).toString();
+                const floor = i <= 25 ? 'PB' : '1';
+                const type = types[Math.floor(Math.random() * types.length)];
+                let status = statuses[Math.floor(Math.random() * statuses.length)];
+                
+                if(i === 1 || i === 5 || i === 12) status = 'sucia';
+
+                let guests = [], h_ent = '', f_ent = '', services = [], payments = [], dias = 0;
+                
+                if (status === 'sucia' || status === 'planta') {
+                    guests.push({...customerHistory[Math.floor(Math.random() * customerHistory.length)], isTitular: true});
+                    h_ent = "10:30 AM"; f_ent = "19/04/2026"; dias = 1;
+                    
+                    services.push({ id: Date.now() + i, name: 'Agua 600ml', price: 25, t: '11:00 AM', date: '19/04/2026' });
+                    if(i % 2 === 0) services.push({ id: Date.now() + i + 100, name: 'Snack Pro', price: 45, t: '01:20 PM', date: '19/04/2026' });
+                    payments.push({ amount: 200, method: 'Efectivo', time: '11:15 AM', date: '19/04/2026' });
+                }
+
+                rooms.push({
+                    id: roomNum, status: status, floor: floor, type: type, capacidad: 2,
+                    tipoEstadia: guests.length > 0 ? 'S' : '', dias: dias,
+                    huespedes: guests, services: services, payments: payments, 
+                    formaPago: 'E', precio: (dias * basePrice) + services.reduce((a,b)=>a+b.price, 0),
+                    horaEntrada: h_ent, fechaEntrada: f_ent, horaSalida: '', fechaSalida: '', 
+                    obs: '', blacklisted: false
+                });
+            }
+            renderHeader();
+            renderGrid();
+        }
+
+        function renderHeader() {
+            const row = document.getElementById('header-row');
+            row.innerHTML = cols.map(c => `<th style="width:${c.w}">${c.label}</th>`).join('');
+        }
+
+        function renderGrid() {
+            const tbody = document.getElementById('rooms-tbody');
+            tbody.innerHTML = '';
+            const search = document.getElementById('global-search').value.toLowerCase();
+            const filtered = rooms.filter(r => {
+                const isFloor = r.floor === currentFloor;
+                const titular = (r.huespedes.find(h => h.isTitular)?.nombre || '') + ' ' + (r.huespedes.find(h => h.isTitular)?.apellidos || '');
+                return isFloor && (r.id.includes(search) || titular.toLowerCase().includes(search));
+            });
+
+            filtered.forEach(r => {
+                const realIdx = rooms.indexOf(r);
+                const titular = r.huespedes.find(h => h.isTitular) || { nombre: '', apellidos: '' };
+                const extra = Math.max(0, r.huespedes.length - r.capacidad);
+                const isActive = (r.status === 'sucia' || r.status === 'planta') && r.huespedes.length > 0;
+                
+                const tr = document.createElement('tr');
+                tr.className = `status-${r.status}`;
+                tr.innerHTML = `
+                    <td><select class="font-bold text-xs bg-transparent" onchange="rooms[${realIdx}].status=this.value;renderGrid()">
+                        <option value="limpia" ${r.status === 'limpia' ? 'selected' : ''}>X=Limpia</option>
+                        <option value="sucia" ${r.status === 'sucia' ? 'selected' : ''}>=Sucia</option>
+                        <option value="mantenimiento" ${r.status === 'mantenimiento' ? 'selected' : ''}>M=Mant.</option>
+                        <option value="planta" ${r.status === 'planta' ? 'selected' : ''}>P=Planta</option>
+                    </select></td>
+                    <td class="text-center font-black text-slate-800 text-lg">${r.id}</td>
+                    <td><select class="font-bold text-xs bg-transparent" onchange="updateStay(${realIdx}, this.value)"><option value="">-</option><option value="S" ${r.tipoEstadia === 'S' ? 'selected' : ''}>S</option><option value="SQ" ${r.tipoEstadia === 'SQ' ? 'selected' : ''}>SQ</option><option value="P" ${r.tipoEstadia === 'P' ? 'selected' : ''}>P</option></select></td>
+                    <td><input type="number" value="${r.dias}" onchange="updateDays(${realIdx}, this.value)" class="text-center font-black w-full outline-none bg-transparent"></td>
+                    <td class="text-center font-black">${r.huespedes.length}</td>
+                    <td class="text-center"><button onclick="openRegister(${realIdx})" class="bg-blue-600 text-white text-[10px] px-4 py-2 rounded-xl font-black">REGISTRAR</button></td>
+                    <td><select class="font-bold text-xs bg-transparent"><option value="E">E</option><option value="TC">TC</option></select></td>
+                    <td class="text-right font-mono font-black text-blue-700">$${r.precio.toFixed(2)}</td>
+                    <td class="text-center text-[10px] font-bold text-slate-400"><div>${r.horaEntrada}</div><div>${r.fechaEntrada}</div></td>
+                    <td class="text-center"><button onclick="stampTime(${realIdx},'entrada')" class="text-blue-500"><i class="fas fa-plus-circle text-2xl"></i></button></td>
+                    <td class="text-center text-[10px] font-bold text-slate-400"><div>${r.horaSalida}</div><div>${r.fechaSalida}</div></td>
+                    <td class="text-center"><button onclick="stampTime(${realIdx},'salida')" class="text-rose-500"><i class="fas fa-plus-circle text-2xl"></i></button></td>
+                    <td class="font-black uppercase truncate text-xs text-slate-700">${titular.nombre} ${titular.apellidos}</td>
+                    <td class="text-center font-black ${extra > 0 ? 'text-orange-500 bg-orange-50' : 'text-slate-100'}">${extra}</td>
+                    <td><button onclick="openOptionsMenu(${realIdx})" class="bg-slate-900 text-white px-4 py-2 rounded-xl text-[10px] font-black uppercase ${!isActive ? 'opacity-20 pointer-events-none' : ''}">Opciones</button></td>
+                    <td><button onclick="openTicketPreview(${realIdx})" class="bg-emerald-600 text-white px-4 py-2 rounded-xl text-[10px] font-black uppercase shadow-lg ${!isActive ? 'opacity-20 pointer-events-none' : ''}">Ticket</button></td>
+                `;
+                tbody.appendChild(tr);
+            });
+            document.getElementById('count-active').textContent = rooms.filter(r => r.huespedes.length > 0).length;
+        }
+
+        // --- MÓDULO: ESTADO DE CUENTA INTERACTIVO ---
+        function showEstadoCuentaModal() {
+            closeModal('modal-options-menu');
+            const r = rooms[selectedRoomIdx];
+            document.getElementById('account-room-label').textContent = `HABITACIÓN ${r.id} (${r.type})`;
+            
+            const tbody = document.getElementById('movements-tbody');
+            tbody.innerHTML = '';
+            
+            let totalCargos = 0;
+            let totalAbonos = 0;
+            let saldoActual = 0;
+            
+            // Cargo inicial de hospedaje
+            const hospedaje = r.dias * basePrice;
+            if(hospedaje > 0) {
+                totalCargos += hospedaje;
+                saldoActual += hospedaje;
+                tbody.innerHTML += `
+                    <tr class="border-b">
+                        <td class="p-4 text-[11px] font-bold opacity-50 uppercase">${r.fechaEntrada} ${r.horaEntrada}</td>
+                        <td class="p-4 uppercase">HOSPEDAJE (${r.dias} DÍAS)</td>
+                        <td class="p-4 text-right">$${hospedaje.toFixed(2)}</td>
+                        <td class="p-4 text-right text-slate-300">---</td>
+                        <td class="p-4 text-right font-black">$${saldoActual.toFixed(2)}</td>
+                    </tr>
+                `;
+            }
+
+            // Unimos y ordenamos servicios y pagos (simulado por orden de inserción)
+            const movements = [
+                ...(r.services || []).map(s => ({...s, type: 'cargo'})),
+                ...(r.payments || []).map(p => ({...p, type: 'abono', name: `PAGO ${p.method}`, price: p.amount}))
+            ];
+
+            movements.forEach(m => {
+                if(m.type === 'cargo') {
+                    totalCargos += m.price;
+                    saldoActual += m.price;
+                } else {
+                    totalAbonos += m.price;
+                    saldoActual -= m.price;
+                }
+                
+                tbody.innerHTML += `
+                    <tr class="border-b ${m.type === 'abono' ? 'bg-emerald-50/30' : ''}">
+                        <td class="p-4 text-[11px] font-bold opacity-50 uppercase">${m.date || '---'} ${m.t || m.time || ''}</td>
+                        <td class="p-4 uppercase">${m.name}</td>
+                        <td class="p-4 text-right ${m.type==='cargo'?'text-slate-800':''}">
+                            ${m.type==='cargo' ? '$' + m.price.toFixed(2) : '<span class="text-slate-300">---</span>'}
+                        </td>
+                        <td class="p-4 text-right ${m.type==='abono'?'text-emerald-600':''}">
+                            ${m.type==='abono' ? '$' + m.price.toFixed(2) : '<span class="text-slate-300">---</span>'}
+                        </td>
+                        <td class="p-4 text-right font-black">$${saldoActual.toFixed(2)}</td>
+                    </tr>
+                `;
+            });
+
+            document.getElementById('acc-total-cargos').textContent = `$${totalCargos.toFixed(2)}`;
+            document.getElementById('acc-total-abonos').textContent = `$${totalAbonos.toFixed(2)}`;
+            document.getElementById('acc-saldo-final').textContent = `$${saldoActual.toFixed(2)}`;
+            
+            document.getElementById('modal-estado-cuenta').classList.add('modal-active');
+        }
+
+        // --- EXPEDIENTE ---
+        function openRegister(idx) { selectedRoomIdx = idx; tempGuests = rooms[idx].huespedes.map(g => ({...g})); document.getElementById('reg-room-id').textContent = `HABITACIÓN ${rooms[idx].id}`; renderGuestList(); backToGuestList(); document.getElementById('modal-register').classList.add('modal-active'); }
+        function backToGuestList() { document.getElementById('reg-view-form').classList.add('hidden'); document.getElementById('reg-view-list').classList.remove('hidden'); renderGuestList(); }
+        function goToForm(i) { selectedGuestEditIdx=i; document.getElementById('reg-view-list').classList.add('hidden'); document.getElementById('reg-view-form').classList.remove('hidden'); i===-1?resetForm():fillForm(tempGuests[i]); }
+        function resetForm() { document.querySelectorAll('#reg-view-form input').forEach(i=>i.value=''); document.getElementById('f-nat').value = 'MEXICANA'; document.getElementById('f-is-titular').value = tempGuests.length === 0 ? 'true' : 'false'; }
+        function fillForm(g) {
+            document.getElementById('f-name').value = g.nombre || ''; document.getElementById('f-apellidos').value = g.apellidos || '';
+            document.getElementById('f-nat').value = g.nacionalidad || 'MEXICANA'; document.getElementById('f-tel').value = g.telefono || '';
+            document.getElementById('f-mail').value = g.email || ''; document.getElementById('f-id-num').value = g.idNum || '';
+            document.getElementById('f-placas').value = g.placas || ''; document.getElementById('f-address').value = g.direccion || '';
+            document.getElementById('f-city').value = g.ciudad || ''; document.getElementById('f-state').value = g.estado || '';
+            document.getElementById('f-cp').value = g.cp || ''; document.getElementById('f-is-titular').value = g.isTitular !== undefined ? g.isTitular.toString() : 'false';
+        }
+        function saveGuestAndReturn() {
+            const d = { nombre: document.getElementById('f-name').value.toUpperCase(), apellidos: document.getElementById('f-apellidos').value.toUpperCase(), nacionalidad: document.getElementById('f-nat').value.toUpperCase(), telefono: document.getElementById('f-tel').value, email: document.getElementById('f-mail').value, idNum: document.getElementById('f-id-num').value.toUpperCase(), placas: document.getElementById('f-placas').value.toUpperCase(), direccion: document.getElementById('f-address').value.toUpperCase(), ciudad: document.getElementById('f-city').value.toUpperCase(), estado: document.getElementById('f-state').value.toUpperCase(), cp: document.getElementById('f-cp').value, isTitular: document.getElementById('f-is-titular').value === 'true' };
+            if(!d.nombre) return showToast("Nombre obligatorio");
+            if(d.isTitular) tempGuests.forEach(g => g.isTitular = false);
+            if(selectedGuestEditIdx === -1) tempGuests.push(d); else tempGuests[selectedGuestEditIdx] = d;
+            backToGuestList();
+        }
+        function deleteGuestInForm() { if(selectedGuestEditIdx > -1) { tempGuests.splice(selectedGuestEditIdx, 1); backToGuestList(); } }
+        function renderGuestList() { const c = document.getElementById('guests-list-container'); c.innerHTML = tempGuests.length ? tempGuests.map((g,i)=>`<div class="flex items-center justify-between p-6 bg-slate-50 rounded-3xl border-2 border-white shadow-sm"><div class="flex items-center space-x-6"><div class="w-12 h-12 rounded-xl ${g.isTitular?'bg-blue-600':'bg-slate-200'} text-white flex items-center justify-center font-black">${i+1}</div><div><p class="font-black text-slate-800">${g.nombre} ${g.apellidos}</p></div></div><button onclick="goToForm(${i})" class="text-blue-500 text-xl p-2"><i class="fas fa-pen"></i></button></div>`).join('') : '<p class="col-span-2 text-center text-slate-400 font-bold p-10">Sin huéspedes registrados</p>'; }
+        function confirmAllRegistration() { rooms[selectedRoomIdx].huespedes=[...tempGuests]; rooms[selectedRoomIdx].status='sucia'; rooms[selectedRoomIdx].precio=rooms[selectedRoomIdx].dias*basePrice; closeModal('modal-register'); renderGrid(); }
+
+        // --- ROOM SERVICE ---
+        function openModalRoomService() { closeModal('modal-options-menu'); renderServicesSummary(); document.getElementById('modal-roomservice').classList.add('modal-active'); }
+        function addService(name, price) {
+            rooms[selectedRoomIdx].services.push({ id: Date.now(), name, price, t: new Date().toLocaleTimeString(), date: new Date().toLocaleDateString() });
+            updateTotalPrice();
+            renderServicesSummary();
+            showToast(`Añadido: ${name}`);
+        }
+        function removeService(sId) {
+            const idx = rooms[selectedRoomIdx].services.findIndex(s => s.id === sId);
+            if(idx > -1) {
+                rooms[selectedRoomIdx].services.splice(idx, 1);
+                updateTotalPrice();
+                renderServicesSummary();
+                showToast("Cargo eliminado");
+            }
+        }
+        function updateTotalPrice() {
+            const r = rooms[selectedRoomIdx];
+            const totalS = r.services.reduce((a,b)=>a+b.price, 0);
+            r.precio = (r.dias * basePrice) + totalS;
+            renderGrid();
+        }
+        function renderServicesSummary() {
+            const container = document.getElementById('services-summary');
+            const services = rooms[selectedRoomIdx].services || [];
+            container.innerHTML = services.map(s => `
+                <div class="flex justify-between items-center bg-white p-4 rounded-2xl border shadow-sm group">
+                    <div><p class="font-black text-xs uppercase">${s.name}</p><p class="text-[9px] text-slate-400 font-bold">${s.t}</p></div>
+                    <div class="flex items-center space-x-6">
+                        <span class="font-black text-orange-600 text-sm">$${s.price.toFixed(2)}</span>
+                        <button onclick="removeService(${s.id})" class="text-rose-500 opacity-20 group-hover:opacity-100 transition-all active:scale-90"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+            `).join('');
+            if(!services.length) container.innerHTML = `<p class="text-center text-slate-400 font-bold p-10 uppercase text-xs">Sin consumos extra</p>`;
+        }
+
+        // --- PAGOS ---
+        function openModalPagos() { closeModal('modal-options-menu'); renderPaymentsHistory(); document.getElementById('modal-pagos').classList.add('modal-active'); }
+        function registerPayment() {
+            const amount = parseFloat(document.getElementById('pay-amount').value); const method = document.getElementById('pay-method').value;
+            if(!amount || amount <= 0) return showToast("Monto inválido");
+            rooms[selectedRoomIdx].payments.push({ amount, method, time: new Date().toLocaleTimeString(), date: new Date().toLocaleDateString() });
+            document.getElementById('pay-amount').value = ''; renderPaymentsHistory(); showToast("Abono registrado");
+        }
+        function renderPaymentsHistory() {
+            const container = document.getElementById('payments-history');
+            container.innerHTML = (rooms[selectedRoomIdx].payments || []).map(p => `
+                <div class="flex justify-between items-center bg-white p-4 rounded-2xl border shadow-sm">
+                    <div><p class="font-black text-[11px] uppercase">${p.method}</p><p class="text-[9px] text-slate-400">${p.date} ${p.time}</p></div>
+                    <span class="font-black text-emerald-600">$${p.amount.toFixed(2)}</span>
+                </div>
+            `).join('');
+        }
+
+        // --- CAMBIO ---
+        function openModalCambio() { closeModal('modal-options-menu'); renderAvailableRooms(); document.getElementById('modal-cambio').classList.add('modal-active'); }
+        function renderAvailableRooms() {
+            const floor = document.getElementById('cambio-filter-floor').value;
+            const type = document.getElementById('cambio-filter-type').value;
+            const grid = document.getElementById('cambio-grid');
+            const available = rooms.filter(r => r.status === 'limpia' && r.floor === floor && r.type === type);
+            grid.innerHTML = available.map(r => `<button onclick="executeCambio(${rooms.indexOf(r)})" class="p-5 bg-white border-2 border-slate-100 rounded-2xl flex flex-col items-center hover:border-blue-500 active:scale-95 shadow-sm transition-all"><span class="font-black text-lg">${r.id}</span><span class="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">${r.type}</span></button>`).join('');
+            if(!available.length) grid.innerHTML = `<div class="col-span-full text-center text-slate-400 font-bold p-10 uppercase text-xs bg-slate-50 border-2 border-dashed rounded-3xl">Sin unidades disponibles</div>`;
+        }
+        function executeCambio(newIdx) {
+            const rOld = rooms[selectedRoomIdx]; const rNew = rooms[newIdx];
+            rNew.huespedes = [...rOld.huespedes]; rNew.services = [...rOld.services]; rNew.payments = [...rOld.payments];
+            rNew.status = 'sucia'; rNew.precio = rOld.precio; rNew.horaEntrada = rOld.horaEntrada; rNew.fechaEntrada = rOld.fechaEntrada;
+            rNew.obs = rOld.obs; rNew.tipoEstadia = rOld.tipoEstadia; rNew.dias = rOld.dias;
+            rOld.huespedes = []; rOld.services = []; rOld.payments = []; rOld.status = 'sucia'; rOld.precio = 0; rOld.horaEntrada = '';
+            closeModal('modal-cambio'); renderGrid(); showToast(`Movido a Habitación ${rNew.id}`);
+        }
+
+        // --- ACCIONES CORE ---
+        function openTicketPreview(idx) {
+            selectedRoomIdx = idx;
+            activePreviewMode = 'ticket';
+            const r = rooms[idx];
+            const t = r.huespedes.find(h => h.isTitular) || r.huespedes[0];
+            const totalS = r.services.reduce((a,b)=>a+b.price, 0);
+            const totalP = r.payments.reduce((a,b)=>a+b.amount, 0);
+            const totalC = (r.dias * basePrice) + totalS;
+            const balance = totalC - totalP;
+
+            document.getElementById('btn-final-action').textContent = "Confirmar Sello y Checkout";
+            document.getElementById('preview-content').innerHTML = `
+                <div class="ticket-paper">
+                    <p class="text-center font-black text-2xl mb-4 italic tracking-tighter">HOTELOS V2</p>
+                    <div class="space-y-1 mb-4 text-[11px] font-bold">
+                        <p class="flex justify-between"><span>HAB:</span> <span>${r.id}</span></p>
+                        <p class="flex justify-between"><span>CLIENTE:</span> <span class="uppercase">${t ? t.nombre : '---'}</span></p>
+                    </div>
+                    <div class="border-t-2 border-slate-900 pt-4">
+                        <div class="flex justify-between text-xs font-bold opacity-60"><span>SUBTOTAL CARGOS:</span><span>$${totalC.toFixed(2)}</span></div>
+                        <div class="flex justify-between text-xs font-bold opacity-60"><span>PAGOS REALIZADOS:</span><span>-$${totalP.toFixed(2)}</span></div>
+                        <div class="flex justify-between font-black text-xl mt-4 border-t pt-2 ${balance > 0 ? 'text-rose-600' : 'text-emerald-700'}">
+                            <span>SALDO:</span><span>$${balance.toFixed(2)}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById('modal-preview').classList.add('modal-active');
+        }
+
+        function executeFinalAction() {
+            if(activePreviewMode === 'ticket') {
+                const r = rooms[selectedRoomIdx];
+                r.huespedes = []; r.services = []; r.payments = []; r.status = 'sucia'; r.precio = 0; r.dias = 0; r.horaEntrada = '';
+                closeModal('modal-preview'); renderGrid(); showToast("Checkout procesado");
+            } else { closeModal('modal-preview'); showToast("Procesando..."); }
+        }
+
+        function openModalRegistry() {
+            closeModal('modal-options-menu'); activePreviewMode = 'registry';
+            const r = rooms[selectedRoomIdx]; const t = r.huespedes.find(h => h.isTitular) || r.huespedes[0];
+            document.getElementById('btn-final-action').textContent = "Imprimir Registro";
+            document.getElementById('preview-content').innerHTML = `<div class="registry-paper"><h1 class="text-4xl font-black italic text-blue-600 mb-10 tracking-tighter">HOTELOS V2</h1><p>FOLIO: #REG-${r.id}</p><p>TITULAR: ${t ? t.nombre : 'N/A'} ${t ? t.apellidos : ''}</p></div>`;
+            document.getElementById('modal-preview').classList.add('modal-active');
+        }
+
+        function openEstadoCuenta() {
+            closeModal('modal-estado-cuenta');
+            openTicketPreview(selectedRoomIdx);
+        }
+
+        // --- AUXILIARES ---
+        function startShift() { showToast("Sincronizando turno..."); setTimeout(() => showView('work'), 800); }
+        function showView(v) { document.getElementById('view-home').classList.toggle('hidden', v !== 'home'); document.getElementById('view-work').classList.toggle('hidden', v !== 'work'); }
+        function closeModal(id) { document.getElementById(id).classList.remove('modal-active'); }
+        function openOptionsMenu(idx) { selectedRoomIdx = idx; document.getElementById('menu-opt-hab').textContent = `HABITACIÓN ${rooms[idx].id}`; document.getElementById('opt-obs-input').value = rooms[idx].obs || ''; document.getElementById('modal-options-menu').classList.add('modal-active'); }
+        function updateRoomObs(v) { rooms[selectedRoomIdx].obs = v; }
+        function stampTime(i,t) { const now=new Date(); rooms[i][`hora${t==='entrada'?'Entrada':'Salida'}`]=now.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}); rooms[i][`fecha${t==='entrada'?'Entrada':'Salida'}`]=now.toLocaleDateString(); renderGrid(); }
+        function changeFloor(f) { currentFloor=f; document.getElementById('btn-floor-PB').className=f==='PB'?"bg-blue-600 px-8 py-2 rounded-lg text-xs font-black shadow-lg":"px-8 py-2 rounded-lg text-xs font-bold text-slate-400"; document.getElementById('btn-floor-1').className=f==='1'?"bg-blue-600 px-8 py-2 rounded-lg text-xs font-black shadow-lg":"px-8 py-2 rounded-lg text-xs font-bold text-slate-400"; renderGrid(); }
+        function updateStay(i,v) { rooms[i].tipoEstadia=v; if(v!=='' && rooms[i].dias===0) rooms[i].dias=1; rooms[i].precio=rooms[i].dias*basePrice; renderGrid(); }
+        function updateDays(i,v) { rooms[i].dias=parseInt(v)||0; updateTotalPriceFromDays(i); renderGrid(); }
+        function updateTotalPriceFromDays(i) { const r = rooms[i]; r.precio = (r.dias * basePrice) + (r.services ? r.services.reduce((a,b)=>a+b.price, 0) : 0); }
+        function showToast(m) { const t=document.getElementById('toast'); document.getElementById('toast-message').textContent=m; t.classList.remove('translate-y-72'); setTimeout(()=>t.classList.add('translate-y-72'),3000); }
+        function applyGlobalSearch() { renderGrid(); }
+        function runOCR() { const line = document.getElementById('scan-line'); line.style.display = 'block'; setTimeout(() => { line.style.display = 'none'; showToast("OCR Finalizado"); }, 2000); }
+        function simulateAction(m) { showToast(m); }
+
+        window.onload = () => { initData(); setInterval(() => document.getElementById('clock').textContent = new Date().toLocaleTimeString(), 1000); };
+    </script>
+</body>
+</html>
