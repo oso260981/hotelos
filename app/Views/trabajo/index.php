@@ -446,9 +446,10 @@
         </div>
 
         <footer class="bg-slate-900 text-white p-3 flex items-center justify-between border-t border-slate-700">
+            <div class="text-[10px] font-black tracking-widest italic uppercase text-white">
+                Mostrando: <span id="count-filtered">0</span> de <span id="count-total">0</span> | HotelOS Terminal Pro
+            </div>
             <div></div>
-            <div class="text-[10px] font-black opacity-30 tracking-widest italic uppercase">Registros activos: <span
-                    id="count-active">0</span> | HotelOS Terminal Pro</div>
         </footer>
     </section>
 
@@ -508,17 +509,18 @@
                 </div>
 
                 <div class="pt-10 border-t flex flex-col md:flex-row justify-between items-center gap-6">
+                    <!-- 🔥 BOTÓN DE CHECKIN (ANTERIOR SINCRONIZAR) -->
+                    <button onclick="confirmAllRegistration()" id="btn-sincronizar"
+                        class="bg-emerald-500 text-white px-10 py-6 rounded-[2.5rem] font-black uppercase text-xs shadow-xl hover:bg-emerald-600 active:scale-95 transition-all flex-1 w-full md:w-auto flex items-center justify-center space-x-3">
+                        <i class="fas fa-check-circle text-lg"></i>
+                        <span>Checkin</span>
+                    </button>
+
                     <!-- 🔥 BOTÓN DE CHECKOUT NIVELADO -->
                     <button id="btn-checkout-footer" onclick="hacerCheckout()" 
                         class="hidden bg-rose-600 text-white px-10 py-6 rounded-[2.5rem] font-black uppercase text-xs shadow-xl hover:bg-rose-700 active:scale-95 transition-all flex items-center justify-center space-x-3 flex-1 w-full md:w-auto">
                         <i class="fas fa-sign-out-alt text-lg"></i>
                         <span>Finalizar Estancia (Checkout)</span>
-                    </button>
-
-                    <!-- 🔥 BOTÓN DE SINCRONIZAR -->
-                    <button onclick="confirmAllRegistration()" id="btn-sincronizar"
-                        class="bg-emerald-500 text-white px-10 py-6 rounded-[2.5rem] font-black uppercase text-xs shadow-xl hover:bg-emerald-600 active:scale-95 transition-all flex-1 w-full md:w-auto">
-                        Sincronizar Habitación
                     </button>
                 </div>
             </div>
@@ -1103,9 +1105,10 @@
         <p id="toast-message" class="font-black text-2xl italic uppercase">Mensaje</p>
     </div>
 
-   <script>
-window.base_url = "<?= base_url() ?>/";
-</script>
+    <script>
+        window.base_url = "<?= rtrim(base_url(), '/') ?>/";
+        window.userRole = <?= session()->get('rol') ?? 0 ?>;
+    </script>
    
  <script>
         const rooms = [];
@@ -1130,7 +1133,7 @@ window.base_url = "<?= base_url() ?>/";
             { id: 'stay', label: 'Estadía', w: '100px', filter: 'select' },
             { id: 'days', label: 'Días', w: '70px', filter: 'text' },
             { id: 'people', label: 'Pers', w: '70px', filter: 'text' },
-            { id: 'reg', label: 'Registro', w: '120px', filter: 'none' },
+            { id: 'reg', label: 'Registro', w: '120px', filter: 'text' },
             { id: 'payment', label: 'Pago', w: '120px', filter: 'select' },
             { id: 'price', label: 'Precio', w: '110px', filter: 'text' },
             { id: 'h_ent', label: 'Entrada', w: '120px', filter: 'none' },
@@ -1147,17 +1150,27 @@ window.base_url = "<?= base_url() ?>/";
 
 
         async function initData() {
-            console.log("🚀 Iniciando carga de datos...");
+            console.log("🚀 Iniciando carga de datos... URL:", base_url);
             try {
                 // 🔥 Cargar Catálogos primero
                 const [respHab, respEst] = await Promise.all([
                     fetch(base_url + 'reservacion/habitaciones'),
                     fetch(base_url + 'reservacion/estados-habitacion')
-                ]);
+                ]).catch(err => {
+                    console.error("🔥 Error de RED detectado:", err);
+                    throw err;
+                });
 
-                if (respEst.ok) catalogoEstados = await respEst.json();
+                if (respEst.ok) {
+                    catalogoEstados = await respEst.json();
+                } else {
+                    console.error("❌ Error en estados-habitacion:", respEst.status);
+                }
 
-                if (!respHab.ok) throw new Error("HTTP Status: " + respHab.status);
+                if (!respHab.ok) {
+                    console.error("❌ Error en habitaciones:", respHab.status);
+                    throw new Error("HTTP Status: " + respHab.status);
+                }
                 const data = await respHab.json();
                 console.log("📦 [DEBUG DATA] Datos crudos del servidor (primera hab):", data[0]);
                 console.log("📦 Datos recibidos del servidor:", data);
@@ -1303,8 +1316,16 @@ window.base_url = "<?= base_url() ?>/";
         function renderGrid() {
             const tbody = document.getElementById('rooms-tbody'); tbody.innerHTML = '';
             const search = document.getElementById('global-search').value.toLowerCase();
+            
+            // 🔥 Total de habitaciones en la vista actual (piso o todos)
+            const totalOnView = currentFloor === 'ALL' 
+                ? rooms.length 
+                : rooms.filter(r => r.floor === currentFloor).length;
+
             const filtered = rooms.filter(r => {
-                if (r.floor !== currentFloor) return false;
+                // Si no estamos en "TODOS", filtrar por piso
+                if (currentFloor !== 'ALL' && r.floor !== currentFloor) return false;
+
                 const titular = (r.huespedes.find(h => h.isTitular)?.nombre || '') + ' ' + (r.huespedes.find(h => h.isTitular)?.apellido || r.huespedes.find(h => h.isTitular)?.apellidos || '');
                 
                 // Global Search
@@ -1319,68 +1340,116 @@ window.base_url = "<?= base_url() ?>/";
                 if (activeFilters.people && r.huespedes.length.toString() !== activeFilters.people) return false;
                 if (activeFilters.price && !r.precio.toString().includes(activeFilters.price)) return false;
                 if (activeFilters.extra && Math.max(0, r.huespedes.length - r.capacidad).toString() !== activeFilters.extra) return false;
+                
+                // 🔥 Filtro por Registro (Boton de Checkout/Registrar o ID)
+                if (activeFilters.reg) {
+                    const isCheckoutReg = (r.estado_registro || '').toUpperCase().trim() === 'CHECKOUT';
+                    const isCheckinReg = (r.estado_registro || '').toUpperCase().trim() === 'CHECKIN';
+                    const btnText = isCheckoutReg ? 'CHECKOUT' : (isCheckinReg ? 'VER REGISTRO' : 'REGISTRAR');
+                    if (!btnText.toLowerCase().includes(activeFilters.reg.toLowerCase())) return false;
+                }
+
                 const tipoFiltro = document.getElementById('filter-tipo-hab').value;
                 if (tipoFiltro && r.tipoHab !== tipoFiltro) return false;
                 return true;
             });
+
             filtered.forEach(r => {
                 const realIdx = rooms.indexOf(r);
                 const titular = r.huespedes.find(h => h.isTitular) || { nombre: '', apellido: '', apellidos: '' };
                 const isActive = r.huespedes.length > 0;
-                const isCheckout = r.status === 'CHECKOUT';
+                const isCheckoutReg = (r.estado_registro || '').toUpperCase().trim() === 'CHECKOUT';
+                const isCheckinReg = (r.estado_registro || '').toUpperCase().trim() === 'CHECKIN';
+                
+                if (realIdx === 0 || isCheckoutReg) {
+                    console.log(`🎨 [COLOR DEBUG] Hab: ${r.id} | Estado: "${r.estado_registro}" | isCheckout: ${isCheckoutReg} | isCheckin: ${isCheckinReg}`);
+                }
+
+                // 🔥 Bloqueo para Mantenimiento (M) o Planta (P)
+                const isBlocked = r.status === 'M' || r.status === 'P';
+                
+                // Si es ADMIN (rol 1), el Checkout NO lo deshabilita. Para otros roles sí.
+                const isDisabledByStatus = (isCheckoutReg && window.userRole !== 1) || isBlocked;
+                
+                const disabledAttr = isDisabledByStatus ? 'disabled' : '';
+                const pointerClass = isDisabledByStatus ? 'opacity-20 pointer-events-none' : '';
+
                 const tr = document.createElement('tr');
                 tr.className = `status-${r.status} transition-all hover:bg-slate-50 ${r.incluir_en_reporte ? 'row-shaded' : ''}`;
                 tr.innerHTML = `
                     <td class="font-black p-0">
                         <div class="status-icon-${r.status} flex items-center justify-center h-full w-full min-h-[48px]">
-                            ${renderSelectStatus(r.status, realIdx)}
+                            ${renderSelectStatus(r, realIdx)}
                         </div>
                     </td>
                     <td class="hidden">${r.registro_id || ''}</td>
                     <td class="text-center font-black text-lg text-slate-800">${r.id}</td>
                     <td class="text-center">
-                        ${renderSelectEstadia(r.tipoEstadia, realIdx, isCheckout)}
+                        ${renderSelectEstadia(r.tipoEstadia, realIdx, isCheckoutReg || isBlocked)}
                     </td>
-                    <td class="text-center font-black"><input type="number" value="${r.dias}" ${isCheckout ? 'disabled' : ''} onchange="updateDays(${realIdx}, this.value)" class="w-full text-center bg-transparent font-black outline-none"></td>
-                    <td class="text-center font-black" ondblclick="editPeople(event, ${realIdx})" title="Doble clic para editar">
-                        <span id="pers-val-${realIdx}" class="cursor-pointer hover:text-blue-600 transition-colors">${r.ocupacion_total}</span>
+                    <td class="text-center font-black">
+                        <input type="number" value="${r.dias}" ${disabledAttr} onchange="updateDays(${realIdx}, this.value)" class="w-full text-center bg-transparent font-black outline-none">
                     </td>
-                    <td class="text-center"><button onclick="openRegister(${realIdx})" class="bg-blue-600 text-white text-[10px] px-4 py-2 rounded-xl font-black active:scale-95 transition-all">REGISTRAR</button></td>
+                    <td class="text-center font-black" ${isBlocked ? '' : `ondblclick="editPeople(event, ${realIdx})"`} title="${isBlocked ? '' : 'Doble clic para editar'}">
+                        <span id="pers-val-${realIdx}" class="${isBlocked ? 'text-slate-300' : 'cursor-pointer hover:text-blue-600'} transition-colors">${r.ocupacion_total}</span>
+                    </td>
+                    <td class="text-center">
+                        <button onclick="openRegister(${realIdx})" ${disabledAttr} 
+                            class="${isCheckoutReg ? 'bg-rose-500 shadow-rose-200' : (isCheckinReg ? 'bg-emerald-500 shadow-emerald-200' : 'bg-blue-600 shadow-blue-200')} text-white text-[10px] px-4 py-2 rounded-xl font-black shadow-md active:scale-95 transition-all ${pointerClass}">
+                            ${isCheckoutReg ? 'CHECKOUT' : (isCheckinReg ? 'VER REGISTRO' : 'REGISTRAR')}
+                        </button>
+                    </td>
                     
-                        <td class="text-center">
+                    <td class="text-center">
                         <div class="flex items-center justify-center space-x-4">
-                            ${renderSelectFormaPago(r.formaPago, realIdx, isCheckout)}
+                            ${renderSelectFormaPago(r.formaPago, realIdx, isCheckoutReg || isBlocked)}
                             <input type="checkbox" 
                                 onchange="toggleReporteYShade(${realIdx}, this.checked)" 
                                 ${r.incluir_en_reporte ? 'checked' : ''} 
-                                class="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 cursor-pointer" 
+                                ${disabledAttr}
+                                class="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 ${isBlocked ? 'opacity-20 cursor-not-allowed' : 'cursor-pointer'}" 
                                 title="Marcar como Pagado / Incluir en Reporte">
                         </div>
                     </td>
-                    <td class="text-right font-black text-blue-700" ondblclick="editPrice(event, ${realIdx})" title="Doble clic para editar">
-                        <span id="price-val-${realIdx}" class="cursor-pointer hover:text-blue-600 transition-colors">${r.precio.toFixed(2)}</span>
+                    <td class="text-right font-black text-blue-700" ${isBlocked ? '' : `ondblclick="editPrice(event, ${realIdx})"`} title="${isBlocked ? '' : 'Doble clic para editar'}">
+                        <span id="price-val-${realIdx}" class="${isBlocked ? 'text-slate-300' : 'cursor-pointer hover:text-blue-600'} transition-colors">${r.precio.toFixed(2)}</span>
                     </td>
                     <td class="text-[10px] font-bold leading-tight text-slate-400">
                         ${r.horaEntrada ? `<div class="font-black text-slate-700">${r.horaEntrada} / ${r.fechaEntrada}</div>` : '-'}
                     </td>
-                    <td class="text-center"><button onclick="stampTime(${realIdx}, 'entrada')" ${isCheckout ? 'disabled' : ''} class="text-blue-500"><i class="fas fa-plus-circle"></i></button></td>
+                    <td class="text-center">
+                        <button onclick="stampTime(${realIdx}, 'entrada')" ${disabledAttr} class="text-blue-500 ${pointerClass}"><i class="fas fa-plus-circle"></i></button>
+                    </td>
                     <td class="text-[10px] font-bold leading-tight text-slate-400">
                         ${r.horaSalida ? `<div class="font-black text-slate-700">${r.horaSalida} / ${r.fechaSalida}</div>` : '-'}
                     </td>
-                    <td class="text-center"><button onclick="stampTime(${realIdx}, 'salida')" ${isCheckout ? 'disabled' : ''} class="text-rose-500"><i class="fas fa-plus-circle"></i></button></td>
+                    <td class="text-center">
+                        <button onclick="stampTime(${realIdx}, 'salida')" ${disabledAttr} class="text-rose-500 ${pointerClass}"><i class="fas fa-plus-circle"></i></button>
+                    </td>
                     <td class="font-black uppercase truncate text-slate-700 max-w-[200px]">${titular.nombre} ${titular.apellido || titular.apellidos || ''}</td>
                     <td class="text-center font-black text-sm ${r.extra > 0 ? 'text-orange-600' : 'text-slate-300'}">${r.extra}</td>
-                    <td class="text-center"><button onclick="openOptionsMenu(${realIdx})" class="bg-slate-900 text-white px-4 py-2 rounded-xl text-[10px] font-black uppercase ${(!isActive && r.status !== 'CHECKOUT') ? 'opacity-20 pointer-events-none' : ''}">Opciones</button></td>
-                    <td class="text-center"><button onclick="openRegistrationTicket(${realIdx})" class="bg-emerald-600 text-white px-4 py-2 rounded-xl text-[10px] font-black uppercase ${(!isActive && r.status !== 'CHECKOUT') ? 'opacity-20 pointer-events-none' : ''}">Ticket</button></td>
+                    <td class="text-center">
+                        <button onclick="openOptionsMenu(${realIdx})" class="bg-slate-900 text-white px-4 py-2 rounded-xl text-[10px] font-black uppercase ${((!isActive && r.status !== 'CHECKOUT') || isBlocked) ? 'opacity-20 pointer-events-none' : ''}">Opciones</button>
+                    </td>
+                    <td class="text-center">
+                        <button onclick="openRegistrationTicket(${realIdx})" class="bg-emerald-600 text-white px-4 py-2 rounded-xl text-[10px] font-black uppercase ${((!isActive && r.status !== 'CHECKOUT') || isBlocked) ? 'opacity-20 pointer-events-none' : ''}">Ticket</button>
+                    </td>
                 `; tbody.appendChild(tr);
             });
-            document.getElementById('count-active').textContent = rooms.filter(r => r.huespedes.length > 0).length;
+            
+            // 🔥 Actualizar contadores en el footer
+            document.getElementById('count-filtered').textContent = filtered.length;
+            document.getElementById('count-total').textContent = totalOnView;
         }
 
-        function renderSelectStatus(currentStatus, realIdx) {
-            let html = `<select onchange="updateStatus(${realIdx}, this.value)" class="bg-transparent font-black text-[11px] uppercase outline-none cursor-pointer text-center min-w-[70px]">`;
+        function renderSelectStatus(r, realIdx) {
+            const hasTitular = r.huespedes && r.huespedes.some(h => h.isTitular);
+            const isSucia = r.status === 'S';
+            const shouldBlock = isSucia && hasTitular;
+
+            let html = `<select onchange="updateStatus(${realIdx}, this.value)" ${shouldBlock ? 'disabled' : ''} class="bg-transparent font-black text-[11px] uppercase outline-none cursor-pointer text-center min-w-[70px] ${shouldBlock ? 'opacity-50 cursor-not-allowed' : ''}">`;
             catalogoEstados.forEach(e => {
-                html += `<option value="${e.codigo}" ${currentStatus === e.codigo ? 'selected' : ''}>${e.nombre}</option>`;
+                html += `<option value="${e.codigo}" ${r.status === e.codigo ? 'selected' : ''}>${e.nombre}</option>`;
             });
             html += `</select>`;
             return html;
@@ -1390,8 +1459,8 @@ window.base_url = "<?= base_url() ?>/";
             rooms[idx].status = val; 
             renderGrid();
             
-            // Mapeo inverso de Código -> ID
-            const mapId = { 'S': 1, 'X': 2, 'M': 3, 'P': 4, 'VAP': 5, 'R': 6 };
+            // Mapeo inverso de Código -> ID (Sincronizado con BD)
+            const mapId = { 'S': 1, 'X': 2, 'M': 3, 'P': 4, 'VAP': 5, 'R': 9 };
             const estadoId = mapId[val] || 1;
             
             try {
@@ -1642,17 +1711,35 @@ window.base_url = "<?= base_url() ?>/";
                 btnCheckout.classList.add('hidden');
             }
 
-            // Configurar visibilidad de botones según estado
             const isCheckout = r.status === 'CHECKOUT';
             const btnNuevo = document.getElementById('btn-nuevo-huesped');
             const btnSincronizar = document.getElementById('btn-sincronizar');
             
+            console.log("🧐 [DEBUG] Habitación:", r.id, "Estado Registro:", r.estado_registro);
+
             if (isCheckout) {
                 if (btnNuevo) btnNuevo.classList.add('hidden');
                 if (btnSincronizar) btnSincronizar.classList.add('hidden');
             } else {
                 if (btnNuevo) btnNuevo.classList.remove('hidden');
-                if (btnSincronizar) btnSincronizar.classList.remove('hidden');
+                if (btnSincronizar) {
+                    btnSincronizar.classList.remove('hidden');
+                    
+                    // 🔥 Bloqueo Robusto (Insensible a mayúsculas/espacios)
+                    const statusReg = (r.estado_registro || '').toUpperCase().trim();
+                    
+                    if (statusReg === 'CHECKIN' || statusReg === 'CHECK-IN') {
+                        btnSincronizar.disabled = true;
+                        btnSincronizar.classList.add('opacity-50', 'cursor-not-allowed');
+                        btnSincronizar.innerHTML = '<i class="fas fa-check-double text-lg"></i><span>Checkin Realizado</span>';
+                        console.log("🚫 Botón Checkin BLOQUEADO para hab", r.id);
+                    } else {
+                        btnSincronizar.disabled = false;
+                        btnSincronizar.classList.remove('opacity-50', 'cursor-not-allowed');
+                        btnSincronizar.innerHTML = '<i class="fas fa-check-circle text-lg"></i><span>Checkin</span>';
+                        console.log("✅ Botón Checkin HABILITADO para hab", r.id);
+                    }
+                }
             }
 
             setTimeout(initSignaturePad, 500);
@@ -2469,11 +2556,26 @@ window.handleClientDBSearch = function(q, mode = 'form') {
         }
 
         async function actualizarEstadoHabitacionAsync(habitacionId, estadoId) {
-            return fetch(base_url + "habitaciones/actualizar-estado", {
+            // 🔥 Buscamos el registro_id de la habitación en el array local
+            const room = rooms.find(r => r.id_db == habitacionId || r.id == habitacionId);
+            const registroId = room ? room.registro_id : null;
+
+            if (!registroId) {
+                console.error("No se encontró registro_id para la habitación", habitacionId);
+                return { ok: false, msg: "No hay un registro activo" };
+            }
+
+            return fetch(base_url + "reservacion/actualizar-campo", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ habitacion_id: habitacionId, estado_id: estadoId })
-            }).then(r => r.json());
+                body: JSON.stringify({ 
+                    registro_id: registroId, 
+                    estado_id: estadoId 
+                })
+            }).then(r => r.json()).then(res => {
+                // Mapeamos success a ok para compatibilidad
+                return { ...res, ok: res.success };
+            });
         }
 
         async function marcarHabitacionLimpiaAsync(habitacionId) {
@@ -2984,6 +3086,16 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 if (!cont) return;
                 
                 cont.innerHTML = '';
+
+                // 🔥 Añadir pestaña TODOS
+                const btnAll = document.createElement("button");
+                btnAll.dataset.floor = 'ALL';
+                btnAll.innerText = "TODOS";
+                btnAll.className = "bg-blue-600 px-5 py-1.5 rounded-lg text-xs font-black shadow-lg";
+                btnAll.onclick = () => changeFloor('ALL');
+                cont.appendChild(btnAll);
+                
+                currentFloor = 'ALL'; // Por defecto ver todos
                 
                 data.forEach((p, i) => {
                     const btn = document.createElement("button");
@@ -2996,13 +3108,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                         btn.innerText = "PISO " + btnText;
                     }
 
-                    if (i === 0) {
-                        btn.className = "bg-blue-600 px-5 py-1.5 rounded-lg text-xs font-black shadow-lg";
-                        currentFloor = p.Piso;
-                    } else {
-                        btn.className = "px-5 py-1.5 rounded-lg text-xs font-bold text-slate-400";
-                    }
-                    
+                    btn.className = "px-5 py-1.5 rounded-lg text-xs font-bold text-slate-400";
                     btn.onclick = () => changeFloor(p.Piso);
                     cont.appendChild(btn);
                 });
@@ -3402,20 +3508,20 @@ if (confirm.isConfirmed) {
             // 2. Persistencia en Servidor (solo si hay un registro activo)
             if (r.registro_id) {
                 try {
-                    const formData = new FormData();
-                    formData.set('registro_id', r.registro_id);
-                    formData.set('incluir_en_reporte', status ? 1 : 0);
-
                     const resp = await fetch(base_url + 'reservacion/actualizar-campo', {
                         method: 'POST',
-                        body: formData
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ 
+                            registro_id: r.registro_id, 
+                            incluir_en_reporte: status ? 1 : 0 
+                        })
                     });
                     
                     if (!resp.ok) throw new Error("Error en servidor");
                     const res = await resp.json();
                     
                     if (res.success) {
-                        showToast(status ? "Pagado / Reporte" : "Pendiente");
+                        showToast(status ? "Agregado a reporte" : "Removido de reporte");
                     } else {
                         console.error("Respuesta error:", res);
                         // No revertimos el visual para no molestar al usuario, 

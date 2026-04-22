@@ -198,6 +198,11 @@ ADD COLUMN incluir_en_reporte TINYINT(1) DEFAULT 0;
 ALTER TABLE registros 
 MODIFY COLUMN incluir_en_reporte TINYINT(1) DEFAULT 0;
 
+ALTER TABLE registros 
+ADD COLUMN estado_id INT DEFAULT 2;
+
+
+
 
 CREATE INDEX idx_reg_habitacion ON registros(habitacion_id);
 CREATE INDEX idx_reg_huesped ON registros(huesped_id);

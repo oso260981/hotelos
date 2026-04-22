@@ -51,6 +51,7 @@ class RegistroModel extends Model
         'niños' ,
         'ocupacion_total',
         'incluir_en_reporte',
+        'estado_id',
 
         'created_at',
         'updated_at'

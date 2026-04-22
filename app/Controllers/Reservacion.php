@@ -1985,13 +1985,13 @@ public function getHabitaciones()
         FROM habitaciones h
         LEFT JOIN registros r 
             ON r.habitacion_id = h.id 
-            AND r.estado_registro IN ('CHECKIN', 'DISPONIBLE')
+            AND r.estado_registro IN ('CHECKIN','CHECKOUT', 'DISPONIBLE')
         INNER JOIN habitaciones_tipos hp 
             ON hp.id = h.tipo_habitacion_id
         INNER JOIN pisos p 
             ON p.id = h.piso_id
         LEFT JOIN estados_habitacion eh 
-            ON eh.id = h.estado_id
+            ON eh.id = r.estado_id
         LEFT JOIN huespedes hu 
             ON hu.id = r.huesped_id
         WHERE h.activa = 1
@@ -2115,6 +2115,7 @@ public function getHabitaciones()
             // 👤 HUESPEDES
             'huespedes'     => $huespedes,
             'nombre_huesped'=> trim($r['nombre_huesped']),
+            'estado_registro_val'=> trim($r['estado_registro_val']),
             'observaciones' => $r['observaciones'],
             'sombreado'     => 0,
 
@@ -2284,6 +2285,11 @@ public function estadosHabitacion()
                 $updateData['incluir_en_reporte'] = intval($datos['incluir_en_reporte']);
             }
 
+            // 🔥 NUEVO: Soporte para Estado (Estatus)
+            if (isset($datos['estado_id'])) {
+                $updateData['estado_id'] = intval($datos['estado_id']);
+            }
+
             // Soporte para formato campo/valor
             if (isset($datos['campo']) && isset($datos['valor'])) {
                 $updateData[$datos['campo']] = $datos['valor'];
@@ -2293,7 +2299,18 @@ public function estadosHabitacion()
                 return $this->response->setJSON(["success" => false, "msg" => "No hay campos para actualizar"]);
             }
 
-            $ok = $model->update($registroId, $updateData);
+            // 🛠 DEBUG: Loguear lo que vamos a guardar
+            file_put_contents(WRITEPATH . 'db_errors.log', "Updating ID: $registroId Data: " . json_encode($updateData) . PHP_EOL, FILE_APPEND);
+
+            $ok = false;
+            try {
+                $ok = $model->update($registroId, $updateData);
+                if (!$ok) {
+                    file_put_contents(WRITEPATH . 'db_errors.log', "❌ DB Errors: " . json_encode($model->errors()) . PHP_EOL, FILE_APPEND);
+                }
+            } catch (\Exception $e) {
+                file_put_contents(WRITEPATH . 'db_errors.log', "🔥 Exception: " . $e->getMessage() . PHP_EOL, FILE_APPEND);
+            }
 
             return $this->response->setJSON([
                 "success" => $ok, 
