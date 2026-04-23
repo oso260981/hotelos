@@ -1219,13 +1219,13 @@
             { id: 'registro_id', label: 'ID Reg', w: '0px', filter: 'none', hidden: true },
             { id: 'id', label: 'Hab', w: '80px', filter: 'select', multi: true },
             { id: 'stay', label: 'Estadía', w: '100px', filter: 'select', multi: true },
-            { id: 'days', label: 'Días', w: '70px', filter: 'text' },
+            { id: 'days', label: 'Días', w: '70px', filter: 'range' },
             { id: 'people', label: 'Personas', w: '130px', filter: 'text' },
-            { id: 'payment', label: 'Pago', w: '120px', filter: 'select' },
-            { id: 'price', label: 'Precio', w: '110px', filter: 'text' },
+            { id: 'payment', label: 'Pago', w: '120px', filter: 'select', multi: true },
+            { id: 'price', label: 'Precio', w: '110px', filter: 'range' },
             { id: 'reg', label: 'Registro', w: '120px', filter: 'text' },
-            { id: 'titular', label: 'Huesped principal', w: '250px', filter: 'text' },
-            { id: 'extra', label: 'Extra', w: '80px', filter: 'text' },
+            { id: 'titular', label: 'Huesped principal', w: '250px', filter: 'select', multi: true },
+            { id: 'extra', label: 'Extra', w: '80px', filter: 'select', multi: true },
             { id: 'btn_e', label: '+', w: '60px', filter: 'none' },
             { id: 'h_ent', label: 'Entrada', w: '120px', filter: 'none' },
             { id: 'h_sal', label: 'Salida', w: '120px', filter: 'none' },
@@ -1258,11 +1258,17 @@
                 if (!th) return;
                 const iconCont = th.querySelector('.sort-icon-container');
                 if (iconCont) {
-                    if (currentSort.col === col.id) {
-                        iconCont.innerHTML = currentSort.order === 'asc' ? '<i class="fas fa-sort-up text-blue-500"></i>' : '<i class="fas fa-sort-down text-blue-500"></i>';
-                        th.classList.add('bg-blue-50/30');
+                    const isSortable = !['btn_e', 'btn_s', 'opt', 'acciones'].includes(col.id);
+                    if (isSortable) {
+                        if (currentSort.col === col.id) {
+                            iconCont.innerHTML = currentSort.order === 'asc' ? '<i class="fas fa-sort-up text-blue-500"></i>' : '<i class="fas fa-sort-down text-blue-500"></i>';
+                            th.classList.add('bg-blue-50/30');
+                        } else {
+                            iconCont.innerHTML = '<i class="fas fa-sort opacity-10"></i>';
+                            th.classList.remove('bg-blue-50/30');
+                        }
                     } else {
-                        iconCont.innerHTML = '<i class="fas fa-sort opacity-10"></i>';
+                        iconCont.innerHTML = '';
                         th.classList.remove('bg-blue-50/30');
                     }
                 }
@@ -1385,13 +1391,42 @@
                     } else {
                         filterHtml = `<div class="filter-dropdown"><p class="text-[9px] font-black uppercase mb-2 text-blue-600">Categoría</p><select class="bg-slate-100 p-2 rounded text-xs w-full font-bold" onchange="updateFilter('${col.id}', this.value)" onclick="event.stopPropagation()"><option value="">Todos</option>${getOptionsFor(col.id)}</select></div>`;
                     }
+                } else if (col.filter === 'range') {
+                    const current = activeFilters[col.id] || { min: '', max: '' };
+                    filterHtml = `
+                        <div class="filter-dropdown p-4 min-w-[200px]">
+                            <p class="text-[9px] font-black uppercase mb-3 text-indigo-600 border-b border-indigo-50 pb-2">Rango de ${col.label}</p>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <p class="text-[8px] font-bold text-slate-400 mb-1 uppercase">Mínimo</p>
+                                    <input type="number" 
+                                        value="${current.min}"
+                                        placeholder="0" 
+                                        oninput="updateRangeFilter('${col.id}', 'min', this.value)"
+                                        onclick="event.stopPropagation()"
+                                        class="w-full bg-slate-50 border-none rounded-lg py-1.5 px-3 text-[10px] font-black text-indigo-600 focus:ring-2 focus:ring-indigo-100 transition-all">
+                                </div>
+                                <div>
+                                    <p class="text-[8px] font-bold text-slate-400 mb-1 uppercase">Máximo</p>
+                                    <input type="number" 
+                                        value="${current.max}"
+                                        placeholder="999+" 
+                                        oninput="updateRangeFilter('${col.id}', 'max', this.value)"
+                                        onclick="event.stopPropagation()"
+                                        class="w-full bg-slate-50 border-none rounded-lg py-1.5 px-3 text-[10px] font-black text-indigo-600 focus:ring-2 focus:ring-indigo-100 transition-all">
+                                </div>
+                            </div>
+                        </div>
+                    `;
                 }
 
                 // Header content with Sort icon
+                const isSortable = !['btn_e', 'btn_s', 'opt', 'acciones'].includes(col.id);
                 th.innerHTML = `
-                    <div class="flex items-center justify-center space-x-2 cursor-pointer" onclick="toggleSort('${col.id}')">
+                    <div class="flex items-center justify-center space-x-2 ${isSortable ? 'cursor-pointer' : 'cursor-default'}" 
+                         ${isSortable ? `onclick="toggleSort('${col.id}')"` : ''}>
                         <span class="sort-icon-container">
-                            <i class="fas fa-sort opacity-10"></i>
+                            ${isSortable ? '<i class="fas fa-sort opacity-10"></i>' : ''}
                         </span>
                         <span>${col.label}</span>
                         ${col.filter !== 'none' ? '<i class="fas fa-filter text-[8px] opacity-40 ml-1"></i>' : ''}
@@ -1441,14 +1476,38 @@
             }
 
             if (colId === 'stay') {
-                const options = [
-                    { val: 'S', label: 'S (Hoy)' },
-                    { val: 'SQ', label: 'SQ (Se queda)' },
-                    { val: 'P', label: 'P (Pasajero)' }
-                ];
-                options.forEach(opt => {
-                    const isChecked = currentVals.includes(opt.val);
-                    html += renderMultiOption(colId, opt.val, opt.label, isChecked);
+                catalogoTiposEstadia.forEach(te => {
+                    const isChecked = currentVals.includes(te.id.toString());
+                    html += renderMultiOption(colId, te.id, `${te.codigo} (${te.nombre})`, isChecked);
+                });
+                return html;
+            }
+
+            if (colId === 'payment') {
+                catalogoFormasPago.forEach(fp => {
+                    const isChecked = currentVals.includes(fp.id.toString());
+                    html += renderMultiOption(colId, fp.id, `${fp.codigo} (${fp.descripcion})`, isChecked);
+                });
+                return html;
+            }
+
+            if (colId === 'titular') {
+                const names = [...new Set(rooms.map(r => {
+                    const tit = r.huespedes.find(h => h.isTitular);
+                    return tit ? `${tit.nombre} ${tit.apellido || tit.apellidos || ''}`.trim() : '';
+                }))].filter(n => n !== '').sort();
+                names.forEach(name => {
+                    const isChecked = currentVals.includes(name);
+                    html += renderMultiOption(colId, name, name, isChecked);
+                });
+                return html;
+            }
+
+            if (colId === 'extra') {
+                const extras = [...new Set(rooms.map(r => Math.max(0, r.huespedes.length - r.capacidad).toString()))].sort((a,b) => a-b);
+                extras.forEach(ex => {
+                    const isChecked = currentVals.includes(ex);
+                    html += renderMultiOption(colId, ex, ex, isChecked);
                 });
                 return html;
             }
@@ -1485,11 +1544,27 @@
             });
         }
 
+        function updateRangeFilter(colId, type, val) {
+            if (!activeFilters[colId]) activeFilters[colId] = { min: '', max: '' };
+            activeFilters[colId][type] = val;
+            renderGrid();
+        }
+
         function selectAllMultiFilter(colId, select) {
             if (select) {
                 if (colId === 'status') activeFilters[colId] = catalogoEstados.map(e => e.codigo);
                 if (colId === 'id') activeFilters[colId] = [...new Set(rooms.map(r => r.id))];
-                if (colId === 'stay') activeFilters[colId] = ['S', 'SQ', 'P'];
+                if (colId === 'stay') activeFilters[colId] = catalogoTiposEstadia.map(te => te.id.toString());
+                if (colId === 'payment') activeFilters[colId] = catalogoFormasPago.map(fp => fp.id.toString());
+                if (colId === 'titular') {
+                    activeFilters[colId] = [...new Set(rooms.map(r => {
+                        const tit = r.huespedes.find(h => h.isTitular);
+                        return tit ? `${tit.nombre} ${tit.apellido || tit.apellidos || ''}`.trim() : '';
+                    }))].filter(n => n !== '');
+                }
+                if (colId === 'extra') {
+                    activeFilters[colId] = [...new Set(rooms.map(r => Math.max(0, r.huespedes.length - r.capacidad).toString()))];
+                }
             } else {
                 activeFilters[colId] = [];
             }
@@ -1597,16 +1672,49 @@
 
                 // Multi-select Estadía Filter
                 if (Array.isArray(activeFilters.stay) && activeFilters.stay.length > 0) {
-                    if (!activeFilters.stay.includes(r.tipoEstadia)) return false;
-                } else if (typeof activeFilters.stay === 'string' && activeFilters.stay !== '' && r.tipoEstadia !== activeFilters.stay) {
+                    if (!activeFilters.stay.includes(r.tipoEstadia.toString())) return false;
+                } else if (typeof activeFilters.stay === 'string' && activeFilters.stay !== '' && r.tipoEstadia.toString() !== activeFilters.stay) {
                     return false;
                 }
-                if (activeFilters.titular && !titular.toLowerCase().includes(activeFilters.titular.toLowerCase())) return false;
-                if (activeFilters.payment && r.formaPago !== activeFilters.payment) return false;
-                if (activeFilters.days && r.dias.toString() !== activeFilters.days) return false;
-                if (activeFilters.people && r.huespedes.length.toString() !== activeFilters.people) return false;
-                if (activeFilters.price && !r.precio.toString().includes(activeFilters.price)) return false;
-                if (activeFilters.extra && Math.max(0, r.huespedes.length - r.capacidad).toString() !== activeFilters.extra) return false;
+                if (activeFilters.titular) {
+                    if (Array.isArray(activeFilters.titular) && activeFilters.titular.length > 0) {
+                        if (!activeFilters.titular.includes(titular)) return false;
+                    } else if (typeof activeFilters.titular === 'string' && activeFilters.titular !== '' && !titular.toLowerCase().includes(activeFilters.titular.toLowerCase())) {
+                        return false;
+                    }
+                }
+
+                if (activeFilters.payment) {
+                    if (Array.isArray(activeFilters.payment) && activeFilters.payment.length > 0) {
+                        if (!activeFilters.payment.includes(r.formaPago.toString())) return false;
+                    } else if (typeof activeFilters.payment === 'string' && activeFilters.payment !== '' && r.formaPago !== activeFilters.payment) {
+                        return false;
+                    }
+                }
+
+                if (activeFilters.extra) {
+                    const extraCount = Math.max(0, r.huespedes.length - r.capacidad).toString();
+                    if (Array.isArray(activeFilters.extra) && activeFilters.extra.length > 0) {
+                        if (!activeFilters.extra.includes(extraCount)) return false;
+                    } else if (typeof activeFilters.extra === 'string' && activeFilters.extra !== '' && extraCount !== activeFilters.extra) {
+                        return false;
+                    }
+                }
+
+                // Range Filters for Days and Price
+                if (activeFilters.days) {
+                    const val = parseInt(r.dias) || 0;
+                    const { min, max } = activeFilters.days;
+                    if (min !== '' && val < parseInt(min)) return false;
+                    if (max !== '' && val > parseInt(max)) return false;
+                }
+
+                if (activeFilters.price) {
+                    const val = parseFloat(r.precio) || 0;
+                    const { min, max } = activeFilters.price;
+                    if (min !== '' && val < parseFloat(min)) return false;
+                    if (max !== '' && val > parseFloat(max)) return false;
+                }
                 
                 // 🔥 Filtro por Registro (Boton de Checkout/Registrar o ID)
                 if (activeFilters.reg) {
