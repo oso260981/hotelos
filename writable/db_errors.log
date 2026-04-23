@@ -26,3 +26,14 @@ Updating ID: 3 Data: {"precio":246.13,"precio_base":246.13,"iva":39.38,"ish":8.6
 Updating ID: 3 Data: {"precio":492.25,"precio_base":246.13,"iva":78.76,"ish":17.23,"total":588.24,"noches":2,"tipo_estadia_id":"2","forma_pago_id":null}
 Updating ID: 89 Data: {"precio":0,"precio_base":0,"iva":0,"ish":0,"total":0,"noches":1,"tipo_estadia_id":"1","forma_pago_id":null}
 Updating ID: 89 Data: {"precio":0,"precio_base":0,"iva":0,"ish":0,"total":0,"noches":2,"tipo_estadia_id":"1","forma_pago_id":null}
+Updating ID: 129 Data: {"precio":1673.64,"precio_base":836.82,"iva":267.78,"ish":58.58,"total":2000,"noches":2,"tipo_estadia_id":"2","forma_pago_id":"2"}
+Updating ID: 129 Data: {"precio":1673.64,"precio_base":836.82,"iva":267.78,"ish":58.58,"total":2000,"noches":2,"tipo_estadia_id":"2","forma_pago_id":"2"}
+Updating ID: 1 Data: {"precio":588.24,"precio_base":294.12,"iva":94.12,"ish":20.59,"total":702.95,"noches":2,"tipo_estadia_id":"3","forma_pago_id":"1"}
+Updating ID: 1 Data: {"precio":588.24,"precio_base":294.12,"iva":94.12,"ish":20.59,"total":702.95,"noches":2,"tipo_estadia_id":"3","forma_pago_id":"1"}
+Updating ID: 130 Data: {"precio":294.12,"precio_base":294.12,"iva":47.06,"ish":10.29,"total":351.47,"noches":1,"tipo_estadia_id":"2","forma_pago_id":"2"}
+Updating ID: 130 Data: {"precio":294.12,"precio_base":294.12,"iva":47.06,"ish":10.29,"total":351.47,"noches":1,"tipo_estadia_id":"2","forma_pago_id":"2"}
+Updating ID: 131 Data: {"precio":836.82,"precio_base":418.41,"iva":133.89,"ish":29.29,"total":1000,"noches":2,"tipo_estadia_id":"1","forma_pago_id":"2"}
+Updating ID: 131 Data: {"precio":836.82,"precio_base":418.41,"iva":133.89,"ish":29.29,"total":1000,"noches":2,"tipo_estadia_id":"1","forma_pago_id":"2"}
+Updating ID: 131 Data: {"precio":836.82,"precio_base":418.41,"iva":133.89,"ish":29.29,"total":1000,"noches":2,"tipo_estadia_id":"1","forma_pago_id":"2","adultos":2,"ni\u00f1os":0}
+Updating ID: 131 Data: {"precio":836.82,"precio_base":418.41,"iva":133.89,"ish":29.29,"total":1000,"noches":2,"tipo_estadia_id":"1","forma_pago_id":"2","adultos":3,"ni\u00f1os":0}
+Updating ID: 7 Data: {"estado_id":1}

@@ -1215,12 +1215,12 @@
         let catalogoEstados = []; // 🔥 Catálogo dinámico de estados
 
         const gridCols = [
-            { id: 'status', label: 'Estatus', w: '120px', filter: 'select' },
+            { id: 'status', label: 'Estatus', w: '120px', filter: 'select', multi: true },
             { id: 'registro_id', label: 'ID Reg', w: '0px', filter: 'none', hidden: true },
-            { id: 'id', label: 'Hab', w: '80px', filter: 'text' },
-            { id: 'stay', label: 'Estadía', w: '100px', filter: 'select' },
+            { id: 'id', label: 'Hab', w: '80px', filter: 'select', multi: true },
+            { id: 'stay', label: 'Estadía', w: '100px', filter: 'select', multi: true },
             { id: 'days', label: 'Días', w: '70px', filter: 'text' },
-            { id: 'people', label: 'Personas', w: '70px', filter: 'text' },
+            { id: 'people', label: 'Personas', w: '130px', filter: 'text' },
             { id: 'payment', label: 'Pago', w: '120px', filter: 'select' },
             { id: 'price', label: 'Precio', w: '110px', filter: 'text' },
             { id: 'reg', label: 'Registro', w: '120px', filter: 'text' },
@@ -1230,9 +1230,8 @@
             { id: 'h_ent', label: 'Entrada', w: '120px', filter: 'none' },
             { id: 'h_sal', label: 'Salida', w: '120px', filter: 'none' },
             { id: 'btn_s', label: '+', w: '60px', filter: 'none' },
-            { id: 'acciones', label: 'SALIDA', w: '110px', filter: 'none' },
-            { id: 'opt', label: 'Opciones', w: '110px', filter: 'none' },
-            { id: 'ticket', label: 'Ticket', w: '60px', filter: 'none' }
+            { id: 'acciones', label: 'CHECKOUT', w: '110px', filter: 'none' },
+            { id: 'opt', label: 'Opciones', w: '110px', filter: 'none' }
         ];
 
         const activeFilters = {};
@@ -1240,7 +1239,7 @@
 
         function toggleSort(colId) {
             // No ordenar columnas de acciones
-            if (['btn_e', 'btn_s', 'opt', 'ticket'].includes(colId)) return;
+            if (['btn_e', 'btn_s', 'opt'].includes(colId)) return;
 
             if (currentSort.col === colId) {
                 currentSort.order = currentSort.order === 'asc' ? 'desc' : 'asc';
@@ -1374,7 +1373,18 @@
                 if (col.filter === 'text') {
                     filterHtml = `<div class="filter-dropdown"><p class="text-[9px] font-black uppercase mb-2 text-blue-600">Buscar en ${col.label}</p><input type="text" class="bg-slate-100 p-2 rounded text-xs w-full font-bold" oninput="updateFilter('${col.id}', this.value)" placeholder="..." onclick="event.stopPropagation()"></div>`;
                 } else if (col.filter === 'select') {
-                    filterHtml = `<div class="filter-dropdown"><p class="text-[9px] font-black uppercase mb-2 text-blue-600">Categoría</p><select class="bg-slate-100 p-2 rounded text-xs w-full font-bold" onchange="updateFilter('${col.id}', this.value)" onclick="event.stopPropagation()"><option value="">Todos</option>${getOptionsFor(col.id)}</select></div>`;
+                    if (col.multi) {
+                        filterHtml = `
+                            <div class="filter-dropdown p-4 min-w-[180px]">
+                                <p class="text-[9px] font-black uppercase mb-3 text-blue-600 border-b border-blue-100 pb-2">Selección Múltiple</p>
+                                <div class="space-y-2 max-h-48 overflow-y-auto custom-scrollbar">
+                                    ${getMultiOptionsFor(col.id)}
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        filterHtml = `<div class="filter-dropdown"><p class="text-[9px] font-black uppercase mb-2 text-blue-600">Categoría</p><select class="bg-slate-100 p-2 rounded text-xs w-full font-bold" onchange="updateFilter('${col.id}', this.value)" onclick="event.stopPropagation()"><option value="">Todos</option>${getOptionsFor(col.id)}</select></div>`;
+                    }
                 }
 
                 // Header content with Sort icon
@@ -1391,6 +1401,110 @@
                 headerRow.appendChild(th);
             });
             updateSortUI();
+        }
+
+        function getMultiOptionsFor(colId) {
+            let html = `
+                <div class="mb-3">
+                    <div class="flex items-center justify-between mb-2 border-b border-slate-50 pb-2 px-1">
+                        <button onclick="selectAllMultiFilter('${colId}', true)" class="text-[8px] font-black uppercase tracking-widest text-indigo-500 hover:text-indigo-700 transition-all">Todos</button>
+                        <button onclick="selectAllMultiFilter('${colId}', false)" class="text-[8px] font-black uppercase tracking-widest text-slate-400 hover:text-rose-500 transition-all">Resetear</button>
+                    </div>
+                    <div class="relative px-1">
+                        <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-[10px] text-slate-300"></i>
+                        <input type="text" 
+                            placeholder="Buscar..." 
+                            oninput="filterMultiOptions('${colId}', this.value)"
+                            onclick="event.stopPropagation()"
+                            class="w-full bg-slate-50 border-none rounded-lg py-1.5 pl-8 pr-3 text-[10px] font-black text-slate-700 focus:ring-2 focus:ring-indigo-100 placeholder-slate-300 transition-all">
+                    </div>
+                </div>
+            `;
+            const currentVals = activeFilters[colId] || [];
+
+            if (colId === 'status') {
+                catalogoEstados.forEach(e => {
+                    const isChecked = currentVals.includes(e.codigo);
+                    html += renderMultiOption(colId, e.codigo, e.nombre, isChecked);
+                });
+                return html;
+            }
+
+            if (colId === 'id') {
+                // Obtener números únicos de habitación y ordenar
+                const roomNums = [...new Set(rooms.map(r => r.id))].sort((a, b) => a.localeCompare(b));
+                roomNums.forEach(num => {
+                    const isChecked = currentVals.includes(num);
+                    html += renderMultiOption(colId, num, num, isChecked);
+                });
+                return html;
+            }
+
+            if (colId === 'stay') {
+                const options = [
+                    { val: 'S', label: 'S (Hoy)' },
+                    { val: 'SQ', label: 'SQ (Se queda)' },
+                    { val: 'P', label: 'P (Pasajero)' }
+                ];
+                options.forEach(opt => {
+                    const isChecked = currentVals.includes(opt.val);
+                    html += renderMultiOption(colId, opt.val, opt.label, isChecked);
+                });
+                return html;
+            }
+            return '';
+        }
+
+        function renderMultiOption(colId, val, label, isChecked) {
+            return `
+                <label class="multi-opt-${colId} flex items-center space-x-2.5 cursor-pointer group py-1.5 px-2 rounded-lg transition-all ${isChecked ? 'bg-indigo-50/50' : 'hover:bg-slate-50'}" 
+                    data-val="${val.toString().toLowerCase()}"
+                    data-label="${label.toString().toLowerCase()}"
+                    onclick="event.stopPropagation()">
+                    <div class="relative flex items-center justify-center">
+                        <input type="checkbox" ${isChecked ? 'checked' : ''} 
+                            onchange="toggleMultiFilter('${colId}', '${val}', this.checked)"
+                            class="w-3.5 h-3.5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer transition-all">
+                    </div>
+                    <span class="text-[9px] font-black uppercase tracking-tight ${isChecked ? 'text-indigo-600' : 'text-slate-500'} group-hover:text-indigo-600 transition-colors">${label}</span>
+                </label>
+            `;
+        }
+
+        function filterMultiOptions(colId, query) {
+            const q = query.toLowerCase();
+            const options = document.querySelectorAll(`.multi-opt-${colId}`);
+            options.forEach(opt => {
+                const label = opt.getAttribute('data-label') || '';
+                const val = opt.getAttribute('data-val') || '';
+                if (label.includes(q) || val.includes(q)) {
+                    opt.classList.remove('hidden');
+                } else {
+                    opt.classList.add('hidden');
+                }
+            });
+        }
+
+        function selectAllMultiFilter(colId, select) {
+            if (select) {
+                if (colId === 'status') activeFilters[colId] = catalogoEstados.map(e => e.codigo);
+                if (colId === 'id') activeFilters[colId] = [...new Set(rooms.map(r => r.id))];
+                if (colId === 'stay') activeFilters[colId] = ['S', 'SQ', 'P'];
+            } else {
+                activeFilters[colId] = [];
+            }
+            buildHeader();
+            renderGrid();
+        }
+
+        function toggleMultiFilter(colId, val, checked) {
+            if (!activeFilters[colId]) activeFilters[colId] = [];
+            if (checked) {
+                if (!activeFilters[colId].includes(val)) activeFilters[colId].push(val);
+            } else {
+                activeFilters[colId] = activeFilters[colId].filter(v => v !== val);
+            }
+            renderGrid();
         }
 
         function getOptionsFor(colId) {
@@ -1467,9 +1581,26 @@
                 // Global Search
                 if (search && !r.id.includes(search) && !titular.toLowerCase().includes(search)) return false;
 
-                if (activeFilters.status && r.status !== activeFilters.status) return false;
-                if (activeFilters.id && !r.id.includes(activeFilters.id)) return false;
-                if (activeFilters.stay && r.tipoEstadia !== activeFilters.stay) return false;
+                // Multi-select Status Filter
+                if (Array.isArray(activeFilters.status) && activeFilters.status.length > 0) {
+                    if (!activeFilters.status.includes(r.status)) return false;
+                } else if (typeof activeFilters.status === 'string' && activeFilters.status !== '' && r.status !== activeFilters.status) {
+                    return false;
+                }
+
+                // Multi-select Hab Filter
+                if (Array.isArray(activeFilters.id) && activeFilters.id.length > 0) {
+                    if (!activeFilters.id.includes(r.id)) return false;
+                } else if (typeof activeFilters.id === 'string' && activeFilters.id !== '' && !r.id.includes(activeFilters.id)) {
+                    return false;
+                }
+
+                // Multi-select Estadía Filter
+                if (Array.isArray(activeFilters.stay) && activeFilters.stay.length > 0) {
+                    if (!activeFilters.stay.includes(r.tipoEstadia)) return false;
+                } else if (typeof activeFilters.stay === 'string' && activeFilters.stay !== '' && r.tipoEstadia !== activeFilters.stay) {
+                    return false;
+                }
                 if (activeFilters.titular && !titular.toLowerCase().includes(activeFilters.titular.toLowerCase())) return false;
                 if (activeFilters.payment && r.formaPago !== activeFilters.payment) return false;
                 if (activeFilters.days && r.dias.toString() !== activeFilters.days) return false;
@@ -1580,7 +1711,11 @@
                             <button onclick="changePeople(${realIdx}, -1)" ${disabledAttr} class="w-6 h-6 flex items-center justify-center rounded-lg bg-rose-50 text-rose-600 hover:bg-rose-100 active:scale-90 transition-all">
                                 <i class="fas fa-minus text-[8px]"></i>
                             </button>
-                            <span id="pers-val-${realIdx}" class="w-6 text-center font-black text-xs text-slate-700">${r.ocupacion_total}</span>
+                            <div id="pers-val-${realIdx}" class="flex items-center justify-center space-x-1 min-w-[50px]">
+                                ${r.adultos > 0 ? `<span class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-black shadow-sm" title="Adultos">${r.adultos}A</span>` : ''}
+                                ${r.ninos > 0 ? `<span class="bg-orange-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-black shadow-sm" title="Niños">${r.ninos}N</span>` : ''}
+                                ${(r.adultos === 0 && r.ninos === 0) ? `<span class="text-slate-300 font-black text-[10px]">0</span>` : ''}
+                            </div>
                             <button onclick="changePeople(${realIdx}, 1)" ${disabledAttr} class="w-6 h-6 flex items-center justify-center rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-100 active:scale-90 transition-all">
                                 <i class="fas fa-plus text-[8px]"></i>
                             </button>
@@ -1630,11 +1765,6 @@
                     </td>
                     <td class="text-center">
                         <button onclick="openOptionsMenu(${realIdx})" class="bg-slate-900 text-white px-4 py-2 rounded-xl text-[10px] font-black uppercase ${((!isActive && r.status !== 'CHECKOUT') || isBlocked) ? 'opacity-20 pointer-events-none' : ''}">Opciones</button>
-                    </td>
-                    <td class="text-center">
-                        <button onclick="openRegistrationTicket(${realIdx})" class="text-slate-500 hover:text-slate-900 transition-colors">
-                            <i class="fas fa-print"></i>
-                        </button>
                     </td>
                 `; tbody.appendChild(tr);
             });
@@ -1792,7 +1922,9 @@
                     noches: r.dias,
                     precio: r.precio,
                     tipo_estadia_id: r.tipoEstadia || '',
-                    forma_pago_id: r.formaPago || ''
+                    forma_pago_id: r.formaPago || '',
+                    adultos: r.adultos,
+                    ninos: r.ninos
                 };
 
                 console.log("📤 [DEBUG SYNC] Enviando JSON:", payload);
@@ -1804,6 +1936,16 @@
                 });
                 const data = await response.json();
                 if (!data.success) throw new Error(data.msg || "Error desconocido");
+
+                // 🔥 Sincronizar cálculos del servidor con el objeto local para que el ticket sea correcto
+                if (data.data) {
+                    if (data.data.precio !== undefined)      r.precio_reg  = data.data.precio;
+                    if (data.data.iva !== undefined)         r.iva_reg     = data.data.iva;
+                    if (data.data.ish !== undefined)         r.ish_reg     = data.data.ish;
+                    if (data.data.total !== undefined)       r.precio      = data.data.total;
+                    if (data.data.precio_base !== undefined) r.precio_base = data.data.precio_base;
+                }
+
                 showToast("✔ Sincronizado en BD");
             } catch (e) {
                 console.error(e);
@@ -1873,8 +2015,9 @@
             el.classList.remove('modal-active');
 
             if (optionsMenuCaller && (id !== 'modal-options-menu')) {
+                const noReopen = ['modal-cambio', 'modal-roomservice'].includes(id);
                 optionsMenuCaller = false;
-                if (selectedRoomIdx !== null) openOptionsMenu(selectedRoomIdx);
+                if (selectedRoomIdx !== null && !noReopen) openOptionsMenu(selectedRoomIdx);
             }
             renderGrid();
         }
@@ -2571,6 +2714,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                         parentesco: a.parentesco || '',
                         es_menor: a.es_menor || 0,
                         es_extra: a.es_extra || 0,
+                        Responsable_menor: a.Responsable_menor || null,
                         fotografia: a.fotografia || null,
                         identificacion: a.identificacion || null
                     }))
@@ -2695,8 +2839,8 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 body: JSON.stringify(payload)
             });
             const resp = await response.json();
-            if (!resp.success) throw new Error(resp.msg || "Error al guardar registro");
-            return { ...resp, ok: resp.success };
+            if (!resp.ok) throw new Error(resp.msg || "Error al guardar registro");
+            return { ...resp, ok: resp.ok };
         }
 
         async function verSalidas() {
@@ -3091,11 +3235,12 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             // Nombre completo (priorizar titular_full del servidor)
             const nombreCompleto = r.titular_full || (t ? t.nombre + ' ' + (t.apellidos || '') : 'SIN NOMBRE');
 
-            // Usar datos del servidor si existen, si no calcular localmente (FALLBACK)
-            const subtotal = r.precio_reg || (parseFloat(r.precio_base) * (r.dias || 1)) || 0;
+            // 🔥 Lógica de Impuestos Alineada con Backend
+            // Si tenemos precio_reg (subtotal) lo usamos, si no calculamos desde el total actual (r.precio)
+            const subtotal = r.precio_reg || (r.precio / 1.195) || (parseFloat(r.precio_base) * (r.dias || 1)) || 0;
             const iva = r.iva_reg || (subtotal * 0.16);
-            const ish = r.ish_reg || (subtotal * 0.03);
-            const total = subtotal + iva + ish;
+            const ish = r.ish_reg || (subtotal * 0.035);
+            const total = r.precio || (subtotal + iva + ish);
 
             document.getElementById('btn-final-action').textContent = "Imprimir Ticket";
             document.getElementById('preview-content').innerHTML = `
@@ -3144,7 +3289,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                             <span>$${iva.toFixed(2)}</span>
                         </div>
                         <div class="ticket-row">
-                            <span>ISH (3%):</span>
+                            <span>ISH (3.5%):</span>
                             <span>$${ish.toFixed(2)}</span>
                         </div>
                     </div>

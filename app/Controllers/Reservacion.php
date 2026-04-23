@@ -139,7 +139,7 @@ public function listar_formas_pago()
 
             $total = floatval($json['total']);
             $ivaRate = 0.16;
-            $ishRate = 0.03;
+            $ishRate = 0.035;
 
             $base = $total / (1 + $ivaRate + $ishRate);
             $iva  = round($base * $ivaRate, 2);
@@ -158,6 +158,7 @@ public function listar_formas_pago()
 
         return $this->response->setJSON([
             "ok" => true,
+            "success" => true,
             "registro_id" => $id,
             "datos" => $data
         ]);
@@ -2186,6 +2187,9 @@ public function getHabitaciones()
             ra.registro_id     AS registro_id,
             ra.nombre          AS nombre,
             ra.apellido        AS apellidos,
+            ra.parentesco      AS parentesco,
+            ra.es_menor        AS es_menor,
+            ra.Responsable_menor AS Responsable_menor,
             ra.numero_identificacion AS idNum,
             ra.fotografia      AS fotografia,
             ra.identificacion  AS identificacion,
@@ -2212,6 +2216,9 @@ public function getHabitaciones()
         $mapAcomp[$a['registro_id']][] = [
             'nombre'         => $a['nombre'],
             'apellidos'      => $a['apellidos'],
+            'parentesco'     => $a['parentesco'],
+            'es_menor'       => $a['es_menor'],
+            'Responsable_menor' => $a['Responsable_menor'],
             'isTitular'      => false,
             'placas'         => '',
             'idNum'          => $a['idNum'],
@@ -2468,6 +2475,14 @@ public function estadosHabitacion()
             // 🔥 NUEVO: Soporte para Estado (Estatus)
             if (isset($datos['estado_id'])) {
                 $updateData['estado_id'] = intval($datos['estado_id']);
+            }
+            
+            // 🔥 NUEVO: Soporte para conteo de personas
+            if (isset($datos['adultos'])) {
+                $updateData['adultos'] = intval($datos['adultos']);
+            }
+            if (isset($datos['ninos'])) {
+                $updateData['niños'] = intval($datos['ninos']);
             }
 
             // Soporte para formato campo/valor
