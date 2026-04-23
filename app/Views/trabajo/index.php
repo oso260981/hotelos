@@ -533,6 +533,13 @@
                         <span>Checkin</span>
                     </button>
 
+                    <!-- 🔥 BOTÓN DE CANCELAR ESTADÍA -->
+                    <button id="btn-cancelar-registro" onclick="cancelarRegistroActual()"
+                        class="bg-rose-50 text-rose-700 px-10 py-6 rounded-[2.5rem] font-black uppercase text-xs shadow-sm hover:bg-rose-100 active:scale-95 transition-all flex items-center justify-center space-x-3 flex-1 w-full md:w-auto border border-rose-100">
+                        <i class="fas fa-ban text-lg"></i>
+                        <span>Cancelar Estadía / Reservación</span>
+                    </button>
+
                     <!-- 🔥 BOTÓN DE CHECKOUT NIVELADO -->
                     <button id="btn-checkout-footer" onclick="hacerCheckout()" 
                         class="hidden bg-rose-600 text-white px-10 py-6 rounded-[2.5rem] font-black uppercase text-xs shadow-xl hover:bg-rose-700 active:scale-95 transition-all flex items-center justify-center space-x-3 flex-1 w-full md:w-auto">
@@ -1175,6 +1182,79 @@
                             <span>Cerrar Pedido e Imprimir Ticket</span>
                         </button>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE CANCELACIÓN INTELIGENTE -->
+    <div id="modal-cancelacion"
+        class="fixed inset-0 bg-slate-900/90 hidden z-[200] items-center justify-center p-6 backdrop-blur-md">
+        <div
+            class="bg-white w-full max-w-2xl rounded-[3rem] shadow-2xl flex flex-col overflow-hidden border border-white/20">
+            <div class="bg-rose-600 p-10 text-white relative">
+                <h3 class="text-4xl font-black italic uppercase tracking-tighter">Cancelar Estadía</h3>
+                <p class="text-[10px] font-black uppercase opacity-60 tracking-widest mt-2">Gestión de Reverso y Penalizaciones</p>
+                <button onclick="closeModal('modal-cancelacion')" class="absolute right-8 top-8 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all"><i class="fas fa-times"></i></button>
+            </div>
+
+            <div class="p-10 space-y-8 overflow-y-auto custom-scrollbar">
+                <!-- Alerta de Pagos -->
+                <div id="alert-pagos" class="hidden bg-amber-50 border-2 border-amber-100 p-6 rounded-2xl flex items-start space-x-4">
+                    <i class="fas fa-exclamation-triangle text-amber-500 text-2xl mt-1"></i>
+                    <div>
+                        <p class="text-xs font-black text-amber-800 uppercase italic">Atención: Pagos Detectados</p>
+                        <p class="text-[10px] font-bold text-amber-600 uppercase">Existen abonos registrados. El sistema solo reversará los cargos de hospedaje. Deberá gestionar el reembolso manual de los pagos si aplica.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-8">
+                    <div class="form-input-group">
+                        <label class="form-label">Tipo de Cancelación</label>
+                        <select id="cancel-type" onchange="updateCancelPreview()" class="form-input font-black">
+                            <option value="FULL">CANCELACIÓN TOTAL (REVERSO 100%)</option>
+                            <option value="NO_SHOW">NO SHOW (COBRO TOTAL SIN REVERSO)</option>
+                            <option value="EARLY">SALIDA ANTICIPADA (PRORRATEO)</option>
+                        </select>
+                    </div>
+
+                    <div id="noches-container" class="form-input-group hidden">
+                        <label class="form-label">Noches Utilizadas (de <span id="noches-totales">0</span>)</label>
+                        <input type="number" id="noches-usadas" oninput="updateCancelPreview()" class="form-input font-black text-center" min="0" value="0">
+                    </div>
+
+                    <div class="form-input-group">
+                        <label class="form-label">Penalización Extra ($)</label>
+                        <input type="number" id="penalizacion" oninput="updateCancelPreview()" class="form-input font-black text-center" value="0">
+                    </div>
+                </div>
+
+                <!-- Resumen de Reajuste -->
+                <div class="bg-slate-50 p-8 rounded-[2.5rem] border border-slate-200 space-y-4">
+                    <div class="flex justify-between items-center text-[11px] font-black uppercase text-slate-400">
+                        <span>Reverso de Hospedaje:</span>
+                        <span id="preview-reverso" class="text-rose-500 font-black">-$0.00</span>
+                    </div>
+                    <div class="flex justify-between items-center text-[11px] font-black uppercase text-slate-400">
+                        <span>Penalización:</span>
+                        <span id="preview-penal" class="text-slate-800 font-black">$0.00</span>
+                    </div>
+                    <div class="pt-4 border-t border-slate-200 flex justify-between items-center">
+                        <span class="text-xs font-black uppercase text-slate-800 italic">Total Reajuste Final:</span>
+                        <span id="preview-total" class="text-3xl font-black text-rose-600 italic tracking-tighter">$0.00</span>
+                    </div>
+                </div>
+
+                <div id="reajuste-hint" class="text-[9px] font-bold text-slate-400 uppercase text-center italic">
+                    Este movimiento quedará registrado en auditoría.
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <button onclick="closeModal('modal-cancelacion')" class="bg-slate-100 text-slate-500 py-5 rounded-2xl font-black uppercase text-xs hover:bg-slate-200 transition-all">Regresar</button>
+                    <button onclick="confirmCancelacionInteligente()" class="bg-rose-600 text-white py-5 rounded-2xl font-black uppercase text-xs shadow-xl shadow-rose-100 hover:bg-rose-700 active:scale-95 transition-all flex items-center justify-center space-x-2">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Aplicar Cancelación</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -2221,6 +2301,159 @@
             }
 
             setTimeout(initSignaturePad, 500);
+
+            // 🔥 El botón cancelar solo se ve si no es Checkout y hay registro
+            const btnCancelReg = document.getElementById('btn-cancelar-registro');
+            if (btnCancelReg) {
+                if (!isCheckout && r.registro_id) btnCancelReg.classList.remove('hidden');
+                else btnCancelReg.classList.add('hidden');
+            }
+        }
+
+        async function cancelarRegistroActual() {
+            cancelarEstadia();
+        }
+
+        function formatMoney(amount) {
+            return new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(amount);
+        }
+
+        const ui = {
+            set: (id, val) => {
+                const el = document.getElementById(id);
+                if (el) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'SELECT') el.value = val;
+                    else el.textContent = val;
+                }
+            }
+        };
+
+        function cancelarEstadia() {
+            if (selectedRoomIdx === null) return;
+            const r = rooms[selectedRoomIdx];
+            
+            // 🔥 Mapear datos para que las funciones del usuario funcionen
+            window.DATA = {
+                stay: {
+                    arrival: r.rawEntrada, // Timestamp
+                    departure: r.rawSalida // Timestamp
+                },
+                consumos: r.services || [],
+                pagos_realizados: r.payments || []
+            };
+
+            ui.set(
+                'reajuste-hint',
+                "CANCELACIÓN TOTAL: Se revertirán todos los cargos y la habitación será liberada. Este movimiento quedará registrado en auditoría."
+            );
+
+            openCancelacionModal();
+        }
+
+        function updateCancelPreview() {
+            const tipo = document.getElementById('cancel-type').value;
+            const nochesUsadas = Number(document.getElementById('noches-usadas').value || 0);
+            const penal = Number(document.getElementById('penalizacion').value || 0);
+
+            // 🔥 detectar noches
+            const f1 = new Date(DATA.stay.arrival);
+            const f2 = new Date(DATA.stay.departure);
+
+            const nochesTotales = Math.max(1, Math.round((f2 - f1) / (1000 * 60 * 60 * 24)));
+
+            let reverso = 0;
+
+            DATA.consumos.forEach(c => {
+                if (c.tipo !== 'Hospedaje' && c.tipo !== 'Persona Extra') return;
+                const monto = Number(c.monto || 0);
+
+                if (tipo === 'NO_SHOW') {
+                    // No hay reverso
+                }
+                else if (tipo === 'EARLY') {
+                    const noUsadas = Math.max(0, nochesTotales - nochesUsadas);
+                    const porNoche = monto / nochesTotales;
+                    reverso += porNoche * noUsadas;
+                }
+                else {
+                    reverso += monto;
+                }
+            });
+
+            const total = (-reverso) + penal;
+
+            // UI
+            ui.set('preview-reverso', formatMoney(-reverso));
+            ui.set('preview-penal', formatMoney(penal));
+            ui.set('preview-total', formatMoney(total));
+
+            // mostrar noches si aplica
+            document.getElementById('noches-container').classList.toggle(
+                'hidden',
+                tipo !== 'EARLY'
+            );
+        }
+
+        async function confirmCancelacionInteligente() {
+            try {
+                const tipo = document.getElementById('cancel-type').value;
+                const noches = Number(document.getElementById('noches-usadas').value || 0);
+                const penal = Number(document.getElementById('penalizacion').value || 0);
+                const r = rooms[selectedRoomIdx];
+
+                const resp = await fetch(base_url + "registro/cancelar-inteligente", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        id: r.registro_id,
+                        tipo_cancelacion: tipo,
+                        noches_usadas: noches,
+                        penalizacion: penal,
+                        motivo: "Cancelación desde UI"
+                    })
+                });
+
+                const data = await resp.json();
+                if (!data.ok) throw new Error(data.msg);
+
+                showToast("Cancelación aplicada correctamente");
+                closeModal('modal-cancelacion');
+                closeModal('modal-register');
+                initData(); // 🔄 refresh
+
+            } catch (e) {
+                alert(e.message);
+            }
+        }
+
+        function openCancelacionModal() {
+            const modal = document.getElementById('modal-cancelacion');
+            modal.classList.add('modal-active');
+
+            // 🔥 noches totales
+            if (DATA?.stay?.arrival && DATA?.stay?.departure) {
+                const f1 = new Date(DATA.stay.arrival);
+                const f2 = new Date(DATA.stay.departure);
+                const noches = Math.max(1, Math.round((f2 - f1) / (1000 * 60 * 60 * 24)));
+
+                ui.set('noches-totales', noches);
+                ui.set('noches-usadas', Array.from(modal.querySelectorAll('#noches-usadas')).length > 0 ? noches : noches);
+                
+                // Asegurar que el input de noches usadas se setee
+                const nInput = document.getElementById('noches-usadas');
+                if(nInput) nInput.value = noches;
+            }
+
+            // 🔥 detectar pagos
+            if (DATA?.pagos_realizados?.length > 0) {
+                document.getElementById('alert-pagos').classList.remove('hidden');
+            } else {
+                document.getElementById('alert-pagos').classList.add('hidden');
+            }
+
+            setTimeout(updateCancelPreview, 80);
         }
 
         function updateOccupancyCounter(editingIdx = null) {
