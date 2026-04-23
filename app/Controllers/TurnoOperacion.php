@@ -60,11 +60,11 @@ class TurnoOperacion extends Controller
         ]);
 
         // 🔥 CAMBIO AUTOMÁTICO DE ESTATUS DE HABITACIONES
-        // Pasar todas las habitaciones Sucias (estado_id = 2) a Limpias (estado_id = 1)
+        // Pasar todas las habitaciones Sucias (estado_id = 1) a Limpias (estado_id = 2)
         // Excepto Mantenimiento (ID 3 u otros)
         $db->table('habitaciones')
-           ->where('estado_id', 2)
-           ->update(['estado_id' => 1]);
+           ->where('estado_id', 1)
+           ->update(['estado_id' => 2]);
 
         return $this->response->setJSON([
             "ok" => true,
@@ -273,8 +273,8 @@ class TurnoOperacion extends Controller
         $db = \Config\Database::connect();
 
         $turno = $db->table('turnos_operacion')
-            ->where('fecha', date('Y-m-d'))
             ->where('estado', 'ABIERTO')
+            ->orderBy('id', 'DESC')
             ->get()
             ->getRowArray();
 

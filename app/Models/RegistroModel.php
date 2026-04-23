@@ -52,6 +52,7 @@ class RegistroModel extends Model
         'ocupacion_total',
         'incluir_en_reporte',
         'estado_id',
+        'id_perfil',
 
         'created_at',
         'updated_at'

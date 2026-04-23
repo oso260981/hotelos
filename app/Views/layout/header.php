@@ -370,17 +370,41 @@
             return 3;
         }
 
-        function pintarTurno() {
-            const turno = obtenerTurnoActual();
+        async function pintarTurno() {
             const elementos = document.querySelectorAll('.turno');
+            let turnoActivo = null;
+
+            try {
+                // Consultar si hay un turno abierto en la base de datos
+                const resp = await fetch('<?= base_url("turno/abierto") ?>', { 
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                const res = await resp.json();
+                
+                if (res.ok && res.data) {
+                    turnoActivo = parseInt(res.data.turno_id);
+                }
+            } catch (e) {
+                console.error("Error al obtener turno activo:", e);
+            }
+
+            // Si no hay turno abierto en BD, usamos el cálculo por horario como fallback
+            if (!turnoActivo) {
+                turnoActivo = obtenerTurnoActual();
+            }
 
             elementos.forEach((el, i) => {
                 const numero = i + 1;
-
-                if (numero === turno) {
+                if (numero === turnoActivo) {
                     el.classList.remove('off');
+                    // Opcional: añadir un resplandor o efecto para resaltar que está abierto
+                    el.style.boxShadow = '0 0 10px rgba(255,255,255,0.5)';
+                    el.title = "Turno Abierto / Activo";
                 } else {
                     el.classList.add('off');
+                    el.style.boxShadow = 'none';
+                    el.title = "Turno Cerrado / Inactivo";
                 }
             });
         }

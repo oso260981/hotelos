@@ -2378,9 +2378,15 @@ body {
                     <input id="fact-email" class="pms-input w-full">
                 </div>
 
-                <div class="col-span-2 flex items-center gap-2 mt-2">
-                    <input type="checkbox" id="fact-extranjero">
-                    <label class="text-xs font-bold text-slate-500">Cliente Extranjero</label>
+                <div class="col-span-2 flex items-center gap-4 mt-2">
+                    <div class="flex items-center gap-2">
+                        <input type="checkbox" id="fact-extranjero">
+                        <label class="text-xs font-bold text-slate-500">Cliente Extranjero</label>
+                    </div>
+                    <div class="flex-1">
+                        <label class="pms-label">QR (Opcional)</label>
+                        <input id="fact-qr" class="pms-input w-full" placeholder="Datos del QR">
+                    </div>
                 </div>
 
             </div>

@@ -810,11 +810,20 @@
                         <p class="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">Ver bitácora de entradas y salidas</p>
                     </div>
                 </button>
+
                 <button onclick="abrirModalFiscal()" class="btn-menu-opt">
                     <i class="fas fa-file-invoice text-2xl text-purple-600"></i>
                     <div class="text-left">
                         <p class="font-black text-slate-800 uppercase">Datos Fiscales</p>
                         <p class="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">Administrar RFC y facturación</p>
+                    </div>
+                </button>
+
+                <button onclick="openRegistrationTicket(selectedRoomIdx)" class="btn-menu-opt">
+                    <i class="fas fa-file-invoice-dollar text-2xl text-emerald-600"></i>
+                    <div class="text-left">
+                        <p class="font-black text-slate-800 uppercase">Comprobante</p>
+                        <p class="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">Ver ticket de admisión</p>
                     </div>
                 </button>
             </div>
@@ -1036,44 +1045,43 @@
                         <input type="text" id="fiscal-rfc" class="form-input uppercase font-mono" placeholder="XAXX010101000">
                     </div>
                     <div class="form-input-group">
-                        <label class="form-label">Perfil Asociado</label>
-                        <select id="fiscal-perfil" class="form-input font-bold">
-                            <option value="">Seleccione Huésped...</option>
-                        </select>
+                        <label class="form-label">Régimen Fiscal</label>
+                        <input type="text" id="fiscal-regimen" class="form-input" placeholder="601">
                     </div>
                 </div>
 
                 <div class="form-input-group">
-                    <label class="form-label">Razón Social / Observaciones</label>
-                    <input type="text" id="fiscal-obs" class="form-input" placeholder="Nombre completo o Razón Social">
+                    <label class="form-label">Razón Social</label>
+                    <input type="text" id="fiscal-razon" class="form-input" placeholder="Nombre completo o Razón Social">
+                </div>
+
+                <div class="grid grid-cols-2 gap-5">
+                    <div class="form-input-group">
+                        <label class="form-label">Código Postal</label>
+                        <input type="text" id="fiscal-cp" class="form-input">
+                    </div>
+                    <div class="form-input-group">
+                        <label class="form-label">Uso CFDI</label>
+                        <input type="text" id="fiscal-uso" class="form-input" placeholder="G03">
+                    </div>
+                </div>
+
+                <div class="form-input-group">
+                    <label class="form-label">Email Facturación</label>
+                    <input type="email" id="fiscal-email" class="form-input">
                 </div>
 
                 <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200">
-                    <div class="grid grid-cols-2 gap-4 mb-4">
-                        <div class="form-input-group">
-                            <label class="form-label">Precio (Subtotal)</label>
-                            <input type="number" id="fiscal-precio" step="0.01" class="form-input text-xl" oninput="recalcularFiscal()">
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-2">
+                            <input type="checkbox" id="fiscal-extranjero" class="w-5 h-5 rounded border-slate-300 text-purple-600 focus:ring-purple-500">
+                            <label class="text-xs font-bold text-slate-500 uppercase">Cliente Extranjero</label>
                         </div>
-                        <div class="form-input-group">
-                            <label class="form-label">IVA (16%)</label>
-                            <input type="number" id="fiscal-iva" step="0.01" class="form-input text-xl" oninput="recalcularFiscalTotal()">
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="form-input-group">
-                            <label class="form-label">ISH (3%)</label>
-                            <input type="number" id="fiscal-ish" step="0.01" class="form-input text-xl" oninput="recalcularFiscalTotal()">
-                        </div>
-                        <div class="form-input-group">
-                            <label class="form-label">Total</label>
-                            <input type="number" id="fiscal-total" step="0.01" class="form-input text-2xl font-black text-purple-700 bg-purple-50" readonly>
+                        <div class="flex-1">
+                            <label class="form-label">QR (Opcional)</label>
+                            <input id="fiscal-qr" class="form-input w-full" placeholder="Datos del QR">
                         </div>
                     </div>
-                </div>
-
-                <div class="form-input-group">
-                    <label class="form-label">Fecha de Comprobante</label>
-                    <input type="date" id="fiscal-fecha" class="form-input">
                 </div>
             </div>
 
@@ -1212,18 +1220,19 @@
             { id: 'id', label: 'Hab', w: '80px', filter: 'text' },
             { id: 'stay', label: 'Estadía', w: '100px', filter: 'select' },
             { id: 'days', label: 'Días', w: '70px', filter: 'text' },
-            { id: 'people', label: 'Pers', w: '70px', filter: 'text' },
-            { id: 'reg', label: 'Registro', w: '120px', filter: 'text' },
+            { id: 'people', label: 'Personas', w: '70px', filter: 'text' },
             { id: 'payment', label: 'Pago', w: '120px', filter: 'select' },
             { id: 'price', label: 'Precio', w: '110px', filter: 'text' },
-            { id: 'h_ent', label: 'Entrada', w: '120px', filter: 'none' },
+            { id: 'reg', label: 'Registro', w: '120px', filter: 'text' },
+            { id: 'titular', label: 'Huesped principal', w: '250px', filter: 'text' },
+            { id: 'extra', label: 'Extra', w: '80px', filter: 'text' },
             { id: 'btn_e', label: '+', w: '60px', filter: 'none' },
+            { id: 'h_ent', label: 'Entrada', w: '120px', filter: 'none' },
             { id: 'h_sal', label: 'Salida', w: '120px', filter: 'none' },
             { id: 'btn_s', label: '+', w: '60px', filter: 'none' },
-            { id: 'titular', label: 'Huésped Principal Registrado', w: '250px', filter: 'text' },
-            { id: 'extra', label: 'Extra', w: '80px', filter: 'text' },
+            { id: 'acciones', label: 'SALIDA', w: '110px', filter: 'none' },
             { id: 'opt', label: 'Opciones', w: '110px', filter: 'none' },
-            { id: 'ticket', label: 'Ticket', w: '100px', filter: 'none' }
+            { id: 'ticket', label: 'Ticket', w: '60px', filter: 'none' }
         ];
 
         const activeFilters = {};
@@ -1300,12 +1309,13 @@
                         f_sal = d.toLocaleDateString();
                     }
                     rooms.push({
-                        id: item.numero.toString().padStart(3, '0'),
+                        id: parseInt(item.numero).toString().padStart(3, '0'),
                         status: item.status || 'X',
                         floor: item.piso || 'PB',
                         capacidad: parseInt(item.capacidad_hab) || 2,
                         precio_extra: parseFloat(item.precio_persona_extra) || 0,
                         tipoEstadia: item.tipo_estadia || '',
+                        tipoEstadiaId: item.tipo_estadia || 1,
                         dias: parseInt(item.noches) || 0,
                         huespedes: item.huespedes || [],
                         formaPago: item.forma_pago || '',
@@ -1327,11 +1337,11 @@
                         id_db: item.habitacion_id || null,
                         tipoHab: item.tipo_habitacion || '',
                         estado_registro: item.estado_registro_val || '',
-                        services: item.services || [], // 🔥 Cargado desde el servidor
+                        services: item.services || [],
                         payments: item.payments || [],
                         incluir_en_reporte: !!parseInt(item.incluir_en_reporte),
                         
-                        // 🔥 NUEVOS CAMPOS FISCALES
+                        // 🔥 CAMPOS FISCALES
                         precio_reg: parseFloat(item.precio) || 0,
                         iva_reg: parseFloat(item.iva) || 0,
                         ish_reg: parseFloat(item.ish) || 0,
@@ -1555,18 +1565,27 @@
                         ${renderSelectEstadia(r.tipoEstadia, realIdx, isCheckoutReg || isBlocked)}
                     </td>
                     <td class="text-center font-black">
-                        <input type="number" value="${r.dias}" ${disabledAttr} onchange="updateDays(${realIdx}, this.value)" class="w-full text-center bg-transparent font-black outline-none">
+                        <div class="flex items-center justify-center space-x-2">
+                            <button onclick="changeDays(${realIdx}, -1)" ${disabledAttr} class="w-6 h-6 flex items-center justify-center rounded-lg bg-rose-50 text-rose-600 hover:bg-rose-100 active:scale-90 transition-all">
+                                <i class="fas fa-minus text-[8px]"></i>
+                            </button>
+                            <span class="w-6 text-center font-black text-xs text-slate-700">${r.dias}</span>
+                            <button onclick="changeDays(${realIdx}, 1)" ${disabledAttr} class="w-6 h-6 flex items-center justify-center rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-100 active:scale-90 transition-all">
+                                <i class="fas fa-plus text-[8px]"></i>
+                            </button>
+                        </div>
                     </td>
-                    <td class="text-center font-black" ${isBlocked ? '' : `ondblclick="editPeople(event, ${realIdx})"`} title="${isBlocked ? '' : 'Doble clic para editar'}">
-                        <span id="pers-val-${realIdx}" class="${isBlocked ? 'text-slate-300' : 'cursor-pointer hover:text-blue-600'} transition-colors">${r.ocupacion_total}</span>
+                    <td class="text-center font-black">
+                        <div class="flex items-center justify-center space-x-2">
+                            <button onclick="changePeople(${realIdx}, -1)" ${disabledAttr} class="w-6 h-6 flex items-center justify-center rounded-lg bg-rose-50 text-rose-600 hover:bg-rose-100 active:scale-90 transition-all">
+                                <i class="fas fa-minus text-[8px]"></i>
+                            </button>
+                            <span id="pers-val-${realIdx}" class="w-6 text-center font-black text-xs text-slate-700">${r.ocupacion_total}</span>
+                            <button onclick="changePeople(${realIdx}, 1)" ${disabledAttr} class="w-6 h-6 flex items-center justify-center rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-100 active:scale-90 transition-all">
+                                <i class="fas fa-plus text-[8px]"></i>
+                            </button>
+                        </div>
                     </td>
-                    <td class="text-center">
-                        <button onclick="openRegister(${realIdx})" ${disabledAttr} 
-                            class="${isCheckoutReg ? 'bg-rose-500 shadow-rose-200' : (isCheckinReg ? 'bg-emerald-500 shadow-emerald-200' : 'bg-blue-600 shadow-blue-200')} text-white text-[10px] px-4 py-2 rounded-xl font-black shadow-md active:scale-95 transition-all ${pointerClass}">
-                            ${isCheckoutReg ? 'CHECKOUT' : (isCheckinReg ? 'VER REGISTRO' : 'REGISTRAR')}
-                        </button>
-                    </td>
-                    
                     <td class="text-center">
                         <div class="flex items-center justify-center space-x-4">
                             ${renderSelectFormaPago(r.formaPago, realIdx, isCheckoutReg || isBlocked)}
@@ -1581,11 +1600,19 @@
                     <td class="text-right font-black text-blue-700" ${isBlocked ? '' : `ondblclick="editPrice(event, ${realIdx})"`} title="${isBlocked ? '' : 'Doble clic para editar'}">
                         <span id="price-val-${realIdx}" class="${isBlocked ? 'text-slate-300' : 'cursor-pointer hover:text-blue-600'} transition-colors">${r.precio.toFixed(2)}</span>
                     </td>
-                    <td class="text-[10px] font-bold leading-tight text-slate-400">
-                        ${r.horaEntrada ? `<div class="font-black text-slate-700">${r.horaEntrada} / ${r.fechaEntrada}</div>` : '-'}
+                    <td class="text-center">
+                        <button onclick="openRegister(${realIdx})" ${disabledAttr} 
+                            class="${isCheckoutReg ? 'bg-rose-500 shadow-rose-200' : (isCheckinReg ? 'bg-emerald-500 shadow-emerald-200' : 'bg-blue-600 shadow-blue-200')} text-white text-[10px] px-4 py-2 rounded-xl font-black shadow-md active:scale-95 transition-all ${pointerClass}">
+                            ${isCheckoutReg ? 'CHECKOUT' : (isCheckinReg ? 'VER REGISTRO' : 'REGISTRAR')}
+                        </button>
                     </td>
+                    <td class="font-black uppercase truncate text-slate-700 max-w-[200px]">${titular.nombre} ${titular.apellido || titular.apellidos || ''}</td>
+                    <td class="text-center font-black text-sm ${r.extra > 0 ? 'text-orange-600' : 'text-slate-300'}">${r.extra}</td>
                     <td class="text-center">
                         <button onclick="stampTime(${realIdx}, 'entrada')" ${disabledAttr} class="text-blue-500 ${pointerClass}"><i class="fas fa-plus-circle"></i></button>
+                    </td>
+                    <td class="text-[10px] font-bold leading-tight text-slate-400">
+                        ${r.horaEntrada ? `<div class="font-black text-slate-700">${r.horaEntrada} / ${r.fechaEntrada}</div>` : '-'}
                     </td>
                     <td class="text-[10px] font-bold leading-tight text-slate-400">
                         ${r.horaSalida ? `<div class="font-black text-slate-700">${r.horaSalida} / ${r.fechaSalida}</div>` : '-'}
@@ -1593,13 +1620,21 @@
                     <td class="text-center">
                         <button onclick="stampTime(${realIdx}, 'salida')" ${disabledAttr} class="text-rose-500 ${pointerClass}"><i class="fas fa-plus-circle"></i></button>
                     </td>
-                    <td class="font-black uppercase truncate text-slate-700 max-w-[200px]">${titular.nombre} ${titular.apellido || titular.apellidos || ''}</td>
-                    <td class="text-center font-black text-sm ${r.extra > 0 ? 'text-orange-600' : 'text-slate-300'}">${r.extra}</td>
+                    <td class="text-center">
+                        ${r.estado_registro === 'CHECKIN' ? `
+                            <button onclick="hacerCheckout(${r.registro_id})" 
+                                class="bg-rose-600 text-white px-4 py-2 rounded-xl text-[10px] font-black uppercase shadow-lg shadow-rose-100 active:scale-95 transition-all">
+                                Checkout
+                            </button>
+                        ` : '-'}
+                    </td>
                     <td class="text-center">
                         <button onclick="openOptionsMenu(${realIdx})" class="bg-slate-900 text-white px-4 py-2 rounded-xl text-[10px] font-black uppercase ${((!isActive && r.status !== 'CHECKOUT') || isBlocked) ? 'opacity-20 pointer-events-none' : ''}">Opciones</button>
                     </td>
                     <td class="text-center">
-                        <button onclick="openRegistrationTicket(${realIdx})" class="bg-emerald-600 text-white px-4 py-2 rounded-xl text-[10px] font-black uppercase ${((!isActive && r.status !== 'CHECKOUT') || isBlocked) ? 'opacity-20 pointer-events-none' : ''}">Ticket</button>
+                        <button onclick="openRegistrationTicket(${realIdx})" class="text-slate-500 hover:text-slate-900 transition-colors">
+                            <i class="fas fa-print"></i>
+                        </button>
                     </td>
                 `; tbody.appendChild(tr);
             });
@@ -1652,42 +1687,29 @@
             await sincronizarFilaAsync(idx);
         }
 
-        // ✏️ EDICIÓN INLINE DE PERSONAS (PERS)
-        function editPeople(e, idx) {
+        async function changeDays(idx, delta) {
             const r = rooms[idx];
-            if (!r.registro_id) return; // Sin registro no se puede editar
-            const td = e.currentTarget;
-            const span = td.querySelector('span');
-            if (!span || td.querySelector('input')) return; // Ya hay un input activo
+            if (!r) return;
+            r.dias = Math.max(0, r.dias + delta);
+            r.precio = r.dias * r.precio_base;
+            renderGrid();
+            await sincronizarFilaAsync(idx);
+        }
 
-            const currentVal = r.ocupacion_total || 0;
-            span.classList.add('hidden');
+        async function changePeople(idx, delta) {
+            const r = rooms[idx];
+            if (!r) return;
+            
+            // Incrementamos el total
+            const newTotal = Math.max(1, (r.ocupacion_total || 1) + delta);
+            r.ocupacion_total = newTotal;
 
-            const input = document.createElement('input');
-            input.type = 'number';
-            input.min = 1;
-            input.max = 20;
-            input.value = currentVal;
-            input.className = 'w-14 text-center bg-blue-50 border-2 border-blue-400 rounded-lg font-black text-slate-800 outline-none text-sm p-1';
-
-            const save = async () => {
-                const newVal = parseInt(input.value);
-                if (!isNaN(newVal) && newVal >= 0) {
-                    await updatePeople(idx, newVal);
-                }
-                input.remove();
-                span.classList.remove('hidden');
-            };
-
-            input.addEventListener('blur', save);
-            input.addEventListener('keydown', (ev) => {
-                if (ev.key === 'Enter' || ev.key === 'Tab') { ev.preventDefault(); save(); }
-                if (ev.key === 'Escape') { input.remove(); span.classList.remove('hidden'); }
-            });
-
-            td.appendChild(input);
-            input.focus();
-            input.select();
+            // Ajustamos adultos (es el campo que se sincroniza principalmente)
+            // adultos = total - niños - extras
+            r.adultos = Math.max(1, r.ocupacion_total - (r.ninos || 0) - (r.extra || 0));
+            
+            renderGrid();
+            await sincronizarFilaAsync(idx);
         }
 
         async function updatePeople(idx, val) {
@@ -2590,10 +2612,10 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 r.ninos = tempGuests.filter(g => g.es_menor == 1).length;
                 r.extra = tempGuests.filter(g => g.es_extra == 1).length;
                 r.ocupacion_total = r.adultos + r.ninos + r.extra;
-                r.status = 'S';
+                r.status = 'X';
                 
                 // 4. Actualizar estado de habitación a OCUPADA
-                await actualizarEstadoHabitacionAsync(r.id_db || r.id, 1);
+                await actualizarEstadoHabitacionAsync(r.id_db || r.id, 2);
 
                 closeModal('modal-register');
                 renderGrid();
@@ -2609,10 +2631,8 @@ window.handleClientDBSearch = function(q, mode = 'form') {
 
         async function sincronizarHabitacionDB(idx) {
             const r = rooms[idx];
-            if (!r.registro_id) {
-                console.warn(`⚠️ Omitiendo sincronización: La habitación ${r.id} no tiene registro_id activo.`);
-                return null; // Ya no se crean registros nuevos desde aquí
-            }
+            // Si no hay registro_id, se enviará undefined al server y éste creará uno nuevo
+            console.log("🔄 Iniciando sincronización para hab", r.id, r.registro_id ? "Registro ID: " + r.registro_id : "NUEVO REGISTRO");
 
             const titular = (r.huespedes || []).find(g => g.isTitular) || (r.huespedes || [])[0];
             let huespedId = null;
@@ -2646,7 +2666,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 hora_entrada: r.fechaEntrada ? `${r.fechaEntrada.split('/').reverse().join('-')} ${r.horaEntrada || '12:00:00'}` : new Date().toLocaleString('sv-SE').replace('T', ' '),
                 hora_salida: r.dias ? new Date(Date.now() + r.dias * 86400000).toISOString().slice(0, 10) : new Date().toISOString().slice(0, 10),
                 noches: nights,
-                tipo_estadia_id: r.tipoEstadia === 'S' ? 1 : (r.tipoEstadia === 'SQ' ? 2 : 3),
+                tipo_estadia_id: r.tipoEstadiaId || 1,
                 forma_pago_id: r.formaPago || 1,
                 precio: subtotal,
                 precio_base: r.precio_base || 0,
@@ -2654,7 +2674,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 ish: ish,
                 total: total,
                 adultos: (r.huespedes || []).filter(g => g.es_menor != 1 && g.es_extra != 1).length,
-                ninos: (r.huespedes || []).filter(g => g.es_menor == 1).length,
+                niños: (r.huespedes || []).filter(g => g.es_menor == 1).length,
                 num_personas_ext: (r.huespedes || []).filter(g => g.es_extra == 1).length,
                 pago_adicional: ((r.huespedes || []).filter(g => g.es_extra == 1).length * r.precio_extra)
             };
@@ -2675,8 +2695,8 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 body: JSON.stringify(payload)
             });
             const resp = await response.json();
-            if (!resp.ok) throw new Error(resp.msg || "Error al guardar registro");
-            return resp;
+            if (!resp.success) throw new Error(resp.msg || "Error al guardar registro");
+            return { ...resp, ok: resp.success };
         }
 
         async function verSalidas() {
@@ -2746,7 +2766,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
         }
 
         async function marcarHabitacionLimpiaAsync(habitacionId) {
-            const resp = await actualizarEstadoHabitacionAsync(habitacionId, 1);
+            const resp = await actualizarEstadoHabitacionAsync(habitacionId, 2);
             if (!resp.ok) throw new Error(resp.msg || "Error al marcar como limpia");
             return resp;
         }
@@ -3227,59 +3247,34 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             if (!r || !r.registro_id) return showToast("SE REQUIERE UN REGISTRO ACTIVO");
 
             document.getElementById('fiscal-hab-label').textContent = `HABITACIÓN ${r.id}`;
-            document.getElementById('fiscal-rfc').value = '';
-            document.getElementById('fiscal-obs').value = '';
-            document.getElementById('fiscal-precio').value = r.precio_reg || r.precio_base;
-            document.getElementById('fiscal-iva').value = r.iva_reg || (parseFloat(r.precio_reg || r.precio_base) * (window.TASA_IVA / 100)).toFixed(2);
-            document.getElementById('fiscal-ish').value = r.ish_reg || (parseFloat(r.precio_reg || r.precio_base) * (window.TASA_ISH / 100)).toFixed(2);
             
-            recalcularFiscalTotal();
-
-            document.getElementById('fiscal-fecha').value = new Date().toISOString().split('T')[0];
-
-            // Cargar perfiles (huespedes actuales)
-            const selectPerfil = document.getElementById('fiscal-perfil');
-            selectPerfil.innerHTML = '<option value="">Seleccione Huésped...</option>';
-            if (r.huespedes) {
-                r.huespedes.forEach(h => {
-                    selectPerfil.innerHTML += `<option value="${h.id}">${h.nombre} ${h.apellido || h.apellidos || ''}</option>`;
-                });
-            }
+            // Limpiar campos
+            const fields = ['rfc', 'razon', 'regimen', 'cp', 'uso', 'email', 'qr'];
+            fields.forEach(f => {
+                const el = document.getElementById('fiscal-' + f);
+                if (el) el.value = '';
+            });
+            document.getElementById('fiscal-extranjero').checked = false;
 
             try {
-                const response = await fetch(base_url + "reservacion/obtener-fiscal/" + r.registro_id);
+                // Usar el endpoint correcto para obtener el perfil fiscal vinculado
+                const response = await fetch(base_url + "reservacion/perfil/" + r.registro_id);
                 const res = await response.json();
                 if (res.ok && res.data) {
                     const d = res.data;
                     document.getElementById('fiscal-rfc').value = d.rfc || '';
-                    document.getElementById('fiscal-perfil').value = d.id_perfil || '';
-                    document.getElementById('fiscal-obs').value = d.observaciones || '';
-                    document.getElementById('fiscal-precio').value = d.precio;
-                    document.getElementById('fiscal-iva').value = d.iva;
-                    document.getElementById('fiscal-ish').value = d.ish;
-                    document.getElementById('fiscal-total').value = d.total;
-                    document.getElementById('fiscal-fecha').value = d.fecha;
+                    document.getElementById('fiscal-razon').value = d.razon_social || '';
+                    document.getElementById('fiscal-regimen').value = d.regimen_fiscal || '';
+                    document.getElementById('fiscal-cp').value = d.codigo_postal_fiscal || '';
+                    document.getElementById('fiscal-uso').value = d.uso_cfdi || '';
+                    document.getElementById('fiscal-email').value = d.email_facturacion || '';
+                    document.getElementById('fiscal-extranjero').checked = (d.es_extranjero == 1);
+                    document.getElementById('fiscal-qr').value = d.QR || '';
                 }
-            } catch (e) { console.error("Error cargando datos fiscales", e); }
+            } catch (e) { console.error("Error cargando perfil fiscal", e); }
 
             document.getElementById('modal-fiscal').classList.remove('hidden');
             document.getElementById('modal-fiscal').classList.add('flex');
-        }
-
-        function recalcularFiscal() {
-            const precio = parseFloat(document.getElementById('fiscal-precio').value) || 0;
-            const iva = precio * (window.TASA_IVA / 100);
-            const ish = precio * (window.TASA_ISH / 100);
-            document.getElementById('fiscal-iva').value = iva.toFixed(2);
-            document.getElementById('fiscal-ish').value = ish.toFixed(2);
-            recalcularFiscalTotal();
-        }
-
-        function recalcularFiscalTotal() {
-            const precio = parseFloat(document.getElementById('fiscal-precio').value) || 0;
-            const iva = parseFloat(document.getElementById('fiscal-iva').value) || 0;
-            const ish = parseFloat(document.getElementById('fiscal-ish').value) || 0;
-            document.getElementById('fiscal-total').value = (precio + iva + ish).toFixed(2);
         }
 
         async function guardarDatosFiscales() {
@@ -3287,20 +3282,22 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             const payload = {
                 registro_id: r.registro_id,
                 rfc: document.getElementById('fiscal-rfc').value.toUpperCase(),
-                id_perfil: document.getElementById('fiscal-perfil').value,
-                observaciones: document.getElementById('fiscal-obs').value,
-                precio: document.getElementById('fiscal-precio').value,
-                iva: document.getElementById('fiscal-iva').value,
-                ish: document.getElementById('fiscal-ish').value,
-                total: document.getElementById('fiscal-total').value,
-                fecha: document.getElementById('fiscal-fecha').value
+                razon_social: document.getElementById('fiscal-razon').value,
+                regimen_fiscal: document.getElementById('fiscal-regimen').value,
+                codigo_postal_fiscal: document.getElementById('fiscal-cp').value,
+                uso_cfdi: document.getElementById('fiscal-uso').value,
+                email_facturacion: document.getElementById('fiscal-email').value,
+                es_extranjero: document.getElementById('fiscal-extranjero').checked ? 1 : 0,
+                QR: document.getElementById('fiscal-qr').value
             };
 
-            if (!payload.rfc) return showToast("RFC REQUERIDO");
+            if (!payload.rfc || !payload.razon_social) {
+                return Swal.fire("Error", "RFC y Razón Social son requeridos", "error");
+            }
 
             try {
-                showToast("Guardando datos fiscales...");
-                const response = await fetch(base_url + "reservacion/guardar-fiscal", {
+                showToast("Guardando perfil fiscal...");
+                const response = await fetch(base_url + "reservacion/guardar-perfil", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(payload)

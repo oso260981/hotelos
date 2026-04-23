@@ -3533,29 +3533,48 @@ function cargarVehiculos() {
 
 
 
-async function guardarPerfilFiscal() {
+async function savePerfilFiscal() {
 
     const payload = {
         registro_id: CURRENT_REGISTRO_ID,
-        rfc: document.getElementById('rfc').value,
-        razon_social: document.getElementById('razon').value,
-        regimen_fiscal: document.getElementById('regimen').value,
-        codigo_postal_fiscal: document.getElementById('cp').value,
-        uso_cfdi: document.getElementById('uso').value,
-        email_facturacion: document.getElementById('email').value
+        rfc: document.getElementById('fact-rfc').value,
+        razon_social: document.getElementById('fact-razon').value,
+        regimen_fiscal: document.getElementById('fact-regimen').value,
+        codigo_postal_fiscal: document.getElementById('fact-cp').value,
+        uso_cfdi: document.getElementById('fact-uso').value,
+        email_facturacion: document.getElementById('fact-email').value,
+        es_extranjero: document.getElementById('fact-extranjero').checked ? 1 : 0,
+        QR: document.getElementById('fact-qr').value
     };
 
-    const res = await fetch(base_url + "reservacion/guardar-perfil", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-    });
+    if (!payload.rfc || !payload.razon_social) {
+        return Swal.fire("Error", "RFC y Razón Social son obligatorios", "error");
+    }
 
-    const resp = await res.json();
+    try {
+        const res = await fetch(base_url + "reservacion/guardar-perfil", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        });
 
-    if (!resp.ok) return alert(resp.msg);
+        const resp = await res.json();
 
-    console.log("Perfil asignado:", resp.id_perfil);
+        if (resp.ok) {
+            Swal.fire("Éxito", "Perfil fiscal guardado y vinculado al registro", "success");
+            toggleModal('modal-facturacion', false);
+            
+            // Actualizar el estado global
+            await cargarPerfilFiscal();
+            updateFacturacionStatus();
+            
+        } else {
+            Swal.fire("Error", resp.msg || "No se pudo guardar el perfil", "error");
+        }
+    } catch (error) {
+        console.error("Error saving fiscal profile:", error);
+        Swal.fire("Error", "Error de conexión al servidor", "error");
+    }
 }
 
 
@@ -3573,6 +3592,7 @@ async function openFacturaModal() {
     document.getElementById('fact-uso').value = '';
     document.getElementById('fact-email').value = '';
     document.getElementById('fact-extranjero').checked = false;
+    document.getElementById('fact-qr').value = '';
 
     // 🔥 cargar datos si existen
     if (DATA.perfilFiscal) {
@@ -3586,39 +3606,15 @@ async function openFacturaModal() {
         document.getElementById('fact-uso').value = p.uso_cfdi || '';
         document.getElementById('fact-email').value = p.email_facturacion || '';
         document.getElementById('fact-extranjero').checked = p.es_extranjero == 1;
+        document.getElementById('fact-qr').value = p.QR || '';
     }
 
     toggleModal('modal-facturacion', true);
 }
 
-async function savePerfilFiscal() {
+// savePerfilFiscal has been moved up and unified with guardarPerfilFiscal logic.
+// The mod_administrativo.php calls savePerfilFiscal().
 
-    const payload = {
-        registro_id: CURRENT_REGISTRO_ID,
-        rfc: document.getElementById('fact-rfc').value,
-        razon_social: document.getElementById('fact-razon').value,
-        regimen_fiscal: document.getElementById('fact-regimen').value,
-        codigo_postal_fiscal: document.getElementById('fact-cp').value,
-        uso_cfdi: document.getElementById('fact-uso').value,
-        email_facturacion: document.getElementById('fact-email').value,
-        es_extranjero: document.getElementById('fact-extranjero').checked ? 1 : 0
-    };
-
-    const res = await fetch(base_url + "reservacion/guardar-perfil", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-    });
-
-    const resp = await res.json();
-
-    if (!resp.ok) return alert(resp.msg);
-
-    alert("Perfil fiscal guardado");
-    updateFacturacionStatus();
-
-    toggleModal('modal-facturacion', false);
-}
 
 
 async function deletePerfilFiscal() {

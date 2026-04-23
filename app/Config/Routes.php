@@ -159,6 +159,9 @@ $routes->post('reservacion/checkout', 'Reservacion::checkout');
 // Registrar pago adicional posterior al check-in
 $routes->post('reservacion/pago-extra', 'Reservacion::pagoExtra');
 
+// Actualizar estado de habitación (S, X, M, P)
+$routes->post('reservacion/actualizar-estado-habitacion', 'Reservacion::actualizarEstadoHabitacion');
+
 // Agregar huésped acompañante al registro activo
 $routes->post('reservacion/acompanante', 'Reservacion::agregarAcompanante');
 

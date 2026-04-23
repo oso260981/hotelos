@@ -847,7 +847,7 @@ INSERT INTO formas_pago (codigo, descripcion) VALUES
 ('TDF', 'Tarjeta de débito facturada');
 
 
-CREATE TABLE registro_room_service (
+CREATE  TABLE registro_room_service (
     id INT AUTO_INCREMENT PRIMARY KEY,
 
     /* === RELACION ESTANCIA === */
@@ -868,27 +868,15 @@ CREATE TABLE registro_room_service (
 
     hora_cargo DATETIME DEFAULT CURRENT_TIMESTAMP,
     hora_entrega DATETIME NULL,
-
+    turno_id INT,
     usuario_id INT NULL,
 
     observaciones VARCHAR(200) NULL,
 
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME NULL,
+    updated_at DATETIME NULL
 
-    /* === INDEXES === */
-    INDEX idx_rs_registro (registro_id),
-    INDEX idx_rs_producto (producto_id),
-
-    /* === FK === */
-    CONSTRAINT fk_rs_registro
-        FOREIGN KEY (registro_id)
-        REFERENCES registros(id)
-        ON DELETE CASCADE,
-
-    CONSTRAINT fk_rs_producto
-        FOREIGN KEY (producto_id)
-        REFERENCES room_service_productos(id)
+    
 );
 
 SET FOREIGN_KEY_CHECKS = 0;

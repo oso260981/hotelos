@@ -164,7 +164,7 @@ class RoomService extends ResourceController
 
                 $db->table('registro_room_service')->insert([
                     'registro_id'      => $registroIdParaInsertar,
-                    'producto_id'      => !empty($item['id']) ? intval($item['id']) : null,
+                    'producto_id'      => !empty($item['id']) ? intval($item['id']) : 0,
                     'nombre_producto'  => $item['nombre'] ?? 'Producto S/N',
                     'precio_unitario'  => $precio,
                     'cantidad'         => $cantidad,
