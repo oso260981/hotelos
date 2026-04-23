@@ -23,3 +23,5 @@ if (mysqli_num_rows($res) == 0) {
 } else {
     echo "Column estado_id already exists.\n";
 }
+
+mysqli_close($db);

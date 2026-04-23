@@ -8,3 +8,5 @@ try {
 } catch (\Exception $e) {
     echo "Connection Failed: " . $e->getMessage() . "\n";
 }
+
+$db->close();

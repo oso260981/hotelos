@@ -7,3 +7,5 @@ else echo "Column MISSING\n";
 $res = mysqli_query($db, "SHOW COLUMNS FROM registros LIKE 'estado_id'");
 if (mysqli_num_rows($res) > 0) echo "Column estado_id exists\n";
 else echo "Column estado_id MISSING\n";
+
+mysqli_close($db);

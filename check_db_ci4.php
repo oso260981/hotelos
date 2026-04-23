@@ -12,3 +12,5 @@ print_r($query->getResultArray());
 
 $query = $db->query("DESCRIBE historial_turnos");
 if ($query) print_r($query->getResultArray());
+
+$db->close();

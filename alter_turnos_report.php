@@ -15,3 +15,5 @@ try {
 } catch (Exception $e) {
     echo "Info: " . $e->getMessage() . "\n";
 }
+
+$pdo = null;

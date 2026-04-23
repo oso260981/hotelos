@@ -194,7 +194,10 @@ class TurnoOperacion extends Controller
 
         $db->table('registros')
             ->where('estado_registro', 'CHECKOUT')
-            ->update(['estado_registro' => 'CERRADO']);
+            ->where('estado_servicio', 'ACTIVO')
+            ->update([
+                'estado_servicio' => 'CERRADO'
+            ]);
 
         return $this->response->setJSON([
             "ok" => true,

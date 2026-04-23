@@ -16,3 +16,5 @@ try {
 } catch (Exception $e) {
     echo "Error or already exists: " . $e->getMessage() . "\n";
 }
+
+$pdo = null;

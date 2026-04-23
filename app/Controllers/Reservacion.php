@@ -871,33 +871,40 @@ private function obtenerTurnoActual()
 {
     $db = \Config\Database::connect();
 
-    $horaActual = date('H:i:s');
+    // 1. Prioridad: ¿Hay un turno abierto en la operación manual?
+    $turnoOperacion = $db->table('turnos_operacion')
+        ->where('estado', 'ABIERTO')
+        ->orderBy('id', 'DESC')
+        ->get()
+        ->getRow();
 
+    if ($turnoOperacion) {
+        return $turnoOperacion->turno_id;
+    }
+
+    // 2. Fallback: Cálculo basado en horario (Original)
+    $horaActual = date('H:i:s');
     $turnos = $db->table('turnos')
         ->where('activo', 1)
         ->get()
         ->getResult();
 
     foreach ($turnos as $turno) {
-
         $inicio = $turno->hora_inicio;
         $fin    = $turno->hora_fin;
 
-        // Caso normal (no cruza medianoche)
         if ($inicio < $fin) {
             if ($horaActual >= $inicio && $horaActual < $fin) {
                 return $turno->id;
             }
-        } 
-        // Caso turno nocturno (cruza medianoche)
-        else {
+        } else {
             if ($horaActual >= $inicio || $horaActual < $fin) {
                 return $turno->id;
             }
         }
     }
 
-    return null; // fallback
+    return null; 
 }
 
 public function cerrarFolio()
@@ -2134,7 +2141,7 @@ public function getHabitaciones()
             ON eh.id = r.estado_id
         LEFT JOIN huespedes hu 
             ON hu.id = r.huesped_id
-        WHERE h.activa = 1
+        WHERE h.activa = 1 and r.estado_servicio != 'CERRADO'
         ORDER BY p.piso ASC, h.numero ASC
     ")->getResultArray();
 
