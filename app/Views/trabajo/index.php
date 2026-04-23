@@ -471,7 +471,25 @@
                     <div>
                         <p class="text-[9px] font-black uppercase opacity-50 tracking-widest mb-1">Módulo de Admisión
                         </p>
-                        <h3 class="text-2xl font-black italic uppercase tracking-tighter" id="reg-room-title">Habitación --</h3>
+                        <div class="flex items-center gap-4">
+                            <h3 class="text-2xl font-black italic uppercase tracking-tighter" id="reg-room-title">Habitación --</h3>
+                            
+                            <!-- 🔥 CONTADORES SUBIDOS AL HEADER -->
+                            <div id="reg-header-counters" class="flex items-center space-x-4 border-l border-white/10 pl-6 ml-2">
+                                <!-- Ocupación (Lista) -->
+                                <div id="header-occ-container" class="flex items-center space-x-3 bg-white/10 px-5 py-2 rounded-full border border-white/20">
+                                    <i class="fas fa-users text-blue-400 text-xs"></i>
+                                    <span class="text-[11px] font-black text-slate-300 uppercase tracking-wider">Ocupación:</span>
+                                    <span id="occupancy-counter" class="text-2xl font-black text-white italic">0 / 0</span>
+                                </div>
+                                <!-- Registrando (Formulario) -->
+                                <div id="header-person-container" class="hidden flex items-center space-x-3 bg-white/10 px-5 py-2 rounded-full border border-white/20">
+                                    <i class="fas fa-user-edit text-blue-400 text-xs"></i>
+                                    <span class="text-[11px] font-black text-slate-300 uppercase tracking-wider">Huésped:</span>
+                                    <span id="form-person-counter" class="text-2xl font-black text-white italic">1 de 2</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- BUSCADOR GLOBAL EN HEADER (SIEMPRE VISIBLE) -->
@@ -497,11 +515,6 @@
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                     <div class="flex items-center space-x-6">
                         <h4 class="text-3xl font-black text-slate-800 uppercase italic tracking-tight">Huéspedes Registrados</h4>
-                        <div class="flex items-center space-x-2 bg-slate-100 px-3 py-1 rounded-full border">
-                            <i class="fas fa-users text-blue-500 text-[10px]"></i>
-                            <span class="text-[10px] font-black text-slate-500 uppercase">Ocupación:</span>
-                            <span id="occupancy-counter" class="text-[10px] font-black text-blue-700">0 / 0</span>
-                        </div>
                     </div>
                     <button onclick="goToForm(-1)" id="btn-nuevo-huesped"
                         class="bg-blue-600 text-white px-10 py-5 rounded-2xl font-black uppercase text-sm shadow-xl active:scale-95 transition-all"><i
@@ -540,21 +553,7 @@
                             id="form-title">Expediente de Identidad</h4>
                         <p class="text-slate-400 font-bold uppercase text-[9px] tracking-widest">Captura Multimodal</p>
                     </div>
-                    <!-- 🔥 CONTADOR DE PERSONAS DINÁMICO -->
-                    <div class="bg-white px-6 py-3 rounded-3xl border-2 border-slate-100 shadow-sm flex flex-col items-center min-w-[120px]">
-                        <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest">Huésped</span>
-                        <span id="form-person-counter" class="text-xl font-black text-blue-600 italic tracking-tighter">1 de 2</span>
-                    </div>
                     <div class="flex-1"></div>
-                    <!-- BUSCADOR DE CLIENTES EXISTENTES -->
-                    <div class="relative w-96">
-                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-blue-500 text-sm font-black"><i
-                                class="fas fa-search"></i></span>
-                        <input type="text" id="client-db-search" oninput="handleClientDBSearch(this.value)"
-                            placeholder="BUSCAR CLIENTE HISTÓRICO..."
-                            class="w-full bg-white border-2 border-blue-100 rounded-2xl pl-12 pr-6 py-4 text-xs font-black uppercase shadow-sm focus:border-blue-500 outline-none">
-                        <div id="db-search-results" class="search-results-box"></div>
-                    </div>
                 </div>
 
                 <div class="grid grid-cols-12 gap-8 max-w-[1400px] mx-auto">
@@ -635,14 +634,23 @@
 
                         <!-- Panel: Información Personal -->
                         <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-200">
-                            <div class="form-section-title"><i class="fas fa-user-edit mr-3"></i>Datos Generales</div>
+                            <div class="form-section-title flex justify-between items-center">
+                                <span><i class="fas fa-user-edit mr-3"></i>Datos Generales</span>
+                                <div class="flex items-center space-x-3 bg-slate-50 px-4 py-2 rounded-2xl border border-slate-100">
+                                    <label class="form-label !mb-0 uppercase tracking-widest text-[10px] font-black text-slate-500">¿Es Menor de Edad?</label>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" id="f-is-minor" class="sr-only peer" onchange="toggleMinorFields(this.checked)">
+                                        <div class="w-12 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                                    </label>
+                                </div>
+                            </div>
                             <div class="grid grid-cols-2 gap-5 mb-5">
                                 <div class="form-input-group"><label class="form-label">Nombre(s)</label><input
                                         type="text" id="f-name" class="form-input" placeholder="Nombre"></div>
                                 <div class="form-input-group"><label class="form-label">Apellidos</label><input
                                         type="text" id="f-apellidos" class="form-input" placeholder="Apellidos"></div>
                             </div>
-                            <div class="grid grid-cols-2 gap-5 mb-5">
+                            <div id="group-minor-hidden-1" class="grid grid-cols-2 gap-5 mb-5">
                                 <div class="form-input-group"><label class="form-label">Teléfono Movil</label><input
                                         type="tel" id="f-tel" class="form-input" placeholder="000 000 0000"></div>
                                 <div class="form-input-group"><label class="form-label">Correo Electrónico</label><input
@@ -650,9 +658,9 @@
                                 </div>
                             </div>
                             <div class="grid grid-cols-3 gap-5">
-                                <div class="form-input-group"><label class="form-label">Nacionalidad</label><input
+                                <div id="group-minor-hidden-2" class="form-input-group"><label class="form-label">Nacionalidad</label><input
                                         type="text" id="f-nat" class="form-input" value="MEXICANA"></div>
-                                <div class="form-input-group"><label class="form-label">Nacimiento</label><input
+                                <div id="group-minor-hidden-3" class="form-input-group"><label class="form-label">Nacimiento</label><input
                                         type="date" id="f-birth" class="form-input"></div>
                                 <div class="form-input-group">
                                     <label class="form-label">Género</label>
@@ -676,22 +684,8 @@
                                         <option value="Otro">Otro</option>
                                     </select>
                                 </div>
-                                <div class="form-input-group flex flex-col justify-center items-start">
-                                    <label class="form-label uppercase tracking-widest text-[10px]">¿Es Menor de Edad?</label>
-                                    <label class="relative inline-flex items-center cursor-pointer mt-2">
-                                        <input type="checkbox" id="f-is-minor" class="sr-only peer" onchange="toggleMinorFields(this.checked)">
-                                        <div class="w-14 h-7 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-6 after:transition-all peer-checked:bg-blue-600"></div>
-                                    </label>
-                                </div>
-                                <div class="form-input-group flex flex-col justify-center items-start">
-                                    <label class="form-label uppercase tracking-widest text-[10px] text-orange-600">¿Es Persona Extra?</label>
-                                    <label class="relative inline-flex items-center cursor-pointer mt-2">
-                                        <input type="checkbox" id="f-is-extra" class="sr-only peer">
-                                        <div class="w-14 h-7 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-6 after:transition-all peer-checked:bg-orange-500"></div>
-                                    </label>
-                                </div>
                             </div>
-
+                            
                             <!-- 🔥 Campo Responsable (Solo Menores) -->
                             <div id="group-responsable" class="form-input-group mt-5 hidden animate-pulse-subtle">
                                 <label class="form-label text-blue-600 font-black uppercase tracking-widest text-[10px]">Nombre del Responsable / Tutor</label>
@@ -700,7 +694,7 @@
                         </div>
 
                         <!-- Panel: Documento e Identidad -->
-                        <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-200">
+                        <div id="panel-documentacion" class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-200">
                             <div class="form-section-title"><i class="fas fa-file-invoice mr-3"></i>Documentación</div>
                             <div class="grid grid-cols-2 gap-5">
                                 <div class="form-input-group">
@@ -2239,7 +2233,7 @@
             const elList = document.getElementById('occupancy-counter');
             if (elList) {
                 elList.textContent = `${currentTotal} / ${max}`;
-                elList.className = currentTotal > max ? 'text-[10px] font-black text-rose-600' : 'text-[10px] font-black text-blue-700';
+                elList.className = currentTotal > max ? 'text-2xl font-black text-rose-400 italic' : 'text-2xl font-black text-white italic';
             }
 
             // 2. Contador en el formulario (Captura Individual)
@@ -2249,10 +2243,10 @@
                 
                 if (personNum <= max) {
                     elForm.textContent = `${personNum} de ${max}`;
-                    elForm.className = "text-xl font-black text-blue-600 italic tracking-tighter uppercase";
+                    elForm.className = "text-2xl font-black text-white italic tracking-tighter uppercase";
                 } else {
                     elForm.textContent = `Extra (+${personNum - max})`;
-                    elForm.className = "text-xl font-black text-orange-600 italic tracking-tighter uppercase";
+                    elForm.className = "text-2xl font-black text-orange-400 italic tracking-tighter uppercase";
                 }
             }
         }
@@ -2276,8 +2270,13 @@
             document.getElementById('f-id-type').value = '1';
             document.getElementById('f-parentesco').value = 'Huésped Principal';
             document.getElementById('f-is-minor').checked = false;
-            document.getElementById('f-is-extra').checked = false;
             document.getElementById('f-responsable').value = '';
+            
+            // 🔥 Rol por default: Primero es Titular, los demás Acompañantes
+            const isFirst = tempGuests.length === 0;
+            document.getElementById('f-is-titular').value = isFirst ? 'true' : 'false';
+            document.getElementById('f-parentesco').value = isFirst ? 'Huésped Principal' : 'Otro';
+
             toggleMinorFields(false);
 
             // Reset de Media
@@ -2302,8 +2301,8 @@
                 document.getElementById('f-gender').value = g.genero === 'F' ? 'Femenino' : 'Masculino';
                 document.getElementById('f-parentesco').value = g.parentesco || 'Otro';
                 document.getElementById('f-is-minor').checked = g.es_menor == 1;
-                document.getElementById('f-is-extra').checked = g.es_extra == 1;
                 document.getElementById('f-responsable').value = g.Responsable_menor || '';
+                document.getElementById('f-is-titular').value = g.isTitular ? 'true' : 'false';
                 toggleMinorFields(g.es_menor == 1);
 
                 document.getElementById('f-nat').value = g.nacionalidad || 'MEXICANA';
@@ -2317,12 +2316,38 @@
         function toggleMinorFields(isMinor) {
             const respDiv = document.getElementById('group-responsable');
             const addressDiv = document.getElementById('panel-ubicacion');
+            const contactDiv = document.getElementById('group-minor-hidden-1');
+            const natDiv = document.getElementById('group-minor-hidden-2');
+            const birthDiv = document.getElementById('group-minor-hidden-3');
+            const docPanel = document.getElementById('panel-documentacion');
+            const respInput = document.getElementById('f-responsable');
+
             if (isMinor) {
                 respDiv.classList.remove('hidden');
                 addressDiv.classList.add('opacity-30', 'pointer-events-none', 'grayscale');
+                if (contactDiv) contactDiv.classList.add('hidden');
+                if (natDiv) natDiv.classList.add('hidden');
+                if (birthDiv) birthDiv.classList.add('hidden');
+                if (docPanel) docPanel.classList.add('hidden');
+                if (respInput) respInput.setAttribute('required', 'true');
+                
+                // 🔥 Los menores no pueden ser titulares
+                const titularSelect = document.getElementById('f-is-titular');
+                if (titularSelect) {
+                    titularSelect.value = 'false';
+                    titularSelect.options[0].disabled = true;
+                }
             } else {
                 respDiv.classList.add('hidden');
                 addressDiv.classList.remove('opacity-30', 'pointer-events-none', 'grayscale');
+                if (contactDiv) contactDiv.classList.remove('hidden');
+                if (natDiv) natDiv.classList.remove('hidden');
+                if (birthDiv) birthDiv.classList.remove('hidden');
+                if (docPanel) docPanel.classList.remove('hidden');
+                if (respInput) respInput.removeAttribute('required');
+
+                const titularSelect = document.getElementById('f-is-titular');
+                if (titularSelect) titularSelect.options[0].disabled = false;
             }
         }
 
@@ -2760,7 +2785,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 isTitular: isTitular,
                 parentesco: document.getElementById('f-parentesco').value,
                 es_menor: document.getElementById('f-is-minor').checked ? 1 : 0,
-                es_extra: document.getElementById('f-is-extra').checked ? 1 : 0,
+                es_extra: (selectedGuestEditIdx > -1 && tempGuests[selectedGuestEditIdx]) ? (tempGuests[selectedGuestEditIdx].es_extra || 0) : 0,
                 Responsable_menor: document.getElementById('f-responsable').value.toUpperCase(),
                 fotografia: document.getElementById('box-client').dataset.blob || null,
                 identificacion: document.getElementById('box-id').dataset.blob || null,
@@ -2780,6 +2805,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             }
 
             if (!d.nombre) return showToast("Nombre requerido");
+            if (d.es_menor && !d.Responsable_menor) return showToast("Nombre del responsable requerido");
 
             console.log("💾 Guardando huésped local:", d);
 
@@ -3624,10 +3650,18 @@ window.handleClientDBSearch = function(q, mode = 'form') {
         function showView(v) { 
             const viewWork = document.getElementById('view-work');
             if (viewWork) viewWork.classList.toggle('hidden', v === 'home');
+            
             const regList = document.getElementById('reg-view-list');
             if (regList) regList.classList.toggle('hidden', v !== 'reg-list');
+            
             const regForm = document.getElementById('reg-view-form');
             if (regForm) regForm.classList.toggle('hidden', v !== 'reg-form');
+
+            // 🔥 Toggle visibility of header counters
+            const headerOcc = document.getElementById('header-occ-container');
+            const headerPerson = document.getElementById('header-person-container');
+            if (headerOcc) headerOcc.classList.toggle('hidden', v !== 'reg-list');
+            if (headerPerson) headerPerson.classList.toggle('hidden', v !== 'reg-form');
         }
         function startShift() { showToast("Sincronizando sesión..."); setTimeout(() => showView('work'), 800); }
         function changeFloor(f) {
