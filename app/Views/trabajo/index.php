@@ -1274,6 +1274,15 @@
                 }
             });
         }
+        function formatDate(date) {
+            if (!date) return '';
+            const d = new Date(date);
+            const day = String(d.getDate()).padStart(2, '0');
+            const month = String(d.getMonth() + 1).padStart(2, '0');
+            const year = d.getFullYear();
+            return `${day}/${month}/${year}`;
+        }
+
         async function initData() {
             console.log("🚀 Iniciando carga de datos... URL:", base_url);
             try {
@@ -1303,16 +1312,23 @@
                 rooms.length = 0;
                 data.forEach(item => {
                     let h_ent = '', f_ent = '', h_sal = '', f_sal = '';
-                    if (item.hora_entrada_1) {
-                        const d = new Date(item.hora_entrada_1);
-                        h_ent = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-                        f_ent = d.toLocaleDateString();
+                    
+                    // Priorizar última entrada persistida
+                    const rawEnt = item.ultima_entrada || item.hora_entrada_1;
+                    if (rawEnt) {
+                        const d = new Date(rawEnt);
+                        h_ent = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
+                        f_ent = formatDate(d);
                     }
-                    if (item.hora_salida_1) {
-                        const d = new Date(item.hora_salida_1);
-                        h_sal = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-                        f_sal = d.toLocaleDateString();
+
+                    // Priorizar última salida persistida
+                    const rawSal = item.ultima_salida || item.hora_salida_1;
+                    if (rawSal) {
+                        const d = new Date(rawSal);
+                        h_sal = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
+                        f_sal = formatDate(d);
                     }
+
                     rooms.push({
                         id: parseInt(item.numero).toString().padStart(3, '0'),
                         status: item.status || 'X',
@@ -1790,6 +1806,11 @@
                 const disabledAttr = isDisabledByStatus ? 'disabled' : '';
                 const pointerClass = isDisabledByStatus ? 'opacity-20 pointer-events-none' : '';
 
+                // 🔥 Restricción para botones de Entrada/Salida (Solo en CHECKIN)
+                const isNotCheckin = !isCheckinReg || isBlocked;
+                const stampDisabledAttr = isNotCheckin ? 'disabled' : '';
+                const stampPointerClass = isNotCheckin ? 'opacity-20 pointer-events-none' : 'cursor-pointer hover:scale-110';
+
                 const tr = document.createElement('tr');
                 tr.className = `status-${r.status} transition-all hover:bg-slate-50 ${r.incluir_en_reporte ? 'row-shaded' : ''}`;
                 tr.innerHTML = `
@@ -1841,7 +1862,9 @@
                         </div>
                     </td>
                     <td class="text-right font-black text-blue-700" ${isBlocked ? '' : `ondblclick="editPrice(event, ${realIdx})"`} title="${isBlocked ? '' : 'Doble clic para editar'}">
-                        <span id="price-val-${realIdx}" class="${isBlocked ? 'text-slate-300' : 'cursor-pointer hover:text-blue-600'} transition-colors">${r.precio.toFixed(2)}</span>
+                        <span id="price-val-${realIdx}" class="${isBlocked ? 'text-slate-300' : 'cursor-pointer hover:text-blue-600'} transition-colors">
+                            ${isCheckinReg ? r.precio.toFixed(2) : '0.00'}
+                        </span>
                     </td>
                     <td class="text-center">
                         <button onclick="openRegister(${realIdx})" ${disabledAttr} 
@@ -1852,16 +1875,16 @@
                     <td class="font-black uppercase truncate text-slate-700 max-w-[200px]">${titular.nombre} ${titular.apellido || titular.apellidos || ''}</td>
                     <td class="text-center font-black text-sm ${r.extra > 0 ? 'text-orange-600' : 'text-slate-300'}">${r.extra}</td>
                     <td class="text-center">
-                        <button onclick="stampTime(${realIdx}, 'entrada')" ${disabledAttr} class="text-blue-500 ${pointerClass}"><i class="fas fa-plus-circle"></i></button>
+                        <button onclick="stampTime(${realIdx}, 'entrada')" ${stampDisabledAttr} class="text-blue-500 ${stampPointerClass} transition-all"><i class="fas fa-plus-circle"></i></button>
                     </td>
                     <td class="text-[10px] font-bold leading-tight text-slate-400">
-                        ${r.horaEntrada ? `<div class="font-black text-slate-700">${r.horaEntrada} / ${r.fechaEntrada}</div>` : '-'}
+                        ${r.horaEntrada ? `<div class="font-black text-slate-700">${r.horaEntrada} ${r.fechaEntrada}</div>` : '-'}
                     </td>
                     <td class="text-[10px] font-bold leading-tight text-slate-400">
-                        ${r.horaSalida ? `<div class="font-black text-slate-700">${r.horaSalida} / ${r.fechaSalida}</div>` : '-'}
+                        ${r.horaSalida ? `<div class="font-black text-slate-700">${r.horaSalida} ${r.fechaSalida}</div>` : '-'}
                     </td>
                     <td class="text-center">
-                        <button onclick="stampTime(${realIdx}, 'salida')" ${disabledAttr} class="text-rose-500 ${pointerClass}"><i class="fas fa-plus-circle"></i></button>
+                        <button onclick="stampTime(${realIdx}, 'salida')" ${stampDisabledAttr} class="text-rose-500 ${stampPointerClass} transition-all"><i class="fas fa-plus-circle"></i></button>
                     </td>
                     <td class="text-center">
                         ${r.estado_registro === 'CHECKIN' ? `
@@ -2064,22 +2087,43 @@
         async function stampTime(idx, type) {
             const now = new Date();
             const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
+            const date = formatDate(now);
             
             if (type === 'entrada') {
                 rooms[idx].horaEntrada = time;
+                rooms[idx].fechaEntrada = date;
+                showToast("✔ Entrada registrada: " + time);
+                const payload = {
+                    registro_id: rooms[idx].registro_id,
+                    nombre_huesped: rooms[idx].titular_full,
+                    tipo: 'TEMPORAL'
+                };
+                console.log("🚀 [DEBUG ENTRADA] Payload:", payload);
+                try {
+                    await fetch(base_url + "reservacion/registrar-entrada", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(payload)
+                    });
+                } catch (e) {
+                    console.error("Error al persistir entrada:", e);
+                }
             } else {
                 rooms[idx].horaSalida = time;
+                rooms[idx].fechaSalida = date;
                 showToast("✔ Salida registrada: " + time);
+                const payload = {
+                    registro_id: rooms[idx].registro_id,
+                    nombre_huesped: rooms[idx].titular_full,
+                    tipo: 'TEMPORAL'
+                };
+                console.log("🚀 [DEBUG SALIDA] Payload:", payload);
                 // 🔥 Registrar salida temporal en BD
                 try {
                     await fetch(base_url + "reservacion/registrar-salida", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({
-                            registro_id: rooms[idx].registro_id,
-                            nombre_huesped: rooms[idx].titular_full,
-                            tipo: 'TEMPORAL'
-                        })
+                        body: JSON.stringify(payload)
                     });
                 } catch (e) {
                     console.error("Error al registrar salida temporal:", e);
@@ -2973,7 +3017,14 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                         const date = new Date(s.fecha_salida).toLocaleString('es-MX', { 
                             day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' 
                         });
-                        const badgeClass = s.tipo_salida === 'DEFINITIVA' ? 'bg-rose-100 text-rose-600' : 'bg-orange-100 text-orange-600';
+                        let badgeClass = 'bg-slate-100 text-slate-600';
+                        if (s.tipo_salida === 'entrada') {
+                            badgeClass = 'bg-indigo-100 text-indigo-600';
+                        } else if (s.tipo_salida === 'TEMPORAL') {
+                            badgeClass = 'bg-orange-100 text-orange-600';
+                        } else if (s.tipo_salida === 'DEFINITIVA') {
+                            badgeClass = 'bg-rose-100 text-rose-600';
+                        }
                         
                         body.innerHTML += `
                             <tr class="border-b border-slate-50 hover:bg-slate-50/50 transition-colors">

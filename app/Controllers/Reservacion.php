@@ -2147,6 +2147,9 @@ public function getHabitaciones()
             r.hora_entrada      AS hora_entrada_1,
             r.hora_salida       AS hora_salida_1,
 
+            (SELECT MAX(fecha_salida) FROM salidas_clientes sc WHERE sc.registro_id = r.id AND sc.tipo_salida = 'entrada') AS ultima_entrada,
+            (SELECT MAX(fecha_salida) FROM salidas_clientes sc WHERE sc.registro_id = r.id AND sc.tipo_salida != 'entrada') AS ultima_salida,
+
             CONCAT(IFNULL(hu.nombre,''), ' ', IFNULL(hu.apellido,'')) AS nombre_huesped,
             COALESCE(r.estado_registro, 'DISPONIBLE') AS estado_registro_val,
             r.observaciones     AS observaciones,
@@ -2539,7 +2542,7 @@ public function estadosHabitacion()
                 return $this->response->setJSON(['success' => false, 'msg' => 'Registro no encontrado']);
             }
 
-            $db->table('salidas_clientes')->insert([
+            $data = [
                 'registro_id'   => $registroId,
                 'habitacion_id' => $registro['habitacion_id'],
                 'nombre_huesped'=> $json['nombre_huesped'] ?? 'HUÉSPED',
@@ -2548,10 +2551,57 @@ public function estadosHabitacion()
                 'fecha_salida'  => date('Y-m-d H:i:s'),
                 'usuario_id'    => session()->get('user_id'),
                 'created_at'    => date('Y-m-d H:i:s')
-            ]);
+            ];
+            $db->table('salidas_clientes')->insert($data);
+            
+            file_put_contents(WRITEPATH . 'db_errors.log', "SALIDA PERSISTED: " . json_encode($data) . PHP_EOL, FILE_APPEND);
 
             return $this->response->setJSON(['success' => true, 'msg' => 'Salida registrada correctamente']);
         } catch (\Exception $e) {
+            file_put_contents(WRITEPATH . 'db_errors.log', "SALIDA ERROR: " . $e->getMessage() . PHP_EOL, FILE_APPEND);
+            return $this->response->setJSON(['success' => false, 'msg' => $e->getMessage()]);
+        }
+    }
+
+    public function registrarEntrada() {
+        try {
+            date_default_timezone_set('America/Mexico_City');
+            $json = $this->request->getJSON(true);
+            
+            file_put_contents(WRITEPATH . 'db_errors.log', "ENTRADA REQUEST RECEIVED: " . json_encode($json) . PHP_EOL, FILE_APPEND);
+
+            $registroId = $json['registro_id'] ?? null;
+
+            if (!$registroId) {
+                file_put_contents(WRITEPATH . 'db_errors.log', "ENTRADA ERROR: registro_id missing" . PHP_EOL, FILE_APPEND);
+                return $this->response->setJSON(['success' => false, 'msg' => 'registro_id requerido']);
+            }
+
+            $db = \Config\Database::connect();
+            $registro = $db->table('registros')->where('id', $registroId)->get()->getRowArray();
+
+            if (!$registro) {
+                file_put_contents(WRITEPATH . 'db_errors.log', "ENTRADA ERROR: Registro $registroId not found" . PHP_EOL, FILE_APPEND);
+                return $this->response->setJSON(['success' => false, 'msg' => 'Registro no encontrado']);
+            }
+
+            $data = [
+                'registro_id'   => $registroId,
+                'habitacion_id' => $registro['habitacion_id'],
+                'nombre_huesped'=> $json['nombre_huesped'] ?? 'HUÉSPED',
+                'tipo_salida'   => 'entrada',
+                'motivo'        => 'REGRESO DE HUESPED',
+                'fecha_salida'  => date('Y-m-d H:i:s'),
+                'usuario_id'    => session()->get('get_id') ?? session()->get('user_id'),
+                'created_at'    => date('Y-m-d H:i:s')
+            ];
+            $db->table('salidas_clientes')->insert($data);
+            
+            file_put_contents(WRITEPATH . 'db_errors.log', "ENTRADA (AS SALIDA) PERSISTED: " . json_encode($data) . PHP_EOL, FILE_APPEND);
+
+            return $this->response->setJSON(['success' => true, 'msg' => 'Entrada registrada correctamente']);
+        } catch (\Exception $e) {
+            file_put_contents(WRITEPATH . 'db_errors.log', "ENTRADA FATAL ERROR: " . $e->getMessage() . PHP_EOL, FILE_APPEND);
             return $this->response->setJSON(['success' => false, 'msg' => $e->getMessage()]);
         }
     }

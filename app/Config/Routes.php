@@ -193,6 +193,7 @@ $routes->post('habitaciones/actualizar-estado', 'Habitaciones::actualizar_estado
 
 $routes->get('reservacion/habitaciones-activas', 'Reservacion::getHabitacionesActivas');
 $routes->post('reservacion/registrar-salida', 'Reservacion::registrarSalida');
+$routes->post('reservacion/registrar-entrada', 'Reservacion::registrarEntrada');
 $routes->get('reservacion/get-salidas/(:num)', 'Reservacion::getSalidas/$1');
 $routes->get('catalogos/tipo-estadia', 'Reservacion::listar_estadias');
 

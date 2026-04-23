@@ -38,3 +38,12 @@ Updating ID: 131 Data: {"precio":836.82,"precio_base":418.41,"iva":133.89,"ish":
 Updating ID: 131 Data: {"precio":836.82,"precio_base":418.41,"iva":133.89,"ish":29.29,"total":1000,"noches":2,"tipo_estadia_id":"1","forma_pago_id":"2","adultos":3,"ni\u00f1os":0}
 Updating ID: 7 Data: {"estado_id":1}
 Updating ID: 131 Data: {"precio":492.25,"precio_base":246.13,"iva":78.76,"ish":17.23,"total":588.24,"noches":2,"tipo_estadia_id":"1","forma_pago_id":"2","adultos":3,"ni\u00f1os":0}
+SALIDA PERSISTED: {"registro_id":"1","habitacion_id":"1","nombre_huesped":"NOHEMI","tipo_salida":"TEMPORAL","motivo":"SALIDA TEMPORAL","fecha_salida":"2026-04-22 23:00:03","usuario_id":"1","created_at":"2026-04-22 23:00:03"}
+ENTRADA REQUEST RECEIVED: {"registro_id":"1","nombre_huesped":"NOHEMI","tipo":"TEMPORAL"}
+ENTRADA (AS SALIDA) PERSISTED: {"registro_id":"1","habitacion_id":"1","nombre_huesped":"NOHEMI","tipo_salida":"entrada","motivo":"REGRESO DE HUESPED","fecha_salida":"2026-04-22 23:15:27","usuario_id":"1","created_at":"2026-04-22 23:15:27"}
+ENTRADA REQUEST RECEIVED: {"registro_id":"129","nombre_huesped":"NOHEMI","tipo":"TEMPORAL"}
+ENTRADA (AS SALIDA) PERSISTED: {"registro_id":"129","habitacion_id":"32","nombre_huesped":"NOHEMI","tipo_salida":"entrada","motivo":"REGRESO DE HUESPED","fecha_salida":"2026-04-22 23:30:36","usuario_id":"1","created_at":"2026-04-22 23:30:36"}
+SALIDA PERSISTED: {"registro_id":"129","habitacion_id":"32","nombre_huesped":"NOHEMI","tipo_salida":"TEMPORAL","motivo":"SALIDA TEMPORAL","fecha_salida":"2026-04-22 23:30:38","usuario_id":"1","created_at":"2026-04-22 23:30:38"}
+ENTRADA REQUEST RECEIVED: {"registro_id":"129","nombre_huesped":"NOHEMI","tipo":"TEMPORAL"}
+ENTRADA (AS SALIDA) PERSISTED: {"registro_id":"129","habitacion_id":"32","nombre_huesped":"NOHEMI","tipo_salida":"entrada","motivo":"REGRESO DE HUESPED","fecha_salida":"2026-04-22 23:30:40","usuario_id":"1","created_at":"2026-04-22 23:30:40"}
+SALIDA PERSISTED: {"registro_id":"129","habitacion_id":"32","nombre_huesped":"NOHEMI","tipo_salida":"TEMPORAL","motivo":"SALIDA TEMPORAL","fecha_salida":"2026-04-22 23:30:42","usuario_id":"1","created_at":"2026-04-22 23:30:42"}
