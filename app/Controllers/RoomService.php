@@ -126,9 +126,9 @@ class RoomService extends ResourceController
             $items = $json['items'] ?? [];
             $usuarioId = $json['usuario_id'] ?? null;
             
-            // Si viene registro_id, es cargo a habitación. Si no, es venta independiente.
-            $isVentaIndependiente = empty($json['registro_id']);
-            $registroIdReal = !$isVentaIndependiente ? intval($json['registro_id']) : null;
+            // Si viene registro_id, lo usamos. Si no viene o es 0, es venta independiente.
+            $registroIdReal = isset($json['registro_id']) ? intval($json['registro_id']) : 0;
+            $isVentaIndependiente = ($registroIdReal === 0);
 
             if (empty($items)) {
                 throw new \Exception("No hay productos en el pedido");
@@ -136,15 +136,8 @@ class RoomService extends ResourceController
 
             $db->transException(true)->transStart();
 
-            // 🔥 Lógica de registro_id secuencial para pedidos independientes
-            // Si es independiente, buscamos el MAX(registro_id) en la tabla para asignar el siguiente folio de pedido
+            // 🔥 Usamos el registro_id recibido (será 0 si es Mostrador)
             $registroIdParaInsertar = $registroIdReal;
-
-            if ($isVentaIndependiente) {
-                $maxRow = $db->table('registro_room_service')->selectMax('registro_id')->get()->getRowArray();
-                $lastId = intval($maxRow['registro_id'] ?? 0);
-                $registroIdParaInsertar = $lastId + 1;
-            }
 
             $totalPedido = 0;
 

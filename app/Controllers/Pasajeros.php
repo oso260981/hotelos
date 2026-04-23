@@ -437,7 +437,8 @@ public function buscar_cliente()
             email,
             fecha_nacimiento,
             genero,
-            tipo_identificacion_id
+            tipo_identificacion_id,
+            empresa
         ")
         ->where('activo', 1)
         ->groupStart()
@@ -529,6 +530,10 @@ public function guardar_cliente()
         "genero" =>
             !empty($data["genero"])
             ? $data["genero"]
+            : null,
+        "empresa" =>
+            !empty($data["empresa"])
+            ? $data["empresa"]
             : null
     ];
 

@@ -737,81 +737,27 @@ public function ticket($id)
 public function cambiarHabitacion()
 {
     try {
-
         $json = $this->request->getJSON(true);
+        $db = \Config\Database::connect();
 
         if (empty($json['registro_id']) || empty($json['habitacion_id'])) {
             throw new \Exception("Datos incompletos");
         }
 
-        $db = \Config\Database::connect();
+        // 1. Obtener Registro Actual (el que se mueve)
+        $registro = $db->table('registros')->where('id', $json['registro_id'])->get()->getRowArray();
+        if (!$registro) throw new \Exception("Registro no encontrado");
 
-        // =========================
-        // 🔎 REGISTRO ACTUAL
-        // =========================
-        $registro = $db->table('registros')
-            ->where('id', $json['registro_id'])
-            ->get()
-            ->getRowArray();
+        // 2. Obtener Info Habitaciones
+        $habActual = $db->table('habitaciones')->where('id', $registro['habitacion_id'])->get()->getRowArray();
+        $habNueva  = $db->table('habitaciones')->where('id', $json['habitacion_id'])->get()->getRowArray();
+        if (!$habNueva) throw new \Exception("Habitación destino no encontrada");
 
-        if (!$registro) {
-            throw new \Exception("Registro no encontrado");
-        }
+        // 3. Validar Upgrade de Precio
+        $tipoActual = $db->table('habitaciones_tipos')->where('id', $habActual['tipo_habitacion_id'])->get()->getRowArray();
+        $tipoNueva  = $db->table('habitaciones_tipos')->where('id', $habNueva['tipo_habitacion_id'])->get()->getRowArray();
 
-        // =========================
-        // 🔎 HABITACIÓN NUEVA
-        // =========================
-        $habNueva = $db->table('habitaciones')
-            ->where('id', $json['habitacion_id'])
-            ->get()->getRowArray();
-
-        if (!$habNueva) {
-            throw new \Exception("Habitación nueva no encontrada");
-        }
-
-        // =========================
-        // 🔎 VALIDAR DISPONIBILIDAD (A través del registro)
-        // =========================
-        $registroLibre = $db->table('registros')
-            ->where('habitacion_id', $habNueva['id'])
-            ->where('estado_registro', 'DISPONIBLE')
-            ->orderBy('id', 'DESC')
-            ->get()->getRowArray();
-
-        if (!$registroLibre) {
-            throw new \Exception("La habitación seleccionada no está disponible (No tiene registro DISPONIBLE).");
-        }
-
-        // 2. No debe tener un registro activo (CHECKIN)
-        $ocupada = $db->table('registros')
-            ->where('habitacion_id', $habNueva['id'])
-            ->where('estado_registro', 'CHECKIN')
-            ->get()->getRowArray();
-
-        if ($ocupada) {
-            throw new \Exception("La habitación seleccionada ya tiene un huésped activo");
-        }
-
-        // 3. Limpiar registros previos no válidos (Ej: DISPONIBLE)
-        // =========================
-        // 🔎 HABITACIÓN ACTUAL (desde el registro)
-        // =========================
-        $habActual = $db->table('habitaciones')
-            ->where('id', $registro['habitacion_id'])
-            ->get()->getRowArray();
-
-        // =========================
-        // 💰 VALIDACIÓN PRECIO
-        // =========================
-        $tipoActual = $db->table('habitaciones_tipos')
-            ->where('id', $habActual['tipo_habitacion_id'])
-            ->get()->getRowArray();
-
-        $tipoNueva = $db->table('habitaciones_tipos')
-            ->where('id', $habNueva['tipo_habitacion_id'])
-            ->get()->getRowArray();
-
-        $diferencia = $tipoNueva['precio_base'] - $tipoActual['precio_base'];
+        $diferencia = (float)$tipoNueva['precio_base'] - (float)$tipoActual['precio_base'];
 
         if ($diferencia > 0 && !($json['confirmar_upgrade'] ?? false)) {
             return $this->response->setJSON([
@@ -822,70 +768,63 @@ public function cambiarHabitacion()
             ]);
         }
 
-        // =========================
-        // 🚀 TRANSACCIÓN
-        // =========================
+        // 4. TRANSACCIÓN
         $db->transStart();
 
-        // 1. CERRAR REGISTRO ACTUAL (Habitación 101)
-        $db->table('registros')
-            ->where('id', $registro['id'])
-            ->update([
-                'estado_registro' => 'CHECKOUT',
-                'estado_servicio' => 'CERRADO',
-                'hora_salida_real'=> date('Y-m-d H:i:s')
-            ]);
-
-        // 2. MARCAR HABITACIÓN ANTERIOR COMO SUCIA (Estado 2)
-        $db->table('habitaciones')
-            ->where('id', $habActual['id'])
-            ->update(['estado_id' => 2]);
-
-        // 3. BUSCAR REGISTRO "LIBRE" EN HABITACIÓN NUEVA (Habitación 102)
-        $registroLibre = $db->table('registros')
+        // A. Buscar el registro 'DISPONIBLE' de la Habitación Nueva
+        $regDisponibleNueva = $db->table('registros')
             ->where('habitacion_id', $habNueva['id'])
             ->where('estado_registro', 'DISPONIBLE')
-            ->orderBy('id', 'DESC')
-            ->get()->getRowArray();
+            ->orderBy('id', 'DESC')->get()->getRowArray();
 
-        if (!$registroLibre) {
-            throw new \Exception("No se encontró un registro 'DISPONIBLE' en la habitación destino para reutilizar.");
+        if (!$regDisponibleNueva) throw new \Exception("No hay un folio DISPONIBLE en la habitación destino");
+
+        // B. INTERCAMBIO DE HABITACIONES
+        // El registro activo pasa a la habitación nueva
+        $updatePayload = [
+            'habitacion_id' => $habNueva['id'],
+            'updated_at'    => date('Y-m-d H:i:s')
+        ];
+
+        // Si se confirmó upgrade, actualizamos el precio base y el total
+        if ($json['confirmar_upgrade'] ?? false) {
+            $noches = (int)($registro['noches'] ?? 1);
+            if ($noches <= 0) $noches = 1;
+            
+            $ivaRate = 0.16;
+            $ishRate = 0.035;
+            
+            // Calculamos el nuevo total si aplicamos el precio de la nueva habitación
+            $nuevoPrecioBase = (float)$tipoNueva['precio_base'];
+            $nuevoSubtotalTotal = $nuevoPrecioBase * $noches;
+            $nuevoIva = round($nuevoSubtotalTotal * $ivaRate, 2);
+            $nuevoIsh = round($nuevoSubtotalTotal * $ishRate, 2);
+            $nuevoTotal = $nuevoSubtotalTotal + $nuevoIva + $nuevoIsh;
+
+            $updatePayload['precio_base'] = $nuevoPrecioBase;
+            $updatePayload['precio']      = $nuevoSubtotalTotal;
+            $updatePayload['iva']         = $nuevoIva;
+            $updatePayload['ish']         = $nuevoIsh;
+            $updatePayload['total']       = $nuevoTotal;
         }
 
-        // 4. REUTILIZAR Y COPIAR DATOS DEL HUÉSPED
-        $db->table('registros')
-            ->where('id', $registroLibre['id'])
-            ->update([
-                'huesped_id'       => $registro['huesped_id'],
-                'turno_id'         => $registro['turno_id'],
-                'tipo_estadia_id'  => $registro['tipo_estadia_id'],
-                'forma_pago_id'    => $registro['forma_pago_id'],
-                
-                'hora_entrada'     => date('Y-m-d H:i:s'),
-                'hora_salida'      => $registro['hora_salida'],
-                'fecha_estadia'    => date('Y-m-d'),
-                'noches'           => $registro['noches'],
-                'estado_registro'  => 'CHECKIN',
-                'estado_servicio'  => 'ACTIVO',
-                
-                'adultos'          => $registro['adultos'],
-                'niños'            => $registro['niños'],
-                'num_personas_ext' => $registro['num_personas_ext'],
-                
-                'precio_base'      => $tipoNueva['precio_base'],
-                'precio'           => $tipoNueva['precio_base'],
-                'total'            => 0,
-                'iva'              => 0,
-                'ish'              => 0,
-                'updated_at'       => date('Y-m-d H:i:s')
-            ]);
+        $db->table('registros')->where('id', $registro['id'])->update($updatePayload);
 
-        $nuevoRegistroId = $registroLibre['id'];
+        // El registro disponible pasa a la habitación vieja (Reciclaje)
+        $db->table('registros')->where('id', $regDisponibleNueva['id'])->update([
+            'habitacion_id' => $habActual['id'],
+            'updated_at'    => date('Y-m-d H:i:s')
+        ]);
 
-        // 5. LOG DE MOVIMIENTO
+        // C. ACTUALIZAR ESTADOS FÍSICOS
+        // Habitación vieja queda SUCIA (1)
+        $db->table('habitaciones')->where('id', $habActual['id'])->update(['estado_id' => 1]);
+        // Habitación nueva queda OCUPADA/LIMPIA (2)
+        $db->table('habitaciones')->where('id', $habNueva['id'])->update(['estado_id' => 2]);
+
+        // D. LOG DE MOVIMIENTO
         $db->table('registro_movimientos')->insert([
             'registro_id'         => $registro['id'],
-            'registro_nuevo_id'   => $nuevoRegistroId,
             'habitacion_anterior' => $habActual['id'],
             'habitacion_nueva'    => $habNueva['id'],
             'motivo'              => $json['motivo'] ?? 'REASIGNACION',
@@ -894,20 +833,15 @@ public function cambiarHabitacion()
 
         $db->transComplete();
 
-        // 6. RECALCULAR
-        $this->recalcularTotalesRegistro($nuevoRegistroId);
+        if ($db->transStatus() === false) throw new \Exception("Error al procesar el cambio en base de datos");
 
-        return $this->response->setJSON([
-            "ok" => true,
-            "nuevo_registro_id" => $nuevoRegistroId
-        ]);
+        // 5. RECALCULAR SALDOS (Para asegurar que todo esté al día)
+        $this->recalcularTotalesRegistro($registro['id']);
+
+        return $this->response->setJSON(["ok" => true, "msg" => "Cambio realizado exitosamente"]);
 
     } catch (\Throwable $e) {
-
-        return $this->response->setJSON([
-            "ok" => false,
-            "msg" => $e->getMessage()
-        ]);
+        return $this->response->setJSON(["ok" => false, "msg" => $e->getMessage()]);
     }
 }
 
@@ -2164,7 +2098,8 @@ public function getHabitaciones()
             hp.nombre           AS tipo_habitacion,
             hp.precio_base,
             hp.precio_persona_extra,
-            hp.personas_max     AS capacidad_hab
+            hp.personas_max     AS capacidad_hab,
+			CASE WHEN r.estado_registro in ('CHECKIN','CHECKOUT') then 'Con registro' else 'Sin registro' END registro 
 
         FROM habitaciones h
         LEFT JOIN registros r 
@@ -2294,6 +2229,9 @@ public function getHabitaciones()
             'ocupacion_total'  => (int)$r['ocupacion_total'],
             'num_personas_ext' => (int)$r['num_personas_ext'],
             'incluir_en_reporte' => (int)$r['incluir_en_reporte'],
+             'registro' => $r['registro'],
+
+            
 
             'forma_pago'    => $r['forma_pago'],
             'total'         => $r['total'],

@@ -653,13 +653,13 @@
                             </div>
                             <div class="grid grid-cols-2 gap-5 mb-5">
                                 <div class="form-input-group"><label class="form-label">Nombre(s)</label><input
-                                        type="text" id="f-name" class="form-input" placeholder="Nombre"></div>
+                                        type="text" id="f-name" class="form-input" placeholder="Nombre" oninput="this.value = this.value.toUpperCase()"></div>
                                 <div class="form-input-group"><label class="form-label">Apellidos</label><input
-                                        type="text" id="f-apellidos" class="form-input" placeholder="Apellidos"></div>
+                                        type="text" id="f-apellidos" class="form-input" placeholder="Apellidos" oninput="this.value = this.value.toUpperCase()"></div>
                             </div>
                             <div id="group-minor-hidden-1" class="grid grid-cols-2 gap-5 mb-5">
                                 <div class="form-input-group"><label class="form-label">Teléfono Movil</label><input
-                                        type="tel" id="f-tel" class="form-input" placeholder="000 000 0000"></div>
+                                        type="tel" id="f-tel" class="form-input" placeholder="Min 10 - Max 12 dígitos" maxlength="12" oninput="this.value = this.value.replace(/[^0-9]/g, '')"></div>
                                 <div class="form-input-group"><label class="form-label">Correo Electrónico</label><input
                                         type="email" id="f-mail" class="form-input" placeholder="ejemplo@mail.com">
                                 </div>
@@ -690,6 +690,10 @@
                                         <option value="Amigo">Amigo</option>
                                         <option value="Otro">Otro</option>
                                     </select>
+                                </div>
+                                <div class="form-input-group">
+                                    <label class="form-label uppercase tracking-widest text-[10px]">Empresa</label>
+                                    <input type="text" id="f-empresa" class="form-input" placeholder="Nombre de la empresa">
                                 </div>
                             </div>
                             
@@ -1297,7 +1301,7 @@
             { id: 'people', label: 'Personas', w: '130px', filter: 'text' },
             { id: 'payment', label: 'Pago', w: '120px', filter: 'select', multi: true },
             { id: 'price', label: 'Precio', w: '110px', filter: 'range' },
-            { id: 'reg', label: 'Registro', w: '120px', filter: 'text' },
+            { id: 'reg', label: 'Registro', w: '120px', filter: 'select', multi: true },
             { id: 'titular', label: 'Huesped principal', w: '250px', filter: 'select', multi: true },
             { id: 'extra', label: 'Extra', w: '80px', filter: 'select', multi: true },
             { id: 'btn_e', label: '+', w: '60px', filter: 'none' },
@@ -1441,11 +1445,15 @@
                         iva_reg: parseFloat(item.iva) || 0,
                         ish_reg: parseFloat(item.ish) || 0,
                         fecha_registro: item.fecha_registro || '---',
-                        titular_full: item.nombre_huesped || ''
+                        titular_full: item.nombre_huesped || '',
+                        registro: item.registro || ''
                     });
                 });
                 console.log("📊 [DEBUG DATA] Total registros recibidos:", rooms.length);
-                if (rooms.length > 0) console.log("📊 [DEBUG DATA] Primer registro:", rooms[0]);
+                if (rooms.length > 0) {
+                    console.log("📊 [DEBUG DATA] Primer registro:", rooms[0]);
+                    console.log("📊 [DEBUG DATA] Valores únicos de 'registro':", [...new Set(data.map(i => i.registro))]);
+                }
 
                 buildHeader();
                 renderGrid();
@@ -1513,12 +1521,14 @@
                 // Header content with Sort icon
                 const isSortable = !['btn_e', 'btn_s', 'opt', 'acciones'].includes(col.id);
                 th.innerHTML = `
-                    <div class="flex items-center justify-center space-x-2 ${isSortable ? 'cursor-pointer' : 'cursor-default'}" 
-                         ${isSortable ? `onclick="toggleSort('${col.id}')"` : ''}>
-                        <span class="sort-icon-container">
-                            ${isSortable ? '<i class="fas fa-sort opacity-10"></i>' : ''}
-                        </span>
-                        <span>${col.label}</span>
+                    <div class="flex items-center justify-center space-x-2">
+                        <div class="flex items-center space-x-2 ${isSortable ? 'cursor-pointer hover:text-blue-500 transition-colors' : ''}" 
+                             ${isSortable ? `onclick="event.stopPropagation(); toggleSort('${col.id}')"` : ''}>
+                            <span class="sort-icon-container">
+                                ${isSortable ? '<i class="fas fa-sort opacity-10"></i>' : ''}
+                            </span>
+                            <span>${col.label}</span>
+                        </div>
                         ${col.filter !== 'none' ? '<i class="fas fa-filter text-[8px] opacity-40 ml-1"></i>' : ''}
                     </div>
                     ${filterHtml}
@@ -1598,6 +1608,14 @@
                 extras.forEach(ex => {
                     const isChecked = currentVals.includes(ex);
                     html += renderMultiOption(colId, ex, ex, isChecked);
+                });
+                return html;
+            }
+            if (colId === 'reg') {
+                const options = ['Con registro', 'Sin registro'];
+                options.forEach(opt => {
+                    const isChecked = currentVals.includes(opt);
+                    html += renderMultiOption(colId, opt, opt, isChecked);
                 });
                 return html;
             }
@@ -1806,12 +1824,14 @@
                     if (max !== '' && val > parseFloat(max)) return false;
                 }
                 
-                // 🔥 Filtro por Registro (Boton de Checkout/Registrar o ID)
-                if (activeFilters.reg) {
-                    const isCheckoutReg = (r.estado_registro || '').toUpperCase().trim() === 'CHECKOUT';
-                    const isCheckinReg = (r.estado_registro || '').toUpperCase().trim() === 'CHECKIN';
-                    const btnText = isCheckoutReg ? 'CHECKOUT' : (isCheckinReg ? 'VER REGISTRO' : 'REGISTRAR');
-                    if (!btnText.toLowerCase().includes(activeFilters.reg.toLowerCase())) return false;
+                // 🔥 Filtro por Registro (Con registro / Sin registro)
+                if (Array.isArray(activeFilters.reg) && activeFilters.reg.length > 0) {
+                    const rStatus = (r.registro || '').trim().toLowerCase();
+                    const match = activeFilters.reg.some(f => f.trim().toLowerCase() === rStatus);
+                    if (!match) return false;
+                } else if (typeof activeFilters.reg === 'string' && activeFilters.reg !== '') {
+                    const rStatus = (r.registro || '').trim().toLowerCase();
+                    if (rStatus !== activeFilters.reg.trim().toLowerCase()) return false;
                 }
 
                 const tipoFiltro = document.getElementById('filter-tipo-hab').value;
@@ -1830,13 +1850,8 @@
                     case 'days': valA = a.dias; valB = b.dias; break;
                     case 'people': valA = a.ocupacion_total; valB = b.ocupacion_total; break;
                     case 'reg': 
-                        const isCheckoutA = (a.estado_registro || '').toUpperCase().trim() === 'CHECKOUT';
-                        const isCheckinA = (a.estado_registro || '').toUpperCase().trim() === 'CHECKIN';
-                        valA = isCheckoutA ? 'CHECKOUT' : (isCheckinA ? 'VER REGISTRO' : 'REGISTRAR');
-                        
-                        const isCheckoutB = (b.estado_registro || '').toUpperCase().trim() === 'CHECKOUT';
-                        const isCheckinB = (b.estado_registro || '').toUpperCase().trim() === 'CHECKIN';
-                        valB = isCheckoutB ? 'CHECKOUT' : (isCheckinB ? 'VER REGISTRO' : 'REGISTRAR');
+                        valA = a.registro;
+                        valB = b.registro;
                         break;
                     case 'payment': valA = a.formaPago; valB = b.formaPago; break;
                     case 'price': valA = a.precio; valB = b.precio; break;
@@ -1865,20 +1880,26 @@
                 const titular = r.huespedes.find(h => h.isTitular) || { nombre: '', apellido: '', apellidos: '' };
                 const isActive = r.huespedes.length > 0;
                 const isCheckoutReg = (r.estado_registro || '').toUpperCase().trim() === 'CHECKOUT';
-                const isCheckinReg = (r.estado_registro || '').toUpperCase().trim() === 'CHECKIN';
+                const isCheckinReg = ['CHECKIN', 'CHECK-IN'].includes((r.estado_registro || '').toUpperCase().trim());
                 
                 if (realIdx === 0 || isCheckoutReg) {
                     console.log(`🎨 [COLOR DEBUG] Hab: ${r.id} | Estado: "${r.estado_registro}" | isCheckout: ${isCheckoutReg} | isCheckin: ${isCheckinReg}`);
                 }
 
-                // 🔥 Bloqueo para Mantenimiento (M) o Planta (P)
-                const isBlocked = r.status === 'M' || r.status === 'P';
+                // 🔥 Bloqueo para Mantenimiento (M) o Planta (P) o Sucia (S) o VAP
+                const isSuciaOrVap = r.status === 'S' || r.status === 'VAP';
+                const isBlocked = r.status === 'M' || r.status === 'P' || isSuciaOrVap;
                 
                 // Si es ADMIN (rol 1), el Checkout NO lo deshabilita. Para otros roles sí.
                 const isDisabledByStatus = (isCheckoutReg && window.userRole !== 1) || isBlocked;
                 
                 const disabledAttr = isDisabledByStatus ? 'disabled' : '';
                 const pointerClass = isDisabledByStatus ? 'opacity-20 pointer-events-none' : '';
+
+                // 🔥 Bloqueo específico para Registro (No permite registrar en S o VAP si no hay registro previo)
+                const isRegDisabled = isSuciaOrVap && !isCheckinReg && !isCheckoutReg;
+                const regDisabledAttr = (isDisabledByStatus || isRegDisabled) ? 'disabled' : '';
+                const regPointerClass = (isDisabledByStatus || isRegDisabled) ? 'opacity-20 pointer-events-none' : '';
 
                 // 🔥 Restricción para botones de Entrada/Salida (Solo en CHECKIN)
                 const isNotCheckin = !isCheckinReg || isBlocked;
@@ -1941,8 +1962,8 @@
                         </span>
                     </td>
                     <td class="text-center">
-                        <button onclick="openRegister(${realIdx})" ${disabledAttr} 
-                            class="${isCheckoutReg ? 'bg-rose-500 shadow-rose-200' : (isCheckinReg ? 'bg-emerald-500 shadow-emerald-200' : 'bg-blue-600 shadow-blue-200')} text-white text-[10px] px-4 py-2 rounded-xl font-black shadow-md active:scale-95 transition-all ${pointerClass}">
+                        <button onclick="openRegister(${realIdx})" ${regDisabledAttr} 
+                            class="${isCheckoutReg ? 'bg-rose-500 shadow-rose-200' : (isCheckinReg ? 'bg-emerald-500 shadow-emerald-200' : 'bg-blue-600 shadow-blue-200')} text-white text-[10px] px-4 py-2 rounded-xl font-black shadow-md active:scale-95 transition-all ${regPointerClass}">
                             ${isCheckoutReg ? 'CHECKOUT' : (isCheckinReg ? 'VER REGISTRO' : 'REGISTRAR')}
                         </button>
                     </td>
@@ -2502,6 +2523,7 @@
             document.getElementById('f-gender').value = 'Masculino';
             document.getElementById('f-id-type').value = '1';
             document.getElementById('f-parentesco').value = 'Huésped Principal';
+            document.getElementById('f-empresa').value = '';
             document.getElementById('f-is-minor').checked = false;
             document.getElementById('f-responsable').value = '';
             
@@ -2533,6 +2555,7 @@
                 document.getElementById('f-birth').value = g.fecha_nacimiento || '';
                 document.getElementById('f-gender').value = g.genero === 'F' ? 'Femenino' : 'Masculino';
                 document.getElementById('f-parentesco').value = g.parentesco || 'Otro';
+                document.getElementById('f-empresa').value = g.empresa || '';
                 document.getElementById('f-is-minor').checked = g.es_menor == 1;
                 document.getElementById('f-responsable').value = g.Responsable_menor || '';
                 document.getElementById('f-is-titular').value = g.isTitular ? 'true' : 'false';
@@ -2554,6 +2577,7 @@
             const birthDiv = document.getElementById('group-minor-hidden-3');
             const docPanel = document.getElementById('panel-documentacion');
             const respInput = document.getElementById('f-responsable');
+            const empresaGroup = document.getElementById('f-empresa')?.closest('.form-input-group');
 
             if (isMinor) {
                 respDiv.classList.remove('hidden');
@@ -2562,6 +2586,7 @@
                 if (natDiv) natDiv.classList.add('hidden');
                 if (birthDiv) birthDiv.classList.add('hidden');
                 if (docPanel) docPanel.classList.add('hidden');
+                if (empresaGroup) empresaGroup.classList.add('hidden');
                 if (respInput) respInput.setAttribute('required', 'true');
                 
                 // 🔥 Los menores no pueden ser titulares
@@ -2577,6 +2602,7 @@
                 if (natDiv) natDiv.classList.remove('hidden');
                 if (birthDiv) birthDiv.classList.remove('hidden');
                 if (docPanel) docPanel.classList.remove('hidden');
+                if (empresaGroup) empresaGroup.classList.remove('hidden');
                 if (respInput) respInput.removeAttribute('required');
 
                 const titularSelect = document.getElementById('f-is-titular');
@@ -2734,12 +2760,21 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             renderCart();
             const selector = document.getElementById('rs-room-selector');
             if (!selector) return;
-            selector.innerHTML = '<option value="">VENTA INDEPENDIENTE (MOSTRADOR)</option>';
+            selector.innerHTML = '<option value="0">VENTA INDEPENDIENTE (MOSTRADOR)</option>';
             rooms.forEach(r => {
-                if (r.registro_id) {
-                    selector.innerHTML += `<option value="${r.registro_id}">HAB ${r.id} - ${r.huespedes.find(h => h.isTitular)?.nombre || 'REGISTRADO'}</option>`;
+                const isCheckin = ['CHECKIN', 'CHECK-IN'].includes((r.estado_registro || '').toUpperCase().trim());
+                if (r.registro_id && isCheckin) {
+                    const nombre = r.titular_full || 'REGISTRADO';
+                    selector.innerHTML += `<option value="${r.registro_id}">HAB ${r.id} - ${nombre}</option>`;
                 }
             });
+
+            // Pre-seleccionar si venimos de una habitación específica
+            if (selectedRoomIdx !== null && rooms[selectedRoomIdx].registro_id) {
+                selector.value = rooms[selectedRoomIdx].registro_id;
+            } else {
+                selector.value = "0";
+            }
             cargarAccesosRapidosRS();
             document.getElementById('modal-roomservice').classList.remove('hidden');
             document.getElementById('modal-roomservice').classList.add('flex');
@@ -2848,22 +2883,78 @@ window.handleClientDBSearch = function(q, mode = 'form') {
 
         async function finalizarPedidoRS() {
             if (rsCart.length === 0) { showToast("El carrito está vacío"); return; }
-            const registroId = document.getElementById('rs-room-selector').value;
-            const result = await Swal.fire({ title: 'Finalizar Pedido', text: "¿Confirma que desea cerrar el pedido e imprimir el ticket?", icon: 'question', showCancelButton: true, confirmButtonColor: '#ea580c', confirmButtonText: 'Sí, finalizar', cancelButtonText: 'Cancelar' });
+            
+            // 1. Registro ID (Asegurar 0 si es Mostrador)
+            const registroId = parseInt(document.getElementById('rs-room-selector').value) || 0;
+            
+            const result = await Swal.fire({ 
+                title: 'Finalizar Pedido', 
+                text: "¿Confirma que desea cerrar el pedido e imprimir el ticket?", 
+                icon: 'question', 
+                showCancelButton: true, 
+                confirmButtonColor: '#ea580c', 
+                confirmButtonText: 'Sí, finalizar', 
+                cancelButtonText: 'Cancelar' 
+            });
+
             if (result.isConfirmed) {
                 showToast("Procesando pedido...");
+                
+                // 2. Agrupar pedido en un solo concepto
+                const totalOrder = rsCart.reduce((acc, p) => acc + (p.precio * p.cantidad), 0);
+                const aggregatedText = rsCart.map(p => `${p.nombre} (${p.cantidad})`).join(' + ');
+                const jsonDetail = JSON.stringify(rsCart);
+
                 try {
-                    const resp = await fetch(base_url + "roomservice/finalizar-pedido", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ registro_id: registroId || null, items: rsCart, usuario_id: null }) });
+                    const resp = await fetch(base_url + "roomservice/finalizar-pedido", { 
+                        method: "POST", 
+                        headers: { "Content-Type": "application/json" }, 
+                        body: JSON.stringify({ 
+                            registro_id: registroId, 
+                            // Enviamos el pedido agrupado en un solo item según lo solicitado
+                            items: [{
+                                nombre: aggregatedText,
+                                precio: totalOrder,
+                                cantidad: 1,
+                                observaciones: jsonDetail,
+                                registro_id: registroId // 🔥 Añadido aquí también para evitar auto-consecutivos
+                            }],
+                            observaciones: jsonDetail,
+                            usuario_id: null 
+                        }) 
+                    });
+                    
                     const json = await resp.json();
-                    if (json.ok) { Swal.fire('¡Éxito!', 'Pedido registrado correctamente.', 'success'); imprimirTicketRS(rsCart, registroId, json.total); closeModal('modal-roomservice'); initData(); } 
-                    else { throw new Error(json.msg); }
-                } catch (e) { console.error(e); Swal.fire('Error', e.message, 'error'); }
+                    if (json.ok) { 
+                        const printConfirm = await Swal.fire({
+                            title: '¡Éxito!',
+                            text: 'Pedido registrado correctamente. ¿Desea imprimir el ticket?',
+                            icon: 'success',
+                            showCancelButton: true,
+                            confirmButtonText: 'SÍ, IMPRIMIR',
+                            cancelButtonText: 'NO, SOLO CERRAR',
+                            confirmButtonColor: '#ea580c'
+                        });
+
+                        if (printConfirm.isConfirmed) {
+                            imprimirTicketRS(rsCart, registroId, json.total || totalOrder); 
+                        }
+
+                        closeModal('modal-roomservice'); 
+                        initData(); 
+                    } else { 
+                        throw new Error(json.msg); 
+                    }
+                } catch (e) { 
+                    console.error(e); 
+                    Swal.fire('Error', e.message, 'error'); 
+                }
             }
         }
 
         function imprimirTicketRS(cart, registroId, total) {
             const ticketWindow = window.open('', 'PRINT', 'height=600,width=400');
-            const roomLabel = registroId ? `REGISTRO: ${registroId}` : 'VENTA MOSTRADOR';
+            const roomLabel = (registroId && registroId != 0) ? `REGISTRO: ${registroId}` : 'VENTA MOSTRADOR';
             ticketWindow.document.write(`<html><head><style>body { font-family: 'Courier New'; width: 80mm; padding: 5mm; } .text-center { text-align: center; } .header { border-bottom: 1px dashed #000; padding-bottom: 5mm; margin-bottom: 5mm; } table { width: 100%; border-collapse: collapse; } th { text-align: left; font-size: 10px; } td { font-size: 10px; padding: 2mm 0; } .total { border-top: 2px solid #000; margin-top: 5mm; padding-top: 2mm; font-weight: bold; font-size: 14px; }</style></head><body><div class="text-center header"><h3>HOTEL OS</h3><p>TICKET ROOM SERVICE</p><p>${new Date().toLocaleString()}</p><p><strong>${roomLabel}</strong></p></div><table><thead><tr><th>CANT</th><th>PRODUCTO</th><th style="text-align:right">TOTAL</th></tr></thead><tbody>${cart.map(p => `<tr><td>${p.cantidad}</td><td>${p.nombre}</td><td style="text-align:right">$${(p.cantidad * p.precio).toFixed(2)}</td></tr>`).join('')}</tbody></table><div class="total"><span>TOTAL:</span><span style="float:right">$${total.toFixed(2)}</span></div><div class="text-center" style="margin-top:10mm; font-size:10px;"><p>¡GRACIAS POR SU COMPRA!</p></div></body></html>`);
             ticketWindow.document.close(); ticketWindow.focus(); ticketWindow.print(); ticketWindow.close();
         }
@@ -2872,7 +2963,8 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             const select = document.getElementById('rs-room-selector');
             select.innerHTML = '<option value="">Seleccione habitación...</option>';
             rooms.forEach((r, idx) => {
-                if (r.huespedes && r.huespedes.length > 0) {
+                const isCheckin = ['CHECKIN', 'CHECK-IN'].includes((r.estado_registro || '').toUpperCase().trim());
+                if (r.registro_id && isCheckin && r.huespedes && r.huespedes.length > 0) {
                     const titular = r.huespedes.find(h => h.isTitular) || r.huespedes[0];
                     const opt = document.createElement('option');
                     opt.value = idx;
@@ -3017,6 +3109,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 placas: document.getElementById('f-placas').value.toUpperCase(),
                 isTitular: isTitular,
                 parentesco: document.getElementById('f-parentesco').value,
+                empresa: document.getElementById('f-empresa').value.toUpperCase(),
                 es_menor: document.getElementById('f-is-minor').checked ? 1 : 0,
                 es_extra: (selectedGuestEditIdx > -1 && tempGuests[selectedGuestEditIdx]) ? (tempGuests[selectedGuestEditIdx].es_extra || 0) : 0,
                 Responsable_menor: document.getElementById('f-responsable').value.toUpperCase(),
@@ -3038,6 +3131,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             }
 
             if (!d.nombre) return showToast("Nombre requerido");
+            if (!d.es_menor && d.telefono.length < 10) return showToast("El teléfono debe tener al menos 10 dígitos");
             if (d.es_menor && !d.Responsable_menor) return showToast("Nombre del responsable requerido");
 
             console.log("💾 Guardando huésped local:", d);
@@ -3490,11 +3584,14 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 const estadoReg = (r.estado_registro || '').toUpperCase().trim();
                 const isAvailable = estadoReg === 'DISPONIBLE';
                 
+                // 🔥 Una habitación solo es destino válido si está LIMPIA (X)
+                const isCleanStatus = r.status === 'X';
+
                 // CRÍTICO: Una habitación está ocupada SOLO si tiene huéspedes activos
                 const isOcupied = r.huespedes && Array.isArray(r.huespedes) && r.huespedes.length > 0;
 
-                // Solo mostrar si es el origen (para feedback) o si cumple el filtro de disponible y vacía
-                if (!isSource && matchesSearch && isAvailable && !isOcupied) {
+                // Solo mostrar si cumple el filtro de disponible (registro), vacía y LIMPIA (X)
+                if (!isSource && matchesSearch && isAvailable && !isOcupied && isCleanStatus) {
                     _destRooms.push({ idx, r });
 
                     const isSelected = selectedMoveTargetIdx == idx;
