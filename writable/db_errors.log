@@ -67,3 +67,9 @@ Updating ID: 9 Data: {"estado_id":2}
 ENTRADA REQUEST RECEIVED: {"registro_id":"9","nombre_huesped":"NOHEMI DE LOS SANTOS","tipo":"TEMPORAL"}
 ENTRADA (AS SALIDA) PERSISTED: {"registro_id":"9","habitacion_id":"45","nombre_huesped":"NOHEMI DE LOS SANTOS","tipo_salida":"entrada","motivo":"REGRESO DE HUESPED","fecha_salida":"2026-04-23 09:01:19","usuario_id":"1","created_at":"2026-04-23 09:01:19"}
 SALIDA PERSISTED: {"registro_id":"9","habitacion_id":"45","nombre_huesped":"NOHEMI DE LOS SANTOS","tipo_salida":"TEMPORAL","motivo":"SALIDA TEMPORAL","fecha_salida":"2026-04-23 09:01:20","usuario_id":"1","created_at":"2026-04-23 09:01:20"}
+Updating ID: 10 Data: {"precio":246.13,"precio_base":5.59,"iva":39.38,"ish":8.61,"total":294.12,"noches":44,"tipo_estadia_id":"2","forma_pago_id":"4","adultos":20,"ni\u00f1os":0}
+Updating ID: 79 Data: {"incluir_en_reporte":1}
+Updating ID: 79 Data: {"incluir_en_reporte":0}
+Updating ID: 82 Data: {"estado_id":2}
+Updating ID: 33 Data: {"estado_id":2}
+Updating ID: 33 Data: {"estado_id":2}

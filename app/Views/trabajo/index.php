@@ -1418,7 +1418,11 @@
                         dias: parseInt(item.noches) || 0,
                         huespedes: item.huespedes || [],
                         formaPago: item.forma_pago || '',
-                        precio: parseFloat(item.total) || parseFloat(item.precio_base) || 0,
+                        precio: (parseFloat(item.total) > 0) 
+                            ? parseFloat(item.total) 
+                            : ((parseInt(item.noches) || 0) > 0 
+                                ? (parseFloat(item.precio_base) || 0) * (parseInt(item.noches) || 0) * 1.195 // Fallback con impuestos aprox
+                                : 0),
                         precio_base: parseFloat(item.precio_base) || 0,
                         horaEntrada: h_ent,
                         fechaEntrada: f_ent,
@@ -1891,7 +1895,8 @@
                 const isBlocked = r.status === 'M' || r.status === 'P' || isSuciaOrVap;
                 
                 // Si es ADMIN (rol 1), el Checkout NO lo deshabilita. Para otros roles sí.
-                const isDisabledByStatus = (isCheckoutReg && window.userRole !== 1) || isBlocked;
+                // 🔥 REGLA: Si hay un CHECKIN activo, NO se bloquea la fila (se habilitan todos los campos)
+                const isDisabledByStatus = ((isCheckoutReg && window.userRole !== 1) || isBlocked) && !isCheckinReg;
                 
                 const disabledAttr = isDisabledByStatus ? 'disabled' : '';
                 const pointerClass = isDisabledByStatus ? 'opacity-20 pointer-events-none' : '';
@@ -1958,7 +1963,7 @@
                     </td>
                     <td class="text-right font-black text-blue-700" ${isBlocked ? '' : `ondblclick="editPrice(event, ${realIdx})"`} title="${isBlocked ? '' : 'Doble clic para editar'}">
                         <span id="price-val-${realIdx}" class="${isBlocked ? 'text-slate-300' : 'cursor-pointer hover:text-blue-600'} transition-colors">
-                            ${isCheckinReg ? r.precio.toFixed(2) : '0.00'}
+                            ${(isCheckinReg || r.estado_registro === 'DISPONIBLE' || r.estado_registro === 'CHECKOUT') ? (r.precio || 0).toFixed(2) : '0.00'}
                         </span>
                     </td>
                     <td class="text-center">
@@ -2029,6 +2034,33 @@
                 showToast("Error al actualizar estado");
             }
         }
+        async function recalculateRoomPrice(idx) {
+            const r = rooms[idx];
+            if (!r) return;
+
+            const nights = parseInt(r.dias) || 0;
+            const extraCount = parseInt(r.extra) || 0;
+            const extraChargePerNight = extraCount * (parseFloat(r.precio_extra) || 0);
+            
+            // Subtotal = (Base + Extras) * Noches
+            // 🔥 Corregido: Agrupación correcta para evitar errores de precedencia
+            const base = parseFloat(r.precio_base) || 0;
+            const subtotal = (base + extraChargePerNight) * nights;
+            
+            const ivaRate = 0.16;
+            const ishRate = 0.035;
+            
+            const iva = subtotal * ivaRate;
+            const ish = subtotal * ishRate;
+            const total = subtotal + iva + ish;
+
+            r.precio = total;
+            r.iva_reg = iva;
+            r.ish_reg = ish;
+            
+            console.log(`💰 [RECALC] Hab: ${r.id} | Total: ${total} (Sub: ${subtotal}, IVA: ${iva}, ISH: ${ish})`);
+        }
+
         async function updateStay(idx, val) { 
             rooms[idx].tipoEstadia = val; 
             if(val !== '' && rooms[idx].dias === 0) rooms[idx].dias = 1;
@@ -2143,6 +2175,13 @@
                 console.warn(`⚠️ Omitiendo sincronización: La habitación ${r.id} no tiene registro_id.`);
                 return;
             }
+
+            // 🔥 REGLA DE NEGOCIO: Si no es CHECKIN, no guardamos datos administrativos (solo permitimos cambios de estatus)
+            if (r.estado_registro !== 'CHECKIN') {
+                console.log(`ℹ️ [SYNC] Omitiendo datos administrativos para Hab: ${r.id} (Estado: ${r.estado_registro})`);
+                return;
+            }
+
             try {
                 const payload = {
                     registro_id: r.registro_id,
@@ -3263,6 +3302,8 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 r.extra = tempGuests.filter(g => g.es_extra == 1).length;
                 r.ocupacion_total = r.adultos + r.ninos + r.extra;
                 r.status = 'X';
+                r.estado_registro = 'CHECKIN';
+                r.registro = 'Con registro';
                 
                 // 4. Actualizar estado de habitación a OCUPADA
                 await actualizarEstadoHabitacionAsync(r.id_db || r.id, 2);

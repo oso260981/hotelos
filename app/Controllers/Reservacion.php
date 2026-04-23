@@ -8,6 +8,26 @@ class Reservacion extends BaseController
 {
     protected $registroModel;
 
+    private function getImpuestosVigentes()
+    {
+        $db = \Config\Database::connect();
+        $data = $db->table('impuestos')->where('activo', 1)->get()->getResultArray();
+        
+        $tasas = [
+            'iva' => 0.16,
+            'ish' => 0.035
+        ];
+
+        foreach ($data as $row) {
+            $nombre = strtoupper($row['nombre']);
+            // Suponemos que en BD se guardan como 16.00 o 3.50
+            if ($nombre === 'IVA') $tasas['iva'] = floatval($row['tasa']) > 1 ? floatval($row['tasa']) / 100 : floatval($row['tasa']);
+            if ($nombre === 'ISH') $tasas['ish'] = floatval($row['tasa']) > 1 ? floatval($row['tasa']) / 100 : floatval($row['tasa']);
+        }
+
+        return $tasas;
+    }
+
     public function __construct()
     {
         $this->registroModel = new RegistroModel();
@@ -136,10 +156,10 @@ public function listar_formas_pago()
         // GUARDAR PRECIO SI VIENE
         // ======================================
         if(!empty($json['total'])){
-
             $total = floatval($json['total']);
-            $ivaRate = 0.16;
-            $ishRate = 0.035;
+            $tasas = $this->getImpuestosVigentes();
+            $ivaRate = $tasas['iva'];
+            $ishRate = $tasas['ish'];
 
             $base = $total / (1 + $ivaRate + $ishRate);
             $iva  = round($base * $ivaRate, 2);
@@ -367,8 +387,9 @@ public function guardarCargo()
         // =========================
         // ⚙️ IMPUESTOS
         // =========================
-        $IVA_RATE = 0.16;
-        $ISH_RATE = 0.03;
+        $tasas = $this->getImpuestosVigentes();
+        $IVA_RATE = $tasas['iva'];
+        $ISH_RATE = $tasas['ish'];
 
         $tipo = $json['tipo'] ?? 'Extra';
 
@@ -791,8 +812,9 @@ public function cambiarHabitacion()
             $noches = (int)($registro['noches'] ?? 1);
             if ($noches <= 0) $noches = 1;
             
-            $ivaRate = 0.16;
-            $ishRate = 0.035;
+            $tasas = $this->getImpuestosVigentes();
+            $ivaRate = $tasas['iva'];
+            $ishRate = $tasas['ish'];
             
             // Calculamos el nuevo total si aplicamos el precio de la nueva habitación
             $nuevoPrecioBase = (float)$tipoNueva['precio_base'];
@@ -815,14 +837,10 @@ public function cambiarHabitacion()
         $db->table('registros')->where('id', $regDisponibleNueva['id'])->update([
             'habitacion_id' => $habActual['id'],
             'estado_id'     => 1, // 'S' - SUCIA
+            'noches'        => 0,
+            'total'         => 0,
             'updated_at'    => date('Y-m-d H:i:s')
         ]);
-
-        // C. ACTUALIZAR ESTADOS FÍSICOS (Redundancia en tabla habitaciones)
-        // Habitación vieja queda SUCIA (1)
-        $db->table('habitaciones')->where('id', $habActual['id'])->update(['estado_id' => 1]);
-        // Habitación nueva queda OCUPADA/LIMPIA (2)
-        $db->table('habitaciones')->where('id', $habNueva['id'])->update(['estado_id' => 2]);
 
         // D. LOG DE MOVIMIENTO
         $db->table('registro_movimientos')->insert([
@@ -988,8 +1006,9 @@ public function modificarEstadia()
         // =========================
         $tarifa = $registro->tarifa_base ?? $registro->precio_base ?? 0;
 
-        $IVA_RATE = 0.16;
-        $ISH_RATE = 0.03;
+        $tasas = $this->getImpuestosVigentes();
+        $IVA_RATE = $tasas['iva'];
+        $ISH_RATE = $tasas['ish'];
 
         // =========================
         // 🔄 UPDATE REGISTRO
@@ -2310,20 +2329,14 @@ public function estadosHabitacion()
 
     $db->transStart();
 
-    // 🔹 1. Marcar como checkout
+    // 🔹 1. Marcar como checkout y SUCIA
     $db->table('registros')
         ->where('id', $registroId)
         ->update([
             'estado_registro' => 'CHECKOUT',
-            'hora_salida_real'     => date('Y-m-d H:i:s'),
+            'estado_id'       => 1, // 'S' - SUCIA
+            'hora_salida_real'=> date('Y-m-d H:i:s'),
             'updated_at'      => date('Y-m-d H:i:s')
-        ]);
-
-    // 🔹 2. Marcar habitación como SUCIA (ID 1)
-    $db->table('habitaciones')
-        ->where('id', $registro['habitacion_id'])
-        ->update([
-            'estado_id' => 1 // 'S' - SUCIA
         ]);
 
     // 🔹 3. Registrar salida definitiva en la nueva tabla
@@ -2347,6 +2360,8 @@ public function estadosHabitacion()
         'estado_servicio' => 'ACTIVO',
         'turno_id'        => $registro['turno_id'] ?? null,
         'usuario_id'      => session()->get('user_id'),
+        'noches'          => 0,
+        'total'           => 0,
         'created_at'      => date('Y-m-d H:i:s'),
         'updated_at'      => date('Y-m-d H:i:s')
     ]);
@@ -2397,8 +2412,9 @@ public function estadosHabitacion()
                 $noches = intval($datos['noches'] ?? 1);
                 if ($noches <= 0) $noches = 1;
 
-                $ivaRate = 0.16;
-                $ishRate = 0.035;
+                $tasas = $this->getImpuestosVigentes();
+                $ivaRate = $tasas['iva'];
+                $ishRate = $tasas['ish'];
                 $baseTotal = $total / (1 + $ivaRate + $ishRate);
                 
                 $updateData['precio']      = round($baseTotal, 2);           // Subtotal total
