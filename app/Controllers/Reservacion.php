@@ -811,12 +811,14 @@ public function cambiarHabitacion()
         $db->table('registros')->where('id', $registro['id'])->update($updatePayload);
 
         // El registro disponible pasa a la habitación vieja (Reciclaje)
+        // 🔥 Importante: Este nuevo folio en la habitación vieja debe nacer como SUCIO (1)
         $db->table('registros')->where('id', $regDisponibleNueva['id'])->update([
             'habitacion_id' => $habActual['id'],
+            'estado_id'     => 1, // 'S' - SUCIA
             'updated_at'    => date('Y-m-d H:i:s')
         ]);
 
-        // C. ACTUALIZAR ESTADOS FÍSICOS
+        // C. ACTUALIZAR ESTADOS FÍSICOS (Redundancia en tabla habitaciones)
         // Habitación vieja queda SUCIA (1)
         $db->table('habitaciones')->where('id', $habActual['id'])->update(['estado_id' => 1]);
         // Habitación nueva queda OCUPADA/LIMPIA (2)
@@ -2317,11 +2319,11 @@ public function estadosHabitacion()
             'updated_at'      => date('Y-m-d H:i:s')
         ]);
 
-    // 🔹 2. Marcar habitación como SUCIA (ID 2 según el catálogo del grid)
+    // 🔹 2. Marcar habitación como SUCIA (ID 1)
     $db->table('habitaciones')
         ->where('id', $registro['habitacion_id'])
         ->update([
-            'estado_id' => 2 // 'X' - SUCIA
+            'estado_id' => 1 // 'S' - SUCIA
         ]);
 
     // 🔹 3. Registrar salida definitiva en la nueva tabla
@@ -2334,6 +2336,19 @@ public function estadosHabitacion()
         'fecha_salida'  => date('Y-m-d H:i:s'),
         'usuario_id'    => session()->get('user_id'),
         'created_at'    => date('Y-m-d H:i:s')
+    ]);
+
+    // 🔹 4. Generar el nuevo folio DISPONIBLE para la habitación (Sucia)
+    $db->table('registros')->insert([
+        'habitacion_id'   => $registro['habitacion_id'],
+        'estado_registro' => 'DISPONIBLE',
+        'estado_id'       => 1, // 'S' - SUCIA
+        'huesped_id'      => 0,
+        'estado_servicio' => 'ACTIVO',
+        'turno_id'        => $registro['turno_id'] ?? null,
+        'usuario_id'      => session()->get('user_id'),
+        'created_at'      => date('Y-m-d H:i:s'),
+        'updated_at'      => date('Y-m-d H:i:s')
     ]);
 
     $db->transComplete();

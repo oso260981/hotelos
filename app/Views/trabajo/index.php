@@ -2032,13 +2032,13 @@
         async function updateStay(idx, val) { 
             rooms[idx].tipoEstadia = val; 
             if(val !== '' && rooms[idx].dias === 0) rooms[idx].dias = 1;
-            rooms[idx].precio = rooms[idx].dias * rooms[idx].precio_base;
+            await recalculateRoomPrice(idx);
             renderGrid(); 
             await sincronizarFilaAsync(idx);
         }
         async function updateDays(idx, val) { 
             rooms[idx].dias = parseInt(val) || 0; 
-            rooms[idx].precio = rooms[idx].dias * rooms[idx].precio_base;
+            await recalculateRoomPrice(idx);
             renderGrid(); 
             await sincronizarFilaAsync(idx);
         }
@@ -2047,7 +2047,7 @@
             const r = rooms[idx];
             if (!r) return;
             r.dias = Math.max(0, r.dias + delta);
-            r.precio = r.dias * r.precio_base;
+            await recalculateRoomPrice(idx);
             renderGrid();
             await sincronizarFilaAsync(idx);
         }
@@ -2064,6 +2064,7 @@
             // adultos = total - niños - extras
             r.adultos = Math.max(1, r.ocupacion_total - (r.ninos || 0) - (r.extra || 0));
             
+            await recalculateRoomPrice(idx);
             renderGrid();
             await sincronizarFilaAsync(idx);
         }
