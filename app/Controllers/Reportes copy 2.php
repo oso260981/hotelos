@@ -9,105 +9,9 @@ class Reportes extends Controller
 {
     public function index()
     {
+        
+
         return view('reportes/index');
-    }
-
-    public function getDashboardData()
-    {
-        try {
-            $db = \Config\Database::connect();
-            $hoy = date('Y-m-d');
-            
-            // 1. KPI SUMMARY
-            $totalRooms = $db->table('habitaciones')->where('activa', 1)->countAllResults();
-            
-            $activeRegistros = $db->query("
-                SELECT 
-                    COUNT(id) as ocupadas,
-                    SUM(total) as ingresos,
-                    SUM(precio) as subtotal
-                FROM registros 
-                WHERE estado_registro IN ('CHECKIN', 'CHECKOUT') 
-                AND DATE(hora_entrada) = ?
-            ", [$hoy])->getRowArray();
-
-            $ocupadas = (int)($activeRegistros['ocupadas'] ?? 0);
-            $ingresos = (float)($activeRegistros['ingresos'] ?? 0);
-            $subtotal = (float)($activeRegistros['subtotal'] ?? 0);
-            
-            $occupancyRate = $totalRooms > 0 ? round(($ocupadas / $totalRooms) * 100, 1) : 0;
-            $adr = $ocupadas > 0 ? round($subtotal / $ocupadas, 2) : 0;
-            $revpar = $totalRooms > 0 ? round($subtotal / $totalRooms, 2) : 0;
-
-            // 2. WEEKLY TREND (7 Days)
-            $weeklyData = [];
-            for($i = 6; $i >= 0; $i--) {
-                $date = date('Y-m-d', strtotime("-$i days"));
-                $count = $db->table('registros')
-                    ->where('DATE(hora_entrada)', $date)
-                    ->whereIn('estado_registro', ['CHECKIN', 'CHECKOUT'])
-                    ->countAllResults();
-                $weeklyData[] = [
-                    'label' => date('D', strtotime($date)),
-                    'value' => $count
-                ];
-            }
-
-            // 3. STATUS DISTRIBUTION
-            $distribution = $db->query("
-                SELECT eh.nombre as label, COUNT(h.id) as value
-                FROM habitaciones h
-                JOIN estados_habitacion eh ON h.estado_id = eh.id
-                WHERE h.activa = 1
-                GROUP BY eh.nombre
-            ")->getResultArray();
-
-            // 4. REVENUE BY DEPARTMENT (Using 'tipo' from registro_cargos or just guessing from records)
-            $deptRevenue = $db->query("
-                SELECT 
-                    CASE 
-                        WHEN tipo IS NULL OR tipo = '' THEN 'Hospedaje'
-                        ELSE tipo 
-                    END as label,
-                    SUM(total) as value
-                FROM registro_cargos
-                WHERE DATE(created_at) = ?
-                GROUP BY label
-            ", [$hoy])->getResultArray();
-
-            // 5. RECENT GUESTS
-            $recentGuests = $db->query("
-                SELECT 
-                    h.numero as habitacion,
-                    CONCAT(hu.nombre, ' ', hu.apellido) as huesped,
-                    r.estado_registro as estado
-                FROM registros r
-                JOIN habitaciones h ON r.habitacion_id = h.id
-                JOIN huespedes hu ON r.huesped_id = hu.id
-                WHERE r.estado_registro != 'DISPONIBLE'
-                ORDER BY r.id DESC
-                LIMIT 6
-            ")->getResultArray();
-
-            return $this->response->setJSON([
-                'ok' => true,
-                'summary' => [
-                    'ingresos' => $ingresos,
-                    'ocupacion' => $occupancyRate,
-                    'adr' => $adr,
-                    'revpar' => $revpar
-                ],
-                'charts' => [
-                    'weekly' => $weeklyData,
-                    'distribution' => $distribution,
-                    'departments' => $deptRevenue
-                ],
-                'recentGuests' => $recentGuests
-            ]);
-
-        } catch (\Throwable $e) {
-            return $this->response->setJSON(['ok' => false, 'msg' => $e->getMessage()]);
-        }
     }
 
     public function getReporteTrabajo()
@@ -120,47 +24,18 @@ class Reportes extends Controller
         $turno = $this->request->getGet('turno');
 
         // =========================
-        // 📊 BASE (SQL Query optimizada)
+        // 📊 BASE
         // =========================
-        $sql = "SELECT 
-                    h.numero AS Hab,
-                    eh.codigo AS Codigo_estado,
-                    eh.nombre AS Nombre_estado,
-                    ht.clave AS Tipo,
-                    (IFNULL(r.adultos,0) + IFNULL(r.niños,0)) AS Pers,
-                    fp.codigo AS Pago,
-                    r.precio AS SUBTOTAL,
-                    r.iva AS IVA,
-                    r.ish AS ISH,
-                    r.total AS TOTAL,
-                    r.hora_entrada AS Entrada,
-                    r.hora_salida_real AS Salida,
-                    CONCAT(hu.nombre, ' ', hu.apellido) AS Huesped,
-                    r.estado_registro,
-                    r.estado_servicio,
-                    r.turno_id AS Turno,
-                    r.incluir_en_reporte
-                FROM registros r
-                LEFT JOIN habitaciones h ON r.habitacion_id = h.id
-                LEFT JOIN habitaciones_tipos ht ON h.tipo_habitacion_id = ht.id
-                LEFT JOIN estados_habitacion eh ON r.estado_id = eh.id
-                LEFT JOIN formas_pago fp ON r.forma_pago_id = fp.id
-                LEFT JOIN huespedes hu ON r.huesped_id = hu.id
-                LEFT JOIN turnos_operacion tro ON r.turno_id = tro.id
-                WHERE 1=1";
+        $builder = $db->table('Reporte_general');
 
-        $params = [];
-        
         if (!empty($turno)) {
-            $sql .= " AND r.turno_id = ?";
-            $params[] = $turno;
+            $builder->where('turno_id', $turno);
         }
 
-        // 👉 Filtrado por fecha (opcional pero recomendado)
-        // $sql .= " AND DATE(r.hora_entrada) = ?";
-        // $params[] = $fecha;
+        // 👉 importante: filtrar por fecha (ajusta si usas otro campo)
+      //  $builder->where('DATE(hora_entrada)', $fecha);
 
-        $data = $db->query($sql, $params)->getResultArray();
+        $data = $builder->get()->getResultArray();
 
         // =========================
         // 📈 KPIs
@@ -171,26 +46,25 @@ class Reportes extends Controller
         $total    = 0;
 
         foreach ($data as $row) {
-            // 🟢 ocupadas (Habitaciones con registro activo)
-            if ($row['estado_registro'] === 'CHECKIN') {
+
+            // 🟢 ocupadas
+            if (stripos($row['estados_habitacion'], 'Suc') !== false) {
                 $ocupadas++;
             }
 
-            // 🟡 entradas (Conteo de huéspedes titulares registrados)
-            if (!empty($row['Huesped']) && trim($row['Huesped']) !== '') {
+            // 🟡 entradas
+            if (!empty($row['hora_entrada'])) {
                 $entradas++;
             }
 
-            // 🔴 salidas (Habitaciones liberadas)
-            if ($row['estado_registro'] === 'CHECKOUT') {
+            // 🔴 salidas
+            if (!empty($row['hora_salida_real'])) {
                 $salidas++;
             }
 
-            // 💰 total recaudado (usando TOTAL que incluye impuestos)
-            $total += (float)$row['TOTAL'];
+            // 💰 total
+            $total += (float)$row['precio_base'];
         }
-
-        $uniqueHabs = count(array_unique(array_column($data, 'Hab')));
 
         return $this->response->setJSON([
             "ok" => true,
@@ -198,8 +72,7 @@ class Reportes extends Controller
                 "ocupadas" => $ocupadas,
                 "entradas" => $entradas,
                 "salidas"  => $salidas,
-                "total"    => round($total, 2),
-                "total_habs" => $uniqueHabs
+                "total"    => round($total, 2)
             ],
             "data" => $data
         ]);

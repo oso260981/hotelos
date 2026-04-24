@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HotelOS – Boceto de Pantallas</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:#1a1a2e; --chrome2:#16213e;
+  --blue:#1565c0; --blue-light:#1976d2;
+  --green:#2e7d32; --green-light:#388e3c;
+  --orange:#e65100; --red:#c62828; --gray:#546e7a;
+  --header-bg:#0d47a1;
+  --row-alt:#e8edf2; --row-hover:#bbdefb;
+  --col-header:#1565c0; --text:#1a237e; --text-dark:#212121;
+  --border:#90a4ae; --shadow:rgba(0,0,0,0.4);
+  --dirty:#ef9a9a; --clean:#a5d6a7; --maint:#ffcc80; --plant:#ce93d8;
+}
+body { background:var(--bg); font-family:'Roboto',sans-serif; min-height:100vh; padding:24px 16px 48px; }
+
+.tab-bar { display:flex; gap:3px; max-width:1280px; margin:0 auto 0; flex-wrap:wrap; }
+.tab { padding:9px 16px; border-radius:8px 8px 0 0; font-size:11.5px; font-weight:600; cursor:pointer;
+  border:2px solid transparent; transition:all 0.2s; white-space:nowrap; }
+.tab.active { background:#f0f4f8; color:var(--blue); border-color:#90a4ae; border-bottom-color:#f0f4f8; }
+.tab.inactive { background:rgba(255,255,255,0.08); color:rgba(255,255,255,0.5); }
+.tab.inactive:hover { background:rgba(255,255,255,0.15); color:rgba(255,255,255,0.85); }
+
+.screen-wrap { max-width:1280px; margin:0 auto; background:#f0f4f8;
+  border-radius:0 12px 12px 12px; overflow:hidden;
+  box-shadow:0 20px 60px var(--shadow); border:2px solid #90a4ae; }
+
+.topbar { background:var(--header-bg); color:white; display:flex;
+  align-items:center; justify-content:space-between; padding:8px 16px; gap:12px; }
+.topbar-left { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.topbar-logo { font-size:16px; font-weight:700; letter-spacing:1px; }
+.topbar-clock { background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.2);
+  border-radius:4px; padding:4px 12px; font-family:'Roboto Mono',monospace;
+  font-size:20px; font-weight:700; letter-spacing:2px; min-width:90px; text-align:center; }
+.topbar-date { background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.2);
+  border-radius:4px; padding:4px 10px; font-size:13px; }
+.topbar-company { font-size:10px; opacity:0.7; text-align:right; line-height:1.5; }
+.topbar-turno { background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.25);
+  border-radius:4px; padding:4px 10px; display:flex; gap:6px; align-items:center; }
+.turno-btn { padding:2px 8px; border-radius:3px; cursor:pointer; font-size:11px; font-weight:700; }
+.turno-btn.active { background:white; color:var(--blue); }
+.turno-btn.inactive { color:rgba(255,255,255,0.5); }
+
+.screen-label { text-align:center; padding:6px; background:#e8edf5;
+  font-size:11px; color:#78909c; letter-spacing:2px; text-transform:uppercase;
+  border-bottom:1px solid #cfd8dc; }
+
+.scr { display:none; }
+.scr.visible { display:block; }
+
+/* ── INICIO ── */
+.inicio-body { padding:36px 32px; min-height:540px; display:flex;
+  flex-direction:column; align-items:center; gap:24px; }
+.inicio-title { font-size:15px; font-weight:500; color:var(--gray); letter-spacing:2px; text-transform:uppercase; }
+.menu-grid { display:grid; grid-template-columns:repeat(3,250px); gap:18px; }
+.menu-card { background:white; border:2px solid var(--border); border-radius:12px;
+  cursor:pointer; transition:all 0.2s; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.09); }
+.menu-card:hover { transform:translateY(-4px); box-shadow:0 12px 28px rgba(0,0,0,0.16); }
+.menu-card-header { padding:22px 18px 16px; text-align:center; }
+.menu-card-icon { font-size:44px; margin-bottom:10px; display:block; }
+.menu-card-title { font-size:15px; font-weight:700; }
+.menu-card-body { padding:13px 16px 16px; background:#f8fafc; border-top:1px solid #e2e8f0;
+  font-size:11px; color:var(--gray); line-height:1.75; }
+.card-turno  .menu-card-header { background:linear-gradient(135deg,#e3f2fd,#bbdefb); }
+.card-turno  .menu-card-title  { color:var(--blue); }
+.card-reporte .menu-card-header { background:linear-gradient(135deg,#e8f5e9,#c8e6c9); }
+.card-reporte .menu-card-title  { color:var(--green); }
+.card-editar .menu-card-header  { background:linear-gradient(135deg,#fff3e0,#ffe0b2); }
+.card-editar .menu-card-title   { color:var(--orange); }
+.card-pasajeros .menu-card-header { background:linear-gradient(135deg,#fce4ec,#f8bbd0); }
+.card-pasajeros .menu-card-title  { color:#880e4f; }
+
+/* ── TRABAJO ── */
+.legend-bar { background:#eceff1; padding:6px 12px; display:flex; align-items:center;
+  gap:12px; border-bottom:1px solid #cfd8dc; flex-wrap:wrap; }
+.legend-item { display:flex; align-items:center; gap:4px; font-size:10px; color:#546e7a; }
+.col-note { background:#fff9c4; border:1px solid #f9a825; border-radius:4px;
+  padding:2px 6px; font-size:10px; color:#5d4037; }
+.table-container { overflow-x:auto; overflow-y:auto; max-height:480px; }
+.hab-table { width:100%; border-collapse:collapse; font-size:11px; font-family:'Roboto Mono',monospace; }
+.hab-table .col-header-row th { background:var(--col-header); color:white;
+  padding:6px 3px; text-align:center; border:1px solid #1976d2; font-size:9.5px;
+  font-weight:700; white-space:nowrap; position:sticky; top:0; z-index:10; }
+.hab-table .letter-row th { background:#1a237e; color:rgba(255,255,255,0.65);
+  padding:3px; text-align:center; border:1px solid #283593; font-size:8.5px; }
+.hab-table tbody tr { cursor:pointer; }
+.hab-table tbody tr:nth-child(odd) td  { background:white; }
+.hab-table tbody tr:nth-child(even) td { background:var(--row-alt); }
+.hab-table tbody tr:hover td { background:var(--row-hover); }
+.hab-table td { padding:5px 3px; border:1px solid #cfd8dc; text-align:center;
+  white-space:nowrap; vertical-align:middle; color:var(--text-dark); }
+.status-dot { display:inline-flex; align-items:center; justify-content:center;
+  width:20px; height:20px; border-radius:50%; font-size:10px; font-weight:700; }
+.s-dirty { background:var(--dirty); color:#b71c1c; }
+.s-clean { background:var(--clean); color:#1b5e20; }
+.s-maint { background:var(--maint); color:#e65100; }
+.s-plant { background:var(--plant); color:#4a148c; }
+.s-empty { background:#eceff1; color:#546e7a; font-size:7px; width:28px; }
+.room-num { font-weight:700; font-size:12px; color:var(--text); }
+.price-cell { color:#1b5e20; font-weight:600; }
+.pay-badge { display:inline-block; padding:1px 4px; border-radius:3px; font-size:9px; font-weight:700; }
+.pay-E  { background:#e8f5e9; color:#2e7d32; border:1px solid #a5d6a7; }
+.pay-TC { background:#e3f2fd; color:#1565c0; border:1px solid #90caf9; }
+.pay-TD { background:#f3e5f5; color:#6a1b9a; border:1px solid #ce93d8; }
+.pay-EF { background:#fff3e0; color:#e65100; border:1px solid #ffcc80; }
+.hour-cell { font-size:9.5px; line-height:1.4; }
+.hour-time { font-weight:700; color:#1a237e; display:block; }
+.hour-date { color:#78909c; font-size:8.5px; display:block; }
+.name-cell { text-align:left; padding-left:6px; font-size:10.5px; max-width:150px; overflow:hidden; text-overflow:ellipsis; }
+.action-btn { display:inline-flex; align-items:center; justify-content:center;
+  width:20px; height:20px; border-radius:3px; font-size:12px; cursor:pointer; border:none; }
+.btn-plus  { background:#e3f2fd; color:#1565c0; }
+.btn-gear  { background:#fff3e0; color:#e65100; }
+.btn-arrow { background:#f3e5f5; color:#6a1b9a; }
+.btn-cam   { background:#fce4ec; color:#880e4f; }
+.floor-bar { background:var(--chrome2); padding:8px 12px; display:flex;
+  align-items:center; gap:8px; border-top:2px solid #0d47a1; }
+.floor-label { color:rgba(255,255,255,0.6); font-size:11px; letter-spacing:1px; text-transform:uppercase; }
+.floor-btn { padding:5px 14px; border-radius:4px; font-size:12px; font-weight:700;
+  cursor:pointer; border:1px solid rgba(255,255,255,0.2); transition:all 0.15s; }
+.floor-btn.active   { background:#1e88e5; color:white; border-color:#1e88e5; }
+.floor-btn.inactive { background:rgba(255,255,255,0.08); color:rgba(255,255,255,0.5); }
+.floor-btn:hover    { background:rgba(30,136,229,0.5); color:white; }
+
+/* ── SHARED INNER ── */
+.inner-body { padding:20px 24px; background:#f0f4f8; min-height:540px; }
+.inner-topbar { display:flex; align-items:center; gap:12px; margin-bottom:18px; flex-wrap:wrap; }
+.inner-title { font-size:17px; font-weight:700; color:var(--blue); }
+.inner-subtitle { font-size:11px; color:var(--gray); }
+.btn-back { padding:7px 14px; background:#e3f2fd; color:var(--blue); border:1px solid #90caf9;
+  border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+.btn-primary { padding:8px 18px; background:var(--blue); color:white;
+  border:none; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; }
+.btn-primary:hover { opacity:0.85; }
+.btn-green  { background:var(--green) !important; }
+.btn-orange { background:var(--orange) !important; }
+.btn-gray   { background:#546e7a !important; }
+
+.rtab-bar { display:flex; gap:3px; margin-bottom:16px; border-bottom:2px solid #90a4ae; flex-wrap:wrap; }
+.rtab { padding:7px 16px; font-size:11.5px; font-weight:600; cursor:pointer;
+  border-radius:6px 6px 0 0; border:1px solid transparent; transition:all 0.15s; white-space:nowrap; }
+.rtab.active { background:white; color:var(--blue); border-color:#90a4ae; border-bottom-color:white; margin-bottom:-2px; }
+.rtab.inactive { color:var(--gray); }
+.rtab.inactive:hover { background:#e8edf5; }
+
+.g-table { width:100%; border-collapse:collapse; font-size:11.5px; background:white;
+  border-radius:8px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.07); }
+.g-table th { background:var(--col-header); color:white; padding:8px 10px;
+  text-align:left; font-size:10.5px; font-weight:700; letter-spacing:0.3px; }
+.g-table td { padding:7px 10px; border-bottom:1px solid #e2e8f0; vertical-align:middle; }
+.g-table tbody tr:nth-child(even) td { background:#f8fafc; }
+.g-table tbody tr:hover td { background:#e3f2fd; }
+.g-table .total-row td { background:#e8f5e9 !important; font-weight:700; color:var(--green); }
+.g-table .shaded td { background:#fff8e1 !important; }
+
+.summary-row { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:18px; }
+.sum-card { background:white; border-radius:10px; padding:14px 18px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.07); border-left:4px solid; }
+.sum-card.blue { border-color:var(--blue); }
+.sum-card.green { border-color:var(--green); }
+.sum-card.orange { border-color:var(--orange); }
+.sum-card.red { border-color:var(--red); }
+.sum-label { font-size:9.5px; color:var(--gray); letter-spacing:1px; text-transform:uppercase; margin-bottom:4px; }
+.sum-value { font-size:21px; font-weight:700; font-family:'Roboto Mono',monospace; }
+.sum-card.blue .sum-value   { color:var(--blue); }
+.sum-card.green .sum-value  { color:var(--green); }
+.sum-card.orange .sum-value { color:var(--orange); }
+.sum-card.red .sum-value    { color:var(--red); }
+.sum-sub { font-size:9.5px; color:var(--gray); margin-top:2px; }
+
+.form-section { background:white; border-radius:10px; padding:18px;
+  margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.form-section-title { font-size:12.5px; font-weight:700; color:var(--blue);
+  margin-bottom:14px; padding-bottom:8px; border-bottom:1px solid #e2e8f0; }
+.form-grid   { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.form-grid-2 { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+.form-group  { display:flex; flex-direction:column; gap:4px; }
+.form-group.full { grid-column:1/-1; }
+.form-label  { font-size:10.5px; font-weight:600; color:var(--gray); }
+.form-control { padding:7px 9px; border:1px solid #90a4ae; border-radius:6px;
+  font-size:11.5px; font-family:'Roboto',sans-serif; color:var(--text-dark); outline:none; }
+.form-control:focus { border-color:var(--blue); box-shadow:0 0 0 2px rgba(21,101,192,0.12); }
+select.form-control { cursor:pointer; }
+
+.toggle-row { display:flex; align-items:center; justify-content:space-between;
+  padding:10px 0; border-bottom:1px solid #f0f0f0; }
+.toggle-row:last-child { border-bottom:none; }
+.toggle-label { font-size:12px; color:var(--text-dark); }
+.toggle-sub { font-size:10px; color:var(--gray); margin-top:2px; }
+.toggle { position:relative; width:38px; height:21px; flex-shrink:0; }
+.toggle input { opacity:0; width:0; height:0; }
+.toggle-slider { position:absolute; inset:0; background:#cfd8dc; border-radius:21px; cursor:pointer; transition:0.3s; }
+.toggle-slider:before { content:''; position:absolute; width:15px; height:15px;
+  left:3px; top:3px; background:white; border-radius:50%; transition:0.3s; }
+.toggle input:checked + .toggle-slider { background:var(--blue); }
+.toggle input:checked + .toggle-slider:before { transform:translateX(17px); }
+
+.scroll-body { overflow-y:auto; max-height:450px; }
+
+.print-bar { display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap; align-items:center; }
+.chip { padding:5px 12px; border-radius:16px; font-size:11px; font-weight:600; cursor:pointer; border:1px solid; transition:all 0.15s; }
+.chip-blue   { background:#e3f2fd; color:var(--blue); border-color:#90caf9; }
+.chip-green  { background:#e8f5e9; color:var(--green); border-color:#a5d6a7; }
+.chip-orange { background:#fff3e0; color:var(--orange); border-color:#ffcc80; }
+.chip-red    { background:#ffebee; color:var(--red); border-color:#ef9a9a; }
+.chip-purple { background:#f3e5f5; color:#6a1b9a; border-color:#ce93d8; }
+.chip.sel    { opacity:0.4; }
+
+.section-divider { font-size:10px; font-weight:700; color:var(--gray);
+  letter-spacing:2px; text-transform:uppercase; margin:12px 0 6px;
+  display:flex; align-items:center; gap:8px; }
+.section-divider::after { content:''; flex:1; height:1px; background:#e2e8f0; }
+
+.photo-ph { width:42px; height:42px; border-radius:50%; background:#e3f2fd;
+  border:2px solid #90caf9; display:flex; align-items:center; justify-content:center;
+  font-size:18px; flex-shrink:0; }
+.guest-row { display:flex; align-items:center; gap:12px; padding:10px 12px;
+  background:white; border-radius:8px; border:1px solid #e2e8f0; margin-bottom:7px;
+  cursor:pointer; transition:all 0.15s; }
+.guest-row:hover { border-color:#90caf9; background:#e8f4ff; }
+.guest-info { flex:1; }
+.guest-name { font-size:12.5px; font-weight:700; color:var(--text-dark); }
+.guest-meta { font-size:10px; color:var(--gray); margin-top:2px; font-family:'Roboto Mono',monospace; }
+.badge { display:inline-block; font-size:9px; font-weight:700; padding:1px 6px; border-radius:3px; margin-left:6px; }
+.badge-minor  { background:#fff3e0; color:#e65100; border:1px solid #ffcc80; }
+.badge-vip    { background:#f3e5f5; color:#6a1b9a; border:1px solid #ce93d8; }
+.badge-bl     { background:#ffebee; color:#c62828; border:1px solid #ef9a9a; }
+</style>
+</head>
+<body>
+
+<div class="tab-bar">
+  <div class="tab active"   id="tab1" onclick="showScreen(1)">🏠 Inicio</div>
+  <div class="tab inactive" id="tab2" onclick="showScreen(2)">📋 Trabajo</div>
+  <div class="tab inactive" id="tab3" onclick="showScreen(3)">📊 Reportes</div>
+  <div class="tab inactive" id="tab4" onclick="showScreen(4)">⚙️ Editar Sistema</div>
+  <div class="tab inactive" id="tab5" onclick="showScreen(5)">🛂 Lista de Pasajeros</div>
+</div>
+
+<div class="screen-wrap">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <div class="topbar-logo">HotelOS</div>
+      <div class="topbar-clock" id="clock">--:--</div>
+      <div class="topbar-date" id="dateDisplay">--/--/----</div>
+      <div class="topbar-turno">
+        <span style="opacity:0.65;font-size:10px;">TURNO</span>
+        <span class="turno-btn active">1</span>
+        <span class="turno-btn inactive">2</span>
+        <span class="turno-btn inactive">3</span>
+      </div>
+    </div>
+    <div class="topbar-company">CIMASOL SA de CV<br>C/ Alfonso Ceballos #12 · Alcaldía Venustiano Carranza · CDMX 15500</div>
+  </div>
+
+  <!-- ══ PANTALLA 1: INICIO ══ -->
+  <div class="scr visible" id="screen1">
+    <div class="screen-label">Pantalla de Inicio — Menú Principal</div>
+    <div class="inicio-body">
+      <div class="inicio-title">Selecciona una opción</div>
+      <div class="menu-grid">
+        <div class="menu-card card-turno" onclick="showScreen(2)">
+          <div class="menu-card-header"><span class="menu-card-icon">🔑</span><div class="menu-card-title">EMPIEZA TURNO</div></div>
+          <div class="menu-card-body">✔ Termina el turno anterior automáticamente<br>✔ Baja habitaciones: ✦ X M P VAP<br>✔ Permite editar errores antes de iniciar<br>✔ Genera reporte de inicio de turno</div>
+        </div>
+        <div class="menu-card card-reporte" onclick="showScreen(3)">
+          <div class="menu-card-header"><span class="menu-card-icon">📊</span><div class="menu-card-title">SACAR REPORTE</div></div>
+          <div class="menu-card-body"><strong>Recepción:</strong> Reporte Real de Turno · Sombreados (3 turnos) · Datos: ID, Firma, OBS, LN<br><br><strong>Oficina:</strong> Reporte R del día · Reporte F editable</div>
+        </div>
+        <div class="menu-card card-editar" onclick="showScreen(4)">
+          <div class="menu-card-header"><span class="menu-card-icon">⚙️</span><div class="menu-card-title">EDITAR SISTEMA</div></div>
+          <div class="menu-card-body">✔ Pisos y habitaciones<br>✔ Tickets · Claves de acceso<br>✔ Número de turnos del día<br>✔ Impuestos (IVA, ISH)<br>✔ Impresoras y periféricos</div>
+        </div>
+      </div>
+      <div><div class="menu-card card-pasajeros" style="width:250px" onclick="showScreen(5)">
+        <div class="menu-card-header"><span class="menu-card-icon">🛂</span><div class="menu-card-title">LISTA DE PASAJEROS</div></div>
+        <div class="menu-card-body">Registro de huéspedes del día con ID, firma y observaciones. Disponible para autoridades.</div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ══ PANTALLA 2: TRABAJO ══ -->
+  <div class="scr" id="screen2">
+    <div class="screen-label">Pantalla de Trabajo — Gestión de Habitaciones</div>
+    <div class="legend-bar">
+      <span class="legend-item"><span class="status-dot s-dirty">✦</span> Sucia</span>
+      <span class="legend-item"><span class="status-dot s-clean">X</span> Limpia</span>
+      <span class="legend-item"><span class="status-dot s-maint">M</span> Mantenimiento</span>
+      <span class="legend-item"><span class="status-dot s-plant">P</span> Planta</span>
+      <span class="legend-item"><span class="status-dot s-empty">VAP</span> VAP</span>
+      <span style="margin-left:auto;" class="col-note">💡 Toca una fila para gestionar la habitación</span>
+    </div>
+    <div class="table-container">
+      <table class="hab-table">
+        <thead>
+          <tr class="col-header-row">
+            <th>A</th><th>HAB</th><th>C</th><th>D</th><th>E</th><th>F — $</th><th>G+</th>
+            <th>H — HORA E</th><th>I+</th><th>J — HORA S</th><th>K+</th>
+            <th>L — NOMBRE / ID</th><th>M+</th><th>R⚙</th><th>S🎫</th><th>›</th>
+          </tr>
+          <tr class="letter-row">
+            <th>STATUS</th><th>N°</th><th>TIPO</th><th>PERS</th><th>PAGO</th><th>PRECIO</th><th>+PAGO</th>
+            <th>ENTRA</th><th>+H.E</th><th>SALE</th><th>+H.S</th>
+            <th>NOMBRE / ESCANEO ID</th><th>+HUÉSP</th><th>OPC</th><th>TICKET</th><th></th>
+          </tr>
+        </thead>
+        <tbody id="habRows"></tbody>
+      </table>
+    </div>
+    <div class="floor-bar">
+      <span class="floor-label">Piso:</span>
+      <div class="floor-btn active">PB</div>
+      <div class="floor-btn inactive">1°</div>
+      <div class="floor-btn inactive">2°</div>
+      <div class="floor-btn inactive">3°</div>
+      <div style="margin-left:auto;"><div class="floor-btn inactive" onclick="showScreen(1)" style="font-size:11px;padding:4px 10px;">← Menú</div></div>
+    </div>
+  </div>
+
+  <!-- ══ PANTALLA 3: REPORTES ══ -->
+  <div class="scr" id="screen3">
+    <div class="screen-label">Sacar Reporte</div>
+    <div class="inner-body">
+      <div class="inner-topbar">
+        <button class="btn-back" onclick="showScreen(1)">← Menú</button>
+        <div class="inner-title">📊 Reportes</div>
+        <div class="inner-subtitle">09/03/2026 — Turno 1</div>
+        <div style="margin-left:auto;display:flex;gap:8px;">
+          <button class="btn-primary btn-green">🖨 Imprimir</button>
+          <button class="btn-primary btn-gray">💾 Exportar</button>
+        </div>
+      </div>
+      <div class="rtab-bar">
+        <div class="rtab active"   onclick="showRep(1,this)">📋 Reporte Real de Turno</div>
+        <div class="rtab inactive" onclick="showRep(2,this)">🔲 Sombreados 3 Turnos</div>
+        <div class="rtab inactive" onclick="showRep(3,this)">🗂 Datos ID/Firma/OBS</div>
+        <div class="rtab inactive" onclick="showRep(4,this)">📅 Reporte R del Día</div>
+        <div class="rtab inactive" onclick="showRep(5,this)">✏️ Reporte F Editable</div>
+      </div>
+
+      <!-- REP 1 -->
+      <div id="rep1" class="scroll-body">
+        <div class="summary-row">
+          <div class="sum-card blue"><div class="sum-label">Habitaciones ocupadas</div><div class="sum-value">9</div><div class="sum-sub">de 14 total</div></div>
+          <div class="sum-card green"><div class="sum-label">Total recaudado</div><div class="sum-value">$3,870</div><div class="sum-sub">Turno 1</div></div>
+          <div class="sum-card orange"><div class="sum-label">Entradas</div><div class="sum-value">11</div><div class="sum-sub">huéspedes</div></div>
+          <div class="sum-card red"><div class="sum-label">Salidas</div><div class="sum-value">6</div><div class="sum-sub">habitaciones liberadas</div></div>
+        </div>
+        <table class="g-table">
+          <thead><tr><th>HAB</th><th>STATUS</th><th>TIPO</th><th>PERS</th><th>PAGO</th><th>SUBTOTAL</th><th>IVA 16%</th><th>ISH 3%</th><th>TOTAL</th><th>H. ENTRADA</th><th>H. SALIDA</th><th>NOMBRE</th></tr></thead>
+          <tbody>
+            <tr><td>101</td><td>✦ Sucia</td><td>S</td><td>2</td><td>E</td><td>$294.12</td><td>$47.06</td><td>$8.82</td><td><strong>$350</strong></td><td>09:15 09/03</td><td>11:30 09/03</td><td>GARCÍA LÓPEZ, JUAN</td></tr>
+            <tr><td>102</td><td>X Limpia</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+            <tr class="shaded"><td>103</td><td>✦ Sucia</td><td>SQ 2d</td><td>1</td><td>TC</td><td>$352.94</td><td>$56.47</td><td>$10.59</td><td><strong>$420</strong></td><td>07:00 08/03</td><td>—</td><td>MARTÍNEZ R., ANA L.</td></tr>
+            <tr><td>104</td><td>M Mant.</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>— en mantenimiento —</td></tr>
+            <tr class="shaded"><td>106</td><td>✦ Sucia</td><td>S 2d</td><td>2</td><td>TD</td><td>$588.24</td><td>$94.12</td><td>$17.64</td><td><strong>$700</strong></td><td>14:20 08/03</td><td>—</td><td>RODRÍGUEZ SOTO, P.</td></tr>
+            <tr><td>107</td><td>✦ Sucia</td><td>S</td><td>2</td><td>E</td><td>$235.29</td><td>$37.65</td><td>$7.06</td><td><strong>$280</strong></td><td>08:05 09/03</td><td>10:45 09/03</td><td>FLORES H., CARLOS</td></tr>
+            <tr class="shaded"><td>108</td><td>X Limpia</td><td>—</td><td>1</td><td>EF</td><td>$294.12</td><td>$47.06</td><td>$8.82</td><td><strong>$350</strong></td><td>06:30 09/03</td><td>07:55 09/03</td><td>HERRERA V., DIANA</td></tr>
+            <tr><td>109</td><td>✦ Sucia</td><td>S</td><td>3</td><td>TC</td><td>$470.59</td><td>$75.29</td><td>$14.12</td><td><strong>$560</strong></td><td>10:00 09/03</td><td>—</td><td>VARGAS LUNA, ROBERTO</td></tr>
+            <tr class="shaded"><td>111</td><td>✦ Sucia</td><td>S</td><td>1</td><td>E</td><td>$252.10</td><td>$40.34</td><td>$7.56</td><td><strong>$300</strong></td><td>11:10 09/03</td><td>12:55 09/03</td><td>RAMÍREZ, SOFÍA</td></tr>
+            <tr><td>113</td><td>X Limpia</td><td>—</td><td>2</td><td>TD</td><td>$352.94</td><td>$56.47</td><td>$10.59</td><td><strong>$420</strong></td><td>05:50 09/03</td><td>07:10 09/03</td><td>CASTRO B., MIGUEL A.</td></tr>
+            <tr class="shaded"><td>114</td><td>✦ Sucia</td><td>S</td><td>3</td><td>E</td><td>$411.76</td><td>$65.88</td><td>$12.36</td><td><strong>$490</strong></td><td>13:00 09/03</td><td>—</td><td>MENDOZA R., LUIS E.</td></tr>
+            <tr class="total-row"><td colspan="5"><strong>TOTALES TURNO 1</strong></td><td><strong>$3,252.10</strong></td><td><strong>$520.34</strong></td><td><strong>$97.56</strong></td><td><strong>$3,870</strong></td><td colspan="3">11 registros · 6 salidas</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- REP 2: SOMBREADOS -->
+      <div id="rep2" class="scroll-body" style="display:none">
+        <div class="summary-row">
+          <div class="sum-card blue"><div class="sum-label">Turno 1</div><div class="sum-value">$3,870</div></div>
+          <div class="sum-card green"><div class="sum-label">Turno 2</div><div class="sum-value">$5,040</div></div>
+          <div class="sum-card orange"><div class="sum-label">Turno 3</div><div class="sum-value">$2,100</div></div>
+          <div class="sum-card red"><div class="sum-label">Total del día</div><div class="sum-value">$11,010</div></div>
+        </div>
+        <table class="g-table">
+          <thead><tr>
+            <th>HAB</th>
+            <th style="background:#1565c0">T1 PAGO</th><th style="background:#1565c0">T1 PRECIO</th><th style="background:#1565c0">T1 NOMBRE</th>
+            <th style="background:#2e7d32">T2 PAGO</th><th style="background:#2e7d32">T2 PRECIO</th><th style="background:#2e7d32">T2 NOMBRE</th>
+            <th style="background:#546e7a">T3 PAGO</th><th style="background:#546e7a">T3 PRECIO</th><th style="background:#546e7a">T3 NOMBRE</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>101</td><td>E</td><td>$350</td><td>GARCÍA L., JUAN</td><td style="background:#f1f8e9">E</td><td style="background:#f1f8e9">$280</td><td style="background:#f1f8e9">PÉREZ M.</td><td style="background:#f5f5f5">TC</td><td style="background:#f5f5f5">$350</td><td style="background:#f5f5f5">TORRES S.</td></tr>
+            <tr><td>102</td><td>—</td><td>—</td><td>—</td><td style="background:#f1f8e9">TD</td><td style="background:#f1f8e9">$420</td><td style="background:#f1f8e9">LUNA R.</td><td style="background:#f5f5f5">E</td><td style="background:#f5f5f5">$300</td><td style="background:#f5f5f5">SILVA P.</td></tr>
+            <tr class="shaded"><td>103</td><td>TC</td><td>$420</td><td>MARTÍNEZ R., ANA</td><td style="background:#fff8e1">TC</td><td style="background:#fff8e1">$420</td><td style="background:#fff8e1">DÍAZ F.</td><td style="background:#f5f5f5">—</td><td style="background:#f5f5f5">—</td><td style="background:#f5f5f5">—</td></tr>
+            <tr><td>107</td><td>E</td><td>$280</td><td>FLORES H., CARLOS</td><td style="background:#f1f8e9">E</td><td style="background:#f1f8e9">$350</td><td style="background:#f1f8e9">REYES G.</td><td style="background:#f5f5f5">EF</td><td style="background:#f5f5f5">$280</td><td style="background:#f5f5f5">MORA C.</td></tr>
+            <tr><td>109</td><td>TC</td><td>$560</td><td>VARGAS L., ROBERTO</td><td style="background:#f1f8e9">—</td><td style="background:#f1f8e9">—</td><td style="background:#f1f8e9">—</td><td style="background:#f5f5f5">TD</td><td style="background:#f5f5f5">$560</td><td style="background:#f5f5f5">RAMOS V.</td></tr>
+            <tr class="total-row"><td><strong>TOTAL</strong></td><td colspan="2"><strong>$3,870</strong></td><td></td><td colspan="2"><strong>$5,040</strong></td><td></td><td colspan="2"><strong>$2,100</strong></td><td><strong>$11,010</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- REP 3: DATOS -->
+      <div id="rep3" class="scroll-body" style="display:none">
+        <div class="print-bar">
+          <span style="font-size:11px;color:var(--gray);font-weight:600;">Filtrar:</span>
+          <span class="chip chip-blue" onclick="this.classList.toggle('sel')">🪪 ID / Documento</span>
+          <span class="chip chip-green" onclick="this.classList.toggle('sel')">✍️ Firma</span>
+          <span class="chip chip-orange" onclick="this.classList.toggle('sel')">💬 Observaciones</span>
+          <span class="chip chip-red" onclick="this.classList.toggle('sel')">⛔ Lista Negra</span>
+        </div>
+        <table class="g-table">
+          <thead><tr><th>HAB</th><th>NOMBRE COMPLETO</th><th>DOC</th><th>N° DOCUMENTO</th><th>FIRMA</th><th>FOTO</th><th>OBSERVACIONES</th><th>LISTA</th></tr></thead>
+          <tbody>
+            <tr><td>101</td><td>GARCÍA LÓPEZ, JUAN ANTONIO</td><td>INE</td><td>GALJ8901234H</td><td style="color:var(--green)">✔ Digital</td><td style="color:var(--green)">✔</td><td>—</td><td>—</td></tr>
+            <tr class="shaded"><td>103</td><td>MARTÍNEZ RUIZ, ANA LAURA</td><td>Pasaporte</td><td>G12345678</td><td style="color:var(--green)">✔ Digital</td><td style="color:var(--orange)">⚠ Pend.</td><td>Solicita factura RFC: MARA9204</td><td>—</td></tr>
+            <tr><td>106</td><td>RODRÍGUEZ SOTO, PEDRO</td><td>INE</td><td>ROSP7705678X</td><td style="color:var(--orange)">⚠ Manual</td><td style="color:var(--green)">✔</td><td>Llega con menor (hija) — parentesco verificado</td><td style="color:var(--orange);font-weight:700">MENOR</td></tr>
+            <tr class="shaded"><td>107</td><td>FLORES HERNÁNDEZ, CARLOS</td><td>INE</td><td>FLHC8512345A</td><td style="color:var(--green)">✔ Digital</td><td style="color:var(--green)">✔</td><td>—</td><td>—</td></tr>
+            <tr><td>108</td><td>HERRERA VÁZQUEZ, DIANA</td><td>INE</td><td>HEVD9001234Z</td><td style="color:var(--green)">✔ Digital</td><td style="color:var(--green)">✔</td><td>Factura emitida</td><td>—</td></tr>
+            <tr class="shaded"><td>109</td><td>VARGAS LUNA, ROBERTO</td><td>INE</td><td>VALR7808765B</td><td style="color:var(--orange)">⚠ Manual</td><td style="color:var(--green)">✔</td><td style="color:var(--red)">Actitud agresiva en check-in</td><td style="color:var(--red);font-weight:700">⛔ L.NEGRA</td></tr>
+            <tr><td>111</td><td>RAMÍREZ, SOFÍA</td><td>Pasaporte</td><td>G98765432</td><td style="color:var(--green)">✔ Digital</td><td style="color:var(--green)">✔</td><td>—</td><td>—</td></tr>
+            <tr class="shaded"><td>114</td><td>MENDOZA REYES, LUIS ENRIQUE</td><td>INE</td><td>MERL8203456C</td><td style="color:var(--green)">✔ Digital</td><td style="color:var(--green)">✔</td><td>Cliente frecuente</td><td style="color:var(--blue);font-weight:700">⭐ VIP</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- REP 4: R DÍA -->
+      <div id="rep4" class="scroll-body" style="display:none">
+        <div style="background:#fff3e0;border:1px solid #ffcc80;border-radius:8px;padding:9px 14px;margin-bottom:14px;font-size:11.5px;color:var(--orange);">
+          🏢 <strong>Vista Oficina</strong> — Consolidado del día 09/03/2026. Solo lectura desde esta terminal.
+        </div>
+        <div class="summary-row">
+          <div class="sum-card blue"><div class="sum-label">Total 3 turnos</div><div class="sum-value">$11,010</div></div>
+          <div class="sum-card green"><div class="sum-label">Efectivo</div><div class="sum-value">$5,820</div></div>
+          <div class="sum-card orange"><div class="sum-label">Tarjeta</div><div class="sum-value">$5,190</div></div>
+          <div class="sum-card red"><div class="sum-label">Facturas emitidas</div><div class="sum-value">3</div></div>
+        </div>
+        <table class="g-table">
+          <thead><tr><th>TURNO</th><th>HAB</th><th>NOMBRE</th><th>PAGO</th><th>SUBTOTAL</th><th>IVA 16%</th><th>ISH 3%</th><th>TOTAL</th><th>ENTRADA</th><th>SALIDA</th></tr></thead>
+          <tbody>
+            <tr><td rowspan="4" style="font-weight:700;color:var(--blue);vertical-align:middle">T1</td><td>101</td><td>GARCÍA L., JUAN</td><td>E</td><td>$294.12</td><td>$47.06</td><td>$8.82</td><td><strong>$350</strong></td><td>09:15</td><td>11:30</td></tr>
+            <tr><td>107</td><td>FLORES H., CARLOS</td><td>E</td><td>$235.29</td><td>$37.65</td><td>$7.06</td><td><strong>$280</strong></td><td>08:05</td><td>10:45</td></tr>
+            <tr><td>108</td><td>HERRERA V., DIANA</td><td>EF</td><td>$294.12</td><td>$47.06</td><td>$8.82</td><td><strong>$350</strong></td><td>06:30</td><td>07:55</td></tr>
+            <tr><td>111</td><td>RAMÍREZ, SOFÍA</td><td>E</td><td>$252.10</td><td>$40.34</td><td>$7.56</td><td><strong>$300</strong></td><td>11:10</td><td>12:55</td></tr>
+            <tr><td rowspan="3" style="font-weight:700;color:var(--green);vertical-align:middle">T2</td><td>102</td><td>LUNA R.</td><td>TD</td><td>$352.94</td><td>$56.47</td><td>$10.59</td><td><strong>$420</strong></td><td>14:05</td><td>16:20</td></tr>
+            <tr><td>105</td><td>REYES G.</td><td>E</td><td>$294.12</td><td>$47.06</td><td>$8.82</td><td><strong>$350</strong></td><td>15:30</td><td>17:10</td></tr>
+            <tr><td>110</td><td>DÍAZ F.</td><td>TC</td><td>$588.24</td><td>$94.12</td><td>$17.64</td><td><strong>$700</strong></td><td>13:00</td><td>18:45</td></tr>
+            <tr><td rowspan="2" style="font-weight:700;color:var(--gray);vertical-align:middle">T3</td><td>102</td><td>SILVA P.</td><td>E</td><td>$252.10</td><td>$40.34</td><td>$7.56</td><td><strong>$300</strong></td><td>20:15</td><td>22:00</td></tr>
+            <tr><td>107</td><td>MORA C.</td><td>EF</td><td>$235.29</td><td>$37.65</td><td>$7.06</td><td><strong>$280</strong></td><td>21:00</td><td>22:50</td></tr>
+            <tr class="total-row"><td colspan="4"><strong>TOTAL DEL DÍA</strong></td><td><strong>$2,798.32</strong></td><td><strong>$447.75</strong></td><td><strong>$83.93</strong></td><td><strong>$3,330</strong></td><td colspan="2"></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- REP 5: F EDITABLE -->
+      <div id="rep5" class="scroll-body" style="display:none">
+        <div style="background:#e8f5e9;border:1px solid #a5d6a7;border-radius:8px;padding:9px 14px;margin-bottom:14px;font-size:11.5px;color:var(--green);display:flex;align-items:center;justify-content:space-between;">
+          <span>✏️ <strong>Reporte Fiscal Editable</strong> — Ajusta valores antes de declarar ante SAT · Fiscalía · PROFECO</span>
+          <button class="btn-primary btn-green" style="font-size:11px;padding:5px 12px;">💾 Guardar cambios</button>
+        </div>
+        <table class="g-table">
+          <thead><tr><th>HAB</th><th>NOMBRE</th><th>PAGO</th><th>SUBTOTAL</th><th>IVA 16%</th><th>ISH 3%</th><th>TOTAL</th><th>RFC FACTURA</th><th>NOTAS</th></tr></thead>
+          <tbody>
+            <tr><td>101</td><td>GARCÍA LÓPEZ, JUAN</td><td>E</td>
+              <td><input style="width:72px;padding:3px;font-size:10.5px;border:1px solid #90a4ae;border-radius:4px;" value="$294.12"></td>
+              <td><input style="width:62px;padding:3px;font-size:10.5px;border:1px solid #90a4ae;border-radius:4px;" value="$47.06"></td>
+              <td><input style="width:58px;padding:3px;font-size:10.5px;border:1px solid #90a4ae;border-radius:4px;" value="$8.82"></td>
+              <td><input style="width:68px;padding:3px;font-size:10.5px;border:1px solid #90a4ae;border-radius:4px;font-weight:700;" value="$350.00"></td>
+              <td><input style="width:110px;padding:3px;font-size:10.5px;border:1px solid #90a4ae;border-radius:4px;" placeholder="RFC..."></td>
+              <td><input style="width:130px;padding:3px;font-size:10.5px;border:1px solid #90a4ae;border-radius:4px;" placeholder="Nota..."></td></tr>
+            <tr class="shaded"><td>103</td><td>MARTÍNEZ R., ANA L.</td><td>TC</td>
+              <td><input style="width:72px;padding:3px;font-size:10.5px;border:1px solid #90a4ae;border-radius:4px;" value="$352.94"></td>
+              <td><input style="width:62px;padding:3px;font-size:10.5px;border:1px solid #90a4ae;border-radius:4px;" value="$56.47"></td>
+              <td><input style="width:58px;padding:3px;font-size:10.5px;border:1px solid #90a4ae;border-radius:4px;" value="$10.59"></td>
+              <td><input style="width:68px;padding:3px;font-size:10.5px;border:1px solid #90a4ae;border-radius:4px;font-weight:700;" value="$420.00"></td>
+              <td><input style="width:110px;padding:3px;font-size:10.5px;border:1px solid #90a4ae;border-radius:4px;color:var(--blue);" value="MARA920415"></td>
+              <td><input style="width:130px;padding:3px;font-size:10.5px;border:1px solid #90a4ae;border-radius:4px;" placeholder="Nota..."></td></tr>
+            <tr><td>108</td><td>HERRERA V., DIANA</td><td>EF</td>
+              <td><input style="width:72px;padding:3px;font-size:10.5px;border:1px solid #90a4ae;border-radius:4px;" value="$294.12"></td>
+              <td><input style="width:62px;padding:3px;font-size:10.5px;border:1px solid #90a4ae;border-radius:4px;" value="$47.06"></td>
+              <td><input style="width:58px;padding:3px;font-size:10.5px;border:1px solid #90a4ae;border-radius:4px;" value="$8.82"></td>
+              <td><input style="width:68px;padding:3px;font-size:10.5px;border:1px solid #90a4ae;border-radius:4px;font-weight:700;" value="$350.00"></td>
+              <td><input style="width:110px;padding:3px;font-size:10.5px;border:1px solid #90a4ae;border-radius:4px;color:var(--blue);" value="HEVD900212"></td>
+              <td><input style="width:130px;padding:3px;font-size:10.5px;border:1px solid #90a4ae;border-radius:4px;" value="Factura emitida"></td></tr>
+            <tr class="shaded"><td>109</td><td>VARGAS LUNA, ROBERTO</td><td>TC</td>
+              <td><input style="width:72px;padding:3px;font-size:10.5px;border:1px solid #90a4ae;border-radius:4px;" value="$470.59"></td>
+              <td><input style="width:62px;padding:3px;font-size:10.5px;border:1px solid #90a4ae;border-radius:4px;" value="$75.29"></td>
+              <td><input style="width:58px;padding:3px;font-size:10.5px;border:1px solid #90a4ae;border-radius:4px;" value="$14.12"></td>
+              <td><input style="width:68px;padding:3px;font-size:10.5px;border:1px solid #90a4ae;border-radius:4px;font-weight:700;" value="$560.00"></td>
+              <td><input style="width:110px;padding:3px;font-size:10.5px;border:1px solid #90a4ae;border-radius:4px;" placeholder="RFC..."></td>
+              <td><input style="width:130px;padding:3px;font-size:10.5px;border:1px solid #90a4ae;border-radius:4px;" placeholder="Nota..."></td></tr>
+            <tr class="total-row"><td colspan="3"><strong>TOTALES</strong></td><td><strong>$1,411.77</strong></td><td><strong>$225.88</strong></td><td><strong>$42.35</strong></td><td><strong>$1,680.00</strong></td><td colspan="2"></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PANTALLA 4: EDITAR SISTEMA ══ -->
+  <div class="scr" id="screen4">
+    <div class="screen-label">Editar Sistema — Configuración</div>
+    <div class="inner-body">
+      <div class="inner-topbar">
+        <button class="btn-back" onclick="showScreen(1)">← Menú</button>
+        <div class="inner-title">⚙️ Editar Sistema</div>
+        <div class="inner-subtitle">Configuración general de HotelOS</div>
+      </div>
+      <div class="rtab-bar">
+        <div class="rtab active"   onclick="showCfg(1,this)">🏨 Pisos y Habitaciones</div>
+        <div class="rtab inactive" onclick="showCfg(2,this)">🎫 Tickets</div>
+        <div class="rtab inactive" onclick="showCfg(3,this)">🔐 Claves de Acceso</div>
+        <div class="rtab inactive" onclick="showCfg(4,this)">🕐 Turnos</div>
+        <div class="rtab inactive" onclick="showCfg(5,this)">💰 Impuestos</div>
+        <div class="rtab inactive" onclick="showCfg(6,this)">🖨 Periféricos</div>
+      </div>
+
+      <!-- CFG 1: PISOS -->
+      <div id="cfg1" class="scroll-body">
+        <div class="form-section">
+          <div class="form-section-title">🏨 Pisos registrados</div>
+          <table class="g-table" style="margin-bottom:14px">
+            <thead><tr><th>PISO</th><th>NOMBRE</th><th>N° HABITACIONES</th><th>ACTIVAS</th><th>ACCIONES</th></tr></thead>
+            <tbody>
+              <tr><td>PB</td><td>Planta Baja</td><td>4</td><td>4</td><td><button class="btn-primary" style="font-size:10px;padding:3px 10px;">Editar</button></td></tr>
+              <tr><td>1°</td><td>Primer Piso</td><td>14</td><td>13</td><td><button class="btn-primary" style="font-size:10px;padding:3px 10px;">Editar</button></td></tr>
+              <tr><td>2°</td><td>Segundo Piso</td><td>14</td><td>14</td><td><button class="btn-primary" style="font-size:10px;padding:3px 10px;">Editar</button></td></tr>
+              <tr><td>3°</td><td>Tercer Piso</td><td>10</td><td>10</td><td><button class="btn-primary" style="font-size:10px;padding:3px 10px;">Editar</button></td></tr>
+            </tbody>
+          </table>
+          <div style="display:flex;gap:8px;">
+            <button class="btn-primary">+ Añadir piso</button>
+            <button class="btn-primary btn-orange">+ Añadir habitación</button>
+          </div>
+        </div>
+        <div class="form-section">
+          <div class="form-section-title">🔧 Estados de habitación disponibles</div>
+          <div class="toggle-row"><div class="toggle-label">✦ Sucia — Ocupada o pendiente de limpieza</div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+          <div class="toggle-row"><div class="toggle-label">X Limpia — Disponible para rentar</div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+          <div class="toggle-row"><div class="toggle-label">M Mantenimiento — Fuera de servicio temporal</div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+          <div class="toggle-row"><div class="toggle-label">P Planta — Uso exclusivo del personal</div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+          <div class="toggle-row"><div class="toggle-label">VAP — Habitación especial / VIP</div><label class="toggle"><input type="checkbox"><span class="toggle-slider"></span></label></div>
+        </div>
+      </div>
+
+      <!-- CFG 2: TICKETS -->
+      <div id="cfg2" class="scroll-body" style="display:none">
+        <div class="form-section">
+          <div class="form-section-title">🎫 Datos del establecimiento en ticket</div>
+          <div class="form-grid">
+            <div class="form-group"><label class="form-label">Nombre del establecimiento</label><input class="form-control" value="CIMASOL SA de CV"></div>
+            <div class="form-group"><label class="form-label">RFC</label><input class="form-control" value="CIM2001157P0"></div>
+            <div class="form-group"><label class="form-label">Teléfono</label><input class="form-control" value="55 1234 5678"></div>
+            <div class="form-group"><label class="form-label">Ancho del ticket</label><select class="form-control"><option>58 mm</option><option selected>80 mm</option></select></div>
+            <div class="form-group"><label class="form-label">Logo en ticket</label><select class="form-control"><option selected>Sí, centrado</option><option>No</option></select></div>
+            <div class="form-group"><label class="form-label">Copias por ticket</label><select class="form-control"><option selected>1</option><option>2</option></select></div>
+            <div class="form-group full"><label class="form-label">Mensaje de pie de ticket</label><input class="form-control" value="¡Gracias por su visita! · CIMASOL SA de CV"></div>
+          </div>
+        </div>
+        <div class="form-section">
+          <div class="form-section-title">📋 Campos visibles en el ticket</div>
+          <div class="toggle-row"><div class="toggle-label">Número de habitación</div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+          <div class="toggle-row"><div class="toggle-label">Nombre del huésped</div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+          <div class="toggle-row"><div class="toggle-label">Hora y fecha de entrada</div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+          <div class="toggle-row"><div class="toggle-label">Desglose SUBTOTAL / IVA / ISH / TOTAL</div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+          <div class="toggle-row"><div class="toggle-label">Forma de pago</div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+          <div class="toggle-row"><div class="toggle-label">Número de folio consecutivo</div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+        </div>
+        <button class="btn-primary btn-green">💾 Guardar configuración</button>
+      </div>
+
+      <!-- CFG 3: CLAVES -->
+      <div id="cfg3" class="scroll-body" style="display:none">
+        <div class="form-section">
+          <div class="form-section-title">🔐 Usuarios y niveles de acceso</div>
+          <table class="g-table" style="margin-bottom:14px">
+            <thead><tr><th>USUARIO</th><th>ROL</th><th>RECEPCIÓN</th><th>REPORTES</th><th>EDITAR SISTEMA</th><th>ACCIONES</th></tr></thead>
+            <tbody>
+              <tr><td><strong>admin</strong></td><td>Administrador</td><td style="color:var(--green)">✔ Completo</td><td style="color:var(--green)">✔ Completo</td><td style="color:var(--green)">✔ Completo</td><td><button class="btn-primary" style="font-size:10px;padding:3px 10px;">Editar</button></td></tr>
+              <tr><td>recepcion1</td><td>Recepcionista</td><td style="color:var(--green)">✔ Completo</td><td style="color:var(--orange)">⚠ Solo turno</td><td style="color:var(--red)">✗ Sin acceso</td><td><button class="btn-primary" style="font-size:10px;padding:3px 10px;">Editar</button></td></tr>
+              <tr><td>oficina1</td><td>Supervisión</td><td style="color:var(--red)">✗ Sin acceso</td><td style="color:var(--green)">✔ Completo</td><td style="color:var(--red)">✗ Sin acceso</td><td><button class="btn-primary" style="font-size:10px;padding:3px 10px;">Editar</button></td></tr>
+            </tbody>
+          </table>
+          <button class="btn-primary">+ Añadir usuario</button>
+        </div>
+        <div class="form-section">
+          <div class="form-section-title">🔑 Cambiar contraseña</div>
+          <div class="form-grid-2" style="max-width:500px">
+            <div class="form-group"><label class="form-label">Usuario</label><select class="form-control"><option>admin</option><option>recepcion1</option><option>oficina1</option></select></div>
+            <div class="form-group"><label class="form-label">Contraseña actual</label><input class="form-control" type="password" placeholder="••••••••"></div>
+            <div class="form-group"><label class="form-label">Nueva contraseña</label><input class="form-control" type="password" placeholder="••••••••"></div>
+            <div class="form-group"><label class="form-label">Confirmar nueva contraseña</label><input class="form-control" type="password" placeholder="••••••••"></div>
+          </div>
+          <button class="btn-primary" style="margin-top:10px;">Cambiar contraseña</button>
+        </div>
+      </div>
+
+      <!-- CFG 4: TURNOS -->
+      <div id="cfg4" class="scroll-body" style="display:none">
+        <div class="form-section">
+          <div class="form-section-title">🕐 Configuración de turnos del día</div>
+          <div class="form-group" style="max-width:220px;margin-bottom:14px">
+            <label class="form-label">Número de turnos por día</label>
+            <select class="form-control"><option>1 turno</option><option>2 turnos</option><option selected>3 turnos</option></select>
+          </div>
+          <table class="g-table">
+            <thead><tr><th>TURNO</th><th>NOMBRE</th><th>HORA INICIO</th><th>HORA FIN</th><th>RESPONSABLE</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td><input style="width:110px;padding:3px;font-size:11px;border:1px solid #90a4ae;border-radius:4px;" value="Turno Mañana"></td><td><input style="width:70px;padding:3px;font-size:11px;border:1px solid #90a4ae;border-radius:4px;" value="06:00"></td><td><input style="width:70px;padding:3px;font-size:11px;border:1px solid #90a4ae;border-radius:4px;" value="14:00"></td><td><input style="width:100px;padding:3px;font-size:11px;border:1px solid #90a4ae;border-radius:4px;" value="recepcion1"></td></tr>
+              <tr><td>2</td><td><input style="width:110px;padding:3px;font-size:11px;border:1px solid #90a4ae;border-radius:4px;" value="Turno Tarde"></td><td><input style="width:70px;padding:3px;font-size:11px;border:1px solid #90a4ae;border-radius:4px;" value="14:00"></td><td><input style="width:70px;padding:3px;font-size:11px;border:1px solid #90a4ae;border-radius:4px;" value="22:00"></td><td><input style="width:100px;padding:3px;font-size:11px;border:1px solid #90a4ae;border-radius:4px;" value="recepcion2"></td></tr>
+              <tr><td>3</td><td><input style="width:110px;padding:3px;font-size:11px;border:1px solid #90a4ae;border-radius:4px;" value="Turno Noche"></td><td><input style="width:70px;padding:3px;font-size:11px;border:1px solid #90a4ae;border-radius:4px;" value="22:00"></td><td><input style="width:70px;padding:3px;font-size:11px;border:1px solid #90a4ae;border-radius:4px;" value="06:00"></td><td><input style="width:100px;padding:3px;font-size:11px;border:1px solid #90a4ae;border-radius:4px;" value="recepcion3"></td></tr>
+            </tbody>
+          </table>
+          <button class="btn-primary btn-green" style="margin-top:12px;">💾 Guardar turnos</button>
+        </div>
+      </div>
+
+      <!-- CFG 5: IMPUESTOS -->
+      <div id="cfg5" class="scroll-body" style="display:none">
+        <div class="form-section">
+          <div class="form-section-title">💰 Tasas de impuestos</div>
+          <div class="form-grid-2" style="max-width:440px">
+            <div class="form-group"><label class="form-label">IVA (%)</label><input class="form-control" value="16" type="number"></div>
+            <div class="form-group"><label class="form-label">ISH — Impuesto sobre Hospedaje (%)</label><input class="form-control" value="3" type="number"></div>
+            <div class="form-group"><label class="form-label">Precio mostrado al cliente</label><select class="form-control"><option selected>Precio final (con impuestos)</option><option>Precio base</option></select></div>
+            <div class="form-group"><label class="form-label">Desglose en ticket</label><select class="form-control"><option selected>Siempre visible</option><option>Solo con factura</option></select></div>
+          </div>
+        </div>
+        <div class="form-section">
+          <div class="form-section-title">🏷 Catálogo de precios</div>
+          <table class="g-table" style="margin-bottom:12px">
+            <thead><tr><th>TIPO</th><th>PRECIO BASE</th><th>IVA</th><th>ISH</th><th>TOTAL</th></tr></thead>
+            <tbody>
+              <tr><td>Estándar (101–110)</td><td><input style="width:75px;padding:3px;font-size:11px;border:1px solid #90a4ae;border-radius:4px;" value="$294.12"></td><td style="color:var(--gray)">$47.06</td><td style="color:var(--gray)">$8.82</td><td><strong>$350</strong></td></tr>
+              <tr><td>Plus (111–114)</td><td><input style="width:75px;padding:3px;font-size:11px;border:1px solid #90a4ae;border-radius:4px;" value="$352.94"></td><td style="color:var(--gray)">$56.47</td><td style="color:var(--gray)">$10.59</td><td><strong>$420</strong></td></tr>
+              <tr><td>Suite (131)</td><td><input style="width:75px;padding:3px;font-size:11px;border:1px solid #90a4ae;border-radius:4px;" value="$588.24"></td><td style="color:var(--gray)">$94.12</td><td style="color:var(--gray)">$17.64</td><td><strong>$700</strong></td></tr>
+            </tbody>
+          </table>
+          <button class="btn-primary btn-green">💾 Guardar catálogo</button>
+        </div>
+      </div>
+
+      <!-- CFG 6: PERIFÉRICOS -->
+      <div id="cfg6" class="scroll-body" style="display:none">
+        <div class="form-section">
+          <div class="form-section-title">🖨 Impresoras</div>
+          <table class="g-table" style="margin-bottom:12px">
+            <thead><tr><th>DISPOSITIVO</th><th>TIPO</th><th>CONEXIÓN</th><th>PUERTO / IP</th><th>ESTADO</th><th>ACCIÓN</th></tr></thead>
+            <tbody>
+              <tr><td>Impresora Térmica</td><td>Tickets</td><td>USB</td><td><input style="width:80px;padding:3px;font-size:11px;border:1px solid #90a4ae;border-radius:4px;" value="USB001"></td><td style="color:var(--green);font-weight:700">● Conectada</td><td><button class="btn-primary" style="font-size:10px;padding:3px 10px;">Probar</button></td></tr>
+              <tr><td>Impresora Carta (Oficina)</td><td>Reportes</td><td>LAN</td><td><input style="width:100px;padding:3px;font-size:11px;border:1px solid #90a4ae;border-radius:4px;" value="192.168.1.50"></td><td style="color:var(--green);font-weight:700">● Conectada</td><td><button class="btn-primary" style="font-size:10px;padding:3px 10px;">Probar</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="form-section">
+          <div class="form-section-title">🔌 Periféricos</div>
+          <div class="toggle-row"><div><div class="toggle-label">🪪 Scanner de ID / Pasaporte</div><div class="toggle-sub">Puerto: USB002 — Lectura automática de documentos</div></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+          <div class="toggle-row"><div><div class="toggle-label">✍️ Touch pad de firma digital (exterior)</div><div class="toggle-sub">Puerto: USB003 — Preserva tipografía original del huésped</div></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+          <div class="toggle-row"><div><div class="toggle-label">📷 Cámara discreta de registro</div><div class="toggle-sub">Foto automática al momento de ingresar el precio</div></div><label class="toggle"><input type="checkbox"><span class="toggle-slider"></span></label></div>
+          <div class="toggle-row"><div><div class="toggle-label">💾 Disco externo USB — Respaldo mensual</div><div class="toggle-sub">Último respaldo: 28/02/2026 · Próximo: 31/03/2026</div></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+          <button class="btn-primary btn-green" style="margin-top:12px;">💾 Guardar periféricos</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PANTALLA 5: LISTA DE PASAJEROS ══ -->
+  <div class="scr" id="screen5">
+    <div class="screen-label">Lista de Pasajeros — 09/03/2026 · Turno 1</div>
+    <div class="inner-body">
+      <div class="inner-topbar">
+        <button class="btn-back" onclick="showScreen(1)">← Menú</button>
+        <div class="inner-title">🛂 Lista de Pasajeros</div>
+        <div class="inner-subtitle">11 huéspedes registrados · Turno 1 / 09-Mar-2026</div>
+        <div style="margin-left:auto;display:flex;gap:8px;">
+          <button class="btn-primary btn-green">🖨 Imprimir</button>
+          <button class="btn-primary btn-gray">📋 Exportar</button>
+        </div>
+      </div>
+      <div class="print-bar">
+        <span style="font-size:11px;color:var(--gray);font-weight:600;">Filtrar:</span>
+        <span class="chip chip-blue">Todos (11)</span>
+        <span class="chip chip-green">Activos (7)</span>
+        <span class="chip chip-orange">Con menores (1)</span>
+        <span class="chip chip-red">Lista negra (1)</span>
+        <span class="chip chip-purple">VIP (1)</span>
+      </div>
+      <div class="scroll-body">
+
+        <div class="section-divider">Habitación 101</div>
+        <div class="guest-row">
+          <div class="photo-ph">👤</div>
+          <div class="guest-info">
+            <div class="guest-name">GARCÍA LÓPEZ, JUAN ANTONIO</div>
+            <div class="guest-meta">INE · GALJ8901234H · Hab. 101 · E · $350 · Entrada: 09:15 · Salida: 11:30 · 2 personas</div>
+          </div>
+          <div style="font-size:10px;color:var(--green);text-align:right">✔ Firma digital<br>✔ Foto capturada<br>✔ ID escaneado</div>
+        </div>
+        <div class="guest-row" style="opacity:0.85;margin-left:20px;border-style:dashed;">
+          <div class="photo-ph" style="background:#f3e5f5;border-color:#ce93d8;">👤</div>
+          <div class="guest-info">
+            <div class="guest-name">LÓPEZ MÉNDEZ, PATRICIA <span class="badge badge-minor">ACOMP.</span></div>
+            <div class="guest-meta">Acompañante de huésped principal · Hab. 101 · Parentesco: Cónyuge verificado</div>
+          </div>
+        </div>
+
+        <div class="section-divider">Habitación 103</div>
+        <div class="guest-row">
+          <div class="photo-ph">👤</div>
+          <div class="guest-info">
+            <div class="guest-name">MARTÍNEZ RUIZ, ANA LAURA</div>
+            <div class="guest-meta">Pasaporte · G12345678 · Hab. 103 · TC · $420 · Entrada: 07:00 08/03 · Estadía: 2 días</div>
+          </div>
+          <div style="font-size:10px;text-align:right">
+            <span style="color:var(--green)">✔ Firma digital</span><br>
+            <span style="color:var(--orange)">⚠ Foto pendiente</span><br>
+            <span style="color:var(--blue)">Factura: MARA920415</span>
+          </div>
+        </div>
+
+        <div class="section-divider">Habitación 106</div>
+        <div class="guest-row">
+          <div class="photo-ph" style="background:#fff3e0;border-color:#ffcc80;">👤</div>
+          <div class="guest-info">
+            <div class="guest-name">RODRÍGUEZ SOTO, PEDRO <span class="badge badge-minor">MENOR</span></div>
+            <div class="guest-meta">INE · ROSP7705678X · Hab. 106 · TD · $700 · Entrada: 14:20 08/03 · Estadía: 2 días</div>
+          </div>
+          <div style="font-size:10px;text-align:right">
+            <span style="color:var(--orange)">⚠ Firma manual</span><br>
+            <span style="color:var(--green)">✔ Foto capturada</span><br>
+            <span style="color:var(--orange)">Menor acompañante — parentesco verificado</span>
+          </div>
+        </div>
+
+        <div class="section-divider">Habitación 107</div>
+        <div class="guest-row">
+          <div class="photo-ph">👤</div>
+          <div class="guest-info">
+            <div class="guest-name">FLORES HERNÁNDEZ, CARLOS</div>
+            <div class="guest-meta">INE · FLHC8512345A · Hab. 107 · E · $280 · Entrada: 08:05 · Salida: 10:45</div>
+          </div>
+          <div style="font-size:10px;color:var(--green);text-align:right">✔ Firma digital<br>✔ Foto capturada<br>✔ ID escaneado</div>
+        </div>
+
+        <div class="section-divider">Habitación 108</div>
+        <div class="guest-row">
+          <div class="photo-ph">👤</div>
+          <div class="guest-info">
+            <div class="guest-name">HERRERA VÁZQUEZ, DIANA</div>
+            <div class="guest-meta">INE · HEVD9001234Z · Hab. 108 · EF · $350 · Entrada: 06:30 · Salida: 07:55</div>
+          </div>
+          <div style="font-size:10px;text-align:right">
+            <span style="color:var(--green)">✔ Firma digital<br>✔ Foto capturada</span><br>
+            <span style="color:var(--blue)">Factura emitida</span>
+          </div>
+        </div>
+
+        <div class="section-divider">Habitación 109</div>
+        <div class="guest-row" style="border-color:#ef9a9a;background:#fff5f5;">
+          <div class="photo-ph" style="background:#ffebee;border-color:#ef9a9a;">⚠️</div>
+          <div class="guest-info">
+            <div class="guest-name">VARGAS LUNA, ROBERTO <span class="badge badge-bl">⛔ LISTA NEGRA</span></div>
+            <div class="guest-meta">INE · VALR7808765B · Hab. 109 · TC · $560 · Entrada: 10:00 09/03</div>
+          </div>
+          <div style="font-size:10px;text-align:right">
+            <span style="color:var(--orange)">⚠ Firma manual</span><br>
+            <span style="color:var(--green)">✔ Foto capturada</span><br>
+            <span style="color:var(--red)">OBS: Actitud agresiva en check-in</span>
+          </div>
+        </div>
+
+        <div class="section-divider">Habitación 111</div>
+        <div class="guest-row">
+          <div class="photo-ph">👤</div>
+          <div class="guest-info">
+            <div class="guest-name">RAMÍREZ, SOFÍA</div>
+            <div class="guest-meta">Pasaporte · G98765432 · Hab. 111 · E · $300 · Entrada: 11:10 · Salida: 12:55</div>
+          </div>
+          <div style="font-size:10px;color:var(--green);text-align:right">✔ Firma digital<br>✔ Foto capturada<br>✔ ID escaneado</div>
+        </div>
+
+        <div class="section-divider">Habitación 113</div>
+        <div class="guest-row">
+          <div class="photo-ph">👤</div>
+          <div class="guest-info">
+            <div class="guest-name">CASTRO BARRERA, MIGUEL ÁNGEL</div>
+            <div class="guest-meta">INE · CABM8203456D · Hab. 113 · TD · $420 · Entrada: 05:50 · Salida: 07:10</div>
+          </div>
+          <div style="font-size:10px;color:var(--green);text-align:right">✔ Firma digital<br>✔ Foto capturada<br>✔ ID escaneado</div>
+        </div>
+
+        <div class="section-divider">Habitación 114</div>
+        <div class="guest-row" style="border-color:#ce93d8;background:#faf5ff;">
+          <div class="photo-ph" style="background:#f3e5f5;border-color:#ce93d8;">⭐</div>
+          <div class="guest-info">
+            <div class="guest-name">MENDOZA REYES, LUIS ENRIQUE <span class="badge badge-vip">⭐ VIP</span></div>
+            <div class="guest-meta">INE · MERL8203456C · Hab. 114 · E · $490 · Entrada: 13:00 · 3 personas</div>
+          </div>
+          <div style="font-size:10px;text-align:right">
+            <span style="color:var(--green)">✔ Firma digital<br>✔ Foto capturada</span><br>
+            <span style="color:#6a1b9a">Cliente frecuente registrado</span>
+          </div>
+        </div>
+        <div class="guest-row" style="margin-left:20px;border-style:dashed;opacity:0.85;">
+          <div class="photo-ph" style="background:#f3e5f5;border-color:#ce93d8;">👤</div>
+          <div class="guest-info">
+            <div class="guest-name">MENDOZA SOTO, CARMEN (Acompañante)</div>
+            <div class="guest-meta">INE · MESC8512789F · Hab. 114 · Huésped adicional registrado</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div><!-- /screen-wrap -->
+
+<script>
+function updateClock() {
+  const n=new Date();
+  const h=String(n.getHours()).padStart(2,'0'), m=String(n.getMinutes()).padStart(2,'0');
+  document.getElementById('clock').textContent=h+':'+m;
+  const d=String(n.getDate()).padStart(2,'0'), mo=String(n.getMonth()+1).padStart(2,'0');
+  document.getElementById('dateDisplay').textContent=d+'/'+mo+'/'+n.getFullYear();
+}
+updateClock(); setInterval(updateClock,1000);
+
+function showScreen(n) {
+  for(let i=1;i<=5;i++){
+    document.getElementById('screen'+i).className='scr'+(i===n?' visible':'');
+    document.getElementById('tab'+i).className='tab '+(i===n?'active':'inactive');
+  }
+}
+function showRep(n,el){
+  for(let i=1;i<=5;i++){const r=document.getElementById('rep'+i);if(r)r.style.display=i===n?'block':'none';}
+  document.querySelectorAll('#screen3 .rtab').forEach(t=>t.className='rtab inactive');
+  el.className='rtab active';
+}
+function showCfg(n,el){
+  for(let i=1;i<=6;i++){const c=document.getElementById('cfg'+i);if(c)c.style.display=i===n?'block':'none';}
+  document.querySelectorAll('#screen4 .rtab').forEach(t=>t.className='rtab inactive');
+  el.className='rtab active';
+}
+
+// Build habitaciones rows
+const rows=[
+  ['s-dirty','101','S','2','E','$350','09:15','09/03','11:30','09/03','GARCÍA LÓPEZ, JUAN'],
+  ['s-clean','102','','','','','','','','',''],
+  ['s-dirty','103','SQ 2d','1','TC','$420','07:00','08/03','—','','MARTÍNEZ R., ANA L.'],
+  ['s-maint','104','','','','','','','','','— mantenimiento —'],
+  ['s-clean','105','','','','','','','','',''],
+  ['s-dirty','106','S 2d','2','TD','$700','14:20','08/03','—','','RODRÍGUEZ SOTO, P.'],
+  ['s-dirty','107','S','2','E','$280','08:05','09/03','10:45','09/03','FLORES H., CARLOS'],
+  ['s-clean','108','','1','EF','$350','06:30','09/03','07:55','09/03','HERRERA V., DIANA'],
+  ['s-dirty','109','S','3','TC','$560','10:00','09/03','—','','VARGAS LUNA, ROBERTO'],
+  ['s-clean','110','','','','','','','','',''],
+  ['s-dirty','111','S','1','E','$300','11:10','09/03','12:55','09/03','RAMÍREZ, SOFÍA'],
+  ['s-plant','112','','','','','','','','','— planta —'],
+  ['s-clean','113','','2','TD','$420','05:50','09/03','07:10','09/03','CASTRO B., MIGUEL A.'],
+  ['s-dirty','114','S','3','E','$490','13:00','09/03','—','','MENDOZA R., LUIS E.'],
+  ['s-clean','1','','','','','','','','',''],
+];
+const sym={'s-dirty':'✦','s-clean':'X','s-maint':'M','s-plant':'P','s-empty':'S'};
+const tbody=document.getElementById('habRows');
+rows.forEach(r=>{
+  const tr=document.createElement('tr');
+  const s=sym[r[0]]||'·';
+  const pb=r[4]?`<span class="pay-badge pay-${r[4]}">${r[4]}</span>`:'';
+  const he=r[6]?`<span class="hour-cell"><span class="hour-time">${r[6]}</span><span class="hour-date">${r[7]}</span></span>`:'';
+  const hs=r[8]&&r[8]!=='—'?`<span class="hour-cell"><span class="hour-time">${r[8]}</span><span class="hour-date">${r[9]}</span></span>`:(r[8]==='—'?'—':'');
+  const has=r[5]!=='';
+  tr.innerHTML=`
+    <td><span class="status-dot ${r[0]}">${s}</span></td>
+    <td class="room-num">${r[1]}</td>
+    <td style="font-size:9.5px">${r[2]}</td>
+    <td>${r[3]}</td>
+    <td>${pb}</td>
+    <td class="price-cell">${r[5]}</td>
+    <td>${has?'<button class="action-btn btn-plus">+</button>':''}</td>
+    <td>${he}</td>
+    <td>${r[6]?'<button class="action-btn btn-plus">+</button>':''}</td>
+    <td>${hs}</td>
+    <td>${r[6]?'<button class="action-btn btn-plus">+</button>':''}</td>
+    <td class="name-cell">${r[10]}</td>
+    <td>${has?'<button class="action-btn btn-plus">+</button>':''}</td>
+    <td>${has?'<button class="action-btn btn-gear">⚙</button>':''}</td>
+    <td>${has?'<button class="action-btn btn-cam">🎫</button>':''}</td>
+    <td><button class="action-btn btn-arrow">›</button></td>`;
+  tbody.appendChild(tr);
+});
+</script>
+</body>
+</html>
