@@ -2436,6 +2436,7 @@ public function getHabitaciones()
 
             // 👤 HUESPEDES
             'huespedes'     => $huespedes,
+             'empresa'     => $r['empresa'],
             'nombre_huesped'=> trim($r['nombre_huesped']),
             'estado_registro_val'=> trim($r['estado_registro_val']),
             'observaciones' => $r['observaciones'],

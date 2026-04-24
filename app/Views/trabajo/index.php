@@ -1489,6 +1489,7 @@
                         ish_reg: parseFloat(item.ish) || 0,
                         fecha_registro: item.fecha_registro || '---',
                         titular_full: item.nombre_huesped || '',
+                        empresa: item.empresa || '',
                         registro: item.registro || ''
                     });
                 });
@@ -1803,9 +1804,10 @@
                 if (currentFloor !== 'ALL' && r.floor !== currentFloor) return false;
 
                 const titular = (r.huespedes.find(h => h.isTitular)?.nombre || '') + ' ' + (r.huespedes.find(h => h.isTitular)?.apellido || r.huespedes.find(h => h.isTitular)?.apellidos || '');
+                const empresa = r.empresa || '';
                 
                 // Global Search
-                if (search && !r.id.includes(search) && !titular.toLowerCase().includes(search)) return false;
+                if (search && !r.id.includes(search) && !titular.toLowerCase().includes(search) && !empresa.toLowerCase().includes(search)) return false;
 
                 // Multi-select Status Filter
                 if (Array.isArray(activeFilters.status) && activeFilters.status.length > 0) {
@@ -2012,7 +2014,10 @@
                             ${isCheckoutReg ? 'CHECKOUT' : (isCheckinReg || isReservaReg ? 'VER REGISTRO' : 'REGISTRAR')}
                         </button>
                     </td>
-                    <td class="font-black uppercase truncate text-slate-700 max-w-[200px]">${titular.nombre} ${titular.apellido || titular.apellidos || ''}</td>
+                    <td class="font-black uppercase truncate text-slate-700 max-w-[250px] italic">
+                        ${titular.nombre} ${titular.apellido || titular.apellidos || ''}
+                        ${r.empresa ? ` <span class="text-blue-500 font-bold ml-1">/ ${r.empresa}</span>` : ''}
+                    </td>
                     <td class="text-center font-black text-sm ${r.extra > 0 ? 'text-orange-600' : 'text-slate-300'}">${r.extra}</td>
                     <td class="text-center">
                         <button onclick="stampTime(${realIdx}, 'entrada')" ${stampDisabledAttr} class="text-blue-500 ${stampPointerClass} transition-all"><i class="fas fa-plus-circle"></i></button>
