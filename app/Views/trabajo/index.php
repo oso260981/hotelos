@@ -2087,8 +2087,8 @@
             const base = parseFloat(r.precio_base) || 0;
             const subtotal = (base + extraChargePerNight) * nights;
             
-            const ivaRate = 0.16;
-            const ishRate = 0.035;
+            const ivaRate = (window.TASA_IVA || 16) / 100;
+            const ishRate = (window.TASA_ISH || 3) / 100;
             
             const iva = subtotal * ivaRate;
             const ish = subtotal * ishRate;
@@ -2098,7 +2098,7 @@
             r.iva_reg = iva;
             r.ish_reg = ish;
             
-            console.log(`💰 [RECALC] Hab: ${r.id} | Total: ${total} (Sub: ${subtotal}, IVA: ${iva}, ISH: ${ish})`);
+            console.log(`💰 [RECALC] Hab: ${r.id} | Total: ${total} (Sub: ${subtotal}, IVA: ${iva}, ISH: ${ish}) | Tasas: ${window.TASA_IVA}%, ${window.TASA_ISH}%`);
         }
 
         async function updateStay(idx, val) { 
@@ -3522,8 +3522,8 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             // Subtotal es (Base + Extras) * Noches
             const subtotal = (parseFloat(r.precio_base) + extraChargePerNight) * nights;
             
-            const ivaRate = 0.16;
-            const ishRate = 0.035; // Usamos 3.5% que es lo estándar en MX para ISH en muchos estados, o lo que diga el server
+            const ivaRate = (window.TASA_IVA || 16) / 100;
+            const ishRate = (window.TASA_ISH || 3) / 100;
             
             const iva = subtotal * ivaRate;
             const ish = subtotal * ishRate;
@@ -3977,9 +3977,13 @@ window.handleClientDBSearch = function(q, mode = 'form') {
 
             // 🔥 Lógica de Impuestos Alineada con Backend
             // Si tenemos precio_reg (subtotal) lo usamos, si no calculamos desde el total actual (r.precio)
-            const subtotal = r.precio_reg || (r.precio / 1.195) || (parseFloat(r.precio_base) * (r.dias || 1)) || 0;
-            const iva = r.iva_reg || (subtotal * 0.16);
-            const ish = r.ish_reg || (subtotal * 0.035);
+            const ivaRate = (window.TASA_IVA || 16) / 100;
+            const ishRate = (window.TASA_ISH || 3) / 100;
+            const totalTaxRate = 1 + ivaRate + ishRate;
+
+            const subtotal = r.precio_reg || (r.precio / totalTaxRate) || (parseFloat(r.precio_base) * (r.dias || 1)) || 0;
+            const iva = r.iva_reg || (subtotal * ivaRate);
+            const ish = r.ish_reg || (subtotal * ishRate);
             const total = r.precio || (subtotal + iva + ish);
 
             document.getElementById('btn-final-action').textContent = "Imprimir Ticket";

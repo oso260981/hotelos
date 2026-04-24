@@ -2292,7 +2292,8 @@ public function getHabitaciones()
             hp.precio_base,
             hp.precio_persona_extra,
             hp.personas_max     AS capacidad_hab,
-			CASE WHEN r.estado_registro in ('CHECKIN','CHECKOUT') then 'Con registro' else 'Sin registro' END registro 
+			CASE WHEN r.estado_registro in ('CHECKIN','CHECKOUT') then 'Con registro' else 'Sin registro' END registro, 
+            hu.empresa
 
         FROM habitaciones h
         LEFT JOIN registros r 
