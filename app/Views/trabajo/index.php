@@ -1317,7 +1317,6 @@
    
  <script>
         const rooms = [];
-        const basePrice = 500.00;
         let selectedRoomIdx = null;
         let selectedGuestEditIdx = -1;
         let selectedMoveSourceIdx = null;
@@ -1431,7 +1430,7 @@
                     let h_ent = '', f_ent = '', h_sal = '', f_sal = '';
                     
                     // Priorizar última entrada persistida
-                    const rawEnt = item.ultima_entrada || item.hora_entrada_1;
+                    const rawEnt = item.ultima_entrada;
                     if (rawEnt) {
                         const d = new Date(rawEnt);
                         h_ent = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
@@ -1439,7 +1438,7 @@
                     }
 
                     // Priorizar última salida persistida
-                    const rawSal = item.ultima_salida || item.hora_salida_1;
+                    const rawSal = item.ultima_salida;
                     if (rawSal) {
                         const d = new Date(rawSal);
                         h_sal = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
@@ -2639,10 +2638,12 @@
             showView('reg-list');
         }
 
+        let isUploadingMedia = false; // 🔥 Bloqueo global
         function goToForm(idx = -1) {
             selectedGuestEditIdx = idx;
             updateOccupancyCounter(idx); // 🔥 Actualizar contador específico
             sigDirty = false;
+            isUploadingMedia = false;
             
             // Reset de campos básicos
             const inputs = document.querySelectorAll('#reg-view-form input, #reg-view-form select, #reg-view-form textarea');
@@ -2691,8 +2692,14 @@
 
                 document.getElementById('f-nat').value = g.nacionalidad || 'MEXICANA';
                 document.getElementById('f-placas').value = g.placas || '';
-                if (g.fotografia) document.getElementById('box-client').innerHTML = `<img src="${g.fotografia.startsWith('http') ? g.fotografia : base_url + 'uploads/fotos/' + g.fotografia}" class="w-full h-full object-cover rounded-2xl shadow-inner">`;
-                if (g.identificacion) document.getElementById('box-id').innerHTML = `<img src="${g.identificacion.startsWith('http') ? g.identificacion : base_url + 'uploads/fotos/' + g.identificacion}" class="w-full h-full object-cover rounded-2xl shadow-inner">`;
+                if (g.fotografia) {
+                    document.getElementById('box-client').innerHTML = `<img src="${g.fotografia.startsWith('http') ? g.fotografia : base_url + 'uploads/fotos/' + g.fotografia}" class="w-full h-full object-cover rounded-2xl shadow-inner">`;
+                    document.getElementById('box-client').dataset.blob = g.fotografia; // 🔥 Preservar persistencia
+                }
+                if (g.identificacion) {
+                    document.getElementById('box-id').innerHTML = `<img src="${g.identificacion.startsWith('http') ? g.identificacion : base_url + 'uploads/fotos/' + g.identificacion}" class="w-full h-full object-cover rounded-2xl shadow-inner">`;
+                    document.getElementById('box-id').dataset.blob = g.identificacion; // 🔥 Preservar persistencia
+                }
             }
             showView('reg-form');
         }
@@ -3230,6 +3237,8 @@ window.handleClientDBSearch = function(q, mode = 'form') {
 
 
         async function saveGuestAndReturn() {
+            if (isUploadingMedia) return showToast("⚠️ Espere a que termine la subida de archivos...");
+            
             const isTitular = document.getElementById('f-is-titular').value === 'true';
             const d = {
                 id: (selectedGuestEditIdx > -1 && tempGuests[selectedGuestEditIdx]) ? tempGuests[selectedGuestEditIdx].id : null,
@@ -3253,8 +3262,8 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 es_menor: document.getElementById('f-is-minor').checked ? 1 : 0,
                 es_extra: (selectedGuestEditIdx > -1 && tempGuests[selectedGuestEditIdx]) ? (tempGuests[selectedGuestEditIdx].es_extra || 0) : 0,
                 Responsable_menor: document.getElementById('f-responsable').value.toUpperCase(),
-                fotografia: document.getElementById('box-client').dataset.blob || null,
-                identificacion: document.getElementById('box-id').dataset.blob || null,
+                fotografia: document.getElementById('box-client').dataset.blob || (selectedGuestEditIdx > -1 && tempGuests[selectedGuestEditIdx] ? tempGuests[selectedGuestEditIdx].fotografia : null),
+                identificacion: document.getElementById('box-id').dataset.blob || (selectedGuestEditIdx > -1 && tempGuests[selectedGuestEditIdx] ? tempGuests[selectedGuestEditIdx].identificacion : null),
                 firma_path: null // Se llenará abajo si hay firma
             };
 
@@ -3959,15 +3968,61 @@ window.handleClientDBSearch = function(q, mode = 'form') {
 
         /* --- ESTADO DE CUENTA --- */
         function showEstadoCuentaModal() {
-            const r = rooms[selectedRoomIdx]; document.getElementById('account-room-label').textContent = `HABITACIÓN ${r.id} (${r.type})`;
-            const tbody = document.getElementById('movements-tbody'); tbody.innerHTML = '';
-            let totalC = 0, totalA = 0, saldo = r.dias * basePrice;
-            tbody.innerHTML += `<tr class="border-b"><td class="p-4 opacity-40 uppercase text-[10px] font-bold">${r.fechaEntrada}</td><td class="p-4 uppercase">HOSPEDAJE (${r.dias} D)</td><td class="p-4 text-right">$${(r.dias * basePrice).toFixed(2)}</td><td class="p-4 text-right">---</td><td class="p-4 text-right font-black">$${saldo.toFixed(2)}</td></tr>`;
-            const movs = [...r.services.map(s => ({ ...s, t: 'cargo' })), ...r.payments.map(p => ({ name: `PAGO ${p.method}`, price: p.amount, t: 'abono', date: p.date, time: p.time }))];
+            const r = rooms[selectedRoomIdx]; 
+            document.getElementById('account-room-label').textContent = `HABITACIÓN ${r.id} (${r.tipoHab})`;
+            const tbody = document.getElementById('movements-tbody'); 
+            tbody.innerHTML = '';
+            
+            // Saldo inicial = Hospedaje (Precio Total del Registro)
+            let saldo = r.precio;
+            
+            // Primera fila: Hospedaje
+            tbody.innerHTML += `
+                <tr class="border-b">
+                    <td class="p-4 opacity-40 uppercase text-[10px] font-bold">${r.fechaEntrada || '---'}</td>
+                    <td class="p-4 uppercase font-bold text-blue-800">ESTANCIA (${r.dias} N)</td>
+                    <td class="p-4 text-right font-bold">$${r.precio.toFixed(2)}</td>
+                    <td class="p-4 text-right text-slate-300">---</td>
+                    <td class="p-4 text-right font-black text-slate-900">$${saldo.toFixed(2)}</td>
+                </tr>`;
+            
+            // Movimientos: Cargos y Pagos
+            const movs = [
+                ...r.services.map(s => ({ ...s, t: 'cargo' })), 
+                ...r.payments.map(p => ({ name: `PAGO ${p.method}`, price: p.amount, t: 'abono', date: p.date }))
+            ];
+            
+            // Procesar movimientos
             movs.forEach(m => {
-                if (m.t === 'cargo') saldo += m.price; else saldo -= m.price;
-                tbody.innerHTML += `<tr class="border-b ${m.t === 'abono' ? 'bg-emerald-50/50' : ''}"> <td class="p-4 opacity-40 uppercase text-[10px] font-bold">${m.date || '---'}</td><td class="p-4 uppercase">${m.name}</td><td class="p-4 text-right">${m.t === 'cargo' ? '$' + m.price.toFixed(2) : '---'}</td><td class="p-4 text-right text-emerald-600">${m.t === 'abono' ? '$' + m.price.toFixed(2) : '---'}</td><td class="p-4 text-right font-black">$${saldo.toFixed(2)}</td> </tr>`;
+                if (m.t === 'cargo') {
+                    saldo += m.price;
+                } else {
+                    saldo -= m.price;
+                }
+                
+                let dateDisplay = '---';
+                if (m.date) {
+                    const d = new Date(m.date);
+                    dateDisplay = String(d.getDate()).padStart(2, '0') + '/' + String(d.getMonth() + 1).padStart(2, '0');
+                }
+                
+                tbody.innerHTML += `
+                    <tr class="border-b ${m.t === 'abono' ? 'bg-emerald-50/50' : 'bg-slate-50/30'}"> 
+                        <td class="p-4 opacity-50 uppercase text-[10px] font-bold">${dateDisplay}</td>
+                        <td class="p-4 uppercase text-[11px] font-semibold ${m.t === 'abono' ? 'text-emerald-700' : 'text-slate-700'}">${m.name}</td>
+                        <td class="p-4 text-right font-bold ${m.t === 'cargo' ? 'text-rose-600' : 'text-slate-300'}">${m.t === 'cargo' ? '$' + m.price.toFixed(2) : '---'}</td>
+                        <td class="p-4 text-right font-bold ${m.t === 'abono' ? 'text-emerald-600' : 'text-slate-300'}">${m.t === 'abono' ? '$' + m.price.toFixed(2) : '---'}</td>
+                        <td class="p-4 text-right font-black text-slate-900">$${saldo.toFixed(2)}</td> 
+                    </tr>`;
             });
+            
+            // Fila de Saldo Final
+            tbody.innerHTML += `
+                <tr class="bg-slate-900 text-white">
+                    <td colspan="4" class="p-4 text-right font-black uppercase tracking-widest text-xs">Saldo Pendiente</td>
+                    <td class="p-4 text-right font-black text-lg">$${saldo.toFixed(2)}</td>
+                </tr>`;
+
             document.getElementById('modal-estado-cuenta').classList.add('modal-active');
         }
 
@@ -4102,15 +4157,36 @@ window.handleClientDBSearch = function(q, mode = 'form') {
 
         /* --- TICKET SALIDA --- */
         function openTicketPreview(idx) {
-            selectedRoomIdx = idx; activePreviewMode = 'ticket'; const r = rooms[idx]; const t = r.huespedes.find(h => h.isTitular) || r.huespedes[0];
-            const totalS = r.services.reduce((a, b) => a + b.price, 0); const totalP = r.payments.reduce((a, b) => a + b.amount, 0);
-            const balance = (r.dias * basePrice) + totalS - totalP;
+            selectedRoomIdx = idx; 
+            activePreviewMode = 'ticket'; 
+            const r = rooms[idx]; 
+            const t = r.huespedes.find(h => h.isTitular) || r.huespedes[0];
+            const totalS = r.services.reduce((a, b) => a + b.price, 0); 
+            const totalP = r.payments.reduce((a, b) => a + b.amount, 0);
+            const balance = r.precio + totalS - totalP;
+
             document.getElementById('btn-final-action').textContent = "Confirmar Checkout";
             document.getElementById('preview-content').innerHTML = `
                 <div class="ticket-paper">
                     <p class="text-center font-black text-2xl mb-6 italic tracking-tighter uppercase">HotelOS V2</p>
-                    <div class="space-y-1 mb-4 text-[11px] font-bold"><p class="flex justify-between"><span>HABITACIÓN:</span> <span>${r.id}</span></p><p class="flex justify-between"><span>TITULAR:</span> <span class="uppercase">${t ? t.nombre : '---'}</span></p></div>
-                    <div class="border-t-2 border-slate-900 pt-4"><div class="flex justify-between text-xs font-bold opacity-60"><span>SUBTOTAL:</span><span>$${((r.dias * basePrice) + totalS).toFixed(2)}</span></div><div class="flex justify-between text-xs font-bold opacity-60"><span>PAGOS:</span><span>-$${totalP.toFixed(2)}</span></div><div class="flex justify-between font-black text-xl mt-4 border-t pt-2 ${balance > 0 ? 'text-rose-600' : 'text-emerald-700'}"><span>SALDO TOTAL:</span><span>$${balance.toFixed(2)}</span></div></div>
+                    <div class="space-y-1 mb-4 text-[11px] font-bold">
+                        <p class="flex justify-between"><span>HABITACIÓN:</span> <span>${r.id}</span></p>
+                        <p class="flex justify-between"><span>TITULAR:</span> <span class="uppercase">${r.titular_full || (t ? t.nombre : '---')}</span></p>
+                    </div>
+                    <div class="border-t-2 border-slate-900 pt-4">
+                        <div class="flex justify-between text-xs font-bold opacity-60">
+                            <span>ESTANCIA:</span><span>$${r.precio.toFixed(2)}</span>
+                        </div>
+                        <div class="flex justify-between text-xs font-bold opacity-60">
+                            <span>CONSUMOS:</span><span>$${totalS.toFixed(2)}</span>
+                        </div>
+                        <div class="flex justify-between text-xs font-bold opacity-60">
+                            <span>PAGOS:</span><span>-$${totalP.toFixed(2)}</span>
+                        </div>
+                        <div class="flex justify-between font-black text-xl mt-4 border-t pt-2 ${balance > 0 ? 'text-rose-600' : 'text-emerald-700'}">
+                            <span>SALDO TOTAL:</span><span>$${balance.toFixed(2)}</span>
+                        </div>
+                    </div>
                 </div>`;
             document.getElementById('modal-preview').classList.add('modal-active');
         }
@@ -4338,6 +4414,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             
             stopCamera();
             console.log("📸 Captura tomada, subiendo...");
+            isUploadingMedia = true; // 🔥 Bloquear
 
             try {
                 const fileName = await subirFoto(dataUrl);
@@ -4352,6 +4429,8 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 showToast("Error al subir foto");
                 // Revertir a icono si falló
                 box.innerHTML = `<i class="fas fa-user text-6xl opacity-10"></i>`;
+            } finally {
+                isUploadingMedia = false; // 🔥 Desbloquear
             }
         }
 
@@ -4380,6 +4459,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
 
             if (scanLine) scanLine.style.display = 'block';
             showToast("Procesando OCR con IA...");
+            isUploadingMedia = true;
 
             try {
                 const response = await fetch(base_url + "ocr/procesar", {
@@ -4407,6 +4487,8 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 console.error(err);
                 if (scanLine) scanLine.style.display = 'none';
                 showToast("Error OCR: " + err.message);
+            } finally {
+                isUploadingMedia = false;
             }
         }
 
@@ -4422,6 +4504,9 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             }
             if (data.nacionalidad) document.getElementById('f-nat').value = data.nacionalidad.toUpperCase();
             if (data.direccion) document.getElementById('f-address').value = data.direccion.toUpperCase();
+            if (data.ciudad) document.getElementById('f-city').value = data.ciudad.toUpperCase();
+            if (data.estado) document.getElementById('f-state').value = data.estado.toUpperCase();
+            if (data.codigo_postal) document.getElementById('f-cp').value = data.codigo_postal;
         }
 
         function handleOCRFile(input) {

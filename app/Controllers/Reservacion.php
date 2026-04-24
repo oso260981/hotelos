@@ -2285,6 +2285,17 @@ public function getHabitaciones()
             hu.fotografia       AS fotografia,
             hu.identificacion   AS identificacion,
             hu.firma_path       AS firma_path,
+            hu.telefono         AS telefono,
+            hu.email            AS email,
+            hu.nacionalidad     AS nacionalidad,
+            hu.fecha_nacimiento AS fecha_nacimiento,
+            hu.genero           AS genero,
+            hu.direccion        AS direccion,
+            hu.ciudad           AS ciudad,
+            hu.estado           AS estado,
+            hu.codigo_postal    AS codigo_postal,
+            hu.tipo_identificacion_id AS tipo_identificacion_id,
+            hu.numero_identificacion  AS numero_identificacion,
 
             h.estado_id         AS estado_id,
 
@@ -2342,6 +2353,18 @@ public function getHabitaciones()
         WHERE estado = 'ACTIVO'
     ")->getResultArray();
 
+    // 🔹 PAGOS / ABONOS (🔥 NUEVO)
+    $pagos = $db->query("
+        SELECT 
+            id,
+            registro_id,
+            forma_pago_id AS method,
+            monto         AS amount,
+            created_at    AS date
+        FROM registro_pagos
+        WHERE estado = 'APLICADO' AND tipo_movimiento = 'PAGO'
+    ")->getResultArray();
+
     // 🔹 MAPA DE ACOMPAÑANTES
     $mapAcomp = [];
     foreach ($acompanantes as $a) {
@@ -2353,7 +2376,7 @@ public function getHabitaciones()
             'Responsable_menor' => $a['Responsable_menor'],
             'isTitular'      => false,
             'placas'         => '',
-            'idNum'          => $a['idNum'],
+            'numero_identificacion' => $a['idNum'],
             'fotografia'     => $a['fotografia'],
             'identificacion' => $a['identificacion'],
             'es_extra'       => $a['es_extra'] ?? 0
@@ -2371,6 +2394,17 @@ public function getHabitaciones()
         ];
     }
 
+    // 🔹 MAPA DE PAGOS (🔥 NUEVO)
+    $mapPagos = [];
+    foreach ($pagos as $p) {
+        $mapPagos[$p['registro_id']][] = [
+            'id'     => $p['id'],
+            'method' => $p['method'],
+            'amount' => (float)$p['amount'],
+            'date'   => $p['date']
+        ];
+    }
+
 
     // 🔹 RESPUESTA FINAL
     $result = [];
@@ -2384,14 +2418,26 @@ public function getHabitaciones()
             $partes = explode(' ', trim($r['nombre_huesped']), 2);
 
             $huespedes[] = [
+                'id'             => $r['huesped_id'],
                 'nombre'         => $partes[0] ?? '',
                 'apellidos'      => $partes[1] ?? '',
                 'isTitular'      => true,
+                'telefono'       => $r['telefono'],
+                'email'          => $r['email'],
+                'nacionalidad'   => $r['nacionalidad'],
+                'fecha_nacimiento' => $r['fecha_nacimiento'],
+                'genero'         => $r['genero'],
+                'direccion'      => $r['direccion'],
+                'ciudad'         => $r['ciudad'],
+                'estado'         => $r['estado'],
+                'codigo_postal'  => $r['codigo_postal'],
+                'tipo_identificacion_id' => $r['tipo_identificacion_id'],
+                'numero_identificacion' => $r['numero_identificacion'],
                 'placas'         => '',
-                'idNum'          => '',
                 'fotografia'     => $r['fotografia'],
                 'identificacion' => $r['identificacion'],
                 'firma_path'     => $r['firma_path'],
+                'empresa'        => $r['empresa'],
                 'es_extra'       => 0
             ];
         }
@@ -2433,6 +2479,8 @@ public function getHabitaciones()
             // ⏰ HORAS
             'hora_entrada_1'=> $r['hora_entrada_1'],
             'hora_salida_1' => $r['hora_salida_1'],
+            'ultima_entrada'=> $r['ultima_entrada'],
+            'ultima_salida' => $r['ultima_salida'],
 
             // 👤 HUESPEDES
             'huespedes'     => $huespedes,
@@ -2443,6 +2491,7 @@ public function getHabitaciones()
             'sombreado'     => 0,
 
             'services'      => $mapCargos[$r['registro_id']] ?? [], // 🔥 CARGOS
+            'payments'      => $mapPagos[$r['registro_id']] ?? [],  // 🔥 PAGOS
 
             // 🔧 DEBUG / FRONT
             'habitacion_id' => $r['habitacion_id'],

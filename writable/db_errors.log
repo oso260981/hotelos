@@ -91,3 +91,16 @@ Updating ID: 6 Data: {"estado_id":2}
 Updating ID: 7 Data: {"estado_id":3}
 Updating ID: 7 Data: {"estado_id":2}
 Updating ID: 8 Data: {"estado_id":2}
+ENTRADA REQUEST RECEIVED: {"registro_id":"45","nombre_huesped":"ISRAEL DE LOS SANTOS","tipo":"TEMPORAL"}
+ENTRADA (AS SALIDA) PERSISTED: {"registro_id":"45","habitacion_id":"88","nombre_huesped":"ISRAEL DE LOS SANTOS","tipo_salida":"entrada","motivo":"REGRESO DE HUESPED","fecha_salida":"2026-04-24 12:43:47","usuario_id":"1","created_at":"2026-04-24 12:43:47"}
+SALIDA PERSISTED: {"registro_id":"45","habitacion_id":"88","nombre_huesped":"ISRAEL DE LOS SANTOS","tipo_salida":"TEMPORAL","motivo":"SALIDA TEMPORAL","fecha_salida":"2026-04-24 12:43:50","usuario_id":"1","created_at":"2026-04-24 12:43:50"}
+SALIDA PERSISTED: {"registro_id":"45","habitacion_id":"88","nombre_huesped":"ISRAEL DE LOS SANTOS","tipo_salida":"TEMPORAL","motivo":"SALIDA TEMPORAL","fecha_salida":"2026-04-24 12:47:00","usuario_id":"1","created_at":"2026-04-24 12:47:00"}
+Updating ID: 45 Data: {"precio":836.82,"precio_base":836.82,"iva":133.89,"ish":29.29,"total":1000,"noches":1,"tipo_estadia_id":"1","forma_pago_id":"2","adultos":1,"ni\u00f1os":0}
+Updating ID: 45 Data: {"precio":836.82,"precio_base":836.82,"iva":133.89,"ish":29.29,"total":1000,"noches":1,"tipo_estadia_id":"1","forma_pago_id":"2","adultos":1,"ni\u00f1os":0}
+Updating ID: 45 Data: {"precio":600,"precio_base":300,"iva":96,"ish":21,"total":717,"noches":2,"tipo_estadia_id":"1","forma_pago_id":"2","adultos":1,"ni\u00f1os":0}
+Updating ID: 45 Data: {"precio":900,"precio_base":300,"iva":144,"ish":31.5,"total":1075.5,"noches":3,"tipo_estadia_id":"1","forma_pago_id":"2","adultos":1,"ni\u00f1os":0}
+Updating ID: 45 Data: {"precio":836.82,"precio_base":278.94,"iva":133.89,"ish":29.29,"total":1000,"noches":3,"tipo_estadia_id":"1","forma_pago_id":"2","adultos":1,"ni\u00f1os":0}
+Updating ID: 45 Data: {"precio":836.82,"precio_base":278.94,"iva":133.89,"ish":29.29,"total":1000,"noches":3,"tipo_estadia_id":"1","forma_pago_id":"2","adultos":1,"ni\u00f1os":0}
+Updating ID: 45 Data: {"estado_id":2}
+Updating ID: 45 Data: {"estado_id":1}
+Updating ID: 76 Data: {"estado_id":2}
