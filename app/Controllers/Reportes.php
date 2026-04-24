@@ -217,10 +217,28 @@ public function getReporteTurnos()
 {
     $db = \Config\Database::connect();
 
-    $data = $db->table('vw_reporte_turnos')
-        ->orderBy('habitacion','ASC')
-        ->get()
-        ->getResultArray();
+    $sql = "SELECT 
+                h.id AS habitacion_id,
+                h.numero AS habitacion,
+                MAX(CASE WHEN tro.turno_id = 1 THEN fp.codigo END) AS t1_pago,
+                MAX(CASE WHEN tro.turno_id = 1 THEN r.precio END) AS t1_precio,
+                MAX(CASE WHEN tro.turno_id = 1 THEN CONCAT(hs.nombre, ' ', hs.apellido) END) AS t1_nombre,
+                MAX(CASE WHEN tro.turno_id = 2 THEN fp.codigo END) AS t2_pago,
+                MAX(CASE WHEN tro.turno_id = 2 THEN r.precio END) AS t2_precio,
+                MAX(CASE WHEN tro.turno_id = 2 THEN CONCAT(hs.nombre, ' ', hs.apellido) END) AS t2_nombre,
+                MAX(CASE WHEN tro.turno_id = 3 THEN fp.codigo END) AS t3_pago,
+                MAX(CASE WHEN tro.turno_id = 3 THEN r.precio END) AS t3_precio,
+                MAX(CASE WHEN tro.turno_id = 3 THEN CONCAT(hs.nombre, ' ', hs.apellido) END) AS t3_nombre
+            FROM registros r
+            LEFT JOIN habitaciones h ON r.habitacion_id = h.id
+            LEFT JOIN formas_pago fp ON fp.id = r.forma_pago_id
+            LEFT JOIN huespedes hs ON hs.id = r.huesped_id
+            LEFT JOIN turnos_operacion tro ON r.turno_id = tro.id
+            WHERE CAST(r.hora_entrada AS DATE) = CURDATE()
+            GROUP BY h.id, h.numero
+            ORDER BY h.numero ASC";
+
+    $data = $db->query($sql)->getResultArray();
 
     // 🔥 KPIs
     $t1 = 0;
@@ -228,10 +246,9 @@ public function getReporteTurnos()
     $t3 = 0;
 
     foreach ($data as $row) {
-
-        $t1 += (float)$row['t1_precio'];
-        $t2 += (float)$row['t2_precio'];
-        $t3 += (float)$row['t3_precio'];
+        $t1 += (float)($row['t1_precio'] ?? 0);
+        $t2 += (float)($row['t2_precio'] ?? 0);
+        $t3 += (float)($row['t3_precio'] ?? 0);
     }
 
     return $this->response->setJSON([
