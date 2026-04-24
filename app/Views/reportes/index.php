@@ -139,6 +139,48 @@ body {
     background: white;
 }
 
+/* 🎨 Colores de Turnos para el Reporte */
+.h-hab, .h-t1 { background-color: #1e60aa !important; color: white !important; }
+.h-t2 { background-color: #2e7d32 !important; color: white !important; }
+.h-t3 { background-color: #455a64 !important; color: white !important; }
+
+.g-table thead th {
+    padding: 12px 8px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+.g-table tbody td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 13px;
+    color: #334155;
+}
+
+/* Separadores verticales */
+.sep-turn { border-left: 2px solid #e2e8f0 !important; }
+
+/* Tints para columnas (opcional, pero ayuda a la lectura) */
+.col-t1 { background-color: #f8fafc; }
+.col-t2 { background-color: #f0fdf4; }
+.col-t3 { background-color: #f8fafc; }
+
+/* Footer Totales */
+.footer-totales {
+    background-color: #f0fdf4 !important;
+    font-weight: 800;
+    color: #15803d;
+}
+.footer-totales td {
+    padding: 15px 8px !important;
+    border-top: 2px solid #bbf7d0 !important;
+}
+
+.pointer { cursor: pointer; }
+.pointer:hover { opacity: 0.8; }
+
 
 /* ======================================================
    🛠 TOOLBARS & FILTERS
@@ -735,6 +777,18 @@ body {
                         <span>📂</span> Abrir Historial
                     </button>
                 </div>
+
+                <div class="toolbar-group">
+                    <div style="position:relative;">
+                        <input type="text" id="busquedaTurnos" placeholder="Buscar habitación o huésped..." 
+                               onkeyup="actualizarFiltrosTurnos()"
+                               style="padding: 8px 12px 8px 32px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 11px; width: 180px;">
+                        <span style="position:absolute; left:10px; top:50%; transform:translateY(-50%); opacity:0.5;">🔍</span>
+                    </div>
+                    <input type="date" id="filtroFechaTurnos" onchange="cargarReporteTurnos()" 
+                           class="input-date" style="font-size: 11px; padding: 6px 10px; height: 32px; border: 1px solid var(--border-color); border-radius: 8px;">
+                </div>
+
                 <div class="toolbar-group">
                     <div id="contadorSeleccion" class="badge badge-primary" style="font-size: 14px;">0</div>
                     <span style="font-size: 12px; color: var(--slate-400);">Habs. seleccionadas</span>
@@ -765,33 +819,23 @@ body {
             <div class="table-container">
                 <table class="g-table">
                     <thead>
-                        <tr>
-                            <th style="width: 40px;"></th>
-                            <th>HAB</th>
-                            <th>T1 PAGO</th>
-                            <th class="text-right">T1 PRECIO</th>
-                            <th>T1 NOMBRE</th>
-                            <th>T2 PAGO</th>
-                            <th class="text-right">T2 PRECIO</th>
-                            <th>T2 NOMBRE</th>
-                            <th>T3 PAGO</th>
-                            <th class="text-right">T3 PRECIO</th>
-                            <th>T3 NOMBRE</th>
+                        <tr id="headersTurnos">
+                            <!-- Se generará aquí el checkbox + columnas -->
                         </tr>
                     </thead>
                     <tbody id="tablaReporteTurnos"></tbody>
                     <tfoot>
-                        <tr class="font-bold" style="background: #f8fafc;">
-                            <td colspan="2">TOTALES PARCIALES</td>
-                            <td></td>
-                            <td class="text-right" id="total_t1">$0.00</td>
-                            <td></td>
-                            <td></td>
-                            <td class="text-right" id="total_t2">$0.00</td>
-                            <td></td>
-                            <td></td>
-                            <td class="text-right" id="total_t3">$0.00</td>
-                            <td></td>
+                        <tr class="footer-totales">
+                            <td colspan="2">TOTAL</td>
+                            <td class="col-t1"></td>
+                            <td class="col-t1 text-right" id="total_t1">$0.00</td>
+                            <td class="col-t1"></td>
+                            <td class="col-t2 sep-turn"></td>
+                            <td class="col-t2 text-right" id="total_t2">$0.00</td>
+                            <td class="col-t2"></td>
+                            <td class="col-t3 sep-turn"></td>
+                            <td class="col-t3 text-right" id="total_t3">$0.00</td>
+                            <td class="col-t3 text-right" id="footer_total_dia">$0.00</td>
                         </tr>
                     </tfoot>
                 </table>
@@ -1055,6 +1099,10 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
     cargarImpuestos();
     cargarFiscal();
+    
+    // 🔥 Inicializar cabeceras dinámicas
+    buildHeaderOperacion();
+    buildHeaderTurnos();
 });
 
 async function cargarImpuestos() {
@@ -1183,6 +1231,25 @@ window.CURRENT_OPERACION_SORT_FIELD = 'Hab';
 window.CURRENT_OPERACION_SORT_DIR = 'asc';
 window.ACTIVE_FILTERS_OPERACION = {};
 
+const gridColsTurnos = [
+    { id: 'habitacion', label: 'HAB', cls: 'h-hab', w: '80px', filter: 'select', multi: true },
+    { id: 't1_pago', label: 'T1 PAGO', cls: 'h-t1', w: '100px', filter: 'select', multi: true },
+    { id: 't1_precio', label: 'T1 PRECIO', cls: 'h-t1', w: '110px', filter: 'range', align: 'center' },
+    { id: 't1_nombre', label: 'T1 NOMBRE', cls: 'h-t1', w: '200px', filter: 'text' },
+    { id: 't2_pago', label: 'T2 PAGO', cls: 'h-t2 sep-turn', w: '100px', filter: 'select', multi: true },
+    { id: 't2_precio', label: 'T2 PRECIO', cls: 'h-t2', w: '110px', filter: 'range', align: 'center' },
+    { id: 't2_nombre', label: 'T2 NOMBRE', cls: 'h-t2', w: '200px', filter: 'text' },
+    { id: 't3_pago', label: 'T3 PAGO', cls: 'h-t3 sep-turn', w: '100px', filter: 'select', multi: true },
+    { id: 't3_precio', label: 'T3 PRECIO', cls: 'h-t3', w: '110px', filter: 'range', align: 'center' },
+    { id: 't3_nombre', label: 'T3 NOMBRE', cls: 'h-t3', w: '200px', filter: 'text' }
+];
+
+window.RAW_DATA_TURNOS = [];
+window.CURRENT_TURNOS_SEARCH = '';
+window.CURRENT_TURNOS_SORT_FIELD = 'habitacion';
+window.CURRENT_TURNOS_SORT_DIR = 'asc';
+window.ACTIVE_FILTERS_TURNOS = {};
+
 function buildHeaderOperacion() {
     const headerRow = document.getElementById('headersOperacion');
     if (!headerRow) return;
@@ -1247,6 +1314,88 @@ function buildHeaderOperacion() {
                 <div class="sort-icon-container" id="sort-icon-${col.id}" 
                      ${isSortable ? `onclick="event.stopPropagation(); toggleSortOperacion('${col.id}')"` : ''}>
                     <i class="fas fa-sort opacity-30 ${isSortable ? 'cursor-pointer' : ''}"></i>
+                </div>
+                
+                <span class="column-label">${col.label}</span>
+
+                ${col.filter !== 'none' ? '<i class="fas fa-caret-down filter-caret opacity-40"></i>' : '<div class="filter-caret"></div>'}
+            </div>
+            ${filterHtml}
+        `;
+        headerRow.appendChild(th);
+    });
+}
+
+function buildHeaderTurnos() {
+    const headerRow = document.getElementById('headersTurnos');
+    if (!headerRow) return;
+    headerRow.innerHTML = '';
+
+    // 🔥 Celda del Checkbox (para alinear con el tbody)
+    const thCheck = document.createElement('th');
+    thCheck.className = 'h-hab';
+    thCheck.style.width = '40px';
+    thCheck.innerHTML = ''; // Podrías poner un checkbox global aquí si quieres
+    headerRow.appendChild(thCheck);
+
+    gridColsTurnos.forEach(col => {
+        const th = document.createElement('th');
+        th.className = `header-filter ${col.cls || ''} ${col.align === 'center' ? 'text-center' : ''}`;
+        th.style.width = col.w;
+        th.tabIndex = 0;
+
+        let filterHtml = '';
+        if (col.filter === 'text') {
+            filterHtml = `
+                <div class="filter-dropdown">
+                    <p class="dropdown-title">Buscar ${col.label}</p>
+                    <div class="dropdown-search">
+                        <i class="fas fa-search"></i>
+                        <input type="text" oninput="updateFilterTurnos('${col.id}', this.value)" 
+                               onclick="event.stopPropagation()" placeholder="...">
+                    </div>
+                </div>`;
+        } else if (col.filter === 'select' && col.multi) {
+            filterHtml = `
+                <div class="filter-dropdown p-4 min-w-[200px]">
+                    <p class="dropdown-title">Selección Múltiple</p>
+                    <div class="dropdown-controls">
+                        <span class="btn-control" onclick="event.stopPropagation(); selectAllMultiFilterTurnos('${col.id}', true)">Todos</span>
+                        <span class="btn-control reset" onclick="event.stopPropagation(); selectAllMultiFilterTurnos('${col.id}', false)">Resetear</span>
+                    </div>
+                    <div class="dropdown-search">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Buscar..." oninput="filterMultiOptionsTurnos('${col.id}', this.value)" onclick="event.stopPropagation()">
+                    </div>
+                    <div class="space-y-1 max-h-48 overflow-y-auto custom-scrollbar" id="list-multi-turn-${col.id}">
+                        ${getMultiOptionsForTurnos(col.id)}
+                    </div>
+                </div>`;
+        } else if (col.filter === 'range') {
+            const current = window.ACTIVE_FILTERS_TURNOS[col.id] || { min: '', max: '' };
+            filterHtml = `
+                <div class="filter-dropdown p-4 min-w-[200px]">
+                    <p class="dropdown-title">Rango de ${col.label}</p>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <p class="text-[8px] font-bold text-slate-400 mb-1 uppercase">Mín</p>
+                            <input type="number" step="0.01" value="${current.min || ''}" oninput="updateRangeFilterTurnos('${col.id}', 'min', this.value)" 
+                                   onclick="event.stopPropagation()" class="w-full bg-slate-100 rounded-lg py-1.5 px-3 text-[10px] font-black outline-none">
+                        </div>
+                        <div>
+                            <p class="text-[8px] font-bold text-slate-400 mb-1 uppercase">Máx</p>
+                            <input type="number" step="0.01" value="${current.max || ''}" oninput="updateRangeFilterTurnos('${col.id}', 'max', this.value)" 
+                                   onclick="event.stopPropagation()" class="w-full bg-slate-100 rounded-lg py-1.5 px-3 text-[10px] font-black outline-none">
+                        </div>
+                    </div>
+                </div>`;
+        }
+
+        th.innerHTML = `
+            <div class="header-content-wrapper">
+                <div class="sort-icon-container" id="sort-icon-turn-${col.id}" 
+                     onclick="event.stopPropagation(); toggleSortTurnos('${col.id}')">
+                    <i class="fas fa-sort opacity-30 cursor-pointer"></i>
                 </div>
                 
                 <span class="column-label">${col.label}</span>
@@ -1568,35 +1717,99 @@ function showRep(n, el) {
 
 
 function cargarReporteTurnos() {
+    const fecha = document.getElementById("filtroFechaTurnos")?.value || "";
+    const url = base_url + "reportes/turnos" + (fecha ? "?fecha=" + fecha : "");
 
-    fetch(base_url + "reportes/turnos")
+    fetch(url)
     .then(r => r.json())
     .then(resp => {
-
         if (!resp.ok) {
-            alert("Error al cargar reporte");
+            alert("Error al cargar reporte: " + (resp.msg || "Error desconocido"));
             return;
         }
 
+        window.RAW_DATA_TURNOS = resp.data;
         pintarKPIsTurnos(resp.kpi);
-        renderReporteTurnos(resp.data);
-
+        actualizarFiltrosTurnos(); // Esto llamará a render con los datos actuales
     })
     .catch(err => console.error(err));
 }
 
 function pintarKPIsTurnos(kpi) {
-
-    document.getElementById("t1_total").textContent = formatoMoneda(kpi.t1);
-    document.getElementById("t2_total").textContent = formatoMoneda(kpi.t2);
-    document.getElementById("t3_total").textContent = formatoMoneda(kpi.t3);
-    document.getElementById("total_dia").textContent = formatoMoneda(kpi.total);
-
+    if (!kpi) return;
+    document.getElementById("t1_total").textContent = formatoMoneda(kpi.t1 || 0);
+    document.getElementById("t2_total").textContent = formatoMoneda(kpi.t2 || 0);
+    document.getElementById("t3_total").textContent = formatoMoneda(kpi.t3 || 0);
+    document.getElementById("total_dia").textContent = formatoMoneda(kpi.total || 0);
 }
 
+function actualizarFiltrosTurnos() {
+    const search = document.getElementById("busquedaTurnos").value.toLowerCase();
+    window.CURRENT_TURNOS_SEARCH = search;
+
+    let data = [...window.RAW_DATA_TURNOS];
+
+    // 1. Búsqueda Global
+    if (search) {
+        data = data.filter(row => {
+            return String(row.habitacion).toLowerCase().includes(search) ||
+                   String(row.t1_nombre || '').toLowerCase().includes(search) ||
+                   String(row.t2_nombre || '').toLowerCase().includes(search) ||
+                   String(row.t3_nombre || '').toLowerCase().includes(search);
+        });
+    }
+
+    // 2. Filtros Avanzados de Cabecera
+    Object.keys(window.ACTIVE_FILTERS_TURNOS).forEach(colId => {
+        const filterVal = window.ACTIVE_FILTERS_TURNOS[colId];
+        if (!filterVal) return;
+
+        const colConfig = gridColsTurnos.find(c => c.id === colId);
+        if (!colConfig) return;
+
+        if (colConfig.filter === 'text' && filterVal) {
+            data = data.filter(row => String(row[colId] || '').toLowerCase().includes(filterVal));
+        } 
+        else if (colConfig.filter === 'select' && Array.isArray(filterVal) && filterVal.length > 0) {
+            data = data.filter(row => filterVal.includes(row[colId]));
+        } 
+        else if (colConfig.filter === 'range') {
+            const { min, max } = filterVal;
+            if (min !== '') data = data.filter(row => parseFloat(row[colId] || 0) >= parseFloat(min));
+            if (max !== '') data = data.filter(row => parseFloat(row[colId] || 0) <= parseFloat(max));
+        }
+    });
+
+    // 3. Ordenar
+    const field = window.CURRENT_TURNOS_SORT_FIELD;
+    if (field) {
+        const dir = window.CURRENT_TURNOS_SORT_DIR === 'asc' ? 1 : -1;
+        data.sort((a, b) => {
+            let valA = a[field], valB = b[field];
+            if (!isNaN(parseFloat(valA)) && isFinite(valA)) {
+                valA = parseFloat(valA); valB = parseFloat(valB);
+            } else {
+                valA = String(valA || '').toLowerCase();
+                valB = String(valB || '').toLowerCase();
+            }
+            if (valA < valB) return -1 * dir;
+            if (valA > valB) return 1 * dir;
+            return 0;
+        });
+    }
+
+    renderReporteTurnos(data);
+
+    // Actualizar dinámicamente las listas de multiselect
+    gridColsTurnos.forEach(col => {
+        if (col.filter === 'select' && col.multi) {
+            const list = document.getElementById(`list-multi-turn-${col.id}`);
+            if (list) list.innerHTML = getMultiOptionsForTurnos(col.id);
+        }
+    });
+}
 
 document.addEventListener("click", (e) => {
-
     const tr = e.target.closest("#tablaReporteTurnos tr");
     if (!tr) return;
 
@@ -1608,7 +1821,6 @@ document.addEventListener("click", (e) => {
     }
 
     tr.classList.toggle("selected", checkbox.checked);
-
     actualizarSeleccionUI();
 });
 
@@ -1632,19 +1844,19 @@ function renderReporteTurnos(data) {
                        data-id="${row.habitacion_id}">
             </td>
 
-            <td class="hab">${row.habitacion}</td>
+            <td class="hab col-t1">${row.habitacion}</td>
 
-            <td class="t1">${row.t1_pago || '-'}</td>
-            <td class="t1">${formatoMoneda(row.t1_precio)}</td>
-            <td class="t1">${row.t1_nombre || '-'}</td>
+            <td class="t1 col-t1">${row.t1_pago || '-'}</td>
+            <td class="t1 col-t1 text-right">${formatoMoneda(row.t1_precio)}</td>
+            <td class="t1 col-t1">${row.t1_nombre || '-'}</td>
 
-            <td class="t2">${row.t2_pago || '-'}</td>
-            <td class="t2">${formatoMoneda(row.t2_precio)}</td>
-            <td class="t2">${row.t2_nombre || '-'}</td>
+            <td class="t2 col-t2 sep-turn">${row.t2_pago || '-'}</td>
+            <td class="t2 col-t2 text-right">${formatoMoneda(row.t2_precio)}</td>
+            <td class="t2 col-t2">${row.t2_nombre || '-'}</td>
 
-            <td class="t3">${row.t3_pago || '-'}</td>
-            <td class="t3">${formatoMoneda(row.t3_precio)}</td>
-            <td class="t3">${row.t3_nombre || '-'}</td>
+            <td class="t3 col-t3 sep-turn">${row.t3_pago || '-'}</td>
+            <td class="t3 col-t3 text-right">${formatoMoneda(row.t3_precio)}</td>
+            <td class="t3 col-t3">${row.t3_nombre || '-'}</td>
         `;
 
         tbody.appendChild(tr);
@@ -1659,7 +1871,10 @@ function renderReporteTurnos(data) {
     document.getElementById("t1_total").innerText = formatoMoneda(t1);
     document.getElementById("t2_total").innerText = formatoMoneda(t2);
     document.getElementById("t3_total").innerText = formatoMoneda(t3);
-    document.getElementById("total_dia").innerText = formatoMoneda(t1 + t2 + t3);
+    
+    const totalGeneral = t1 + t2 + t3;
+    document.getElementById("total_dia").innerText = formatoMoneda(totalGeneral);
+    document.getElementById("footer_total_dia").innerText = formatoMoneda(totalGeneral);
 
     // 🔥 FOOTER
     document.getElementById("total_t1").innerText = formatoMoneda(t1);
@@ -1724,6 +1939,87 @@ function enviarSeleccion() {
 
 
 }
+
+function getMultiOptionsForTurnos(colId, searchTerm = '') {
+    if (!window.RAW_DATA_TURNOS) return '';
+    const currentVals = window.ACTIVE_FILTERS_TURNOS[colId] || [];
+    let uniqueValues = [...new Set(window.RAW_DATA_TURNOS.map(r => r[colId]))].filter(v => v && v !== '-').sort();
+
+    if (searchTerm) {
+        uniqueValues = uniqueValues.filter(v => String(v).toLowerCase().includes(searchTerm.toLowerCase()));
+    }
+
+    let html = '';
+    uniqueValues.forEach(val => {
+        const isChecked = currentVals.includes(val);
+        html += `
+            <label class="multi-option" onclick="event.stopPropagation()">
+                <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleMultiFilterTurnos('${colId}', '${val}')">
+                <span class="truncate">${val}</span>
+            </label>
+        `;
+    });
+    return html;
+}
+
+function filterMultiOptionsTurnos(colId, term) {
+    const list = document.getElementById(`list-multi-turn-${colId}`);
+    if (list) list.innerHTML = getMultiOptionsForTurnos(colId, term);
+}
+
+function toggleMultiFilterTurnos(colId, val) {
+    if (!window.ACTIVE_FILTERS_TURNOS[colId]) window.ACTIVE_FILTERS_TURNOS[colId] = [];
+    const idx = window.ACTIVE_FILTERS_TURNOS[colId].indexOf(val);
+    if (idx > -1) window.ACTIVE_FILTERS_TURNOS[colId].splice(idx, 1);
+    else window.ACTIVE_FILTERS_TURNOS[colId].push(val);
+    actualizarFiltrosTurnos();
+}
+
+function selectAllMultiFilterTurnos(colId, checkAll) {
+    if (checkAll) {
+        window.ACTIVE_FILTERS_TURNOS[colId] = [...new Set(window.RAW_DATA_TURNOS.map(r => r[colId]))].filter(v => v && v !== '-');
+    } else {
+        window.ACTIVE_FILTERS_TURNOS[colId] = [];
+    }
+    const list = document.getElementById(`list-multi-turn-${colId}`);
+    if (list) list.innerHTML = getMultiOptionsForTurnos(colId);
+    actualizarFiltrosTurnos();
+}
+
+function updateFilterTurnos(colId, val) {
+    window.ACTIVE_FILTERS_TURNOS[colId] = val.toLowerCase();
+    actualizarFiltrosTurnos();
+}
+
+function updateRangeFilterTurnos(colId, type, val) {
+    if (!window.ACTIVE_FILTERS_TURNOS[colId]) window.ACTIVE_FILTERS_TURNOS[colId] = { min: '', max: '' };
+    window.ACTIVE_FILTERS_TURNOS[colId][type] = val;
+    actualizarFiltrosTurnos();
+}
+
+function toggleSortTurnos(colId) {
+    if (window.CURRENT_TURNOS_SORT_FIELD === colId) {
+        window.CURRENT_TURNOS_SORT_DIR = window.CURRENT_TURNOS_SORT_DIR === 'asc' ? 'desc' : 'asc';
+    } else {
+        window.CURRENT_TURNOS_SORT_FIELD = colId;
+        window.CURRENT_TURNOS_SORT_DIR = 'asc';
+    }
+    actualizarFiltrosTurnos();
+    updateSortUITurnos();
+}
+
+function updateSortUITurnos() {
+    gridColsTurnos.forEach(col => {
+        const iconCont = document.getElementById(`sort-icon-turn-${col.id}`);
+        if (!iconCont) return;
+        if (window.CURRENT_TURNOS_SORT_FIELD === col.id) {
+            iconCont.innerHTML = window.CURRENT_TURNOS_SORT_DIR === 'asc' ? '<i class="fas fa-sort-up text-blue-300"></i>' : '<i class="fas fa-sort-down text-blue-300"></i>';
+        } else {
+            iconCont.innerHTML = '<i class="fas fa-sort opacity-10"></i>';
+        }
+    });
+}
+
 
 function formatoMoneda(valor) {
 

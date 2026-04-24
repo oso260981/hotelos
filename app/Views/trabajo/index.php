@@ -518,10 +518,21 @@
                     </div>
                     
                     
-                    <!-- Inputs ocultos para lógica de fechas -->
-                    <input type="hidden" id="reg-arrival-date" onchange="updateStayDuration()">
-                    <input type="hidden" id="reg-departure-date" onchange="updateStayDuration()">
-                    <span id="reg-stay-nights" class="hidden">1</span>
+                    <!-- Widget de Fechas de Estancia -->
+                    <div class="flex items-center space-x-2 bg-slate-50 p-3 rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="flex flex-col px-4 border-r border-slate-200">
+                            <label class="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Entrada</label>
+                            <input type="date" id="reg-arrival-date" onchange="updateStayDuration()" class="bg-transparent text-sm font-black text-slate-700 outline-none focus:text-blue-600 transition-colors">
+                        </div>
+                        <div class="flex flex-col px-4 border-r border-slate-200">
+                            <label class="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Salida</label>
+                            <input type="date" id="reg-departure-date" onchange="updateStayDuration()" class="bg-transparent text-sm font-black text-slate-700 outline-none focus:text-blue-600 transition-colors">
+                        </div>
+                        <div class="flex flex-col px-4">
+                            <label class="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Noches</label>
+                            <span id="reg-stay-nights" class="text-sm font-black text-blue-600">1</span>
+                        </div>
+                    </div>
 
                     <button onclick="goToForm(-1)" id="btn-nuevo-huesped"
                         class="bg-blue-600 text-white px-10 py-5 rounded-2xl font-black uppercase text-sm shadow-xl active:scale-95 transition-all"><i
@@ -2371,12 +2382,13 @@
             }
             updateStayDuration();
             
-            // Configurar botón Checkout Footer (Solo si hay titular y registro, y NO es reservación)
+            // Configurar botón Checkout Footer (Solo si hay titular y el estado es CHECKIN)
             const btnCheckout = document.getElementById('btn-checkout-footer');
             const hasTitular = tempGuests.some(g => g.isTitular);
-            const isReservacion = (r.estado_registro || '').toUpperCase().trim() === 'RESERVACION';
+            const statusReg = (r.estado_registro || '').toUpperCase().trim();
+            const isCheckin = statusReg === 'CHECKIN' || statusReg === 'CHECK-IN';
 
-            if (r.registro_id && hasTitular && !isReservacion) {
+            if (r.registro_id && hasTitular && isCheckin) {
                 btnCheckout.classList.remove('hidden');
                 window.currentRegistroId = r.registro_id; 
             } else {
@@ -2387,41 +2399,37 @@
             const btnNuevo = document.getElementById('btn-nuevo-huesped');
             const btnSincronizar = document.getElementById('btn-sincronizar');
             
+            const btnReservacion = document.getElementById('btn-reservacion');
             console.log("🧐 [DEBUG] Habitación:", r.id, "Estado Registro:", r.estado_registro);
 
             if (isCheckout) {
                 if (btnNuevo) btnNuevo.classList.add('hidden');
                 if (btnSincronizar) btnSincronizar.classList.add('hidden');
+                if (btnReservacion) btnReservacion.classList.add('hidden');
             } else {
                 if (btnNuevo) btnNuevo.classList.remove('hidden');
                 if (btnSincronizar) {
-                    // 🔥 Bloqueo Robusto (Insensible a mayúsculas/espacios)
                     const statusReg = (r.estado_registro || '').toUpperCase().trim();
-                    const btnReservacion = document.getElementById('btn-reservacion');
                     
-                    if (statusReg === 'CHECKIN' || statusReg === 'CHECK-IN' || statusReg === 'CHECKOUT') {
-                        btnSincronizar.disabled = false;
-                        btnSincronizar.classList.remove('opacity-50', 'cursor-not-allowed');
-                        btnSincronizar.classList.add('bg-emerald-600');
-                        btnSincronizar.innerHTML = '<i class="fas fa-sync-alt text-lg"></i><span>Actualizar Registro</span>';
-                        
-                        // Ocultar botón de reservación si ya hay checkin o checkout
+                    if (statusReg === 'CHECKIN' || statusReg === 'CHECK-IN') {
+                        // 🔥 HIDE Checkin button if already checked in, as requested
+                        btnSincronizar.classList.add('hidden');
                         if (btnReservacion) btnReservacion.classList.add('hidden');
-                        console.log("🔄 Modo ACTUALIZACIÓN - Ocultando Reservación para hab", r.id);
+                        console.log("🔒 Modo CONSULTA/CHECKOUT - Ocultando Checkin para hab", r.id);
                     } else if (statusReg === 'RESERVACION') {
+                        btnSincronizar.classList.remove('hidden');
                         btnSincronizar.disabled = false;
                         btnSincronizar.classList.remove('opacity-50', 'cursor-not-allowed', 'bg-emerald-600');
                         btnSincronizar.innerHTML = '<i class="fas fa-check-circle text-lg"></i><span>Confirmar Checkin</span>';
                         
-                        // Ocultar botón de reservación si ya es una reserva
                         if (btnReservacion) btnReservacion.classList.add('hidden');
                         console.log("📅 Modo CONVERTIR RESERVA A CHECKIN para hab", r.id);
                     } else {
+                        btnSincronizar.classList.remove('hidden');
                         btnSincronizar.disabled = false;
-                        btnSincronizar.classList.remove('opacity-50', 'cursor-not-allowed', 'bg-emerald-600', 'hidden');
+                        btnSincronizar.classList.remove('opacity-50', 'cursor-not-allowed', 'bg-emerald-600');
                         btnSincronizar.innerHTML = '<i class="fas fa-check-circle text-lg"></i><span>Checkin</span>';
                         
-                        // Mostrar reservación si la habitación está libre para registro
                         if (btnReservacion) btnReservacion.classList.remove('hidden');
                         console.log("✅ Modo NUEVO REGISTRO para hab", r.id);
                     }
@@ -3443,9 +3451,22 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 
                 showToast(status === 'RESERVACION' ? "Reservación creada correctamente" : "Registro sincronizado correctamente");
                 
-                // 🔥 NUEVO: Mostrar ticket de registro con impuestos (Solo para Checkin o si lo deseas también para Reser)
+                // 🔥 NUEVO: Preguntar si desea imprimir ticket (Igual que Room Service)
                 if (status === 'CHECKIN') {
-                    setTimeout(() => openRegistrationTicket(selectedRoomIdx), 500);
+                    const printConfirm = await Swal.fire({
+                        title: '¡REGISTRO EXITOSO!',
+                        text: 'El huésped ha sido registrado correctamente. ¿Desea imprimir el ticket de entrada?',
+                        icon: 'success',
+                        showCancelButton: true,
+                        confirmButtonText: 'SÍ, IMPRIMIR',
+                        cancelButtonText: 'NO, SOLO CERRAR',
+                        confirmButtonColor: '#10b981',
+                        cancelButtonColor: '#64748b'
+                    });
+
+                    if (printConfirm.isConfirmed) {
+                        openRegistrationTicket(selectedRoomIdx);
+                    }
                 }
             } catch (err) {
                 console.error(err);
@@ -3660,11 +3681,14 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             
             updateOccupancyCounter();
             
-            // 🔥 RE-EVALUAR BOTÓN CHECKOUT
+            // 🔥 RE-EVALUAR BOTÓN CHECKOUT (Solo si es CHECKIN activo)
             const btnCheckout = document.getElementById('btn-checkout-footer');
             const hasTitular = tempGuests.some(g => g.isTitular);
             if (btnCheckout && r) {
-                if (r.registro_id && hasTitular) {
+                const statusReg = (r.estado_registro || '').toUpperCase().trim();
+                const isCheckin = statusReg === 'CHECKIN' || statusReg === 'CHECK-IN';
+
+                if (r.registro_id && hasTitular && isCheckin) {
                     btnCheckout.classList.remove('hidden');
                 } else {
                     btnCheckout.classList.add('hidden');

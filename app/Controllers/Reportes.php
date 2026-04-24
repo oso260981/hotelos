@@ -216,6 +216,7 @@ class Reportes extends Controller
 public function getReporteTurnos()
 {
     $db = \Config\Database::connect();
+    $fecha = $this->request->getGet('fecha') ?: date('Y-m-d');
 
     $sql = "SELECT 
                 h.id AS habitacion_id,
@@ -234,11 +235,11 @@ public function getReporteTurnos()
             LEFT JOIN formas_pago fp ON fp.id = r.forma_pago_id
             LEFT JOIN huespedes hs ON hs.id = r.huesped_id
             LEFT JOIN turnos_operacion tro ON r.turno_id = tro.id
-            WHERE CAST(r.hora_entrada AS DATE) = CURDATE()
+            WHERE CAST(r.hora_entrada AS DATE) = ?
             GROUP BY h.id, h.numero
             ORDER BY h.numero ASC";
 
-    $data = $db->query($sql)->getResultArray();
+    $data = $db->query($sql, [$fecha])->getResultArray();
 
     // 🔥 KPIs
     $t1 = 0;
