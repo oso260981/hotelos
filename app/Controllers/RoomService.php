@@ -125,6 +125,7 @@ class RoomService extends ResourceController
             $json = $this->request->getJSON(true);
             $items = $json['items'] ?? [];
             $usuarioId = $json['usuario_id'] ?? null;
+            $formaPagoId = $json['forma_pago_id'] ?? null;
             
             // Si viene registro_id, lo usamos. Si no viene o es 0, es venta independiente.
             $registroIdReal = isset($json['registro_id']) ? intval($json['registro_id']) : 0;
@@ -167,6 +168,7 @@ class RoomService extends ResourceController
                     'hora_entrega'     => date('Y-m-d H:i:s'),
                     'usuario_id'       => $usuarioId,
                     'turno_id'         => $turnoIdReal,
+                    'forma_pago_id'    => $formaPagoId,
                     'observaciones'    => $item['observaciones'] ?? ($isVentaIndependiente ? 'VENTA INDEPENDIENTE' : 'CARGO A HABITACIÓN'),
                     'created_at'       => date('Y-m-d H:i:s')
                 ]);

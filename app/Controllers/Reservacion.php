@@ -28,6 +28,85 @@ class Reservacion extends BaseController
         return $tasas;
     }
 
+    /**
+     * 🔄 SINCRONIZAR CARGOS BASE (Hospedaje y Extras)
+     */
+    private function sincronizarCargosHospedaje($registroId)
+    {
+        $db = \Config\Database::connect();
+        $registro = $db->table('registros')->where('id', $registroId)->get()->getRowArray();
+        if (!$registro) return;
+
+        // 1. Limpiar cargos automáticos previos para evitar duplicidad
+        $db->table('registro_cargos')
+            ->where('registro_id', $registroId)
+            ->whereIn('tipo', ['Hospedaje', 'Persona Extra'])
+            ->delete();
+
+        $tasas = $this->getImpuestosVigentes();
+        $ivaRate = $tasas['iva'];
+        $ishRate = $tasas['ish'];
+
+        $noches = max(1, intval($registro['noches']));
+        
+        // 2. Insertar Hospedaje (Basado en precio_base)
+        $subtotalHosp = round($noches * floatval($registro['precio_base']), 2);
+        $ivaHosp = round($subtotalHosp * $ivaRate, 2);
+        $ishHosp = round($subtotalHosp * $ishRate, 2);
+        $totalHosp = $subtotalHosp + $ivaHosp + $ishHosp;
+
+        $db->table('registro_cargos')->insert([
+            'registro_id'     => $registroId,
+            'concepto'        => 'HOSPEDAJE',
+            'departamento'    => 'HABITACIONES',
+            'tipo'            => 'Hospedaje',
+            'cantidad'        => $noches,
+            'precio_unitario' => $registro['precio_base'],
+            'subtotal'        => $subtotalHosp,
+            'iva'             => $ivaHosp,
+            'ish'             => $ishHosp,
+            'total'           => $totalHosp,
+            'aplica_iva'      => 1,
+            'aplica_ish'      => 1,
+            'estado'          => 'ACTIVO',
+            'created_at'      => date('Y-m-d H:i:s')
+        ]);
+
+        // 3. Insertar Personas Extra (por cada una)
+        $numExtras = intval($registro['num_personas_ext']);
+        if ($numExtras > 0) {
+            // Calculamos el precio unitario del extra basado en lo que se envió
+            $precioExtraUnitario = $numExtras > 0 ? (floatval($registro['pago_adicional'] ?? 0) / ($numExtras)) : 0;
+            
+            for ($i = 0; $i < $numExtras; $i++) {
+                $subtotalExtra = round($noches * $precioExtraUnitario, 2);
+                $ivaExtra = round($subtotalExtra * $ivaRate, 2);
+                $ishExtra = round($subtotalExtra * $ishRate, 2);
+                $totalExtra = $subtotalExtra + $ivaExtra + $ishExtra;
+
+                $db->table('registro_cargos')->insert([
+                    'registro_id'     => $registroId,
+                    'concepto'        => 'PERSONA EXTRA ' . ($i + 1),
+                    'departamento'    => 'HABITACIONES',
+                    'tipo'            => 'Persona Extra',
+                    'cantidad'        => $noches,
+                    'precio_unitario' => $precioExtraUnitario,
+                    'subtotal'        => $subtotalExtra,
+                    'iva'             => $ivaExtra,
+                    'ish'             => $ishExtra,
+                    'total'           => $totalExtra,
+                    'aplica_iva'      => 1,
+                    'aplica_ish'      => 1,
+                    'estado'          => 'ACTIVO',
+                    'created_at'      => date('Y-m-d H:i:s')
+                ]);
+            }
+        }
+        
+        // 4. Recalcular totales del folio principal
+        $this->recalcularTotalesRegistro($registroId);
+    }
+
     public function __construct()
     {
         $this->registroModel = new RegistroModel();
@@ -115,7 +194,8 @@ public function listar_formas_pago()
             'hora_salida'      => $horaSalida,
             'fecha_estadia'    => date('Y-m-d'),
             'noches'           =>  $json['noches'],
-            'estado_registro'  => 'CHECKIN',
+            'estado_registro'  => $json['estado_registro'] ?? 'CHECKIN',
+            'estado_id'        => ($json['estado_registro'] ?? 'CHECKIN') === 'RESERVACION' ? 9 : 2,
 
             // 👥 OCUPACIÓN
             'num_personas_ext'     => $json['num_personas_ext'] ?? 0,
@@ -175,6 +255,9 @@ public function listar_formas_pago()
                 'total'        => $total
             ]);
         }
+
+        // 🔥 NUEVO: Sincronizar cargos financieros (Hospedaje y Extras)
+        $this->sincronizarCargosHospedaje($id);
 
         return $this->response->setJSON([
             "ok" => true,
@@ -412,6 +495,7 @@ public function guardarCargo()
         $insert = $db->table('registro_cargos')->insert([
             'registro_id'     => $registro_id,
             'concepto'        => $json['concepto'] ?? 'Cargo',
+            'departamento'    => $json['departamento'] ?? 'RECEPCION',
             'tipo'            => $tipo,
 
             'cantidad'        => $cantidad,
@@ -628,7 +712,7 @@ public function ticket($id)
         "saldo" => $r->total - $pagado
     ];
 
-    print_r($data );
+    // print_r($data );
 
    // return view('trabajo/ticket_checkin',$data);
 }
@@ -879,7 +963,7 @@ private function obtenerTurnoActual()
         ->getRow();
 
     if ($turnoOperacion) {
-        return $turnoOperacion->turno_id;
+        return $turnoOperacion->id;
     }
 
     // 2. Fallback: Cálculo basado en horario (Original)
@@ -1547,6 +1631,32 @@ public function cancelarInteligente()
 
         if (!$registro) throw new \Exception("Registro no encontrado");
 
+        $esReserva = (strtoupper(trim($registro['estado_registro'] ?? '')) === 'RESERVACION');
+
+        // =========================
+        // 🔒 [AUDITORÍA] ASEGURAR COLUMNAS
+        // =========================
+        if (!$db->fieldExists('registro_padre_id', 'registros')) {
+            $db->query("ALTER TABLE registros ADD COLUMN registro_padre_id INT(11) NULL");
+        }
+        if (!$db->fieldExists('tipo_evento', 'registros')) {
+            $db->query("ALTER TABLE registros ADD COLUMN tipo_evento VARCHAR(100) NULL");
+        }
+        if (!$db->fieldExists('usuario_cancelacion', 'registros')) {
+            $db->query("ALTER TABLE registros ADD COLUMN usuario_cancelacion INT(11) NULL");
+        }
+        if (!$db->fieldExists('fecha_cancelacion', 'registros')) {
+            $db->query("ALTER TABLE registros ADD COLUMN fecha_cancelacion DATETIME NULL");
+        }
+
+        // Asegurar que tipo_salida sea VARCHAR para evitar errores de ENUM
+        $db->query("ALTER TABLE salidas_clientes MODIFY COLUMN tipo_salida VARCHAR(100) NOT NULL");
+
+        // Asegurar columna observaciones en registro_cargos
+        if (!$db->fieldExists('observaciones', 'registro_cargos')) {
+            $db->query("ALTER TABLE registro_cargos ADD COLUMN observaciones TEXT NULL");
+        }
+
         // =========================
         // 🛏️ NOCHES TOTALES
         // =========================
@@ -1566,70 +1676,68 @@ public function cancelarInteligente()
             ->groupEnd()
             ->get()->getResultArray();
 
-        $reversoTotal = 0;
+        $reversoTotalAcumulado = 0;
 
         foreach ($cargos as $c) {
 
             $monto = floatval($c['total']);
+            $sub   = floatval($c['subtotal']);
+            $iva   = floatval($c['iva'] ?? 0);
+            $ish   = floatval($c['ish'] ?? 0);
 
             // =========================
-            // 🔥 LÓGICA INTELIGENTE
+            // 🔥 LÓGICA INTELIGENTE (REGLAS 1, 2, 3)
             // =========================
-            if ($tipo === 'NO_SHOW') {
-
-                $reverso = $monto;
-
-            } elseif ($tipo === 'EARLY') {
-
+            if ($tipo === 'CANCELACION_RESERVA' || $tipo === 'CANCELACION_TOTAL') {
+                $revT = $monto;
+                $revS = $sub;
+                $revI = $iva;
+                $revH = $ish;
+            } elseif ($tipo === 'CANCELACION_PARCIAL') {
                 $nochesNoUsadas = max(0, $nochesTotales - $nochesUsadas);
-
-                $porNoche = $monto / $nochesTotales;
-
-                $reverso = $porNoche * $nochesNoUsadas;
-
-            } else { // TOTAL
-
-                $reverso = $monto;
+                $factor = $nochesNoUsadas / $nochesTotales;
+                
+                $revT = $monto * $factor;
+                $revS = $sub * $factor;
+                $revI = $iva * $factor;
+                $revH = $ish * $factor;
+            } else { // Fallback
+                $revT = $monto;
+                $revS = $sub;
+                $revI = $iva;
+                $revH = $ish;
             }
 
-            $reversoTotal += $reverso;
-        }
-
-        // =========================
-        // 🔁 REVERSO
-        // =========================
-        if ($reversoTotal > 0) {
-
-           $insert = $db->table('registro_cargos')->insert([
-    'registro_id'     => $registroId,
-    'concepto'        => 'Reverso cancelación (' . $tipo . ')',
-    'cantidad'        => 1,
-    'precio_unitario' => -$reversoTotal,
-    'Subtotal'        => -$reversoTotal,
-    'total'           => -$reversoTotal,
-    'tipo'            => 'Ajuste',
-    'departamento'    => 'SISTEMA',
-    'created_at'      => date('Y-m-d H:i:s'),
-    'observaciones'   => $motivo
-]);
-
-if (!$insert) {
-    $error = $db->error();
-    dd($error); // 🔥 ESTO TE VA A DECIR TODO
-}
+            if ($revT > 0) {
+                $db->table('registro_cargos')->insert([
+                    'registro_id'     => $registroId,
+                    'concepto'        => 'Contra-asiento: ' . $c['concepto'] . ' (' . $tipo . ')',
+                    'cantidad'        => 1,
+                    'precio_unitario' => -$revT,
+                    'subtotal'        => -$revS,
+                    'iva'             => -$revI,
+                    'ish'             => -$revH,
+                    'total'           => -$revT,
+                    'tipo'            => $c['tipo'],
+                    'departamento'    => $c['departamento'],
+                    'created_at'      => date('Y-m-d H:i:s'),
+                    'observaciones'   => $motivo
+                ]);
+                
+                $reversoTotalAcumulado += $revT;
+            }
         }
 
         // =========================
         // 💸 PENALIZACIÓN
         // =========================
         if ($penalizacion > 0) {
-
             $db->table('registro_cargos')->insert([
                 'registro_id'     => $registroId,
                 'concepto'        => 'Penalización cancelación',
                 'cantidad'        => 1,
                 'precio_unitario' => $penalizacion,
-                'Subtotal'        => $penalizacion,
+                'subtotal'        => $penalizacion,
                 'total'           => $penalizacion,
                 'tipo'            => 'Penalización',
                 'departamento'    => 'SISTEMA',
@@ -1639,38 +1747,88 @@ if (!$insert) {
         }
 
         // =========================
-        // 🏨 LIBERAR HABITACIÓN
+        // 🏨 LIBERAR HABITACIÓN (REGLA DE ESTATUS)
         // =========================
-       /*  if (!empty($registro['habitacion_id'])) {
+        if (!empty($registro['habitacion_id'])) {
+            $nuevoEstadoHab = ($tipo === 'CANCELACION_PARCIAL') ? 1 : 2; 
+            
             $db->table('habitaciones')
                 ->where('id', $registro['habitacion_id'])
-                ->update(['estado' => 'DISPONIBLE']);
-        } */
+                ->update(['estado_id' => $nuevoEstadoHab]);
+                
+            // 📝 REGISTRO EN SALIDAS_CLIENTES (BACKUP)
+            $db->table('salidas_clientes')->insert([
+                'registro_id'   => $registroId,
+                'habitacion_id' => $registro['habitacion_id'],
+                'nombre_huesped'=> $json['nombre_huesped'] ?? 'HUÉSPED',
+                'tipo_salida'   => $tipo,
+                'motivo'        => $motivo,
+                'fecha_salida'  => date('Y-m-d H:i:s'),
+                'usuario_id'    => session()->get('user_id'),
+                'created_at'    => date('Y-m-d H:i:s')
+            ]);
+        }
 
         // =========================
-        // 📌 ESTADO
+        // 📜 REGISTRO 1: ESPEJO FINANCIERO / AUDITORÍA
         // =========================
-        $db->table('registro')
+        $historico = $registro;
+        unset($historico['id']); 
+        $historico['estado_registro']    = 'CHECKOUT'; 
+        $historico['estado_servicio']    = $tipo; 
+        $historico['registro_padre_id']  = $registroId;
+        $historico['tipo_evento']        = $tipo;
+        $historico['motivo_cancelacion'] = $motivo;
+        $historico['usuario_cancelacion']= session()->get('user_id');
+        $historico['fecha_cancelacion']  = date('Y-m-d H:i:s');
+        $historico['created_at']         = date('Y-m-d H:i:s');
+        
+        $db->table('registros')->insert($historico);
+
+        // =========================
+        // 📜 REGISTRO 2: OPERATIVO (REAPERTURA)
+        // =========================
+        $operativo = [
+            'habitacion_id'      => $registro['habitacion_id'],
+            'estado_registro'    => 'DISPONIBLE',
+            'estado_servicio'    => 'ACTIVO',                               
+            'created_at'         => date('Y-m-d H:i:s')
+        ];
+        
+        $db->table('registros')->insert($operativo);
+
+        // Si es reservación o cancelación total, cancelamos los cargos originales
+        if ($tipo === 'CANCELACION_RESERVA' || $tipo === 'CANCELACION_TOTAL') {
+            $db->table('registro_cargos')
+                ->where('registro_id', $registroId)
+                ->whereIn('tipo', ['Hospedaje', 'Persona Extra'])
+                ->update(['estado' => 'CANCELADO']);
+        }
+
+        // =========================
+        // 📌 ACTUALIZAR REGISTRO ORIGINAL
+        // =========================
+        // El original debe cerrarse para desaparecer del grid principal
+        $db->table('registros')
             ->where('id', $registroId)
             ->update([
-                'estado_registro' => 'CHECKOUT',
-                'estado_servicio' => 'CANCELADO',                  
-                'hora_salida_real' => date('Y-m-d H:i:s'),
+                'estado_servicio'    => 'CERRADO',                  
+                'hora_salida_real'   => date('Y-m-d H:i:s'),
                 'motivo_cancelacion' => $motivo,
-                'tipo_cancelacion' => $tipo
+                'tipo_cancelacion'   => $tipo
             ]);
 
         $db->transComplete();
 
+        // Recalcular para que el total del registro refleje los cargos cancelados
         $this->recalcularTotalesRegistro($registroId);
 
         return $this->response->setJSON([
             'ok' => true,
-            'msg' => 'Cancelación procesada',
-            'reverso' => $reversoTotal,
+            'msg' => $esReserva ? 'Reservación procesada correctamente' : 'Cancelación/Salida procesada correctamente',
+            'reverso' => $reversoTotalAcumulado,
             'penalizacion' => $penalizacion
         ]);
-
     } catch (\Throwable $e) {
 
         return $this->response->setJSON([
@@ -1762,6 +1920,13 @@ public function validarDuplicado()
         // =========================
         // 🔥 FILTRO DUPLICADOS
         // =========================
+        if (empty($json['numero_identificacion']) && empty($json['telefono']) && empty($json['email'])) {
+            return $this->response->setJSON([
+                'ok' => true,
+                'duplicados' => []
+            ]);
+        }
+
         $builder->groupStart();
 
         if (!empty($json['numero_identificacion'])) {
@@ -2132,7 +2297,7 @@ public function getHabitaciones()
         FROM habitaciones h
         LEFT JOIN registros r 
             ON r.habitacion_id = h.id 
-            AND r.estado_registro IN ('CHECKIN','CHECKOUT', 'DISPONIBLE')
+            AND r.estado_registro IN ('CHECKIN','CHECKOUT', 'DISPONIBLE','RESERVACION')
         INNER JOIN habitaciones_tipos hp 
             ON hp.id = h.tipo_habitacion_id
         INNER JOIN pisos p 
@@ -2141,7 +2306,7 @@ public function getHabitaciones()
             ON eh.id = r.estado_id
         LEFT JOIN huespedes hu 
             ON hu.id = r.huesped_id
-        WHERE h.activa = 1 and r.estado_servicio != 'CERRADO'
+        WHERE h.activa = 1 and r.estado_servicio NOT IN ('CANCELACION_RESERVA', 'CERRADO')
         ORDER BY p.piso ASC, h.numero ASC
     ")->getResultArray();
 

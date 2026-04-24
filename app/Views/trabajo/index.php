@@ -516,6 +516,13 @@
                     <div class="flex items-center space-x-6">
                         <h4 class="text-3xl font-black text-slate-800 uppercase italic tracking-tight">Huéspedes Registrados</h4>
                     </div>
+                    
+                    
+                    <!-- Inputs ocultos para lógica de fechas -->
+                    <input type="hidden" id="reg-arrival-date" onchange="updateStayDuration()">
+                    <input type="hidden" id="reg-departure-date" onchange="updateStayDuration()">
+                    <span id="reg-stay-nights" class="hidden">1</span>
+
                     <button onclick="goToForm(-1)" id="btn-nuevo-huesped"
                         class="bg-blue-600 text-white px-10 py-5 rounded-2xl font-black uppercase text-sm shadow-xl active:scale-95 transition-all"><i
                             class="fas fa-plus-circle mr-3"></i>Nuevo Huésped</button>
@@ -526,11 +533,18 @@
                 </div>
 
                 <div class="pt-10 border-t flex flex-col md:flex-row justify-between items-center gap-6">
-                    <!-- 🔥 BOTÓN DE CHECKIN (ANTERIOR SINCRONIZAR) -->
-                    <button onclick="confirmAllRegistration()" id="btn-sincronizar"
+                    <!-- 🔥 BOTÓN DE CHECKIN -->
+                    <button onclick="confirmAllRegistration('CHECKIN')" id="btn-sincronizar"
                         class="bg-emerald-500 text-white px-10 py-6 rounded-[2.5rem] font-black uppercase text-xs shadow-xl hover:bg-emerald-600 active:scale-95 transition-all flex-1 w-full md:w-auto flex items-center justify-center space-x-3">
                         <i class="fas fa-check-circle text-lg"></i>
                         <span>Checkin</span>
+                    </button>
+
+                    <!-- 🔥 BOTÓN DE RESERVACIÓN -->
+                    <button onclick="confirmAllRegistration('RESERVACION')" id="btn-reservacion"
+                        class="bg-purple-600 text-white px-10 py-6 rounded-[2.5rem] font-black uppercase text-xs shadow-xl hover:bg-purple-700 active:scale-95 transition-all flex-1 w-full md:w-auto flex items-center justify-center space-x-3">
+                        <i class="fas fa-calendar-check text-lg"></i>
+                        <span>Reservación</span>
                     </button>
 
                     <!-- 🔥 BOTÓN DE CANCELAR ESTADÍA -->
@@ -1121,11 +1135,19 @@
                 <div class="col-span-12 lg:col-span-7 flex flex-col space-y-6 overflow-y-auto pr-4">
                     
                     <!-- Selector de Habitación -->
-                    <div class="bg-orange-50 p-6 rounded-[2rem] border-2 border-orange-100">
-                        <label class="text-[10px] font-black text-orange-600 uppercase tracking-widest block mb-3 ml-2">Asignar a Habitación (Opcional)</label>
-                        <select id="rs-room-selector" class="w-full bg-white border-2 border-orange-200 rounded-2xl px-6 py-4 text-sm font-black text-slate-700 outline-none focus:border-orange-500 transition-all shadow-sm">
-                            <option value="">VENTA INDEPENDIENTE (MOSTRADOR)</option>
-                        </select>
+                    <div class="bg-orange-50 p-6 rounded-[2rem] border-2 border-orange-100 grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="text-[10px] font-black text-orange-600 uppercase tracking-widest block mb-3 ml-2">Asignar a Habitación</label>
+                            <select id="rs-room-selector" class="w-full bg-white border-2 border-orange-200 rounded-2xl px-6 py-4 text-sm font-black text-slate-700 outline-none focus:border-orange-500 transition-all shadow-sm">
+                                <option value="">VENTA INDEPENDIENTE (MOSTRADOR)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-[10px] font-black text-orange-600 uppercase tracking-widest block mb-3 ml-2">Forma de Pago</label>
+                            <select id="rs-payment-selector" class="w-full bg-white border-2 border-orange-200 rounded-2xl px-6 py-4 text-sm font-black text-slate-700 outline-none focus:border-orange-500 transition-all shadow-sm">
+                                <option value="">SELECCIONE...</option>
+                            </select>
+                        </div>
                     </div>
 
                     <!-- Búsqueda de Productos -->
@@ -1216,9 +1238,9 @@
                     <div class="form-input-group">
                         <label class="form-label">Tipo de Cancelación</label>
                         <select id="cancel-type" onchange="updateCancelPreview()" class="form-input font-black">
-                            <option value="FULL">CANCELACIÓN TOTAL (REVERSO 100%)</option>
-                            <option value="NO_SHOW">NO SHOW (COBRO TOTAL SIN REVERSO)</option>
-                            <option value="EARLY">SALIDA ANTICIPADA (PRORRATEO)</option>
+                            <option value="CANCELACION_RESERVA">CANCELACIÓN DE RESERVA</option>
+                            <option value="CANCELACION_TOTAL">CANCELACIÓN TOTAL</option>
+                            <option value="CANCELACION_PARCIAL">CANCELACIÓN PARCIAL</option>
                         </select>
                     </div>
 
@@ -1230,6 +1252,11 @@
                     <div class="form-input-group">
                         <label class="form-label">Penalización Extra ($)</label>
                         <input type="number" id="penalizacion" oninput="updateCancelPreview()" class="form-input font-black text-center" value="0">
+                    </div>
+
+                    <div class="form-input-group col-span-2">
+                        <label class="form-label">Motivo de la Cancelación</label>
+                        <textarea id="cancel-motivo" class="form-input font-bold" rows="2" placeholder="Describa el motivo de la cancelación..."></textarea>
                     </div>
                 </div>
 
@@ -1274,6 +1301,7 @@
     <script>
         window.base_url = "<?= rtrim(base_url(), '/') ?>/";
         window.userRole = <?= session()->get('rol') ?? 0 ?>;
+        window.userId   = <?= session()->get('user_id') ?? 0 ?>;
     </script>
    
  <script>
@@ -1885,6 +1913,7 @@
                 const isActive = r.huespedes.length > 0;
                 const isCheckoutReg = (r.estado_registro || '').toUpperCase().trim() === 'CHECKOUT';
                 const isCheckinReg = ['CHECKIN', 'CHECK-IN'].includes((r.estado_registro || '').toUpperCase().trim());
+                const isReservaReg = (r.estado_registro || '').toUpperCase().trim() === 'RESERVACION';
                 
                 if (realIdx === 0 || isCheckoutReg) {
                     console.log(`🎨 [COLOR DEBUG] Hab: ${r.id} | Estado: "${r.estado_registro}" | isCheckout: ${isCheckoutReg} | isCheckin: ${isCheckinReg}`);
@@ -1902,7 +1931,7 @@
                 const pointerClass = isDisabledByStatus ? 'opacity-20 pointer-events-none' : '';
 
                 // 🔥 Bloqueo específico para Registro (No permite registrar en S o VAP si no hay registro previo)
-                const isRegDisabled = isSuciaOrVap && !isCheckinReg && !isCheckoutReg;
+                const isRegDisabled = isSuciaOrVap && !isCheckinReg && !isCheckoutReg && !isReservaReg;
                 const regDisabledAttr = (isDisabledByStatus || isRegDisabled) ? 'disabled' : '';
                 const regPointerClass = (isDisabledByStatus || isRegDisabled) ? 'opacity-20 pointer-events-none' : '';
 
@@ -1963,13 +1992,13 @@
                     </td>
                     <td class="text-right font-black text-blue-700" ${isBlocked ? '' : `ondblclick="editPrice(event, ${realIdx})"`} title="${isBlocked ? '' : 'Doble clic para editar'}">
                         <span id="price-val-${realIdx}" class="${isBlocked ? 'text-slate-300' : 'cursor-pointer hover:text-blue-600'} transition-colors">
-                            ${(isCheckinReg || r.estado_registro === 'DISPONIBLE' || r.estado_registro === 'CHECKOUT') ? (r.precio || 0).toFixed(2) : '0.00'}
+                            ${(isCheckinReg || isReservaReg || r.estado_registro === 'DISPONIBLE' || r.estado_registro === 'CHECKOUT') ? (r.precio || 0).toFixed(2) : '0.00'}
                         </span>
                     </td>
                     <td class="text-center">
                         <button onclick="openRegister(${realIdx})" ${regDisabledAttr} 
-                            class="${isCheckoutReg ? 'bg-rose-500 shadow-rose-200' : (isCheckinReg ? 'bg-emerald-500 shadow-emerald-200' : 'bg-blue-600 shadow-blue-200')} text-white text-[10px] px-4 py-2 rounded-xl font-black shadow-md active:scale-95 transition-all ${regPointerClass}">
-                            ${isCheckoutReg ? 'CHECKOUT' : (isCheckinReg ? 'VER REGISTRO' : 'REGISTRAR')}
+                            class="${isCheckoutReg ? 'bg-rose-500 shadow-rose-200' : (isReservaReg ? 'bg-purple-600 shadow-purple-200' : (isCheckinReg ? 'bg-emerald-500 shadow-emerald-200' : 'bg-blue-600 shadow-blue-200'))} text-white text-[10px] px-4 py-2 rounded-xl font-black shadow-md active:scale-95 transition-all ${regPointerClass}">
+                            ${isCheckoutReg ? 'CHECKOUT' : (isCheckinReg || isReservaReg ? 'VER REGISTRO' : 'REGISTRAR')}
                         </button>
                     </td>
                     <td class="font-black uppercase truncate text-slate-700 max-w-[200px]">${titular.nombre} ${titular.apellido || titular.apellidos || ''}</td>
@@ -2320,10 +2349,34 @@
             showView('reg-list');
             document.getElementById('modal-register').classList.add('modal-active');
             
-            // Configurar botón Checkout Footer (Solo si hay titular y registro)
+            // Configurar fechas de estancia
+            const arrivalInput = document.getElementById('reg-arrival-date');
+            const departureInput = document.getElementById('reg-departure-date');
+            
+            if (r.horaEntrada_raw || r.hora_entrada_1) {
+                const datePart = (r.horaEntrada_raw || r.hora_entrada_1).split(' ')[0];
+                arrivalInput.value = datePart;
+            } else {
+                arrivalInput.value = new Date().toISOString().split('0')[0].length > 10 ? new Date().toISOString().split('T')[0] : new Date().toISOString().slice(0,10);
+            }
+
+            if (r.horaSalida_raw || r.hora_salida_1) {
+                const datePart = (r.horaSalida_raw || r.hora_salida_1).split(' ')[0];
+                departureInput.value = datePart;
+            } else {
+                // Default tomorrow
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + (r.dias || 1));
+                departureInput.value = tomorrow.toISOString().slice(0, 10);
+            }
+            updateStayDuration();
+            
+            // Configurar botón Checkout Footer (Solo si hay titular y registro, y NO es reservación)
             const btnCheckout = document.getElementById('btn-checkout-footer');
             const hasTitular = tempGuests.some(g => g.isTitular);
-            if (r.registro_id && hasTitular) {
+            const isReservacion = (r.estado_registro || '').toUpperCase().trim() === 'RESERVACION';
+
+            if (r.registro_id && hasTitular && !isReservacion) {
                 btnCheckout.classList.remove('hidden');
                 window.currentRegistroId = r.registro_id; 
             } else {
@@ -2342,21 +2395,35 @@
             } else {
                 if (btnNuevo) btnNuevo.classList.remove('hidden');
                 if (btnSincronizar) {
-                    btnSincronizar.classList.remove('hidden');
-                    
                     // 🔥 Bloqueo Robusto (Insensible a mayúsculas/espacios)
                     const statusReg = (r.estado_registro || '').toUpperCase().trim();
+                    const btnReservacion = document.getElementById('btn-reservacion');
                     
-                    if (statusReg === 'CHECKIN' || statusReg === 'CHECK-IN') {
-                        btnSincronizar.disabled = true;
-                        btnSincronizar.classList.add('opacity-50', 'cursor-not-allowed');
-                        btnSincronizar.innerHTML = '<i class="fas fa-check-double text-lg"></i><span>Checkin Realizado</span>';
-                        console.log("🚫 Botón Checkin BLOQUEADO para hab", r.id);
-                    } else {
+                    if (statusReg === 'CHECKIN' || statusReg === 'CHECK-IN' || statusReg === 'CHECKOUT') {
                         btnSincronizar.disabled = false;
                         btnSincronizar.classList.remove('opacity-50', 'cursor-not-allowed');
+                        btnSincronizar.classList.add('bg-emerald-600');
+                        btnSincronizar.innerHTML = '<i class="fas fa-sync-alt text-lg"></i><span>Actualizar Registro</span>';
+                        
+                        // Ocultar botón de reservación si ya hay checkin o checkout
+                        if (btnReservacion) btnReservacion.classList.add('hidden');
+                        console.log("🔄 Modo ACTUALIZACIÓN - Ocultando Reservación para hab", r.id);
+                    } else if (statusReg === 'RESERVACION') {
+                        btnSincronizar.disabled = false;
+                        btnSincronizar.classList.remove('opacity-50', 'cursor-not-allowed', 'bg-emerald-600');
+                        btnSincronizar.innerHTML = '<i class="fas fa-check-circle text-lg"></i><span>Confirmar Checkin</span>';
+                        
+                        // Ocultar botón de reservación si ya es una reserva
+                        if (btnReservacion) btnReservacion.classList.add('hidden');
+                        console.log("📅 Modo CONVERTIR RESERVA A CHECKIN para hab", r.id);
+                    } else {
+                        btnSincronizar.disabled = false;
+                        btnSincronizar.classList.remove('opacity-50', 'cursor-not-allowed', 'bg-emerald-600', 'hidden');
                         btnSincronizar.innerHTML = '<i class="fas fa-check-circle text-lg"></i><span>Checkin</span>';
-                        console.log("✅ Botón Checkin HABILITADO para hab", r.id);
+                        
+                        // Mostrar reservación si la habitación está libre para registro
+                        if (btnReservacion) btnReservacion.classList.remove('hidden');
+                        console.log("✅ Modo NUEVO REGISTRO para hab", r.id);
                     }
                 }
             }
@@ -2428,10 +2495,10 @@
                 if (c.tipo !== 'Hospedaje' && c.tipo !== 'Persona Extra') return;
                 const monto = Number(c.monto || 0);
 
-                if (tipo === 'NO_SHOW') {
-                    // No hay reverso
+                if (tipo === 'CANCELACION_RESERVA' || tipo === 'CANCELACION_TOTAL') {
+                    reverso += monto; // Reverso total
                 }
-                else if (tipo === 'EARLY') {
+                else if (tipo === 'CANCELACION_PARCIAL') {
                     const noUsadas = Math.max(0, nochesTotales - nochesUsadas);
                     const porNoche = monto / nochesTotales;
                     reverso += porNoche * noUsadas;
@@ -2451,8 +2518,16 @@
             // mostrar noches si aplica
             document.getElementById('noches-container').classList.toggle(
                 'hidden',
-                tipo !== 'EARLY'
+                tipo !== 'CANCELACION_PARCIAL'
             );
+
+            // Actualizar hint
+            let hint = "";
+            if (tipo === 'CANCELACION_RESERVA') hint = "RESERVA: Se cancela antes del check-in. Espejo contable completo. Habitación LIMPIA.";
+            else if (tipo === 'CANCELACION_TOTAL') hint = "TOTAL: Se cancela toda la operación. Espejo contable completo. Habitación LIMPIA.";
+            else if (tipo === 'CANCELACION_PARCIAL') hint = "PARCIAL: Ajuste por estancia parcial. Espejo contable parcial. Habitación SUCIA.";
+            
+            ui.set('reajuste-hint', hint);
         }
 
         async function confirmCancelacionInteligente() {
@@ -2472,7 +2547,7 @@
                         tipo_cancelacion: tipo,
                         noches_usadas: noches,
                         penalizacion: penal,
-                        motivo: "Cancelación desde UI"
+                        motivo: document.getElementById('cancel-motivo').value.trim() || "Cancelación desde UI"
                     })
                 });
 
@@ -2816,8 +2891,19 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 selector.value = "0";
             }
             cargarAccesosRapidosRS();
-            document.getElementById('modal-roomservice').classList.remove('hidden');
             document.getElementById('modal-roomservice').classList.add('flex');
+
+            // Llenar formas de pago
+            const paySelector = document.getElementById('rs-payment-selector');
+            if (paySelector) {
+                paySelector.innerHTML = '<option value="">SELECCIONE...</option>';
+                catalogoFormasPago.forEach(fp => {
+                    paySelector.innerHTML += `<option value="${fp.id}">${fp.codigo} - ${fp.descripcion}</option>`;
+                });
+                // Por defecto Efectivo (ID 1 suele serlo, pero buscaremos por código 01 si existe)
+                const cash = catalogoFormasPago.find(f => f.codigo === '01');
+                if (cash) paySelector.value = cash.id;
+            }
         }
 
         async function cargarAccesosRapidosRS() {
@@ -2960,7 +3046,8 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                                 registro_id: registroId // 🔥 Añadido aquí también para evitar auto-consecutivos
                             }],
                             observaciones: jsonDetail,
-                            usuario_id: null 
+                            usuario_id: window.userId,
+                            forma_pago_id: document.getElementById('rs-payment-selector').value
                         }) 
                     });
                     
@@ -3270,18 +3357,63 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             return resp;
         }
 
-        async function confirmAllRegistration() {
+        async function confirmAllRegistration(status = 'CHECKIN') {
             const r = rooms[selectedRoomIdx];
             const acompañantes = tempGuests.filter(g => !g.isTitular);
 
+            // 🔥 Si es reservación, pedir fechas en un modal dedicado
+            if (status === 'RESERVACION') {
+                const { value: formValues } = await Swal.fire({
+                    title: '<span class="text-2xl font-black italic uppercase">Datos de Reservación</span>',
+                    html: `
+                        <div class="flex flex-col space-y-6 p-4 text-left">
+                            <div class="bg-slate-50 p-6 rounded-[2rem] border border-slate-100">
+                                <label class="text-[10px] font-black text-slate-400 uppercase mb-3 block ml-2 tracking-widest">Fecha de Llegada</label>
+                                <input type="date" id="swal-arrival" class="w-full bg-white border-2 border-slate-200 rounded-2xl px-6 py-4 text-sm font-black text-slate-700 outline-none focus:border-purple-500 transition-all shadow-sm" value="${document.getElementById('reg-arrival-date').value}">
+                            </div>
+                            <div class="bg-slate-50 p-6 rounded-[2rem] border border-slate-100">
+                                <label class="text-[10px] font-black text-slate-400 uppercase mb-3 block ml-2 tracking-widest">Fecha de Salida</label>
+                                <input type="date" id="swal-departure" class="w-full bg-white border-2 border-slate-200 rounded-2xl px-6 py-4 text-sm font-black text-slate-700 outline-none focus:border-purple-500 transition-all shadow-sm" value="${document.getElementById('reg-departure-date').value}">
+                            </div>
+                        </div>
+                    `,
+                    showCancelButton: true,
+                    confirmButtonText: 'CONFIRMAR RESERVA',
+                    cancelButtonText: 'CANCELAR',
+                    confirmButtonColor: '#9333ea',
+                    focusConfirm: false,
+                    preConfirm: () => {
+                        const arr = document.getElementById('swal-arrival').value;
+                        const dep = document.getElementById('swal-departure').value;
+                        if (!arr || !dep) {
+                            Swal.showValidationMessage('Ambas fechas son obligatorias');
+                            return false;
+                        }
+                        if (new Date(dep) <= new Date(arr)) {
+                            Swal.showValidationMessage('La salida debe ser después de la llegada');
+                            return false;
+                        }
+                        return [arr, dep];
+                    }
+                });
+
+                if (formValues) {
+                    document.getElementById('reg-arrival-date').value = formValues[0];
+                    document.getElementById('reg-departure-date').value = formValues[1];
+                    updateStayDuration();
+                } else {
+                    return; // Usuario canceló el modal
+                }
+            }
+
             try {
-                showToast("Sincronizando...");
+                showToast(status === 'RESERVACION' ? "Creando Reservación..." : "Sincronizando...");
                 
                 // 🔥 IMPORTANTE: Actualizar huéspedes locales primero para que sincronizarHabitacionDB use los datos nuevos (incluyendo fotos)
                 r.huespedes = [...tempGuests];
 
                 // 1. Sincronizar registro principal primero para obtener el registro_id
-                const respReg = await sincronizarHabitacionDB(selectedRoomIdx);
+                const respReg = await sincronizarHabitacionDB(selectedRoomIdx, status);
                 const newRegistroId = respReg ? respReg.registro_id : r.registro_id;
                 
                 if (newRegistroId) {
@@ -3302,25 +3434,47 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 r.extra = tempGuests.filter(g => g.es_extra == 1).length;
                 r.ocupacion_total = r.adultos + r.ninos + r.extra;
                 r.status = 'X';
-                r.estado_registro = 'CHECKIN';
+                r.estado_registro = status;
                 r.registro = 'Con registro';
                 
-                // 4. Actualizar estado de habitación a OCUPADA
-                await actualizarEstadoHabitacionAsync(r.id_db || r.id, 2);
-
+                // 4. Recargar datos y cerrar modal
+                await initData();
                 closeModal('modal-register');
-                renderGrid();
-                showToast("Registro sincronizado correctamente");
                 
-                // 🔥 NUEVO: Mostrar ticket de registro con impuestos
-                setTimeout(() => openRegistrationTicket(selectedRoomIdx), 500);
+                showToast(status === 'RESERVACION' ? "Reservación creada correctamente" : "Registro sincronizado correctamente");
+                
+                // 🔥 NUEVO: Mostrar ticket de registro con impuestos (Solo para Checkin o si lo deseas también para Reser)
+                if (status === 'CHECKIN') {
+                    setTimeout(() => openRegistrationTicket(selectedRoomIdx), 500);
+                }
             } catch (err) {
                 console.error(err);
                 showToast("Error al sincronizar: " + err.message);
             }
         }
 
-        async function sincronizarHabitacionDB(idx) {
+        function updateStayDuration() {
+            const arrival = document.getElementById('reg-arrival-date').value;
+            const departure = document.getElementById('reg-departure-date').value;
+            if (!arrival || !departure) return;
+
+            const d1 = new Date(arrival + 'T12:00:00');
+            const d2 = new Date(departure + 'T12:00:00');
+            const diff = d2 - d1;
+            const nights = Math.max(1, Math.round(diff / (1000 * 60 * 60 * 24)));
+            
+            document.getElementById('reg-stay-nights').textContent = nights;
+            
+            // Actualizar objeto local
+            const r = rooms[selectedRoomIdx];
+            if (r) {
+                r.dias = nights;
+                r.fechaEntradaRaw = arrival;
+                r.fechaSalidaRaw = departure;
+            }
+        }
+
+        async function sincronizarHabitacionDB(idx, status = 'CHECKIN') {
             const r = rooms[idx];
             // Si no hay registro_id, se enviará undefined al server y éste creará uno nuevo
             console.log("🔄 Iniciando sincronización para hab", r.id, r.registro_id ? "Registro ID: " + r.registro_id : "NUEVO REGISTRO");
@@ -3335,8 +3489,12 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 console.log("✅ Titular persistido para registro:", titular.nombre, "ID:", huespedId);
             }
 
+            // Fechas desde el modal
+            const arrivalDate = document.getElementById('reg-arrival-date').value;
+            const departureDate = document.getElementById('reg-departure-date').value;
+            const nights = parseInt(document.getElementById('reg-stay-nights').textContent) || 1;
+
             // Cálculos financieros
-            const nights = r.dias || 1;
             const extraCount = (r.huespedes || []).filter(g => g.es_extra == 1).length;
             const extraChargePerNight = extraCount * (r.precio_extra || 0);
             
@@ -3354,8 +3512,9 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 id: r.registro_id, // 🔥 Clave Primaria Estricta
                 huesped_id: huespedId,
                 habitacion_id: r.id_db || r.id, 
-                hora_entrada: r.fechaEntrada ? `${r.fechaEntrada.split('/').reverse().join('-')} ${r.horaEntrada || '12:00:00'}` : new Date().toLocaleString('sv-SE').replace('T', ' '),
-                hora_salida: r.dias ? new Date(Date.now() + r.dias * 86400000).toISOString().slice(0, 10) : new Date().toISOString().slice(0, 10),
+                estado_registro: status,
+                hora_entrada: arrivalDate + ' 12:00:00',
+                hora_salida: departureDate + ' 12:00:00',
                 noches: nights,
                 tipo_estadia_id: r.tipoEstadiaId || 1,
                 forma_pago_id: r.formaPago || 1,

@@ -8,7 +8,7 @@ $charset = 'utf8mb4';
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset;port=3306";
 try {
      $pdo = new PDO($dsn, $user, $pass);
-     $stmt = $pdo->query("SELECT * FROM estados_habitacion");
+     $stmt = $pdo->query("DESCRIBE registros");
      print_r($stmt->fetchAll(PDO::FETCH_ASSOC));
 } catch (\PDOException $e) {
      echo "Error: " . $e->getMessage();
