@@ -344,3 +344,4 @@ $routes->get('tablet', 'Tablet::index');
 $routes->get('tablet/checkStatus', 'Tablet::checkStatus');
 $routes->post('tablet/guardarFirma', 'Tablet::guardarFirma');
 $routes->get('tablet/activarFirma/(:num)', 'Tablet::activarFirma/$1');
+$routes->post('tablet/activarFirmaManual', 'Tablet::activarFirmaManual');

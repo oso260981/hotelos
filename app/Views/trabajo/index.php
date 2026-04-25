@@ -4660,17 +4660,98 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 } catch (error) {
                     console.error("Polling error:", error);
                 }
-            }, 3000); // Consultar cada 3 segundos
+            }, 5000); // Consultar cada 5 segundos
         }
 
 
-                async function enviarATablet() {
+                                        async function enviarATablet() {
             const box = document.getElementById('box-id');
-            const idOcr = box.dataset.ocrId || null;
+            let idOcr = box.dataset.ocrId || null;
             
+            // Obtener IDs vinculados si existen
+            const registroId = window.currentRegistroId || null;
+            // El huesped_id suele estar en un campo oculto o en el objeto rooms
+            // Intentamos obtenerlo del campo f-huesped-id si existe
+            const huespedIdEl = document.getElementById('f-huesped-id');
+            const huespedId = huespedIdEl ? huespedIdEl.value : null;
+
             if (!idOcr) {
-                showToast("Por favor, procesa el OCR primero");
-                return;
+                const nombre = document.getElementById('f-name').value;
+                const apellidos = document.getElementById('f-apellidos').value;
+                
+                if (!nombre || nombre.trim() === '') {
+                    showToast("Completa el nombre para enviar a firmar");
+                    return;
+                }
+
+                try {
+                    const resp = await fetch(base_url + "tablet/activarFirmaManual", {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ 
+                            nombre, 
+                            apellidos,
+                            registro_id: registroId,
+                            huesped_id: huespedId
+                        })
+                    });
+                    const res = await resp.json();
+                    if (res.ok) {
+                        idOcr = res.id;
+                        box.dataset.ocrId = idOcr;
+                    } else {
+                        showToast(res.msg);
+                        return;
+                    }
+                } catch (e) {
+                    showToast("Error al activar firma manual");
+                    return;
+                }
+            }
+
+            try {
+                // Pasar IDs como query params para activarFirma
+                let url = base_url + "tablet/activarFirma/" + idOcr + "?";
+                if (registroId) url += "registro_id=" + registroId + "&";
+                if (huespedId) url += "huesped_id=" + huespedId;
+
+                const resp = await fetch(url);
+                const res = await resp.json();
+                if (res.ok) {
+                    Swal.fire({
+                        title: 'FIRMA ACTIVADA',
+                        text: 'Pida al huésped que firme en la tablet exterior',
+                        icon: 'success',
+                        timer: 3000,
+                        showConfirmButton: false
+                    });
+                } else {
+                    showToast("Error: " + res.msg);
+                }
+            } catch (e) {
+                console.error(e);
+                showToast("Error de conexión con la tablet");
+            }
+        }
+
+                try {
+                    const resp = await fetch(base_url + "tablet/activarFirmaManual", {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ nombre, apellidos })
+                    });
+                    const res = await resp.json();
+                    if (res.ok) {
+                        idOcr = res.id;
+                        box.dataset.ocrId = idOcr;
+                    } else {
+                        showToast(res.msg);
+                        return;
+                    }
+                } catch (e) {
+                    showToast("Error al activar firma manual");
+                    return;
+                }
             }
 
             try {
@@ -4691,7 +4772,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 console.error(e);
                 showToast("Error de conexión con la tablet");
             }
-        }
+        } 
 
         function handleOCRFile(input) {
             if (input.files && input.files[0]) {
@@ -4997,6 +5078,11 @@ if (confirm.isConfirmed) {
 </body>
 
 <?= view('layout/footer') ?>
+
+
+
+
+
 
 
 

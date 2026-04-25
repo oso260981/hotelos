@@ -52,7 +52,13 @@ class Tablet extends BaseController
             return $this->response->setJSON(['ok' => false, 'msg' => 'Datos incompletos']);
         }
 
-        // 1. Procesar la imagen de la firma
+        // 1. Obtener la sesión para recuperar registro_id y huesped_id
+        $db = \Config\Database::connect();
+        $sesion = $db->table('registro_sesiones_firma')
+                     ->where('tablet_id', 'TABLET_01')
+                     ->get()->getRow();
+
+        // 2. Procesar la imagen de la firma
         $imageRaw = $json->firma;
         $cleanBase64 = $imageRaw;
         if (preg_match('/^data:image\/(\w+);base64,/', $imageRaw, $type)) {
@@ -68,43 +74,104 @@ class Tablet extends BaseController
         
         file_put_contents($path, $data);
 
-        // 2. Actualizar el registro de OCR con la firma
-        $db = \Config\Database::connect();
+        // 3. ACTUALIZACIÓN TRIPLE
+        
+        // A. En ocr_registros (El log de identificación)
         $db->table('ocr_registros')
            ->where('id', $json->id_ocr)
            ->update(['firma_path' => $filename]);
 
-        // 3. Limpiar la sesión para que la tablet vuelva a espera
+        // B. En registro (La estancia actual)
+        if (!empty($sesion->registro_id)) {
+            $db->table('registro')
+               ->where('id', $sesion->registro_id)
+               ->update(['firma_path' => $filename]);
+        }
+
+        // C. En huesped (El perfil maestro del cliente)
+        if (!empty($sesion->huesped_id)) {
+            $db->table('huesped')
+               ->where('id', $sesion->huesped_id)
+               ->update(['firma_path' => $filename]);
+        }
+
+        // 4. Limpiar la sesión
         $db->table('registro_sesiones_firma')
            ->where('tablet_id', 'TABLET_01')
            ->update([
                'status' => 'WAIT',
-               'ocr_registro_id' => null
+               'ocr_registro_id' => null,
+               'registro_id' => null,
+               'huesped_id' => null
            ]);
 
-        return $this->response->setJSON(['ok' => true, 'msg' => 'Firma guardada correctamente']);
+        return $this->response->setJSON(['ok' => true, 'msg' => 'Firma guardada correctamente en expediente']);
     }
 
     /**
-     * (Llamado desde Recepción) Activa la sesión de firma para un registro
+     * (Llamado desde Recepción) Activa la sesión de firma para un registro existente
      */
     public function activarFirma($id_ocr)
     {
         $db = \Config\Database::connect();
         
-        // Verificar si existe el registro de OCR
         $ocr = $db->table('ocr_registros')->where('id', $id_ocr)->get()->getRow();
         if (!$ocr) {
             return $this->response->setJSON(['ok' => false, 'msg' => 'Registro no encontrado']);
         }
 
+        // Capturar IDs opcionales desde el query string o post
+        $registro_id = $this->request->getVar('registro_id');
+        $huesped_id = $this->request->getVar('huesped_id');
+
         $db->table('registro_sesiones_firma')
            ->where('tablet_id', 'TABLET_01')
            ->update([
                'status' => 'READY',
-               'ocr_registro_id' => $id_ocr
+               'ocr_registro_id' => $id_ocr,
+               'registro_id' => $registro_id ?: null,
+               'huesped_id' => $huesped_id ?: null
            ]);
 
         return $this->response->setJSON(['ok' => true, 'msg' => 'Firma activada en la tablet exterior']);
+    }
+
+    /**
+     * (Llamado desde Recepción) Activa la sesión de firma con datos manuales
+     */
+    public function activarFirmaManual()
+    {
+        $json = $this->request->getJSON();
+        if (!$json || empty($json->nombre)) {
+            return $this->response->setJSON(['ok' => false, 'msg' => 'El nombre es obligatorio']);
+        }
+
+        $db = \Config\Database::connect();
+
+        // 1. Crear registro manual
+        $db->table('ocr_registros')->insert([
+            'tipo_documento' => 'MANUAL',
+            'nombre'         => $json->nombre,
+            'apellidos'      => $json->apellidos ?? '',
+            'created_at'     => date('Y-m-d H:i:s')
+        ]);
+
+        $newId = $db->insertID();
+
+        // 2. Activar tablet con IDs vinculados
+        $db->table('registro_sesiones_firma')
+           ->where('tablet_id', 'TABLET_01')
+           ->update([
+               'status' => 'READY',
+               'ocr_registro_id' => $newId,
+               'registro_id' => $json->registro_id ?? null,
+               'huesped_id' => $json->huesped_id ?? null
+           ]);
+
+        return $this->response->setJSON([
+            'ok' => true, 
+            'id' => $newId, 
+            'msg' => 'Firma activada (Modo Manual)'
+        ]);
     }
 }

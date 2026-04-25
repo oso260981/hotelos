@@ -133,7 +133,7 @@
             .catch(e => console.error("Error en polling", e));
         }
 
-        pollingInterval = setInterval(checkStatus, 2000);
+        pollingInterval = setInterval(checkStatus, 5000);
 
         function saveSignature() {
             // Verificar si el canvas está vacío (opcional)
