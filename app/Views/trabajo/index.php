@@ -671,10 +671,16 @@
                                         class="absolute inset-0 w-full h-full cursor-crosshair"></canvas>
                                 </div>
                             </div>
-                            <button onclick="initSignaturePad()"
-                                class="w-full btn-action-pro bg-emerald-50 text-emerald-700 border border-emerald-100">
-                                <i class="fas fa-tablet-alt mr-2"></i>Activar Pad
-                            </button>
+                                                        <div class="grid grid-cols-2 gap-3 mt-4">
+                                <button onclick="initSignaturePad()"
+                                    class="w-full btn-action-pro bg-emerald-50 text-emerald-700 border border-emerald-100">
+                                    <i class="fas fa-tablet-alt mr-2"></i>Activar Pad
+                                </button>
+                                <button onclick="enviarATablet()"
+                                    class="w-full btn-action-pro bg-indigo-50 text-indigo-700 border border-indigo-100">
+                                    <i class="fas fa-external-link-alt mr-2"></i>Enviar a Tablet
+                                </button>
+                            </div>
                         </div>
                     </div>
 
@@ -4543,7 +4549,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                     
                     // 🔥 Guardar el nombre del archivo para que se salve en la BD al confirmar
                     const boxIdEl = document.getElementById('box-id');
-                    if (resp.file) boxIdEl.dataset.blob = resp.file;
+                    if (resp.file) boxIdEl.dataset.blob = resp.file; if (resp.id) boxIdEl.dataset.ocrId = resp.id;
 
                     if (resp.es_menor) showToast("⚠️ Atención: Menor de edad detectado");
                     showToast("✔ Datos extraídos correctamente");
@@ -4657,6 +4663,35 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             }, 3000); // Consultar cada 3 segundos
         }
 
+
+                async function enviarATablet() {
+            const box = document.getElementById('box-id');
+            const idOcr = box.dataset.ocrId || null;
+            
+            if (!idOcr) {
+                showToast("Por favor, procesa el OCR primero");
+                return;
+            }
+
+            try {
+                const resp = await fetch(base_url + "tablet/activarFirma/" + idOcr);
+                const res = await resp.json();
+                if (res.ok) {
+                    Swal.fire({
+                        title: 'FIRMA ACTIVADA',
+                        text: 'Pida al hu�sped que firme en la tablet exterior',
+                        icon: 'success',
+                        timer: 3000,
+                        showConfirmButton: false
+                    });
+                } else {
+                    showToast("Error: " + res.msg);
+                }
+            } catch (e) {
+                console.error(e);
+                showToast("Error de conexi�n con la tablet");
+            }
+        }
 
         function handleOCRFile(input) {
             if (input.files && input.files[0]) {
@@ -4962,4 +4997,6 @@ if (confirm.isConfirmed) {
 </body>
 
 <?= view('layout/footer') ?>
+
+
 

@@ -336,3 +336,11 @@ $routes->get('reservacion/estados-habitacion', 'Reservacion::estadosHabitacion')
 $routes->post('reservacion/checkout', 'Reservacion::checkout');
 $routes->post('reservacion/actualizar-campo', 'Reservacion::actualizarCampoRegistro');
 
+
+/* =====================================================
+   RUTAS TABLET FIRMA
+=====================================================*/
+$routes->get('tablet', 'Tablet::index');
+$routes->get('tablet/checkStatus', 'Tablet::checkStatus');
+$routes->post('tablet/guardarFirma', 'Tablet::guardarFirma');
+$routes->get('tablet/activarFirma/(:num)', 'Tablet::activarFirma/$1');
