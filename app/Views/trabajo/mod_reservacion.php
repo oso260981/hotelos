@@ -923,7 +923,7 @@
             </div>
 
             <!-- CONTROLES -->
-            <div class="grid grid-cols-3 gap-3 mt-5">
+            <div class="grid grid-cols-4 gap-3 mt-5">
 
                 <button onclick="startCameraocr()"
                     class="bg-slate-100 hover:bg-slate-200 py-2 rounded-xl text-xs font-semibold">
@@ -933,6 +933,11 @@
                 <button onclick="capturePhoto()"
                     class="bg-slate-100 hover:bg-slate-200 py-2 rounded-xl text-xs font-semibold">
                     Capturar
+                </button>
+
+                <button onclick="rotatePhoto()"
+                    class="bg-slate-100 hover:bg-slate-200 py-2 rounded-xl text-xs font-semibold">
+                    <i class="fas fa-sync-alt mr-1"></i> Rotar
                 </button>
 
                 <label

@@ -5,6 +5,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- QR Code Generator -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
@@ -639,6 +642,10 @@
                                     class="btn-action-pro bg-slate-800 text-white">
                                     <i class="fas fa-upload mr-1"></i>Subir
                                 </button>
+                                <button onclick="openQRScanner()"
+                                    class="btn-action-pro bg-purple-600 text-white shadow-lg shadow-purple-100 col-span-3">
+                                    <i class="fas fa-qrcode mr-2"></i>Escanear con QR (Celular)
+                                </button>
                             </div>
                         </div>
 
@@ -793,6 +800,33 @@
             </div>
         </div>
     </div>
+
+    <!-- MODAL DE PUENTE QR -->
+    <div id="modal-qr-bridge" class="fixed inset-0 bg-slate-900/95 hidden z-[200] items-center justify-center p-6 backdrop-blur-xl">
+        <div class="bg-white w-full max-w-md rounded-[3rem] shadow-2xl overflow-hidden p-10 text-center space-y-8 border border-white/20">
+            <div class="space-y-2">
+                <h3 class="text-2xl font-black italic uppercase tracking-tighter text-slate-800">Escanear con Celular</h3>
+                <p class="text-slate-400 text-[10px] font-black uppercase tracking-widest">Escanea el código para tomar la foto</p>
+            </div>
+            
+            <div id="qr-container" class="bg-white p-6 rounded-[2.5rem] shadow-inner border-4 border-slate-50 flex items-center justify-center mx-auto w-64 h-64">
+                <!-- El QR se generará aquí -->
+            </div>
+
+            <div class="space-y-4">
+                <div class="flex items-center justify-center space-x-3 text-blue-600 animate-pulse">
+                    <i class="fas fa-sync-alt fa-spin"></i>
+                    <span class="text-xs font-black uppercase tracking-widest">Esperando captura...</span>
+                </div>
+                <p class="text-slate-400 text-[9px] italic">Una vez capturada la foto en el móvil, los datos se llenarán automáticamente aquí.</p>
+            </div>
+
+            <button onclick="closeQRBridge()" class="w-full py-4 rounded-2xl bg-slate-100 text-slate-500 font-black uppercase text-[10px] tracking-widest hover:bg-slate-200 transition-all">
+                Cancelar Sincronización
+            </button>
+        </div>
+    </div>
+
 
     <!-- MODAL OPCIONES (GESTIÓN) -->
     <div id="modal-options-menu"
@@ -3973,18 +4007,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             const tbody = document.getElementById('movements-tbody'); 
             tbody.innerHTML = '';
             
-            // Saldo inicial = Hospedaje (Precio Total del Registro)
-            let saldo = r.precio;
-            
-            // Primera fila: Hospedaje
-            tbody.innerHTML += `
-                <tr class="border-b">
-                    <td class="p-4 opacity-40 uppercase text-[10px] font-bold">${r.fechaEntrada || '---'}</td>
-                    <td class="p-4 uppercase font-bold text-blue-800">ESTANCIA (${r.dias} N)</td>
-                    <td class="p-4 text-right font-bold">$${r.precio.toFixed(2)}</td>
-                    <td class="p-4 text-right text-slate-300">---</td>
-                    <td class="p-4 text-right font-black text-slate-900">$${saldo.toFixed(2)}</td>
-                </tr>`;
+            let saldo = 0;
             
             // Movimientos: Cargos y Pagos
             const movs = [
@@ -3992,6 +4015,13 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 ...r.payments.map(p => ({ name: `PAGO ${p.method}`, price: p.amount, t: 'abono', date: p.date }))
             ];
             
+            // Ordenar por fecha (opcional, pero ayuda a la coherencia del saldo)
+            movs.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+            if (movs.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" class="p-8 text-center text-slate-400 font-bold italic text-sm">No hay movimientos registrados</td></tr>`;
+            }
+
             // Procesar movimientos
             movs.forEach(m => {
                 if (m.t === 'cargo') {
@@ -4508,6 +4538,88 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             if (data.estado) document.getElementById('f-state').value = data.estado.toUpperCase();
             if (data.codigo_postal) document.getElementById('f-cp').value = data.codigo_postal;
         }
+
+        /* QR BRIDGE SYSTEM */
+        let qrPollingInterval = null;
+
+        async function openQRScanner() {
+            try {
+                showToast("Generando sesión de puente...");
+                const resp = await fetch(base_url + "ocr/crearSesion");
+                const res = await resp.json();
+
+                if (res.ok) {
+                    const qrContainer = document.getElementById('qr-container');
+                    qrContainer.innerHTML = '';
+                    
+                    new QRCode(qrContainer, {
+                        text: res.url,
+                        width: 200,
+                        height: 200,
+                        colorDark : "#0f172a",
+                        colorLight : "#ffffff",
+                        correctLevel : QRCode.CorrectLevel.H
+                    });
+
+                    document.getElementById('modal-qr-bridge').classList.remove('hidden');
+                    document.getElementById('modal-qr-bridge').classList.add('flex');
+
+                    // Iniciar Polling
+                    startQRPolling(res.token);
+                } else {
+                    showToast("Error al crear sesión QR");
+                }
+            } catch (error) {
+                console.error(error);
+                showToast("Error de conexión al generar QR");
+            }
+        }
+
+        function closeQRBridge() {
+            document.getElementById('modal-qr-bridge').classList.add('hidden');
+            document.getElementById('modal-qr-bridge').classList.remove('flex');
+            if (qrPollingInterval) clearInterval(qrPollingInterval);
+        }
+
+        function startQRPolling(token) {
+            if (qrPollingInterval) clearInterval(qrPollingInterval);
+
+            qrPollingInterval = setInterval(async () => {
+                try {
+                    const resp = await fetch(base_url + "ocr/consultarSesion/" + token);
+                    const res = await resp.json();
+
+                    if (res.ok) {
+                        if (res.status === 'COMPLETADO') {
+                            showToast("¡Captura recibida!");
+                            clearInterval(qrPollingInterval);
+                            
+                            // Llenar formulario
+                            if (res.data) fillFormFromOCR(res.data);
+                            
+                            // Mostrar preview de la imagen en el box-id
+                            if (res.image) {
+                                const box = document.getElementById('box-id');
+                                const imgUrl = base_url + "uploads/fotos/" + res.image;
+                                box.innerHTML = `<img src="${imgUrl}" class="w-full h-full object-cover rounded-2xl shadow-inner">`;
+                                box.dataset.blob = res.image;
+                            }
+
+                            setTimeout(() => {
+                                closeQRBridge();
+                                showToast("✔ Datos sincronizados con éxito");
+                            }, 1000);
+                        } else if (res.status === 'ERROR') {
+                            showToast("Error en el escaneo remoto");
+                            clearInterval(qrPollingInterval);
+                        }
+                    }
+                } catch (error) {
+                    console.error("Polling error:", error);
+                }
+            }, 3000); // Consultar cada 3 segundos
+        }
+
 
         function handleOCRFile(input) {
             if (input.files && input.files[0]) {

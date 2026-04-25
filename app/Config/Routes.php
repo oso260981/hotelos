@@ -286,6 +286,12 @@ $routes->post('reportes/actualizar/(:num)', 'Reportes::actualizar/$1');
 
 
 $routes->post('ocr/procesar', 'Ocr::procesar');
+$routes->get('ocr/crearSesion', 'Ocr::crearSesion');
+$routes->get('ocr/consultarSesion/(:segment)', 'Ocr::consultarSesion/$1');
+
+$routes->get('scan/index/(:segment)', 'Scan::index/$1');
+$routes->post('scan/upload/(:segment)', 'Scan::upload/$1');
+
 
 $routes->post('reservacion/cerrar-folio', 'Reservacion::cerrarFolio');
 $routes->post('reservacion/modificar-estadia', 'Reservacion::modificarEstadia');

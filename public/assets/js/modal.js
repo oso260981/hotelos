@@ -2576,6 +2576,11 @@ async function processOCR() {
             imageBase64 = await toBase64(file);
         }
 
+        // 🔄 Rotar imagen si es necesario
+        if (typeof ocrRotation !== 'undefined' && ocrRotation !== 0) {
+            imageBase64 = await getRotatedBase64(imageBase64, ocrRotation);
+        }
+
         const response = await fetch(base_url +'/ocr/procesar', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -2691,6 +2696,16 @@ function normalizeGender(g) {
 // MAPEAR DATOS OCR → FORM
 // =========================
 
+
+let ocrRotation = 0;
+
+function rotatePhoto() {
+    const preview = document.getElementById('preview');
+    if (preview.classList.contains('hidden')) return;
+
+    ocrRotation = (ocrRotation + 90) % 360;
+    preview.style.transform = `rotate(${ocrRotation}deg)`;
+}
 
 function fillForm(data) {
 
@@ -2972,4 +2987,29 @@ function calcularISH(subtotal) {
         `$${ish.toFixed(2)}`;
 
     return ish;
+}
+
+async function getRotatedBase64(base64, degrees) {
+    return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+
+            if (degrees === 90 || degrees === 270) {
+                canvas.width = img.height;
+                canvas.height = img.width;
+            } else {
+                canvas.width = img.width;
+                canvas.height = img.height;
+            }
+
+            ctx.translate(canvas.width / 2, canvas.height / 2);
+            ctx.rotate((degrees * Math.PI) / 180);
+            ctx.drawImage(img, -img.width / 2, -img.height / 2);
+
+            resolve(canvas.toDataURL("image/jpeg", 0.8));
+        };
+        img.src = base64;
+    });
 }
