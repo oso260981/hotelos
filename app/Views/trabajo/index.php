@@ -624,28 +624,38 @@
                                 <span class="text-[9px] font-black uppercase text-slate-400 mt-4">Scan Documento</span>
                             </div>
                             <div class="grid grid-cols-3 gap-2">
-                                <button onclick="toggleCamera('box-id')"
+                                <!-- ESTADO INICIAL -->
+                                <button id="btn-on-id" onclick="toggleCamera('box-id')"
                                     class="btn-action-pro bg-orange-500 text-white shadow-lg">
                                     <i class="fas fa-power-off mr-1"></i>On
                                 </button>
-                                <button onclick="capturePhoto('box-id')"
-                                    class="btn-action-pro bg-slate-100 text-slate-600 border border-slate-200">
-                                    <i class="fas fa-image mr-1"></i>Capturar
-                                </button>
-                                <button onclick="runOCR()"
-                                    class="btn-action-pro bg-blue-600 text-white shadow-lg shadow-blue-100">
-                                    <i class="fas fa-expand-arrows-alt mr-1"></i>OCR
-                                </button>
-                                <!-- 🔥 File input para OCR -->
-                                <input type="file" id="f-ocr-file" class="hidden" accept="image/*" onchange="handleOCRFile(this)">
-                                <button onclick="document.getElementById('f-ocr-file').click()"
+                                <button id="btn-upload-id" onclick="document.getElementById('f-ocr-file').click()"
                                     class="btn-action-pro bg-slate-800 text-white">
                                     <i class="fas fa-upload mr-1"></i>Subir
                                 </button>
-                                <button onclick="openQRScanner()"
-                                    class="btn-action-pro bg-purple-600 text-white shadow-lg shadow-purple-100 col-span-3">
-                                    <i class="fas fa-qrcode mr-2"></i>Escanear con QR (Celular)
+                                <button id="btn-qr-id" onclick="openQRScanner()"
+                                    class="btn-action-pro bg-purple-600 text-white shadow-lg shadow-purple-100">
+                                    <i class="fas fa-qrcode mr-1"></i>QR
                                 </button>
+
+                                <!-- ESTADO CÁMARA (DINÁMICO) -->
+                                <button id="btn-capture-id" onclick="capturePhoto('box-id')"
+                                    class="hidden btn-action-pro bg-indigo-600 text-white shadow-lg col-span-2">
+                                    <i class="fas fa-camera mr-2"></i>Capturar Foto
+                                </button>
+                                <button id="btn-cancel-id" onclick="stopCamera()"
+                                    class="hidden btn-action-pro bg-red-50 text-red-600 border border-red-100">
+                                    <i class="fas fa-times mr-1"></i>Cancelar
+                                </button>
+
+                                <!-- ESTADO RESULTADO (DINÁMICO) -->
+                                <button id="btn-ocr-id" onclick="runOCR()"
+                                    class="hidden btn-action-pro bg-blue-600 text-white shadow-lg shadow-blue-100 col-span-3">
+                                    <i class="fas fa-expand-arrows-alt mr-2"></i>Procesar con IA
+                                </button>
+
+                                <!-- HIDDEN INPUT -->
+                                <input type="file" id="f-ocr-file" class="hidden" accept="image/*" onchange="handleOCRFile(this)">
                             </div>
                         </div>
 
@@ -4407,6 +4417,14 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 box.innerHTML = `<video id="video-preview" autoplay playsinline class="w-full h-full object-cover rounded-2xl"></video>`;
                 document.getElementById('video-preview').srcObject = activeStream;
                 showToast("Cámara encendida");
+
+                if (boxId === 'box-id') {
+                    document.getElementById('btn-on-id').classList.add('hidden');
+                    document.getElementById('btn-upload-id').classList.add('hidden');
+                    document.getElementById('btn-qr-id').classList.add('hidden');
+                    document.getElementById('btn-capture-id').classList.remove('hidden');
+                    document.getElementById('btn-cancel-id').classList.remove('hidden');
+                }
             } catch (err) {
                 console.error(err);
                 showToast("Error al acceder a la cámara");
@@ -4423,11 +4441,21 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                     box.innerHTML = `<i class="fas ${icon} text-6xl opacity-10"></i><span class="text-[9px] font-black uppercase text-slate-400 mt-4">${label}</span>`;
                     if (activeBoxId === 'box-id') box.innerHTML += `<div id="scan-line" class="scan-line" style="display:none"></div>`;
                 }
+
+                if (activeBoxId === 'box-id') {
+                    document.getElementById('btn-on-id').classList.remove('hidden');
+                    document.getElementById('btn-upload-id').classList.remove('hidden');
+                    document.getElementById('btn-qr-id').classList.remove('hidden');
+                    document.getElementById('btn-capture-id').classList.add('hidden');
+                    document.getElementById('btn-cancel-id').classList.add('hidden');
+                    document.getElementById('btn-ocr-id').classList.add('hidden');
+                }
+
                 activeStream = null; activeBoxId = null;
             }
         }
 
-        async function capturePhoto(boxId) {
+                async function capturePhoto(boxId) {
             if (!activeStream || activeBoxId !== boxId) return showToast("Enciende la cámara primero");
             const video = document.getElementById('video-preview');
             const canvas = document.createElement('canvas');
@@ -4436,33 +4464,42 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
             const box = document.getElementById(boxId);
             
-            // 🔥 Preview local inmediato (permanece mientras sube)
-            box.innerHTML = `<img src="${dataUrl}" class="w-full h-full object-cover rounded-2xl shadow-inner opacity-50">
-                             <div class="absolute inset-0 flex items-center justify-center">
-                                <i class="fas fa-spinner fa-spin text-blue-500 text-3xl"></i>
-                             </div>`;
-            
-            stopCamera();
-            console.log("📸 Captura tomada, subiendo...");
-            isUploadingMedia = true; // 🔥 Bloquear
+            box.innerHTML = `<img src="${dataUrl}" class="w-full h-full object-cover rounded-2xl shadow-inner">`;
 
-            try {
-                const fileName = await subirFoto(dataUrl);
-                if (fileName) {
-                    box.dataset.blob = fileName;
-                    // Actualizar a opacidad completa al terminar
-                    box.innerHTML = `<img src="${dataUrl}" class="w-full h-full object-cover rounded-2xl shadow-inner">`;
-                    showToast("Foto lista");
+            if (boxId === 'box-id') {
+                const result = await Swal.fire({
+                    title: '¿IMAGEN CORRECTA?',
+                    text: "Asegúrate de que los datos sean legibles",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: 'SÍ, PROCESAR',
+                    cancelButtonText: 'NO, REPETIR',
+                    confirmButtonColor: '#4f46e5',
+                    cancelButtonColor: '#64748b'
+                });
+
+                if (result.isConfirmed) {
+                    stopCamera();
+                    runOCR(dataUrl);
+                } else {
+                    toggleCamera('box-id');
                 }
-            } catch (err) {
-                console.error(err);
-                showToast("Error al subir foto");
-                // Revertir a icono si falló
-                box.innerHTML = `<i class="fas fa-user text-6xl opacity-10"></i>`;
-            } finally {
-                isUploadingMedia = false; // 🔥 Desbloquear
+            } else {
+                stopCamera();
+                isUploadingMedia = true;
+                try {
+                    const fileName = await subirFoto(dataUrl);
+                    if (fileName) {
+                        box.dataset.blob = fileName;
+                        showToast("Foto de perfil lista");
+                    }
+                } catch (err) {
+                    showToast("Error al subir foto");
+                } finally {
+                    isUploadingMedia = false;
+                }
             }
-        }
+        } 
 
         async function subirFoto(base64) {
             const response = await fetch(base_url + "media/subir-foto", {
@@ -4925,3 +4962,4 @@ if (confirm.isConfirmed) {
 </body>
 
 <?= view('layout/footer') ?>
+

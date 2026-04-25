@@ -922,27 +922,37 @@
 
             </div>
 
-            <!-- CONTROLES -->
-            <div class="grid grid-cols-4 gap-3 mt-5">
+            <!-- CONTROLES DINÁMICOS -->
+            <div class="flex gap-2 mt-5">
 
-                <button onclick="startCameraocr()"
-                    class="bg-slate-100 hover:bg-slate-200 py-2 rounded-xl text-xs font-semibold">
-                    Cámara
+                <!-- BOTÓN ON (INICIO) -->
+                <button id="ocr-btn-on" onclick="startCameraocr()"
+                    class="flex-1 bg-emerald-500 hover:bg-emerald-600 text-white py-3 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-emerald-200 transition-all">
+                    <i class="fas fa-video mr-2"></i> Encender Cámara
                 </button>
 
-                <button onclick="capturePhoto()"
-                    class="bg-slate-100 hover:bg-slate-200 py-2 rounded-xl text-xs font-semibold">
-                    Capturar
+                <!-- BOTÓN CAPTURAR (OCULTO INICIALMENTE) -->
+                <button id="ocr-btn-capture" onclick="capturePhoto()"
+                    class="hidden flex-1 bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-indigo-200 transition-all">
+                    <i class="fas fa-camera mr-2"></i> Capturar
                 </button>
 
-                <button onclick="rotatePhoto()"
-                    class="bg-slate-100 hover:bg-slate-200 py-2 rounded-xl text-xs font-semibold">
-                    <i class="fas fa-sync-alt mr-1"></i> Rotar
+                <!-- BOTÓN ROTAR (OCULTO INICIALMENTE) -->
+                <button id="ocr-btn-rotate" onclick="rotatePhoto()"
+                    class="hidden bg-slate-100 hover:bg-slate-200 px-4 py-3 rounded-xl text-slate-600 transition-all">
+                    <i class="fas fa-sync-alt"></i>
                 </button>
 
-                <label
-                    class="bg-slate-100 hover:bg-slate-200 py-2 rounded-xl text-xs font-semibold text-center cursor-pointer">
-                    Subir
+                <!-- BOTÓN CANCELAR / APAGAR -->
+                <button id="ocr-btn-cancel" onclick="stopCameraOCR()"
+                    class="hidden bg-red-50 hover:bg-red-500 hover:text-white text-red-500 px-4 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all">
+                    Cancelar
+                </button>
+
+                <!-- BOTÓN SUBIR ARCHIVO -->
+                <label id="ocr-label-upload"
+                    class="bg-slate-100 hover:bg-slate-200 px-4 py-3 rounded-xl text-slate-600 cursor-pointer transition-all">
+                    <i class="fas fa-upload"></i>
                     <input type="file" id="fileInput" accept="image/*" class="hidden">
                 </label>
 

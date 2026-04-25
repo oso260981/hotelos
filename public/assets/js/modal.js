@@ -2510,22 +2510,55 @@ async function startCameraocr() {
     preview.classList.add('hidden');
     video.classList.remove('hidden');
 
-    streamRererva = await navigator.mediaDevices.getUserMedia({
-        video: {
-            facingMode: "environment" // 🔥 cámara trasera
-        }
-    });
+    try {
+        streamRererva = await navigator.mediaDevices.getUserMedia({
+            video: { facingMode: "environment" }
+        });
+        video.srcObject = streamRererva;
 
-    video.srcObject = streamRererva;
+        // 🔥 Control de botones
+        document.getElementById('ocr-btn-on').classList.add('hidden');
+        document.getElementById('ocr-label-upload').classList.add('hidden');
+        document.getElementById('ocr-btn-capture').classList.remove('hidden');
+        document.getElementById('ocr-btn-cancel').classList.remove('hidden');
+        document.getElementById('ocr-btn-rotate').classList.add('hidden');
+
+        ocrRotation = 0;
+        preview.style.transform = 'none';
+
+    } catch (err) {
+        console.error(err);
+        showToast("No se pudo acceder a la cámara");
+    }
+}
+
+function stopCameraOCR() {
+    if (streamRererva) {
+        streamRererva.getTracks().forEach(track => track.stop());
+        streamRererva = null;
+    }
+
+    document.getElementById('video').classList.add('hidden');
+    document.getElementById('preview').classList.add('hidden');
+
+    // 🔥 Restaurar botones
+    document.getElementById('ocr-btn-on').classList.remove('hidden');
+    document.getElementById('ocr-label-upload').classList.remove('hidden');
+    document.getElementById('ocr-btn-capture').classList.add('hidden');
+    document.getElementById('ocr-btn-cancel').classList.add('hidden');
+    document.getElementById('ocr-btn-rotate').classList.add('hidden');
+
+    window.capturedImage = null;
 }
 
 
 // =========================
 // CAPTURA FOTO
 // =========================
-function capturePhoto() {
+async function capturePhoto() {
     const video = document.getElementById('video');
     const canvas = document.getElementById('canvas');
+    const preview = document.getElementById('preview');
 
     if (!video.videoWidth) {
         showToast("La cámara aún no está lista");
@@ -2534,20 +2567,42 @@ function capturePhoto() {
 
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
-
     const ctx = canvas.getContext('2d');
     ctx.drawImage(video, 0, 0);
 
-    const image = canvas.toDataURL("image/jpeg");
-
+    const image = canvas.toDataURL("image/jpeg", 0.8);
     window.capturedImage = image;
 
-    // 🔥 apagar cámara
-    if (streamRererva) {
-        streamRererva.getTracks().forEach(track => track.stop());
-    }
+    // 🔥 Mostrar preview
+    preview.src = image;
+    preview.classList.remove('hidden');
+    video.classList.add('hidden');
+    document.getElementById('ocr-btn-rotate').classList.remove('hidden');
 
-    console.log("📸 Imagen capturada");
+    // 🔥 Confirmación
+    const result = await Swal.fire({
+        title: '¿LA IMAGEN ES CORRECTA?',
+        text: "Asegúrate de que los datos sean legibles",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'SÍ, PROCESAR',
+        cancelButtonText: 'NO, REPETIR',
+        confirmButtonColor: '#4f46e5',
+        cancelButtonColor: '#64748b'
+    });
+
+    if (result.isConfirmed) {
+        if (streamRererva) {
+            streamRererva.getTracks().forEach(track => track.stop());
+            streamRererva = null;
+        }
+        processOCR();
+    } else {
+        // Volver a la cámara
+        preview.classList.add('hidden');
+        video.classList.remove('hidden');
+        document.getElementById('ocr-btn-rotate').classList.add('hidden');
+    }
 }
 
 
@@ -2777,6 +2832,12 @@ document.getElementById('fileInput').addEventListener('change', async function (
     preview.classList.remove('hidden');
 
     document.getElementById('video').classList.add('hidden');
+
+    // 🔥 Mostrar rotación y cancelar, ocultar otros
+    document.getElementById('ocr-btn-rotate').classList.remove('hidden');
+    document.getElementById('ocr-btn-cancel').classList.remove('hidden');
+    document.getElementById('ocr-btn-on').classList.add('hidden');
+    document.getElementById('ocr-label-upload').classList.add('hidden');
 }); 
 
 
