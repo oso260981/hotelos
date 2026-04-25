@@ -32,14 +32,18 @@ abstract class BaseController extends Controller
      */
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
-        // Load here all helpers you want to be available in your controllers that extend BaseController.
-        // Caution: Do not put the this below the parent::initController() call below.
-        // $this->helpers = ['form', 'url'];
-
         // Caution: Do not edit this line.
         parent::initController($request, $response, $logger);
 
-        // Preload any models, libraries, etc, here.
-        // $this->session = service('session');
+        // Logging connections to a file to avoid DB overhead
+        $logFile = WRITEPATH . 'logs/connections.log';
+        $logData = [
+            date('Y-m-d H:i:s'),
+            $request->getIPAddress(),
+            $request->getMethod(),
+            $request->getUri()->getPath(),
+            $request->getUserAgent()->getAgentString()
+        ];
+        file_put_contents($logFile, implode(' | ', $logData) . PHP_EOL, FILE_APPEND);
     }
 }

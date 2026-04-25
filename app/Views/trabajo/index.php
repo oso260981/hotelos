@@ -1,4 +1,19 @@
 <?= view('layout/header') ?>
+<style>
+    /* Modo Restaurante (Verde) */
+    .modal-pos-green .text-orange-600 { color: #059669 !important; }
+    .modal-pos-green .text-orange-400 { color: #34d399 !important; }
+    .modal-pos-green .text-orange-500 { color: #10b981 !important; }
+    .modal-pos-green .bg-orange-600 { background-color: #059669 !important; }
+    .modal-pos-green .bg-orange-50 { background-color: #f0fdf4 !important; }
+    .modal-pos-green .bg-orange-100 { background-color: #d1fae5 !important; }
+    .modal-pos-green .border-orange-100 { border-color: #d1fae5 !important; }
+    .modal-pos-green .border-orange-200 { border-color: #a7f3d0 !important; }
+    .modal-pos-green .focus\:border-orange-500:focus { border-color: #10b981 !important; }
+    .modal-pos-green .hover\:bg-orange-700:hover { background-color: #047857 !important; }
+    .modal-pos-green .shadow-orange-100 { box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.1) !important; }
+    .modal-pos-green .shadow-orange-900\/40 { box-shadow: 0 10px 15px -3px rgba(6, 78, 59, 0.4) !important; }
+</style>
 
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -18,7 +33,7 @@
             touch-action: manipulation;
         }
 
-        /* Estatus de habitación - Colores Demo19 */
+        /* Estatus de habitacin - Colores Demo19 */
         .status-X { border-left: 10px solid #22c55e; }
         .status-S { border-left: 10px solid #f97316; }
         .status-M { border-left: 10px solid #eab308; background-color: #fef9c3; }
@@ -182,7 +197,7 @@
             background-color: #f8fafc;
         }
 
-        /* Módulos de Captura Media */
+        /* Mdulos de Captura Media */
         .media-box {
             background: #f1f5f9;
             border: 2px dashed #cbd5e1;
@@ -304,7 +319,7 @@
             border-radius: 10px;
         }
 
-        /* --- ESTILOS PARA TICKET TÉRMICO (80mm / 88mm) --- */
+        /* --- ESTILOS PARA TICKET TRMICO (80mm / 88mm) --- */
         .ticket-paper {
             width: 350px;
             margin: 0 auto;
@@ -392,28 +407,32 @@
     <!-- VISTA TRABAJO -->
     <section id="view-work" class="flex-1 flex flex-col bg-slate-200 overflow-hidden">
         <div class="bg-[#0f172a] p-3 flex items-center px-6 border-b border-white/5 overflow-x-auto no-scrollbar">
-            <!-- 1. BOTONES DE ACCIÓN (CAMBIO/ROOM SERVICE) -->
+            <!-- 1. BOTONES DE ACCIN (CAMBIO/ROOM SERVICE) -->
             <div class="flex items-center space-x-3 pr-6 border-r border-slate-700/50 shrink-0">
                 <span class="text-[9px] text-slate-500 font-black uppercase tracking-widest mr-2">Acciones:</span>
                 <button onclick="openSubModal('modal-cambio')"
                     class="bg-blue-600 hover:bg-blue-500 text-white px-5 py-2 rounded-xl text-[10px] font-black uppercase transition-all active:scale-95 shadow-lg shadow-blue-900/40 border border-blue-400/20">
                     <i class="fas fa-exchange-alt mr-2 text-[8px]"></i>CAMBIO
                 </button>
-                <button onclick="openSubModal('modal-roomservice')"
-                    class="bg-orange-600 hover:bg-orange-500 text-white px-5 py-2 rounded-xl text-[10px] font-black uppercase transition-all active:scale-95 shadow-lg shadow-orange-900/40 border border-orange-400/20">
-                    <i class="fas fa-utensils mr-2 text-[8px]"></i>ROOM SERVICE
-                </button>
+                <button onclick="openModalRoomService('Room service')"
+                      class="bg-orange-600 hover:bg-orange-500 text-white px-5 py-2 rounded-xl text-[10px] font-black uppercase transition-all active:scale-95 shadow-lg shadow-orange-900/40 border border-orange-400/20">
+                      <i class="fas fa-utensils mr-2 text-[8px]"></i>ROOM SERVICE
+                  </button>
+                  <button onclick="openModalRoomService('Restaurante')"
+                      class="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2 rounded-xl text-[10px] font-black uppercase transition-all active:scale-95 shadow-lg shadow-emerald-900/40 border border-emerald-400/20">
+                      <i class="fas fa-hamburger mr-2 text-[8px]"></i>RESTAURANTE
+                  </button>
             </div>
 
             <!-- 2. PISOS -->
             <div class="flex items-center space-x-4 px-6 border-r border-slate-700/50 shrink-0">
                 <span class="text-[9px] text-slate-500 font-black uppercase tracking-widest">Piso:</span>
                 <div id="floor-tabs" class="flex bg-slate-800/30 p-1.5 rounded-xl space-x-1 border border-slate-700/50">
-                    <!-- Los pisos se cargarán dinámicamente aquí -->
+                    <!-- Los pisos se cargarn dinmicamente aqu -->
                 </div>
             </div>
 
-            <!-- 3. TIPO HABITACIÓN -->
+            <!-- 3. TIPO HABITACIN -->
             <div class="flex items-center space-x-4 px-6 border-r border-slate-700/50 shrink-0">
                 <span class="text-[9px] text-slate-500 font-black uppercase tracking-widest">Tipo:</span>
                 <select id="filter-tipo-hab" onchange="applyTipoFilter()" class="bg-slate-800/50 text-white border border-slate-700 rounded-xl px-4 py-2 text-[10px] outline-none focus:border-blue-500 transition-all font-bold">
@@ -424,12 +443,12 @@
             <!-- 4. BUSCADOR GLOBAL -->
             <div class="relative w-80 px-6 border-r border-slate-700/50 shrink-0">
                 <input type="text" id="global-search" oninput="applyGlobalSearch()"
-                    placeholder="Búsqueda Global..."
+                    placeholder="Bsqueda Global..."
                     class="bg-slate-800/50 text-white border border-slate-700 rounded-xl px-10 py-2 text-[10px] w-full outline-none focus:border-blue-500 transition-all shadow-inner">
                 <i class="fas fa-search absolute left-10 top-1/2 -translate-y-1/2 text-slate-500 text-[9px]"></i>
             </div>
             
-            <!-- 5. BOTÓN RESET (LIMPIAR) -->
+            <!-- 5. BOTN RESET (LIMPIAR) -->
             <div class="px-6 shrink-0">
                 <button onclick="resetFilters()"
                     class="bg-slate-800 hover:bg-slate-700 text-white px-5 py-2 rounded-xl text-[10px] font-black uppercase transition-all active:scale-95 shadow-lg border border-slate-700">
@@ -472,23 +491,23 @@
                     <div class="bg-blue-600 w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg"><i
                             class="fas fa-user-check text-xl"></i></div>
                     <div>
-                        <p class="text-[9px] font-black uppercase opacity-50 tracking-widest mb-1">Módulo de Admisión
+                        <p class="text-[9px] font-black uppercase opacity-50 tracking-widest mb-1">Mdulo de Admisin
                         </p>
                         <div class="flex items-center gap-4">
-                            <h3 class="text-2xl font-black italic uppercase tracking-tighter" id="reg-room-title">Habitación --</h3>
+                            <h3 class="text-2xl font-black italic uppercase tracking-tighter" id="reg-room-title">Habitacin --</h3>
                             
-                            <!-- 🔥 CONTADORES SUBIDOS AL HEADER -->
+                            <!--  CONTADORES SUBIDOS AL HEADER -->
                             <div id="reg-header-counters" class="flex items-center space-x-4 border-l border-white/10 pl-6 ml-2">
-                                <!-- Ocupación (Lista) -->
+                                <!-- Ocupacin (Lista) -->
                                 <div id="header-occ-container" class="flex items-center space-x-3 bg-white/10 px-5 py-2 rounded-full border border-white/20">
                                     <i class="fas fa-users text-blue-400 text-xs"></i>
-                                    <span class="text-[11px] font-black text-slate-300 uppercase tracking-wider">Ocupación:</span>
+                                    <span class="text-[11px] font-black text-slate-300 uppercase tracking-wider">Ocupacin:</span>
                                     <span id="occupancy-counter" class="text-2xl font-black text-white italic">0 / 0</span>
                                 </div>
                                 <!-- Registrando (Formulario) -->
                                 <div id="header-person-container" class="hidden flex items-center space-x-3 bg-white/10 px-5 py-2 rounded-full border border-white/20">
                                     <i class="fas fa-user-edit text-blue-400 text-xs"></i>
-                                    <span class="text-[11px] font-black text-slate-300 uppercase tracking-wider">Huésped:</span>
+                                    <span class="text-[11px] font-black text-slate-300 uppercase tracking-wider">Husped:</span>
                                     <span id="form-person-counter" class="text-2xl font-black text-white italic">1 de 2</span>
                                 </div>
                             </div>
@@ -501,7 +520,7 @@
                         <span class="absolute left-4 top-1/2 -translate-y-1/2 text-blue-400 text-sm font-black"><i
                                 class="fas fa-search"></i></span>
                         <input type="text" id="client-db-search-header" oninput="handleClientDBSearch(this.value, 'header')"
-                            placeholder="BUSCAR CLIENTE HISTÓRICO..."
+                            placeholder="BUSCAR CLIENTE HISTRICO..."
                             class="w-full bg-white/10 border-2 border-white/10 rounded-2xl pl-12 pr-6 py-3 text-xs font-black uppercase text-white shadow-inner focus:bg-white focus:text-slate-900 focus:border-blue-500 outline-none transition-all">
                         <div id="db-search-results-header" class="search-results-box text-slate-900 shadow-2xl border border-slate-200"></div>
                     </div>
@@ -513,11 +532,11 @@
                 </div>
             </div>
 
-            <!-- VISTA 1: LISTADO DE HUÉSPEDES -->
+            <!-- VISTA 1: LISTADO DE HUSPEDES -->
             <div id="reg-view-list" class="flex-1 overflow-y-auto p-12 space-y-8">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                     <div class="flex items-center space-x-6">
-                        <h4 class="text-3xl font-black text-slate-800 uppercase italic tracking-tight">Huéspedes Registrados</h4>
+                        <h4 class="text-3xl font-black text-slate-800 uppercase italic tracking-tight">Huspedes Registrados</h4>
                     </div>
                     
                     
@@ -539,36 +558,37 @@
 
                     <button onclick="goToForm(-1)" id="btn-nuevo-huesped"
                         class="bg-blue-600 text-white px-10 py-5 rounded-2xl font-black uppercase text-sm shadow-xl active:scale-95 transition-all"><i
-                            class="fas fa-plus-circle mr-3"></i>Nuevo Huésped</button>
+                            class="fas fa-plus-circle mr-3"></i>Nuevo Husped</button>
                 </div>
 
                 <div id="guests-list-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Cards dinámicas -->
+                    <!-- Cards dinmicas -->
                 </div>
 
+
                 <div class="pt-10 border-t flex flex-col md:flex-row justify-between items-center gap-6">
-                    <!-- 🔥 BOTÓN DE CHECKIN -->
+                    <!--  BOTN DE CHECKIN -->
                     <button onclick="confirmAllRegistration('CHECKIN')" id="btn-sincronizar"
                         class="bg-emerald-500 text-white px-10 py-6 rounded-[2.5rem] font-black uppercase text-xs shadow-xl hover:bg-emerald-600 active:scale-95 transition-all flex-1 w-full md:w-auto flex items-center justify-center space-x-3">
                         <i class="fas fa-check-circle text-lg"></i>
                         <span>Checkin</span>
                     </button>
 
-                    <!-- 🔥 BOTÓN DE RESERVACIÓN -->
+                    <!--  BOTN DE RESERVACIN -->
                     <button onclick="confirmAllRegistration('RESERVACION')" id="btn-reservacion"
                         class="bg-purple-600 text-white px-10 py-6 rounded-[2.5rem] font-black uppercase text-xs shadow-xl hover:bg-purple-700 active:scale-95 transition-all flex-1 w-full md:w-auto flex items-center justify-center space-x-3">
                         <i class="fas fa-calendar-check text-lg"></i>
-                        <span>Reservación</span>
+                        <span>Reservacin</span>
                     </button>
 
-                    <!-- 🔥 BOTÓN DE CANCELAR ESTADÍA -->
+                    <!--  BOTN DE CANCELAR ESTADA -->
                     <button id="btn-cancelar-registro" onclick="cancelarRegistroActual()"
                         class="bg-rose-50 text-rose-700 px-10 py-6 rounded-[2.5rem] font-black uppercase text-xs shadow-sm hover:bg-rose-100 active:scale-95 transition-all flex items-center justify-center space-x-3 flex-1 w-full md:w-auto border border-rose-100">
                         <i class="fas fa-ban text-lg"></i>
-                        <span>Cancelar Estadía / Reservación</span>
+                        <span>Cancelar Estada / Reservacin</span>
                     </button>
 
-                    <!-- 🔥 BOTÓN DE CHECKOUT NIVELADO -->
+                    <!--  BOTN DE CHECKOUT NIVELADO -->
                     <button id="btn-checkout-footer" onclick="hacerCheckout()" 
                         class="hidden bg-rose-600 text-white px-10 py-6 rounded-[2.5rem] font-black uppercase text-xs shadow-xl hover:bg-rose-700 active:scale-95 transition-all flex items-center justify-center space-x-3 flex-1 w-full md:w-auto">
                         <i class="fas fa-sign-out-alt text-lg"></i>
@@ -606,7 +626,7 @@
                             <div class="grid grid-cols-2 gap-3">
                                 <button onclick="toggleCamera('box-client')"
                                     class="btn-action-pro bg-orange-500 text-white shadow-lg">
-                                    <i class="fas fa-power-off mr-2"></i>Cámara
+                                    <i class="fas fa-power-off mr-2"></i>Cmara
                                 </button>
                                 <button onclick="capturePhoto('box-client')"
                                     class="btn-action-pro bg-slate-900 text-white">
@@ -615,9 +635,9 @@
                             </div>
                         </div>
 
-                        <!-- 2. Foto Identificación + OCR -->
+                        <!-- 2. Foto Identificacin + OCR -->
                         <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-200">
-                            <div class="form-section-title"><i class="fas fa-id-card mr-3"></i>Identificación</div>
+                            <div class="form-section-title"><i class="fas fa-id-card mr-3"></i>Identificacin</div>
                             <div id="box-id" class="media-box box-id-card mb-4">
                                 <div id="scan-line" class="scan-line"></div>
                                 <i class="fas fa-id-badge text-7xl opacity-10"></i>
@@ -638,7 +658,7 @@
                                     <i class="fas fa-qrcode mr-1"></i>QR
                                 </button>
 
-                                <!-- ESTADO CÁMARA (DINÁMICO) -->
+                                <!-- ESTADO CMARA (DINMICO) -->
                                 <button id="btn-capture-id" onclick="capturePhoto('box-id')"
                                     class="hidden btn-action-pro bg-indigo-600 text-white shadow-lg col-span-2">
                                     <i class="fas fa-camera mr-2"></i>Capturar Foto
@@ -648,7 +668,7 @@
                                     <i class="fas fa-times mr-1"></i>Cancelar
                                 </button>
 
-                                <!-- ESTADO RESULTADO (DINÁMICO) -->
+                                <!-- ESTADO RESULTADO (DINMICO) -->
                                 <button id="btn-ocr-id" onclick="runOCR()"
                                     class="hidden btn-action-pro bg-blue-600 text-white shadow-lg shadow-blue-100 col-span-3">
                                     <i class="fas fa-expand-arrows-alt mr-2"></i>Procesar con IA
@@ -661,7 +681,7 @@
 
                         <!-- 3. Firma -->
                         <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-slate-200">
-                            <div class="form-section-title"><i class="fas fa-pen-nib mr-3"></i>Firma Electrónica</div>
+                            <div class="form-section-title"><i class="fas fa-pen-nib mr-3"></i>Firma Electrnica</div>
                             <div class="signature-container mb-4">
                                 <div class="signature-pad-pro">
                                     <span
@@ -672,10 +692,7 @@
                                 </div>
                             </div>
                                                         <div class="grid grid-cols-2 gap-3 mt-4">
-                                <button onclick="initSignaturePad()"
-                                    class="w-full btn-action-pro bg-emerald-50 text-emerald-700 border border-emerald-100">
-                                    <i class="fas fa-tablet-alt mr-2"></i>Activar Pad
-                                </button>
+                                <button onclick="verificarFirmaGuardada()" class="w-full btn-action-pro bg-emerald-50 text-emerald-700 border border-emerald-100"><i class="fas fa-sync-alt mr-2"></i>Verificar Firma</button>
                                 <button onclick="enviarATablet()"
                                     class="w-full btn-action-pro bg-indigo-50 text-indigo-700 border border-indigo-100">
                                     <i class="fas fa-external-link-alt mr-2"></i>Enviar a Tablet
@@ -687,28 +704,29 @@
                     <!-- Columna Datos: Texto -->
                     <div class="col-span-12 lg:col-span-8 space-y-6">
 
-                        <!-- Panel: Información Personal -->
+                        <!-- Panel: Informacin Personal -->
                         <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-200">
                             <div class="form-section-title flex justify-between items-center">
                                 <span><i class="fas fa-user-edit mr-3"></i>Datos Generales</span>
-                                <div class="flex items-center space-x-3 bg-slate-50 px-4 py-2 rounded-2xl border border-slate-100">
-                                    <label class="form-label !mb-0 uppercase tracking-widest text-[10px] font-black text-slate-500">¿Es Menor de Edad?</label>
-                                    <label class="relative inline-flex items-center cursor-pointer">
-                                        <input type="checkbox" id="f-is-minor" class="sr-only peer" onchange="toggleMinorFields(this.checked)">
-                                        <div class="w-12 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
-                                    </label>
+                                <div class="flex items-center space-x-4">
+                                    <div class="flex items-center space-x-3 bg-slate-50 px-4 py-2 rounded-2xl border border-slate-100">
+                                        <label class="form-label !mb-0 uppercase tracking-widest text-[10px] font-black text-slate-500">Es Menor?</label>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" id="f-is-minor" class="sr-only peer" onchange="toggleMinorFields(this.checked)">
+                                            <div class="w-12 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="grid grid-cols-2 gap-5 mb-5">
-                                <div class="form-input-group"><label class="form-label">Nombre(s)</label><input
-                                        type="text" id="f-name" class="form-input" placeholder="Nombre" oninput="this.value = this.value.toUpperCase()"></div>
+                                <div class="form-input-group"><label class="form-label">Nombre(s)</label><input type="hidden" id="f-huesped-id" value=""><input type="text" id="f-name" class="form-input" placeholder="Nombre" oninput="this.value = this.value.toUpperCase()"></div>
                                 <div class="form-input-group"><label class="form-label">Apellidos</label><input
                                         type="text" id="f-apellidos" class="form-input" placeholder="Apellidos" oninput="this.value = this.value.toUpperCase()"></div>
                             </div>
                             <div id="group-minor-hidden-1" class="grid grid-cols-2 gap-5 mb-5">
-                                <div class="form-input-group"><label class="form-label">Teléfono Movil</label><input
-                                        type="tel" id="f-tel" class="form-input" placeholder="Min 10 - Max 12 dígitos" maxlength="12" oninput="this.value = this.value.replace(/[^0-9]/g, '')"></div>
-                                <div class="form-input-group"><label class="form-label">Correo Electrónico</label><input
+                                <div class="form-input-group"><label class="form-label">Telfono Movil</label><input
+                                        type="tel" id="f-tel" class="form-input" placeholder="Min 10 - Max 12 dgitos" maxlength="12" oninput="this.value = this.value.replace(/[^0-9]/g, '')"></div>
+                                <div class="form-input-group"><label class="form-label">Correo Electrnico</label><input
                                         type="email" id="f-mail" class="form-input" placeholder="ejemplo@mail.com">
                                 </div>
                             </div>
@@ -718,21 +736,21 @@
                                 <div id="group-minor-hidden-3" class="form-input-group"><label class="form-label">Nacimiento</label><input
                                         type="date" id="f-birth" class="form-input"></div>
                                 <div class="form-input-group">
-                                    <label class="form-label">Género</label>
+                                    <label class="form-label">Gnero</label>
                                     <select id="f-gender" class="form-input">
                                         <option>Masculino</option>
                                         <option>Femenino</option>
                                     </select>
                                 </div>
                             </div>
-                            <!-- 🔥 Nuevos campos solicitados -->
+                            <!--  Nuevos campos solicitados -->
                             <div class="grid grid-cols-2 gap-5 mt-5">
                                 <div class="form-input-group">
                                     <label class="form-label uppercase tracking-widest text-[10px]">Parentesco (con titular)</label>
                                     <select id="f-parentesco" class="form-input font-bold">
-                                        <option value="Huésped Principal">Huésped Principal</option>
+                                        <option value="Husped Principal">Husped Principal</option>
                                         <option value="Hermano">Hermano</option>
-                                        <option value="Esposa / Cónyuge">Esposa / Cónyuge</option>
+                                        <option value="Esposa / Cnyuge">Esposa / Cnyuge</option>
                                         <option value="Hijo">Hijo</option>
                                         <option value="Colega / Socio">Colega / Socio</option>
                                         <option value="Amigo">Amigo</option>
@@ -745,7 +763,7 @@
                                 </div>
                             </div>
                             
-                            <!-- 🔥 Campo Responsable (Solo Menores) -->
+                            <!--  Campo Responsable (Solo Menores) -->
                             <div id="group-responsable" class="form-input-group mt-5 hidden animate-pulse-subtle">
                                 <label class="form-label text-blue-600 font-black uppercase tracking-widest text-[10px]">Nombre del Responsable / Tutor</label>
                                 <input type="text" id="f-responsable" class="form-input border-2 border-blue-100 bg-blue-50/30" placeholder="Escriba nombre completo del tutor">
@@ -754,28 +772,28 @@
 
                         <!-- Panel: Documento e Identidad -->
                         <div id="panel-documentacion" class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-200">
-                            <div class="form-section-title"><i class="fas fa-file-invoice mr-3"></i>Documentación</div>
+                            <div class="form-section-title"><i class="fas fa-file-invoice mr-3"></i>Documentacin</div>
                             <div class="grid grid-cols-2 gap-5">
                                 <div class="form-input-group">
-                                    <label class="form-label">Tipo de Identificación</label>
+                                    <label class="form-label">Tipo de Identificacin</label>
                                     <select id="f-id-type" class="form-input">
                                         <option value="">Cargando...</option>
                                     </select>
                                 </div>
                                 <div class="form-input-group">
-                                    <label class="form-label">Número de Folio / ID</label>
+                                    <label class="form-label">Nmero de Folio / ID</label>
                                     <input type="text" id="f-id-num" class="form-input font-mono uppercase"
                                         placeholder="ABC000000">
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Panel: Ubicación y Vehículo -->
+                        <!-- Panel: Ubicacin y Vehculo -->
                         <div id="panel-ubicacion" class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-200 transition-all duration-300">
-                            <div class="form-section-title"><i class="fas fa-map-marked-alt mr-3"></i>Ubicación &
-                                Tránsito</div>
+                            <div class="form-section-title"><i class="fas fa-map-marked-alt mr-3"></i>Ubicacin &
+                                Trnsito</div>
                             <div class="grid grid-cols-4 gap-5 mb-5">
-                                <div class="form-input-group col-span-3"><label class="form-label">Dirección Fiscal /
+                                <div class="form-input-group col-span-3"><label class="form-label">Direccin Fiscal /
                                         Residencia</label><input type="text" id="f-address" class="form-input"></div>
                                 <div class="form-input-group"><label class="form-label">C.P.</label><input type="text"
                                         id="f-cp" class="form-input font-mono"></div>
@@ -785,7 +803,7 @@
                                         id="f-city" class="form-input"></div>
                                 <div class="form-input-group"><label class="form-label">Estado</label><input type="text"
                                         id="f-state" class="form-input"></div>
-                                <div class="form-input-group"><label class="form-label">Placas Vehículo</label><input
+                                <div class="form-input-group"><label class="form-label">Placas Vehculo</label><input
                                         type="text" id="f-placas" class="form-input font-mono uppercase"
                                         placeholder="AAA-000"></div>
                             </div>
@@ -795,11 +813,11 @@
                         <div class="bg-slate-900 p-8 rounded-[2rem] shadow-xl">
                             <div class="grid grid-cols-2 gap-8 items-center">
                                 <div class="form-input-group">
-                                    <label class="form-label !text-blue-400">Rol del Huésped</label>
+                                    <label class="form-label !text-blue-400">Rol del Husped</label>
                                     <select id="f-is-titular"
                                         class="form-input !bg-slate-800 !border-slate-700 !text-white font-black italic">
                                         <option value="true">TITULAR PRINCIPAL</option>
-                                        <option value="false">ACOMPAÑANTE</option>
+                                        <option value="false">ACOMPAANTE</option>
                                     </select>
                                 </div>
                                 <div class="flex space-x-3">
@@ -822,11 +840,11 @@
         <div class="bg-white w-full max-w-md rounded-[3rem] shadow-2xl overflow-hidden p-10 text-center space-y-8 border border-white/20">
             <div class="space-y-2">
                 <h3 class="text-2xl font-black italic uppercase tracking-tighter text-slate-800">Escanear con Celular</h3>
-                <p class="text-slate-400 text-[10px] font-black uppercase tracking-widest">Escanea el código para tomar la foto</p>
+                <p class="text-slate-400 text-[10px] font-black uppercase tracking-widest">Escanea el cdigo para tomar la foto</p>
             </div>
             
             <div id="qr-container" class="bg-white p-6 rounded-[2.5rem] shadow-inner border-4 border-slate-50 flex items-center justify-center mx-auto w-64 h-64">
-                <!-- El QR se generará aquí -->
+                <!-- El QR se generar aqu -->
             </div>
 
             <div class="space-y-4">
@@ -834,24 +852,24 @@
                     <i class="fas fa-sync-alt fa-spin"></i>
                     <span class="text-xs font-black uppercase tracking-widest">Esperando captura...</span>
                 </div>
-                <p class="text-slate-400 text-[9px] italic">Una vez capturada la foto en el móvil, los datos se llenarán automáticamente aquí.</p>
+                <p class="text-slate-400 text-[9px] italic">Una vez capturada la foto en el mvil, los datos se llenarn automticamente aqu.</p>
             </div>
 
             <button onclick="closeQRBridge()" class="w-full py-4 rounded-2xl bg-slate-100 text-slate-500 font-black uppercase text-[10px] tracking-widest hover:bg-slate-200 transition-all">
-                Cancelar Sincronización
+                Cancelar Sincronizacin
             </button>
         </div>
     </div>
 
 
-    <!-- MODAL OPCIONES (GESTIÓN) -->
+    <!-- MODAL OPCIONES (GESTIN) -->
     <div id="modal-options-menu"
         class="fixed inset-0 bg-slate-900/90 hidden z-[110] items-center justify-center p-6 backdrop-blur-sm">
         <div class="bg-white w-full max-w-2xl rounded-[3.5rem] shadow-2xl p-12 overflow-hidden">
             <div class="flex justify-between items-center mb-10">
                 <div>
-                    <p class="text-[10px] font-black text-blue-600 uppercase mb-2">Panel de Gestión</p>
-                    <h3 class="text-4xl font-black italic uppercase" id="menu-opt-hab">HABITACIÓN --</h3>
+                    <p class="text-[10px] font-black text-blue-600 uppercase mb-2">Panel de Gestin</p>
+                    <h3 class="text-4xl font-black italic uppercase" id="menu-opt-hab">HABITACIN --</h3>
                 </div>
                 <button onclick="closeModal('modal-options-menu')"
                     class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center"><i
@@ -887,7 +905,7 @@
                     <i class="fas fa-door-open text-2xl text-orange-500"></i>
                     <div class="text-left">
                         <p class="font-black text-slate-800 uppercase">Historial de Salidas</p>
-                        <p class="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">Ver bitácora de entradas y salidas</p>
+                        <p class="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">Ver bitcora de entradas y salidas</p>
                     </div>
                 </button>
 
@@ -895,7 +913,7 @@
                     <i class="fas fa-file-invoice text-2xl text-purple-600"></i>
                     <div class="text-left">
                         <p class="font-black text-slate-800 uppercase">Datos Fiscales</p>
-                        <p class="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">Administrar RFC y facturación</p>
+                        <p class="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">Administrar RFC y facturacin</p>
                     </div>
                 </button>
 
@@ -903,12 +921,12 @@
                     <i class="fas fa-file-invoice-dollar text-2xl text-emerald-600"></i>
                     <div class="text-left">
                         <p class="font-black text-slate-800 uppercase">Comprobante</p>
-                        <p class="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">Ver ticket de admisión</p>
+                        <p class="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">Ver ticket de admisin</p>
                     </div>
                 </button>
             </div>
             <div class="mt-8 pt-8 border-t">
-                <label class="form-label">Bitácora de Observaciones</label>
+                <label class="form-label">Bitcora de Observaciones</label>
                 <textarea id="opt-obs-input"
                     class="w-full h-24 p-5 bg-slate-50 rounded-2xl border-2 outline-none font-bold focus:border-blue-500 transition-all"
                     oninput="updateRoomObs(this.value)"></textarea>
@@ -916,13 +934,13 @@
         </div>
     </div>
 
-    <!-- MODAL CAMBIO DE HABITACIÓN -->
+    <!-- MODAL CAMBIO DE HABITACIN -->
     <div id="modal-cambio"
         class="fixed inset-0 bg-slate-900/95 hidden z-[120] items-center justify-center p-6 backdrop-blur-md">
         <div
             class="bg-white w-full max-w-5xl rounded-[3.5rem] shadow-2xl p-10 overflow-hidden flex flex-col max-h-[90vh]">
             <div class="flex justify-between items-center mb-8">
-                <h3 class="text-4xl font-black italic uppercase text-blue-600">Mover Huéspedes</h3>
+                <h3 class="text-4xl font-black italic uppercase text-blue-600">Mover Huspedes</h3>
                 <button onclick="closeModal('modal-cambio')"
                     class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center"><i
                         class="fas fa-times"></i></button>
@@ -931,7 +949,7 @@
                 <!-- COLUMNA IZQUIERDA: ORIGEN Y MOTIVO -->
                 <div class="col-span-12 lg:col-span-4 space-y-6 flex flex-col">
                     <div class="bg-slate-50 p-6 rounded-[2rem] border border-slate-200">
-                        <label class="form-label text-blue-600">1. Seleccionar Habitación Origen</label>
+                        <label class="form-label text-blue-600">1. Seleccionar Habitacin Origen</label>
                         <select id="cambio-source-room" onchange="updateMoveSource()" class="form-input !bg-white border-2 border-blue-100 font-black italic">
                             <option value="">Seleccionar...</option>
                         </select>
@@ -954,7 +972,7 @@
                 <!-- COLUMNA DERECHA: DESTINO -->
                 <div class="col-span-12 lg:col-span-8 flex flex-col overflow-hidden">
                     <div class="bg-slate-50 p-8 rounded-[3rem] border border-slate-200 flex flex-col h-full">
-                        <label class="form-label text-emerald-600 mb-4">3. Seleccionar Habitación Destino</label>
+                        <label class="form-label text-emerald-600 mb-4">3. Seleccionar Habitacin Destino</label>
 
                         <!-- Buscador integrado -->
                         <div class="relative mb-4">
@@ -962,7 +980,7 @@
                             <input type="text" id="cambio-dest-search"
                                 oninput="filterDestSelect(this.value)"
                                 class="w-full pl-10 pr-4 py-3 bg-white border-2 border-slate-200 rounded-2xl text-sm font-bold outline-none focus:border-emerald-500 transition-all"
-                                placeholder="Buscar por número de habitación...">
+                                placeholder="Buscar por nmero de habitacin...">
                         </div>
 
                         <!-- Rejilla de habitaciones destino (Optimizado para Tablet) -->
@@ -992,7 +1010,7 @@
                     <div>
                         <h3 class="text-xl font-black italic uppercase tracking-tighter">Estado de Cuenta Interactivo
                         </h3>
-                        <p class="text-[10px] opacity-70 uppercase font-bold" id="account-room-label">HABITACIÓN --</p>
+                        <p class="text-[10px] opacity-70 uppercase font-bold" id="account-room-label">HABITACIN --</p>
                     </div>
                 </div>
                 <button onclick="closeModal('modal-estado-cuenta')"
@@ -1031,8 +1049,8 @@
             <div class="flex space-x-6 shrink-0 pb-10">
                 <button onclick="executeFinalAction()"
                     class="bg-emerald-500 text-white px-16 py-6 rounded-3xl font-black uppercase shadow-2xl active:scale-95 transition-all"
-                    id="btn-final-action">Confirmar Acción</button>
-                <button onclick="simulateAction('Generando Impresión PDF...')"
+                    id="btn-final-action">Confirmar Accin</button>
+                <button onclick="simulateAction('Generando Impresin PDF...')"
                     class="bg-blue-600 text-white px-16 py-6 rounded-3xl font-black uppercase shadow-2xl active:scale-95 transition-all">Imprimir</button>
                 <button onclick="closeModal('modal-preview')"
                     class="bg-white text-slate-900 px-16 py-6 rounded-3xl font-black uppercase shadow-2xl">Cerrar /
@@ -1056,7 +1074,7 @@
                     <input type="number" id="pay-amount" class="form-input text-2xl" placeholder="0.00">
                 </div>
                 <div class="form-input-group">
-                    <label class="form-label">Método</label>
+                    <label class="form-label">Mtodo</label>
                     <select id="pay-method" class="form-input">
                         <option>Efectivo</option>
                         <option>Tarjeta</option>
@@ -1077,7 +1095,7 @@
         <div class="bg-white w-full max-w-4xl rounded-[3.5rem] shadow-2xl p-10 overflow-hidden flex flex-col max-h-[85vh]">
             <div class="flex justify-between items-center mb-8">
                 <div>
-                    <h3 class="text-4xl font-black italic uppercase text-orange-600">Bitácora de Salidas</h3>
+                    <h3 class="text-4xl font-black italic uppercase text-orange-600">Bitcora de Salidas</h3>
                     <p class="text-[10px] font-black text-slate-400 uppercase">Movimientos Registrados</p>
                 </div>
                 <button onclick="closeModal('modal-salidas')"
@@ -1090,13 +1108,13 @@
                     <thead>
                         <tr class="border-b-2 border-slate-100">
                             <th class="py-4 text-[10px] font-black text-slate-400 uppercase">Fecha / Hora</th>
-                            <th class="py-4 text-[10px] font-black text-slate-400 uppercase">Huésped</th>
+                            <th class="py-4 text-[10px] font-black text-slate-400 uppercase">Husped</th>
                             <th class="py-4 text-[10px] font-black text-slate-400 uppercase">Tipo</th>
                             <th class="py-4 text-[10px] font-black text-slate-400 uppercase">Motivo / Obs</th>
                         </tr>
                     </thead>
                     <tbody id="lista-salidas-body">
-                        <!-- Filas dinámicas -->
+                        <!-- Filas dinmicas -->
                     </tbody>
                 </table>
                 <div id="no-salidas-msg" class="hidden py-20 text-center">
@@ -1113,7 +1131,7 @@
             <div class="flex justify-between items-center mb-8 border-b pb-6">
                 <div>
                     <h3 class="text-4xl font-black italic uppercase text-purple-600">Datos Fiscales</h3>
-                    <p class="text-[10px] font-black text-slate-400 uppercase" id="fiscal-hab-label">HABITACIÓN --</p>
+                    <p class="text-[10px] font-black text-slate-400 uppercase" id="fiscal-hab-label">HABITACIN --</p>
                 </div>
                 <button onclick="closeModal('modal-fiscal')" class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center"><i class="fas fa-times"></i></button>
             </div>
@@ -1125,19 +1143,19 @@
                         <input type="text" id="fiscal-rfc" class="form-input uppercase font-mono" placeholder="XAXX010101000">
                     </div>
                     <div class="form-input-group">
-                        <label class="form-label">Régimen Fiscal</label>
+                        <label class="form-label">Rgimen Fiscal</label>
                         <input type="text" id="fiscal-regimen" class="form-input" placeholder="601">
                     </div>
                 </div>
 
                 <div class="form-input-group">
-                    <label class="form-label">Razón Social</label>
-                    <input type="text" id="fiscal-razon" class="form-input" placeholder="Nombre completo o Razón Social">
+                    <label class="form-label">Razn Social</label>
+                    <input type="text" id="fiscal-razon" class="form-input" placeholder="Nombre completo o Razn Social">
                 </div>
 
                 <div class="grid grid-cols-2 gap-5">
                     <div class="form-input-group">
-                        <label class="form-label">Código Postal</label>
+                        <label class="form-label">Cdigo Postal</label>
                         <input type="text" id="fiscal-cp" class="form-input">
                     </div>
                     <div class="form-input-group">
@@ -1147,7 +1165,7 @@
                 </div>
 
                 <div class="form-input-group">
-                    <label class="form-label">Email Facturación</label>
+                    <label class="form-label">Email Facturacin</label>
                     <input type="email" id="fiscal-email" class="form-input">
                 </div>
 
@@ -1168,7 +1186,7 @@
             <div class="mt-8 pt-8 border-t flex space-x-4">
                 <button onclick="closeModal('modal-fiscal')" class="flex-1 px-8 py-4 rounded-2xl bg-slate-100 text-slate-500 font-black uppercase text-xs">Cancelar</button>
                 <button onclick="guardarDatosFiscales()" class="flex-[2] px-8 py-4 rounded-2xl bg-purple-600 text-white font-black uppercase text-xs shadow-xl shadow-purple-100 active:scale-95 transition-all">
-                    <i class="fas fa-save mr-2"></i>Guardar Información Fiscal
+                    <i class="fas fa-save mr-2"></i>Guardar Informacin Fiscal
                 </button>
             </div>
         </div>
@@ -1180,8 +1198,8 @@
             
             <div class="flex items-start justify-between mb-8 border-b border-slate-100 pb-6">
                 <div>
-                    <h3 class="text-4xl font-black italic uppercase text-orange-600 tracking-tighter leading-none">Punto de Venta / Room Service</h3>
-                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">Venta Directa o Cargo a Habitación</p>
+                    <h3 id="rs-modal-title" class="text-4xl font-black italic uppercase text-orange-600 tracking-tighter leading-none">Punto de Venta / Room Service</h3>
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">Venta Directa o Cargo a Habitacin</p>
                 </div>
                 <div class="flex space-x-4">
                     <div class="bg-slate-900 text-white px-8 py-4 rounded-2xl flex flex-col items-center justify-center">
@@ -1192,13 +1210,13 @@
             </div>
 
             <div class="grid grid-cols-12 gap-8 flex-1 overflow-hidden">
-                <!-- Columna Izquierda: Búsqueda y Entrada Manual -->
+                <!-- Columna Izquierda: Bsqueda y Entrada Manual -->
                 <div class="col-span-12 lg:col-span-7 flex flex-col space-y-6 overflow-y-auto pr-4">
                     
-                    <!-- Selector de Habitación -->
+                    <!-- Selector de Habitacin -->
                     <div class="bg-orange-50 p-6 rounded-[2rem] border-2 border-orange-100 grid grid-cols-2 gap-4">
                         <div>
-                            <label class="text-[10px] font-black text-orange-600 uppercase tracking-widest block mb-3 ml-2">Asignar a Habitación</label>
+                            <label class="text-[10px] font-black text-orange-600 uppercase tracking-widest block mb-3 ml-2">Asignar a Habitacin</label>
                             <select id="rs-room-selector" class="w-full bg-white border-2 border-orange-200 rounded-2xl px-6 py-4 text-sm font-black text-slate-700 outline-none focus:border-orange-500 transition-all shadow-sm">
                                 <option value="">VENTA INDEPENDIENTE (MOSTRADOR)</option>
                             </select>
@@ -1211,7 +1229,7 @@
                         </div>
                     </div>
 
-                    <!-- Búsqueda de Productos -->
+                    <!-- Bsqueda de Productos -->
                     <div class="relative">
                         <span class="absolute left-6 top-1/2 -translate-y-1/2 text-orange-500 text-xl"><i class="fas fa-search"></i></span>
                         <input type="text" id="rs-product-search" oninput="searchRSProducts(this.value)" placeholder="BUSCAR PRODUCTO O SERVICIO..." class="w-full bg-white border-2 border-slate-100 rounded-[1.5rem] pl-16 pr-8 py-5 text-sm font-black uppercase shadow-sm focus:border-orange-500 outline-none transition-all">
@@ -1239,9 +1257,9 @@
                         </div>
                     </div>
 
-                    <!-- Accesos Rápidos -->
+                    <!-- Accesos Rpidos -->
                     <div class="grid grid-cols-3 gap-4" id="rs-quick-access">
-                        <!-- Se llena dinámicamente -->
+                        <!-- Se llena dinmicamente -->
                     </div>
                 </div>
 
@@ -1255,33 +1273,39 @@
                     <div id="rs-cart-container" class="flex-1 overflow-y-auto space-y-3 mb-6 pr-2 custom-scrollbar">
                         <div class="flex flex-col items-center justify-center h-full opacity-20 py-10">
                             <i class="fas fa-shopping-basket text-6xl mb-4"></i>
-                            <p class="text-xs font-black uppercase italic">El carrito está vacío</p>
+                            <p class="text-xs font-black uppercase italic">El carrito esta vacio</p>
                         </div>
                     </div>
 
-                    <div class="space-y-4 pt-6 border-t border-slate-200">
+                    <div class="mt-4 flex items-center space-x-3 px-4 py-3 bg-white rounded-xl border-2 border-slate-100">
+                        <input type="checkbox" id="rs-incluir-reporte" class="w-5 h-5 rounded border-slate-300 text-orange-600 focus:ring-orange-500">
+                        <label for="rs-incluir-reporte" class="text-[10px] font-black text-slate-600 uppercase tracking-widest cursor-pointer">Incluir en Reporte de Operacin</label>
+                    </div>
+
+                    <div class="space-y-3 pt-4 border-t border-slate-200 mt-auto">
                         <div class="flex justify-between items-center px-4">
-                            <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Total a Pagar</span>
-                            <span id="rs-total-footer" class="text-3xl font-black text-slate-800 italic tracking-tighter">$0.00</span>
+                            <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest">Total a Pagar</span>
+                            <span id="rs-total-footer" class="text-2xl font-black text-slate-800 italic tracking-tighter">.00</span>
                         </div>
-                        <button onclick="finalizarPedidoRS()" class="w-full bg-orange-600 text-white py-6 rounded-2xl font-black uppercase text-xs shadow-xl shadow-orange-100 hover:bg-orange-700 active:scale-95 transition-all flex items-center justify-center space-x-3">
-                            <i class="fas fa-check-circle text-lg"></i>
+                        <button onclick="finalizarPedidoRS()" class="w-full bg-orange-600 text-white py-4 rounded-xl font-black uppercase text-[10px] shadow-lg shadow-orange-900/10 hover:bg-orange-700 active:scale-95 transition-all flex items-center justify-center space-x-3">
+                            <i class="fas fa-check-circle text-base"></i>
                             <span>Cerrar Pedido e Imprimir Ticket</span>
                         </button>
                     </div>
+                </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- MODAL DE CANCELACIÓN INTELIGENTE -->
+    <!-- MODAL DE CANCELACIN INTELIGENTE -->
     <div id="modal-cancelacion"
         class="fixed inset-0 bg-slate-900/90 hidden z-[200] items-center justify-center p-6 backdrop-blur-md">
         <div
             class="bg-white w-full max-w-2xl rounded-[3rem] shadow-2xl flex flex-col overflow-hidden border border-white/20">
             <div class="bg-rose-600 p-10 text-white relative">
-                <h3 class="text-4xl font-black italic uppercase tracking-tighter">Cancelar Estadía</h3>
-                <p class="text-[10px] font-black uppercase opacity-60 tracking-widest mt-2">Gestión de Reverso y Penalizaciones</p>
+                <h3 class="text-4xl font-black italic uppercase tracking-tighter">Cancelar Estada</h3>
+                <p class="text-[10px] font-black uppercase opacity-60 tracking-widest mt-2">Gestin de Reverso y Penalizaciones</p>
                 <button onclick="closeModal('modal-cancelacion')" class="absolute right-8 top-8 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all"><i class="fas fa-times"></i></button>
             </div>
 
@@ -1290,18 +1314,18 @@
                 <div id="alert-pagos" class="hidden bg-amber-50 border-2 border-amber-100 p-6 rounded-2xl flex items-start space-x-4">
                     <i class="fas fa-exclamation-triangle text-amber-500 text-2xl mt-1"></i>
                     <div>
-                        <p class="text-xs font-black text-amber-800 uppercase italic">Atención: Pagos Detectados</p>
-                        <p class="text-[10px] font-bold text-amber-600 uppercase">Existen abonos registrados. El sistema solo reversará los cargos de hospedaje. Deberá gestionar el reembolso manual de los pagos si aplica.</p>
+                        <p class="text-xs font-black text-amber-800 uppercase italic">Atencin: Pagos Detectados</p>
+                        <p class="text-[10px] font-bold text-amber-600 uppercase">Existen abonos registrados. El sistema solo reversar los cargos de hospedaje. Deber gestionar el reembolso manual de los pagos si aplica.</p>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-8">
                     <div class="form-input-group">
-                        <label class="form-label">Tipo de Cancelación</label>
+                        <label class="form-label">Tipo de Cancelacin</label>
                         <select id="cancel-type" onchange="updateCancelPreview()" class="form-input font-black">
-                            <option value="CANCELACION_RESERVA">CANCELACIÓN DE RESERVA</option>
-                            <option value="CANCELACION_TOTAL">CANCELACIÓN TOTAL</option>
-                            <option value="CANCELACION_PARCIAL">CANCELACIÓN PARCIAL</option>
+                            <option value="CANCELACION_RESERVA">CANCELACIN DE RESERVA</option>
+                            <option value="CANCELACION_TOTAL">CANCELACIN TOTAL</option>
+                            <option value="CANCELACION_PARCIAL">CANCELACIN PARCIAL</option>
                         </select>
                     </div>
 
@@ -1311,13 +1335,13 @@
                     </div>
 
                     <div class="form-input-group">
-                        <label class="form-label">Penalización Extra ($)</label>
+                        <label class="form-label">Penalizacin Extra ($)</label>
                         <input type="number" id="penalizacion" oninput="updateCancelPreview()" class="form-input font-black text-center" value="0">
                     </div>
 
                     <div class="form-input-group col-span-2">
-                        <label class="form-label">Motivo de la Cancelación</label>
-                        <textarea id="cancel-motivo" class="form-input font-bold" rows="2" placeholder="Describa el motivo de la cancelación..."></textarea>
+                        <label class="form-label">Motivo de la Cancelacin</label>
+                        <textarea id="cancel-motivo" class="form-input font-bold" rows="2" placeholder="Describa el motivo de la cancelacin..."></textarea>
                     </div>
                 </div>
 
@@ -1328,7 +1352,7 @@
                         <span id="preview-reverso" class="text-rose-500 font-black">-$0.00</span>
                     </div>
                     <div class="flex justify-between items-center text-[11px] font-black uppercase text-slate-400">
-                        <span>Penalización:</span>
+                        <span>Penalizacin:</span>
                         <span id="preview-penal" class="text-slate-800 font-black">$0.00</span>
                     </div>
                     <div class="pt-4 border-t border-slate-200 flex justify-between items-center">
@@ -1338,14 +1362,14 @@
                 </div>
 
                 <div id="reajuste-hint" class="text-[9px] font-bold text-slate-400 uppercase text-center italic">
-                    Este movimiento quedará registrado en auditoría.
+                    Este movimiento quedar registrado en auditora.
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
                     <button onclick="closeModal('modal-cancelacion')" class="bg-slate-100 text-slate-500 py-5 rounded-2xl font-black uppercase text-xs hover:bg-slate-200 transition-all">Regresar</button>
                     <button onclick="confirmCancelacionInteligente()" class="bg-rose-600 text-white py-5 rounded-2xl font-black uppercase text-xs shadow-xl shadow-rose-100 hover:bg-rose-700 active:scale-95 transition-all flex items-center justify-center space-x-2">
                         <i class="fas fa-check-circle"></i>
-                        <span>Aplicar Cancelación</span>
+                        <span>Aplicar Cancelacin</span>
                     </button>
                 </div>
             </div>
@@ -1378,14 +1402,14 @@
         let catalogoFormasPago = [];
         let catalogoTiposEstadia = [];
         let catalogoTiposID = [];
-        let catalogoEstados = []; // 🔥 Catálogo dinámico de estados
+        let catalogoEstados = []; //  Catlogo dinmico de estados
 
         const gridCols = [
             { id: 'status', label: 'Estatus', w: '120px', filter: 'select', multi: true },
             { id: 'registro_id', label: 'ID Reg', w: '0px', filter: 'none', hidden: true },
             { id: 'id', label: 'Hab', w: '80px', filter: 'select', multi: true },
-            { id: 'stay', label: 'Estadía', w: '100px', filter: 'select', multi: true },
-            { id: 'days', label: 'Días', w: '70px', filter: 'range' },
+            { id: 'stay', label: 'Estada', w: '100px', filter: 'select', multi: true },
+            { id: 'days', label: 'Das', w: '70px', filter: 'range' },
             { id: 'people', label: 'Personas', w: '130px', filter: 'text' },
             { id: 'payment', label: 'Pago', w: '120px', filter: 'select', multi: true },
             { id: 'price', label: 'Precio', w: '110px', filter: 'range' },
@@ -1450,36 +1474,36 @@
         }
 
         async function initData() {
-            console.log("🚀 Iniciando carga de datos... URL:", base_url);
+            console.log(" Iniciando carga de datos... URL:", base_url);
             try {
-                // 🔥 Cargar Catálogos primero
+                //  Cargar Catlogos primero
                 const [respHab, respEst] = await Promise.all([
                     fetch(base_url + 'reservacion/habitaciones'),
                     fetch(base_url + 'reservacion/estados-habitacion')
                 ]).catch(err => {
-                    console.error("🔥 Error de RED detectado:", err);
+                    console.error(" Error de RED detectado:", err);
                     throw err;
                 });
 
                 if (respEst.ok) {
                     catalogoEstados = await respEst.json();
                 } else {
-                    console.error("❌ Error en estados-habitacion:", respEst.status);
+                    console.error(" Error en estados-habitacion:", respEst.status);
                 }
 
                 if (!respHab.ok) {
-                    console.error("❌ Error en habitaciones:", respHab.status);
+                    console.error(" Error en habitaciones:", respHab.status);
                     throw new Error("HTTP Status: " + respHab.status);
                 }
                 const data = await respHab.json();
-                console.log("📦 [DEBUG DATA] Datos crudos del servidor (primera hab):", data[0]);
-                console.log("📦 Datos recibidos del servidor:", data);
+                console.log(" [DEBUG DATA] Datos crudos del servidor (primera hab):", data[0]);
+                console.log(" Datos recibidos del servidor:", data);
 
                 rooms.length = 0;
                 data.forEach(item => {
                     let h_ent = '', f_ent = '', h_sal = '', f_sal = '';
                     
-                    // Priorizar última entrada persistida
+                    // Priorizar ltima entrada persistida
                     const rawEnt = item.ultima_entrada;
                     if (rawEnt) {
                         const d = new Date(rawEnt);
@@ -1487,7 +1511,7 @@
                         f_ent = formatDate(d);
                     }
 
-                    // Priorizar última salida persistida
+                    // Priorizar ltima salida persistida
                     const rawSal = item.ultima_salida;
                     if (rawSal) {
                         const d = new Date(rawSal);
@@ -1532,7 +1556,7 @@
                         payments: item.payments || [],
                         incluir_en_reporte: !!parseInt(item.incluir_en_reporte),
                         
-                        // 🔥 CAMPOS FISCALES
+                        //  CAMPOS FISCALES
                         precio_reg: parseFloat(item.precio) || 0,
                         iva_reg: parseFloat(item.iva) || 0,
                         ish_reg: parseFloat(item.ish) || 0,
@@ -1542,17 +1566,17 @@
                         registro: item.registro || ''
                     });
                 });
-                console.log("📊 [DEBUG DATA] Total registros recibidos:", rooms.length);
+                console.log(" [DEBUG DATA] Total registros recibidos:", rooms.length);
                 if (rooms.length > 0) {
-                    console.log("📊 [DEBUG DATA] Primer registro:", rooms[0]);
-                    console.log("📊 [DEBUG DATA] Valores únicos de 'registro':", [...new Set(data.map(i => i.registro))]);
+                    console.log(" [DEBUG DATA] Primer registro:", rooms[0]);
+                    console.log(" [DEBUG DATA] Valores nicos de 'registro':", [...new Set(data.map(i => i.registro))]);
                 }
 
                 buildHeader();
                 renderGrid();
-                console.log("✅ Grid actualizado");
+                console.log(" Grid actualizado");
             } catch (error) {
-                console.error('❌ Error en initData:', error);
+                console.error(' Error en initData:', error);
                 showToast("Error al conectar con el servidor");
             }
         }
@@ -1573,14 +1597,14 @@
                     if (col.multi) {
                         filterHtml = `
                             <div class="filter-dropdown p-4 min-w-[180px]">
-                                <p class="text-[9px] font-black uppercase mb-3 text-blue-600 border-b border-blue-100 pb-2">Selección Múltiple</p>
+                                <p class="text-[9px] font-black uppercase mb-3 text-blue-600 border-b border-blue-100 pb-2">Seleccin Mltiple</p>
                                 <div class="space-y-2 max-h-48 overflow-y-auto custom-scrollbar">
                                     ${getMultiOptionsFor(col.id)}
                                 </div>
                             </div>
                         `;
                     } else {
-                        filterHtml = `<div class="filter-dropdown"><p class="text-[9px] font-black uppercase mb-2 text-blue-600">Categoría</p><select class="bg-slate-100 p-2 rounded text-xs w-full font-bold" onchange="updateFilter('${col.id}', this.value)" onclick="event.stopPropagation()"><option value="">Todos</option>${getOptionsFor(col.id)}</select></div>`;
+                        filterHtml = `<div class="filter-dropdown"><p class="text-[9px] font-black uppercase mb-2 text-blue-600">Categora</p><select class="bg-slate-100 p-2 rounded text-xs w-full font-bold" onchange="updateFilter('${col.id}', this.value)" onclick="event.stopPropagation()"><option value="">Todos</option>${getOptionsFor(col.id)}</select></div>`;
                     }
                 } else if (col.filter === 'range') {
                     const current = activeFilters[col.id] || { min: '', max: '' };
@@ -1589,7 +1613,7 @@
                             <p class="text-[9px] font-black uppercase mb-3 text-indigo-600 border-b border-indigo-50 pb-2">Rango de ${col.label}</p>
                             <div class="grid grid-cols-2 gap-3">
                                 <div>
-                                    <p class="text-[8px] font-bold text-slate-400 mb-1 uppercase">Mínimo</p>
+                                    <p class="text-[8px] font-bold text-slate-400 mb-1 uppercase">Mnimo</p>
                                     <input type="number" 
                                         value="${current.min}"
                                         placeholder="0" 
@@ -1598,7 +1622,7 @@
                                         class="w-full bg-slate-50 border-none rounded-lg py-1.5 px-3 text-[10px] font-black text-indigo-600 focus:ring-2 focus:ring-indigo-100 transition-all">
                                 </div>
                                 <div>
-                                    <p class="text-[8px] font-bold text-slate-400 mb-1 uppercase">Máximo</p>
+                                    <p class="text-[8px] font-bold text-slate-400 mb-1 uppercase">Mximo</p>
                                     <input type="number" 
                                         value="${current.max}"
                                         placeholder="999+" 
@@ -1659,7 +1683,7 @@
             }
 
             if (colId === 'id') {
-                // Obtener números únicos de habitación y ordenar
+                // Obtener nmeros nicos de habitacin y ordenar
                 const roomNums = [...new Set(rooms.map(r => r.id))].sort((a, b) => a.localeCompare(b));
                 roomNums.forEach(num => {
                     const isChecked = currentVals.includes(num);
@@ -1796,7 +1820,7 @@
             return '';
         }
 
-        // 🔥 Función solicitada para cargar estados en selects específicos
+        //  Funcin solicitada para cargar estados en selects especficos
         async function cargarEstadosHabitacion(selectId = 'estado_habitacion', selected = null) {
             try {
                 const select = document.getElementById(selectId);
@@ -1816,7 +1840,7 @@
                     html += `<option value="${e.codigo}" ${selected == e.codigo ? 'selected' : ''}>${e.nombre}</option>`;
                 });
                 select.innerHTML = html;
-                catalogoEstados = data; // Sincronizar catálogo global
+                catalogoEstados = data; // Sincronizar catlogo global
             } catch (error) {
                 console.error("Error cargando estados:", error);
             }
@@ -1843,7 +1867,7 @@
             const tbody = document.getElementById('rooms-tbody'); tbody.innerHTML = '';
             const search = document.getElementById('global-search').value.toLowerCase();
             
-            // 🔥 Total de habitaciones en la vista actual (piso o todos)
+            //  Total de habitaciones en la vista actual (piso o todos)
             const totalOnView = currentFloor === 'ALL' 
                 ? rooms.length 
                 : rooms.filter(r => r.floor === currentFloor).length;
@@ -1872,7 +1896,7 @@
                     return false;
                 }
 
-                // Multi-select Estadía Filter
+                // Multi-select Estada Filter
                 if (Array.isArray(activeFilters.stay) && activeFilters.stay.length > 0) {
                     if (!activeFilters.stay.includes(r.tipoEstadia.toString())) return false;
                 } else if (typeof activeFilters.stay === 'string' && activeFilters.stay !== '' && r.tipoEstadia.toString() !== activeFilters.stay) {
@@ -1918,7 +1942,7 @@
                     if (max !== '' && val > parseFloat(max)) return false;
                 }
                 
-                // 🔥 Filtro por Registro (Con registro / Sin registro)
+                //  Filtro por Registro (Con registro / Sin registro)
                 if (Array.isArray(activeFilters.reg) && activeFilters.reg.length > 0) {
                     const rStatus = (r.registro || '').trim().toLowerCase();
                     const match = activeFilters.reg.some(f => f.trim().toLowerCase() === rStatus);
@@ -1933,7 +1957,7 @@
                 return true;
             });
 
-            // 🔥 Aplicar Ordenamiento
+            //  Aplicar Ordenamiento
             filtered.sort((a, b) => {
                 let valA, valB;
                 
@@ -1978,26 +2002,26 @@
                 const isReservaReg = (r.estado_registro || '').toUpperCase().trim() === 'RESERVACION';
                 
                 if (realIdx === 0 || isCheckoutReg) {
-                    console.log(`🎨 [COLOR DEBUG] Hab: ${r.id} | Estado: "${r.estado_registro}" | isCheckout: ${isCheckoutReg} | isCheckin: ${isCheckinReg}`);
+                    console.log(` [COLOR DEBUG] Hab: ${r.id} | Estado: "${r.estado_registro}" | isCheckout: ${isCheckoutReg} | isCheckin: ${isCheckinReg}`);
                 }
 
-                // 🔥 Bloqueo para Mantenimiento (M) o Planta (P) o Sucia (S) o VAP
+                //  Bloqueo para Mantenimiento (M) o Planta (P) o Sucia (S) o VAP
                 const isSuciaOrVap = r.status === 'S' || r.status === 'VAP';
                 const isBlocked = r.status === 'M' || r.status === 'P' || isSuciaOrVap;
                 
-                // Si es ADMIN (rol 1), el Checkout NO lo deshabilita. Para otros roles sí.
-                // 🔥 REGLA: Si hay un CHECKIN activo, NO se bloquea la fila (se habilitan todos los campos)
+                // Si es ADMIN (rol 1), el Checkout NO lo deshabilita. Para otros roles s.
+                //  REGLA: Si hay un CHECKIN activo, NO se bloquea la fila (se habilitan todos los campos)
                 const isDisabledByStatus = ((isCheckoutReg && window.userRole !== 1) || isBlocked) && !isCheckinReg;
                 
                 const disabledAttr = isDisabledByStatus ? 'disabled' : '';
                 const pointerClass = isDisabledByStatus ? 'opacity-20 pointer-events-none' : '';
 
-                // 🔥 Bloqueo específico para Registro (No permite registrar en S o VAP si no hay registro previo)
+                //  Bloqueo especfico para Registro (No permite registrar en S o VAP si no hay registro previo)
                 const isRegDisabled = isSuciaOrVap && !isCheckinReg && !isCheckoutReg && !isReservaReg;
                 const regDisabledAttr = (isDisabledByStatus || isRegDisabled) ? 'disabled' : '';
                 const regPointerClass = (isDisabledByStatus || isRegDisabled) ? 'opacity-20 pointer-events-none' : '';
 
-                // 🔥 Restricción para botones de Entrada/Salida (Solo en CHECKIN)
+                //  Restriccin para botones de Entrada/Salida (Solo en CHECKIN)
                 const isNotCheckin = !isCheckinReg || isBlocked;
                 const stampDisabledAttr = isNotCheckin ? 'disabled' : '';
                 const stampPointerClass = isNotCheckin ? 'opacity-20 pointer-events-none' : 'cursor-pointer hover:scale-110';
@@ -2033,7 +2057,7 @@
                             </button>
                             <div id="pers-val-${realIdx}" class="flex items-center justify-center space-x-1 min-w-[50px]">
                                 ${r.adultos > 0 ? `<span class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-black shadow-sm" title="Adultos">${r.adultos}A</span>` : ''}
-                                ${r.ninos > 0 ? `<span class="bg-orange-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-black shadow-sm" title="Niños">${r.ninos}N</span>` : ''}
+                                ${r.ninos > 0 ? `<span class="bg-orange-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-black shadow-sm" title="Nios">${r.ninos}N</span>` : ''}
                                 ${(r.adultos === 0 && r.ninos === 0) ? `<span class="text-slate-300 font-black text-[10px]">0</span>` : ''}
                             </div>
                             <button onclick="changePeople(${realIdx}, 1)" ${disabledAttr} class="w-6 h-6 flex items-center justify-center rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-100 active:scale-90 transition-all">
@@ -2094,7 +2118,7 @@
                 `; tbody.appendChild(tr);
             });
             
-            // 🔥 Actualizar contadores en el footer
+            //  Actualizar contadores en el footer
             document.getElementById('count-filtered').textContent = filtered.length;
             document.getElementById('count-total').textContent = totalOnView;
         }
@@ -2116,7 +2140,7 @@
             rooms[idx].status = val; 
             renderGrid();
             
-            // Mapeo inverso de Código -> ID (Sincronizado con BD)
+            // Mapeo inverso de Cdigo -> ID (Sincronizado con BD)
             const mapId = { 'S': 1, 'X': 2, 'M': 3, 'P': 4, 'VAP': 5, 'R': 9 };
             const estadoId = mapId[val] || 1;
             
@@ -2137,7 +2161,7 @@
             const extraChargePerNight = extraCount * (parseFloat(r.precio_extra) || 0);
             
             // Subtotal = (Base + Extras) * Noches
-            // 🔥 Corregido: Agrupación correcta para evitar errores de precedencia
+            //  Corregido: Agrupacin correcta para evitar errores de precedencia
             const base = parseFloat(r.precio_base) || 0;
             const subtotal = (base + extraChargePerNight) * nights;
             
@@ -2152,7 +2176,7 @@
             r.iva_reg = iva;
             r.ish_reg = ish;
             
-            console.log(`💰 [RECALC] Hab: ${r.id} | Total: ${total} (Sub: ${subtotal}, IVA: ${iva}, ISH: ${ish}) | Tasas: ${window.TASA_IVA}%, ${window.TASA_ISH}%`);
+            console.log(` [RECALC] Hab: ${r.id} | Total: ${total} (Sub: ${subtotal}, IVA: ${iva}, ISH: ${ish}) | Tasas: ${window.TASA_IVA}%, ${window.TASA_ISH}%`);
         }
 
         async function updateStay(idx, val) { 
@@ -2187,7 +2211,7 @@
             r.ocupacion_total = newTotal;
 
             // Ajustamos adultos (es el campo que se sincroniza principalmente)
-            // adultos = total - niños - extras
+            // adultos = total - nios - extras
             r.adultos = Math.max(1, r.ocupacion_total - (r.ninos || 0) - (r.extra || 0));
             
             await recalculateRoomPrice(idx);
@@ -2211,10 +2235,10 @@
                 const resp = await fetch(base_url + 'reservacion/actualizar-campo', { method: 'POST', body: fd });
                 const res = await resp.json();
                 if (res.success) showToast('Personas actualizado'); else showToast('Error al guardar');
-            } catch (err) { console.error(err); showToast('Error de conexión'); }
+            } catch (err) { console.error(err); showToast('Error de conexion'); }
         }
 
-        // ✏️ EDICIÓN INLINE DE PRECIO
+        //  EDICIN INLINE DE PRECIO
         function editPrice(e, idx) {
             const r = rooms[idx];
             if (!r.registro_id) return;
@@ -2266,13 +2290,13 @@
         async function sincronizarFilaAsync(idx) {
             const r = rooms[idx];
             if (!r.registro_id) {
-                console.warn(`⚠️ Omitiendo sincronización: La habitación ${r.id} no tiene registro_id.`);
+                console.warn(` Omitiendo sincronizacin: La habitacin ${r.id} no tiene registro_id.`);
                 return;
             }
 
-            // 🔥 REGLA DE NEGOCIO: Si no es CHECKIN, no guardamos datos administrativos (solo permitimos cambios de estatus)
+            //  REGLA DE NEGOCIO: Si no es CHECKIN, no guardamos datos administrativos (solo permitimos cambios de estatus)
             if (r.estado_registro !== 'CHECKIN') {
-                console.log(`ℹ️ [SYNC] Omitiendo datos administrativos para Hab: ${r.id} (Estado: ${r.estado_registro})`);
+                console.log(` [SYNC] Omitiendo datos administrativos para Hab: ${r.id} (Estado: ${r.estado_registro})`);
                 return;
             }
 
@@ -2287,7 +2311,7 @@
                     ninos: r.ninos
                 };
 
-                console.log("📤 [DEBUG SYNC] Enviando JSON:", payload);
+                console.log(" [DEBUG SYNC] Enviando JSON:", payload);
 
                 const response = await fetch(base_url + "reservacion/actualizar-campo", {
                     method: "POST",
@@ -2297,7 +2321,7 @@
                 const data = await response.json();
                 if (!data.success) throw new Error(data.msg || "Error desconocido");
 
-                // 🔥 Sincronizar cálculos del servidor con el objeto local para que el ticket sea correcto
+                //  Sincronizar clculos del servidor con el objeto local para que el ticket sea correcto
                 if (data.data) {
                     if (data.data.precio !== undefined)      r.precio_reg  = data.data.precio;
                     if (data.data.iva !== undefined)         r.iva_reg     = data.data.iva;
@@ -2306,10 +2330,10 @@
                     if (data.data.precio_base !== undefined) r.precio_base = data.data.precio_base;
                 }
 
-                showToast("✔ Sincronizado en BD");
+                showToast(" Sincronizado en BD");
             } catch (e) {
                 console.error(e);
-                showToast("❌ Error al sincronizar");
+                showToast(" Error al sincronizar");
             }
         }
         function toggleShade(idx, checked) { rooms[idx].shaded = checked; renderGrid(); }
@@ -2321,13 +2345,13 @@
             if (type === 'entrada') {
                 rooms[idx].horaEntrada = time;
                 rooms[idx].fechaEntrada = date;
-                showToast("✔ Entrada registrada: " + time);
+                showToast(" Entrada registrada: " + time);
                 const payload = {
                     registro_id: rooms[idx].registro_id,
                     nombre_huesped: rooms[idx].titular_full,
                     tipo: 'TEMPORAL'
                 };
-                console.log("🚀 [DEBUG ENTRADA] Payload:", payload);
+                console.log(" [DEBUG ENTRADA] Payload:", payload);
                 try {
                     await fetch(base_url + "reservacion/registrar-entrada", {
                         method: "POST",
@@ -2340,14 +2364,14 @@
             } else {
                 rooms[idx].horaSalida = time;
                 rooms[idx].fechaSalida = date;
-                showToast("✔ Salida registrada: " + time);
+                showToast(" Salida registrada: " + time);
                 const payload = {
                     registro_id: rooms[idx].registro_id,
                     nombre_huesped: rooms[idx].titular_full,
                     tipo: 'TEMPORAL'
                 };
-                console.log("🚀 [DEBUG SALIDA] Payload:", payload);
-                // 🔥 Registrar salida temporal en BD
+                console.log(" [DEBUG SALIDA] Payload:", payload);
+                //  Registrar salida temporal en BD
                 try {
                     await fetch(base_url + "reservacion/registrar-salida", {
                         method: "POST",
@@ -2361,14 +2385,14 @@
             renderGrid();
         }
 
-        /* --- NAVEGACIÓN MODAL INTELIGENTE --- */
+        /* --- NAVEGACIN MODAL INTELIGENTE --- */
         function openSubModal(modalId) {
             const el = document.getElementById(modalId);
             if (!el) return;
 
             const isIndependent = ['modal-cambio', 'modal-roomservice'].includes(modalId);
             if (selectedRoomIdx === null && !isIndependent) {
-                showToast("SELECCIONE UNA HABITACIÓN PRIMERO");
+                showToast("SELECCIONE UNA HABITACIN PRIMERO");
                 return;
             }
 
@@ -2382,7 +2406,7 @@
 
             if (modalId === 'modal-register-sub') openModalRegistry();
             else if (modalId === 'modal-estado-cuenta') showEstadoCuentaModal();
-            else if (modalId === 'modal-roomservice') openModalRoomService();
+            
             else if (modalId === 'modal-pagos') openModalPagos();
             else if (modalId === 'modal-cambio') prepareMoveModal();
         }
@@ -2403,12 +2427,12 @@
             renderGrid();
         }
 
-        /* --- MÓDULO DE EXPEDIENTE --- */
+        /* --- MDULO DE EXPEDIENTE --- */
         function openRegister(idx) {
             selectedRoomIdx = idx;
             const r = rooms[idx];
             tempGuests = [...r.huespedes];
-            document.getElementById('reg-room-title').textContent = `HABITACIÓN ${r.id} (${r.tipoHab})`;
+            document.getElementById('reg-room-title').textContent = `HABITACIN ${r.id} (${r.tipoHab})`;
             updateOccupancyCounter();
             renderGuestList();
             showView('reg-list');
@@ -2436,7 +2460,7 @@
             }
             updateStayDuration();
             
-            // Configurar botón Checkout Footer (Solo si hay titular y el estado es CHECKIN)
+            // Configurar botn Checkout Footer (Solo si hay titular y el estado es CHECKIN)
             const btnCheckout = document.getElementById('btn-checkout-footer');
             const hasTitular = tempGuests.some(g => g.isTitular);
             const statusReg = (r.estado_registro || '').toUpperCase().trim();
@@ -2454,7 +2478,7 @@
             const btnSincronizar = document.getElementById('btn-sincronizar');
             
             const btnReservacion = document.getElementById('btn-reservacion');
-            console.log("🧐 [DEBUG] Habitación:", r.id, "Estado Registro:", r.estado_registro);
+            console.log(" [DEBUG] Habitacin:", r.id, "Estado Registro:", r.estado_registro);
 
             if (isCheckout) {
                 if (btnNuevo) btnNuevo.classList.add('hidden');
@@ -2466,10 +2490,10 @@
                     const statusReg = (r.estado_registro || '').toUpperCase().trim();
                     
                     if (statusReg === 'CHECKIN' || statusReg === 'CHECK-IN') {
-                        // 🔥 HIDE Checkin button if already checked in, as requested
+                        //  HIDE Checkin button if already checked in, as requested
                         btnSincronizar.classList.add('hidden');
                         if (btnReservacion) btnReservacion.classList.add('hidden');
-                        console.log("🔒 Modo CONSULTA/CHECKOUT - Ocultando Checkin para hab", r.id);
+                        console.log(" Modo CONSULTA/CHECKOUT - Ocultando Checkin para hab", r.id);
                     } else if (statusReg === 'RESERVACION') {
                         btnSincronizar.classList.remove('hidden');
                         btnSincronizar.disabled = false;
@@ -2477,7 +2501,7 @@
                         btnSincronizar.innerHTML = '<i class="fas fa-check-circle text-lg"></i><span>Confirmar Checkin</span>';
                         
                         if (btnReservacion) btnReservacion.classList.add('hidden');
-                        console.log("📅 Modo CONVERTIR RESERVA A CHECKIN para hab", r.id);
+                        console.log(" Modo CONVERTIR RESERVA A CHECKIN para hab", r.id);
                     } else {
                         btnSincronizar.classList.remove('hidden');
                         btnSincronizar.disabled = false;
@@ -2485,14 +2509,14 @@
                         btnSincronizar.innerHTML = '<i class="fas fa-check-circle text-lg"></i><span>Checkin</span>';
                         
                         if (btnReservacion) btnReservacion.classList.remove('hidden');
-                        console.log("✅ Modo NUEVO REGISTRO para hab", r.id);
+                        console.log(" Modo NUEVO REGISTRO para hab", r.id);
                     }
                 }
             }
 
             setTimeout(initSignaturePad, 500);
 
-            // 🔥 El botón cancelar solo se ve si no es Checkout y hay registro
+            //  El botn cancelar solo se ve si no es Checkout y hay registro
             const btnCancelReg = document.getElementById('btn-cancelar-registro');
             if (btnCancelReg) {
                 if (!isCheckout && r.registro_id) btnCancelReg.classList.remove('hidden');
@@ -2522,7 +2546,7 @@
             if (selectedRoomIdx === null) return;
             const r = rooms[selectedRoomIdx];
             
-            // 🔥 Mapear datos para que las funciones del usuario funcionen
+            //  Mapear datos para que las funciones del usuario funcionen
             window.DATA = {
                 stay: {
                     arrival: r.rawEntrada, // Timestamp
@@ -2534,7 +2558,7 @@
 
             ui.set(
                 'reajuste-hint',
-                "CANCELACIÓN TOTAL: Se revertirán todos los cargos y la habitación será liberada. Este movimiento quedará registrado en auditoría."
+                "CANCELACIN TOTAL: Se revertirn todos los cargos y la habitacin ser liberada. Este movimiento quedar registrado en auditora."
             );
 
             openCancelacionModal();
@@ -2545,7 +2569,7 @@
             const nochesUsadas = Number(document.getElementById('noches-usadas').value || 0);
             const penal = Number(document.getElementById('penalizacion').value || 0);
 
-            // 🔥 detectar noches
+            //  detectar noches
             const f1 = new Date(DATA.stay.arrival);
             const f2 = new Date(DATA.stay.departure);
 
@@ -2585,9 +2609,9 @@
 
             // Actualizar hint
             let hint = "";
-            if (tipo === 'CANCELACION_RESERVA') hint = "RESERVA: Se cancela antes del check-in. Espejo contable completo. Habitación LIMPIA.";
-            else if (tipo === 'CANCELACION_TOTAL') hint = "TOTAL: Se cancela toda la operación. Espejo contable completo. Habitación LIMPIA.";
-            else if (tipo === 'CANCELACION_PARCIAL') hint = "PARCIAL: Ajuste por estancia parcial. Espejo contable parcial. Habitación SUCIA.";
+            if (tipo === 'CANCELACION_RESERVA') hint = "RESERVA: Se cancela antes del check-in. Espejo contable completo. Habitacin LIMPIA.";
+            else if (tipo === 'CANCELACION_TOTAL') hint = "TOTAL: Se cancela toda la operacin. Espejo contable completo. Habitacin LIMPIA.";
+            else if (tipo === 'CANCELACION_PARCIAL') hint = "PARCIAL: Ajuste por estancia parcial. Espejo contable parcial. Habitacin SUCIA.";
             
             ui.set('reajuste-hint', hint);
         }
@@ -2609,17 +2633,17 @@
                         tipo_cancelacion: tipo,
                         noches_usadas: noches,
                         penalizacion: penal,
-                        motivo: document.getElementById('cancel-motivo').value.trim() || "Cancelación desde UI"
+                        motivo: document.getElementById('cancel-motivo').value.trim() || "Cancelacin desde UI"
                     })
                 });
 
                 const data = await resp.json();
                 if (!data.ok) throw new Error(data.msg);
 
-                showToast("Cancelación aplicada correctamente");
+                showToast("Cancelacin aplicada correctamente");
                 closeModal('modal-cancelacion');
                 closeModal('modal-register');
-                initData(); // 🔄 refresh
+                initData(); //  refresh
 
             } catch (e) {
                 alert(e.message);
@@ -2630,7 +2654,7 @@
             const modal = document.getElementById('modal-cancelacion');
             modal.classList.add('modal-active');
 
-            // 🔥 noches totales
+            //  noches totales
             if (DATA?.stay?.arrival && DATA?.stay?.departure) {
                 const f1 = new Date(DATA.stay.arrival);
                 const f2 = new Date(DATA.stay.departure);
@@ -2644,7 +2668,7 @@
                 if(nInput) nInput.value = noches;
             }
 
-            // 🔥 detectar pagos
+            //  detectar pagos
             if (DATA?.pagos_realizados?.length > 0) {
                 document.getElementById('alert-pagos').classList.remove('hidden');
             } else {
@@ -2682,37 +2706,40 @@
             }
         }
 
+
         function backToGuestList() {
             updateOccupancyCounter();
             renderGuestList();
             showView('reg-list');
         }
 
-        let isUploadingMedia = false; // 🔥 Bloqueo global
+        let isUploadingMedia = false; //  Bloqueo global
         function goToForm(idx = -1) {
             selectedGuestEditIdx = idx;
-            updateOccupancyCounter(idx); // 🔥 Actualizar contador específico
+            updateOccupancyCounter(idx); //  Actualizar contador especfico
             sigDirty = false;
             isUploadingMedia = false;
             
-            // Reset de campos básicos
+            // Reset de campos bsicos
             const inputs = document.querySelectorAll('#reg-view-form input, #reg-view-form select, #reg-view-form textarea');
             inputs.forEach(i => i.value = '');
             
             document.getElementById('f-gender').value = 'Masculino';
             document.getElementById('f-id-type').value = '1';
-            document.getElementById('f-parentesco').value = 'Huésped Principal';
+            document.getElementById('f-parentesco').value = 'Husped Principal';
             document.getElementById('f-empresa').value = '';
             document.getElementById('f-is-minor').checked = false;
             document.getElementById('f-responsable').value = '';
             
-            // 🔥 Rol por default: Primero es Titular, los demás Acompañantes
+            //  Rol por default: Primero es Titular, los dems Acompaantes
             const isFirst = tempGuests.length === 0;
             document.getElementById('f-is-titular').value = isFirst ? 'true' : 'false';
-            document.getElementById('f-parentesco').value = isFirst ? 'Huésped Principal' : 'Otro';
+            document.getElementById('f-parentesco').value = isFirst ? 'Husped Principal' : 'Otro';
 
             toggleMinorFields(false);
 
+
+            document.getElementById('f-huesped-id').value = '';
             // Reset de Media
             document.getElementById('box-client').innerHTML = '<i class="fas fa-user text-6xl opacity-10"></i><span class="text-[9px] font-black uppercase text-slate-400 mt-4">Video de Rostro</span>';
             document.getElementById('box-id').innerHTML = '<div id="scan-line" class="scan-line" style="display:none"></div><i class="fas fa-id-badge text-7xl opacity-10"></i><span class="text-[9px] font-black uppercase text-slate-400 mt-4">Scan Documento</span>';
@@ -2721,6 +2748,7 @@
 
             if (idx > -1) {
                 const g = tempGuests[idx];
+                document.getElementById('f-huesped-id').value = g.id || '';
                 document.getElementById('f-name').value = g.nombre || '';
                 document.getElementById('f-apellidos').value = g.apellido || g.apellidos || '';
                 document.getElementById('f-tel').value = g.telefono || '';
@@ -2744,15 +2772,16 @@
                 document.getElementById('f-placas').value = g.placas || '';
                 if (g.fotografia) {
                     document.getElementById('box-client').innerHTML = `<img src="${g.fotografia.startsWith('http') ? g.fotografia : base_url + 'uploads/fotos/' + g.fotografia}" class="w-full h-full object-cover rounded-2xl shadow-inner">`;
-                    document.getElementById('box-client').dataset.blob = g.fotografia; // 🔥 Preservar persistencia
+                    document.getElementById('box-client').dataset.blob = g.fotografia; //  Preservar persistencia
                 }
                 if (g.identificacion) {
                     document.getElementById('box-id').innerHTML = `<img src="${g.identificacion.startsWith('http') ? g.identificacion : base_url + 'uploads/fotos/' + g.identificacion}" class="w-full h-full object-cover rounded-2xl shadow-inner">`;
-                    document.getElementById('box-id').dataset.blob = g.identificacion; // 🔥 Preservar persistencia
+                    document.getElementById('box-id').dataset.blob = g.identificacion; //  Preservar persistencia
                 }
             }
             showView('reg-form');
         }
+
 
         function toggleMinorFields(isMinor) {
             const respDiv = document.getElementById('group-responsable');
@@ -2765,8 +2794,8 @@
             const empresaGroup = document.getElementById('f-empresa')?.closest('.form-input-group');
 
             if (isMinor) {
-                respDiv.classList.remove('hidden');
-                addressDiv.classList.add('opacity-30', 'pointer-events-none', 'grayscale');
+                if (respDiv) respDiv.classList.remove('hidden');
+                if (addressDiv) addressDiv.classList.add('opacity-30', 'pointer-events-none', 'grayscale');
                 if (contactDiv) contactDiv.classList.add('hidden');
                 if (natDiv) natDiv.classList.add('hidden');
                 if (birthDiv) birthDiv.classList.add('hidden');
@@ -2774,21 +2803,24 @@
                 if (empresaGroup) empresaGroup.classList.add('hidden');
                 if (respInput) respInput.setAttribute('required', 'true');
                 
-                // 🔥 Los menores no pueden ser titulares
+                //  Los menores no pueden ser titulares
                 const titularSelect = document.getElementById('f-is-titular');
                 if (titularSelect) {
                     titularSelect.value = 'false';
                     titularSelect.options[0].disabled = true;
                 }
             } else {
-                respDiv.classList.add('hidden');
-                addressDiv.classList.remove('opacity-30', 'pointer-events-none', 'grayscale');
+                if (respDiv) respDiv.classList.add('hidden');
+                if (addressDiv) addressDiv.classList.remove('opacity-30', 'pointer-events-none', 'grayscale');
                 if (contactDiv) contactDiv.classList.remove('hidden');
                 if (natDiv) natDiv.classList.remove('hidden');
                 if (birthDiv) birthDiv.classList.remove('hidden');
                 if (docPanel) docPanel.classList.remove('hidden');
                 if (empresaGroup) empresaGroup.classList.remove('hidden');
-                if (respInput) respInput.removeAttribute('required');
+                if (respInput) {
+                    respInput.removeAttribute('required');
+                    respInput.value = '';
+                }
 
                 const titularSelect = document.getElementById('f-is-titular');
                 if (titularSelect) titularSelect.options[0].disabled = false;
@@ -2806,17 +2838,17 @@ window.handleClientDBSearch = function(q, mode = 'form') {
 
     if (!resBox) return;
 
-    // 🔹 limpiar debounce anterior
+    //  limpiar debounce anterior
     if (searchTimeout) clearTimeout(searchTimeout);
 
-    // 🔹 mínimo caracteres
+    //  mnimo caracteres
     if (!q || q.length < 3) {
         resBox.style.display = 'none';
         resBox.innerHTML = '';
         return;
     }
 
-    // 🔹 debounce (300ms)
+    //  debounce (300ms)
     searchTimeout = setTimeout(async () => {
 
         const fetchId = ++currentFetchId;
@@ -2832,7 +2864,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             const response = await fetch(base_url + "pasajeros/buscar_cliente?q=" + encodeURIComponent(q));
             const data = await response.json();
 
-            // 🔹 evita que respuestas viejas sobreescriban nuevas
+            //  evita que respuestas viejas sobreescriban nuevas
             if (fetchId !== currentFetchId) return;
 
             lastSearchResults = data;
@@ -2870,7 +2902,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             `).join('');
 
         } catch (e) {
-            console.error("❌ Error en búsqueda:", e);
+            console.error(" Error en bsqueda:", e);
             resBox.innerHTML = `
                 <div class="p-4 text-center text-red-500 text-xs">
                     Error al buscar
@@ -2899,10 +2931,10 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             if (!isTitular && totalHuespedesActuales > r.capacidad) {
                 const result = await Swal.fire({
                     title: 'Capacidad Excedida',
-                    text: `La habitación tiene capacidad para ${r.capacidad} personas. ¿Registrar como PERSONA EXTRA con cargo de $${r.precio_extra}?`,
+                    text: `La habitacin tiene capacidad para ${r.capacidad} personas. Registrar como PERSONA EXTRA con cargo de $${r.precio_extra}?`,
                     icon: 'warning',
                     showCancelButton: true,
-                    confirmButtonText: 'Sí, agregar con cargo',
+                    confirmButtonText: 'S, agregar con cargo',
                     cancelButtonText: 'Cancelar',
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33'
@@ -2925,255 +2957,303 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             
             showToast("Actualizando registro...");
             try {
-                syncLocalRoom(selectedRoomIdx); // 🔥 Actualizar datos locales
+                syncLocalRoom(selectedRoomIdx); //  Actualizar datos locales
                 if (r.registro_id) {
                     await guardarAcompanantesAsync(r.registro_id, tempGuests.filter(g => !g.isTitular));
                     await sincronizarHabitacionDB(selectedRoomIdx);
                 }
                 renderGuestList();
-                renderGrid(); // 🔥 Refrescar grid
+                renderGrid(); //  Refrescar grid
+                backToGuestList();
             } catch (err) {
                 console.error(err);
+                showToast("Error al sincronizar: " + err.message);
             }
         }
+                
+        
+        
+        
         /* --- ROOM SERVICE / POS --- */
+        let rsTipoServicio = "Room service";
         let rsCart = [];
         let rsSearchResults = [];
 
-        function openModalRoomService() {
+        async function openModalRoomService(tipo = "Room service") {
+            rsTipoServicio = tipo;
             rsCart = [];
-            renderCart();
-            const selector = document.getElementById('rs-room-selector');
-            if (!selector) return;
-            selector.innerHTML = '<option value="0">VENTA INDEPENDIENTE (MOSTRADOR)</option>';
-            rooms.forEach(r => {
-                const isCheckin = ['CHECKIN', 'CHECK-IN'].includes((r.estado_registro || '').toUpperCase().trim());
-                if (r.registro_id && isCheckin) {
-                    const nombre = r.titular_full || 'REGISTRADO';
-                    selector.innerHTML += `<option value="${r.registro_id}">HAB ${r.id} - ${nombre}</option>`;
+            
+            const modalBox = document.querySelector("#modal-roomservice > div");
+            const titleEl = document.getElementById("rs-modal-title");
+            
+            if (tipo === "Restaurante") {
+                if (modalBox) modalBox.classList.add("modal-pos-green");
+                if (titleEl) {
+                    titleEl.classList.remove("text-orange-600");
+                    titleEl.classList.add("text-emerald-600");
                 }
-            });
-
-            // Pre-seleccionar si venimos de una habitación específica
-            if (selectedRoomIdx !== null && rooms[selectedRoomIdx].registro_id) {
-                selector.value = rooms[selectedRoomIdx].registro_id;
             } else {
-                selector.value = "0";
+                if (modalBox) modalBox.classList.remove("modal-pos-green");
+                if (titleEl) {
+                    titleEl.classList.add("text-orange-600");
+                    titleEl.classList.remove("text-emerald-600");
+                }
             }
-            cargarAccesosRapidosRS();
-            document.getElementById('modal-roomservice').classList.add('flex');
 
-            // Llenar formas de pago
-            const paySelector = document.getElementById('rs-payment-selector');
-            if (paySelector) {
-                paySelector.innerHTML = '<option value="">SELECCIONE...</option>';
-                catalogoFormasPago.forEach(fp => {
-                    paySelector.innerHTML += `<option value="${fp.id}">${fp.codigo} - ${fp.descripcion}</option>`;
+            if (titleEl) {
+                titleEl.textContent = "Punto de Venta / " + (tipo === "Room service" ? "Room Service" : "Restaurante");
+            }
+
+            const select = document.getElementById("rs-room-selector");
+            if (select) {
+                select.innerHTML = "<option value=''>VENTA INDEPENDIENTE (MOSTRADOR)</option>";
+                rooms.forEach(r => {
+                    if (r.registro_id) {
+                        const titular = r.huespedes.find(h => h.isTitular) || r.huespedes[0] || { nombre: "SIN NOMBRE" };
+                        const opt = document.createElement("option");
+                        opt.value = r.registro_id;
+                        opt.textContent = "HAB " + r.id + " - " + titular.nombre;
+                        select.appendChild(opt);
+                    }
                 });
-                // Por defecto Efectivo (ID 1 suele serlo, pero buscaremos por código 01 si existe)
-                const cash = catalogoFormasPago.find(f => f.codigo === '01');
-                if (cash) paySelector.value = cash.id;
+            }
+
+            const paySelect = document.getElementById("rs-payment-selector");
+            if (paySelect && paySelect.options.length <= 1) {
+                paySelect.innerHTML = '<option value="1">EFECTIVO</option><option value="2">TARJETA DE DEBITO</option><option value="3">TARJETA DE CREDITO</option><option value="4">TRANSFERENCIA</option>';
+            }
+
+            if (document.getElementById("rs-product-search")) document.getElementById("rs-product-search").value = "";
+            if (document.getElementById("rs-manual-concept")) document.getElementById("rs-manual-concept").value = "";
+            if (document.getElementById("rs-manual-price")) document.getElementById("rs-manual-price").value = "";
+            if (document.getElementById("rs-incluir-reporte")) document.getElementById("rs-incluir-reporte").checked = false;
+            
+            updateRSCartUI();
+            cargarAccesosRapidosRS(tipo); 
+            openSubModal("modal-roomservice");
+        }
+
+        function updateRSCartUI() {
+            const container = document.getElementById("rs-cart-container");
+            const totalDisplay = document.getElementById("rs-total-display");
+            const totalFooter = document.getElementById("rs-total-footer");
+            const itemCount = document.getElementById("rs-item-count");
+            
+            if (!container) return;
+
+            if (rsCart.length === 0) {
+                container.innerHTML = `<div class="flex flex-col items-center justify-center h-full opacity-20 py-10">
+                        <i class="fas fa-shopping-basket text-6xl mb-4"></i>
+                        <p class="text-xs font-black uppercase italic">El carrito esta vacio</p>
+                    </div>`;
+                if (totalDisplay) totalDisplay.textContent = "$0.00";
+                if (totalFooter) totalFooter.textContent = "$0.00";
+                if (itemCount) itemCount.textContent = "0 ITEMS";
+                return;
+            }
+
+            let total = 0;
+            container.innerHTML = rsCart.map((item, idx) => {
+                const sub = item.precio * item.cantidad;
+                total += sub;
+                return `<div class="flex justify-between items-center bg-white p-5 rounded-2xl border border-slate-100 shadow-sm mb-2">
+                        <div>
+                            <p class="text-[11px] font-black uppercase text-slate-800 line-clamp-1">${item.nombre}</p>
+                            <div class="flex items-center space-x-3 mt-1">
+                                <span class="text-[10px] font-bold text-slate-400">${item.cantidad} x $${parseFloat(item.precio).toFixed(2)}</span>
+                                <span class="text-[10px] font-black text-orange-600">$${sub.toFixed(2)}</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button onclick="updateCartQty(${idx}, -1)" class="w-7 h-7 rounded-lg bg-slate-50 text-slate-400 hover:bg-slate-200 transition-all"><i class="fas fa-minus text-[10px]"></i></button>
+                            <button onclick="updateCartQty(${idx}, 1)" class="w-7 h-7 rounded-lg bg-slate-50 text-slate-400 hover:bg-slate-200 transition-all"><i class="fas fa-plus text-[10px]"></i></button>
+                            <button onclick="removeFromCart(${idx})" class="w-7 h-7 rounded-lg bg-rose-50 text-rose-400 hover:bg-rose-500 hover:text-white transition-all ml-2"><i class="fas fa-trash text-[10px]"></i></button>
+                        </div>
+                    </div>`;
+            }).join("");
+
+            if (totalDisplay) totalDisplay.textContent = "$" + total.toFixed(2);
+            if (totalFooter) totalFooter.textContent = "$" + total.toFixed(2);
+            if (itemCount) itemCount.textContent = rsCart.length + " ITEMS";
+        }
+
+        function addToCart(item) {
+            const existing = rsCart.find(p => p.id === item.id && item.id !== 0);
+            if (existing) {
+                existing.cantidad++;
+            } else {
+                rsCart.push({ ...item, cantidad: 1 });
+            }
+            updateRSCartUI();
+            showToast("Agregado: " + item.nombre);
+        }
+
+        function updateCartQty(idx, delta) {
+            if (rsCart[idx]) {
+                rsCart[idx].cantidad += delta;
+                if (rsCart[idx].cantidad <= 0) rsCart.splice(idx, 1);
+                updateRSCartUI();
             }
         }
 
-        async function cargarAccesosRapidosRS() {
-            try {
-                const resp = await fetch(base_url + "roomservice/servicios");
-                const json = await resp.json();
-                const container = document.getElementById('rs-quick-access');
-                if (!container) return;
-                container.innerHTML = '';
-                if (json.ok) {
-                    json.data.forEach(p => {
-                        container.innerHTML += `
-                            <button onclick="addToCart({id: ${p.id}, nombre: '${p.nombre}', precio: ${p.precio}})" class="p-6 bg-white border-2 border-slate-100 rounded-3xl text-center hover:border-orange-500 hover:shadow-xl transition-all active:scale-95 group overflow-hidden relative">
-                                <span class="block text-xs font-black uppercase text-slate-800">${p.nombre}</span>
-                                <span class="block text-lg font-black text-orange-600">$${p.precio}</span>
-                            </button>
-                        `;
-                    });
-                }
-            } catch (e) { console.error(e); }
+        function removeFromCart(idx) {
+            rsCart.splice(idx, 1);
+            updateRSCartUI();
+        }
+
+        function addManualToCart() {
+            const conceptInput = document.getElementById("rs-manual-concept");
+            const priceInput = document.getElementById("rs-manual-price");
+            if (!conceptInput || !priceInput) return;
+            const concept = conceptInput.value.toUpperCase();
+            const price = parseFloat(priceInput.value);
+            if (!concept || isNaN(price)) return showToast("Concepto y precio requeridos");
+            
+            addToCart({ id: 0, nombre: concept, precio: price });
+            conceptInput.value = "";
+            priceInput.value = "";
         }
 
         async function searchRSProducts(q) {
-            const resBox = document.getElementById('rs-search-results');
-            if (q.length < 2) { resBox.classList.add('hidden'); return; }
+            const resBox = document.getElementById("rs-search-results");
+            if (q.length < 2) { if(resBox) resBox.classList.add("hidden"); return; }
             try {
-                const resp = await fetch(base_url + "roomservice/buscar?q=" + q);
+                const resp = await fetch(base_url + "roomservice/buscar?q=" + q + "&departamento=" + rsTipoServicio);
                 const json = await resp.json();
                 rsSearchResults = json.data;
-                resBox.innerHTML = '';
-                if (rsSearchResults.length > 0) {
-                    rsSearchResults.forEach((p, idx) => {
-                        resBox.innerHTML += `
-                            <div onclick="addSearchResultToCart(${idx})" class="p-4 border-b border-slate-50 hover:bg-orange-50 cursor-pointer flex justify-between items-center transition-colors">
-                                <span class="text-xs font-black uppercase text-slate-700">${p.nombre}</span>
-                                <span class="text-xs font-black text-orange-600">$${p.precio}</span>
-                            </div>
-                        `;
-                    });
-                    resBox.classList.remove('hidden');
-                } else {
-                    resBox.innerHTML = '<div class="p-4 text-xs font-bold text-slate-400 uppercase">No se encontraron productos</div>';
-                    resBox.classList.remove('hidden');
+                if(resBox) {
+                    resBox.innerHTML = "";
+                    if (rsSearchResults.length > 0) {
+                        rsSearchResults.forEach((p, idx) => {
+                            resBox.innerHTML += `<div onclick="addSearchResultToCart(${idx})" class="p-4 border-b border-slate-50 hover:bg-orange-50 cursor-pointer flex justify-between items-center transition-colors">
+                                    <span class="text-xs font-black uppercase text-slate-700">${p.nombre}</span>
+                                    <span class="text-xs font-black text-orange-600">$${p.precio}</span>
+                                </div>`;
+                        });
+                        resBox.classList.remove("hidden");
+                    } else {
+                        resBox.classList.add("hidden");
+                    }
                 }
             } catch (e) { console.error(e); }
         }
 
         function addSearchResultToCart(idx) {
             const p = rsSearchResults[idx];
-            addToCart({ id: p.id, nombre: p.nombre, precio: p.precio });
-            document.getElementById('rs-search-results').classList.add('hidden');
-            document.getElementById('rs-product-search').value = '';
-        }
-
-        function addManualToCart() {
-            const concept = document.getElementById('rs-manual-concept').value.trim();
-            const price = parseFloat(document.getElementById('rs-manual-price').value);
-            if (!concept || isNaN(price)) { showToast("Ingrese concepto y precio válido"); return; }
-            addToCart({ id: null, nombre: concept, precio: price });
-            document.getElementById('rs-manual-concept').value = '';
-            document.getElementById('rs-manual-price').value = '';
-        }
-
-        function addToCart(p) {
-            const existing = rsCart.find(item => item.id === p.id && item.id !== null && item.nombre === p.nombre);
-            if (existing) { existing.cantidad++; } 
-            else { rsCart.push({ ...p, cantidad: 1, observaciones: '' }); }
-            renderCart();
-            showToast("Añadido al carrito");
-        }
-
-        function removeFromCart(idx) {
-            rsCart.splice(idx, 1);
-            renderCart();
-        }
-
-        function updateCartQty(idx, qty) {
-            if (qty < 1) return;
-            rsCart[idx].cantidad = parseInt(qty) || 1;
-            renderCart();
-        }
-
-        function renderCart() {
-            const container = document.getElementById('rs-cart-container');
-            const totalDisplay = document.getElementById('rs-total-display');
-            const totalFooter = document.getElementById('rs-total-footer');
-            const countDisplay = document.getElementById('rs-item-count');
-            if (!container) return;
-            let total = 0; let itemsCount = 0;
-            if (rsCart.length === 0) {
-                container.innerHTML = `<div class="flex flex-col items-center justify-center h-full opacity-20 py-10"><i class="fas fa-shopping-basket text-6xl mb-4"></i><p class="text-xs font-black uppercase italic">El carrito está vacío</p></div>`;
-            } else {
-                container.innerHTML = rsCart.map((p, i) => {
-                    const sub = p.precio * p.cantidad;
-                    total += sub; itemsCount += p.cantidad;
-                    return `<div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between"><div class="flex-1"><p class="text-[10px] font-black text-slate-800 uppercase tracking-tighter">${p.nombre}</p><p class="text-[9px] font-bold text-orange-500">$${p.precio} c/u</p></div><div class="flex items-center space-x-4"><div class="flex items-center bg-slate-100 rounded-xl px-2 py-1"><button onclick="updateCartQty(${i}, ${p.cantidad - 1})" class="w-6 h-6 flex items-center justify-center text-slate-400 hover:text-slate-900"><i class="fas fa-minus text-[8px]"></i></button><span class="w-8 text-center text-xs font-black">${p.cantidad}</span><button onclick="updateCartQty(${i}, ${p.cantidad + 1})" class="w-6 h-6 flex items-center justify-center text-slate-400 hover:text-slate-900"><i class="fas fa-plus text-[8px]"></i></button></div><div class="w-20 text-right"><p class="text-xs font-black text-slate-800">$${sub.toFixed(2)}</p></div><button onclick="removeFromCart(${i})" class="text-rose-400 hover:text-rose-600 transition-colors ml-2"><i class="fas fa-trash-alt"></i></button></div></div>`;
-                }).join('');
+            if (p) {
+                addToCart({ id: p.id, nombre: p.nombre, precio: p.precio });
+                const resBox = document.getElementById("rs-search-results");
+                if(resBox) resBox.classList.add("hidden");
+                const searchInput = document.getElementById("rs-product-search");
+                if (searchInput) searchInput.value = "";
             }
-            if (totalDisplay) totalDisplay.textContent = `$${total.toFixed(2)}`;
-            if (totalFooter) totalFooter.textContent = `$${total.toFixed(2)}`;
-            if (countDisplay) countDisplay.textContent = `${itemsCount} ITEMS`;
+        }
+
+        async function cargarAccesosRapidosRS(tipo = "Room service") {
+            try {
+                const resp = await fetch(base_url + "roomservice/servicios?departamento=" + tipo);
+                const json = await resp.json();
+                const container = document.getElementById("rs-quick-access");
+                if (!container) return;
+                container.innerHTML = "";
+                if (json.ok) {
+                    json.data.forEach(p => {
+                        container.innerHTML += `<button onclick="addToCart({id: ${p.id}, nombre: '${p.nombre}', precio: ${p.precio}})" class="p-6 bg-white border-2 border-slate-100 rounded-3xl text-center hover:border-orange-500 hover:shadow-xl transition-all active:scale-95 group overflow-hidden relative">
+                                <span class="block text-xs font-black uppercase text-slate-800">${p.nombre}</span>
+                                <span class="block text-lg font-black text-orange-600">$${p.precio}</span>
+                            </button>`;
+                    });
+                }
+            } catch (e) { console.error(e); }
         }
 
         async function finalizarPedidoRS() {
-            if (rsCart.length === 0) { showToast("El carrito está vacío"); return; }
+            if (!rsCart || rsCart.length === 0) { showToast("El carrito esta vacio"); return; }
             
-            // 1. Registro ID (Asegurar 0 si es Mostrador)
-            const registroId = parseInt(document.getElementById('rs-room-selector').value) || 0;
-            
-            const result = await Swal.fire({ 
-                title: 'Finalizar Pedido', 
-                text: "¿Confirma que desea cerrar el pedido e imprimir el ticket?", 
-                icon: 'question', 
+            const registroId = document.getElementById("rs-room-selector") ? parseInt(document.getElementById("rs-room-selector").value) : 0;
+            const confirmColor = (rsTipoServicio === "Restaurante") ? "#059669" : "#ea580c";
+
+            Swal.fire({ 
+                title: "Finalizar Pedido", 
+                text: "Desea registrar este pedido?", 
+                icon: "question", 
                 showCancelButton: true, 
-                confirmButtonColor: '#ea580c', 
-                confirmButtonText: 'Sí, finalizar', 
-                cancelButtonText: 'Cancelar' 
-            });
-
-            if (result.isConfirmed) {
-                showToast("Procesando pedido...");
-                
-                // 2. Agrupar pedido en un solo concepto
-                const totalOrder = rsCart.reduce((acc, p) => acc + (p.precio * p.cantidad), 0);
-                const aggregatedText = rsCart.map(p => `${p.nombre} (${p.cantidad})`).join(' + ');
-                const jsonDetail = JSON.stringify(rsCart);
-
-                try {
-                    const resp = await fetch(base_url + "roomservice/finalizar-pedido", { 
-                        method: "POST", 
-                        headers: { "Content-Type": "application/json" }, 
-                        body: JSON.stringify({ 
-                            registro_id: registroId, 
-                            // Enviamos el pedido agrupado en un solo item según lo solicitado
-                            items: [{
-                                nombre: aggregatedText,
-                                precio: totalOrder,
-                                cantidad: 1,
+                confirmButtonColor: confirmColor, 
+                confirmButtonText: "Si, Registrar", 
+                cancelButtonText: "Cancelar" 
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    showToast("Procesando...");
+                    const totalOrder = rsCart.reduce((acc, p) => acc + (p.precio * p.cantidad), 0);
+                    const aggregatedText = rsCart.map(p => p.nombre + " (" + p.cantidad + ")").join(" + ");
+                    const jsonDetail = JSON.stringify(rsCart);
+                    try {
+                        const resp = await fetch(base_url + "roomservice/finalizar-pedido", { 
+                            method: "POST", 
+                            headers: { "Content-Type": "application/json" }, 
+                            body: JSON.stringify({ 
+                                registro_id: registroId || 0, 
+                                items: [{
+                                    nombre: aggregatedText,
+                                    precio: totalOrder,
+                                    cantidad: 1,
+                                    observaciones: jsonDetail,
+                                    registro_id: registroId || 0
+                                }],
                                 observaciones: jsonDetail,
-                                registro_id: registroId // 🔥 Añadido aquí también para evitar auto-consecutivos
-                            }],
-                            observaciones: jsonDetail,
-                            usuario_id: window.userId,
-                            forma_pago_id: document.getElementById('rs-payment-selector').value
-                        }) 
-                    });
-                    
-                    const json = await resp.json();
-                    if (json.ok) { 
-                        const printConfirm = await Swal.fire({
-                            title: '¡Éxito!',
-                            text: 'Pedido registrado correctamente. ¿Desea imprimir el ticket?',
-                            icon: 'success',
-                            showCancelButton: true,
-                            confirmButtonText: 'SÍ, IMPRIMIR',
-                            cancelButtonText: 'NO, SOLO CERRAR',
-                            confirmButtonColor: '#ea580c'
+                                usuario_id: window.userId || 0,
+                                forma_pago_id: document.getElementById("rs-payment-selector") ? document.getElementById("rs-payment-selector").value : 1,
+                                tipo_servicio: rsTipoServicio,
+                                incluir_en_reporte: document.getElementById("rs-incluir-reporte") && document.getElementById("rs-incluir-reporte").checked ? 1 : 0
+                            }) 
                         });
-
-                        if (printConfirm.isConfirmed) {
-                            imprimirTicketRS(rsCart, registroId, json.total || totalOrder); 
+                        const json = await resp.json();
+                        if (json.ok) { 
+                            closeModal("modal-roomservice");
+                            if (typeof initData === "function") initData();
+                            
+                            // PREGUNTA SI QUIERE IMPRIMIR DESPUES DE GUARDAR
+                            Swal.fire({
+                                title: "Pedido Guardado",
+                                text: "El pedido se registro correctamente. ¿Desea imprimir el ticket ahora?",
+                                icon: "success",
+                                showCancelButton: true,
+                                confirmButtonColor: confirmColor,
+                                confirmButtonText: "Si, Imprimir",
+                                cancelButtonText: "No, solo cerrar"
+                            }).then((printRes) => {
+                                if (printRes.isConfirmed) {
+                                    if (typeof imprimirTicketRS === "function") {
+                                        imprimirTicketRS(rsCart, registroId, totalOrder);
+                                    }
+                                }
+                            });
+                        } else {
+                            showToast("Error: " + (json.msg || "Desconocido"));
                         }
-
-                        closeModal('modal-roomservice'); 
-                        initData(); 
-                    } else { 
-                        throw new Error(json.msg); 
-                    }
-                } catch (e) { 
-                    console.error(e); 
-                    Swal.fire('Error', e.message, 'error'); 
+                    } catch (e) { console.error(e); showToast("Error de conexion"); }
                 }
-            }
+            });
         }
 
         function imprimirTicketRS(cart, registroId, total) {
-            const ticketWindow = window.open('', 'PRINT', 'height=600,width=400');
-            const roomLabel = (registroId && registroId != 0) ? `REGISTRO: ${registroId}` : 'VENTA MOSTRADOR';
-            ticketWindow.document.write(`<html><head><style>body { font-family: 'Courier New'; width: 80mm; padding: 5mm; } .text-center { text-align: center; } .header { border-bottom: 1px dashed #000; padding-bottom: 5mm; margin-bottom: 5mm; } table { width: 100%; border-collapse: collapse; } th { text-align: left; font-size: 10px; } td { font-size: 10px; padding: 2mm 0; } .total { border-top: 2px solid #000; margin-top: 5mm; padding-top: 2mm; font-weight: bold; font-size: 14px; }</style></head><body><div class="text-center header"><h3>HOTEL OS</h3><p>TICKET ROOM SERVICE</p><p>${new Date().toLocaleString()}</p><p><strong>${roomLabel}</strong></p></div><table><thead><tr><th>CANT</th><th>PRODUCTO</th><th style="text-align:right">TOTAL</th></tr></thead><tbody>${cart.map(p => `<tr><td>${p.cantidad}</td><td>${p.nombre}</td><td style="text-align:right">$${(p.cantidad * p.precio).toFixed(2)}</td></tr>`).join('')}</tbody></table><div class="total"><span>TOTAL:</span><span style="float:right">$${total.toFixed(2)}</span></div><div class="text-center" style="margin-top:10mm; font-size:10px;"><p>¡GRACIAS POR SU COMPRA!</p></div></body></html>`);
+            const ticketWindow = window.open("", "PRINT", "height=600,width=400");
+            const roomLabel = (registroId && registroId != 0) ? "REGISTRO: " + registroId : "VENTA MOSTRADOR";
+            ticketWindow.document.write("<html><head><style>body { font-family: 'Courier New'; width: 80mm; padding: 5mm; } .text-center { text-align: center; } .header { border-bottom: 1px dashed #000; padding-bottom: 5mm; margin-bottom: 5mm; } table { width: 100%; border-collapse: collapse; } th { text-align: left; font-size: 10px; } td { font-size: 10px; padding: 2mm 0; } .total { border-top: 2px solid #000; margin-top: 5mm; padding-top: 2mm; font-weight: bold; font-size: 14px; }</style></head><body>");
+            ticketWindow.document.write('<div class="text-center header"><h3>HOTEL OS</h3><p>TICKET ' + rsTipoServicio.toUpperCase() + '</p><p>' + new Date().toLocaleString() + '</p><p><strong>' + roomLabel + '</strong></p></div>');
+            ticketWindow.document.write("<table><thead><tr><th>CANT</th><th>PRODUCTO</th><th style='text-align:right'>TOTAL</th></tr></thead><tbody>");
+            cart.forEach(p => {
+                ticketWindow.document.write("<tr><td>" + p.cantidad + "</td><td>" + p.nombre + "</td><td style='text-align:right'>$" + (p.cantidad * p.precio).toFixed(2) + "</td></tr>");
+            });
+            ticketWindow.document.write("</tbody></table>");
+            ticketWindow.document.write('<div class="total"><span>TOTAL:</span><span style="float:right">$' + total.toFixed(2) + '</span></div>');
+            ticketWindow.document.write('<div class="text-center" style="margin-top:10mm; font-size:10px;"><p>GRACIAS POR SU COMPRA!</p></div></body></html>');
             ticketWindow.document.close(); ticketWindow.focus(); ticketWindow.print(); ticketWindow.close();
         }
 
+
         function openModalRoomService_OLD() {
-            const select = document.getElementById('rs-room-selector');
-            select.innerHTML = '<option value="">Seleccione habitación...</option>';
-            rooms.forEach((r, idx) => {
-                const isCheckin = ['CHECKIN', 'CHECK-IN'].includes((r.estado_registro || '').toUpperCase().trim());
-                if (r.registro_id && isCheckin && r.huespedes && r.huespedes.length > 0) {
-                    const titular = r.huespedes.find(h => h.isTitular) || r.huespedes[0];
-                    const opt = document.createElement('option');
-                    opt.value = idx;
-                    opt.textContent = `Hab ${r.id} - ${titular.nombre} ${titular.apellido || titular.apellidos || ''}`;
-                    select.appendChild(opt);
-                }
-            });
-            if (selectedRoomIdx !== null && rooms[selectedRoomIdx].huespedes.length > 0) {
-                select.value = selectedRoomIdx;
-            }
-            renderServicesSummary();
-            document.getElementById('modal-roomservice').classList.add('modal-active');
+            // ... esta funcin est obsoleta pero la dejamos para no romper referencias si las hay
         }
 
         function updateSelectedRoomFromRS(idx) {
@@ -3182,10 +3262,10 @@ window.handleClientDBSearch = function(q, mode = 'form') {
         }
 
         async function addService(name, price) {
-            if (selectedRoomIdx === null) return showToast("SELECCIONE UNA HABITACIÓN");
+            if (selectedRoomIdx === null) return showToast("SELECCIONE UNA HABITACIN");
             const r = rooms[selectedRoomIdx];
             
-            if (!r.registro_id) return showToast("LA HABITACIÓN NO TIENE UN REGISTRO ACTIVO");
+            if (!r.registro_id) return showToast("LA HABITACIN NO TIENE UN REGISTRO ACTIVO");
 
             const payload = {
                 registro_id: r.registro_id,
@@ -3216,12 +3296,12 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 }
             } catch (e) {
                 console.error(e);
-                showToast("Error de conexión al registrar cargo");
+                showToast("Error de conexion al registrar cargo");
             }
         }
 
         async function removeService(serviceId, idxInArray) {
-            if (!confirm("¿Desea cancelar este cargo?")) return;
+            if (!confirm("Desea cancelar este cargo?")) return;
             
             try {
                 const response = await fetch(base_url + "registro-cargos/cancelar", {
@@ -3240,7 +3320,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                     showToast("Error al cancelar: " + res.msg);
                 }
             } catch (e) {
-                showToast("Error de conexión");
+                showToast("Error de conexion");
             }
         }
 
@@ -3250,7 +3330,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 container.innerHTML = `
                     <div class="text-center opacity-30">
                         <i class="fas fa-concierge-bell text-6xl mb-4 text-slate-300"></i>
-                        <p class="text-slate-500 font-black italic uppercase text-lg">Seleccione una habitación para ver consumos</p>
+                        <p class="text-slate-500 font-black italic uppercase text-lg">Seleccione una habitacin para ver consumos</p>
                     </div>`;
                 return;
             }
@@ -3283,13 +3363,39 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             `;
         }
 
-        /* Se maneja arriba asíncronamente */
+        /* Se maneja arriba asncronamente */
 
 
         async function saveGuestAndReturn() {
-            if (isUploadingMedia) return showToast("⚠️ Espere a que termine la subida de archivos...");
+            if (isUploadingMedia) return showToast(" Espere a que termine la subida de archivos...");
             
+            const r = rooms[selectedRoomIdx];
             const isTitular = document.getElementById('f-is-titular').value === 'true';
+
+            //  CLCULO AUTOMTICO DE PERSONA EXTRA
+            let esExtra = 0;
+            if (selectedGuestEditIdx > -1) {
+                // Si estamos editando, preservamos el estado que ya tena
+                esExtra = tempGuests[selectedGuestEditIdx].es_extra || 0;
+            } else if (!isTitular) {
+                // Si es nuevo y no es titular, checamos capacidad
+                const totalHuespedes = tempGuests.length + 1;
+                if (totalHuespedes > r.capacidad) {
+                    const confirmExtra = await Swal.fire({
+                        title: 'Capacidad Excedida',
+                        text: `La habitacin tiene capacidad para ${r.capacidad} personas. Registrar como PERSONA EXTRA con cargo de $${r.precio_extra}?`,
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'S, agregar con cargo',
+                        cancelButtonText: 'Cancelar'
+                    });
+                    if (confirmExtra.isConfirmed) {
+                        esExtra = 1;
+                    } else {
+                        return; // Cancela el guardado
+                    }
+                }
+            }
             const d = {
                 id: (selectedGuestEditIdx > -1 && tempGuests[selectedGuestEditIdx]) ? tempGuests[selectedGuestEditIdx].id : null,
                 nombre: document.getElementById('f-name').value.toUpperCase(),
@@ -3310,14 +3416,14 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 parentesco: document.getElementById('f-parentesco').value,
                 empresa: document.getElementById('f-empresa').value.toUpperCase(),
                 es_menor: document.getElementById('f-is-minor').checked ? 1 : 0,
-                es_extra: (selectedGuestEditIdx > -1 && tempGuests[selectedGuestEditIdx]) ? (tempGuests[selectedGuestEditIdx].es_extra || 0) : 0,
+                es_extra: esExtra,
                 Responsable_menor: document.getElementById('f-responsable').value.toUpperCase(),
                 fotografia: document.getElementById('box-client').dataset.blob || (selectedGuestEditIdx > -1 && tempGuests[selectedGuestEditIdx] ? tempGuests[selectedGuestEditIdx].fotografia : null),
                 identificacion: document.getElementById('box-id').dataset.blob || (selectedGuestEditIdx > -1 && tempGuests[selectedGuestEditIdx] ? tempGuests[selectedGuestEditIdx].identificacion : null),
-                firma_path: null // Se llenará abajo si hay firma
+                firma_path: null // Se llenar abajo si hay firma
             };
 
-            // 🔥 Si hay firma nueva, subirla
+            //  Si hay firma nueva, subirla
             if (sigDirty) {
                 const canvas = document.getElementById('sig-canvas');
                 const sigBase64 = canvas.toDataURL("image/png");
@@ -3330,17 +3436,17 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             }
 
             if (!d.nombre) return showToast("Nombre requerido");
-            if (!d.es_menor && d.telefono.length < 10) return showToast("El teléfono debe tener al menos 10 dígitos");
+            if (!d.es_menor && d.telefono.length < 10) return showToast("El telfono debe tener al menos 10 dgitos");
             if (d.es_menor && !d.Responsable_menor) return showToast("Nombre del responsable requerido");
 
-            console.log("💾 Guardando huésped local:", d);
+            console.log(" Guardando husped local:", d);
 
             if (isTitular) {
                 // Si es titular, lo mandamos a la DB de una vez para asegurar que tenga ID
                 showToast("Guardando titular...");
                 guardarHuespedAsync(d)
                     .then(resp => {
-                        if (!resp.id) throw new Error("No se recibió ID del titular");
+                        if (!resp.id) throw new Error("No se recibi ID del titular");
                         d.id = resp.id;
                         // Desmarcar otros titulares locales
                         tempGuests.forEach(g => g.isTitular = false);
@@ -3353,19 +3459,19 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                         showToast("Error: " + (err.message || err));
                     });
             } else {
-                // Si es acompañante, lo guardamos y sincronizamos de una vez
+                // Si es acompaante, lo guardamos y sincronizamos de una vez
                 const r = rooms[selectedRoomIdx];
                 const totalHuespedesActuales = tempGuests.length + (selectedGuestEditIdx === -1 ? 1 : 0);
                 
-                console.log(`🧐 [DEBUG CAPACIDAD] Habitación: ${r.id}, Capacidad: ${r.capacidad}, Actuales + Nuevo: ${totalHuespedesActuales}`);
+                console.log(` [DEBUG CAPACIDAD] Habitacin: ${r.id}, Capacidad: ${r.capacidad}, Actuales + Nuevo: ${totalHuespedesActuales}`);
 
                 if (totalHuespedesActuales > r.capacidad && d.es_extra != 1) {
                     const result = await Swal.fire({
                         title: 'Persona Extra',
-                        text: `La capacidad máxima es de ${r.capacidad} personas. ¿Aplicar cargo extra de $${r.precio_extra}?`,
+                        text: `La capacidad mxima es de ${r.capacidad} personas. Aplicar cargo extra de $${r.precio_extra}?`,
                         icon: 'info',
                         showCancelButton: true,
-                        confirmButtonText: 'Sí, aplicar cargo',
+                        confirmButtonText: 'S, aplicar cargo',
                         cancelButtonText: 'No, cancelar registro',
                         confirmButtonColor: '#f59e0b'
                     });
@@ -3379,15 +3485,15 @@ window.handleClientDBSearch = function(q, mode = 'form') {
 
                 if (selectedGuestEditIdx === -1) tempGuests.push(d); else tempGuests[selectedGuestEditIdx] = d;
                 
-                showToast("Sincronizando acompañante...");
+                showToast("Sincronizando acompaante...");
                 try {
-                    syncLocalRoom(selectedRoomIdx); // 🔥 Actualizar datos locales
+                    syncLocalRoom(selectedRoomIdx); //  Actualizar datos locales
                     if (r.registro_id) {
                         await guardarAcompanantesAsync(r.registro_id, tempGuests.filter(g => !g.isTitular));
                         await sincronizarHabitacionDB(selectedRoomIdx);
                     }
                     backToGuestList();
-                    renderGrid(); // 🔥 Refrescar grid
+                    renderGrid(); //  Refrescar grid
                 } catch (err) {
                     console.error(err);
                     showToast("Error al sincronizar: " + err.message);
@@ -3425,18 +3531,18 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 })
             });
             const resp = await response.json();
-            if (!resp.ok) throw new Error(resp.msg || "Error al guardar acompañantes");
+            if (!resp.ok) throw new Error(resp.msg || "Error al guardar acompaantes");
             return resp;
         }
 
         async function confirmAllRegistration(status = 'CHECKIN') {
             const r = rooms[selectedRoomIdx];
-            const acompañantes = tempGuests.filter(g => !g.isTitular);
+            const acompaantes = tempGuests.filter(g => !g.isTitular);
 
-            // 🔥 Si es reservación, pedir fechas en un modal dedicado
+            //  Si es reservacin, pedir fechas en un modal dedicado
             if (status === 'RESERVACION') {
                 const { value: formValues } = await Swal.fire({
-                    title: '<span class="text-2xl font-black italic uppercase">Datos de Reservación</span>',
+                    title: '<span class="text-2xl font-black italic uppercase">Datos de Reservacin</span>',
                     html: `
                         <div class="flex flex-col space-y-6 p-4 text-left">
                             <div class="bg-slate-50 p-6 rounded-[2rem] border border-slate-100">
@@ -3462,7 +3568,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                             return false;
                         }
                         if (new Date(dep) <= new Date(arr)) {
-                            Swal.showValidationMessage('La salida debe ser después de la llegada');
+                            Swal.showValidationMessage('La salida debe ser despus de la llegada');
                             return false;
                         }
                         return [arr, dep];
@@ -3474,14 +3580,14 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                     document.getElementById('reg-departure-date').value = formValues[1];
                     updateStayDuration();
                 } else {
-                    return; // Usuario canceló el modal
+                    return; // Usuario cancel el modal
                 }
             }
 
             try {
-                showToast(status === 'RESERVACION' ? "Creando Reservación..." : "Sincronizando...");
+                showToast(status === 'RESERVACION' ? "Creando Reservacin..." : "Sincronizando...");
                 
-                // 🔥 IMPORTANTE: Actualizar huéspedes locales primero para que sincronizarHabitacionDB use los datos nuevos (incluyendo fotos)
+                //  IMPORTANTE: Actualizar huspedes locales primero para que sincronizarHabitacionDB use los datos nuevos (incluyendo fotos)
                 r.huespedes = [...tempGuests];
 
                 // 1. Sincronizar registro principal primero para obtener el registro_id
@@ -3491,12 +3597,12 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 if (newRegistroId) {
                     r.registro_id = newRegistroId; // Guardar en el objeto local
                 } else {
-                    console.warn("No hay registro_id válido para sincronizar.");
+                    console.warn("No hay registro_id vlido para sincronizar.");
                 }
 
-                // 2. Guardar acompañantes usando el nuevo registro_id
-                if (acompañantes.length > 0 && r.registro_id) {
-                    await guardarAcompanantesAsync(r.registro_id, acompañantes);
+                // 2. Guardar acompaantes usando el nuevo registro_id
+                if (acompaantes.length > 0 && r.registro_id) {
+                    await guardarAcompanantesAsync(r.registro_id, acompaantes);
                 }
 
                 // 3. Actualizar estado local y visual inmediatamente para que el grid refleje los cambios
@@ -3513,16 +3619,16 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 await initData();
                 closeModal('modal-register');
                 
-                showToast(status === 'RESERVACION' ? "Reservación creada correctamente" : "Registro sincronizado correctamente");
+                showToast(status === 'RESERVACION' ? "Reservacin creada correctamente" : "Registro sincronizado correctamente");
                 
-                // 🔥 NUEVO: Preguntar si desea imprimir ticket (Igual que Room Service)
+                //  NUEVO: Preguntar si desea imprimir ticket (Igual que Room Service)
                 if (status === 'CHECKIN') {
                     const printConfirm = await Swal.fire({
-                        title: '¡REGISTRO EXITOSO!',
-                        text: 'El huésped ha sido registrado correctamente. ¿Desea imprimir el ticket de entrada?',
+                        title: 'REGISTRO EXITOSO!',
+                        text: 'El husped ha sido registrado correctamente. Desea imprimir el ticket de entrada?',
                         icon: 'success',
                         showCancelButton: true,
-                        confirmButtonText: 'SÍ, IMPRIMIR',
+                        confirmButtonText: 'S, IMPRIMIR',
                         cancelButtonText: 'NO, SOLO CERRAR',
                         confirmButtonColor: '#10b981',
                         cancelButtonColor: '#64748b'
@@ -3559,32 +3665,32 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             }
         }
 
+        
         async function sincronizarHabitacionDB(idx, status = 'CHECKIN') {
             const r = rooms[idx];
-            // Si no hay registro_id, se enviará undefined al server y éste creará uno nuevo
-            console.log("🔄 Iniciando sincronización para hab", r.id, r.registro_id ? "Registro ID: " + r.registro_id : "NUEVO REGISTRO");
+            console.log('SYNC: hab', r.id, r.registro_id ? 'RegID: ' + r.registro_id : 'NUEVO');
 
-            const titular = (r.huespedes || []).find(g => g.isTitular) || (r.huespedes || [])[0];
+            const titular = (r.huespedes || []).find(g => g.isTitular);
             let huespedId = null;
 
             if (titular) {
-                // Asegurar que el titular esté guardado en la BD y obtener su ID
                 const respHuesped = await guardarHuespedAsync(titular);
                 huespedId = respHuesped.id;
-                console.log("✅ Titular persistido para registro:", titular.nombre, "ID:", huespedId);
             }
 
-            // Fechas desde el modal
             const arrivalDate = document.getElementById('reg-arrival-date').value;
             const departureDate = document.getElementById('reg-departure-date').value;
-            const nights = parseInt(document.getElementById('reg-stay-nights').textContent) || 1;
 
-            // Cálculos financieros
+            const nights = parseInt(document.getElementById('reg-stay-nights').textContent) || 1;
+            // Clculos financieros
             const extraCount = (r.huespedes || []).filter(g => g.es_extra == 1).length;
-            const extraChargePerNight = extraCount * (r.precio_extra || 0);
+            const precioBase = parseFloat(r.precio_base) || 0;
+            const precioExtra = parseFloat(r.precio_extra) || 0;
+
+            const extraChargePerNight = extraCount * precioExtra;
             
             // Subtotal es (Base + Extras) * Noches
-            const subtotal = (parseFloat(r.precio_base) + extraChargePerNight) * nights;
+            const subtotal = (precioBase + extraChargePerNight) * nights;
             
             const ivaRate = (window.TASA_IVA || 16) / 100;
             const ishRate = (window.TASA_ISH || 3) / 100;
@@ -3593,8 +3699,10 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             const ish = subtotal * ishRate;
             const total = subtotal + iva + ish;
 
+            console.log(`[SYNC_HAB] Hab: ${r.id} | Base: ${precioBase} | Extra: ${extraCount} x ${precioExtra} | Subtotal: ${subtotal} | Total: ${total}`);
+
             const payload = {
-                id: r.registro_id, // 🔥 Clave Primaria Estricta
+                id: r.registro_id, //  Clave Primaria Estricta
                 huesped_id: huespedId,
                 habitacion_id: r.id_db || r.id, 
                 estado_registro: status,
@@ -3604,17 +3712,18 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 tipo_estadia_id: r.tipoEstadiaId || 1,
                 forma_pago_id: r.formaPago || 1,
                 precio: subtotal,
-                precio_base: r.precio_base || 0,
+                precio_base: precioBase,
                 iva: iva,
                 ish: ish,
                 total: total,
                 adultos: (r.huespedes || []).filter(g => g.es_menor != 1 && g.es_extra != 1).length,
-                niños: (r.huespedes || []).filter(g => g.es_menor == 1).length,
-                num_personas_ext: (r.huespedes || []).filter(g => g.es_extra == 1).length,
-                pago_adicional: ((r.huespedes || []).filter(g => g.es_extra == 1).length * r.precio_extra)
+                nios: (r.huespedes || []).filter(g => g.es_menor == 1).length,
+                num_personas_ext: extraCount,
+                pago_adicional: (extraCount * precioExtra)
             };
 
-            // 🔥 Actualizar datos locales para que el grid refleje el nuevo precio/total
+
+            //  Actualizar datos locales para que el grid refleje el nuevo precio/total
             r.precio = total; 
             r.total = total;
             r.iva_reg = iva;
@@ -3685,12 +3794,12 @@ window.handleClientDBSearch = function(q, mode = 'form') {
         }
 
         async function actualizarEstadoHabitacionAsync(habitacionId, estadoId) {
-            // 🔥 Buscamos el registro_id de la habitación en el array local
+            //  Buscamos el registro_id de la habitacin en el array local
             const room = rooms.find(r => r.id_db == habitacionId || r.id == habitacionId);
             const registroId = room ? room.registro_id : null;
 
             if (!registroId) {
-                console.error("No se encontró registro_id para la habitación", habitacionId);
+                console.error("No se encontr registro_id para la habitacin", habitacionId);
                 return { ok: false, msg: "No hay un registro activo" };
             }
 
@@ -3717,26 +3826,28 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             const c = document.getElementById('guests-list-container');
             const r = rooms[selectedRoomIdx];
             c.innerHTML = tempGuests.map((g, i) => {
-                const badgeExtra = g.es_extra == 1 ? '<span class="ml-3 bg-orange-500 text-white text-[9px] font-black px-3 py-1 rounded-lg uppercase tracking-widest shadow-sm border border-orange-600">Persona Extra</span>' : '';
                 return `
                 <div class="flex items-center justify-between p-6 bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center space-x-6">
-                        <div class="w-12 h-12 rounded-xl ${g.isTitular ? 'bg-blue-600' : (g.es_extra == 1 ? 'bg-orange-500' : 'bg-slate-100 text-slate-400')} text-white flex items-center justify-center font-black shadow-inner">
+                        <div class="w-12 h-12 rounded-xl ${g.isTitular ? 'bg-blue-600' : (g.es_extra == 1 ? 'bg-orange-500' : 'bg-slate-700')} text-white flex items-center justify-center font-black shadow-inner">
                             ${i + 1}
                         </div>
                         <div class="flex flex-col">
                             <p class="font-black text-slate-800 uppercase flex items-center tracking-tighter">
                                 ${g.nombre} ${g.apellido || g.apellidos || ''} 
-                                ${badgeExtra}
+                                ${g.es_extra == 1 ? '<span class="ml-2 text-orange-500 font-black italic">[EXTRA]</span>' : ''}
                             </p>
                             <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">
-                                ${g.isTitular ? 'Huésped Responsable' : (g.es_extra == 1 ? 'Invitado Adicional' : 'Acompañante')}
+                                ${g.isTitular ? 'Husped Responsable' : (g.es_extra == 1 ? 'Invitado Adicional' : 'Acompaante')}
                             </p>
                         </div>
                     </div>
                     <div class="flex items-center space-x-2">
                         <button onclick="goToForm(${i})" class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">
                             <i class="fas fa-pen text-xs"></i>
+                        </button>
+                        <button onclick="removeGuest(${i})" class="w-10 h-10 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center hover:bg-rose-600 hover:text-white transition-all">
+                            <i class="fas fa-trash text-xs"></i>
                         </button>
                     </div>
                 </div>`;
@@ -3745,7 +3856,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             
             updateOccupancyCounter();
             
-            // 🔥 RE-EVALUAR BOTÓN CHECKOUT (Solo si es CHECKIN activo)
+            //  RE-EVALUAR BOTN CHECKOUT (Solo si es CHECKIN activo)
             const btnCheckout = document.getElementById('btn-checkout-footer');
             const hasTitular = tempGuests.some(g => g.isTitular);
             if (btnCheckout && r) {
@@ -3762,13 +3873,13 @@ window.handleClientDBSearch = function(q, mode = 'form') {
 
         async function removeGuest(i) {
             const result = await Swal.fire({
-                title: '¿Eliminar Huésped?',
-                text: "Esta acción quitará al huésped del registro actual.",
+                title: 'Eliminar Husped?',
+                text: "Esta accin quitar al husped del registro actual.",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#e11d48',
                 cancelButtonColor: '#64748b',
-                confirmButtonText: 'Sí, eliminar',
+                confirmButtonText: 'S, eliminar',
                 cancelButtonText: 'Cancelar'
             });
 
@@ -3778,7 +3889,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 
                 showToast("Actualizando registro...");
                 try {
-                    syncLocalRoom(selectedRoomIdx); // 🔥 Actualizar datos locales
+                    syncLocalRoom(selectedRoomIdx); //  Actualizar datos locales
 
                     if (r.registro_id) {
                         await guardarAcompanantesAsync(r.registro_id, tempGuests.filter(g => !g.isTitular));
@@ -3786,8 +3897,8 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                     }
                     
                     renderGuestList();
-                    renderGrid(); // 🔥 Refrescar grid principal
-                    showToast("Huésped eliminado");
+                    renderGrid(); //  Refrescar grid principal
+                    showToast("Husped eliminado");
                 } catch (e) {
                     console.error(e);
                     showToast("Error al eliminar");
@@ -3809,7 +3920,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             const sourceSelect = document.getElementById('cambio-source-room');
             if (!sourceSelect) return;
             
-            sourceSelect.innerHTML = '<option value="">Cargando orígenes...</option>';
+            sourceSelect.innerHTML = '<option value="">Cargando orgenes...</option>';
             sourceSelect.disabled = true;
 
             try {
@@ -3853,7 +3964,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             validateMoveForm();
         }
 
-        // Almacena la lista de rooms válidos para destino (para el buscador)
+        // Almacena la lista de rooms vlidos para destino (para el buscador)
         let _destRooms = [];
 
         function renderMoveTargetRooms() {
@@ -3873,13 +3984,13 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 const estadoReg = (r.estado_registro || '').toUpperCase().trim();
                 const isAvailable = estadoReg === 'DISPONIBLE';
                 
-                // 🔥 Una habitación solo es destino válido si está LIMPIA (X)
+                //  Una habitacin solo es destino vlido si est LIMPIA (X)
                 const isCleanStatus = r.status === 'X';
 
-                // CRÍTICO: Una habitación está ocupada SOLO si tiene huéspedes activos
+                // CRTICO: Una habitacin est ocupada SOLO si tiene huspedes activos
                 const isOcupied = r.huespedes && Array.isArray(r.huespedes) && r.huespedes.length > 0;
 
-                // Solo mostrar si cumple el filtro de disponible (registro), vacía y LIMPIA (X)
+                // Solo mostrar si cumple el filtro de disponible (registro), vaca y LIMPIA (X)
                 if (!isSource && matchesSearch && isAvailable && !isOcupied && isCleanStatus) {
                     _destRooms.push({ idx, r });
 
@@ -3916,7 +4027,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 `;
             }
 
-            console.log('✅ [TRASLADO] Grid actualizado:', _destRooms.length);
+            console.log(' [TRASLADO] Grid actualizado:', _destRooms.length);
         }
 
 
@@ -3928,7 +4039,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             selectedMoveTargetIdx = idx;
             const r = rooms[idx];
             const label = document.getElementById('move-dest-label');
-            if (label) label.textContent = `HABITACIÓN ${r.id} (${r.tipoHab})`;
+            if (label) label.textContent = `HABITACIN ${r.id} (${r.tipoHab})`;
             renderMoveTargetRooms();
             validateMoveForm();
         }
@@ -3960,7 +4071,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             const opt = select.options[select.selectedIndex];
             const sourceHab = opt.getAttribute('data-hab-id');
 
-            console.log("📤 [DEBUG TRASLADO] Intentando mover:", {
+            console.log(" [DEBUG TRASLADO] Intentando mover:", {
                 origen_hab: sourceHab,
                 origen_registro_id: selectedMoveSourceIdx,
                 destino_id: target.id,
@@ -3974,7 +4085,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
                         registro_id: selectedMoveSourceIdx,
-                        habitacion_id: target.id_db, // 🔥 ID de base de datos
+                        habitacion_id: target.id_db, //  ID de base de datos
                         confirmar_upgrade: confirmado,
                         motivo: motivo
                     })
@@ -3985,10 +4096,10 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 if (res.requiere_confirmacion) {
                     const ok = await Swal.fire({
                         title: 'CONFIRMAR UPGRADE',
-                        html: `La habitación destino es más cara.<br>Diferencia: <b>$${Number(res.diferencia).toLocaleString('es-MX')}</b><br><br>¿Deseas realizar el traslado con este cargo extra?`,
+                        html: `La habitacin destino es ms cara.<br>Diferencia: <b>$${Number(res.diferencia).toLocaleString('es-MX')}</b><br><br>Deseas realizar el traslado con este cargo extra?`,
                         icon: 'warning',
                         showCancelButton: true,
-                        confirmButtonText: 'SÍ, PROCEDER',
+                        confirmButtonText: 'S, PROCEDER',
                         cancelButtonText: 'CANCELAR'
                     });
 
@@ -3997,15 +4108,15 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 }
 
                 if (res.success || res.ok) {
-                    await Swal.fire('TRASLADO EXITOSO', `Huéspedes movidos a la Habitación ${target.id}`, 'success');
+                    await Swal.fire('TRASLADO EXITOSO', `Huspedes movidos a la Habitacin ${target.id}`, 'success');
                     closeModal('modal-cambio');
                     initData(); // Recargar grid completo
                 } else {
-                    Swal.fire('ERROR', res.msg || "Error al cambiar habitación", 'error');
+                    Swal.fire('ERROR', res.msg || "Error al cambiar habitacin", 'error');
                 }
             } catch (e) {
                 console.error(e);
-                Swal.fire('ERROR', 'Error de conexión con el servidor', 'error');
+                Swal.fire('ERROR', 'Error de conexion con el servidor', 'error');
             }
         }
 
@@ -4019,7 +4130,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
         /* --- ESTADO DE CUENTA --- */
         function showEstadoCuentaModal() {
             const r = rooms[selectedRoomIdx]; 
-            document.getElementById('account-room-label').textContent = `HABITACIÓN ${r.id} (${r.tipoHab})`;
+            document.getElementById('account-room-label').textContent = `HABITACIN ${r.id} (${r.tipoHab})`;
             const tbody = document.getElementById('movements-tbody'); 
             tbody.innerHTML = '';
             
@@ -4081,7 +4192,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             // Nombre completo (priorizar titular_full del servidor)
             const nombreCompleto = r.titular_full || (t ? t.nombre + ' ' + (t.apellidos || '') : 'SIN NOMBRE');
 
-            // 🔥 Lógica de Impuestos Alineada con Backend
+            //  Lgica de Impuestos Alineada con Backend
             // Si tenemos precio_reg (subtotal) lo usamos, si no calculamos desde el total actual (r.precio)
             const ivaRate = (window.TASA_IVA || 16) / 100;
             const ishRate = (window.TASA_ISH || 3) / 100;
@@ -4097,22 +4208,22 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 <div class="ticket-paper shadow-2xl rounded-sm border">
                     <div class="ticket-header">
                         <p class="ticket-title">HotelOS V2</p>
-                        <p class="text-[10px] font-bold">COMPROBANTE DE ADMISIÓN</p>
+                        <p class="text-[10px] font-bold">COMPROBANTE DE ADMISIN</p>
                         <p class="text-[9px] uppercase">Registro: ${r.fecha_registro}</p>
                     </div>
                     
                     <div class="ticket-info">
                         <div class="ticket-row font-black">
-                            <span>HABITACIÓN:</span>
+                            <span>HABITACIN:</span>
                             <span>${r.id}</span>
                         </div>
                         <div class="ticket-row">
                             <span>TIPO:</span>
-                            <span class="uppercase">${r.tipoHab || 'ESTÁNDAR'}</span>
+                            <span class="uppercase">${r.tipoHab || 'ESTNDAR'}</span>
                         </div>
                         <div class="ticket-divider"></div>
                         <div class="ticket-row font-bold">
-                            <span>HUÉSPED:</span>
+                            <span>HUSPED:</span>
                         </div>
                         <div class="text-[11px] uppercase mb-2">
                             ${nombreCompleto}
@@ -4122,7 +4233,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                             <span>${r.ocupacion_total}</span>
                         </div>
                         <div class="ticket-row">
-                            <span>ESTADÍA:</span>
+                            <span>ESTADA:</span>
                             <span>${r.dias} NOCHE(S)</span>
                         </div>
                     </div>
@@ -4167,8 +4278,8 @@ window.handleClientDBSearch = function(q, mode = 'form') {
 
         function openModalRegistry() {
             activePreviewMode = 'registry'; const r = rooms[selectedRoomIdx]; const t = r.huespedes.find(h => h.isTitular) || r.huespedes[0];
-            if (!t) return showToast("No hay huéspedes registrados");
-            document.getElementById('btn-final-action').textContent = "Confirmar Impresión";
+            if (!t) return showToast("No hay huspedes registrados");
+            document.getElementById('btn-final-action').textContent = "Confirmar Impresin";
             
             const nombre = s(t.nombre, '') + ' ' + s(t.apellido || t.apellidos, '');
             
@@ -4179,9 +4290,9 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                         <div class="text-right"><p class="font-black text-2xl">HAB: ${r.id}</p><p class="text-slate-500 font-bold uppercase text-xs">${r.fechaEntrada}</p></div>
                     </div>
                     <div class="grid grid-cols-2 gap-x-12 gap-y-6 mb-12">
-                        <div class="border-b pb-2"><label class="text-[9px] font-black text-blue-600 uppercase block mb-1">Huésped</label><p class="text-lg font-black uppercase">${nombre}</p></div>
-                        <div class="border-b pb-2"><label class="text-[9px] font-black text-blue-600 uppercase block mb-1">Teléfono</label><p class="text-lg font-bold">${s(t.telefono)}</p></div>
-                        <div class="col-span-2 border-b pb-2"><label class="text-[9px] font-black text-blue-600 uppercase block mb-1">Dirección</label><p class="text-lg font-bold uppercase">${s(t.direccion)}, ${s(t.ciudad, '')}</p></div>
+                        <div class="border-b pb-2"><label class="text-[9px] font-black text-blue-600 uppercase block mb-1">Husped</label><p class="text-lg font-black uppercase">${nombre}</p></div>
+                        <div class="border-b pb-2"><label class="text-[9px] font-black text-blue-600 uppercase block mb-1">Telfono</label><p class="text-lg font-bold">${s(t.telefono)}</p></div>
+                        <div class="col-span-2 border-b pb-2"><label class="text-[9px] font-black text-blue-600 uppercase block mb-1">Direccin</label><p class="text-lg font-bold uppercase">${s(t.direccion)}, ${s(t.ciudad, '')}</p></div>
                         <div class="border-b pb-2"><label class="text-[9px] font-black text-blue-600 uppercase block mb-1">Placas</label><p class="text-lg font-mono font-bold uppercase">${s(t.placas, 'N/A')}</p></div>
                     </div>
                     <div class="bg-slate-900 text-white p-8 rounded-3xl grid grid-cols-4 text-center mb-20 shadow-xl border-8 border-white">
@@ -4193,9 +4304,9 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                     <div class="flex justify-between items-center space-x-20">
                         <div class="flex-1 border-t-2 border-slate-900 pt-4 text-center">
                             ${t.firma_path ? `<img src="${base_url}uploads/fotos/${t.firma_path}" class="h-16 mx-auto mb-2">` : ''}
-                            <p class="font-black text-[10px] uppercase">Firma Huésped</p>
+                            <p class="font-black text-[10px] uppercase">Firma Husped</p>
                         </div>
-                        <div class="flex-1 border-t-2 border-slate-900 pt-4 text-center"><p class="font-black text-[10px] uppercase">Sello Recepción</p></div>
+                        <div class="flex-1 border-t-2 border-slate-900 pt-4 text-center"><p class="font-black text-[10px] uppercase">Sello Recepcin</p></div>
                     </div>
                 </div>`;
             document.getElementById('modal-preview').classList.add('modal-active');
@@ -4216,7 +4327,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 <div class="ticket-paper">
                     <p class="text-center font-black text-2xl mb-6 italic tracking-tighter uppercase">HotelOS V2</p>
                     <div class="space-y-1 mb-4 text-[11px] font-bold">
-                        <p class="flex justify-between"><span>HABITACIÓN:</span> <span>${r.id}</span></p>
+                        <p class="flex justify-between"><span>HABITACIN:</span> <span>${r.id}</span></p>
                         <p class="flex justify-between"><span>TITULAR:</span> <span class="uppercase">${r.titular_full || (t ? t.nombre : '---')}</span></p>
                     </div>
                     <div class="border-t-2 border-slate-900 pt-4">
@@ -4254,7 +4365,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
 
 
         /* --- AUXILIARES --- */
-        function openOptionsMenu(idx) { selectedRoomIdx = idx; document.getElementById('menu-opt-hab').textContent = `HABITACIÓN ${rooms[idx].id}`; document.getElementById('opt-obs-input').value = rooms[idx].obs || ''; document.getElementById('modal-options-menu').classList.add('modal-active'); }
+        function openOptionsMenu(idx) { selectedRoomIdx = idx; document.getElementById('menu-opt-hab').textContent = `HABITACIN ${rooms[idx].id}`; document.getElementById('opt-obs-input').value = rooms[idx].obs || ''; document.getElementById('modal-options-menu').classList.add('modal-active'); }
         
         /* --- DATOS FISCALES --- */
         async function abrirModalFiscal() {
@@ -4262,7 +4373,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             const r = rooms[selectedRoomIdx];
             if (!r || !r.registro_id) return showToast("SE REQUIERE UN REGISTRO ACTIVO");
 
-            document.getElementById('fiscal-hab-label').textContent = `HABITACIÓN ${r.id}`;
+            document.getElementById('fiscal-hab-label').textContent = `HABITACIN ${r.id}`;
             
             // Limpiar campos
             const fields = ['rfc', 'razon', 'regimen', 'cp', 'uso', 'email', 'qr'];
@@ -4308,7 +4419,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             };
 
             if (!payload.rfc || !payload.razon_social) {
-                return Swal.fire("Error", "RFC y Razón Social son requeridos", "error");
+                return Swal.fire("Error", "RFC y Razn Social son requeridos", "error");
             }
 
             try {
@@ -4328,7 +4439,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 }
             } catch (e) {
                 console.error(e);
-                showToast("Error de conexión");
+                showToast("Error de conexion");
             }
         }
 
@@ -4343,13 +4454,13 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             const regForm = document.getElementById('reg-view-form');
             if (regForm) regForm.classList.toggle('hidden', v !== 'reg-form');
 
-            // 🔥 Toggle visibility of header counters
+            //  Toggle visibility of header counters
             const headerOcc = document.getElementById('header-occ-container');
             const headerPerson = document.getElementById('header-person-container');
             if (headerOcc) headerOcc.classList.toggle('hidden', v !== 'reg-list');
             if (headerPerson) headerPerson.classList.toggle('hidden', v !== 'reg-form');
         }
-        function startShift() { showToast("Sincronizando sesión..."); setTimeout(() => showView('work'), 800); }
+        function startShift() { showToast("Sincronizando sesin..."); setTimeout(() => showView('work'), 800); }
         function changeFloor(f) {
             currentFloor = f;
             const container = document.getElementById("floor-tabs");
@@ -4375,7 +4486,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 
                 cont.innerHTML = '';
 
-                // 🔥 Añadir pestaña TODOS
+                //  Aadir pestaa TODOS
                 const btnAll = document.createElement("button");
                 btnAll.dataset.floor = 'ALL';
                 btnAll.innerText = "TODOS";
@@ -4405,7 +4516,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             }
         }
         function showToast(m) { const t = document.getElementById('toast'); t.querySelector('p').textContent = m; t.classList.remove('translate-y-72'); setTimeout(() => t.classList.add('translate-y-72'), 3000); }
-        /* --- MÓDULO MULTIMEDIA (CÁMARA, OCR, FIRMA) --- */
+        /* --- MDULO MULTIMEDIA (CMARA, OCR, FIRMA) --- */
         let activeStream = null;
         let activeBoxId = null;
 
@@ -4422,7 +4533,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 activeBoxId = boxId;
                 box.innerHTML = `<video id="video-preview" autoplay playsinline class="w-full h-full object-cover rounded-2xl"></video>`;
                 document.getElementById('video-preview').srcObject = activeStream;
-                showToast("Cámara encendida");
+                showToast("Cmara encendida");
 
                 if (boxId === 'box-id') {
                     document.getElementById('btn-on-id').classList.add('hidden');
@@ -4433,7 +4544,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 }
             } catch (err) {
                 console.error(err);
-                showToast("Error al acceder a la cámara");
+                showToast("Error al acceder a la cmara");
             }
         }
 
@@ -4462,7 +4573,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
         }
 
                 async function capturePhoto(boxId) {
-            if (!activeStream || activeBoxId !== boxId) return showToast("Enciende la cámara primero");
+            if (!activeStream || activeBoxId !== boxId) return showToast("Enciende la cmara primero");
             const video = document.getElementById('video-preview');
             const canvas = document.createElement('canvas');
             canvas.width = video.videoWidth; canvas.height = video.videoHeight;
@@ -4474,11 +4585,11 @@ window.handleClientDBSearch = function(q, mode = 'form') {
 
             if (boxId === 'box-id') {
                 const result = await Swal.fire({
-                    title: '¿IMAGEN CORRECTA?',
-                    text: "Asegúrate de que los datos sean legibles",
+                    title: 'IMAGEN CORRECTA?',
+                    text: "Asegrate de que los datos sean legibles",
                     icon: 'question',
                     showCancelButton: true,
-                    confirmButtonText: 'SÍ, PROCESAR',
+                    confirmButtonText: 'S, PROCESAR',
                     cancelButtonText: 'NO, REPETIR',
                     confirmButtonColor: '#4f46e5',
                     cancelButtonColor: '#64748b'
@@ -4523,10 +4634,10 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             const box = document.getElementById(boxId);
             const scanLine = document.getElementById('scan-line');
             
-            // 1. Obtener imagen si no se pasó una (desde la cámara/preview)
+            // 1. Obtener imagen si no se pas una (desde la cmara/preview)
             if (!imageBase64) {
                 const img = box.querySelector('img');
-                if (!img) return showToast("Captura la identificación o sube un archivo");
+                if (!img) return showToast("Captura la identificacin o sube un archivo");
                 imageBase64 = img.src;
             }
 
@@ -4547,12 +4658,12 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 if (resp.ok && resp.data) {
                     fillFormFromOCR(resp.data);
                     
-                    // 🔥 Guardar el nombre del archivo para que se salve en la BD al confirmar
+                    //  Guardar el nombre del archivo para que se salve en la BD al confirmar
                     const boxIdEl = document.getElementById('box-id');
                     if (resp.file) boxIdEl.dataset.blob = resp.file; if (resp.id) boxIdEl.dataset.ocrId = resp.id;
 
-                    if (resp.es_menor) showToast("⚠️ Atención: Menor de edad detectado");
-                    showToast("✔ Datos extraídos correctamente");
+                    if (resp.es_menor) showToast(" Atencin: Menor de edad detectado");
+                    showToast(" Datos extrados correctamente");
                 } else {
                     throw new Error(resp.error || "Error al procesar documento");
                 }
@@ -4566,7 +4677,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
         }
 
         function fillFormFromOCR(data) {
-            console.log("📝 Mapeando datos OCR:", data);
+            console.log(" Mapeando datos OCR:", data);
             if (data.nombre) document.getElementById('f-name').value = data.nombre.toUpperCase();
             if (data.apellidos) document.getElementById('f-apellidos').value = data.apellidos.toUpperCase();
             if (data.numero_identificacion) document.getElementById('f-id-num').value = data.numero_identificacion.toUpperCase();
@@ -4587,7 +4698,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
 
         async function openQRScanner() {
             try {
-                showToast("Generando sesión de puente...");
+                showToast("Generando sesin de puente...");
                 const resp = await fetch(base_url + "ocr/crearSesion");
                 const res = await resp.json();
 
@@ -4610,11 +4721,11 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                     // Iniciar Polling
                     startQRPolling(res.token);
                 } else {
-                    showToast("Error al crear sesión QR");
+                    showToast("Error al crear sesin QR");
                 }
             } catch (error) {
                 console.error(error);
-                showToast("Error de conexión al generar QR");
+                showToast("Error de conexion al generar QR");
             }
         }
 
@@ -4634,7 +4745,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
 
                     if (res.ok) {
                         if (res.status === 'COMPLETADO') {
-                            showToast("¡Captura recibida!");
+                            showToast("Captura recibida!");
                             clearInterval(qrPollingInterval);
                             
                             // Llenar formulario
@@ -4650,7 +4761,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
 
                             setTimeout(() => {
                                 closeQRBridge();
-                                showToast("✔ Datos sincronizados con éxito");
+                                showToast(" Datos sincronizados con xito");
                             }, 1000);
                         } else if (res.status === 'ERROR') {
                             showToast("Error en el escaneo remoto");
@@ -4664,14 +4775,11 @@ window.handleClientDBSearch = function(q, mode = 'form') {
         }
 
 
-                                        async function enviarATablet() {
+                                                async function enviarATablet() {
             const box = document.getElementById('box-id');
             let idOcr = box.dataset.ocrId || null;
             
-            // Obtener IDs vinculados si existen
             const registroId = window.currentRegistroId || null;
-            // El huesped_id suele estar en un campo oculto o en el objeto rooms
-            // Intentamos obtenerlo del campo f-huesped-id si existe
             const huespedIdEl = document.getElementById('f-huesped-id');
             const huespedId = huespedIdEl ? huespedIdEl.value : null;
 
@@ -4710,7 +4818,6 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             }
 
             try {
-                // Pasar IDs como query params para activarFirma
                 let url = base_url + "tablet/activarFirma/" + idOcr + "?";
                 if (registroId) url += "registro_id=" + registroId + "&";
                 if (huespedId) url += "huesped_id=" + huespedId;
@@ -4720,7 +4827,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 if (res.ok) {
                     Swal.fire({
                         title: 'FIRMA ACTIVADA',
-                        text: 'Pida al hu�sped que firme en la tablet exterior',
+                        text: 'Pida al husped que firme en la tablet exterior',
                         icon: 'success',
                         timer: 3000,
                         showConfirmButton: false
@@ -4730,47 +4837,7 @@ window.handleClientDBSearch = function(q, mode = 'form') {
                 }
             } catch (e) {
                 console.error(e);
-                showToast("Error de conexi�n con la tablet");
-            }
-        }
-
-                try {
-                    const resp = await fetch(base_url + "tablet/activarFirmaManual", {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ nombre, apellidos })
-                    });
-                    const res = await resp.json();
-                    if (res.ok) {
-                        idOcr = res.id;
-                        box.dataset.ocrId = idOcr;
-                    } else {
-                        showToast(res.msg);
-                        return;
-                    }
-                } catch (e) {
-                    showToast("Error al activar firma manual");
-                    return;
-                }
-            }
-
-            try {
-                const resp = await fetch(base_url + "tablet/activarFirma/" + idOcr);
-                const res = await resp.json();
-                if (res.ok) {
-                    Swal.fire({
-                        title: 'FIRMA ACTIVADA',
-                        text: 'Pida al hu�sped que firme en la tablet exterior',
-                        icon: 'success',
-                        timer: 3000,
-                        showConfirmButton: false
-                    });
-                } else {
-                    showToast("Error: " + res.msg);
-                }
-            } catch (e) {
-                console.error(e);
-                showToast("Error de conexi�n con la tablet");
+                showToast("Error de conexion con la tablet");
             }
         } 
 
@@ -4789,16 +4856,48 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             }
         }
 
-        /* FIRMA ELECTRÓNICA */
+        /* FIRMA ELECTRNICA */
         let sigPad = null;
         let sigDirty = false;
+                async function verificarFirmaGuardada() {
+            const box = document.getElementById('box-id');
+            const idOcr = box.dataset.ocrId;
+            
+            if (!idOcr) return showToast("No hay un proceso de firma activo");
+
+            try {
+                const resp = await fetch(base_url + "ocr/consultarFirma/" + idOcr);
+                const res = await resp.json();
+                
+                if (res.ok && res.firma_path) {
+                    const canvas = document.getElementById('sig-canvas');
+                    const container = canvas.parentElement;
+                    const imgUrl = base_url + "uploads/fotos/" + res.firma_path;
+                    
+                    // Ocultar canvas y mostrar imagen
+                    canvas.style.display = 'none';
+                    container.style.backgroundImage = 'url(' + imgUrl + ')';
+                    container.style.backgroundSize = 'contain';
+                    container.style.backgroundRepeat = 'no-repeat';
+                    container.style.backgroundPosition = 'center';
+                    
+                    showToast(" Firma recuperada con xito!");
+                } else {
+                    showToast("El hu?sped an no ha firmado en la tablet");
+                }
+            } catch (e) {
+                console.error(e);
+                showToast("Error al conectar con el servidor");
+            }
+        } 
+
         function initSignaturePad() {
             const canvas = document.getElementById('sig-canvas');
             if (!canvas) return;
             const ctx = canvas.getContext('2d');
             let drawing = false;
 
-            // Ajustar tamaño al contenedor
+            // Ajustar tamao al contenedor
             const resize = () => {
                 const rect = canvas.parentNode.getBoundingClientRect();
                 canvas.width = rect.width; canvas.height = rect.height;
@@ -4827,7 +4926,6 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             if (canvas) canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
         }
         function applyGlobalSearch() { renderGrid(); }
-        function handleClientDBSearch(v) { /* Búsqueda simulada */ }
 
        /*FUNCIONES DE BASE DE DATOS*/
 
@@ -4849,10 +4947,10 @@ window.handleClientDBSearch = function(q, mode = 'form') {
             };
         });
 
-        console.log("✔ catálogo listo:", catalogoFormasPago);
+        console.log(" catlogo listo:", catalogoFormasPago);
 
     } catch (e) {
-        console.error("❌ error formas pago:", e);
+        console.error(" error formas pago:", e);
     }
 }
 
@@ -4889,9 +4987,9 @@ async function cargarTiposEstadia() {
                 nombre: partes.slice(1).join('-')
             };
         });
-        console.log("✔ tipos estadía listos:", catalogoTiposEstadia);
+        console.log(" tipos estada listos:", catalogoTiposEstadia);
     } catch (e) {
-        console.error("❌ error tipos estadía:", e);
+        console.error(" error tipos estada:", e);
     }
 }
 
@@ -4908,9 +5006,9 @@ async function cargarTiposID() {
                 select.innerHTML += `<option value="${t.id}">${t.nombre}</option>`;
             });
         }
-        console.log("✔ tipos ID listos:", catalogoTiposID);
+        console.log(" tipos ID listos:", catalogoTiposID);
     } catch (e) {
-        console.error("❌ error tipos ID:", e);
+        console.error(" error tipos ID:", e);
     }
 }
 
@@ -4939,7 +5037,7 @@ function renderSelectEstadia(valorActual, realIdx, isBlocked = false) {
 
 
         window.onload = async () => {
-            // ⚡ Carga en paralelo todos los catálogos al mismo tiempo
+            //  Carga en paralelo todos los catlogos al mismo tiempo
             await Promise.all([
                 cargarFormasPago(),
                 cargarTiposEstadia(),
@@ -4966,7 +5064,7 @@ function renderSelectEstadia(valorActual, realIdx, isBlocked = false) {
                 let ish = data.find(i => i.nombre === 'ISH');
                 if (ish) window.TASA_ISH = parseFloat(ish.tasa);
                 
-                console.log("💎 Tasas cargadas:", window.TASA_IVA, window.TASA_ISH);
+                console.log(" Tasas cargadas:", window.TASA_IVA, window.TASA_ISH);
             } catch (e) {
                 console.error("Error cargando impuestos:", e);
                 window.TASA_IVA = 16;
@@ -4988,7 +5086,7 @@ function renderSelectEstadia(valorActual, realIdx, isBlocked = false) {
                     select.appendChild(opt);
                 });
             } catch (e) {
-                console.error('Error cargando tipos habitación:', e);
+                console.error('Error cargando tipos habitacin:', e);
             }
         }
         async function hacerCheckout(overrideId = null) {
@@ -4996,13 +5094,13 @@ function renderSelectEstadia(valorActual, realIdx, isBlocked = false) {
             if (!registroId) return;
 
             const confirm = await Swal.fire({
-                title: '¿FINALIZAR ESTANCIA?',
-                text: "Se marcará la salida del huésped y la habitación quedará DISPONIBLE.",
+                title: 'FINALIZAR ESTANCIA?',
+                text: "Se marcar la salida del husped y la habitacin quedar DISPONIBLE.",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#e11d48',
                 cancelButtonColor: '#64748b',
-                confirmButtonText: 'SÍ, FINALIZAR',
+                confirmButtonText: 'S, FINALIZAR',
                 cancelButtonText: 'CANCELAR'
             });
 if (confirm.isConfirmed) {
@@ -5023,7 +5121,7 @@ if (confirm.isConfirmed) {
         const res = await resp.json();
 
         if (res.success) {
-            showToast("Checkout realizado con éxito");
+            showToast("Checkout realizado con xito");
             closeModal('modal-register');
             initData(); // Recargar grid
         } else {
@@ -5068,7 +5166,7 @@ if (confirm.isConfirmed) {
                     }
                 } catch (err) {
                     console.error("Error Fetch:", err);
-                    showToast("Error de conexión");
+                    showToast("Error de conexion");
                 }
             }
         }
@@ -5078,6 +5176,33 @@ if (confirm.isConfirmed) {
 </body>
 
 <?= view('layout/footer') ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

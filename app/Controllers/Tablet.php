@@ -81,18 +81,21 @@ class Tablet extends BaseController
            ->where('id', $json->id_ocr)
            ->update(['firma_path' => $filename]);
 
-        // B. En registro (La estancia actual)
+        // B. En registros (La estancia actual)
         if (!empty($sesion->registro_id)) {
-            $db->table('registro')
+            $db->table('registros')
                ->where('id', $sesion->registro_id)
                ->update(['firma_path' => $filename]);
         }
 
-        // C. En huesped (El perfil maestro del cliente)
+        // C. En huespedes (El perfil maestro del cliente)
         if (!empty($sesion->huesped_id)) {
-            $db->table('huesped')
+            log_message('debug', 'Actualizando firma para huesped: ' . $sesion->huesped_id);
+            $db->table('huespedes')
                ->where('id', $sesion->huesped_id)
                ->update(['firma_path' => $filename]);
+        } else {
+            log_message('debug', 'No hay huesped_id en la sesión de firma');
         }
 
         // 4. Limpiar la sesión
@@ -129,8 +132,8 @@ class Tablet extends BaseController
            ->update([
                'status' => 'READY',
                'ocr_registro_id' => $id_ocr,
-               'registro_id' => $registro_id ?: null,
-               'huesped_id' => $huesped_id ?: null
+               'registro_id' => (!empty($registro_id)) ? $registro_id : null,
+               'huesped_id' => (!empty($huesped_id)) ? $huesped_id : null
            ]);
 
         return $this->response->setJSON(['ok' => true, 'msg' => 'Firma activada en la tablet exterior']);
@@ -164,8 +167,8 @@ class Tablet extends BaseController
            ->update([
                'status' => 'READY',
                'ocr_registro_id' => $newId,
-               'registro_id' => $json->registro_id ?? null,
-               'huesped_id' => $json->huesped_id ?? null
+               'registro_id' => (!empty($json->registro_id)) ? $json->registro_id : null,
+               'huesped_id' => (!empty($json->huesped_id)) ? $json->huesped_id : null
            ]);
 
         return $this->response->setJSON([

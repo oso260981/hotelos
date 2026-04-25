@@ -1,11 +1,7 @@
 <?php
-$host = 'srv940.hstgr.io';
-$db   = 'u653032309_hotel_pms';
-$user = 'u653032309_Hotel';
-$pass = 'D@nte011273';
-$charset = 'utf8mb4';
-
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-$pdo = new PDO($dsn, $user, $pass);
-$stmt = $pdo->query("DESCRIBE registro_cargos");
-print_r($stmt->fetchAll(PDO::FETCH_ASSOC));
+$c = mysqli_connect('srv940.hstgr.io', 'u653032309_Hotel', 'D@nte011273', 'u653032309_hotel_pms');
+$res = mysqli_query($c, "DESCRIBE registro_cargos");
+while($row = mysqli_fetch_assoc($res)) {
+    echo $row['Field'] . " (" . $row['Type'] . ")\n";
+}
+mysqli_close($c);

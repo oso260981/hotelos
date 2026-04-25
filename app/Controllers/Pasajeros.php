@@ -438,7 +438,10 @@ public function buscar_cliente()
             fecha_nacimiento,
             genero,
             tipo_identificacion_id,
-            empresa
+            empresa,
+            fotografia,
+            identificacion,
+            firma_path
         ")
         ->where('activo', 1)
         ->groupStart()

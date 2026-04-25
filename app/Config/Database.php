@@ -32,7 +32,7 @@ class Database extends Config
         'database'     => 'u653032309_hotel_pms',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
-        'pConnect'     => true,
+        'pConnect'     => false,
         'DBDebug'      => true,
         'charset'      => 'utf8mb4',
         'DBCollat'     => 'utf8mb4_general_ci',

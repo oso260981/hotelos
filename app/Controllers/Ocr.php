@@ -42,6 +42,24 @@ class Ocr extends Controller
         ]);
     }
 
+    public function consultarFirma($id)
+    {
+        $db = \Config\Database::connect();
+        $registro = $db->table('ocr_registros')
+                       ->select('firma_path')
+                       ->where('id', $id)
+                       ->get()->getRow();
+        
+        if ($registro && $registro->firma_path) {
+            return $this->response->setJSON([
+                'ok' => true,
+                'firma_path' => $registro->firma_path
+            ]);
+        }
+        
+        return $this->response->setJSON(['ok' => false]);
+    }
+
     public function procesar()
     {
         $json = $this->request->getJSON(true);

@@ -340,8 +340,11 @@ $routes->post('reservacion/actualizar-campo', 'Reservacion::actualizarCampoRegis
 /* =====================================================
    RUTAS TABLET FIRMA
 =====================================================*/
+$routes->get('ocr/consultarFirma/(:num)', 'Ocr::consultarFirma/$1');
 $routes->get('tablet', 'Tablet::index');
 $routes->get('tablet/checkStatus', 'Tablet::checkStatus');
 $routes->post('tablet/guardarFirma', 'Tablet::guardarFirma');
 $routes->get('tablet/activarFirma/(:num)', 'Tablet::activarFirma/$1');
 $routes->post('tablet/activarFirmaManual', 'Tablet::activarFirmaManual');
+
+$routes->get('debug/monitor', 'Debug::monitor');

@@ -79,11 +79,12 @@ class RoomService extends ResourceController
     public function servicios()
     {
         $db = \Config\Database::connect();
+        $dep = $this->request->getGet('departamento') ?? 'Room service';
 
         $data = $db->table('room_service_productos')
-            ->where('categoria', 'SERVICIO')
+            ->where('departamento', $dep)
             ->where('activo', 1)
-            ->limit(4)
+            ->limit(6)
             ->get()
             ->getResultArray();
 
@@ -97,6 +98,7 @@ class RoomService extends ResourceController
     public function buscar()
     {
         $q = trim($this->request->getGet('q'));
+        $dep = $this->request->getGet('departamento') ?? 'Room service';
 
         if (empty($q)) {
             return $this->response->setJSON([
@@ -108,6 +110,7 @@ class RoomService extends ResourceController
 
         $data = $db->table('room_service_productos')
             ->like('nombre', $q)
+            ->where('departamento', $dep)
             ->where('activo', 1)
             ->limit(20)
             ->get()
@@ -169,6 +172,8 @@ class RoomService extends ResourceController
                     'usuario_id'       => $usuarioId,
                     'turno_id'         => $turnoIdReal,
                     'forma_pago_id'    => $formaPagoId,
+                    'Tipo_Servicio'    => $json['tipo_servicio'] ?? 'Room service',
+                    'incluir_en_reporte' => $json['incluir_en_reporte'] ?? 0,
                     'observaciones'    => $item['observaciones'] ?? ($isVentaIndependiente ? 'VENTA INDEPENDIENTE' : 'CARGO A HABITACIÓN'),
                     'created_at'       => date('Y-m-d H:i:s')
                 ]);
@@ -178,10 +183,12 @@ class RoomService extends ResourceController
             if (!$isVentaIndependiente) {
                 $iva = round($totalPedido * 0.16, 2);
                 $totalConIva = $totalPedido + $iva;
+                $tipoServicio = $json['tipo_servicio'] ?? 'Room service';
+                $incluirReporte = $json['incluir_en_reporte'] ?? 1;
 
                 $db->table('registro_cargos')->insert([
                     'registro_id'     => $registroIdReal,
-                    'concepto'        => 'CONSUMO ROOM SERVICE',
+                    'concepto'        => 'CONSUMO ' . strtoupper($tipoServicio),
                     'tipo'            => 'Extra',
                     'cantidad'        => 1,
                     'precio_unitario' => $totalPedido,
@@ -191,7 +198,9 @@ class RoomService extends ResourceController
                     'total'           => $totalConIva,
                     'aplica_iva'      => 1,
                     'aplica_ish'      => 0,
-                    'departamento'    => 'ROOM SERVICE',
+                    'departamento'    => strtoupper($tipoServicio),
+                    'tipo_servicio'   => $tipoServicio,
+                    'incluir_en_reporte' => $incluirReporte,
                     'estado'          => 'ACTIVO',
                     'created_at'      => date('Y-m-d H:i:s')
                 ]);
